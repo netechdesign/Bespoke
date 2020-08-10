@@ -150,7 +150,7 @@ class SupplierController extends Controller
 
             return response()->json(array('success' => true,'message'=> 'deleted'));
            }
-           
+            
             
         }
         catch (exception $e) {
