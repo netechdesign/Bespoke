@@ -17,6 +17,7 @@ class CreateUtilitaJobsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('sheets_id')->unsigned()->index();
             $table->string('month')->nullable();
+            $table->integer('week_no');
             $table->string('week_day')->nullable();
             $table->date('week_date')->nullable();
             $table->bigInteger('customer_id')->nullable();

@@ -170,7 +170,7 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
       data.append('file_id', _this.state.file_id);
       data.append('file_name', _this.state.file_name);
 
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).data : 'Null',
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref.id,
           auth_token = _ref.auth_token;
 
@@ -207,6 +207,7 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
             }
           }).on('click', function (e) {});
         } else {
+          $('#avatar').val('');
           pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].error({
             title: "System Error",
             text: res.data.message
@@ -225,6 +226,23 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
           });
         }
       })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Import'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+
         console.log(err);
       }); // successDesktopPNotify();
       //  this.props.history.push('/role');

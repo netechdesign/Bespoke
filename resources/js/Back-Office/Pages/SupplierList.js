@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import axios from 'axios'
 import {Row, Col, Card, Table,Button,Form} from 'react-bootstrap';
 import Select from 'react-select';
 import Aux from "../../hoc/_Aux";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import $ from 'jquery';
 window.jQuery = $;
@@ -31,12 +34,18 @@ require( 'datatables.net-select' );
 require( 'datatables.net-fixedcolumns' );
 require( 'datatables.net-fixedheader' );
 
-const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).data : 'Null';
+const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+/*
+function fileView(id,file_id){
+alert(id);
+}
+*/
 
 var oTable="";
 
 function atable() {
   
+       
     
     let tableResponsive = '#data-table-responsive';
 
@@ -48,7 +57,7 @@ oTable = $(tableResponsive).DataTable({
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin+'/api/mds/',
+    "sAjaxSource": window.location.origin+'/api/supplier/',
     'bPaginate': true,
     "fnServerParams": function (aoData) {
 
@@ -71,45 +80,8 @@ oTable = $(tableResponsive).DataTable({
         },
 
     "columns": [  
-         {"data":"sheets_id"},
+         {"data":"file_type"},
          {"data":"file_name"},
-         {"data":"month"},
-         {"data":"week_day"},
-         {"data":"week_date"},
-         {"data":"date"},            
-         {"data":"start_time"},      
-         {"data":"end_time"},
-         {"data":"time_difference"},
-         {"data":"work_master_sign_id"},
-         {"data":"name"},           
-         {"data":"area"},
-         {"data":"geo_area"},       
-         {"data":"report_group"},
-         {"data":"field_force"},
-         {"data":"leaver_flg"},
-         {"data":"week_summary"},
-         {"data":"num"},
-         {"data":"complete"},
-         {"data":"abort"},
-         {"data":"no_access_rate"},
-         {"data":"smart_book"},
-         {"data":"warrant_book"},
-         {"data":"traditional_book"},
-         {"data":"smart_complete"},
-         {"data":"warrant_complete"},
-         {"data":"traditional_complete"},
-         {"data":"smart_abort"},
-         {"data":"warrant_abort"},
-         {"data":"traditional_abort"},
-         {"data":"smart_no_access"},
-         {"data":"warrant_no_access"},
-         {"data":"traditional_no_access"},
-         {"data":"sf_df"},
-         {"data":"job_type"},
-         {"data":"sf_df_helper"},
-         {"data":"work_type"},
-         {"data":"job_id"},
-         {"data":"schedule_date"},
          {"data": "id"}
     ],
     responsive: {
@@ -160,9 +132,13 @@ oTable = $(tableResponsive).DataTable({
         {
             "render": function (data, type, row) {
               
-                var str_buttons = '<button type="button" class="btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+                var view_buttons ='';
+                var delete_buttons ='';
+                view_buttons = '<a href="javascript:;"  target data-id="'+row.id+'" data-fileid="'+row.file_id+'"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
+                 delete_buttons = '<button type="button" data-id="'+row.id+'" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
                 return [
-                    str_buttons,
+                    view_buttons,
+                    delete_buttons,
                 ].join('');
                
             },
@@ -176,19 +152,23 @@ oTable = $(tableResponsive).DataTable({
         }
     ]
 });
-   
+
+
 }
+
 
 function handleChange(){
     setTimeout(function(){ oTable.draw(); }, 500);
 
   }
 
-export const Suppliers = [
+  export const Suppliers = [
     { value: '1', label: 'Morrison Data services'},
     { value: '2', label: 'Utilita'},
+    { value: '3', label:'Vehical Mileage'}
   
 ];
+
 
 class SupplierList extends React.Component {
 
@@ -198,13 +178,60 @@ class SupplierList extends React.Component {
         this.state={
           
         }}
-
+           
     componentDidMount() {
-       
+        
         atable();
+        var self= this;
+        $('#data-table-responsive tbody').on('click', '.viewfile', function () {
+            var id =  $(this).attr('data-id');
+            var supplier =  $(this).attr('data-fileid');
+             // var data = oTable.row( this ).data();
+              if(supplier==1){
+                self.props.history.push('list/morrison/'+id);
+              }else if(supplier==2){
+                self.props.history.push('list/utilita/'+id);
+              }
+              
+          } );    
+          $('#data-table-responsive tbody').on('click', '.deletefile', function () {
+            var id =  $(this).attr('data-id');
+            const MySwal = withReactContent(Swal);
+            MySwal.fire({
+                title: 'Are you sure?',
+                text: 'Once deleted, you will not be able to recover this data!',
+                type: 'warning',
+                showCloseButton: true,
+                showCancelButton: true
+            }).then((willDelete) => {
+
+                if (willDelete.value) {
+                    const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+                    const baseurl= window.location.origin;
+                    axios.post(
+                        baseurl+'/api/supplier/'+id,{_method: 'delete'},
+                        {
+                            headers:{'Authorization':'Bearer '+auth_token}
+                        } 
+                    ).then(res =>{
+                                      if(res.data.success){
+                    oTable.draw();
+                    return MySwal.fire('', 'File has been deleted!', 'success');
+                                      }
+                                    })
+                } else {
+                   // return MySwal.fire('', 'Your imaginary file is safe!', 'error');
+                }
+            });
+            
+              
+          } ); 
+          
+          
     }
     
     render() {
+        
         return (
             <Aux>
                 <Row>
@@ -212,9 +239,8 @@ class SupplierList extends React.Component {
                        
                       <Card>
                             <Card.Header>
-                            
                             <Form.Row>
-                                        <Form.Group as={Col} md="2">
+                            <Form.Group as={Col} md="2">
                             <Form.Label htmlFor="firstName">Supplier</Form.Label>
                             <Select onChange={()=>{handleChange()}}
                                     className="basic-single"
@@ -226,95 +252,24 @@ class SupplierList extends React.Component {
                                 </Form.Group>
                                 </Form.Row>
                             
+                            
                             </Card.Header>
                             <Card.Body>
                             
                                 <Table ref="tbl" striped hover responsive className="table table-condensed" id="data-table-responsive">
                                     <thead>
                                     <tr>
-                                    <th id="sheets_id">sheet_id</th>
-                                    <th id="file_name">Supplier</th>
-                                    <th id="month">Month</th>
-                                    <th id="week_day">Week Day</th>
-                                    <th id="week_date">Week Date</th>
-                                    <th id="date">Date</th>            
-                                    <th id="start_time">Start Time</th>      
-                                    <th id="end_time">End Time</th>
-                                    <th id="time_difference">Time Difference</th>
-                                    <th id="work_master_sign_id">Work master sign id</th>
-                                    <th id="name">Name</th>           
-                                    <th id="area">Area</th>
-                                    <th id="geo_area">Geo area</th>       
-                                    <th id="report_group">Report group</th>
-                                    <th id="field_force">Field force</th>
-                                    <th id="leaver_flg">Leaver flg</th>
-                                    <th id="week_summary">Week summary</th>
-                                    <th id="num">Num</th>
-                                    <th id="complete">Complete</th>
-                                    <th id="abort">Abort</th>
-                                    <th id="no_access_rate">No access rate</th>
-                                    <th id="smart_book">Smart book</th>
-                                    <th id="warrant_book">Warrant book</th>
-                                    <th id="traditional_book">Traditional book</th>
-                                    <th id="smart_complete">Smart complete</th>
-                                    <th id="warrant_complete">Warrant complete</th>
-                                    <th id="traditional_complete">Traditional complete</th>
-                                    <th id="smart_abort">Smart abort</th>
-                                    <th id="warrant_abort">Warrant abort</th>
-                                    <th id="traditional_abort">Traditional abort</th>
-                                    <th id="smart_no_access">Smart no access</th>
-                                    <th id="warrant_no_access">Warrant no access</th>
-                                    <th id="traditional_no_access">Traditional no access</th>
-                                    <th id="sf_df">sf df</th>
-                                    <th id="job_type">Job type</th>
-                                    <th id="sf_df_helper">sf df helper</th>
-                                    <th id="work_type">Work type</th>
-                                    <th id="job_id">Job id</th>
-                                    <th id="schedule_date">Date of action</th>
+                                    <th id="file_type">Supplier</th>
+                                    <th id="file_name">File Name</th>
+                                    
                                     <th id="action">Action</th>
                                       </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                    <th id="sheets_id">sheet_id</th>
-                                    <th id="file_name">Supplier</th>
-                                    <th id="month">Month</th>
-                                    <th id="week_day">Week Day</th>
-                                    <th id="week_date">Week Date</th>
-                                    <th id="date">Date</th>            
-                                    <th id="start_time">Start Time</th>      
-                                    <th id="end_time">End Time</th>
-                                    <th id="time_difference">Time Difference</th>
-                                    <th id="work_master_sign_id">Work master sign id</th>
-                                    <th id="name">Name</th>           
-                                    <th id="area">Area</th>
-                                    <th id="geo_area">Geo area</th>       
-                                    <th id="report_group">Report group</th>
-                                    <th id="field_force">Field force</th>
-                                    <th id="leaver_flg">Leaver flg</th>
-                                    <th id="week_summary">Week summary</th>
-                                    <th id="num">Num</th>
-                                    <th id="complete">Complete</th>
-                                    <th id="abort">Abort</th>
-                                    <th id="no_access_rate">No access rate</th>
-                                    <th id="smart_book">Smart book</th>
-                                    <th id="warrant_book">Warrant book</th>
-                                    <th id="traditional_book">Traditional book</th>
-                                    <th id="smart_complete">Smart complete</th>
-                                    <th id="warrant_complete">Warrant complete</th>
-                                    <th id="traditional_complete">Traditional complete</th>
-                                    <th id="smart_abort">Smart abort</th>
-                                    <th id="warrant_abort">Warrant abort</th>
-                                    <th id="traditional_abort">Traditional abort</th>
-                                    <th id="smart_no_access">Smart no access</th>
-                                    <th id="warrant_no_access">Warrant no access</th>
-                                    <th id="traditional_no_access">Traditional no access</th>
-                                    <th id="sf_df">sf df</th>
-                                    <th id="job_type">Job type</th>
-                                    <th id="sf_df_helper">sf df helper</th>
-                                    <th id="work_type">Work type</th>
-                                    <th id="job_id">Job id</th>
-                                    <th id="schedule_date">Date of action</th>
+                                    <th id="file_type">Supplier</th>
+                                    <th id="file_name">File Name</th>
+                                    
                                     <th id="action">Action</th>
                                     </tr>
                                     </tfoot>

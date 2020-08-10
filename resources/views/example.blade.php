@@ -1,10 +1,4 @@
-<html>
-    <head>
-        <style>
 
-    </style>
-    </head>
-    <body>
 <table>
     <tbody>
     <tr><td>Published:</td>
@@ -394,7 +388,7 @@
             <thead>
                     <tr style="border: 2px solid #000000;">
                     <td style="background-color: #808080;vertical-align: top;"> WC 6 July</td>
-                    <td style="background-color: #808080;"> </td>
+                    <td style="background-color: #808080;"> {{ $users }}</td>
                     <td valign="middle" style="text-align: center;background-color: #808080;word-wrap:break-word;vertical-align: top;" > GLEN ROBSON 01</td>
                     <td valign="middle" style="text-align: center;background-color: #808080;word-wrap:break-word;vertical-align: top;" > ANDREW BULFORD</td>
                     <td valign="middle" style="text-align: center;background-color: #808080;word-wrap:break-word;vertical-align: top;" >LIAM FLAHERTY01</td>	
@@ -772,5 +766,3 @@
 
     </tbody>
 </table>
-</body>
-</html>

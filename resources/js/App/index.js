@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route,Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import '../../../node_modules/font-awesome/scss/font-awesome.scss';
@@ -15,8 +15,25 @@ const AdminLayout = Loadable({
 });
 
 class App extends Component {
+
+
     render() {
-       
+        let state_of_state = localStorage["userData"];
+        if (!state_of_state){
+          let appState = {
+            isLoggedIn: false,
+            user: {}
+          }; 
+          localStorage["userData"] = JSON.stringify(appState);
+        }
+        let state = localStorage["userData"];
+        let AppState = JSON.parse(state);
+        // 3.2
+        var Auth = {
+          isLoggedIn: AppState.isLoggedIn,
+          user: AppState
+        };
+
         const menu = routes.map((route, index) => {
           return (route.component) ? (
               <Route
@@ -36,7 +53,17 @@ class App extends Component {
                     <Suspense fallback={<Loader/>}>
                         <Switch>
                             {menu}
-                            <Route path="/" component={AdminLayout} />
+                            <Route path="/" render={props => Auth.isLoggedIn ? (<AdminLayout {...props} />) : (<Redirect to={{
+          pathname: "/auth/signin",
+          state: {
+            prevLocation: '',
+            error: "You need to login first!",
+          },
+         }}
+         />
+       )
+     }
+   />
                         </Switch>
                     </Suspense>
                 </ScrollToTop>

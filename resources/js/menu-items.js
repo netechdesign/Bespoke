@@ -13,8 +13,8 @@ export default {
                     classes: 'nav-item',
                     url: '/dataimport',
                     icon: 'feather icon-clipboard'
-                },
-                {
+                }, 
+                {  
                     id: 'list',
                     title: 'List',
                     type: 'item',
@@ -23,7 +23,9 @@ export default {
                     icon: 'feather icon-layers'
                 },
                 ]
-        },
+        }
+        /*
+        ,
         {
             id: 'navigation',
             title: 'Navigation',
@@ -116,6 +118,6 @@ export default {
                 }
             ]
         }
-      
+      */
     ]
 }

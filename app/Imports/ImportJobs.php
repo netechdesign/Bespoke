@@ -2,11 +2,11 @@
 
 namespace App\Imports;
 use Maatwebsite\Excel\Concerns\ToModel;
-use App\Models\jobs;
+use App\Models\Jobs;
 use App\Models\Vehicle_mileas;
 use App\Models\Utilita_job;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 class ImportJobs implements ToModel, WithHeadingRow
 {
    
@@ -18,7 +18,7 @@ class ImportJobs implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         if(request()->file_id==1){
-        return new jobs([
+        return new Jobs([
             'sheets_id' =>request()->sheets_id,
             'file_id' =>request()->file_id,
             'file_name' =>request()->file_name,
@@ -64,11 +64,12 @@ class ImportJobs implements ToModel, WithHeadingRow
             if(isset($row['customer_id'])){
                
                 $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $row['schedule_date'])));
-                $w = date("w", strtotime($schedule_date)) + 1;
-                $n= 7- $w;
-                $day= $w+$n+1;
-                $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$w.' day'));
                 
+                $w = date("w", strtotime($schedule_date));
+                $n= 7- $w;
+                $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$n.' day'));
+              //  $day_no = date("W", strtotime($schedule_date));
+                $week_no = $this->getWeeks($schedule_date, "sunday");
                 $weekday = date('l',strtotime($schedule_date));
                 $month = '01'.date('-M-y',strtotime($schedule_date));
                 
@@ -76,10 +77,17 @@ class ImportJobs implements ToModel, WithHeadingRow
                 if($row['cancelled_time']!=''){
                    $cancelled_time = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['cancelled_time'])));
                 }
-
+                //check already exist record 
+                $alreadyExist= Utilita_job::where('week_no',$week_no)->where('job_id',$row['job_id'])->where('customer_id',$row['customer_id'])->where('schedule_date',$schedule_date)->count();
+                
+                if($alreadyExist > 0) {
+                    throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
+                   
+                  }
                 return new Utilita_job([
                             "sheets_id" =>request()->sheets_id,
                             "month"=> $month,
+                            "week_no"=>$week_no,
                             "week_day"=> $weekday,
                             "week_date"=>  $sunday_date,
                             "customer_id" => $row['customer_id'],
@@ -104,7 +112,7 @@ class ImportJobs implements ToModel, WithHeadingRow
                         ]);
             }else{
                 // old data file
-                    return new jobs([
+                    return new Jobs([
                         'sheets_id' =>request()->sheets_id,
                         'file_id' =>request()->file_id,
                         'file_name' =>request()->file_name,
@@ -148,5 +156,28 @@ class ImportJobs implements ToModel, WithHeadingRow
         }
     }
    
+    public function getWeeks($date, $rollover)
+    {
+        $cut = substr($date, 0, 8);
+        $daylen = 86400;
+
+        $timestamp = strtotime($date);
+        $first = strtotime($cut . "00");
+        $elapsed = ($timestamp - $first) / $daylen;
+
+        $weeks = 1;
+
+        for ($i = 1; $i <= $elapsed; $i++)
+        {
+            $dayfind = $cut . (strlen($i) < 2 ? '0' . $i : $i);
+            $daytimestamp = strtotime($dayfind);
+
+            $day = strtolower(date("l", $daytimestamp));
+
+            if($day == strtolower($rollover))  $weeks ++;
+        }
+
+        return $weeks;
+    }
     
 }

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"vendors~xlsx":"vendors~xlsx","xlsx":"xlsx","vendors~pdfmake":"vendors~pdfmake","vendors~canvg":"vendors~canvg"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -36303,7 +36303,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var AdminLayout = react_loadable__WEBPACK_IMPORTED_MODULE_2___default()({
   loader: function loader() {
-    return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(27), __webpack_require__.e(76), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
+    return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(0), __webpack_require__.e(76), __webpack_require__.e(18), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
   },
   loading: _layout_Loader__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
@@ -36322,6 +36322,23 @@ var App = /*#__PURE__*/function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
+      var state_of_state = localStorage["userData"];
+
+      if (!state_of_state) {
+        var appState = {
+          isLoggedIn: false,
+          user: {}
+        };
+        localStorage["userData"] = JSON.stringify(appState);
+      }
+
+      var state = localStorage["userData"];
+      var AppState = JSON.parse(state); // 3.2
+
+      var Auth = {
+        isLoggedIn: AppState.isLoggedIn,
+        user: AppState
+      };
       var menu = _route__WEBPACK_IMPORTED_MODULE_7__["default"].map(function (route, index) {
         return route.component ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
           key: index,
@@ -36337,7 +36354,17 @@ var App = /*#__PURE__*/function (_Component) {
         fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Loader__WEBPACK_IMPORTED_MODULE_4__["default"], null)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, menu, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/",
-        component: AdminLayout
+        render: function render(props) {
+          return Auth.isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AdminLayout, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+            to: {
+              pathname: "/auth/signin",
+              state: {
+                prevLocation: '',
+                error: "You need to login first!"
+              }
+            }
+          });
+        }
       })))));
     }
   }]);
@@ -36573,11 +36600,11 @@ __webpack_require__.r(__webpack_exports__);
  // start job portal route
 
 var SignIn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(11), __webpack_require__.e(15), __webpack_require__.e(17), __webpack_require__.e(18), __webpack_require__.e(27), __webpack_require__.e(70)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(28), __webpack_require__.e(17), __webpack_require__.e(27), __webpack_require__.e(0), __webpack_require__.e(18), __webpack_require__.e(175)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
 }); // End job portal route
 
 var Landing = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(18), __webpack_require__.e(43)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
 });
 /*
 const SignUp1 = React.lazy(() => import('./Demo/Authentication/SignUp/SignUp1'));

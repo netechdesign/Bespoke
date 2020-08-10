@@ -23,7 +23,8 @@ class SignIn extends React.Component {
             error:'',
             visible : true,
             formSubmitting: false,
-            loading:'Login'
+            loading:'Login',
+            redirect: props.location,
         }
         
       }
@@ -42,7 +43,11 @@ class SignIn extends React.Component {
                             Login({'email':this.state.email,'password':this.state.password,'remember':this.state.remember})
                             .then(res =>{
                                             if(res.data.success){
-                                                localStorage.setItem('userData',JSON.stringify(res.data));
+                                                let appState = {
+                                                    isLoggedIn: true,
+                                                    user: res.data.data
+                                                  };
+                                                localStorage.setItem('userData',JSON.stringify(appState));
                                                 this.props.saveUserdata();
                                                 this.props.history.push('/dashboard/default');
                                             }else{
@@ -68,9 +73,34 @@ class SignIn extends React.Component {
                             )
                                               
     }
-      
+    componentDidMount() {    
+    const { state = {} } = this.state.redirect;
+   const { error } = (state ? state:'');
+    if(error){
+        const errorshow =<Alert  variant='danger'>{error}</Alert>;
+                                                this.setState({error:errorshow})
+                                                setTimeout(
+                                                    function() {
+                                                        this.setState({error:''});
+                                                    }.bind(this),
+                                                    2000
+                                                );
+    }
+    let appState = localStorage["userData"];
+    let isLoggedIn= false;
+    if (appState) {
+      let AppState = JSON.parse(appState);
+      isLoggedIn = AppState.isLoggedIn;
+    }
+    console.log(this.state.redirect.state);
+    const { prevLocation } = this.state.redirect.state || { prevLocation: { pathname: '/dashboard/default' } };
+    if (prevLocation && isLoggedIn) {
+      return this.props.history.push(prevLocation);
+    }
+}
     render () {
        
+   
         return(
             <Aux>
                 <Breadcrumb/>
@@ -78,7 +108,7 @@ class SignIn extends React.Component {
                     <div className="row align-items-center w-100 align-items-stretch bg-white">
                         <div className="d-none d-lg-flex col-lg-8 aut-bg-img align-items-center d-flex justify-content-center" style={{backgroundImage: `url(${back4})`, backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center'}}>
                 <div className="col-md-8"><h1 className="text-white mb-5">Login in {this.props.companyName}</h1>
-                                <p className="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <p className="text-white">Delivering safe customer and consumer outcomes – doing what it takes.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 align-items-stret h-100 align-items-center d-flex justify-content-center">

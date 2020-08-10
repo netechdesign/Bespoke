@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Exports;
+
 use App\User;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
@@ -11,310 +12,142 @@ use Maatwebsite\Excel\Events\AfterSheet;
 
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use App\Models\Utilita_job;
 
-
+use App\Exports\Monday;
+use App\Exports\Tuesday;
+use App\Exports\Wednesday;
+use App\Exports\Thursday;
+use App\Exports\Friday;
+use App\Exports\Saturday;
+use App\Exports\Sunday;
 class ExportJobs implements WithMultipleSheets
 {
     
+    private $data;
+
+    public function _construct() {
+        $this->data = new UserService();
+    }
 
     public function sheets(): array
     {
      
         $sheets = [];
-        $sheets[] = new FirstSheetImport();
-        $sheets[] = new SecondSheetImport();
+        
+       $month='';
+       $week_no='';
+      $start_date = date("Y-m-d",strtotime("-6 day"));
+      $today_date = date('Y-m-d');
+      if(isset($_REQUEST['start_date'])){
+        $start_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['start_date'])));
+      }
+      if(isset($_REQUEST['end_date'])){
+        $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['end_date'])));
+      }
+      //$query= new Utilita_job;
+       $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+      
+       if($week_no!=''){ $q->where('week_no','=',$week_no); }
+       if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+       if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+       if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+       
+       /** print query   toSql(); */
+      // dd($q->toSql());
+       $q=$q->get();
+       
+     
+       $parent_engineer=array();
+       foreach($q->groupBy('parent_engineer') as $k =>$vl){
+        
+        array_push($parent_engineer, $k);
+       }
+       
+       $Monday=[];
+       $Tuesday=[];
+       $Wednesday=[];
+       $Thursday=[];
+       $Friday =[];
+       $Saturday=[];
+       $Sunday=[];
+       foreach($q as $k =>$vl){
+        $vl->endtime = date('H:i', strtotime($vl->schedule_end_time));
+        
+        if($vl->week_day=='Monday'){
+            array_push($Monday, $vl);
+       }
+        
+        if($vl->week_day=='Tuesday'){
+            array_push($Tuesday, $vl);
+       }
+           if($vl->week_day=='Wednesday'){
+                array_push($Wednesday, $vl);
+           }
+           if($vl->week_day=='Thursday'){
+            array_push($Thursday, $vl);
+           }
+           
+           if($vl->week_day=='Friday'){
+            array_push($Friday, $vl);
+       }
+           
+           if($vl->week_day=='Saturday'){
+            array_push($Saturday, $vl);
+       }
+           
+           if($vl->week_day=='Sunday'){
+            array_push($Sunday, $vl);
+       }
+       }
+      
+       
+
+        if(!empty($Monday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Monday;
+             $sheets[] = new Monday($data);
+           }
+           if(!empty($Tuesday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Tuesday;
+             $sheets[] = new Tuesday($data);
+           }
+           if(!empty($Wednesday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Wednesday;
+             $sheets[] = new Wednesday($data);
+           }
+           if(!empty($Thursday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Thursday;
+             $sheets[] = new Thursday($data);
+           }
+           if(!empty($Friday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Friday;
+             $sheets[] = new Friday($data);
+           }
+           if(!empty($Saturday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Saturday;
+             $sheets[] = new Saturday($data);
+           }
+           if(!empty($Sunday)){
+            $data['site_engineer']=$parent_engineer;
+            $data['work']=$Sunday;
+             $sheets[] = new Sunday($data);
+           }
+              
+       // $sheets[] = new SecondSheetImport();
         return $sheets;
     }
 }
-class FirstSheetImport implements FromView,WithTitle,WithEvents 
-{
 
-    public function view(): View
-    {
-        $current_column = 'Z';
-        $subject_data=['GLEN ROBSON 01','ANDREW BULFORD','LIAM FLAHERTY01','SIMON SNOWDON01','RICH BRANNEN','BIJAN LAJEVARDI','DALE BURRELL'];
-for($i=0; $i < count($subject_data); $i++) {
-     $current_column; // Will be C, D, E, etc...
-    $current_column++; // Increment letter
-}
-//echo $current_column;
 
-        return view('example', [
-            'users' => User::all()
-        ]);
-    }
-    public function title(): string
-    {
-        return 'Day';
-    }
 
-    public function registerEvents(): array
-{
-    return [
-        AfterSheet::class    => function(AfterSheet $event) {
-  /*
-            $event->sheet->styleCells(
-                'B5:B6',
-                [
-                    //Set border Style
-                    'borders' => [ 
-                        'outline' => [
-                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
-                            'color' => ['argb' => 'EB2B02'],
-                        ],
 
-                    ],
 
-                    //Set font style
-                    'font' => [
-                        'name'      =>  'Calibri',
-                        'size'      =>  15,
-                        'bold'      =>  true,
-                        'color' => ['argb' => 'EB2B02'],
-                    ],
-
-                    //Set background style
-                    'fill' => [
-                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                        'startColor' => [
-                            'rgb' => 'dff0d8',
-                         ]           
-                    ],
-
-                ]
-            );
-*/
-//table 1
-            $event->sheet->styleCells(
-                'B5:U6',
-                ['fill' => [
-                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                        'startColor' => [
-                            'rgb' => 'D3D3D3',
-                         ]           
-                    ],
-
-                ]
-            );
-
-            $event->sheet->styleCells(
-                'B5:C17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'D5:F17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'G5:I17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'J5:L17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'M5:O17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'P5:R17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'S5:U17',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-//table 2
-            $event->sheet->styleCells(
-                'B21:AK21',
-                ['fill' => [
-                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                        'startColor' => [
-                            'rgb' => 'D3D3D3',
-                         ]           
-                    ],
-                    //Set font style
-                    'font' => [
-                        'size'      =>  10,
-                       // 'bold'      =>  true,
-                       ],
-
-                ]
-            );
-
-            $event->sheet->styleCells(
-                'B21:C29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-
-            $event->sheet->styleCells(
-                'D21:Q29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-
-            $event->sheet->styleCells(
-                'R21:R29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'S21:Z29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-
-            $event->sheet->styleCells(
-                'AA21:AA29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-            $event->sheet->styleCells(
-                'AB21:AJ29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-
-            $event->sheet->styleCells(
-                'AK21:AK29',
-                [
-                //Set bordr Style
-                'borders' => [ 
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '0000'],
-                    ],
-
-                ],
-                ]
-            );
-        },
-    ];
-}
-}
-
-class SecondSheetImport implements FromView
-{
-    public function view(): View
-    {
-        return view('example', [
-            'users' => User::all()
-        ]);
-    }
-}
 /*
 use Maatwebsite\Excel\Concerns\FromCollection;
 class ExportJobs implements FromCollection

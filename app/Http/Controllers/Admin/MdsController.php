@@ -11,6 +11,9 @@ use App\Imports\ImportJobs;
 use App\Exports\ExportJobs;
 use DB;
 use App\Models\Jobs;
+use App\Models\Utilita_job;
+use Illuminate\Support\Facades\Redirect;
+
 class MdsController extends Controller
 {
     /**
@@ -34,13 +37,17 @@ class MdsController extends Controller
                 $start = $request->input('iDisplayStart');
                 $page_length = $request->input('iDisplayLength');
                 
-                $jobs = Jobs::where(function($query) use ($request){
+                $jobsrow = Jobs::select("*",DB::raw('DATE_FORMAT(date,"%d/%m/%Y") as date')
+               )->where(function($query) use ($request){
                   if($request->input('file_id')!=''){
                     $query->where('file_id','=',$request->input('file_id'));
                     $query->where('file_id','=',$request->input('file_id'));
                    } 
-                })->offset($start)->limit($page_length)->get();
-                $totalRecords = Jobs::count();
+                })->offset($start);
+               
+                $jobs = $jobsrow->limit($page_length)->get();
+                $totalRecords = $jobsrow->count();
+                
                 
                 $response = array(
                 "aaData" => $jobs,
@@ -84,6 +91,7 @@ class MdsController extends Controller
           
                    // $validatedData = $Request->validate(['file' => 'mimes:csv|required']);
 
+                   
                    $user = JWTAuth::toUser($Request->input('token'));
                    
                    $Request->request->add(['created_by'=> $user->id]);
@@ -178,6 +186,32 @@ class MdsController extends Controller
     }
     public function export() 
     {
+        
+        $start_date = date("Y-m-d",strtotime("-6 day"));
+        $today_date = date('Y-m-d');
+        $month='';
+        if(isset($_REQUEST['start_date'])){
+          $start_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['start_date'])));
+        }
+        if(isset($_REQUEST['end_date'])){
+          $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['end_date'])));
+        }
+        //$query= new Utilita_job;
+         $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+        
+        
+         if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+         if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+         if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+         
+         /** print query   toSql(); */
+        // dd($q->toSql());
+         $q=$q->count();
+       if($q>0){
         return Excel::download(new ExportJobs, 'users.xlsx');
+       }else{
+        return Redirect::back()->withErrors(['msg', 'Records not found']);
+
+       }
     }
 }

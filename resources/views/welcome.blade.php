@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#000000" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <meta charset="utf-8" />
+        <link rel="apple-touch-icon" sizes="76x76" href="https://irp-cdn.multiscreensite.com/d1cedec6/site_favicon_16_1579260633151.ico">
+        <link rel="icon" type="image/png" href="https://irp-cdn.multiscreensite.com/d1cedec6/site_favicon_16_1579260633151.ico">
         <title>Job</title>
 
         <!-- Fonts -->

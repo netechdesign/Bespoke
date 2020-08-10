@@ -1,622 +1,1299 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[177],{
 
-/***/ "./resources/js/App/components/Notifications.js":
-/*!******************************************************!*\
-  !*** ./resources/js/App/components/Notifications.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/create-react-class/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/create-react-class/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_toast_notifications__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toast-notifications */ "./node_modules/react-toast-notifications/dist/index.js");
-/* harmony import */ var react_toast_notifications__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_toast_notifications__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_reveal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-reveal */ "./node_modules/react-reveal/index.js");
-/* harmony import */ var react_reveal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_reveal__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_reveal_Jump__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-reveal/Jump */ "./node_modules/react-reveal/Jump.js");
-/* harmony import */ var react_reveal_Jump__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Jump__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_reveal_Flash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-reveal/Flash */ "./node_modules/react-reveal/Flash.js");
-/* harmony import */ var react_reveal_Flash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Flash__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_reveal_HeadShake__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-reveal/HeadShake */ "./node_modules/react-reveal/HeadShake.js");
-/* harmony import */ var react_reveal_HeadShake__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_reveal_HeadShake__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_reveal_Jello__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-reveal/Jello */ "./node_modules/react-reveal/Jello.js");
-/* harmony import */ var react_reveal_Jello__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Jello__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_reveal_Pulse__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-reveal/Pulse */ "./node_modules/react-reveal/Pulse.js");
-/* harmony import */ var react_reveal_Pulse__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Pulse__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_reveal_RubberBand__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-reveal/RubberBand */ "./node_modules/react-reveal/RubberBand.js");
-/* harmony import */ var react_reveal_RubberBand__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_reveal_RubberBand__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_reveal_Shake__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-reveal/Shake */ "./node_modules/react-reveal/Shake.js");
-/* harmony import */ var react_reveal_Shake__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Shake__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_reveal_Spin__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-reveal/Spin */ "./node_modules/react-reveal/Spin.js");
-/* harmony import */ var react_reveal_Spin__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Spin__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var react_reveal_Swing__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-reveal/Swing */ "./node_modules/react-reveal/Swing.js");
-/* harmony import */ var react_reveal_Swing__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Swing__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var react_reveal_Tada__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-reveal/Tada */ "./node_modules/react-reveal/Tada.js");
-/* harmony import */ var react_reveal_Tada__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Tada__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var react_reveal_Wobble__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-reveal/Wobble */ "./node_modules/react-reveal/Wobble.js");
-/* harmony import */ var react_reveal_Wobble__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_reveal_Wobble__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
 
 
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var factory = __webpack_require__(/*! ./factory */ "./node_modules/create-react-class/factory.js");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var AlertMessage = function AlertMessage(_ref) {
-  var appearance = _ref.appearance,
-      children = _ref.children,
-      transitionDuration = _ref.transitionDuration,
-      transitionState = _ref.transitionState,
-      onDismiss = _ref.onDismiss,
-      animation = _ref.animation;
-  var Ani = getAnimation(animation.type);
-  var direction = animation.direction;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Ani, {
-    left: direction === 'left',
-    right: direction === 'right',
-    top: direction === 'top',
-    bottom: direction === 'bottom',
-    when: transitionState === 'entered'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-    variant: appearance,
-    dismissible: true,
-    onClose: onDismiss
-  }, children));
-};
-
-function getAnimation(type) {
-  switch (type) {
-    case 'fade':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Fade"];
-
-    case 'flip':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Flip"];
-
-    case 'rotate':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Rotate"];
-
-    case 'zoom':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Zoom"];
-
-    case 'bounce':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Bounce"];
-
-    case 'roll':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Roll"];
-
-    case 'light-speed':
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["LightSpeed"];
-
-    case 'jump':
-      return react_reveal_Jump__WEBPACK_IMPORTED_MODULE_4___default.a;
-
-    case 'flash':
-      return react_reveal_Flash__WEBPACK_IMPORTED_MODULE_5___default.a;
-
-    case 'head-shake':
-      return react_reveal_HeadShake__WEBPACK_IMPORTED_MODULE_6___default.a;
-
-    case 'jello':
-      return react_reveal_Jello__WEBPACK_IMPORTED_MODULE_7___default.a;
-
-    case 'pulse':
-      return react_reveal_Pulse__WEBPACK_IMPORTED_MODULE_8___default.a;
-
-    case 'rubber-band':
-      return react_reveal_RubberBand__WEBPACK_IMPORTED_MODULE_9___default.a;
-
-    case 'shake':
-      return react_reveal_Shake__WEBPACK_IMPORTED_MODULE_10___default.a;
-
-    case 'spin':
-      return react_reveal_Spin__WEBPACK_IMPORTED_MODULE_11___default.a;
-
-    case 'swing':
-      return react_reveal_Swing__WEBPACK_IMPORTED_MODULE_12___default.a;
-
-    case 'tada':
-      return react_reveal_Tada__WEBPACK_IMPORTED_MODULE_13___default.a;
-
-    case 'wobble':
-      return react_reveal_Wobble__WEBPACK_IMPORTED_MODULE_14___default.a;
-
-    default:
-      return react_reveal__WEBPACK_IMPORTED_MODULE_3__["Slide"];
-  }
+if (typeof React === 'undefined') {
+  throw Error(
+    'create-react-class could not find the React object. If you are using script tags, ' +
+      'make sure that React is being loaded before create-react-class.'
+  );
 }
 
-var Notifications = /*#__PURE__*/function (_React$Component) {
-  _inherits(Notifications, _React$Component);
+// Hack to grab NoopUpdateQueue from isomorphic React
+var ReactNoopUpdateQueue = new React.Component().updater;
 
-  var _super = _createSuper(Notifications);
+module.exports = factory(
+  React.Component,
+  React.isValidElement,
+  ReactNoopUpdateQueue
+);
 
-  function Notifications() {
-    _classCallCheck(this, Notifications);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Notifications, [{
-    key: "render",
-    value: function render() {
-      var _this = this;
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_15__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_toast_notifications__WEBPACK_IMPORTED_MODULE_2__["ToastProvider"], {
-        components: {
-          Toast: AlertMessage
-        },
-        placement: this.props.notification.placement,
-        animation: this.props.notification.animation
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_toast_notifications__WEBPACK_IMPORTED_MODULE_2__["ToastConsumer"], null, function (_ref2) {
-        var add = _ref2.add;
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          onClick: function onClick() {
-            return add(_this.props.notification.message, {
-              appearance: _this.props.notification.variant,
-              autoDismiss: _this.props.notification.autoDismiss
-            });
-          }
-        }, _this.props.children);
-      })));
-    }
-  }]);
-
-  return Notifications;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Notifications);
 
 /***/ }),
 
-/***/ "./resources/js/Demo/UIElements/Advance/Notification.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/Demo/UIElements/Advance/Notification.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/react-datetime/DateTime.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-datetime/DateTime.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
-/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _App_components_Notifications__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../App/components/Notifications */ "./resources/js/App/components/Notifications.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/react-datetime/node_modules/object-assign/index.js"),
+	PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"),
+	createClass = __webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"),
+	moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"),
+	React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+	CalendarContainer = __webpack_require__(/*! ./src/CalendarContainer */ "./node_modules/react-datetime/src/CalendarContainer.js"),
+	onClickOutside = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js").default
+	;
 
+var viewModes = Object.freeze({
+	YEARS: 'years',
+	MONTHS: 'months',
+	DAYS: 'days',
+	TIME: 'time',
+});
 
+var TYPES = PropTypes;
+var Datetime = createClass({
+	displayName: 'DateTime',
+	propTypes: {
+		// value: TYPES.object | TYPES.string,
+		// defaultValue: TYPES.object | TYPES.string,
+		// viewDate: TYPES.object | TYPES.string,
+		onFocus: TYPES.func,
+		onBlur: TYPES.func,
+		onChange: TYPES.func,
+		onViewModeChange: TYPES.func,
+		onNavigateBack: TYPES.func,
+		onNavigateForward: TYPES.func,
+		locale: TYPES.string,
+		utc: TYPES.bool,
+		displayTimeZone: TYPES.string,
+		input: TYPES.bool,
+		// dateFormat: TYPES.string | TYPES.bool,
+		// timeFormat: TYPES.string | TYPES.bool,
+		inputProps: TYPES.object,
+		timeConstraints: TYPES.object,
+		viewMode: TYPES.oneOf([viewModes.YEARS, viewModes.MONTHS, viewModes.DAYS, viewModes.TIME]),
+		isValidDate: TYPES.func,
+		open: TYPES.bool,
+		strictParsing: TYPES.bool,
+		closeOnSelect: TYPES.bool,
+		closeOnTab: TYPES.bool
+	},
 
+	getInitialState: function() {
+		this.checkTZ( this.props );
+		
+		var state = this.getStateFromProps( this.props );
 
+		if ( state.open === undefined )
+			state.open = !this.props.input;
 
-var colourOptions = [{
-  value: 'inverse',
-  label: 'Inverse',
-  color: '#333'
-}, {
-  value: 'primary',
-  label: 'Primary',
-  color: '#04a9f5'
-}, {
-  value: 'info',
-  label: 'Info',
-  color: '#3ebfea'
-}, {
-  value: 'success',
-  label: 'Success',
-  color: '#1de9b6'
-}, {
-  value: 'warning',
-  label: 'Warning',
-  color: '#f4c22b'
-}, {
-  value: 'danger',
-  label: 'Danger',
-  color: '#f44236'
-}, {
-  value: 'dark',
-  label: 'Dark',
-  color: '#c7cbce'
-}, {
-  value: 'light',
-  label: 'Light',
-  color: '#f2f2f2'
-}];
-var potionOption = [{
-  value: 'top-left',
-  label: 'Top Left'
-}, {
-  value: 'top-right',
-  label: 'Top Right'
-}, {
-  value: 'top-center',
-  label: 'Top Center'
-}, {
-  value: 'bottom-left',
-  label: 'Bottom Left'
-}, {
-  value: 'bottom-right',
-  label: 'Bottom Right'
-}, {
-  value: 'bottom-center',
-  label: 'Bottom Center'
-}];
-var animationOption = [{
-  value: 'fade',
-  label: 'Fade'
-}, {
-  value: 'flip',
-  label: 'Flip'
-}, {
-  value: 'rotate',
-  label: 'Rotate'
-}, {
-  value: 'zoom',
-  label: 'Zoom'
-}, {
-  value: 'bounce',
-  label: 'Bounce'
-}, {
-  value: 'slide',
-  label: 'Slide'
-}, {
-  value: 'roll',
-  label: 'Roll'
-}, {
-  value: 'light-speed',
-  label: 'Light Speed'
-}, {
-  value: 'jump',
-  label: 'Jump'
-}, {
-  value: 'flash',
-  label: 'Flash'
-}, {
-  value: 'head-shake',
-  label: 'Head Shake'
-}, {
-  value: 'jello',
-  label: 'Jello'
-}, {
-  value: 'pulse',
-  label: 'Pulse'
-}, {
-  value: 'rubber-band',
-  label: 'Rubber Band'
-}, {
-  value: 'shake',
-  label: 'Shake'
-}, {
-  value: 'spin',
-  label: 'Spin'
-}, {
-  value: 'swing',
-  label: 'Swing'
-}, {
-  value: 'tada',
-  label: 'Tada'
-}, {
-  value: 'wobble',
-  label: 'Wobble'
-}];
+		state.currentView = this.props.dateFormat ?
+			(this.props.viewMode || state.updateOn || viewModes.DAYS) : viewModes.TIME;
 
-var dot = function dot() {
-  var color = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '#ccc';
-  return {
-    alignItems: 'center',
-    display: 'flex',
-    ':before': {
-      backgroundColor: color,
-      borderRadius: 10,
-      content: '" "',
-      display: 'block',
-      marginRight: 8,
-      height: 10,
-      width: 10
-    }
-  };
+		return state;
+	},
+
+	parseDate: function (date, formats) {
+		var parsedDate;
+
+		if (date && typeof date === 'string')
+			parsedDate = this.localMoment(date, formats.datetime);
+		else if (date)
+			parsedDate = this.localMoment(date);
+
+		if (parsedDate && !parsedDate.isValid())
+			parsedDate = null;
+
+		return parsedDate;
+	},
+
+	getStateFromProps: function( props ) {
+		var formats = this.getFormats( props ),
+			date = props.value || props.defaultValue,
+			selectedDate, viewDate, updateOn, inputValue
+			;
+
+		selectedDate = this.parseDate(date, formats);
+
+		viewDate = this.parseDate(props.viewDate, formats);
+
+		viewDate = selectedDate ?
+			selectedDate.clone().startOf('month') :
+			viewDate ? viewDate.clone().startOf('month') : this.localMoment().startOf('month');
+
+		updateOn = this.getUpdateOn(formats);
+
+		if ( selectedDate )
+			inputValue = selectedDate.format(formats.datetime);
+		else if ( date.isValid && !date.isValid() )
+			inputValue = '';
+		else
+			inputValue = date || '';
+
+		return {
+			updateOn: updateOn,
+			inputFormat: formats.datetime,
+			viewDate: viewDate,
+			selectedDate: selectedDate,
+			inputValue: inputValue,
+			open: props.open
+		};
+	},
+
+	getUpdateOn: function( formats ) {
+		if ( formats.date.match(/[lLD]/) ) {
+			return viewModes.DAYS;
+		} else if ( formats.date.indexOf('M') !== -1 ) {
+			return viewModes.MONTHS;
+		} else if ( formats.date.indexOf('Y') !== -1 ) {
+			return viewModes.YEARS;
+		}
+
+		return viewModes.DAYS;
+	},
+
+	getFormats: function( props ) {
+		var formats = {
+				date: props.dateFormat || '',
+				time: props.timeFormat || ''
+			},
+			locale = this.localMoment( props.date, null, props ).localeData()
+			;
+
+		if ( formats.date === true ) {
+			formats.date = locale.longDateFormat('L');
+		}
+		else if ( this.getUpdateOn(formats) !== viewModes.DAYS ) {
+			formats.time = '';
+		}
+
+		if ( formats.time === true ) {
+			formats.time = locale.longDateFormat('LT');
+		}
+
+		formats.datetime = formats.date && formats.time ?
+			formats.date + ' ' + formats.time :
+			formats.date || formats.time
+		;
+
+		return formats;
+	},
+
+	componentWillReceiveProps: function( nextProps ) {
+		var formats = this.getFormats( nextProps ),
+			updatedState = {}
+		;
+
+		if ( nextProps.value !== this.props.value ||
+			formats.datetime !== this.getFormats( this.props ).datetime ) {
+			updatedState = this.getStateFromProps( nextProps );
+		}
+
+		if ( updatedState.open === undefined ) {
+			if ( typeof nextProps.open !== 'undefined' ) {
+				updatedState.open = nextProps.open;
+			} else if ( this.props.closeOnSelect && this.state.currentView !== viewModes.TIME ) {
+				updatedState.open = false;
+			} else {
+				updatedState.open = this.state.open;
+			}
+		}
+
+		if ( nextProps.viewMode !== this.props.viewMode ) {
+			updatedState.currentView = nextProps.viewMode;
+		}
+
+		if ( nextProps.locale !== this.props.locale ) {
+			if ( this.state.viewDate ) {
+				var updatedViewDate = this.state.viewDate.clone().locale( nextProps.locale );
+				updatedState.viewDate = updatedViewDate;
+			}
+			if ( this.state.selectedDate ) {
+				var updatedSelectedDate = this.state.selectedDate.clone().locale( nextProps.locale );
+				updatedState.selectedDate = updatedSelectedDate;
+				updatedState.inputValue = updatedSelectedDate.format( formats.datetime );
+			}
+		}
+
+		if ( nextProps.utc !== this.props.utc || nextProps.displayTimeZone !== this.props.displayTimeZone ) {
+			if ( nextProps.utc ) {
+				if ( this.state.viewDate )
+					updatedState.viewDate = this.state.viewDate.clone().utc();
+				if ( this.state.selectedDate ) {
+					updatedState.selectedDate = this.state.selectedDate.clone().utc();
+					updatedState.inputValue = updatedState.selectedDate.format( formats.datetime );
+				}
+			} else if ( nextProps.displayTimeZone ) {
+				if ( this.state.viewDate )
+					updatedState.viewDate = this.state.viewDate.clone().tz(nextProps.displayTimeZone);
+				if ( this.state.selectedDate ) {
+					updatedState.selectedDate = this.state.selectedDate.clone().tz(nextProps.displayTimeZone);
+					updatedState.inputValue = updatedState.selectedDate.tz(nextProps.displayTimeZone).format( formats.datetime );
+				}
+			} else {
+				if ( this.state.viewDate )
+					updatedState.viewDate = this.state.viewDate.clone().local();
+				if ( this.state.selectedDate ) {
+					updatedState.selectedDate = this.state.selectedDate.clone().local();
+					updatedState.inputValue = updatedState.selectedDate.format(formats.datetime);
+				}
+			}
+		}
+
+		if ( nextProps.viewDate !== this.props.viewDate ) {
+			updatedState.viewDate = moment(nextProps.viewDate);
+		}
+
+		this.checkTZ( nextProps );
+
+		this.setState( updatedState );
+	},
+
+	onInputChange: function( e ) {
+		var value = e.target === null ? e : e.target.value,
+			localMoment = this.localMoment( value, this.state.inputFormat ),
+			update = { inputValue: value }
+			;
+
+		if ( localMoment.isValid() && !this.props.value ) {
+			update.selectedDate = localMoment;
+			update.viewDate = localMoment.clone().startOf('month');
+		} else {
+			update.selectedDate = null;
+		}
+
+		return this.setState( update, function() {
+			return this.props.onChange( localMoment.isValid() ? localMoment : this.state.inputValue );
+		});
+	},
+
+	onInputKey: function( e ) {
+		if ( e.which === 9 && this.props.closeOnTab ) {
+			this.closeCalendar();
+		}
+	},
+
+	showView: function( view ) {
+		var me = this;
+		return function() {
+			me.state.currentView !== view && me.props.onViewModeChange( view );
+			me.setState({ currentView: view });
+		};
+	},
+
+	setDate: function( type ) {
+		var me = this,
+			nextViews = {
+				month: viewModes.DAYS,
+				year: viewModes.MONTHS,
+			}
+		;
+		return function( e ) {
+			me.setState({
+				viewDate: me.state.viewDate.clone()[ type ]( parseInt(e.target.getAttribute('data-value'), 10) ).startOf( type ),
+				currentView: nextViews[ type ]
+			});
+			me.props.onViewModeChange( nextViews[ type ] );
+		};
+	},
+
+	subtractTime: function( amount, type, toSelected ) {
+		var me = this;
+		return function() {
+			me.props.onNavigateBack( amount, type );
+			me.updateTime( 'subtract', amount, type, toSelected );
+		};
+	},
+
+	addTime: function( amount, type, toSelected ) {
+		var me = this;
+		return function() {
+			me.props.onNavigateForward( amount, type );
+			me.updateTime( 'add', amount, type, toSelected );
+		};
+	},
+
+	updateTime: function( op, amount, type, toSelected ) {
+		var update = {},
+			date = toSelected ? 'selectedDate' : 'viewDate';
+
+		update[ date ] = this.state[ date ].clone()[ op ]( amount, type );
+
+		this.setState( update );
+	},
+
+	allowedSetTime: ['hours', 'minutes', 'seconds', 'milliseconds'],
+	setTime: function( type, value ) {
+		var index = this.allowedSetTime.indexOf( type ) + 1,
+			state = this.state,
+			date = (state.selectedDate || state.viewDate).clone(),
+			nextType
+			;
+
+		// It is needed to set all the time properties
+		// to not to reset the time
+		date[ type ]( value );
+		for (; index < this.allowedSetTime.length; index++) {
+			nextType = this.allowedSetTime[index];
+			date[ nextType ]( date[nextType]() );
+		}
+
+		if ( !this.props.value ) {
+			this.setState({
+				selectedDate: date,
+				inputValue: date.format( state.inputFormat )
+			});
+		}
+		this.props.onChange( date );
+	},
+
+	updateSelectedDate: function( e, close ) {
+		var target = e.currentTarget,
+			modifier = 0,
+			viewDate = this.state.viewDate,
+			currentDate = this.state.selectedDate || viewDate,
+			date
+			;
+
+		if (target.className.indexOf('rdtDay') !== -1) {
+			if (target.className.indexOf('rdtNew') !== -1)
+				modifier = 1;
+			else if (target.className.indexOf('rdtOld') !== -1)
+				modifier = -1;
+
+			date = viewDate.clone()
+				.month( viewDate.month() + modifier )
+				.date( parseInt( target.getAttribute('data-value'), 10 ) );
+		} else if (target.className.indexOf('rdtMonth') !== -1) {
+			date = viewDate.clone()
+				.month( parseInt( target.getAttribute('data-value'), 10 ) )
+				.date( currentDate.date() );
+		} else if (target.className.indexOf('rdtYear') !== -1) {
+			date = viewDate.clone()
+				.month( currentDate.month() )
+				.date( currentDate.date() )
+				.year( parseInt( target.getAttribute('data-value'), 10 ) );
+		}
+
+		date.hours( currentDate.hours() )
+			.minutes( currentDate.minutes() )
+			.seconds( currentDate.seconds() )
+			.milliseconds( currentDate.milliseconds() );
+
+		if ( !this.props.value ) {
+			var open = !( this.props.closeOnSelect && close );
+			if ( !open ) {
+				this.props.onBlur( date );
+			}
+
+			this.setState({
+				selectedDate: date,
+				viewDate: date.clone().startOf('month'),
+				inputValue: date.format( this.state.inputFormat ),
+				open: open
+			});
+		} else {
+			if ( this.props.closeOnSelect && close ) {
+				this.closeCalendar();
+			}
+		}
+
+		this.props.onChange( date );
+	},
+
+	openCalendar: function( e ) {
+		if ( !this.state.open ) {
+			this.setState({ open: true }, function() {
+				this.props.onFocus( e );
+			});
+		}
+	},
+
+	closeCalendar: function() {
+		this.setState({ open: false }, function () {
+			this.props.onBlur( this.state.selectedDate || this.state.inputValue );
+		});
+	},
+
+	handleClickOutside: function() {
+		if ( this.props.input && this.state.open && this.props.open === undefined && !this.props.disableCloseOnClickOutside ) {
+			this.setState({ open: false }, function() {
+				this.props.onBlur( this.state.selectedDate || this.state.inputValue );
+			});
+		}
+	},
+
+	localMoment: function( date, format, props ) {
+		props = props || this.props;
+		var m = null;
+
+		if (props.utc) {
+			m = moment.utc(date, format, props.strictParsing);
+		} else if (props.displayTimeZone) {
+			m = moment.tz(date, format, props.displayTimeZone);
+		} else {
+			m = moment(date, format, props.strictParsing);
+		}
+
+		if ( props.locale )
+			m.locale( props.locale );
+		return m;
+	},
+
+	checkTZ: function( props ) {
+		var con = console;
+
+		if ( props.displayTimeZone && !this.tzWarning && !moment.tz ) {
+			this.tzWarning = true;
+			con && con.error('react-datetime: displayTimeZone prop with value "' + props.displayTimeZone +  '" is used but moment.js timezone is not loaded.');
+		}
+	},
+
+	componentProps: {
+		fromProps: ['value', 'isValidDate', 'renderDay', 'renderMonth', 'renderYear', 'timeConstraints'],
+		fromState: ['viewDate', 'selectedDate', 'updateOn'],
+		fromThis: ['setDate', 'setTime', 'showView', 'addTime', 'subtractTime', 'updateSelectedDate', 'localMoment', 'handleClickOutside']
+	},
+
+	getComponentProps: function() {
+		var me = this,
+			formats = this.getFormats( this.props ),
+			props = {dateFormat: formats.date, timeFormat: formats.time}
+			;
+
+		this.componentProps.fromProps.forEach( function( name ) {
+			props[ name ] = me.props[ name ];
+		});
+		this.componentProps.fromState.forEach( function( name ) {
+			props[ name ] = me.state[ name ];
+		});
+		this.componentProps.fromThis.forEach( function( name ) {
+			props[ name ] = me[ name ];
+		});
+
+		return props;
+	},
+
+	overrideEvent: function( handler, action ) {
+		if ( !this.overridenEvents ) {
+			this.overridenEvents = {};
+		}
+
+		if ( !this.overridenEvents[handler] ) {
+			var me = this;
+			this.overridenEvents[handler] = function( e ) {
+				var result;
+				if ( me.props.inputProps && me.props.inputProps[handler] ) {
+					result = me.props.inputProps[handler]( e );
+				}
+				if ( result !== false ) {
+					action( e );
+				}
+			};
+		}
+
+		return this.overridenEvents[handler];
+	},
+
+	render: function() {
+		// TODO: Make a function or clean up this code,
+		// logic right now is really hard to follow
+		var className = 'rdt' + (this.props.className ?
+									( Array.isArray( this.props.className ) ?
+									' ' + this.props.className.join( ' ' ) : ' ' + this.props.className) : ''),
+			children = [];
+
+		if ( this.props.input ) {
+			var finalInputProps = assign(
+				{ type: 'text', className: 'form-control', value: this.state.inputValue },
+				this.props.inputProps,
+				{
+					onClick: this.overrideEvent( 'onClick', this.openCalendar ),
+					onFocus: this.overrideEvent( 'onFocus', this.openCalendar ),
+					onChange: this.overrideEvent( 'onChange', this.onInputChange ),
+					onKeyDown: this.overrideEvent( 'onKeyDown', this.onInputKey ),
+				}
+			);
+
+			if ( this.props.renderInput ) {
+				children = [ React.createElement('div', { key: 'i' }, this.props.renderInput( finalInputProps, this.openCalendar, this.closeCalendar )) ];
+			} else {
+				children = [ React.createElement('input', assign({ key: 'i' }, finalInputProps ))];
+			}
+		} else {
+			className += ' rdtStatic';
+		}
+
+		if ( this.props.open || (this.props.open === undefined && this.state.open ) )
+			className += ' rdtOpen';
+
+		return React.createElement( ClickableWrapper, {className: className, onClickOut: this.handleClickOutside}, children.concat(
+			React.createElement( 'div',
+				{ key: 'dt', className: 'rdtPicker' },
+				React.createElement( CalendarContainer, { view: this.state.currentView, viewProps: this.getComponentProps() })
+			)
+		));
+	}
+});
+
+var ClickableWrapper = onClickOutside( createClass({
+	render: function() {
+		return React.createElement( 'div', { className: this.props.className }, this.props.children );
+	},
+	handleClickOutside: function( e ) {
+		this.props.onClickOut( e );
+	}
+}));
+
+Datetime.defaultProps = {
+	className: '',
+	defaultValue: '',
+	inputProps: {},
+	input: true,
+	onFocus: function() {},
+	onBlur: function() {},
+	onChange: function() {},
+	onViewModeChange: function() {},
+	onNavigateBack: function() {},
+	onNavigateForward: function() {},
+	timeFormat: true,
+	timeConstraints: {},
+	dateFormat: true,
+	strictParsing: true,
+	closeOnSelect: false,
+	closeOnTab: true,
+	utc: false
 };
 
-var colourStyles = {
-  control: function control(styles) {
-    return _objectSpread(_objectSpread({}, styles), {}, {
-      backgroundColor: 'white'
-    });
-  },
-  option: function option(styles, _ref) {
-    var data = _ref.data,
-        isDisabled = _ref.isDisabled,
-        isFocused = _ref.isFocused,
-        isSelected = _ref.isSelected;
-    var color = chroma_js__WEBPACK_IMPORTED_MODULE_2___default()(data.color);
-    return _objectSpread(_objectSpread({}, styles), {}, {
-      backgroundColor: isDisabled ? null : isSelected ? data.color : isFocused ? color.alpha(0.1).css() : null,
-      color: isDisabled ? '#ccc' : isSelected ? chroma_js__WEBPACK_IMPORTED_MODULE_2___default.a.contrast(color, 'white') > 2 ? 'white' : 'black' : data.color,
-      cursor: isDisabled ? 'not-allowed' : 'default'
-    });
-  },
-  input: function input(styles) {
-    return _objectSpread(_objectSpread({}, styles), dot());
-  },
-  placeholder: function placeholder(styles) {
-    return _objectSpread(_objectSpread({}, styles), dot());
-  },
-  singleValue: function singleValue(styles, _ref2) {
-    var data = _ref2.data;
-    return _objectSpread(_objectSpread({}, styles), dot(data.color));
-  }
+// Make moment accessible through the Datetime class
+Datetime.moment = moment;
+
+module.exports = Datetime;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-datetime/node_modules/object-assign/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/react-datetime/node_modules/object-assign/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function ToObject(val) {
+	if (val == null) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function ownEnumerableKeys(obj) {
+	var keys = Object.getOwnPropertyNames(obj);
+
+	if (Object.getOwnPropertySymbols) {
+		keys = keys.concat(Object.getOwnPropertySymbols(obj));
+	}
+
+	return keys.filter(function (key) {
+		return propIsEnumerable.call(obj, key);
+	});
+}
+
+module.exports = Object.assign || function (target, source) {
+	var from;
+	var keys;
+	var to = ToObject(target);
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = arguments[s];
+		keys = ownEnumerableKeys(Object(from));
+
+		for (var i = 0; i < keys.length; i++) {
+			to[keys[i]] = from[keys[i]];
+		}
+	}
+
+	return to;
 };
 
-var AdvanceNotification = /*#__PURE__*/function (_React$Component) {
-  _inherits(AdvanceNotification, _React$Component);
 
-  var _super = _createSuper(AdvanceNotification);
+/***/ }),
 
-  function AdvanceNotification() {
-    var _this;
+/***/ "./node_modules/react-datetime/src/CalendarContainer.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-datetime/src/CalendarContainer.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-    _classCallCheck(this, AdvanceNotification);
+"use strict";
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
 
-    _this = _super.call.apply(_super, [this].concat(args));
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+	createClass = __webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"),
+	DaysView = __webpack_require__(/*! ./DaysView */ "./node_modules/react-datetime/src/DaysView.js"),
+	MonthsView = __webpack_require__(/*! ./MonthsView */ "./node_modules/react-datetime/src/MonthsView.js"),
+	YearsView = __webpack_require__(/*! ./YearsView */ "./node_modules/react-datetime/src/YearsView.js"),
+	TimeView = __webpack_require__(/*! ./TimeView */ "./node_modules/react-datetime/src/TimeView.js")
+	;
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      variant: 'inverse',
-      placement: 'top-right',
-      autoDismiss: true,
-      animation: {
-        type: 'slide',
-        direction: 'top'
-      },
-      message: 'Bootstrap Growl Turning standard Bootstrap alerts into awesome notification'
-    });
+var CalendarContainer = createClass({
+	viewComponents: {
+		days: DaysView,
+		months: MonthsView,
+		years: YearsView,
+		time: TimeView
+	},
 
-    _defineProperty(_assertThisInitialized(_this), "animationDirectionHandler", function (direction) {
-      _this.setState(_objectSpread(_objectSpread({}, _this.state), {}, {
-        animation: _objectSpread(_objectSpread({}, _this.state.animation), {}, {
-          direction: direction
-        })
-      }));
-    });
+	render: function() {
+		return React.createElement( this.viewComponents[ this.props.view ], this.props.viewProps );
+	}
+});
 
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (event) {
-      _this.setState({
-        message: event.target.value
-      });
-    });
+module.exports = CalendarContainer;
 
-    return _this;
-  }
 
-  _createClass(AdvanceNotification, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+/***/ }),
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5"
-      }, "Growl Notification")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "justify-content-md-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 12,
-        md: 7
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formPosition"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Position Variant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        defaultValue: potionOption[1],
-        label: "Select Position",
-        options: potionOption,
-        onChange: function onChange(_ref3) {
-          var value = _ref3.value;
-          return _this2.setState({
-            placement: value
-          });
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formColor"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Color Variant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        defaultValue: colourOptions[0],
-        label: "Select Variant",
-        options: colourOptions,
-        styles: colourStyles,
-        onChange: function onChange(_ref4) {
-          var value = _ref4.value;
-          return _this2.setState({
-            variant: value
-          });
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formAnimation"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Animation Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        defaultValue: animationOption[5],
-        label: "Select Variant",
-        options: animationOption,
-        onChange: function onChange(_ref5) {
-          var value = _ref5.value;
-          return _this2.setState(_objectSpread(_objectSpread({}, _this2.state), {}, {
-            animation: _objectSpread(_objectSpread({}, _this2.state.animation), {}, {
-              type: value
-            })
-          }));
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formDirectionRight"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Animation Direction")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formDirectionRight"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "radio radio-primary d-inline"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "rdoDirection",
-        id: "directionNone",
-        checked: this.state.animation.direction === 'none',
-        onChange: function onChange(_ref6) {
-          var value = _ref6.value;
-          return _this2.animationDirectionHandler('none');
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "directionNone",
-        className: "cr"
-      }, "None")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "radio radio-primary d-inline"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "rdoDirection",
-        id: "directionRight",
-        checked: this.state.animation.direction === 'right',
-        onChange: function onChange(_ref7) {
-          var value = _ref7.value;
-          return _this2.animationDirectionHandler('right');
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "directionRight",
-        className: "cr"
-      }, "Right")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "radio radio-primary d-inline"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "rdoDirection",
-        id: "directionLeft",
-        checked: this.state.animation.direction === 'left',
-        onChange: function onChange(_ref8) {
-          var value = _ref8.value;
-          return _this2.animationDirectionHandler('left');
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "directionLeft",
-        className: "cr"
-      }, "Left")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "radio radio-primary d-inline"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "rdoDirection",
-        id: "directionTop",
-        checked: this.state.animation.direction === 'top',
-        onChange: function onChange(_ref9) {
-          var value = _ref9.value;
-          return _this2.animationDirectionHandler('top');
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "directionTop",
-        className: "cr"
-      }, "Top")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "radio radio-primary d-inline"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "rdoDirection",
-        id: "directionBottom",
-        checked: this.state.animation.direction === 'bottom',
-        onChange: function onChange(_ref10) {
-          var value = _ref10.value;
-          return _this2.animationDirectionHandler('bottom');
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "directionBottom",
-        className: "cr"
-      }, "Bottom"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formBasicEmail"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "switch switch-primary d-inline m-r-10"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "checkbox",
-        id: "icon-colored",
-        checked: this.state.autoDismiss,
-        onChange: function onChange() {
-          return _this2.setState(function (prevState) {
-            return {
-              autoDismiss: !prevState.autoDismiss
-            };
-          });
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "icon-colored",
-        className: "cr"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Auto Dismiss")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "exampleForm.ControlTextarea1"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        as: "textarea",
-        rows: "3",
-        value: this.state.message,
-        onChange: this.handleChange
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_components_Notifications__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        notification: this.state
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], null, "Add Notification")))))))));
-    }
-  }]);
+/***/ "./node_modules/react-datetime/src/DaysView.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-datetime/src/DaysView.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-  return AdvanceNotification;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+"use strict";
 
-/* harmony default export */ __webpack_exports__["default"] = (AdvanceNotification);
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+	createClass = __webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"),
+	moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js")
+	;
+
+var DateTimePickerDays = createClass({
+	render: function() {
+		var footer = this.renderFooter(),
+			date = this.props.viewDate,
+			locale = date.localeData(),
+			tableChildren
+			;
+
+		tableChildren = [
+			React.createElement('thead', { key: 'th' }, [
+				React.createElement('tr', { key: 'h' }, [
+					React.createElement('th', { key: 'p', className: 'rdtPrev', onClick: this.props.subtractTime( 1, 'months' )}, React.createElement('span', {}, '‹' )),
+					React.createElement('th', { key: 's', className: 'rdtSwitch', onClick: this.props.showView( 'months' ), colSpan: 5, 'data-value': this.props.viewDate.month() }, locale.months( date ) + ' ' + date.year() ),
+					React.createElement('th', { key: 'n', className: 'rdtNext', onClick: this.props.addTime( 1, 'months' )}, React.createElement('span', {}, '›' ))
+				]),
+				React.createElement('tr', { key: 'd'}, this.getDaysOfWeek( locale ).map( function( day, index ) { return React.createElement('th', { key: day + index, className: 'dow'}, day ); }) )
+			]),
+			React.createElement('tbody', { key: 'tb' }, this.renderDays())
+		];
+
+		if ( footer )
+			tableChildren.push( footer );
+
+		return React.createElement('div', { className: 'rdtDays' },
+			React.createElement('table', {}, tableChildren )
+		);
+	},
+
+	/**
+	 * Get a list of the days of the week
+	 * depending on the current locale
+	 * @return {array} A list with the shortname of the days
+	 */
+	getDaysOfWeek: function( locale ) {
+		var days = locale._weekdaysMin,
+			first = locale.firstDayOfWeek(),
+			dow = [],
+			i = 0
+			;
+
+		days.forEach( function( day ) {
+			dow[ (7 + ( i++ ) - first) % 7 ] = day;
+		});
+
+		return dow;
+	},
+
+	renderDays: function() {
+		var date = this.props.viewDate,
+			selected = this.props.selectedDate && this.props.selectedDate.clone(),
+			prevMonth = date.clone().subtract( 1, 'months' ),
+			currentYear = date.year(),
+			currentMonth = date.month(),
+			weeks = [],
+			days = [],
+			renderer = this.props.renderDay || this.renderDay,
+			isValid = this.props.isValidDate || this.alwaysValidDate,
+			classes, isDisabled, dayProps, currentDate
+			;
+
+		// Go to the last week of the previous month
+		prevMonth.date( prevMonth.daysInMonth() ).startOf( 'week' );
+		var lastDay = prevMonth.clone().add( 42, 'd' );
+
+		while ( prevMonth.isBefore( lastDay ) ) {
+			classes = 'rdtDay';
+			currentDate = prevMonth.clone();
+
+			if ( ( prevMonth.year() === currentYear && prevMonth.month() < currentMonth ) || ( prevMonth.year() < currentYear ) )
+				classes += ' rdtOld';
+			else if ( ( prevMonth.year() === currentYear && prevMonth.month() > currentMonth ) || ( prevMonth.year() > currentYear ) )
+				classes += ' rdtNew';
+
+			if ( selected && prevMonth.isSame( selected, 'day' ) )
+				classes += ' rdtActive';
+
+			if ( prevMonth.isSame( moment(), 'day' ) )
+				classes += ' rdtToday';
+
+			isDisabled = !isValid( currentDate, selected );
+			if ( isDisabled )
+				classes += ' rdtDisabled';
+
+			dayProps = {
+				key: prevMonth.format( 'M_D' ),
+				'data-value': prevMonth.date(),
+				className: classes
+			};
+
+			if ( !isDisabled )
+				dayProps.onClick = this.updateSelectedDate;
+
+			days.push( renderer( dayProps, currentDate, selected ) );
+
+			if ( days.length === 7 ) {
+				weeks.push( React.createElement('tr', { key: prevMonth.format( 'M_D' )}, days ) );
+				days = [];
+			}
+
+			prevMonth.add( 1, 'd' );
+		}
+
+		return weeks;
+	},
+
+	updateSelectedDate: function( event ) {
+		this.props.updateSelectedDate( event, true );
+	},
+
+	renderDay: function( props, currentDate ) {
+		return React.createElement('td',  props, currentDate.date() );
+	},
+
+	renderFooter: function() {
+		if ( !this.props.timeFormat )
+			return '';
+
+		var date = this.props.selectedDate || this.props.viewDate;
+
+		return React.createElement('tfoot', { key: 'tf'},
+			React.createElement('tr', {},
+				React.createElement('td', { onClick: this.props.showView( 'time' ), colSpan: 7, className: 'rdtTimeToggle' }, date.format( this.props.timeFormat ))
+			)
+		);
+	},
+
+	alwaysValidDate: function() {
+		return 1;
+	}
+});
+
+module.exports = DateTimePickerDays;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-datetime/src/MonthsView.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-datetime/src/MonthsView.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+	createClass = __webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js")
+;
+
+var DateTimePickerMonths = createClass({
+	render: function() {
+		return React.createElement('div', { className: 'rdtMonths' }, [
+			React.createElement('table', { key: 'a' }, React.createElement('thead', {}, React.createElement('tr', {}, [
+				React.createElement('th', { key: 'prev', className: 'rdtPrev', onClick: this.props.subtractTime( 1, 'years' )}, React.createElement('span', {}, '‹' )),
+				React.createElement('th', { key: 'year', className: 'rdtSwitch', onClick: this.props.showView( 'years' ), colSpan: 2, 'data-value': this.props.viewDate.year() }, this.props.viewDate.year() ),
+				React.createElement('th', { key: 'next', className: 'rdtNext', onClick: this.props.addTime( 1, 'years' )}, React.createElement('span', {}, '›' ))
+			]))),
+			React.createElement('table', { key: 'months' }, React.createElement('tbody', { key: 'b' }, this.renderMonths()))
+		]);
+	},
+
+	renderMonths: function() {
+		var date = this.props.selectedDate,
+			month = this.props.viewDate.month(),
+			year = this.props.viewDate.year(),
+			rows = [],
+			i = 0,
+			months = [],
+			renderer = this.props.renderMonth || this.renderMonth,
+			isValid = this.props.isValidDate || this.alwaysValidDate,
+			classes, props, currentMonth, isDisabled, noOfDaysInMonth, daysInMonth, validDay,
+			// Date is irrelevant because we're only interested in month
+			irrelevantDate = 1
+			;
+
+		while (i < 12) {
+			classes = 'rdtMonth';
+			currentMonth =
+				this.props.viewDate.clone().set({ year: year, month: i, date: irrelevantDate });
+
+			noOfDaysInMonth = currentMonth.endOf( 'month' ).format( 'D' );
+			daysInMonth = Array.from({ length: noOfDaysInMonth }, function( e, i ) {
+				return i + 1;
+			});
+
+			validDay = daysInMonth.find(function( d ) {
+				var day = currentMonth.clone().set( 'date', d );
+				return isValid( day );
+			});
+
+			isDisabled = ( validDay === undefined );
+
+			if ( isDisabled )
+				classes += ' rdtDisabled';
+
+			if ( date && i === date.month() && year === date.year() )
+				classes += ' rdtActive';
+
+			props = {
+				key: i,
+				'data-value': i,
+				className: classes
+			};
+
+			if ( !isDisabled )
+				props.onClick = ( this.props.updateOn === 'months' ?
+					this.updateSelectedMonth : this.props.setDate( 'month' ) );
+
+			months.push( renderer( props, i, year, date && date.clone() ) );
+
+			if ( months.length === 4 ) {
+				rows.push( React.createElement('tr', { key: month + '_' + rows.length }, months ) );
+				months = [];
+			}
+
+			i++;
+		}
+
+		return rows;
+	},
+
+	updateSelectedMonth: function( event ) {
+		this.props.updateSelectedDate( event );
+	},
+
+	renderMonth: function( props, month ) {
+		var localMoment = this.props.viewDate;
+		var monthStr = localMoment.localeData().monthsShort( localMoment.month( month ) );
+		var strLength = 3;
+		// Because some months are up to 5 characters long, we want to
+		// use a fixed string length for consistency
+		var monthStrFixedLength = monthStr.substring( 0, strLength );
+		return React.createElement('td', props, capitalize( monthStrFixedLength ) );
+	},
+
+	alwaysValidDate: function() {
+		return 1;
+	},
+});
+
+function capitalize( str ) {
+	return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
+}
+
+module.exports = DateTimePickerMonths;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-datetime/src/TimeView.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-datetime/src/TimeView.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+	createClass = __webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"),
+	assign = __webpack_require__(/*! object-assign */ "./node_modules/react-datetime/node_modules/object-assign/index.js")
+	;
+
+var DateTimePickerTime = createClass({
+	getInitialState: function() {
+		return this.calculateState( this.props );
+	},
+
+	calculateState: function( props ) {
+		var date = props.selectedDate || props.viewDate,
+			format = props.timeFormat,
+			counters = []
+			;
+
+		if ( format.toLowerCase().indexOf('h') !== -1 ) {
+			counters.push('hours');
+			if ( format.indexOf('m') !== -1 ) {
+				counters.push('minutes');
+				if ( format.indexOf('s') !== -1 ) {
+					counters.push('seconds');
+				}
+			}
+		}
+
+		var hours = date.format( 'H' );
+
+		var daypart = false;
+		if ( this.state !== null && this.props.timeFormat.toLowerCase().indexOf( ' a' ) !== -1 ) {
+			if ( this.props.timeFormat.indexOf( ' A' ) !== -1 ) {
+				daypart = ( hours >= 12 ) ? 'PM' : 'AM';
+			} else {
+				daypart = ( hours >= 12 ) ? 'pm' : 'am';
+			}
+		}
+
+		return {
+			hours: hours,
+			minutes: date.format( 'mm' ),
+			seconds: date.format( 'ss' ),
+			milliseconds: date.format( 'SSS' ),
+			daypart: daypart,
+			counters: counters
+		};
+	},
+
+	renderCounter: function( type ) {
+		if ( type !== 'daypart' ) {
+			var value = this.state[ type ];
+			if ( type === 'hours' && this.props.timeFormat.toLowerCase().indexOf( ' a' ) !== -1 ) {
+				value = ( value - 1 ) % 12 + 1;
+
+				if ( value === 0 ) {
+					value = 12;
+				}
+			}
+			return React.createElement('div', { key: type, className: 'rdtCounter' }, [
+				React.createElement('span', { key: 'up', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'increase', type ), onContextMenu: this.disableContextMenu }, '▲' ),
+				React.createElement('div', { key: 'c', className: 'rdtCount' }, value ),
+				React.createElement('span', { key: 'do', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'decrease', type ), onContextMenu: this.disableContextMenu }, '▼' )
+			]);
+		}
+		return '';
+	},
+
+	renderDayPart: function() {
+		return React.createElement('div', { key: 'dayPart', className: 'rdtCounter' }, [
+			React.createElement('span', { key: 'up', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'toggleDayPart', 'hours'), onContextMenu: this.disableContextMenu }, '▲' ),
+			React.createElement('div', { key: this.state.daypart, className: 'rdtCount' }, this.state.daypart ),
+			React.createElement('span', { key: 'do', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'toggleDayPart', 'hours'), onContextMenu: this.disableContextMenu }, '▼' )
+		]);
+	},
+
+	render: function() {
+		var me = this,
+			counters = []
+		;
+
+		this.state.counters.forEach( function( c ) {
+			if ( counters.length )
+				counters.push( React.createElement('div', { key: 'sep' + counters.length, className: 'rdtCounterSeparator' }, ':' ) );
+			counters.push( me.renderCounter( c ) );
+		});
+
+		if ( this.state.daypart !== false ) {
+			counters.push( me.renderDayPart() );
+		}
+
+		if ( this.state.counters.length === 3 && this.props.timeFormat.indexOf( 'S' ) !== -1 ) {
+			counters.push( React.createElement('div', { className: 'rdtCounterSeparator', key: 'sep5' }, ':' ) );
+			counters.push(
+				React.createElement('div', { className: 'rdtCounter rdtMilli', key: 'm' },
+					React.createElement('input', { value: this.state.milliseconds, type: 'text', onChange: this.updateMilli } )
+					)
+				);
+		}
+
+		return React.createElement('div', { className: 'rdtTime' },
+			React.createElement('table', {}, [
+				this.renderHeader(),
+				React.createElement('tbody', { key: 'b'}, React.createElement('tr', {}, React.createElement('td', {},
+					React.createElement('div', { className: 'rdtCounters' }, counters )
+				)))
+			])
+		);
+	},
+
+	componentWillMount: function() {
+		var me = this;
+		me.timeConstraints = {
+			hours: {
+				min: 0,
+				max: 23,
+				step: 1
+			},
+			minutes: {
+				min: 0,
+				max: 59,
+				step: 1
+			},
+			seconds: {
+				min: 0,
+				max: 59,
+				step: 1
+			},
+			milliseconds: {
+				min: 0,
+				max: 999,
+				step: 1
+			}
+		};
+		['hours', 'minutes', 'seconds', 'milliseconds'].forEach( function( type ) {
+			assign(me.timeConstraints[ type ], me.props.timeConstraints[ type ]);
+		});
+		this.setState( this.calculateState( this.props ) );
+	},
+
+	componentWillReceiveProps: function( nextProps ) {
+		this.setState( this.calculateState( nextProps ) );
+	},
+
+	updateMilli: function( e ) {
+		var milli = parseInt( e.target.value, 10 );
+		if ( milli === e.target.value && milli >= 0 && milli < 1000 ) {
+			this.props.setTime( 'milliseconds', milli );
+			this.setState( { milliseconds: milli } );
+		}
+	},
+
+	renderHeader: function() {
+		if ( !this.props.dateFormat )
+			return null;
+
+		var date = this.props.selectedDate || this.props.viewDate;
+		return React.createElement('thead', { key: 'h' }, React.createElement('tr', {},
+			React.createElement('th', { className: 'rdtSwitch', colSpan: 4, onClick: this.props.showView( 'days' ) }, date.format( this.props.dateFormat ) )
+		));
+	},
+
+	onStartClicking: function( action, type ) {
+		var me = this;
+
+		return function() {
+			var update = {};
+			update[ type ] = me[ action ]( type );
+			me.setState( update );
+
+			me.timer = setTimeout( function() {
+				me.increaseTimer = setInterval( function() {
+					update[ type ] = me[ action ]( type );
+					me.setState( update );
+				}, 70);
+			}, 500);
+
+			me.mouseUpListener = function() {
+				clearTimeout( me.timer );
+				clearInterval( me.increaseTimer );
+				me.props.setTime( type, me.state[ type ] );
+				document.body.removeEventListener( 'mouseup', me.mouseUpListener );
+				document.body.removeEventListener( 'touchend', me.mouseUpListener );
+			};
+
+			document.body.addEventListener( 'mouseup', me.mouseUpListener );
+			document.body.addEventListener( 'touchend', me.mouseUpListener );
+		};
+	},
+
+	disableContextMenu: function( event ) {
+		event.preventDefault();
+		return false;
+	},
+
+	padValues: {
+		hours: 1,
+		minutes: 2,
+		seconds: 2,
+		milliseconds: 3
+	},
+
+	toggleDayPart: function( type ) { // type is always 'hours'
+		var value = parseInt( this.state[ type ], 10) + 12;
+		if ( value > this.timeConstraints[ type ].max )
+			value = this.timeConstraints[ type ].min + ( value - ( this.timeConstraints[ type ].max + 1 ) );
+		return this.pad( type, value );
+	},
+
+	increase: function( type ) {
+		var value = parseInt( this.state[ type ], 10) + this.timeConstraints[ type ].step;
+		if ( value > this.timeConstraints[ type ].max )
+			value = this.timeConstraints[ type ].min + ( value - ( this.timeConstraints[ type ].max + 1 ) );
+		return this.pad( type, value );
+	},
+
+	decrease: function( type ) {
+		var value = parseInt( this.state[ type ], 10) - this.timeConstraints[ type ].step;
+		if ( value < this.timeConstraints[ type ].min )
+			value = this.timeConstraints[ type ].max + 1 - ( this.timeConstraints[ type ].min - value );
+		return this.pad( type, value );
+	},
+
+	pad: function( type, value ) {
+		var str = value + '';
+		while ( str.length < this.padValues[ type ] )
+			str = '0' + str;
+		return str;
+	},
+});
+
+module.exports = DateTimePickerTime;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-datetime/src/YearsView.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-datetime/src/YearsView.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+	createClass = __webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js")
+;
+
+var DateTimePickerYears = createClass({
+	render: function() {
+		var year = parseInt( this.props.viewDate.year() / 10, 10 ) * 10;
+
+		return React.createElement('div', { className: 'rdtYears' }, [
+			React.createElement('table', { key: 'a' }, React.createElement('thead', {}, React.createElement('tr', {}, [
+				React.createElement('th', { key: 'prev', className: 'rdtPrev', onClick: this.props.subtractTime( 10, 'years' )}, React.createElement('span', {}, '‹' )),
+				React.createElement('th', { key: 'year', className: 'rdtSwitch', onClick: this.props.showView( 'years' ), colSpan: 2 }, year + '-' + ( year + 9 ) ),
+				React.createElement('th', { key: 'next', className: 'rdtNext', onClick: this.props.addTime( 10, 'years' )}, React.createElement('span', {}, '›' ))
+			]))),
+			React.createElement('table', { key: 'years' }, React.createElement('tbody',  {}, this.renderYears( year )))
+		]);
+	},
+
+	renderYears: function( year ) {
+		var years = [],
+			i = -1,
+			rows = [],
+			renderer = this.props.renderYear || this.renderYear,
+			selectedDate = this.props.selectedDate,
+			isValid = this.props.isValidDate || this.alwaysValidDate,
+			classes, props, currentYear, isDisabled, noOfDaysInYear, daysInYear, validDay,
+			// Month and date are irrelevant here because
+			// we're only interested in the year
+			irrelevantMonth = 0,
+			irrelevantDate = 1
+			;
+
+		year--;
+		while (i < 11) {
+			classes = 'rdtYear';
+			currentYear = this.props.viewDate.clone().set(
+				{ year: year, month: irrelevantMonth, date: irrelevantDate } );
+
+			// Not sure what 'rdtOld' is for, commenting out for now as it's not working properly
+			// if ( i === -1 | i === 10 )
+				// classes += ' rdtOld';
+
+			noOfDaysInYear = currentYear.endOf( 'year' ).format( 'DDD' );
+			daysInYear = Array.from({ length: noOfDaysInYear }, function( e, i ) {
+				return i + 1;
+			});
+
+			validDay = daysInYear.find(function( d ) {
+				var day = currentYear.clone().dayOfYear( d );
+				return isValid( day );
+			});
+
+			isDisabled = ( validDay === undefined );
+
+			if ( isDisabled )
+				classes += ' rdtDisabled';
+
+			if ( selectedDate && selectedDate.year() === year )
+				classes += ' rdtActive';
+
+			props = {
+				key: year,
+				'data-value': year,
+				className: classes
+			};
+
+			if ( !isDisabled )
+				props.onClick = ( this.props.updateOn === 'years' ?
+					this.updateSelectedYear : this.props.setDate('year') );
+
+			years.push( renderer( props, year, selectedDate && selectedDate.clone() ));
+
+			if ( years.length === 4 ) {
+				rows.push( React.createElement('tr', { key: i }, years ) );
+				years = [];
+			}
+
+			year++;
+			i++;
+		}
+
+		return rows;
+	},
+
+	updateSelectedYear: function( event ) {
+		this.props.updateSelectedDate( event );
+	},
+
+	renderYear: function( props, year ) {
+		return React.createElement('td',  props, year );
+	},
+
+	alwaysValidDate: function() {
+		return 1;
+	},
+});
+
+module.exports = DateTimePickerYears;
+
 
 /***/ })
 

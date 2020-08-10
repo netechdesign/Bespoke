@@ -80,7 +80,7 @@ class Data_import extends React.Component {
         data.append('file_id', this.state.file_id);
         data.append('file_name', this.state.file_name);
         
-        const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).data : 'Null';
+        const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         axios.post(
             baseurl+'/api/mds',
             data,
@@ -109,6 +109,7 @@ class Data_import extends React.Component {
                                 
                             });
                           }else{
+                            $('#avatar').val('');
                             PNotify.error({
                                 title: "System Error",
                                 text:res.data.message,
@@ -120,6 +121,13 @@ class Data_import extends React.Component {
                      }
           )
           .catch(err =>{
+                    PNotify.error({
+                        title: "System Error",
+                        text:err,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Import'});
+                    this.setState({selectedFile:null});
                           console.log(err);
                       }
           )
@@ -132,7 +140,7 @@ class Data_import extends React.Component {
 
     render() {
         const { validated, validatedTooltip } = this.state;
-        
+       
         return (
             <Aux>
                 <Row>
