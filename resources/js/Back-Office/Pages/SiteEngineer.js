@@ -126,19 +126,19 @@ class SiteEngineer extends React.Component {
                 <Col>
                     <Card>
                         <Card.Header>
-                            <Card.Title as="h5">ADD Site Engineer</Card.Title>
+                            <Card.Title as="h5">ADD Area Engineer</Card.Title>
                         </Card.Header>
                         <Card.Body>
                         <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                 <Form.Row>
                                     <Form.Group as={Col} md="2">
-                                    <Form.Label htmlFor="SiteEngineer">Site Engineer</Form.Label>
+                                    <Form.Label htmlFor="SiteEngineer">Area Engineer</Form.Label>
                                     <Select required onChange={this.SiteEngineerchange}
                                             className="basic-single"
                                             classNamePrefix="select"
                                             name="SiteEngineer"
                                             options={this.state.Engineers}
-                                            placeholder="Select Site Engineer"
+                                            placeholder="Select Area Engineer"
                                         />
                                         </Form.Group>
                                         <Form.Group as={Col} md="2">

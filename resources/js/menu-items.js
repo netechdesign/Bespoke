@@ -23,11 +23,11 @@ export default {
                     icon: 'feather icon-layers'
                 },{  
                     id: 'SiteEngineer',
-                    title: 'Site Engineer',
+                    title: 'Engineer',
                     type: 'item',
                     classes: 'nav-item',
                     url: '/siteengineer',
-                    icon: 'feather icon-layers'
+                    icon: 'feather icon-user-plus'
                 }
                 ]
         }
