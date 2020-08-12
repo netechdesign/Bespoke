@@ -209,11 +209,6 @@ __webpack_require__.r(__webpack_exports__);
       classes: 'nav-item',
       url: '/siteengineer',
       icon: 'feather icon-layers'
-    }, {
-      id: 'form-select',
-      title: 'Form Select',
-      type: 'item',
-      url: '/forms/form-select'
     }]
   }
   /*
