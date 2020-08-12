@@ -126,7 +126,7 @@ class SiteEngineer extends React.Component {
                 <Col>
                     <Card>
                         <Card.Header>
-                            <Card.Title as="h5">ADD Area Engineer</Card.Title>
+                            <Card.Title as="h5">Add Area Engineer</Card.Title>
                         </Card.Header>
                         <Card.Body>
                         <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
