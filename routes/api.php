@@ -32,6 +32,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('mds', 'MdsController');
         Route::resource('supplier', 'SupplierController');
         Route::resource('utilita', 'UtilitaController');
+        Route::resource('engineer', 'EngineerController');
         
                
     });

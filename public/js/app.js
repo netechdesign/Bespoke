@@ -36303,7 +36303,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var AdminLayout = react_loadable__WEBPACK_IMPORTED_MODULE_2___default()({
   loader: function loader() {
-    return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(0), __webpack_require__.e(76), __webpack_require__.e(18), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
+    return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(6), __webpack_require__.e(11), __webpack_require__.e(5), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
   },
   loading: _layout_Loader__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
@@ -36600,11 +36600,11 @@ __webpack_require__.r(__webpack_exports__);
  // start job portal route
 
 var SignIn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(28), __webpack_require__.e(17), __webpack_require__.e(27), __webpack_require__.e(0), __webpack_require__.e(18), __webpack_require__.e(175)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
 }); // End job portal route
 
 var Landing = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(18), __webpack_require__.e(43)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
 });
 /*
 const SignUp1 = React.lazy(() => import('./Demo/Authentication/SignUp/SignUp1'));

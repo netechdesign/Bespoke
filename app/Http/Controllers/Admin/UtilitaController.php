@@ -160,6 +160,7 @@ class UtilitaController extends Controller
     public function show($id)
     {
         //
+        
 
     }
 

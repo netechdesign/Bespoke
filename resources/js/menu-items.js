@@ -21,7 +21,20 @@ export default {
                     classes: 'nav-item',
                     url: '/list',
                     icon: 'feather icon-layers'
+                },{  
+                    id: 'SiteEngineer',
+                    title: 'Site Engineer',
+                    type: 'item',
+                    classes: 'nav-item',
+                    url: '/siteengineer',
+                    icon: 'feather icon-layers'
                 },
+                {
+                    id: 'form-select',
+                    title: 'Form Select',
+                    type: 'item',
+                    url: '/forms/form-select'
+                }
                 ]
         }
         /*

@@ -10,7 +10,9 @@ const DataImport = React.lazy(() => import('./Back-office/Pages/Data_import'));
 const SupplierList = React.lazy(() => import('./Back-Office/Pages/SupplierList'));
 const MorrisonList = React.lazy(() => import('./Back-Office/Pages/MorrisonList'));
 const UtilitaList = React.lazy(() => import('./Back-Office/Pages/UtilitaList'));
+const SiteEngineer = React.lazy(() => import('./Back-Office/Pages/SiteEngineer'));
 
+const FormsSelect = React.lazy(() => import('./Demo/Forms/FormsSelect'));
 const routes = [
     { path: '/dataimport', exact: true, name: 'DataImport', component: DataImport },
     { path: '/list', exact: true, name: 'SupplierList', component: SupplierList },
@@ -18,8 +20,8 @@ const routes = [
     { path: '/list/morrison/:id', exact: true, name: 'MorrisonList', component: MorrisonList },
     { path: '/list/utilita', exact: true, name: 'UtilitaList', component: UtilitaList },
     { path: '/list/utilita/:id', exact: true, name: 'UtilitaList', component: UtilitaList },
-    
-  
-];
+    { path: '/siteengineer', exact: true, name: 'SiteEngineer', component: SiteEngineer },
+    { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
+  ];
 
 export default routes;

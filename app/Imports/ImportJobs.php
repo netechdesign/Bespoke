@@ -5,6 +5,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use App\Models\Jobs;
 use App\Models\Vehicle_mileas;
 use App\Models\Utilita_job;
+use App\Models\Engineers;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class ImportJobs implements ToModel, WithHeadingRow
@@ -84,6 +85,12 @@ class ImportJobs implements ToModel, WithHeadingRow
                     throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
                    
                   }
+                  
+                  if (Engineers::where('engineer_id', '=', $row['engineer_id'])->count() ==0) {
+                     
+                        $engineers= new Engineers(["engineer_id" => $row['engineer_id'],"engineer_name" => $row['engineer']]);
+                        $engineers->save();
+                   }
                 return new Utilita_job([
                             "sheets_id" =>request()->sheets_id,
                             "month"=> $month,
