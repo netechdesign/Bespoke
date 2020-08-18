@@ -3559,7 +3559,7 @@ var UtilitaView = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy
   return Promise.all(/*! import() */[__webpack_require__.e(10), __webpack_require__.e(7), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaView */ "./resources/js/Back-Office/Pages/UtilitaView.js"));
 });
 var SiteEngineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(10), __webpack_require__.e(4), __webpack_require__.e(7), __webpack_require__.e(12), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(41), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SiteEngineer */ "./resources/js/Back-Office/Pages/SiteEngineer.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(10), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(12), __webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(23), __webpack_require__.e(41), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SiteEngineer */ "./resources/js/Back-Office/Pages/SiteEngineer.js"));
 });
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(19), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./Demo/Forms/FormsSelect */ "./resources/js/Demo/Forms/FormsSelect.js"));

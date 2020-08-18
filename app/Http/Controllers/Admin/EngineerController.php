@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Engineers;
+use App\Models\Engineer_group;
+
 use DB;
 class EngineerController extends Controller
 {
@@ -93,9 +95,72 @@ class EngineerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        if(!$request->ajax()){
+            view('error_handler', compact('exception'));
+          } 
+          else{
+          
+            try {
+                
+                $totalCol = $request->input('iColumns');
+               
+                
+                $columns = explode(',', $request->input('columns'));
+                $start = $request->input('iDisplayStart');
+                $page_length = $request->input('iDisplayLength');
+                
+                $jobsrow = Engineer_group::select("*")->where(function($query) use ($request){
+                    $search = $request->input('sSearch');
+                  if($request->input('sheets_id')!=''){
+                  //  $query->where('sheets_id','=',$request->input('sheets_id'));
+                   }
+                   if($search!=''){
+                       
+                    $query->Where('parent_engineer', 'LIKE', "%{$search}%");
+                    $query->orWhere('child_engineer_name', 'LIKE', "%{$search}%");
+                    
+                    
+                    
+                   } 
+                   
+                })->offset($start);
+                $jobs = $jobsrow->orderBy('id', 'DESC')->limit($page_length)->get();
+                $totalRecords = Engineer_group::select("*")->where(function($query) use ($request){
+                    $search = $request->input('sSearch');
+                  if($request->input('sheets_id')!=''){
+                  //  $query->where('sheets_id','=',$request->input('sheets_id'));
+                   }
+                   if($search!=''){
+                       
+                    $query->Where('parent_engineer', 'LIKE', "%{$search}%");
+                    $query->orWhere('child_engineer_name', 'LIKE', "%{$search}%");
+                    
+                    
+                    
+                   } 
+                   
+                })->count();
+                
+                $response = array(
+                "aaData" => $jobs,
+                "iTotalDisplayRecords" => $totalRecords,
+                "iTotalRecords" => $totalRecords,
+                "sColumns" => $request->input('sColumns'),
+                "sEcho" => $request->input('sEcho'),
+            );
+               
+                return response()->json($response, 201);
+            }
+            catch (exception $e) {
+                return response()->json([
+                    'response' => 'error',
+                    'message' => $e,
+                ]);
+            }
+          }
     }
 
     /**
@@ -130,5 +195,22 @@ class EngineerController extends Controller
     public function destroy($id)
     {
         //
+        
+        try {
+ 
+            
+             DB::table('engineer_groups')->where('id', $id)->delete();
+ 
+             return response()->json(array('success' => true,'message'=> 'deleted'));
+            
+             
+             
+         }
+         catch (exception $e) {
+             return response()->json([
+                 'response' => 'error',
+                 'message' => $e,
+             ]);
+         }
     }
 }
