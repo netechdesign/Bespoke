@@ -170,11 +170,14 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               formatter: function formatter(val) {
                 return val + "";
               }
+            },
+            title: {
+              text: 'Value'
             }
           },
           yaxis: {
             title: {
-              text: undefined
+              text: 'Engineer Name'
             }
           },
           tooltip: {
@@ -226,11 +229,14 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               formatter: function formatter(val) {
                 return val + "";
               }
+            },
+            title: {
+              text: 'Value'
             }
           },
           yaxis: {
             title: {
-              text: undefined
+              text: 'Engineer Name'
             }
           },
           tooltip: {

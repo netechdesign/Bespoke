@@ -88,11 +88,14 @@ let result = res.data.complate;
               formatter: function (val) {
                 return val + ""
               }
-            }
+            },
+            title: {
+                text: 'Value'
+              },
           },
           yaxis: {
             title: {
-              text: undefined
+              text: 'Engineer Name'
             },
           },
           tooltip: {
@@ -146,11 +149,14 @@ let result = res.data.complate;
               formatter: function (val) {
                 return val + ""
               }
-            }
+            },
+            title: {
+                text: 'Value'
+              },
           },
           yaxis: {
             title: {
-              text: undefined
+              text: 'Engineer Name'
             },
           },
           tooltip: {
