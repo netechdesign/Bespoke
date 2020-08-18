@@ -183,7 +183,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           tooltip: {
             y: {
               formatter: function formatter(val) {
-                return val + "K";
+                return val + "";
               }
             }
           },
@@ -242,7 +242,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           tooltip: {
             y: {
               formatter: function formatter(val) {
-                return val + "K";
+                return val + "";
               }
             }
           },

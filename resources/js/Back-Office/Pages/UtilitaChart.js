@@ -101,7 +101,7 @@ let result = res.data.complate;
           tooltip: {
             y: {
               formatter: function (val) {
-                return val + "K"
+                return val + ""
               }
             }
           },
@@ -162,7 +162,7 @@ let result = res.data.complate;
           tooltip: {
             y: {
               formatter: function (val) {
-                return val + "K"
+                return val + ""
               }
             }
           },

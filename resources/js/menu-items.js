@@ -16,7 +16,7 @@ export default {
                 }, 
                 {  
                     id: 'list',
-                    title: 'List',
+                    title: 'Uploaded Data',
                     type: 'item',
                     classes: 'nav-item',
                     url: '/list',
@@ -28,6 +28,13 @@ export default {
                     classes: 'nav-item',
                     url: '/siteengineer',
                     icon: 'feather icon-user-plus'
+                },{  
+                    id: 'Report',
+                    title: 'Report',
+                    type: 'item',
+                    classes: 'nav-item',
+                    url: '/report',
+                    icon: 'feather icon-layers'
                 }
                 ]
         }

@@ -186,7 +186,7 @@ function atable() {
       var delete_buttons = '';
       view_buttons = '<a href="javascript:;"  target data-id="' + row.id + '" data-fileid="' + row.file_id + '"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
       delete_buttons = '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
-      return [view_buttons, delete_buttons].join('');
+      return [delete_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_8___default()('#data-table-responsive th#action').index(),
     "orderable": false,

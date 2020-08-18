@@ -1223,7 +1223,7 @@ __webpack_require__.r(__webpack_exports__);
       icon: 'feather icon-clipboard'
     }, {
       id: 'list',
-      title: 'List',
+      title: 'Uploaded Data',
       type: 'item',
       classes: 'nav-item',
       url: '/list',
@@ -1235,6 +1235,13 @@ __webpack_require__.r(__webpack_exports__);
       classes: 'nav-item',
       url: '/siteengineer',
       icon: 'feather icon-user-plus'
+    }, {
+      id: 'Report',
+      title: 'Report',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/report',
+      icon: 'feather icon-layers'
     }]
   }]
 });

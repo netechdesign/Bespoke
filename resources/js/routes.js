@@ -32,7 +32,8 @@ const routes = [
     { path: '/list/utilita/:id', exact: true, name: 'UtilitaList', component: UtilitaList },
     { path: '/utilitachart', exact: true, name: 'UtilitaChart', component: UtilitaChart },
     { path: '/utilitaview', exact: true, name: 'UtilitaView', component: UtilitaView },
-    
+    { path: '/report', exact: true, name: 'UtilitaList', component: UtilitaList },
+
     { path: '/siteengineer', exact: true, name: 'SiteEngineer', component: SiteEngineer },
    
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },

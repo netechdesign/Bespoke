@@ -137,7 +137,6 @@ oTable = $(tableResponsive).DataTable({
                 view_buttons = '<a href="javascript:;"  target data-id="'+row.id+'" data-fileid="'+row.file_id+'"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
                  delete_buttons = '<button type="button" data-id="'+row.id+'" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
                 return [
-                    view_buttons,
                     delete_buttons,
                 ].join('');
                

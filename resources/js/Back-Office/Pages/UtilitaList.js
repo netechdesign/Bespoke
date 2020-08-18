@@ -96,7 +96,7 @@ class UtilitaList extends React.Component {
                        
                       <Card>
                             <Card.Header>
-                            <Card.Title as="h5">Utilita</Card.Title>
+                            <Card.Title as="h5">Report</Card.Title>
                             <Button className="btn-sm" style={{'float':'right'}}  as={Link} to="/list" ><i  class="feather icon-chevron-left"></i>Back</Button>
                            
                             <ValidationForm  method="get" action={this.state.baseurl} onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
