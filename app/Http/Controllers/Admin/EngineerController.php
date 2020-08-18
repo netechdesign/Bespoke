@@ -52,7 +52,7 @@ class EngineerController extends Controller
             $SiteEngineer = json_decode($request['SiteEngineer']);
             
             if(!isset($SiteEngineer->value)){
-                return response()->json(array('success' => false,'message'=> 'Please select Site Engineer'));
+                return response()->json(array('success' => false,'message'=> 'Please select Area Engineer'));
             }
 
             if(count($Engineer)>0){

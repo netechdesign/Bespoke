@@ -11,7 +11,13 @@ use Excel;
 use DB;
 use App\Models\utilita_job;
 
-
+use App\Http\Controllers\Admin\Utilita\Monday;
+use App\Http\Controllers\Admin\Utilita\Tuesday;
+use App\Exports\Wednesday;
+use App\Exports\Thursday;
+use App\Exports\Friday;
+use App\Exports\Saturday;
+use App\Exports\Sunday;
 class UtilitaController extends Controller
 {
     /**
@@ -157,11 +163,168 @@ class UtilitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $Request)
     {
         //
-        
+        $sheets_id = '';
+        $start_date = '';
+        $today_date = '';
+        if(isset($Request->start_date) && $Request->start_date!=''){
+            $start_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->start_date)));
+          }else{
+            return response()->json(array('success' => false,'message'=> 'start date not found'));  
 
+          }
+          if(isset($Request->end_date) && $Request->end_date!=''){
+            $today_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->end_date)));
+          }else{
+            return response()->json(array('success' => false,'message'=> 'end date not found'));  
+
+          }
+          
+          //$query= new Utilita_job;
+           $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+          
+          
+           //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+           if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
+           
+           if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+           if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+           
+          if($q->count() > 0){
+            $result=$q->get();
+            $categories =array();
+            $series=[];
+
+            $abortedcategories =array();
+            $abortedseries=[];
+            foreach($result as $row){
+                if($row->job_status=='Completed'){
+                    if(!in_array($row->engineer,$categories)){
+                        array_push($categories,$row->engineer);
+                    }
+
+                   // $searchedValue = $row->appointment_time;
+                    $data=  array_filter(
+                        $series,
+                        function ($e) use ($row) {
+                            return ($e->name == $row->appointment_time);
+                        });
+                 
+                        if($data){
+                            if(isset($data[0]->data)){
+                                if(isset($data[0]->data[$row->engineer])){
+                                $data[0]->data[$row->engineer]=$data[0]->data[$row->engineer] +1;
+                                }else{
+                                    $data[0]->data[$row->engineer] = 1;
+                                }
+                            }
+                            if(isset($data[1]->data)){
+                                if(isset($data[1]->data[$row->engineer])){
+                                $data[1]->data[$row->engineer]=$data[1]->data[$row->engineer] +1;
+                                }else{
+                                    $data[1]->data[$row->engineer] = 1;
+                                }
+                            }
+
+                        }else{
+                            $object = new \stdClass();
+                            $object->name = $row->appointment_time;
+                          //  $object->engineers[] = $row->engineer;
+                            
+                            $object->data[$row->engineer]=1;
+                            array_push($series,$object);
+                        }
+                }
+                
+                if($row->job_status=='Aborted'){
+                    if(!in_array($row->engineer,$abortedcategories)){
+                       // array_push($abortedcategories,$row->engineer);
+                    }
+
+                   // $searchedValue = $row->appointment_time;
+                    $data=  array_filter(
+                        $abortedseries,
+                        function ($e) use ($row) {
+                            return ($e->name == $row->appointment_time);
+                        });
+                 
+                        if($data){
+                            
+                            if(isset($data[0]->data)){
+                                if(isset($data[0]->data[$row->engineer])){
+                                $data[0]->data[$row->engineer]=$data[0]->data[$row->engineer] +1;
+                                }else{
+                                    $data[0]->data[$row->engineer] = 1;
+                                }
+                            }
+                            if(isset($data[1]->data)){
+                                if(isset($data[1]->data[$row->engineer])){
+                                $data[1]->data[$row->engineer]=$data[1]->data[$row->engineer] +1;
+                                }else{
+                                    $data[1]->data[$row->engineer] = 1;
+                                }
+                            }
+
+                        }else{
+                            $object = new \stdClass();
+                            $object->name = $row->appointment_time;
+                          //  $object->engineers[] = $row->engineer;
+                            
+                            $object->data[$row->engineer]=1;
+                            array_push($abortedseries,$object);
+                        }
+                }
+                
+            }
+           
+            //complate
+            $engineeram= array_keys($series[0]->data);
+            $engineerpm= array_keys($series[1]->data);
+            $engineers = $array = array_unique(array_merge($engineeram, $engineerpm));
+            $engineers = array_values($engineers);
+            foreach($engineers as $vl){
+                if (!array_key_exists($vl, $series[0]->data)) {
+                    $series[0]->data[$vl]=0;
+                }
+                if (!array_key_exists($vl, $series[1]->data)) {
+                    $series[1]->data[$vl]=0;
+                }
+            }
+                ksort($series[0]->data);
+                $engineer= array_keys($series[0]->data);
+                $series[0]->data= array_values($series[0]->data);
+                ksort($series[1]->data);
+                $series[1]->data=array_values($series[1]->data);
+                $installnum['series'] = $series;
+                $installnum['engineer'] = $engineer;
+            //aborted
+            $engineeram= array_keys($abortedseries[0]->data);
+            $engineerpm= array_keys($abortedseries[1]->data);
+            $engineers = $array = array_unique(array_merge($engineeram, $engineerpm));
+            $engineers = array_values($engineers);
+
+            foreach($engineers as $vl){
+                if (!array_key_exists($vl, $abortedseries[0]->data)) {
+                    $abortedseries[0]->data[$vl]=0;
+                }
+                if (!array_key_exists($vl, $abortedseries[1]->data)) {
+                    $abortedseries[1]->data[$vl]=0;
+                }
+            }
+
+            ksort($abortedseries[0]->data);
+            $engineer= array_keys($abortedseries[0]->data);
+            $abortedseries[0]->data= array_values($abortedseries[0]->data);
+            ksort($series[1]->data);
+            $abortedseries[1]->data=array_values($abortedseries[1]->data);
+            $abortedinstallnum['series'] = $abortedseries;
+            $abortedinstallnum['engineer'] = $engineer;    
+            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum));  
+          }
+         
+           return response()->json(array('success' => false,'message'=> 'data not found'));  
     }
 
     /**
@@ -197,8 +360,91 @@ class UtilitaController extends Controller
     {
         //
     }
-    public function export() 
+    public function view(Request $Request) 
     {
-        return Excel::download(new ExportJobs, 'users.xlsx');
+        $sheets = [];
+        $start_date = date("Y-m-d",strtotime("-6 day"));
+        $today_date = date('Y-m-d');
+        $month='';
+        if(isset($Request->start_date)){
+          $start_date=date('Y-m-d', strtotime(str_replace('/', '-', $Request->start_date)));
+        }
+        if(isset($Request->end_date)){
+          $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $Request->end_date)));
+        }
+        //$query= new Utilita_job;
+         $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+        
+        
+         if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+         if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+         if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+         
+         /** print query   toSql(); */
+        // dd($q->toSql());
+        if($q->count() > 0){
+            $result=$q->get();
+            $parent_engineer=array();
+            foreach($result->groupBy('parent_engineer') as $k =>$vl){
+             
+             array_push($parent_engineer, $k);
+            }
+            
+            $Monday=[];
+            $Tuesday=[];
+            $Wednesday=[];
+            $Thursday=[];
+            $Friday =[];
+            $Saturday=[];
+            $Sunday=[];
+            foreach($result as $k =>$vl){
+                $vl->endtime = date('H:i', strtotime($vl->schedule_end_time));
+                
+                if($vl->week_day=='Monday'){
+                    array_push($Monday, $vl);
+               }
+                
+                if($vl->week_day=='Tuesday'){
+                    array_push($Tuesday, $vl);
+               }
+                   if($vl->week_day=='Wednesday'){
+                        array_push($Wednesday, $vl);
+                   }
+                   if($vl->week_day=='Thursday'){
+                    array_push($Thursday, $vl);
+                   }
+                   
+                   if($vl->week_day=='Friday'){
+                    array_push($Friday, $vl);
+               }
+                   
+                   if($vl->week_day=='Saturday'){
+                    array_push($Saturday, $vl);
+               }
+                   
+                   if($vl->week_day=='Sunday'){
+                    array_push($Sunday, $vl);
+               }
+               }
+               $Viewthme='';
+               if(!empty($Monday)){
+                $data['site_engineer']=$parent_engineer;
+                $data['work']=$Monday;
+                 $days = new Monday($data);
+                 $Viewthme .= $days->view();
+               }
+              
+               if(!empty($Tuesday)){
+                $data['site_engineer']=$parent_engineer;
+                $data['work']=$Tuesday;
+                $days  = new Tuesday($data);
+                $Viewthme .= $days->view();
+               }
+           return $Viewthme;
+       }else{
+           return 'Sorry data not found';
+      //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+
+       }
     }
 }

@@ -13,10 +13,12 @@ import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
 import { extend } from 'jquery';
 import Select from 'react-select';
+import ApexCharts from 'apexcharts';
 
 
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 const baseurl= window.location.origin;
+
 
 
 class SiteEngineer extends React.Component {
@@ -40,7 +42,32 @@ class SiteEngineer extends React.Component {
             
             this.setState({Engineers:res.data}); 
             }); 
-           
+            var options = {
+                series: [{
+                data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+              }],
+                chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: true,
+                }
+              },
+              dataLabels: {
+                enabled: false
+              },
+              xaxis: {
+                categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+                  'United States', 'China', 'Germany'
+                ],
+              }
+              };
+            
+              var chart = new ApexCharts(document.querySelector("#chart"), options);
+              chart.render();
+            
     }
 
     SiteEngineerchange =(e)=>{
@@ -120,7 +147,9 @@ class SiteEngineer extends React.Component {
 
         this.setState({ showModal: true });
     };
+    
     render() { return (
+        
         <Aux>
             <Row>
                 <Col>
@@ -129,6 +158,7 @@ class SiteEngineer extends React.Component {
                             <Card.Title as="h5">Add Area Engineer</Card.Title>
                         </Card.Header>
                         <Card.Body>
+                            <div id='chart'></div>
                         <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                 <Form.Row>
                                     <Form.Group as={Col} md="2">

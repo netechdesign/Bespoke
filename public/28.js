@@ -1,981 +1,782 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[28],{
 
-/***/ "./node_modules/react-bootstrap4-form-validation/lib/index.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/react-bootstrap4-form-validation/lib/index.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/Demo/Dashboard/Crypto.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Demo/Dashboard/Crypto.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ValidationForm = exports.Checkbox = exports.SelectGroup = exports.FileInput = exports.Radio = exports.TextInputGroup = exports.TextInput = exports.BaseFormControl = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-exports.parseFileSize = parseFileSize;
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-__webpack_require__(/*! ./polyfill */ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var _Widget_Chart_AmChartStatistics1__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Widget/Chart/AmChartStatistics1 */ "./resources/js/Demo/Widget/Chart/AmChartStatistics1.js");
+/* harmony import */ var _Widget_Chart_AmChartWorldUser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Widget/Chart/AmChartWorldUser */ "./resources/js/Demo/Widget/Chart/AmChartWorldUser.js");
+/* harmony import */ var _Widget_Chart_AmChartStatistics8__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Widget/Chart/AmChartStatistics8 */ "./resources/js/Demo/Widget/Chart/AmChartStatistics8.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function parseFileSize(size) {
-    var num = parseFloat(size, 10);
-    var unit = size.match(/[a-zA-Z]+/)[0];
-    unit = unit.toLowerCase();
-    switch (unit) {
-        case "b":
-            return num;
-        case "kb":
-            return 1024 * num;
-        case "mb":
-            return 1024 * 1024 * num;
-        case "gb":
-            return 1024 * 1024 * 1024 * num;
-        default:
-            throw new Error("Unknown unit " + unit);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+
+var Crypto = /*#__PURE__*/function (_React$Component) {
+  _inherits(Crypto, _React$Component);
+
+  var _super = _createSuper(Crypto);
+
+  function Crypto() {
+    _classCallCheck(this, Crypto);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Crypto, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "theme-bg bitcoin-wallet"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-white mb-2"
+      }, "Bitcoin Wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "$9,302"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white d-block"
+      }, "Ratings by Market Capitalization"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-btc f-70 text-white"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "theme-bg2 bitcoin-wallet"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-white mb-2"
+      }, "Bitcoin Wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "$8,101"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white d-block"
+      }, "Ratings by Market Capitalization"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-dollar f-70 text-white"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 12,
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "bg-c-blue bitcoin-wallet"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-white mb-2"
+      }, "Bitcoin Wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "$7,501"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white d-block"
+      }, "Ratings by Market Capitalization"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-gbp f-70 text-white"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 8
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartStatistics1__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        height: "330px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "note-bar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Notifications")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "p-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_3__["default"].BLANK_LINK,
+        className: "media friendlist-box"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-bell f-30"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New order received"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "f-12 float-right text-muted"
+      }, "12.56"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted m-0"
+      }, "2 unread notification"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_3__["default"].BLANK_LINK,
+        className: "media friendlist-box border-top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-bell f-30"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New user register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "f-12 float-right text-muted"
+      }, "12.36"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted m-0"
+      }, "xx messages"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_3__["default"].BLANK_LINK,
+        className: "media friendlist-box border-top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-bell f-30"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New order register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "f-12 float-right text-muted"
+      }, "11.45"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted m-0"
+      }, "2 read notification"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media friendlist-box border-top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-bell f-30"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New order prepend"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "f-12 float-right text-muted"
+      }, "9.39"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted m-0"
+      }, "xx messages")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 8,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Users From United States")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartWorldUser__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        height: "350px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300"
+      }, "$894.39")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "p-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartStatistics8__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        height: "310px"
+      }))))));
     }
-}
+  }]);
 
-var BaseFormControl = exports.BaseFormControl = function (_React$Component) {
-    _inherits(BaseFormControl, _React$Component);
+  return Crypto;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-    function BaseFormControl(props) {
-        _classCallCheck(this, BaseFormControl);
-
-        var _this = _possibleConstructorReturn(this, (BaseFormControl.__proto__ || Object.getPrototypeOf(BaseFormControl)).call(this, props));
-
-        _this.setError = function (errorMessage) {
-            _this.getInputRef().setCustomValidity(errorMessage);
-            _this.setState({ errorMessage: errorMessage });
-        };
-
-        _this.clearError = function () {
-            return _this.setError("");
-        };
-
-        _this.checkError = function (e) {
-            var isPristine = _this.state.isPristine;
-            if (isPristine) _this.setDirty();
-            _this.buildErrorMessage();
-            _this.changeInputErrorClass();
-        };
-
-        _this.handleBlur = function (e) {
-            if (_this.context.validationForm.immediate) return;
-            _this.checkError();
-        };
-
-        _this.handleChange = function (e) {
-            if (_this.props.onChange) _this.props.onChange(e);
-            if (!_this.context.validationForm.immediate) return;
-            _this.checkError();
-        };
-
-        _this.validateInput = function () {
-            _this.setDirty();
-            _this.buildErrorMessage();
-        };
-
-        _this.setDirty = function () {
-            _this.setState({ isPristine: false });
-        };
-
-        _this.filterProps = function () {
-            var _this$props = _this.props,
-                errorMessage = _this$props.errorMessage,
-                successMessage = _this$props.successMessage,
-                validator = _this$props.validator,
-                defaultErrorMessage = _this$props.defaultErrorMessage,
-                attachToForm = _this$props.attachToForm,
-                detachFromForm = _this$props.detachFromForm,
-                setFormDirty = _this$props.setFormDirty,
-                label = _this$props.label,
-                immediate = _this$props.immediate,
-                rest = _objectWithoutProperties(_this$props, ['errorMessage', 'successMessage', 'validator', 'defaultErrorMessage', 'attachToForm', 'detachFromForm', 'setFormDirty', 'label', 'immediate']);
-
-            return rest;
-        };
-
-        _this.state = {
-            isPristine: true,
-            errorMessage: ""
-        };
-        if (_react2.default.createRef) _this.inputRef = _react2.default.createRef();else _this.inputRef = function (element) {
-            //Before React 16.3
-            _this.inputRefLegacy = element;
-        };
-        return _this;
-    }
-
-    _createClass(BaseFormControl, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.context.validationForm.attachToForm(this);
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.context.validationForm.detachFromForm(this);
-        }
-    }, {
-        key: 'getInputRef',
-        value: function getInputRef() {
-            return this.inputRefLegacy || this.inputRef.current;
-        }
-    }, {
-        key: 'buildErrorMessage',
-        value: function buildErrorMessage() {
-            var map = {
-                valueMissing: "required",
-                customError: "",
-                stepMismatch: "step",
-                patternMismatch: "pattern",
-                rangeUnderflow: "min",
-                rangeOverflow: "max",
-                typeMismatch: "type"
-            };
-
-            var errorMessage = this.props.errorMessage;
-
-            var defaultErrorMessage = this.context.validationForm.defaultErrorMessage || {};
-            //If string was passed to errorMessage, default to required error Message
-            if (typeof errorMessage === "string") errorMessage = { required: errorMessage };
-            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, defaultErrorMessage, errorMessage);
-            var input = this.getInputRef();
-            if (input) {
-                var validityState = input.validity;
-                var newErrorMessage = "";
-                for (var prop in validityState) {
-                    if (validityState[prop]) {
-                        if (prop === "customError") newErrorMessage = input.validationMessage;else newErrorMessage = errorMessage[map[prop]];
-                        break;
-                    }
-                }
-
-                //Add support for minLength attribute
-                if (this.props.minLength) {
-                    if (input.value.length < +this.props.minLength) {
-                        input.setCustomValidity(errorMessage["minLength"]);
-                        newErrorMessage = errorMessage["minLength"].replace("{minLength}", this.props.minLength);
-                    } else {
-                        if (newErrorMessage === errorMessage["minLength"]) {
-                            input.setCustomValidity("");
-                            newErrorMessage = "";
-                        }
-                    }
-                }
-
-                if (typeof this.props.validator === "function") {
-                    var validatorFn = this.props.validator;
-                    var value = input.value;
-                    if (!validatorFn(value)) {
-                        input.setCustomValidity(errorMessage.validator);
-                        newErrorMessage = errorMessage.validator;
-                    } else {
-                        input.setCustomValidity("");
-                        newErrorMessage = "";
-                    }
-                }
-
-                this.setState({ errorMessage: newErrorMessage });
-            }
-        }
-    }, {
-        key: 'displayErrorMessage',
-        value: function displayErrorMessage() {
-            return this.state.errorMessage ? _react2.default.createElement(
-                'div',
-                { className: 'invalid-feedback' },
-                this.state.errorMessage
-            ) : null;
-        }
-
-        //displayBlock for radio group structure
-
-    }, {
-        key: 'displaySuccessMessage',
-        value: function displaySuccessMessage(displayBlock) {
-            return !this.state.isPristine && !this.state.errorMessage && this.props.successMessage ? _react2.default.createElement(
-                'div',
-                { className: "valid-feedback" + (displayBlock ? " d-block" : "") },
-                this.props.successMessage
-            ) : null;
-        }
-    }, {
-        key: 'changeInputErrorClass',
-        value: function changeInputErrorClass() {
-            var inputRef = this.getInputRef();
-            if (inputRef.type !== "radio") {
-                if (!inputRef.validity.valid) {
-                    inputRef.classList.add("is-invalid");
-                    inputRef.classList.remove("is-valid");
-                } else {
-                    inputRef.classList.remove("is-invalid");
-                    inputRef.classList.add("is-valid");
-                }
-            }
-        }
-
-        //Filter out non-DOM attribute
-
-    }]);
-
-    return BaseFormControl;
-}(_react2.default.Component);
-
-BaseFormControl.propTypes = {
-    name: _propTypes2.default.string.isRequired,
-    errorMessage: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string])
-};
-BaseFormControl.contextTypes = {
-    validationForm: _propTypes2.default.object
-};
-
-var TextInput = exports.TextInput = function (_BaseFormControl) {
-    _inherits(TextInput, _BaseFormControl);
-
-    function TextInput() {
-        _classCallCheck(this, TextInput);
-
-        return _possibleConstructorReturn(this, (TextInput.__proto__ || Object.getPrototypeOf(TextInput)).apply(this, arguments));
-    }
-
-    _createClass(TextInput, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-
-            var multiline = props.multiline,
-                successMessage = props.successMessage,
-                validator = props.validator,
-                domProps = _objectWithoutProperties(props, ['multiline', 'successMessage', 'validator']);
-
-            return _react2.default.createElement(
-                _react2.default.Fragment,
-                null,
-                multiline ? _react2.default.createElement('textarea', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })) : _react2.default.createElement('input', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return TextInput;
-}(BaseFormControl);
-
-TextInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control",
-    multiline: false
-});
-
-var TextInputGroup = exports.TextInputGroup = function (_BaseFormControl2) {
-    _inherits(TextInputGroup, _BaseFormControl2);
-
-    function TextInputGroup() {
-        _classCallCheck(this, TextInputGroup);
-
-        return _possibleConstructorReturn(this, (TextInputGroup.__proto__ || Object.getPrototypeOf(TextInputGroup)).apply(this, arguments));
-    }
-
-    _createClass(TextInputGroup, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-
-            var prepend = props.prepend,
-                append = props.append,
-                inputGroupClassName = props.inputGroupClassName,
-                inputGroupStyle = props.inputGroupStyle,
-                domProps = _objectWithoutProperties(props, ['prepend', 'append', 'inputGroupClassName', 'inputGroupStyle']);
-
-            return _react2.default.createElement(
-                'div',
-                { className: inputGroupClassName, style: inputGroupStyle },
-                prepend && _react2.default.createElement(
-                    'div',
-                    { className: 'input-group-prepend' },
-                    prepend
-                ),
-                _react2.default.createElement('input', _extends({}, domProps, { className: this.props.className, ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
-                append && _react2.default.createElement(
-                    'div',
-                    { className: 'input-group-append' },
-                    append
-                ),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return TextInputGroup;
-}(BaseFormControl);
-
-TextInputGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control",
-    inputGroupClassName: "input-group"
-});
-TextInputGroup.propTypes = {
-    className: _propTypes2.default.string,
-    inputGroupClassName: _propTypes2.default.string,
-    inputGroupStyle: _propTypes2.default.object,
-    prepend: _propTypes2.default.element,
-    append: _propTypes2.default.element
-};
-
-var RadioGroup = function (_BaseFormControl3) {
-    _inherits(RadioGroup, _BaseFormControl3);
-
-    function RadioGroup() {
-        _classCallCheck(this, RadioGroup);
-
-        return _possibleConstructorReturn(this, (RadioGroup.__proto__ || Object.getPrototypeOf(RadioGroup)).apply(this, arguments));
-    }
-
-    _createClass(RadioGroup, [{
-        key: 'getInputRef',
-        value: function getInputRef() {
-            var inputRef = window.document.querySelectorAll('[name="' + this.props.name + '"]')[0];
-            return inputRef;
-        }
-    }, {
-        key: 'mapRadioItems',
-        value: function mapRadioItems() {
-            var _this5 = this;
-
-            return _react2.default.Children.map(this.props.children, function (child) {
-                if (typeof child.type !== "function" || child.type.name !== RadioItem.name) {
-                    console.warn("Only RadioItem is allowed inside RadioGroup");
-                    return;
-                }
-                return _react2.default.cloneElement(child, _extends({}, child.props, {
-                    inline: _this5.props.inline,
-                    name: _this5.props.name,
-                    required: _this5.props.required,
-                    defaultValue: _this5.props.defaultValue,
-                    onChange: _this5.props.onChange,
-                    valueSelected: _this5.props.valueSelected,
-                    checkError: _this5.checkError
-                }));
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-            var containerStyle = props.containerStyle,
-                containerClassName = props.containerClassName;
-
-            return _react2.default.createElement(
-                'div',
-                { style: containerStyle, className: containerClassName },
-                this.mapRadioItems(),
-                this.state.errorMessage && _react2.default.createElement(
-                    'div',
-                    { className: 'invalid-feedback d-block' },
-                    this.state.errorMessage
-                ),
-                this.displaySuccessMessage(true)
-            );
-        }
-    }]);
-
-    return RadioGroup;
-}(BaseFormControl);
-
-RadioGroup.defaultProps = {
-    inline: true,
-    containerStyle: {}
-};
-RadioGroup.propTypes = {
-    inline: _propTypes2.default.bool,
-    name: _propTypes2.default.string.isRequired,
-    containerStyle: _propTypes2.default.object,
-    containerClassName: _propTypes2.default.string,
-    defaultValue: _propTypes2.default.string,
-    valueSelected: _propTypes2.default.string,
-    onChange: _propTypes2.default.func
-};
-
-var RadioItem = function (_Component) {
-    _inherits(RadioItem, _Component);
-
-    function RadioItem() {
-        var _ref;
-
-        var _temp, _this6, _ret;
-
-        _classCallCheck(this, RadioItem);
-
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this6 = _possibleConstructorReturn(this, (_ref = RadioItem.__proto__ || Object.getPrototypeOf(RadioItem)).call.apply(_ref, [this].concat(args))), _this6), _this6.onChange = function (e) {
-            if (_this6.props.onChange) _this6.props.onChange(e, e.target.value);
-            _this6.props.checkError();
-        }, _temp), _possibleConstructorReturn(_this6, _ret);
-    }
-
-    _createClass(RadioItem, [{
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                checkError = _props.checkError,
-                containerStyle = _props.containerStyle,
-                containerClassName = _props.containerClassName,
-                label = _props.label,
-                inline = _props.inline,
-                defaultValue = _props.defaultValue,
-                valueSelected = _props.valueSelected,
-                onChange = _props.onChange,
-                domProps = _objectWithoutProperties(_props, ['checkError', 'containerStyle', 'containerClassName', 'label', 'inline', 'defaultValue', 'valueSelected', 'onChange']);
-
-            var checkProps = valueSelected !== undefined && onChange ? { checked: this.props.value === valueSelected } : { defaultChecked: this.props.value === defaultValue };
-
-            return _react2.default.createElement(
-                'div',
-                { className: containerClassName + " form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
-                _react2.default.createElement('input', _extends({ className: 'form-check-input', type: 'radio'
-                }, checkProps, {
-                    onChange: this.onChange
-                }, domProps)),
-                _react2.default.createElement(
-                    'label',
-                    { className: 'form-check-label', htmlFor: this.props.id },
-                    label
-                )
-            );
-        }
-    }]);
-
-    return RadioItem;
-}(_react.Component);
-
-RadioItem.defaultProps = {
-    containerStyle: {},
-    containerClassName: ""
-};
-RadioItem.propTypes = {
-    value: _propTypes2.default.string.isRequired,
-    id: _propTypes2.default.string.isRequired,
-    label: _propTypes2.default.string.isRequired,
-    containerStyle: _propTypes2.default.object,
-    containerClassName: _propTypes2.default.string
-};
-var Radio = exports.Radio = {
-    RadioGroup: RadioGroup,
-    RadioItem: RadioItem
-};
-
-var FileInput = exports.FileInput = function (_BaseFormControl4) {
-    _inherits(FileInput, _BaseFormControl4);
-
-    function FileInput() {
-        var _ref2;
-
-        var _temp2, _this7, _ret2;
-
-        _classCallCheck(this, FileInput);
-
-        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
-        }
-
-        return _ret2 = (_temp2 = (_this7 = _possibleConstructorReturn(this, (_ref2 = FileInput.__proto__ || Object.getPrototypeOf(FileInput)).call.apply(_ref2, [this].concat(args))), _this7), _this7.checkFileError = function (file) {
-            var _this7$props = _this7.props,
-                maxFileSize = _this7$props.maxFileSize,
-                fileType = _this7$props.fileType,
-                _this7$props$errorMes = _this7$props.errorMessage,
-                errorMessage = _this7$props$errorMes === undefined ? {} : _this7$props$errorMes;
-
-            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, errorMessage);
-            var limit = maxFileSize ? parseFileSize(maxFileSize) : null;
-            var newErrorMessage = "";
-            var fileExtension = file.name.slice(file.name.lastIndexOf(".") + 1).toLowerCase().trim();
-            fileType = fileType.map(function (type) {
-                return type.toLowerCase().trim();
-            });
-            if (fileType.length > 0 && !fileType.includes(fileExtension)) {
-                newErrorMessage = errorMessage["fileType"];
-            } else if (limit && file.size > limit) {
-                newErrorMessage = errorMessage["maxFileSize"];
-            } else {
-                newErrorMessage = "";
-            }
-            var inputRef = _this7.getInputRef();
-            inputRef.setCustomValidity(newErrorMessage);
-        }, _this7.handleChange = function (e) {
-            var inputRef = _this7.getInputRef();
-            var file = inputRef.files[0];
-            if (_this7.props.onChange) _this7.props.onChange(e, file);
-            if (!file) return _this7.checkError();
-            _this7.checkFileError(file);
-            _this7.checkError();
-        }, _temp2), _possibleConstructorReturn(_this7, _ret2);
-    }
-
-    _createClass(FileInput, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-
-            var maxFileSize = props.maxFileSize,
-                fileType = props.fileType,
-                domProps = _objectWithoutProperties(props, ['maxFileSize', 'fileType']);
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement('input', _extends({}, domProps, { ref: this.inputRef, type: 'file', onChange: this.handleChange })),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return FileInput;
-}(BaseFormControl);
-
-FileInput.propTypes = {
-    fileType: _propTypes2.default.array,
-    maxFileSize: _propTypes2.default.string
-};
-FileInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control"
-});
-
-var SelectGroup = exports.SelectGroup = function (_BaseFormControl5) {
-    _inherits(SelectGroup, _BaseFormControl5);
-
-    function SelectGroup() {
-        _classCallCheck(this, SelectGroup);
-
-        return _possibleConstructorReturn(this, (SelectGroup.__proto__ || Object.getPrototypeOf(SelectGroup)).apply(this, arguments));
-    }
-
-    _createClass(SelectGroup, [{
-        key: 'render',
-        value: function render() {
-            var domProps = this.filterProps();
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'select',
-                    _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur,
-                        value: this.props.value }),
-                    this.props.children
-                ),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return SelectGroup;
-}(BaseFormControl);
-
-SelectGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control"
-});
-
-var Checkbox = exports.Checkbox = function (_BaseFormControl6) {
-    _inherits(Checkbox, _BaseFormControl6);
-
-    function Checkbox() {
-        var _ref3;
-
-        var _temp3, _this9, _ret3;
-
-        _classCallCheck(this, Checkbox);
-
-        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
-        }
-
-        return _ret3 = (_temp3 = (_this9 = _possibleConstructorReturn(this, (_ref3 = Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).call.apply(_ref3, [this].concat(args))), _this9), _this9.handleChange = function (e) {
-            var checked = e.target.checked;
-            if (_this9.props.onChange) _this9.props.onChange(e, checked);
-            _this9.checkError();
-        }, _temp3), _possibleConstructorReturn(_this9, _ret3);
-    }
-
-    _createClass(Checkbox, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-
-            var label = props.label,
-                inline = props.inline,
-                containerStyle = props.containerStyle,
-                className = props.className,
-                checked = props.checked,
-                domProps = _objectWithoutProperties(props, ['label', 'inline', 'containerStyle', 'className', 'checked']);
-
-            return _react2.default.createElement(
-                'div',
-                { className: "form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
-                _react2.default.createElement('input', _extends({ type: 'checkbox', className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, checked: this.props.value, defaultChecked: this.props.defaultChecked })),
-                _react2.default.createElement(
-                    'label',
-                    { className: 'form-check-label', htmlFor: domProps.id },
-                    this.props.label
-                ),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return Checkbox;
-}(BaseFormControl);
-
-Checkbox.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-check-input",
-    containerStyle: {},
-    label: "",
-    inline: false
-});
-Checkbox.propTypes = {
-    name: _propTypes2.default.string.isRequired,
-    label: _propTypes2.default.string.isRequired,
-    containerStyle: _propTypes2.default.object,
-    inline: _propTypes2.default.bool,
-    id: _propTypes2.default.string.isRequired,
-    value: _propTypes2.default.bool,
-    defaultChecked: _propTypes2.default.bool
-};
-
-var ValidationForm = exports.ValidationForm = function (_React$Component2) {
-    _inherits(ValidationForm, _React$Component2);
-
-    function ValidationForm() {
-        var _ref4;
-
-        var _temp4, _this10, _ret4;
-
-        _classCallCheck(this, ValidationForm);
-
-        for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-            args[_key4] = arguments[_key4];
-        }
-
-        return _ret4 = (_temp4 = (_this10 = _possibleConstructorReturn(this, (_ref4 = ValidationForm.__proto__ || Object.getPrototypeOf(ValidationForm)).call.apply(_ref4, [this].concat(args))), _this10), _this10.inputs = {}, _this10.attachToForm = function (component) {
-            _this10.inputs[component.props.name] = component;
-        }, _this10.detachFromForm = function (component) {
-            delete _this10.inputs[component.props.name];
-        }, _this10.getChildContext = function () {
-            return {
-                validationForm: {
-                    attachToForm: _this10.attachToForm,
-                    detachFromForm: _this10.detachFromForm,
-                    immediate: _this10.props.immediate,
-                    defaultErrorMessage: _this10.props.defaultErrorMessage
-                }
-            };
-        }, _this10.setFormDiry = function () {
-            var form = _this10.refs.form;
-            if (!form.classList.contains('was-validated')) form.classList.add('was-validated');
-        }, _this10.mapInputs = function (inputs) {
-            var arr = Object.keys(inputs).map(function (prop) {
-                return inputs[prop];
-            });
-            return arr;
-        }, _this10.findFirstErrorInput = function (inputs) {
-            return inputs.find(function (input) {
-                return !input.getInputRef().validity.valid;
-            });
-        }, _this10.getErrorInputs = function (inputs) {
-            var map = {};
-            inputs.forEach(function (input) {
-                var inputRef = input.getInputRef();
-                var validityState = inputRef.validity;
-                if (!validityState.valid) map[inputRef.name] = input;
-            });
-            return map;
-        }, _this10.handleSubmit = function (event) {
-            var form = _this10.refs.form;
-            var formData = _this10.getFormData();
-            var inputArr = _this10.mapInputs(_this10.inputs);
-            _this10.setFormDiry();
-            _this10.validateInputs();
-
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-                if (_this10.props.onErrorSubmit) _this10.props.onErrorSubmit(event, formData, _this10.getErrorInputs(inputArr));
-                if (_this10.props.setFocusOnError) {
-                    var firstErrorInput = _this10.findFirstErrorInput(inputArr);
-                    firstErrorInput.getInputRef().focus();
-                }
-            } else {
-                if (_this10.props.onSubmit) _this10.props.onSubmit(event, formData, inputArr);
-            }
-        }, _this10.resetValidationState = function (isClearValue) {
-            for (var prop in _this10.inputs) {
-                _this10.inputs[prop].setState({ errorMessage: "", isPristine: true });
-                var inputRef = _this10.inputs[prop].getInputRef();
-                inputRef.classList.remove("is-valid");
-                inputRef.classList.remove("is-invalid");
-                inputRef.setCustomValidity("");
-                if (isClearValue) {
-                    if (inputRef.type == "checkbox") inputRef.checked = false;
-                    inputRef.value = "";
-                }
-            }
-            _this10.refs.form.classList.remove("was-validated");
-        }, _temp4), _possibleConstructorReturn(_this10, _ret4);
-    }
-
-    _createClass(ValidationForm, [{
-        key: 'isBaseFormControl',
-        value: function isBaseFormControl(element) {
-            if (typeof element !== "function") return false;
-            while (Object.getPrototypeOf(element) !== Object.prototype) {
-                if (Object.getPrototypeOf(element) === BaseFormControl) {
-                    return true;
-                }
-                element = Object.getPrototypeOf(element);
-            }
-            return false;
-        }
-
-        //Use context instead
-        // registerChildren(children) {
-        //     let newChildren = React.Children.map(children, (child) => {
-        //         //If child is our baseFormControl, then assign new props to it
-        //         if (!child) return child;
-        //         if (this.isBaseFormControl(child.type)) {
-        //             return React.cloneElement(child, {
-        //                 ...child.props,
-        //                 attachToForm: this.attachToForm,
-        //                 detachFromForm: this.detachFromForm,
-        //                 immediate: this.props.immediate,
-        //                 defaultErrorMessage: this.props.defaultErrorMessage
-        //             });
-        //         } else {
-        //             if (typeof child === 'string') return child;
-        //             return React.cloneElement(child, {
-        //                 children: (typeof child.props.children === "string") ? child.props.children : this.registerChildren(child.props.children)
-        //             });
-        //         }
-        //     });
-        //     return newChildren;
-        // }
-
-    }, {
-        key: 'validateInputs',
-        value: function validateInputs() {
-            for (var prop in this.inputs) {
-                this.inputs[prop].validateInput();
-            }
-        }
-    }, {
-        key: 'getFormData',
-        value: function getFormData() {
-            var model = {};
-            for (var name in this.inputs) {
-                var inputRef = this.inputs[name].getInputRef();
-                var value = null;
-                switch (inputRef.type) {
-                    case "checkbox":
-                        value = inputRef.checked;
-                        break;
-                    case "radio":
-                        var radios = document.querySelectorAll('[name="' + this.props.name + '"]');
-                        for (var i = 0; i < radios.length; i++) {
-                            if (radios[i].checked) {
-                                value = radios[i].value;
-                                break;
-                            }
-                        }
-                        break;
-                    case "file":
-                        value = inputRef.files[0];
-                        break;
-                    default:
-                        value = inputRef.value;
-                }
-                model[name] = value;
-            };
-            return model;
-        }
-
-        //By default only clear customError and class, if isClearValue is true, clear value also
-
-    }, {
-        key: 'render',
-        value: function render() {
-            var _props2 = this.props,
-                onSubmit = _props2.onSubmit,
-                onErrorSubmit = _props2.onErrorSubmit,
-                immediate = _props2.immediate,
-                setFocusOnError = _props2.setFocusOnError,
-                defaultErrorMessage = _props2.defaultErrorMessage,
-                domProps = _objectWithoutProperties(_props2, ['onSubmit', 'onErrorSubmit', 'immediate', 'setFocusOnError', 'defaultErrorMessage']);
-
-            return _react2.default.createElement(
-                'form',
-                _extends({ noValidate: true, ref: 'form'
-                }, domProps, {
-                    onSubmit: this.handleSubmit }),
-                this.props.children
-            );
-        }
-    }]);
-
-    return ValidationForm;
-}(_react2.default.Component);
-
-ValidationForm.defaultProps = {
-    className: "needs-validation",
-    setFocusOnError: true,
-    immediate: true,
-    defaultErrorMessage: {}
-};
-ValidationForm.propTypes = {
-    className: _propTypes2.default.string,
-    defaultErrorMessage: _propTypes2.default.object,
-    setFocusOnError: _propTypes2.default.bool,
-    immediate: _propTypes2.default.bool,
-    onSubmit: _propTypes2.default.func.isRequired,
-    onErrorSubmit: _propTypes2.default.func
-};
-ValidationForm.childContextTypes = {
-    validationForm: _propTypes2.default.object
-};
-ValidationForm.defaultErrorMessage = {
-    required: "This field is required",
-    pattern: "Input value does not match the pattern",
-    type: "Input value does not match the type",
-    step: "Step mismatch",
-    minLength: "Please enter at least {minLength} characters",
-    min: "Number is too low",
-    max: "Number is too high",
-    fileType: "File type mismatch",
-    maxFileSize: "File size exceed limit",
-    validator: "Validator check failed"
-};
+/* harmony default export */ __webpack_exports__["default"] = (Crypto);
 
 /***/ }),
 
-/***/ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/react-bootstrap4-form-validation/lib/polyfill.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/Demo/Widget/Chart/AmChartStatistics1.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartStatistics1.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! amcharts3/amcharts/amcharts */ "./node_modules/amcharts3/amcharts/amcharts.js");
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! amcharts3/amcharts/serial */ "./node_modules/amcharts3/amcharts/serial.js");
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! amcharts3/amcharts/themes/light */ "./node_modules/amcharts3/amcharts/themes/light.js");
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts3-react */ "./node_modules/@amcharts/amcharts3-react/index.js");
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-if (!Array.prototype.find) {
-    Object.defineProperty(Array.prototype, 'find', {
-        value: function value(predicate) {
-            // 1. Let O be ? ToObject(this value).
-            if (this == null) {
-                throw new TypeError('"this" is null or not defined');
-            }
 
-            var o = Object(this);
 
-            // 2. Let len be ? ToLength(? Get(O, "length")).
-            var len = o.length >>> 0;
 
-            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
-            if (typeof predicate !== 'function') {
-                throw new TypeError('predicate must be a function');
-            }
 
-            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
-            var thisArg = arguments[1];
 
-            // 5. Let k be 0.
-            var k = 0;
+var AmChartStatistics1 = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartStatistics1, _Component);
 
-            // 6. Repeat, while k < len
-            while (k < len) {
-                // a. Let Pk be ! ToString(k).
-                // b. Let kValue be ? Get(O, Pk).
-                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
-                // d. If testResult is true, return kValue.
-                var kValue = o[k];
-                if (predicate.call(thisArg, kValue, k, o)) {
-                    return kValue;
-                }
-                // e. Increase k by 1.
-                k++;
-            }
+  var _super = _createSuper(AmChartStatistics1);
 
-            // 7. Return undefined.
-            return undefined;
+  function AmChartStatistics1() {
+    _classCallCheck(this, AmChartStatistics1);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AmChartStatistics1, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("line-area2", {
+        "type": "serial",
+        "theme": "light",
+        "marginTop": 10,
+        "marginRight": 0,
+        "dataProvider": [{
+          "year": "Jan",
+          "value": 5,
+          "value2": 80
+        }, {
+          "year": "Feb",
+          "value": 30,
+          "value2": 95
+        }, {
+          "year": "Mar",
+          "value": 25,
+          "value2": 87
+        }, {
+          "year": "Apr",
+          "value": 55,
+          "value2": 155
+        }, {
+          "year": "May",
+          "value": 45,
+          "value2": 140
+        }, {
+          "year": "Jun",
+          "value": 65,
+          "value2": 147
+        }, {
+          "year": "Jul",
+          "value": 60,
+          "value2": 130
+        }, {
+          "year": "Aug",
+          "value": 105,
+          "value2": 180
+        }, {
+          "year": "Sep",
+          "value": 80,
+          "value2": 160
+        }, {
+          "year": "Oct",
+          "value": 110,
+          "value2": 175
+        }, {
+          "year": "Nov",
+          "value": 120,
+          "value2": 165
+        }, {
+          "year": "Dec",
+          "value": 150,
+          "value2": 200
+        }],
+        "valueAxes": [{
+          "axisAlpha": 0,
+          "position": "left"
+        }],
+        "graphs": [{
+          "id": "g1",
+          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+          "bullet": "round",
+          "lineColor": "#1de9b6",
+          "lineThickness": 3,
+          "negativeLineColor": "#1de9b6",
+          "valueField": "value"
+        }, {
+          "id": "g2",
+          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+          "bullet": "round",
+          "lineColor": "#10adf5",
+          "lineThickness": 3,
+          "negativeLineColor": "#10adf5",
+          "valueField": "value2"
+        }],
+        "chartCursor": {
+          "cursorAlpha": 0,
+          "valueLineEnabled": true,
+          "valueLineBalloonEnabled": true,
+          "valueLineAlpha": 0.3,
+          "fullWidth": true
         },
-        configurable: true,
-        writable: true
-    });
-}
-
-if (typeof Object.assign != 'function') {
-    // Must be writable: true, enumerable: false, configurable: true
-    Object.defineProperty(Object, "assign", {
-        value: function assign(target, varArgs) {
-            // .length of function is 2
-            'use strict';
-
-            if (target == null) {
-                // TypeError if undefined or null
-                throw new TypeError('Cannot convert undefined or null to object');
-            }
-
-            var to = Object(target);
-
-            for (var index = 1; index < arguments.length; index++) {
-                var nextSource = arguments[index];
-
-                if (nextSource != null) {
-                    // Skip over if undefined or null
-                    for (var nextKey in nextSource) {
-                        // Avoid bugs when hasOwnProperty is shadowed
-                        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                            to[nextKey] = nextSource[nextKey];
-                        }
-                    }
-                }
-            }
-            return to;
+        "categoryField": "year",
+        "categoryAxis": {
+          "minorGridAlpha": 0,
+          "minorGridEnabled": true,
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0
         },
-        writable: true,
-        configurable: true
+        "legend": {
+          "useGraphSettings": true,
+          "position": "top"
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "line-area2",
+        className: "lineAreaDashboard",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartStatistics1;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartStatistics1);
+
+/***/ }),
+
+/***/ "./resources/js/Demo/Widget/Chart/AmChartStatistics8.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartStatistics8.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! amcharts3/amcharts/amcharts */ "./node_modules/amcharts3/amcharts/amcharts.js");
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! amcharts3/amcharts/serial */ "./node_modules/amcharts3/amcharts/serial.js");
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! amcharts3/amcharts/themes/light */ "./node_modules/amcharts3/amcharts/themes/light.js");
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts3-react */ "./node_modules/@amcharts/amcharts3-react/index.js");
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartStatistics8, _Component);
+
+  var _super = _createSuper(AmChartStatistics8);
+
+  function AmChartStatistics8() {
+    var _this;
+
+    _classCallCheck(this, AmChartStatistics8);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      dataum: [{
+        "year": "1999",
+        "value": 30
+      }, {
+        "year": "2000",
+        "value": 55
+      }, {
+        "year": "2001",
+        "value": 80
+      }, {
+        "year": "2002",
+        "value": 60
+      }, {
+        "year": "2003",
+        "value": 70
+      }, {
+        "year": "2004",
+        "value": 70
+      }, {
+        "year": "2005",
+        "value": 110
+      }, {
+        "year": "2006",
+        "value": 90
+      }, {
+        "year": "2007",
+        "value": 130
+      }]
     });
-}
+
+    return _this;
+  }
+
+  _createClass(AmChartStatistics8, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var chartm = _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("earnings-chart", {
+        "type": "serial",
+        "addClassNames": true,
+        "defs": {
+          "filter": [{
+            "x": "-50%",
+            "y": "-50%",
+            "width": "200%",
+            "height": "200%",
+            "id": "blur",
+            "feGaussianBlur": {
+              "in": "SourceGraphic",
+              "stdDeviation": "30"
+            }
+          }, {
+            "id": "shadow",
+            "x": "-10%",
+            "y": "-10%",
+            "width": "120%",
+            "height": "120%",
+            "feOffset": {
+              "result": "offOut",
+              "in": "SourceAlpha",
+              "dx": "0",
+              "dy": "20"
+            },
+            "feGaussianBlur": {
+              "result": "blurOut",
+              "in": "offOut",
+              "stdDeviation": "10"
+            },
+            "feColorMatrix": {
+              "result": "blurOut",
+              "type": "matrix",
+              "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"
+            },
+            "feBlend": {
+              "in": "SourceGraphic",
+              "in2": "blurOut",
+              "mode": "normal"
+            }
+          }]
+        },
+        "fontSize": 15,
+        "dataProvider": this.state.dataum,
+        "dataDateFormat": "YYYY",
+        "autoMarginOffset": 0,
+        "marginRight": -1,
+        "marginBottom": -2,
+        "categoryField": "year",
+        "categoryAxis": {
+          "color": '#fff',
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0,
+          "offset": -20,
+          "inside": true,
+          "parseDates": true,
+          "minPeriod": "YYYY"
+        },
+        "chartCursor": {
+          "valueLineEnabled": false,
+          "valueLineBalloonEnabled": false,
+          "cursorAlpha": 0,
+          "zoomable": false,
+          "cursorColor": "#fff",
+          "categoryBalloonColor": "#88dcef",
+          "valueZoomable": false,
+          "valueLineAlpha": 0
+        },
+        "valueAxes": [{
+          "fontSize": 0,
+          "inside": true,
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0
+        }],
+        "graphs": [{
+          "id": "g1",
+          "type": "line",
+          "valueField": "value",
+          "fillColors": ["#1dc4e9", "#A389D4"],
+          "lineColor": "#1dc4e9",
+          "balloon": {
+            "drop": true,
+            "adjustBorderColor": false,
+            "color": "#ffffff",
+            "type": "smoothedLine"
+          },
+          "lineAlpha": 1,
+          "lineThickness": 5,
+          "fillAlphas": 0.9,
+          "showBalloon": true
+        }]
+      });
+      setTimeout(function () {
+        chartm.zoomToIndexes(1, _this2.state.dataum.length - 2);
+      }, 400);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "earnings-chart",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartStatistics8;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartStatistics8);
+
+/***/ }),
+
+/***/ "./resources/js/Demo/Widget/Chart/AmChartWorldUser.js":
+/*!************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartWorldUser.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
+/* harmony import */ var _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/charts */ "./node_modules/@amcharts/amcharts4/charts.js");
+/* harmony import */ var _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @amcharts/amcharts4/maps */ "./node_modules/@amcharts/amcharts4/maps.js");
+/* harmony import */ var _amcharts_amcharts4_geodata_continentsLow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts4-geodata/continentsLow */ "./node_modules/@amcharts/amcharts4-geodata/continentsLow.js");
+/* harmony import */ var _amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @amcharts/amcharts4/themes/animated */ "./node_modules/@amcharts/amcharts4/themes/animated.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+_amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["useTheme"](_amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+var AmChartWorldUser = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartWorldUser, _Component);
+
+  var _super = _createSuper(AmChartWorldUser);
+
+  function AmChartWorldUser() {
+    _classCallCheck(this, AmChartWorldUser);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AmChartWorldUser, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var chart = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["create"]("world-low", _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["MapChart"]);
+      chart.geodata = _amcharts_amcharts4_geodata_continentsLow__WEBPACK_IMPORTED_MODULE_4__["default"];
+      chart.projection = new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["projections"].Miller();
+      var polygonSeries = chart.series.push(new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["MapPolygonSeries"]());
+      polygonSeries.exclude = ["antarctica"];
+      polygonSeries.useGeodata = true;
+      var pieSeries = chart.series.push(new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["MapImageSeries"]());
+      var pieTemplate = pieSeries.mapImages.template;
+      pieTemplate.propertyFields.latitude = "latitude";
+      pieTemplate.propertyFields.longitude = "longitude";
+      var pieChartTemplate = pieTemplate.createChild(_amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["PieChart"]);
+      pieChartTemplate.adapter.add("data", function (data, target) {
+        if (target.dataItem) {
+          return target.dataItem.dataContext.pieData;
+        } else {
+          return [];
+        }
+      });
+      pieChartTemplate.propertyFields.width = "width";
+      pieChartTemplate.propertyFields.height = "height";
+      pieChartTemplate.horizontalCenter = "middle";
+      pieChartTemplate.verticalCenter = "middle";
+      var pieTitle = pieChartTemplate.titles.create();
+      pieTitle.text = "{title}";
+      var pieSeriesTemplate = pieChartTemplate.series.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["PieSeries"]());
+      pieSeriesTemplate.dataFields.category = "category";
+      pieSeriesTemplate.dataFields.value = "value";
+      pieSeriesTemplate.labels.template.disabled = true;
+      pieSeriesTemplate.ticks.template.disabled = true;
+      pieSeries.data = [{
+        "title": "North America",
+        "latitude": 39.563353,
+        "longitude": -99.316406,
+        "width": 100,
+        "height": 100,
+        "pieData": [{
+          "category": "Category #1",
+          "value": 1200,
+          "fill": 'red'
+        }, {
+          "category": "Category #2",
+          "value": 500
+        }, {
+          "category": "Category #3",
+          "value": 765
+        }, {
+          "category": "Category #4",
+          "value": 260
+        }]
+      }, {
+        "title": "Europe",
+        "latitude": 50.896104,
+        "longitude": 19.160156,
+        "width": 50,
+        "height": 50,
+        "pieData": [{
+          "category": "Category #1",
+          "value": 200
+        }, {
+          "category": "Category #2",
+          "value": 600
+        }, {
+          "category": "Category #3",
+          "value": 350
+        }]
+      }, {
+        "title": "Asia",
+        "latitude": 47.212106,
+        "longitude": 103.183594,
+        "width": 80,
+        "height": 80,
+        "pieData": [{
+          "category": "Category #1",
+          "value": 352
+        }, {
+          "category": "Category #2",
+          "value": 266
+        }, {
+          "category": "Category #3",
+          "value": 512
+        }, {
+          "category": "Category #4",
+          "value": 199
+        }]
+      }, {
+        "title": "Africa",
+        "latitude": 11.081385,
+        "longitude": 21.621094,
+        "width": 50,
+        "height": 50,
+        "pieData": [{
+          "category": "Category #1",
+          "value": 200
+        }, {
+          "category": "Category #2",
+          "value": 300
+        }, {
+          "category": "Category #3",
+          "value": 599
+        }, {
+          "category": "Category #4",
+          "value": 512
+        }]
+      }];
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "world-low",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartWorldUser;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartWorldUser);
 
 /***/ })
 
