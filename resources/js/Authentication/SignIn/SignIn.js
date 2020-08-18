@@ -49,7 +49,7 @@ class SignIn extends React.Component {
                                                   };
                                                 localStorage.setItem('userData',JSON.stringify(appState));
                                                 this.props.saveUserdata();
-                                                this.props.history.push('/dashboard/default');
+                                                this.props.history.push('/');
                                             }else{
                                                 const errorshow =<Alert  variant='danger'>{res.data.data.message}</Alert>;
                                                 this.setState({error:errorshow})

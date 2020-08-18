@@ -318,7 +318,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
 
           _this.props.saveUserdata();
 
-          _this.props.history.push('/dashboard/default');
+          _this.props.history.push('/');
         } else {
           var errorshow = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Alert"], {
             variant: "danger"
