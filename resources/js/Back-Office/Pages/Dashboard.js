@@ -54,8 +54,8 @@ class Dashboard extends React.Component {
 
     componentDidMount() {
         const data = new FormData()
-        data.append('start_date', '01/07/2020');
-        data.append('end_date', '31/07/2020');
+       // data.append('start_date', '01/07/2020');
+       // data.append('end_date', '31/07/2020');
         axios.post(baseurl+'/api/jobstatus',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
           
             if(res.data.job_status){

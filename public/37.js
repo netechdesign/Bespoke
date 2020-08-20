@@ -137,9 +137,9 @@ var Dashboard = /*#__PURE__*/function (_React$Component2) {
     value: function componentDidMount() {
       var _this3 = this;
 
-      var data = new FormData();
-      data.append('start_date', '01/07/2020');
-      data.append('end_date', '31/07/2020');
+      var data = new FormData(); // data.append('start_date', '01/07/2020');
+      // data.append('end_date', '31/07/2020');
+
       axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/jobstatus', data, {
         headers: {
           'Accept': 'application/json',
