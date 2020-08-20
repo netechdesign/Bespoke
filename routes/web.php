@@ -41,8 +41,11 @@ Route::group(array('prefix' => '/'), function() {
    Route::get('/report', function(){
       return view('welcome');
    }); 
+   Route::get('/report', function(){
+      return view('welcome');
+   }); 
      
-     Route::get('/auth/signin', function(){
+     Route::get('/dashboard', function(){
         return view('welcome');
      }); 
      Route::get('/export', 'Admin\MdsController@export');
