@@ -9,6 +9,7 @@ class Vehicle_mileas extends Model
     //
     protected $fillable = ['sheets_id',
     'registration',
+    'drive_date',
     'start_time',
     'end_time', 
     'start_location',

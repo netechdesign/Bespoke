@@ -1,333 +1,1325 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21],{
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/datatables.net-dt/css/jquery.dataTables.css":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/datatables.net-dt/css/jquery.dataTables.css ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/Demo/Dashboard/Analytics.js":
+/*!**************************************************!*\
+  !*** ./resources/js/Demo/Dashboard/Analytics.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../images/sort_both.png */ "./node_modules/datatables.net-dt/images/sort_both.png");
-var ___CSS_LOADER_URL_IMPORT_1___ = __webpack_require__(/*! ../images/sort_asc.png */ "./node_modules/datatables.net-dt/images/sort_asc.png");
-var ___CSS_LOADER_URL_IMPORT_2___ = __webpack_require__(/*! ../images/sort_desc.png */ "./node_modules/datatables.net-dt/images/sort_desc.png");
-var ___CSS_LOADER_URL_IMPORT_3___ = __webpack_require__(/*! ../images/sort_asc_disabled.png */ "./node_modules/datatables.net-dt/images/sort_asc_disabled.png");
-var ___CSS_LOADER_URL_IMPORT_4___ = __webpack_require__(/*! ../images/sort_desc_disabled.png */ "./node_modules/datatables.net-dt/images/sort_desc_disabled.png");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
-var ___CSS_LOADER_URL_REPLACEMENT_1___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_1___);
-var ___CSS_LOADER_URL_REPLACEMENT_2___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_2___);
-var ___CSS_LOADER_URL_REPLACEMENT_3___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_3___);
-var ___CSS_LOADER_URL_REPLACEMENT_4___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_4___);
-// Module
-exports.push([module.i, "/*\n * Table styles\n */\ntable.dataTable {\n  width: 100%;\n  margin: 0 auto;\n  clear: both;\n  border-collapse: separate;\n  border-spacing: 0;\n  /*\n   * Header and footer styles\n   */\n  /*\n   * Body styles\n   */\n}\ntable.dataTable thead th,\ntable.dataTable tfoot th {\n  font-weight: bold;\n}\ntable.dataTable thead th,\ntable.dataTable thead td {\n  padding: 10px 18px;\n  border-bottom: 1px solid #111111;\n}\ntable.dataTable thead th:active,\ntable.dataTable thead td:active {\n  outline: none;\n}\ntable.dataTable tfoot th,\ntable.dataTable tfoot td {\n  padding: 10px 18px 6px 18px;\n  border-top: 1px solid #111111;\n}\ntable.dataTable thead .sorting,\ntable.dataTable thead .sorting_asc,\ntable.dataTable thead .sorting_desc,\ntable.dataTable thead .sorting_asc_disabled,\ntable.dataTable thead .sorting_desc_disabled {\n  cursor: pointer;\n  *cursor: hand;\n  background-repeat: no-repeat;\n  background-position: center right;\n}\ntable.dataTable thead .sorting {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\ntable.dataTable thead .sorting_asc {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\ntable.dataTable thead .sorting_desc {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n}\ntable.dataTable thead .sorting_asc_disabled {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\n}\ntable.dataTable thead .sorting_desc_disabled {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n}\ntable.dataTable tbody tr {\n  background-color: white;\n}\ntable.dataTable tbody tr.selected {\n  background-color: #b0bed9;\n}\ntable.dataTable tbody th,\ntable.dataTable tbody td {\n  padding: 8px 10px;\n}\ntable.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {\n  border-top: 1px solid #dddddd;\n}\ntable.dataTable.row-border tbody tr:first-child th,\ntable.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th,\ntable.dataTable.display tbody tr:first-child td {\n  border-top: none;\n}\ntable.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {\n  border-top: 1px solid #dddddd;\n  border-right: 1px solid #dddddd;\n}\ntable.dataTable.cell-border tbody tr th:first-child,\ntable.dataTable.cell-border tbody tr td:first-child {\n  border-left: 1px solid #dddddd;\n}\ntable.dataTable.cell-border tbody tr:first-child th,\ntable.dataTable.cell-border tbody tr:first-child td {\n  border-top: none;\n}\ntable.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {\n  background-color: #f9f9f9;\n}\ntable.dataTable.stripe tbody tr.odd.selected, table.dataTable.display tbody tr.odd.selected {\n  background-color: #abb9d3;\n}\ntable.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {\n  background-color: whitesmoke;\n}\ntable.dataTable.hover tbody tr:hover.selected, table.dataTable.display tbody tr:hover.selected {\n  background-color: #a9b7d1;\n}\ntable.dataTable.order-column tbody tr > .sorting_1,\ntable.dataTable.order-column tbody tr > .sorting_2,\ntable.dataTable.order-column tbody tr > .sorting_3, table.dataTable.display tbody tr > .sorting_1,\ntable.dataTable.display tbody tr > .sorting_2,\ntable.dataTable.display tbody tr > .sorting_3 {\n  background-color: #f9f9f9;\n}\ntable.dataTable.order-column tbody tr.selected > .sorting_1,\ntable.dataTable.order-column tbody tr.selected > .sorting_2,\ntable.dataTable.order-column tbody tr.selected > .sorting_3, table.dataTable.display tbody tr.selected > .sorting_1,\ntable.dataTable.display tbody tr.selected > .sorting_2,\ntable.dataTable.display tbody tr.selected > .sorting_3 {\n  background-color: #acbad4;\n}\ntable.dataTable.display tbody tr.odd > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {\n  background-color: #f1f1f1;\n}\ntable.dataTable.display tbody tr.odd > .sorting_2, table.dataTable.order-column.stripe tbody tr.odd > .sorting_2 {\n  background-color: #f3f3f3;\n}\ntable.dataTable.display tbody tr.odd > .sorting_3, table.dataTable.order-column.stripe tbody tr.odd > .sorting_3 {\n  background-color: whitesmoke;\n}\ntable.dataTable.display tbody tr.odd.selected > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_1 {\n  background-color: #a6b3cd;\n}\ntable.dataTable.display tbody tr.odd.selected > .sorting_2, table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_2 {\n  background-color: #a7b5ce;\n}\ntable.dataTable.display tbody tr.odd.selected > .sorting_3, table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_3 {\n  background-color: #a9b6d0;\n}\ntable.dataTable.display tbody tr.even > .sorting_1, table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {\n  background-color: #f9f9f9;\n}\ntable.dataTable.display tbody tr.even > .sorting_2, table.dataTable.order-column.stripe tbody tr.even > .sorting_2 {\n  background-color: #fbfbfb;\n}\ntable.dataTable.display tbody tr.even > .sorting_3, table.dataTable.order-column.stripe tbody tr.even > .sorting_3 {\n  background-color: #fdfdfd;\n}\ntable.dataTable.display tbody tr.even.selected > .sorting_1, table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_1 {\n  background-color: #acbad4;\n}\ntable.dataTable.display tbody tr.even.selected > .sorting_2, table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_2 {\n  background-color: #adbbd6;\n}\ntable.dataTable.display tbody tr.even.selected > .sorting_3, table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_3 {\n  background-color: #afbdd8;\n}\ntable.dataTable.display tbody tr:hover > .sorting_1, table.dataTable.order-column.hover tbody tr:hover > .sorting_1 {\n  background-color: #eaeaea;\n}\ntable.dataTable.display tbody tr:hover > .sorting_2, table.dataTable.order-column.hover tbody tr:hover > .sorting_2 {\n  background-color: #ebebeb;\n}\ntable.dataTable.display tbody tr:hover > .sorting_3, table.dataTable.order-column.hover tbody tr:hover > .sorting_3 {\n  background-color: #eeeeee;\n}\ntable.dataTable.display tbody tr:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_1 {\n  background-color: #a1aec7;\n}\ntable.dataTable.display tbody tr:hover.selected > .sorting_2, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_2 {\n  background-color: #a2afc8;\n}\ntable.dataTable.display tbody tr:hover.selected > .sorting_3, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_3 {\n  background-color: #a4b2cb;\n}\ntable.dataTable.no-footer {\n  border-bottom: 1px solid #111111;\n}\ntable.dataTable.nowrap th, table.dataTable.nowrap td {\n  white-space: nowrap;\n}\ntable.dataTable.compact thead th,\ntable.dataTable.compact thead td {\n  padding: 4px 17px;\n}\ntable.dataTable.compact tfoot th,\ntable.dataTable.compact tfoot td {\n  padding: 4px;\n}\ntable.dataTable.compact tbody th,\ntable.dataTable.compact tbody td {\n  padding: 4px;\n}\ntable.dataTable th.dt-left,\ntable.dataTable td.dt-left {\n  text-align: left;\n}\ntable.dataTable th.dt-center,\ntable.dataTable td.dt-center,\ntable.dataTable td.dataTables_empty {\n  text-align: center;\n}\ntable.dataTable th.dt-right,\ntable.dataTable td.dt-right {\n  text-align: right;\n}\ntable.dataTable th.dt-justify,\ntable.dataTable td.dt-justify {\n  text-align: justify;\n}\ntable.dataTable th.dt-nowrap,\ntable.dataTable td.dt-nowrap {\n  white-space: nowrap;\n}\ntable.dataTable thead th.dt-head-left,\ntable.dataTable thead td.dt-head-left,\ntable.dataTable tfoot th.dt-head-left,\ntable.dataTable tfoot td.dt-head-left {\n  text-align: left;\n}\ntable.dataTable thead th.dt-head-center,\ntable.dataTable thead td.dt-head-center,\ntable.dataTable tfoot th.dt-head-center,\ntable.dataTable tfoot td.dt-head-center {\n  text-align: center;\n}\ntable.dataTable thead th.dt-head-right,\ntable.dataTable thead td.dt-head-right,\ntable.dataTable tfoot th.dt-head-right,\ntable.dataTable tfoot td.dt-head-right {\n  text-align: right;\n}\ntable.dataTable thead th.dt-head-justify,\ntable.dataTable thead td.dt-head-justify,\ntable.dataTable tfoot th.dt-head-justify,\ntable.dataTable tfoot td.dt-head-justify {\n  text-align: justify;\n}\ntable.dataTable thead th.dt-head-nowrap,\ntable.dataTable thead td.dt-head-nowrap,\ntable.dataTable tfoot th.dt-head-nowrap,\ntable.dataTable tfoot td.dt-head-nowrap {\n  white-space: nowrap;\n}\ntable.dataTable tbody th.dt-body-left,\ntable.dataTable tbody td.dt-body-left {\n  text-align: left;\n}\ntable.dataTable tbody th.dt-body-center,\ntable.dataTable tbody td.dt-body-center {\n  text-align: center;\n}\ntable.dataTable tbody th.dt-body-right,\ntable.dataTable tbody td.dt-body-right {\n  text-align: right;\n}\ntable.dataTable tbody th.dt-body-justify,\ntable.dataTable tbody td.dt-body-justify {\n  text-align: justify;\n}\ntable.dataTable tbody th.dt-body-nowrap,\ntable.dataTable tbody td.dt-body-nowrap {\n  white-space: nowrap;\n}\n\ntable.dataTable,\ntable.dataTable th,\ntable.dataTable td {\n  box-sizing: content-box;\n}\n\n/*\n * Control feature layout\n */\n.dataTables_wrapper {\n  position: relative;\n  clear: both;\n  *zoom: 1;\n  zoom: 1;\n}\n.dataTables_wrapper .dataTables_length {\n  float: left;\n}\n.dataTables_wrapper .dataTables_filter {\n  float: right;\n  text-align: right;\n}\n.dataTables_wrapper .dataTables_filter input {\n  margin-left: 0.5em;\n}\n.dataTables_wrapper .dataTables_info {\n  clear: both;\n  float: left;\n  padding-top: 0.755em;\n}\n.dataTables_wrapper .dataTables_paginate {\n  float: right;\n  text-align: right;\n  padding-top: 0.25em;\n}\n.dataTables_wrapper .dataTables_paginate .paginate_button {\n  box-sizing: border-box;\n  display: inline-block;\n  min-width: 1.5em;\n  padding: 0.5em 1em;\n  margin-left: 2px;\n  text-align: center;\n  text-decoration: none !important;\n  cursor: pointer;\n  *cursor: hand;\n  color: #333333 !important;\n  border: 1px solid transparent;\n  border-radius: 2px;\n}\n.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {\n  color: #333333 !important;\n  border: 1px solid #979797;\n  background-color: white;\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, gainsboro));\n  /* Chrome,Safari4+ */\n  background: -webkit-linear-gradient(top, white 0%, gainsboro 100%);\n  /* Chrome10+,Safari5.1+ */\n  background: -moz-linear-gradient(top, white 0%, gainsboro 100%);\n  /* FF3.6+ */\n  background: -ms-linear-gradient(top, white 0%, gainsboro 100%);\n  /* IE10+ */\n  background: -o-linear-gradient(top, white 0%, gainsboro 100%);\n  /* Opera 11.10+ */\n  background: linear-gradient(to bottom, white 0%, gainsboro 100%);\n  /* W3C */\n}\n.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {\n  cursor: default;\n  color: #666 !important;\n  border: 1px solid transparent;\n  background: transparent;\n  box-shadow: none;\n}\n.dataTables_wrapper .dataTables_paginate .paginate_button:hover {\n  color: white !important;\n  border: 1px solid #111111;\n  background-color: #585858;\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111111));\n  /* Chrome,Safari4+ */\n  background: -webkit-linear-gradient(top, #585858 0%, #111111 100%);\n  /* Chrome10+,Safari5.1+ */\n  background: -moz-linear-gradient(top, #585858 0%, #111111 100%);\n  /* FF3.6+ */\n  background: -ms-linear-gradient(top, #585858 0%, #111111 100%);\n  /* IE10+ */\n  background: -o-linear-gradient(top, #585858 0%, #111111 100%);\n  /* Opera 11.10+ */\n  background: linear-gradient(to bottom, #585858 0%, #111111 100%);\n  /* W3C */\n}\n.dataTables_wrapper .dataTables_paginate .paginate_button:active {\n  outline: none;\n  background-color: #2b2b2b;\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c));\n  /* Chrome,Safari4+ */\n  background: -webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);\n  /* Chrome10+,Safari5.1+ */\n  background: -moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);\n  /* FF3.6+ */\n  background: -ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);\n  /* IE10+ */\n  background: -o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);\n  /* Opera 11.10+ */\n  background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);\n  /* W3C */\n  box-shadow: inset 0 0 3px #111;\n}\n.dataTables_wrapper .dataTables_paginate .ellipsis {\n  padding: 0 1em;\n}\n.dataTables_wrapper .dataTables_processing {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 100%;\n  height: 40px;\n  margin-left: -50%;\n  margin-top: -25px;\n  padding-top: 20px;\n  text-align: center;\n  font-size: 1.2em;\n  background-color: white;\n  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.9)), color-stop(75%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0)));\n  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);\n  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);\n  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);\n  background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);\n  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);\n}\n.dataTables_wrapper .dataTables_length,\n.dataTables_wrapper .dataTables_filter,\n.dataTables_wrapper .dataTables_info,\n.dataTables_wrapper .dataTables_processing,\n.dataTables_wrapper .dataTables_paginate {\n  color: #333333;\n}\n.dataTables_wrapper .dataTables_scroll {\n  clear: both;\n}\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {\n  *margin-top: -1px;\n  -webkit-overflow-scrolling: touch;\n}\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > th, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > td, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > th, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > td {\n  vertical-align: middle;\n}\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > th > div.dataTables_sizing,\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > td > div.dataTables_sizing, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > th > div.dataTables_sizing,\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > td > div.dataTables_sizing {\n  height: 0;\n  overflow: hidden;\n  margin: 0 !important;\n  padding: 0 !important;\n}\n.dataTables_wrapper.no-footer .dataTables_scrollBody {\n  border-bottom: 1px solid #111111;\n}\n.dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable,\n.dataTables_wrapper.no-footer div.dataTables_scrollBody > table {\n  border-bottom: none;\n}\n.dataTables_wrapper:after {\n  visibility: hidden;\n  display: block;\n  content: \"\";\n  clear: both;\n  height: 0;\n}\n\n@media screen and (max-width: 767px) {\n  .dataTables_wrapper .dataTables_info,\n  .dataTables_wrapper .dataTables_paginate {\n    float: none;\n    text-align: center;\n  }\n  .dataTables_wrapper .dataTables_paginate {\n    margin-top: 0.5em;\n  }\n}\n@media screen and (max-width: 640px) {\n  .dataTables_wrapper .dataTables_length,\n  .dataTables_wrapper .dataTables_filter {\n    float: none;\n    text-align: center;\n  }\n  .dataTables_wrapper .dataTables_filter {\n    margin-top: 0.5em;\n  }\n}\n", ""]);
-// Exports
-module.exports = exports;
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _Widget_Chart_AmChartAge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Widget/Chart/AmChartAge */ "./resources/js/Demo/Widget/Chart/AmChartAge.js");
+/* harmony import */ var _assets_images_user_user_1_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/images/user/user-1.png */ "./resources/js/assets/images/user/user-1.png");
+/* harmony import */ var _assets_images_user_user_1_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_user_1_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_images_user_user_2_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/images/user/user-2.png */ "./resources/js/assets/images/user/user-2.png");
+/* harmony import */ var _assets_images_user_user_2_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_user_2_png__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Widget_Chart_AmChartStatistics6__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Widget/Chart/AmChartStatistics6 */ "./resources/js/Demo/Widget/Chart/AmChartStatistics6.js");
+/* harmony import */ var _Widget_Chart_AmChartStatistics11__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Widget/Chart/AmChartStatistics11 */ "./resources/js/Demo/Widget/Chart/AmChartStatistics11.js");
+/* harmony import */ var _Widget_Chart_FlotChartTransactions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Widget/Chart/FlotChartTransactions */ "./resources/js/Demo/Widget/Chart/FlotChartTransactions.js");
+/* harmony import */ var _Widget_Chart_FlotChartTransactions1__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Widget/Chart/FlotChartTransactions1 */ "./resources/js/Demo/Widget/Chart/FlotChartTransactions1.js");
+/* harmony import */ var _Widget_Chart_FlotChartTransactions2__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Widget/Chart/FlotChartTransactions2 */ "./resources/js/Demo/Widget/Chart/FlotChartTransactions2.js");
+/* harmony import */ var _Widget_Chart_FlotChartTransactions3__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Widget/Chart/FlotChartTransactions3 */ "./resources/js/Demo/Widget/Chart/FlotChartTransactions3.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/***/ }),
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css":
-/*!************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css ***!
-  \************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "table.dataTable.fixedHeader-floating,\ntable.dataTable.fixedHeader-locked {\n  background-color: white;\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n}\n\ntable.dataTable.fixedHeader-floating {\n  position: fixed !important;\n}\n\ntable.dataTable.fixedHeader-locked {\n  position: absolute !important;\n}\n\n@media print {\n  table.fixedHeader-floating {\n    display: none;\n  }\n}\n", ""]);
-// Exports
-module.exports = exports;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-/***/ }),
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.css":
-/*!**********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.css ***!
-  \**********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,\ntable.dataTable.dtr-inline.collapsed > tbody > tr > th.child,\ntable.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {\n  cursor: default !important;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr > td.child:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr > th.child:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty:before {\n  display: none !important;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr[role=\"row\"] > td.dtr-control,\ntable.dataTable.dtr-inline.collapsed > tbody > tr[role=\"row\"] > th.dtr-control {\n  position: relative;\n  padding-left: 30px;\n  cursor: pointer;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr[role=\"row\"] > td.dtr-control:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr[role=\"row\"] > th.dtr-control:before {\n  top: 50%;\n  left: 5px;\n  height: 14px;\n  width: 14px;\n  margin-top: -9px;\n  display: block;\n  position: absolute;\n  color: white;\n  border: 2px solid white;\n  border-radius: 14px;\n  box-shadow: 0 0 3px #444;\n  box-sizing: content-box;\n  text-align: center;\n  text-indent: 0 !important;\n  font-family: 'Courier New', Courier, monospace;\n  line-height: 14px;\n  content: '+';\n  background-color: #337ab7;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before {\n  content: '-';\n  background-color: #d33333;\n}\ntable.dataTable.dtr-inline.collapsed.compact > tbody > tr > td.dtr-control,\ntable.dataTable.dtr-inline.collapsed.compact > tbody > tr > th.dtr-control {\n  padding-left: 27px;\n}\ntable.dataTable.dtr-inline.collapsed.compact > tbody > tr > td.dtr-control:before,\ntable.dataTable.dtr-inline.collapsed.compact > tbody > tr > th.dtr-control:before {\n  left: 4px;\n  height: 14px;\n  width: 14px;\n  border-radius: 14px;\n  line-height: 14px;\n  text-indent: 3px;\n}\ntable.dataTable.dtr-column > tbody > tr > td.control,\ntable.dataTable.dtr-column > tbody > tr > th.control {\n  position: relative;\n  cursor: pointer;\n}\ntable.dataTable.dtr-column > tbody > tr > td.control:before,\ntable.dataTable.dtr-column > tbody > tr > th.control:before {\n  top: 50%;\n  left: 50%;\n  height: 16px;\n  width: 16px;\n  margin-top: -10px;\n  margin-left: -10px;\n  display: block;\n  position: absolute;\n  color: white;\n  border: 2px solid white;\n  border-radius: 14px;\n  box-shadow: 0 0 3px #444;\n  box-sizing: content-box;\n  text-align: center;\n  text-indent: 0 !important;\n  font-family: 'Courier New', Courier, monospace;\n  line-height: 14px;\n  content: '+';\n  background-color: #337ab7;\n}\ntable.dataTable.dtr-column > tbody > tr.parent td.control:before,\ntable.dataTable.dtr-column > tbody > tr.parent th.control:before {\n  content: '-';\n  background-color: #d33333;\n}\ntable.dataTable > tbody > tr.child {\n  padding: 0.5em 1em;\n}\ntable.dataTable > tbody > tr.child:hover {\n  background: transparent !important;\n}\ntable.dataTable > tbody > tr.child ul.dtr-details {\n  display: inline-block;\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n}\ntable.dataTable > tbody > tr.child ul.dtr-details > li {\n  border-bottom: 1px solid #efefef;\n  padding: 0.5em 0;\n}\ntable.dataTable > tbody > tr.child ul.dtr-details > li:first-child {\n  padding-top: 0;\n}\ntable.dataTable > tbody > tr.child ul.dtr-details > li:last-child {\n  border-bottom: none;\n}\ntable.dataTable > tbody > tr.child span.dtr-title {\n  display: inline-block;\n  min-width: 75px;\n  font-weight: bold;\n}\n\ndiv.dtr-modal {\n  position: fixed;\n  box-sizing: border-box;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  z-index: 100;\n  padding: 10em 1em;\n}\ndiv.dtr-modal div.dtr-modal-display {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  width: 50%;\n  height: 50%;\n  overflow: auto;\n  margin: auto;\n  z-index: 102;\n  overflow: auto;\n  background-color: #f5f5f7;\n  border: 1px solid black;\n  border-radius: 0.5em;\n  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);\n}\ndiv.dtr-modal div.dtr-modal-content {\n  position: relative;\n  padding: 1em;\n}\ndiv.dtr-modal div.dtr-modal-close {\n  position: absolute;\n  top: 6px;\n  right: 6px;\n  width: 22px;\n  height: 22px;\n  border: 1px solid #eaeaea;\n  background-color: #f9f9f9;\n  text-align: center;\n  border-radius: 3px;\n  cursor: pointer;\n  z-index: 12;\n}\ndiv.dtr-modal div.dtr-modal-close:hover {\n  background-color: #eaeaea;\n}\ndiv.dtr-modal div.dtr-modal-background {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 101;\n  background: rgba(0, 0, 0, 0.6);\n}\n\n@media screen and (max-width: 767px) {\n  div.dtr-modal div.dtr-modal-display {\n    width: 95%;\n  }\n}\ndiv.dtr-bs-modal table.table tr:first-child td {\n  border-top: none;\n}\n", ""]);
-// Exports
-module.exports = exports;
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css ***!
-  \********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "/*!\n * FullCalendar v3.4.0 Stylesheet\n * Docs & License: https://fullcalendar.io/\n * (c) 2017 Adam Shaw\n */.fc-icon,body .fc{font-size:1em}.fc-button-group,.fc-icon{display:inline-block}.fc-bg,.fc-row .fc-bgevent-skeleton,.fc-row .fc-highlight-skeleton{bottom:0}.fc-icon,.fc-unselectable{-khtml-user-select:none;-webkit-touch-callout:none}.fc{direction:ltr;text-align:left}.fc-rtl{text-align:right}.fc th,.fc-basic-view td.fc-week-number,.fc-icon,.fc-toolbar{text-align:center}.fc-unthemed .fc-content,.fc-unthemed .fc-divider,.fc-unthemed .fc-list-heading td,.fc-unthemed .fc-list-view,.fc-unthemed .fc-popover,.fc-unthemed .fc-row,.fc-unthemed tbody,.fc-unthemed td,.fc-unthemed th,.fc-unthemed thead{border-color:#ddd}.fc-unthemed .fc-popover{background-color:#fff}.fc-unthemed .fc-divider,.fc-unthemed .fc-list-heading td,.fc-unthemed .fc-popover .fc-header{background:#eee}.fc-unthemed .fc-popover .fc-header .fc-close{color:#666}.fc-unthemed td.fc-today{background:#fcf8e3}.fc-highlight{background:#bce8f1;opacity:.3}.fc-bgevent{background:#8fdf82;opacity:.3}.fc-nonbusiness{background:#d7d7d7}.fc-unthemed .fc-disabled-day{background:#d7d7d7;opacity:.3}.ui-widget .fc-disabled-day{background-image:none}.fc-icon{height:1em;line-height:1em;overflow:hidden;font-family:\"Courier New\",Courier,monospace;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.fc-icon:after{position:relative}.fc-icon-left-single-arrow:after{content:\"\\02039\";font-weight:700;font-size:200%;top:-7%}.fc-icon-right-single-arrow:after{content:\"\\0203A\";font-weight:700;font-size:200%;top:-7%}.fc-icon-left-double-arrow:after{content:\"\\000AB\";font-size:160%;top:-7%}.fc-icon-right-double-arrow:after{content:\"\\000BB\";font-size:160%;top:-7%}.fc-icon-left-triangle:after{content:\"\\25C4\";font-size:125%;top:3%}.fc-icon-right-triangle:after{content:\"\\25BA\";font-size:125%;top:3%}.fc-icon-down-triangle:after{content:\"\\25BC\";font-size:125%;top:2%}.fc-icon-x:after{content:\"\\000D7\";font-size:200%;top:6%}.fc button{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;height:2.1em;padding:0 .6em;font-size:1em;white-space:nowrap;cursor:pointer}.fc button::-moz-focus-inner{margin:0;padding:0}.fc-state-default{border:1px solid;background-color:#f5f5f5;background-image:-moz-linear-gradient(top,#fff,#e6e6e6);background-image:-webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));background-image:-webkit-linear-gradient(top,#fff,#e6e6e6);background-image:-o-linear-gradient(top,#fff,#e6e6e6);background-image:linear-gradient(to bottom,#fff,#e6e6e6);background-repeat:repeat-x;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);color:#333;text-shadow:0 1px 1px rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05)}.fc-state-default.fc-corner-left{border-top-left-radius:4px;border-bottom-left-radius:4px}.fc-state-default.fc-corner-right{border-top-right-radius:4px;border-bottom-right-radius:4px}.fc button .fc-icon{position:relative;top:-.05em;margin:0 .2em;vertical-align:middle}.fc-state-active,.fc-state-disabled,.fc-state-down,.fc-state-hover{color:#333;background-color:#e6e6e6}.fc-state-hover{color:#333;text-decoration:none;background-position:0 -15px;-webkit-transition:background-position .1s linear;-moz-transition:background-position .1s linear;-o-transition:background-position .1s linear;transition:background-position .1s linear}.fc-state-active,.fc-state-down{background-color:#ccc;background-image:none;box-shadow:inset 0 2px 4px rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.05)}.fc-state-disabled{cursor:default;background-image:none;opacity:.65;box-shadow:none}.fc-event.fc-draggable,.fc-event[href],.fc-popover .fc-header .fc-close,a[data-goto]{cursor:pointer}.fc .fc-button-group>*{float:left;margin:0 0 0 -1px}.fc .fc-button-group>:first-child{margin-left:0}.fc-popover{position:absolute;box-shadow:0 2px 6px rgba(0,0,0,.15)}.fc-popover .fc-header{padding:2px 4px}.fc-popover .fc-header .fc-title{margin:0 2px}.fc-ltr .fc-popover .fc-header .fc-title,.fc-rtl .fc-popover .fc-header .fc-close{float:left}.fc-ltr .fc-popover .fc-header .fc-close,.fc-rtl .fc-popover .fc-header .fc-title{float:right}.fc-unthemed .fc-popover{border-width:1px;border-style:solid}.fc-unthemed .fc-popover .fc-header .fc-close{font-size:.9em;margin-top:2px}.fc-popover>.ui-widget-header+.ui-widget-content{border-top:0}.fc-divider{border-style:solid;border-width:1px}hr.fc-divider{height:0;margin:0;padding:0 0 2px;border-width:1px 0}.fc-bg table,.fc-row .fc-bgevent-skeleton table,.fc-row .fc-highlight-skeleton table{height:100%}.fc-clear{clear:both}.fc-bg,.fc-bgevent-skeleton,.fc-helper-skeleton,.fc-highlight-skeleton{position:absolute;top:0;left:0;right:0}.fc table{width:100%;box-sizing:border-box;table-layout:fixed;border-collapse:collapse;border-spacing:0;font-size:1em}.fc td,.fc th{border-style:solid;border-width:1px;padding:0;vertical-align:top}.fc td.fc-today{border-style:double}a[data-goto]:hover{text-decoration:underline}.fc .fc-row{border-style:solid;border-width:0}.fc-row table{border-left:0 hidden transparent;border-right:0 hidden transparent;border-bottom:0 hidden transparent}.fc-row:first-child table{border-top:0 hidden transparent}.fc-row{position:relative}.fc-row .fc-bg{z-index:1}.fc-row .fc-bgevent-skeleton td,.fc-row .fc-highlight-skeleton td{border-color:transparent}.fc-row .fc-bgevent-skeleton{z-index:2}.fc-row .fc-highlight-skeleton{z-index:3}.fc-row .fc-content-skeleton{position:relative;z-index:4;padding-bottom:2px}.fc-row .fc-helper-skeleton{z-index:5}.fc-row .fc-content-skeleton td,.fc-row .fc-helper-skeleton td{background:0 0;border-color:transparent;border-bottom:0}.fc-row .fc-content-skeleton tbody td,.fc-row .fc-helper-skeleton tbody td{border-top:0}.fc-scroller{-webkit-overflow-scrolling:touch}.fc-row.fc-rigid,.fc-time-grid-event{overflow:hidden}.fc-scroller>.fc-day-grid,.fc-scroller>.fc-time-grid{position:relative;width:100%}.fc-event{position:relative;display:block;font-size:.85em;line-height:1.3;border-radius:3px;border:1px solid #3a87ad;font-weight:400}.fc-event,.fc-event-dot{background-color:#3a87ad}.fc-event,.fc-event:hover,.ui-widget .fc-event{color:#fff;text-decoration:none}.fc-not-allowed,.fc-not-allowed .fc-event{cursor:not-allowed}.fc-event .fc-bg{z-index:1;background:#fff;opacity:.25}.fc-event .fc-content{position:relative;z-index:2}.fc-event .fc-resizer{position:absolute;z-index:4;display:none}.fc-event.fc-allow-mouse-resize .fc-resizer,.fc-event.fc-selected .fc-resizer{display:block}.fc-event.fc-selected .fc-resizer:before{content:\"\";position:absolute;z-index:9999;top:50%;left:50%;width:40px;height:40px;margin-left:-20px;margin-top:-20px}.fc-event.fc-selected{z-index:9999!important;box-shadow:0 2px 5px rgba(0,0,0,.2)}.fc-event.fc-selected.fc-dragging{box-shadow:0 2px 7px rgba(0,0,0,.3)}.fc-h-event.fc-selected:before{content:\"\";position:absolute;z-index:3;top:-10px;bottom:-10px;left:0;right:0}.fc-ltr .fc-h-event.fc-not-start,.fc-rtl .fc-h-event.fc-not-end{margin-left:0;border-left-width:0;padding-left:1px;border-top-left-radius:0;border-bottom-left-radius:0}.fc-ltr .fc-h-event.fc-not-end,.fc-rtl .fc-h-event.fc-not-start{margin-right:0;border-right-width:0;padding-right:1px;border-top-right-radius:0;border-bottom-right-radius:0}.fc-ltr .fc-h-event .fc-start-resizer,.fc-rtl .fc-h-event .fc-end-resizer{cursor:w-resize;left:-1px}.fc-ltr .fc-h-event .fc-end-resizer,.fc-rtl .fc-h-event .fc-start-resizer{cursor:e-resize;right:-1px}.fc-h-event.fc-allow-mouse-resize .fc-resizer{width:7px;top:-1px;bottom:-1px}.fc-h-event.fc-selected .fc-resizer{border-radius:4px;border-width:1px;width:6px;height:6px;border-style:solid;border-color:inherit;background:#fff;top:50%;margin-top:-4px}.fc-ltr .fc-h-event.fc-selected .fc-start-resizer,.fc-rtl .fc-h-event.fc-selected .fc-end-resizer{margin-left:-4px}.fc-ltr .fc-h-event.fc-selected .fc-end-resizer,.fc-rtl .fc-h-event.fc-selected .fc-start-resizer{margin-right:-4px}.fc-day-grid-event{margin:1px 2px 0;padding:0 1px}tr:first-child>td>.fc-day-grid-event{margin-top:2px}.fc-day-grid-event.fc-selected:after{content:\"\";position:absolute;z-index:1;top:-1px;right:-1px;bottom:-1px;left:-1px;background:#000;opacity:.25}.fc-day-grid-event .fc-content{white-space:nowrap;overflow:hidden}.fc-day-grid-event .fc-time{font-weight:700}.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer{margin-left:-2px}.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer{margin-right:-2px}a.fc-more{margin:1px 3px;font-size:.85em;cursor:pointer;text-decoration:none}a.fc-more:hover{text-decoration:underline}.fc-limited{display:none}.fc-day-grid .fc-row{z-index:1}.fc-more-popover{z-index:2;width:220px}.fc-more-popover .fc-event-container{padding:10px}.fc-now-indicator{position:absolute;border:0 solid red}.fc-unselectable{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}.fc-toolbar.fc-header-toolbar{margin-bottom:1em}.fc-toolbar.fc-footer-toolbar{margin-top:1em}.fc-toolbar .fc-left{float:left}.fc-toolbar .fc-right{float:right}.fc-toolbar .fc-center{display:inline-block}.fc .fc-toolbar>*>*{float:left;margin-left:.75em}.fc .fc-toolbar>*>:first-child{margin-left:0}.fc-toolbar h2{margin:0}.fc-toolbar button{position:relative}.fc-toolbar .fc-state-hover,.fc-toolbar .ui-state-hover{z-index:2}.fc-toolbar .fc-state-down{z-index:3}.fc-toolbar .fc-state-active,.fc-toolbar .ui-state-active{z-index:4}.fc-toolbar button:focus{z-index:5}.fc-view-container *,.fc-view-container :after,.fc-view-container :before{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}.fc-view,.fc-view>table{position:relative;z-index:1}.fc-basicDay-view .fc-content-skeleton,.fc-basicWeek-view .fc-content-skeleton{padding-bottom:1em}.fc-basic-view .fc-body .fc-row{min-height:4em}.fc-row.fc-rigid .fc-content-skeleton{position:absolute;top:0;left:0;right:0}.fc-day-top.fc-other-month{opacity:.3}.fc-basic-view .fc-day-number,.fc-basic-view .fc-week-number{padding:2px}.fc-basic-view th.fc-day-number,.fc-basic-view th.fc-week-number{padding:0 2px}.fc-ltr .fc-basic-view .fc-day-top .fc-day-number{float:right}.fc-rtl .fc-basic-view .fc-day-top .fc-day-number{float:left}.fc-ltr .fc-basic-view .fc-day-top .fc-week-number{float:left;border-radius:0 0 3px}.fc-rtl .fc-basic-view .fc-day-top .fc-week-number{float:right;border-radius:0 0 0 3px}.fc-basic-view .fc-day-top .fc-week-number{min-width:1.5em;text-align:center;background-color:#f2f2f2;color:grey}.fc-basic-view td.fc-week-number>*{display:inline-block;min-width:1.25em}.fc-agenda-view .fc-day-grid{position:relative;z-index:2}.fc-agenda-view .fc-day-grid .fc-row{min-height:3em}.fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton{padding-bottom:1em}.fc .fc-axis{vertical-align:middle;padding:0 4px;white-space:nowrap}.fc-ltr .fc-axis{text-align:right}.fc-rtl .fc-axis{text-align:left}.ui-widget td.fc-axis{font-weight:400}.fc-time-grid,.fc-time-grid-container{position:relative;z-index:1}.fc-time-grid{min-height:100%}.fc-time-grid table{border:0 hidden transparent}.fc-time-grid>.fc-bg{z-index:1}.fc-time-grid .fc-slats,.fc-time-grid>hr{position:relative;z-index:2}.fc-time-grid .fc-content-col{position:relative}.fc-time-grid .fc-content-skeleton{position:absolute;z-index:3;top:0;left:0;right:0}.fc-time-grid .fc-business-container{position:relative;z-index:1}.fc-time-grid .fc-bgevent-container{position:relative;z-index:2}.fc-time-grid .fc-highlight-container{z-index:3;position:relative}.fc-time-grid .fc-event-container{position:relative;z-index:4}.fc-time-grid .fc-now-indicator-line{z-index:5}.fc-time-grid .fc-helper-container{position:relative;z-index:6}.fc-time-grid .fc-slats td{height:1.5em;border-bottom:0}.fc-time-grid .fc-slats .fc-minor td{border-top-style:dotted}.fc-time-grid .fc-slats .ui-widget-content{background:0 0}.fc-time-grid .fc-highlight{position:absolute;left:0;right:0}.fc-ltr .fc-time-grid .fc-event-container{margin:0 2.5% 0 2px}.fc-rtl .fc-time-grid .fc-event-container{margin:0 2px 0 2.5%}.fc-time-grid .fc-bgevent,.fc-time-grid .fc-event{position:absolute;z-index:1}.fc-time-grid .fc-bgevent{left:0;right:0}.fc-v-event.fc-not-start{border-top-width:0;padding-top:1px;border-top-left-radius:0;border-top-right-radius:0}.fc-v-event.fc-not-end{border-bottom-width:0;padding-bottom:1px;border-bottom-left-radius:0;border-bottom-right-radius:0}.fc-time-grid-event.fc-selected{overflow:visible}.fc-time-grid-event.fc-selected .fc-bg{display:none}.fc-time-grid-event .fc-content{overflow:hidden}.fc-time-grid-event .fc-time,.fc-time-grid-event .fc-title{padding:0 1px}.fc-time-grid-event .fc-time{font-size:.85em;white-space:nowrap}.fc-time-grid-event.fc-short .fc-content{white-space:nowrap}.fc-time-grid-event.fc-short .fc-time,.fc-time-grid-event.fc-short .fc-title{display:inline-block;vertical-align:top}.fc-time-grid-event.fc-short .fc-time span{display:none}.fc-time-grid-event.fc-short .fc-time:before{content:attr(data-start)}.fc-time-grid-event.fc-short .fc-time:after{content:\"\\000A0-\\000A0\"}.fc-time-grid-event.fc-short .fc-title{font-size:.85em;padding:0}.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer{left:0;right:0;bottom:0;height:8px;overflow:hidden;line-height:8px;font-size:11px;font-family:monospace;text-align:center;cursor:s-resize}.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer:after{content:\"=\"}.fc-time-grid-event.fc-selected .fc-resizer{border-radius:5px;border-width:1px;width:8px;height:8px;border-style:solid;border-color:inherit;background:#fff;left:50%;margin-left:-5px;bottom:-5px}.fc-time-grid .fc-now-indicator-line{border-top-width:1px;left:0;right:0}.fc-time-grid .fc-now-indicator-arrow{margin-top:-5px}.fc-ltr .fc-time-grid .fc-now-indicator-arrow{left:0;border-width:5px 0 5px 6px;border-top-color:transparent;border-bottom-color:transparent}.fc-rtl .fc-time-grid .fc-now-indicator-arrow{right:0;border-width:5px 6px 5px 0;border-top-color:transparent;border-bottom-color:transparent}.fc-event-dot{display:inline-block;width:10px;height:10px;border-radius:5px}.fc-rtl .fc-list-view{direction:rtl}.fc-list-view{border-width:1px;border-style:solid}.fc .fc-list-table{table-layout:auto}.fc-list-table td{border-width:1px 0 0;padding:8px 14px}.fc-list-table tr:first-child td{border-top-width:0}.fc-list-heading{border-bottom-width:1px}.fc-list-heading td{font-weight:700}.fc-ltr .fc-list-heading-main{float:left}.fc-ltr .fc-list-heading-alt,.fc-rtl .fc-list-heading-main{float:right}.fc-rtl .fc-list-heading-alt{float:left}.fc-list-item.fc-has-url{cursor:pointer}.fc-list-item:hover td{background-color:#f5f5f5}.fc-list-item-marker,.fc-list-item-time{white-space:nowrap;width:1px}.fc-ltr .fc-list-item-marker{padding-right:0}.fc-rtl .fc-list-item-marker{padding-left:0}.fc-list-item-title a{text-decoration:none;color:inherit}.fc-list-item-title a[href]:hover{text-decoration:underline}.fc-list-empty-wrap2{position:absolute;top:0;left:0;right:0;bottom:0}.fc-list-empty-wrap1{width:100%;height:100%;display:table}.fc-list-empty{display:table-cell;vertical-align:middle;text-align:center}.fc-unthemed .fc-list-empty{background-color:#eee}", ""]);
-// Exports
-module.exports = exports;
 
 
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/nvd3/build/nv.d3.css":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/nvd3/build/nv.d3.css ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "/* nvd3 version 1.8.6 (https://github.com/novus/nvd3) 2017-08-23 */\n.nvd3 .nv-axis {\r\n    pointer-events:none;\r\n    opacity: 1;\r\n}\r\n\r\n.nvd3 .nv-axis path {\r\n    fill: none;\r\n    stroke: #000;\r\n    stroke-opacity: .75;\r\n    shape-rendering: crispEdges;\r\n}\r\n\r\n.nvd3 .nv-axis path.domain {\r\n    stroke-opacity: .75;\r\n}\r\n\r\n.nvd3 .nv-axis.nv-x path.domain {\r\n    stroke-opacity: 0;\r\n}\r\n\r\n.nvd3 .nv-axis line {\r\n    fill: none;\r\n    stroke: #e5e5e5;\r\n    shape-rendering: crispEdges;\r\n}\r\n\r\n.nvd3 .nv-axis .zero line,\r\n    /*this selector may not be necessary*/ .nvd3 .nv-axis line.zero {\r\n    stroke-opacity: .75;\r\n}\r\n\r\n.nvd3 .nv-axis .nv-axisMaxMin text {\r\n    font-weight: bold;\r\n}\r\n\r\n.nvd3 .x  .nv-axis .nv-axisMaxMin text,\r\n.nvd3 .x2 .nv-axis .nv-axisMaxMin text,\r\n.nvd3 .x3 .nv-axis .nv-axisMaxMin text {\r\n    text-anchor: middle;\r\n}\r\n\r\n.nvd3 .nv-axis.nv-disabled {\r\n    opacity: 0;\r\n}\r\n\n.nvd3 .nv-bars rect {\r\n    fill-opacity: .75;\r\n\r\n    transition: fill-opacity 250ms linear;\r\n}\n\r\n.nvd3 .nv-bars rect.hover {\r\n    fill-opacity: 1;\r\n}\r\n\r\n.nvd3 .nv-bars .hover rect {\r\n    fill: lightblue;\r\n}\r\n\r\n.nvd3 .nv-bars text {\r\n    fill: rgba(0,0,0,0);\r\n}\r\n\r\n.nvd3 .nv-bars .hover text {\r\n    fill: rgba(0,0,0,1);\r\n}\r\n\r\n.nvd3 .nv-multibar .nv-groups rect,\r\n.nvd3 .nv-multibarHorizontal .nv-groups rect,\r\n.nvd3 .nv-discretebar .nv-groups rect {\r\n    stroke-opacity: 0;\r\n\r\n    transition: fill-opacity 250ms linear;\r\n}\n\r\n.nvd3 .nv-multibar .nv-groups rect:hover,\r\n.nvd3 .nv-multibarHorizontal .nv-groups rect:hover,\r\n.nvd3 .nv-candlestickBar .nv-ticks rect:hover,\r\n.nvd3 .nv-discretebar .nv-groups rect:hover {\r\n    fill-opacity: 1;\r\n}\r\n\r\n.nvd3 .nv-discretebar .nv-groups text,\r\n.nvd3 .nv-multibarHorizontal .nv-groups text {\r\n    font-weight: bold;\r\n    fill: rgba(0,0,0,1);\r\n    stroke: rgba(0,0,0,0);\r\n}\r\n\n/* boxplot CSS */\n.nvd3 .nv-boxplot circle {\n  fill-opacity: 0.5;\n}\n\n.nvd3 .nv-boxplot circle:hover {\n  fill-opacity: 1;\n}\n\n.nvd3 .nv-boxplot rect:hover {\n  fill-opacity: 1;\n}\n\n.nvd3 line.nv-boxplot-median {\n  stroke: black;\n}\n\n.nv-boxplot-tick:hover {\n  stroke-width: 2.5px;\n}\n/* bullet */\r\n.nvd3.nv-bullet { font: 10px sans-serif; }\r\n.nvd3.nv-bullet .nv-measure { fill-opacity: .8; }\r\n.nvd3.nv-bullet .nv-measure:hover { fill-opacity: 1; }\r\n.nvd3.nv-bullet .nv-marker { stroke: #000; stroke-width: 2px; }\r\n.nvd3.nv-bullet .nv-markerTriangle { stroke: #000; fill: #fff; stroke-width: 1.5px; }\r\n.nvd3.nv-bullet .nv-markerLine { stroke: #000; stroke-width: 1.5px; }\r\n.nvd3.nv-bullet .nv-tick line { stroke: #666; stroke-width: .5px; }\r\n.nvd3.nv-bullet .nv-range.nv-s0 { fill: #eee; }\r\n.nvd3.nv-bullet .nv-range.nv-s1 { fill: #ddd; }\r\n.nvd3.nv-bullet .nv-range.nv-s2 { fill: #ccc; }\r\n.nvd3.nv-bullet .nv-title { font-size: 14px; font-weight: bold; }\r\n.nvd3.nv-bullet .nv-subtitle { fill: #999; }\r\n\r\n.nvd3.nv-bullet .nv-range {\n    fill: #bababa;\r\n    fill-opacity: .4;\r\n}\n\n.nvd3.nv-bullet .nv-range:hover {\r\n    fill-opacity: .7;\r\n}\r\n\n.nvd3.nv-candlestickBar .nv-ticks .nv-tick {\r\n    stroke-width: 1px;\r\n}\r\n\r\n.nvd3.nv-candlestickBar .nv-ticks .nv-tick.hover {\r\n    stroke-width: 2px;\r\n}\r\n\r\n.nvd3.nv-candlestickBar .nv-ticks .nv-tick.positive rect {\r\n    stroke: #2ca02c;\r\n    fill: #2ca02c;\r\n}\r\n\r\n.nvd3.nv-candlestickBar .nv-ticks .nv-tick.negative rect {\r\n    stroke: #d62728;\r\n    fill: #d62728;\r\n}\r\n\r\n.with-transitions .nv-candlestickBar .nv-ticks .nv-tick {\r\n    transition: stroke-width 250ms linear, stroke-opacity 250ms linear;\r\n}\n\r\n.nvd3.nv-candlestickBar .nv-ticks line {\r\n    stroke: #333;\r\n}\r\n\n.nv-force-node {\n    stroke: #fff;\n    stroke-width: 1.5px;\n}\n\n.nv-force-link {\n    stroke: #999;\n    stroke-opacity: .6;\n}\n\n.nv-force-node text {\n    stroke-width: 0px;\n}\n\n.nvd3 .nv-legend .nv-disabled rect {\n    /*fill-opacity: 0;*/\n}\n\n.nvd3 .nv-check-box .nv-box {\n    fill-opacity:0;\n    stroke-width:2;\n}\n\n.nvd3 .nv-check-box .nv-check {\n    fill-opacity:0;\n    stroke-width:4;\n}\n\n.nvd3 .nv-series.nv-disabled .nv-check-box .nv-check {\n    fill-opacity:0;\n    stroke-opacity:0;\n}\n\n.nvd3 .nv-controlsWrap .nv-legend .nv-check-box .nv-check {\n    opacity: 0;\n}\n\n/* line plus bar */\r\n.nvd3.nv-linePlusBar .nv-bar rect {\r\n    fill-opacity: .75;\r\n}\r\n\r\n.nvd3.nv-linePlusBar .nv-bar rect:hover {\r\n    fill-opacity: 1;\r\n}\n.nvd3 .nv-groups path.nv-line {\r\n    fill: none;\r\n}\r\n\r\n.nvd3 .nv-groups path.nv-area {\r\n    stroke: none;\r\n}\r\n\r\n.nvd3.nv-line .nvd3.nv-scatter .nv-groups .nv-point {\r\n    fill-opacity: 0;\r\n    stroke-opacity: 0;\r\n}\r\n\r\n.nvd3.nv-scatter.nv-single-point .nv-groups .nv-point {\r\n    fill-opacity: .5 !important;\r\n    stroke-opacity: .5 !important;\r\n}\r\n\r\n\r\n.with-transitions .nvd3 .nv-groups .nv-point {\r\n    transition: stroke-width 250ms linear, stroke-opacity 250ms linear;\r\n}\n\r\n.nvd3.nv-scatter .nv-groups .nv-point.hover,\r\n.nvd3 .nv-groups .nv-point.hover {\r\n    stroke-width: 7px;\r\n    fill-opacity: .95 !important;\r\n    stroke-opacity: .95 !important;\r\n}\r\n\r\n\r\n.nvd3 .nv-point-paths path {\r\n    stroke: #aaa;\r\n    stroke-opacity: 0;\r\n    fill: #eee;\r\n    fill-opacity: 0;\r\n}\r\n\r\n\r\n.nvd3 .nv-indexLine {\n    cursor: ew-resize;\r\n}\r\n\n/********************\r\n * SVG CSS\r\n */\r\n\r\n/********************\r\n  Default CSS for an svg element nvd3 used\r\n*/\r\nsvg.nvd3-svg {\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n    display: block;\r\n    width:100%;\r\n    height:100%;\r\n}\r\n\r\n/********************\r\n  Box shadow and border radius styling\r\n*/\r\n.nvtooltip.with-3d-shadow, .with-3d-shadow .nvtooltip {\r\n    box-shadow: 0 5px 10px rgba(0,0,0,.2);\n    border-radius: 5px;\n}\r\n\r\n\r\n.nvd3 text {\r\n    font: normal 12px Arial, sans-serif;\r\n}\r\n\r\n.nvd3 .title {\r\n    font: bold 14px Arial, sans-serif;\r\n}\r\n\r\n.nvd3 .nv-background {\r\n    fill: white;\r\n    fill-opacity: 0;\r\n}\r\n\r\n.nvd3.nv-noData {\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/**********\r\n*  Brush\r\n*/\r\n\r\n.nv-brush .extent {\r\n    fill-opacity: .125;\r\n    shape-rendering: crispEdges;\r\n}\r\n\r\n.nv-brush .resize path {\r\n    fill: #eee;\r\n    stroke: #666;\r\n}\r\n\r\n\r\n/**********\r\n*  Legend\r\n*/\r\n\r\n.nvd3 .nv-legend .nv-series {\r\n    cursor: pointer;\r\n}\r\n\r\n.nvd3 .nv-legend .nv-disabled circle {\r\n    fill-opacity: 0;\r\n}\r\n\r\n/* focus */\r\n.nvd3 .nv-brush .extent {\r\n    fill-opacity: 0 !important;\r\n}\r\n\r\n.nvd3 .nv-brushBackground rect {\r\n    stroke: #000;\r\n    stroke-width: .4;\r\n    fill: #fff;\r\n    fill-opacity: .7;\r\n}\r\n\r\n/**********\r\n*  Print\r\n*/\r\n\r\n@media print {\r\n    .nvd3 text {\n        stroke-width: 0;\n        fill-opacity: 1;\n    }\n}\r\n\n.nvd3.nv-ohlcBar .nv-ticks .nv-tick {\r\n    stroke-width: 1px;\r\n}\r\n\r\n.nvd3.nv-ohlcBar .nv-ticks .nv-tick.hover {\r\n    stroke-width: 2px;\r\n}\r\n\r\n.nvd3.nv-ohlcBar .nv-ticks .nv-tick.positive {\r\n    stroke: #2ca02c;\r\n}\r\n\r\n.nvd3.nv-ohlcBar .nv-ticks .nv-tick.negative {\r\n    stroke: #d62728;\r\n}\r\n\r\n\n.nvd3 .background path {\r\n    fill: none;\r\n    stroke: #EEE;\r\n    stroke-opacity: .4;\r\n    shape-rendering: crispEdges;\r\n}\r\n\r\n.nvd3 .foreground path {\r\n    fill: none;\r\n    stroke-opacity: .7;\r\n}\r\n\r\n.nvd3 .nv-parallelCoordinates-brush .extent {\n    fill: #fff;\r\n    fill-opacity: .6;\r\n    stroke: gray;\r\n    shape-rendering: crispEdges;\r\n}\r\n\r\n.nvd3 .nv-parallelCoordinates .hover  {\r\n    fill-opacity: 1;\r\n\tstroke-width: 3px;\r\n}\r\n\r\n\r\n.nvd3 .missingValuesline line {\r\n  fill: none;\r\n  stroke: black;\r\n  stroke-width: 1;\r\n  stroke-opacity: 1;\r\n  stroke-dasharray: 5, 5;\n}\n\n.nvd3.nv-pie path {\r\n    stroke-opacity: 0;\r\n    transition: fill-opacity 250ms linear, stroke-width 250ms linear, stroke-opacity 250ms linear;\r\n}\n\r\n.nvd3.nv-pie .nv-pie-title {\r\n    font-size: 24px;\r\n    fill: rgba(19, 196, 249, 0.59);\r\n}\r\n\r\n.nvd3.nv-pie .nv-slice text {\r\n    stroke: #000;\r\n    stroke-width: 0;\r\n}\r\n\r\n.nvd3.nv-pie path {\r\n    stroke: #fff;\r\n    stroke-width: 1px;\r\n    stroke-opacity: 1;\r\n}\r\n\r\n.nvd3.nv-pie path {\r\n    fill-opacity: .7;\r\n}\n\n.nvd3.nv-pie .hover path {\r\n    fill-opacity: 1;\r\n}\r\n\n.nvd3.nv-pie .nv-label {\n    pointer-events: none;\r\n}\r\n\n.nvd3.nv-pie .nv-label rect {\n    fill-opacity: 0;\r\n    stroke-opacity: 0;\r\n}\r\n\n/* scatter */\r\n.nvd3 .nv-groups .nv-point.hover {\r\n    stroke-width: 20px;\r\n    stroke-opacity: .5;\r\n}\r\n\r\n.nvd3 .nv-scatter .nv-point.hover {\r\n    fill-opacity: 1;\r\n}\n\n.nv-noninteractive {\r\n    pointer-events: none;\r\n}\r\n\r\n.nv-distx, .nv-disty {\r\n    pointer-events: none;\r\n}\r\n\n/* sparkline */\r\n.nvd3.nv-sparkline path {\r\n    fill: none;\r\n}\r\n\r\n.nvd3.nv-sparklineplus g.nv-hoverValue {\r\n    pointer-events: none;\r\n}\r\n\r\n.nvd3.nv-sparklineplus .nv-hoverValue line {\r\n    stroke: #333;\r\n    stroke-width: 1.5px;\r\n}\r\n\r\n.nvd3.nv-sparklineplus,\r\n.nvd3.nv-sparklineplus g {\r\n    pointer-events: all;\r\n}\r\n\r\n.nvd3 .nv-hoverArea {\r\n    fill-opacity: 0;\r\n    stroke-opacity: 0;\r\n}\r\n\r\n.nvd3.nv-sparklineplus .nv-xValue,\r\n.nvd3.nv-sparklineplus .nv-yValue {\r\n    stroke-width: 0;\r\n    font-size: .9em;\r\n    font-weight: normal;\r\n}\r\n\r\n.nvd3.nv-sparklineplus .nv-yValue {\r\n    stroke: #f66;\r\n}\r\n\r\n.nvd3.nv-sparklineplus .nv-maxValue {\r\n    stroke: #2ca02c;\r\n    fill: #2ca02c;\r\n}\r\n\r\n.nvd3.nv-sparklineplus .nv-minValue {\r\n    stroke: #d62728;\r\n    fill: #d62728;\r\n}\r\n\r\n.nvd3.nv-sparklineplus .nv-currentValue {\r\n    font-weight: bold;\r\n    font-size: 1.1em;\r\n}\n/* stacked area */\r\n.nvd3.nv-stackedarea path.nv-area {\r\n    fill-opacity: .7;\r\n    stroke-opacity: 0;\r\n    transition: fill-opacity 250ms linear, stroke-opacity 250ms linear;\r\n}\n\r\n.nvd3.nv-stackedarea path.nv-area.hover {\r\n    fill-opacity: .9;\r\n}\r\n\r\n\r\n.nvd3.nv-stackedarea .nv-groups .nv-point {\r\n    stroke-opacity: 0;\r\n    fill-opacity: 0;\r\n}\n\n.nvtooltip {\n    position: absolute;\r\n    background-color: rgba(255,255,255,1.0);\r\n    color: rgba(0,0,0,1.0);\r\n    padding: 1px;\r\n    border: 1px solid rgba(0,0,0,.2);\r\n    z-index: 10000;\r\n    display: block;\r\n\r\n    font-family: Arial, sans-serif;\r\n    font-size: 13px;\r\n    text-align: left;\r\n    pointer-events: none;\r\n\r\n    white-space: nowrap;\r\n\r\n    -webkit-user-select: none;\r\n\r\n       -moz-user-select: none;\r\n\r\n        -ms-user-select: none;\r\n\r\n            user-select: none;\n}\n\r\n.nvtooltip {\r\n    background: rgba(255,255,255, 0.8);\r\n    border: 1px solid rgba(0,0,0,0.5);\r\n    border-radius: 4px;\r\n}\r\n\r\n/*Give tooltips that old fade in transition by\r\n    putting a \"with-transitions\" class on the container div.\r\n*/\r\n.nvtooltip.with-transitions, .with-transitions .nvtooltip {\r\n    transition: opacity 50ms linear;\r\n\n    transition-delay: 200ms;\n}\n\r\n.nvtooltip.x-nvtooltip,\r\n.nvtooltip.y-nvtooltip {\r\n    padding: 8px;\r\n}\r\n\r\n.nvtooltip h3 {\r\n    margin: 0;\r\n    padding: 4px 14px;\r\n    line-height: 18px;\r\n    font-weight: normal;\r\n    background-color: rgba(247,247,247,0.75);\r\n    color: rgba(0,0,0,1.0);\r\n    text-align: center;\r\n\r\n    border-bottom: 1px solid #ebebeb;\r\n\r\n    border-radius: 5px 5px 0 0;\n}\r\n\r\n.nvtooltip p {\r\n    margin: 0;\r\n    padding: 5px 14px;\r\n    text-align: center;\r\n}\r\n\r\n.nvtooltip span {\r\n    display: inline-block;\r\n    margin: 2px 0;\r\n}\r\n\r\n.nvtooltip table {\r\n    margin: 6px;\r\n    border-spacing:0;\r\n}\r\n\r\n\r\n.nvtooltip table td {\r\n    padding: 2px 9px 2px 0;\r\n    vertical-align: middle;\r\n}\r\n\r\n.nvtooltip table td.key {\r\n    font-weight: normal;\r\n}\n\n.nvtooltip table td.key.total {\r\n    font-weight: bold;\r\n}\r\n\n.nvtooltip table td.value {\n    text-align: right;\r\n    font-weight: bold;\r\n}\r\n\r\n.nvtooltip table td.percent {\r\n    color: darkgray;\r\n}\r\n\r\n.nvtooltip table tr.highlight td {\r\n    padding: 1px 9px 1px 0;\r\n    border-bottom-style: solid;\r\n    border-bottom-width: 1px;\r\n    border-top-style: solid;\r\n    border-top-width: 1px;\r\n}\r\n\r\n.nvtooltip table td.legend-color-guide div {\r\n    width: 8px;\r\n    height: 8px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.nvtooltip table td.legend-color-guide div {\r\n    width: 12px;\r\n    height: 12px;\r\n    border: 1px solid #999;\r\n}\r\n\r\n.nvtooltip .footer {\r\n    padding: 3px;\r\n    text-align: center;\r\n}\r\n\r\n.nvtooltip-pending-removal {\r\n    pointer-events: none;\r\n    display: none;\r\n}\r\n\r\n\r\n/****\r\nInteractive Layer\r\n*/\r\n.nvd3 .nv-interactiveGuideLine {\r\n    pointer-events:none;\r\n}\n\n.nvd3 line.nv-guideline {\r\n    stroke: #ccc;\r\n}\r\n", ""]);
-// Exports
-module.exports = exports;
 
 
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/pnotify/dist/PNotifyBrightTheme.css":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/pnotify/dist/PNotifyBrightTheme.css ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "[ui-pnotify].ui-pnotify .brighttheme{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}[ui-pnotify].ui-pnotify .brighttheme.ui-pnotify-container{padding:1.3rem}[ui-pnotify].ui-pnotify-with-icon .brighttheme .ui-pnotify-confirm,[ui-pnotify].ui-pnotify-with-icon .brighttheme .ui-pnotify-text,[ui-pnotify].ui-pnotify-with-icon .brighttheme .ui-pnotify-title{margin-left:1.8rem}[dir=rtl] [ui-pnotify].ui-pnotify-with-icon .brighttheme .ui-pnotify-confirm,[dir=rtl] [ui-pnotify].ui-pnotify-with-icon .brighttheme .ui-pnotify-text,[dir=rtl] [ui-pnotify].ui-pnotify-with-icon .brighttheme .ui-pnotify-title{margin-right:1.8rem;margin-left:0}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-title{font-size:1.2rem;line-height:1.4rem;margin-top:-.2rem;margin-bottom:1rem}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-text{font-size:1rem;line-height:1.2rem;margin-top:0}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-icon{line-height:1}[ui-pnotify].ui-pnotify .brighttheme-notice{background-color:#ffffa2;border:0 solid #ff0}[ui-pnotify].ui-pnotify .brighttheme-notice div,[ui-pnotify].ui-pnotify .brighttheme-notice h4{color:#4f4f00}[ui-pnotify].ui-pnotify .brighttheme-info{background-color:#8fcedd;border:0 solid #0286a5}[ui-pnotify].ui-pnotify .brighttheme-info div,[ui-pnotify].ui-pnotify .brighttheme-info h4{color:#012831}[ui-pnotify].ui-pnotify .brighttheme-success{background-color:#aff29a;border:0 solid #35db00}[ui-pnotify].ui-pnotify .brighttheme-success div,[ui-pnotify].ui-pnotify .brighttheme-success h4{color:#104300}[ui-pnotify].ui-pnotify .brighttheme-error{background-color:#ffaba2;background-image:repeating-linear-gradient(135deg,transparent,transparent 35px,rgba(255,255,255,.3) 35px,rgba(255,255,255,.3) 70px);border:0 solid #ff1800}[ui-pnotify].ui-pnotify .brighttheme-error div,[ui-pnotify].ui-pnotify .brighttheme-error h4{color:#4f0800}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-closer,[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-sticker{font-size:1rem;line-height:1.2rem}[ui-pnotify].ui-pnotify .brighttheme-icon-closer,[ui-pnotify].ui-pnotify .brighttheme-icon-error,[ui-pnotify].ui-pnotify .brighttheme-icon-info,[ui-pnotify].ui-pnotify .brighttheme-icon-notice,[ui-pnotify].ui-pnotify .brighttheme-icon-sticker,[ui-pnotify].ui-pnotify .brighttheme-icon-success{position:relative;width:1rem;height:1rem;font-size:1rem;font-weight:700;line-height:1rem;font-family:\"Courier New\",Courier,monospace;border-radius:50%}[ui-pnotify].ui-pnotify .brighttheme-icon-closer:after,[ui-pnotify].ui-pnotify .brighttheme-icon-info:after,[ui-pnotify].ui-pnotify .brighttheme-icon-notice:after,[ui-pnotify].ui-pnotify .brighttheme-icon-sticker:after,[ui-pnotify].ui-pnotify .brighttheme-icon-success:after{position:absolute;top:0;left:.2rem}[ui-pnotify].ui-pnotify .brighttheme-icon-notice{background-color:#2e2e00;color:#ffffa2}[ui-pnotify].ui-pnotify .brighttheme-icon-notice:after{content:\"!\"}[ui-pnotify].ui-pnotify .brighttheme-icon-info{background-color:#012831;color:#8fcedd}[ui-pnotify].ui-pnotify .brighttheme-icon-info:after{content:\"i\"}[ui-pnotify].ui-pnotify .brighttheme-icon-success{background-color:#104300;color:#aff29a}[ui-pnotify].ui-pnotify .brighttheme-icon-success:after{content:\"\\002713\"}[ui-pnotify].ui-pnotify .brighttheme-icon-error{width:0;height:0;font-size:0;line-height:0;border-radius:0;border-left:.6rem solid transparent;border-right:.6rem solid transparent;border-bottom:1.2rem solid #2e0400;color:#ffaba2}[ui-pnotify].ui-pnotify .brighttheme-icon-error:after{position:absolute;top:.1rem;left:-.25rem;font-size:.9rem;font-weight:700;line-height:1.4rem;font-family:\"Courier New\",Courier,monospace;content:\"!\"}[ui-pnotify].ui-pnotify .brighttheme-icon-closer,[ui-pnotify].ui-pnotify .brighttheme-icon-sticker{display:inline-block}[ui-pnotify].ui-pnotify .brighttheme-icon-closer:after{content:\"\\002715\"}[ui-pnotify].ui-pnotify .brighttheme-icon-sticker:after{top:-1px;content:\"\\002016\"}[ui-pnotify].ui-pnotify .brighttheme-icon-sticker.brighttheme-icon-stuck:after{content:\"\\00003E\"}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-confirm{margin-top:1rem}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-prompt-bar{margin-bottom:1rem}[ui-pnotify].ui-pnotify .brighttheme .ui-pnotify-action-button{text-transform:uppercase;font-weight:700;padding:.4rem 1rem;border:none;background:0 0;cursor:pointer}[ui-pnotify].ui-pnotify .brighttheme-notice .ui-pnotify-action-button.brighttheme-primary{background-color:#ff0;color:#4f4f00}[ui-pnotify].ui-pnotify .brighttheme-info .ui-pnotify-action-button.brighttheme-primary{background-color:#0286a5;color:#012831}[ui-pnotify].ui-pnotify .brighttheme-success .ui-pnotify-action-button.brighttheme-primary{background-color:#35db00;color:#104300}[ui-pnotify].ui-pnotify .brighttheme-error .ui-pnotify-action-button.brighttheme-primary{background-color:#ff1800;color:#4f0800}", ""]);
-// Exports
-module.exports = exports;
 
 
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/rc-slider/assets/index.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/rc-slider/assets/index.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, ".rc-slider {\n  position: relative;\n  height: 14px;\n  padding: 5px 0;\n  width: 100%;\n  border-radius: 6px;\n  -ms-touch-action: none;\n      touch-action: none;\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n.rc-slider * {\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n.rc-slider-rail {\n  position: absolute;\n  width: 100%;\n  background-color: #e9e9e9;\n  height: 4px;\n  border-radius: 6px;\n}\n.rc-slider-track {\n  position: absolute;\n  left: 0;\n  height: 4px;\n  border-radius: 6px;\n  background-color: #abe2fb;\n}\n.rc-slider-handle {\n  position: absolute;\n  width: 14px;\n  height: 14px;\n  cursor: pointer;\n  cursor: -webkit-grab;\n  margin-top: -5px;\n  cursor: grab;\n  border-radius: 50%;\n  border: solid 2px #96dbfa;\n  background-color: #fff;\n  -ms-touch-action: pan-x;\n      touch-action: pan-x;\n}\n.rc-slider-handle:focus {\n  border-color: #57c5f7;\n  box-shadow: 0 0 0 5px #96dbfa;\n  outline: none;\n}\n.rc-slider-handle-click-focused:focus {\n  border-color: #96dbfa;\n  box-shadow: unset;\n}\n.rc-slider-handle:hover {\n  border-color: #57c5f7;\n}\n.rc-slider-handle:active {\n  border-color: #57c5f7;\n  box-shadow: 0 0 5px #57c5f7;\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n.rc-slider-mark {\n  position: absolute;\n  top: 18px;\n  left: 0;\n  width: 100%;\n  font-size: 12px;\n}\n.rc-slider-mark-text {\n  position: absolute;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  cursor: pointer;\n  color: #999;\n}\n.rc-slider-mark-text-active {\n  color: #666;\n}\n.rc-slider-step {\n  position: absolute;\n  width: 100%;\n  height: 4px;\n  background: transparent;\n}\n.rc-slider-dot {\n  position: absolute;\n  bottom: -2px;\n  margin-left: -4px;\n  width: 8px;\n  height: 8px;\n  border: 2px solid #e9e9e9;\n  background-color: #fff;\n  cursor: pointer;\n  border-radius: 50%;\n  vertical-align: middle;\n}\n.rc-slider-dot-active {\n  border-color: #96dbfa;\n}\n.rc-slider-dot-reverse {\n  margin-left: 0;\n  margin-right: -4px;\n}\n.rc-slider-disabled {\n  background-color: #e9e9e9;\n}\n.rc-slider-disabled .rc-slider-track {\n  background-color: #ccc;\n}\n.rc-slider-disabled .rc-slider-handle,\n.rc-slider-disabled .rc-slider-dot {\n  border-color: #ccc;\n  box-shadow: none;\n  background-color: #fff;\n  cursor: not-allowed;\n}\n.rc-slider-disabled .rc-slider-mark-text,\n.rc-slider-disabled .rc-slider-dot {\n  cursor: not-allowed !important;\n}\n.rc-slider-vertical {\n  width: 14px;\n  height: 100%;\n  padding: 0 5px;\n}\n.rc-slider-vertical .rc-slider-rail {\n  height: 100%;\n  width: 4px;\n}\n.rc-slider-vertical .rc-slider-track {\n  left: 5px;\n  bottom: 0;\n  width: 4px;\n}\n.rc-slider-vertical .rc-slider-handle {\n  margin-left: -5px;\n  -ms-touch-action: pan-y;\n      touch-action: pan-y;\n}\n.rc-slider-vertical .rc-slider-mark {\n  top: 0;\n  left: 18px;\n  height: 100%;\n}\n.rc-slider-vertical .rc-slider-step {\n  height: 100%;\n  width: 4px;\n}\n.rc-slider-vertical .rc-slider-dot {\n  left: 2px;\n  margin-bottom: -4px;\n}\n.rc-slider-vertical .rc-slider-dot:first-child {\n  margin-bottom: -4px;\n}\n.rc-slider-vertical .rc-slider-dot:last-child {\n  margin-bottom: -4px;\n}\n.rc-slider-tooltip-zoom-down-enter,\n.rc-slider-tooltip-zoom-down-appear {\n  animation-duration: .3s;\n  animation-fill-mode: both;\n  display: block !important;\n  animation-play-state: paused;\n}\n.rc-slider-tooltip-zoom-down-leave {\n  animation-duration: .3s;\n  animation-fill-mode: both;\n  display: block !important;\n  animation-play-state: paused;\n}\n.rc-slider-tooltip-zoom-down-enter.rc-slider-tooltip-zoom-down-enter-active,\n.rc-slider-tooltip-zoom-down-appear.rc-slider-tooltip-zoom-down-appear-active {\n  animation-name: rcSliderTooltipZoomDownIn;\n  animation-play-state: running;\n}\n.rc-slider-tooltip-zoom-down-leave.rc-slider-tooltip-zoom-down-leave-active {\n  animation-name: rcSliderTooltipZoomDownOut;\n  animation-play-state: running;\n}\n.rc-slider-tooltip-zoom-down-enter,\n.rc-slider-tooltip-zoom-down-appear {\n  transform: scale(0, 0);\n  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n}\n.rc-slider-tooltip-zoom-down-leave {\n  animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);\n}\n@keyframes rcSliderTooltipZoomDownIn {\n  0% {\n    opacity: 0;\n    transform-origin: 50% 100%;\n    transform: scale(0, 0);\n  }\n  100% {\n    transform-origin: 50% 100%;\n    transform: scale(1, 1);\n  }\n}\n@keyframes rcSliderTooltipZoomDownOut {\n  0% {\n    transform-origin: 50% 100%;\n    transform: scale(1, 1);\n  }\n  100% {\n    opacity: 0;\n    transform-origin: 50% 100%;\n    transform: scale(0, 0);\n  }\n}\n.rc-slider-tooltip {\n  position: absolute;\n  left: -9999px;\n  top: -9999px;\n  visibility: visible;\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n.rc-slider-tooltip * {\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n.rc-slider-tooltip-hidden {\n  display: none;\n}\n.rc-slider-tooltip-placement-top {\n  padding: 4px 0 8px 0;\n}\n.rc-slider-tooltip-inner {\n  padding: 6px 2px;\n  min-width: 24px;\n  height: 24px;\n  font-size: 12px;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  background-color: #6c6c6c;\n  border-radius: 6px;\n  box-shadow: 0 0 4px #d9d9d9;\n}\n.rc-slider-tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.rc-slider-tooltip-placement-top .rc-slider-tooltip-arrow {\n  bottom: 4px;\n  left: 50%;\n  margin-left: -4px;\n  border-width: 4px 4px 0;\n  border-top-color: #6c6c6c;\n}\n", ""]);
-// Exports
-module.exports = exports;
 
 
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/rc-tooltip/assets/bootstrap.css":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/rc-tooltip/assets/bootstrap.css ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, ".rc-tooltip.rc-tooltip-zoom-enter,\n.rc-tooltip.rc-tooltip-zoom-leave {\n  display: block;\n}\n.rc-tooltip-zoom-enter,\n.rc-tooltip-zoom-appear {\n  opacity: 0;\n  animation-duration: 0.3s;\n  animation-fill-mode: both;\n  animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);\n  animation-play-state: paused;\n}\n.rc-tooltip-zoom-leave {\n  animation-duration: 0.3s;\n  animation-fill-mode: both;\n  animation-timing-function: cubic-bezier(0.6, -0.3, 0.74, 0.05);\n  animation-play-state: paused;\n}\n.rc-tooltip-zoom-enter.rc-tooltip-zoom-enter-active,\n.rc-tooltip-zoom-appear.rc-tooltip-zoom-appear-active {\n  animation-name: rcToolTipZoomIn;\n  animation-play-state: running;\n}\n.rc-tooltip-zoom-leave.rc-tooltip-zoom-leave-active {\n  animation-name: rcToolTipZoomOut;\n  animation-play-state: running;\n}\n@keyframes rcToolTipZoomIn {\n  0% {\n    opacity: 0;\n    transform-origin: 50% 50%;\n    transform: scale(0, 0);\n  }\n  100% {\n    opacity: 1;\n    transform-origin: 50% 50%;\n    transform: scale(1, 1);\n  }\n}\n@keyframes rcToolTipZoomOut {\n  0% {\n    opacity: 1;\n    transform-origin: 50% 50%;\n    transform: scale(1, 1);\n  }\n  100% {\n    opacity: 0;\n    transform-origin: 50% 50%;\n    transform: scale(0, 0);\n  }\n}\n.rc-tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  visibility: visible;\n  font-size: 12px;\n  line-height: 1.5;\n  opacity: 0.9;\n}\n.rc-tooltip-hidden {\n  display: none;\n}\n.rc-tooltip-placement-top,\n.rc-tooltip-placement-topLeft,\n.rc-tooltip-placement-topRight {\n  padding: 5px 0 9px 0;\n}\n.rc-tooltip-placement-right,\n.rc-tooltip-placement-rightTop,\n.rc-tooltip-placement-rightBottom {\n  padding: 0 5px 0 9px;\n}\n.rc-tooltip-placement-bottom,\n.rc-tooltip-placement-bottomLeft,\n.rc-tooltip-placement-bottomRight {\n  padding: 9px 0 5px 0;\n}\n.rc-tooltip-placement-left,\n.rc-tooltip-placement-leftTop,\n.rc-tooltip-placement-leftBottom {\n  padding: 0 9px 0 5px;\n}\n.rc-tooltip-inner {\n  padding: 8px 10px;\n  color: #fff;\n  text-align: left;\n  text-decoration: none;\n  background-color: #373737;\n  border-radius: 6px;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);\n  min-height: 34px;\n}\n.rc-tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.rc-tooltip-placement-top .rc-tooltip-arrow,\n.rc-tooltip-placement-topLeft .rc-tooltip-arrow,\n.rc-tooltip-placement-topRight .rc-tooltip-arrow {\n  bottom: 4px;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #373737;\n}\n.rc-tooltip-placement-top .rc-tooltip-arrow {\n  left: 50%;\n}\n.rc-tooltip-placement-topLeft .rc-tooltip-arrow {\n  left: 15%;\n}\n.rc-tooltip-placement-topRight .rc-tooltip-arrow {\n  right: 15%;\n}\n.rc-tooltip-placement-right .rc-tooltip-arrow,\n.rc-tooltip-placement-rightTop .rc-tooltip-arrow,\n.rc-tooltip-placement-rightBottom .rc-tooltip-arrow {\n  left: 4px;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #373737;\n}\n.rc-tooltip-placement-right .rc-tooltip-arrow {\n  top: 50%;\n}\n.rc-tooltip-placement-rightTop .rc-tooltip-arrow {\n  top: 15%;\n  margin-top: 0;\n}\n.rc-tooltip-placement-rightBottom .rc-tooltip-arrow {\n  bottom: 15%;\n}\n.rc-tooltip-placement-left .rc-tooltip-arrow,\n.rc-tooltip-placement-leftTop .rc-tooltip-arrow,\n.rc-tooltip-placement-leftBottom .rc-tooltip-arrow {\n  right: 4px;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #373737;\n}\n.rc-tooltip-placement-left .rc-tooltip-arrow {\n  top: 50%;\n}\n.rc-tooltip-placement-leftTop .rc-tooltip-arrow {\n  top: 15%;\n  margin-top: 0;\n}\n.rc-tooltip-placement-leftBottom .rc-tooltip-arrow {\n  bottom: 15%;\n}\n.rc-tooltip-placement-bottom .rc-tooltip-arrow,\n.rc-tooltip-placement-bottomLeft .rc-tooltip-arrow,\n.rc-tooltip-placement-bottomRight .rc-tooltip-arrow {\n  top: 4px;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #373737;\n}\n.rc-tooltip-placement-bottom .rc-tooltip-arrow {\n  left: 50%;\n}\n.rc-tooltip-placement-bottomLeft .rc-tooltip-arrow {\n  left: 15%;\n}\n.rc-tooltip-placement-bottomRight .rc-tooltip-arrow {\n  right: 15%;\n}\n", ""]);
-// Exports
-module.exports = exports;
 
 
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/react-perfect-scrollbar/dist/css/styles.css":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/react-perfect-scrollbar/dist/css/styles.css ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "/*\n * Container style\n */\n.ps {\n  overflow: hidden !important;\n  overflow-anchor: none;\n  -ms-overflow-style: none;\n  touch-action: auto;\n  -ms-touch-action: auto;\n}\n\n/*\n * Scrollbar rail styles\n */\n.ps__rail-x {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  height: 15px;\n  /* there must be 'bottom' or 'top' for ps__rail-x */\n  bottom: 0px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n\n.ps__rail-y {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  width: 15px;\n  /* there must be 'right' or 'left' for ps__rail-y */\n  right: 0;\n  /* please don't change 'position' */\n  position: absolute;\n}\n\n.ps--active-x > .ps__rail-x,\n.ps--active-y > .ps__rail-y {\n  display: block;\n  background-color: transparent;\n}\n\n.ps:hover > .ps__rail-x,\n.ps:hover > .ps__rail-y,\n.ps--focus > .ps__rail-x,\n.ps--focus > .ps__rail-y,\n.ps--scrolling-x > .ps__rail-x,\n.ps--scrolling-y > .ps__rail-y {\n  opacity: 0.6;\n}\n\n.ps .ps__rail-x:hover,\n.ps .ps__rail-y:hover,\n.ps .ps__rail-x:focus,\n.ps .ps__rail-y:focus,\n.ps .ps__rail-x.ps--clicking,\n.ps .ps__rail-y.ps--clicking {\n  background-color: #eee;\n  opacity: 0.9;\n}\n\n/*\n * Scrollbar thumb styles\n */\n.ps__thumb-x {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, height .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\n  height: 6px;\n  /* there must be 'bottom' for ps__thumb-x */\n  bottom: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n\n.ps__thumb-y {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, width .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\n  width: 6px;\n  /* there must be 'right' for ps__thumb-y */\n  right: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n\n.ps__rail-x:hover > .ps__thumb-x,\n.ps__rail-x:focus > .ps__thumb-x,\n.ps__rail-x.ps--clicking .ps__thumb-x {\n  background-color: #999;\n  height: 11px;\n}\n\n.ps__rail-y:hover > .ps__thumb-y,\n.ps__rail-y:focus > .ps__thumb-y,\n.ps__rail-y.ps--clicking .ps__thumb-y {\n  background-color: #999;\n  width: 11px;\n}\n\n/* MS supports */\n@supports (-ms-overflow-style: none) {\n  .ps {\n    overflow: auto !important;\n  }\n}\n\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n  .ps {\n    overflow: auto !important;\n  }\n}\n.scrollbar-container {\n  position: relative;\n  height: 100%; }", ""]);
-// Exports
-module.exports = exports;
 
 
-/***/ }),
+var Analytics = /*#__PURE__*/function (_React$Component) {
+  _inherits(Analytics, _React$Component);
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/slick-carousel/slick/slick-theme.css":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/slick-carousel/slick/slick-theme.css ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+  var _super = _createSuper(Analytics);
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ./ajax-loader.gif */ "./node_modules/slick-carousel/slick/ajax-loader.gif");
-var ___CSS_LOADER_URL_IMPORT_1___ = __webpack_require__(/*! ./fonts/slick.eot */ "./node_modules/slick-carousel/slick/fonts/slick.eot");
-var ___CSS_LOADER_URL_IMPORT_2___ = __webpack_require__(/*! ./fonts/slick.woff */ "./node_modules/slick-carousel/slick/fonts/slick.woff");
-var ___CSS_LOADER_URL_IMPORT_3___ = __webpack_require__(/*! ./fonts/slick.ttf */ "./node_modules/slick-carousel/slick/fonts/slick.ttf");
-var ___CSS_LOADER_URL_IMPORT_4___ = __webpack_require__(/*! ./fonts/slick.svg */ "./node_modules/slick-carousel/slick/fonts/slick.svg");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
-var ___CSS_LOADER_URL_REPLACEMENT_1___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_1___);
-var ___CSS_LOADER_URL_REPLACEMENT_2___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_1___, { hash: "?#iefix" });
-var ___CSS_LOADER_URL_REPLACEMENT_3___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_2___);
-var ___CSS_LOADER_URL_REPLACEMENT_4___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_3___);
-var ___CSS_LOADER_URL_REPLACEMENT_5___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_4___, { hash: "#slick" });
-// Module
-exports.push([module.i, "@charset 'UTF-8';\n/* Slider */\n.slick-loading .slick-list\n{\n    background: #fff url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") center center no-repeat;\n}\n\n/* Icons */\n@font-face\n{\n    font-family: 'slick';\n    font-weight: normal;\n    font-style: normal;\n\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") format('embedded-opentype'), url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ") format('woff'), url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ") format('truetype'), url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ") format('svg');\n}\n/* Arrows */\n.slick-prev,\n.slick-next\n{\n    font-size: 0;\n    line-height: 0;\n\n    position: absolute;\n    top: 50%;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 0;\n    -webkit-transform: translate(0, -50%);\n    -ms-transform: translate(0, -50%);\n    transform: translate(0, -50%);\n\n    cursor: pointer;\n\n    color: transparent;\n    border: none;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover,\n.slick-prev:focus,\n.slick-next:hover,\n.slick-next:focus\n{\n    color: transparent;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover:before,\n.slick-prev:focus:before,\n.slick-next:hover:before,\n.slick-next:focus:before\n{\n    opacity: 1;\n}\n.slick-prev.slick-disabled:before,\n.slick-next.slick-disabled:before\n{\n    opacity: .25;\n}\n\n.slick-prev:before,\n.slick-next:before\n{\n    font-family: 'slick';\n    font-size: 20px;\n    line-height: 1;\n\n    opacity: .75;\n    color: white;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n.slick-prev\n{\n    left: -25px;\n}\n[dir='rtl'] .slick-prev\n{\n    right: -25px;\n    left: auto;\n}\n.slick-prev:before\n{\n    content: '←';\n}\n[dir='rtl'] .slick-prev:before\n{\n    content: '→';\n}\n\n.slick-next\n{\n    right: -25px;\n}\n[dir='rtl'] .slick-next\n{\n    right: auto;\n    left: -25px;\n}\n.slick-next:before\n{\n    content: '→';\n}\n[dir='rtl'] .slick-next:before\n{\n    content: '←';\n}\n\n/* Dots */\n.slick-dotted.slick-slider\n{\n    margin-bottom: 30px;\n}\n\n.slick-dots\n{\n    position: absolute;\n    bottom: -25px;\n\n    display: block;\n\n    width: 100%;\n    padding: 0;\n    margin: 0;\n\n    list-style: none;\n\n    text-align: center;\n}\n.slick-dots li\n{\n    position: relative;\n\n    display: inline-block;\n\n    width: 20px;\n    height: 20px;\n    margin: 0 5px;\n    padding: 0;\n\n    cursor: pointer;\n}\n.slick-dots li button\n{\n    font-size: 0;\n    line-height: 0;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 5px;\n\n    cursor: pointer;\n\n    color: transparent;\n    border: 0;\n    outline: none;\n    background: transparent;\n}\n.slick-dots li button:hover,\n.slick-dots li button:focus\n{\n    outline: none;\n}\n.slick-dots li button:hover:before,\n.slick-dots li button:focus:before\n{\n    opacity: 1;\n}\n.slick-dots li button:before\n{\n    font-family: 'slick';\n    font-size: 6px;\n    line-height: 20px;\n\n    position: absolute;\n    top: 0;\n    left: 0;\n\n    width: 20px;\n    height: 20px;\n\n    content: '•';\n    text-align: center;\n\n    opacity: .25;\n    color: black;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n.slick-dots li.slick-active button:before\n{\n    opacity: .75;\n    color: black;\n}\n", ""]);
-// Exports
-module.exports = exports;
+  function Analytics() {
+    _classCallCheck(this, Analytics);
 
+    return _super.apply(this, arguments);
+  }
 
-/***/ }),
+  _createClass(Analytics, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 4,
+        sm: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "user-card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "m-b-15"
+      }, "Register User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "f-w-300"
+      }, "1205"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label theme-bg text-white f-12 f-w-400"
+      }, "20%"), "Monthly Increase")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 4,
+        sm: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "user-card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "f-w-400 m-b-15"
+      }, "Daily User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "f-w-300"
+      }, "467"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label theme-bg text-white f-12 f-w-400"
+      }, "10%"), "Weekly Increase")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "user-card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "f-w-400 m-b-15"
+      }, "Premium User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "f-w-300"
+      }, "346"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label theme-bg text-white f-12 f-w-400"
+      }, "50%"), "Yearly Increase")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "Active-visitor"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-3"
+      }, "Active Visitor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-users f-30 text-c-green"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "f-w-300 mt-3"
+      }, "1,285"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, "Active Visit On Sites"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress mt-3 m-b-40"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-theme",
+        role: "progressbar",
+        style: {
+          width: '75%',
+          height: '7px'
+        },
+        "aria-valuenow": "75",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row card-active"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4 col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "52%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, "Desktop")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4 col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "80%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, "Mobile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4 col-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "68%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, "Tablet")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "progress-gender"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Age")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartAge__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        height: "220px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 12,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "theme-bg visitor"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-female",
+        src: _assets_images_user_user_1_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+        alt: "visitor-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-white m-0"
+      }, "TOTAL VISITORS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "text-white m-t-10 f-w-300"
+      }, "235"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white"
+      }, "20% More than last Month"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-men",
+        src: _assets_images_user_user_2_png__WEBPACK_IMPORTED_MODULE_5___default.a,
+        alt: "visitor-user"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 12,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-shopping-cart f-30 text-c-green"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "m-t-50 m-b-0"
+      }, "Last week\u2019s orders")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "text-c-green f-w-300"
+      }, "589"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted d-block"
+      }, "New Order"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge theme-bg text-white m-t-20"
+      }, "1434")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 8
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "pb-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartStatistics6__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        height: "330px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "bg-c-blue"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+        className: "borderless"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5",
+        className: "text-white"
+      }, "Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "mb-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartStatistics11__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        height: "300px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Transactions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, {
+        className: "mt-2"
+      }, "Jun 23 - Jul 23")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 mb-0 float-left"
+      }, "$59,48")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-auto"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_FlotChartTransactions__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        height: "90px"
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Transactions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "June - July")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_FlotChartTransactions1__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 pt-3 mb-0"
+      }, "$80,48")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_FlotChartTransactions2__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 pt-3 mb-0"
+      }, "$40,27")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Transactions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, {
+        className: "mt-2"
+      }, "Jun 23 - Jul 23")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_FlotChartTransactions3__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        height: "90px"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 mb-0 float-right"
+      }, "$59,48"))))))));
+    }
+  }]);
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/slick-carousel/slick/slick.css":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/slick-carousel/slick/slick.css ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+  return Analytics;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "/* Slider */\n.slick-slider\n{\n    position: relative;\n\n    display: block;\n    box-sizing: border-box;\n\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n\n    -webkit-touch-callout: none;\n    -khtml-user-select: none;\n    -ms-touch-action: pan-y;\n        touch-action: pan-y;\n    -webkit-tap-highlight-color: transparent;\n}\n\n.slick-list\n{\n    position: relative;\n\n    display: block;\n    overflow: hidden;\n\n    margin: 0;\n    padding: 0;\n}\n.slick-list:focus\n{\n    outline: none;\n}\n.slick-list.dragging\n{\n    cursor: pointer;\n    cursor: hand;\n}\n\n.slick-slider .slick-track,\n.slick-slider .slick-list\n{\n    -webkit-transform: translate3d(0, 0, 0);\n       -moz-transform: translate3d(0, 0, 0);\n        -ms-transform: translate3d(0, 0, 0);\n         -o-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n\n.slick-track\n{\n    position: relative;\n    top: 0;\n    left: 0;\n\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n.slick-track:before,\n.slick-track:after\n{\n    display: table;\n\n    content: '';\n}\n.slick-track:after\n{\n    clear: both;\n}\n.slick-loading .slick-track\n{\n    visibility: hidden;\n}\n\n.slick-slide\n{\n    display: none;\n    float: left;\n\n    height: 100%;\n    min-height: 1px;\n}\n[dir='rtl'] .slick-slide\n{\n    float: right;\n}\n.slick-slide img\n{\n    display: block;\n}\n.slick-slide.slick-loading img\n{\n    display: none;\n}\n.slick-slide.dragging img\n{\n    pointer-events: none;\n}\n.slick-initialized .slick-slide\n{\n    display: block;\n}\n.slick-loading .slick-slide\n{\n    visibility: hidden;\n}\n.slick-vertical .slick-slide\n{\n    display: block;\n\n    height: auto;\n\n    border: 1px solid transparent;\n}\n.slick-arrow.slick-hidden {\n    display: none;\n}\n", ""]);
-// Exports
-module.exports = exports;
-
-
-/***/ }),
-
-/***/ "./node_modules/datatables.net-dt/images/sort_asc.png":
-/*!************************************************************!*\
-  !*** ./node_modules/datatables.net-dt/images/sort_asc.png ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/vendor/datatables.net-dt/sort_asc.png?9326ad44ae4bebdedd141e7a53c2a730";
-
-/***/ }),
-
-/***/ "./node_modules/datatables.net-dt/images/sort_asc_disabled.png":
-/*!*********************************************************************!*\
-  !*** ./node_modules/datatables.net-dt/images/sort_asc_disabled.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/vendor/datatables.net-dt/sort_asc_disabled.png?d7dc10c78f23615d328581aebcd805eb";
-
-/***/ }),
-
-/***/ "./node_modules/datatables.net-dt/images/sort_both.png":
-/*!*************************************************************!*\
-  !*** ./node_modules/datatables.net-dt/images/sort_both.png ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/vendor/datatables.net-dt/sort_both.png?9a6486086d09bb38cf66a57cc559ade3";
-
-/***/ }),
-
-/***/ "./node_modules/datatables.net-dt/images/sort_desc.png":
-/*!*************************************************************!*\
-  !*** ./node_modules/datatables.net-dt/images/sort_desc.png ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/vendor/datatables.net-dt/sort_desc.png?1fc418e33fd5a687290258b23fac4e98";
-
-/***/ }),
-
-/***/ "./node_modules/datatables.net-dt/images/sort_desc_disabled.png":
-/*!**********************************************************************!*\
-  !*** ./node_modules/datatables.net-dt/images/sort_desc_disabled.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/vendor/datatables.net-dt/sort_desc_disabled.png?bda51e15154a18257b4f955a222fd66f";
-
-/***/ }),
-
-/***/ "./node_modules/slick-carousel/slick/ajax-loader.gif":
-/*!***********************************************************!*\
-  !*** ./node_modules/slick-carousel/slick/ajax-loader.gif ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/vendor/slick-carousel/slick/ajax-loader.gif?c5cd7f5300576ab4c88202b42f6ded62";
+/* harmony default export */ __webpack_exports__["default"] = (Analytics);
 
 /***/ }),
 
-/***/ "./node_modules/slick-carousel/slick/fonts/slick.eot":
-/*!***********************************************************!*\
-  !*** ./node_modules/slick-carousel/slick/fonts/slick.eot ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/Demo/Widget/Chart/AmChartAge.js":
+/*!******************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartAge.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "/fonts/vendor/slick-carousel/slick/slick.eot?ced611daf7709cc778da928fec876475";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! amcharts3/amcharts/amcharts */ "./node_modules/amcharts3/amcharts/amcharts.js");
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! amcharts3/amcharts/serial */ "./node_modules/amcharts3/amcharts/serial.js");
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! amcharts3/amcharts/themes/light */ "./node_modules/amcharts3/amcharts/themes/light.js");
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts3-react */ "./node_modules/@amcharts/amcharts3-react/index.js");
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var AmChartAge = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartAge, _Component);
+
+  var _super = _createSuper(AmChartAge);
+
+  function AmChartAge() {
+    _classCallCheck(this, AmChartAge);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AmChartAge, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("Stack-age", {
+        "type": "serial",
+        "theme": "light",
+        "dataProvider": [{
+          "age": "<20",
+          "visits": 30,
+          "color": ["#1de9b6", "#1dc4e9"]
+        }, {
+          "age": "30",
+          "visits": 35,
+          "color": ["#899FD4", "#A389D4"]
+        }, {
+          "age": "40",
+          "visits": 40,
+          "color": ["#1de9b6", "#1dc4e9"]
+        }, {
+          "age": "50",
+          "visits": 30,
+          "color": ["#899FD4", "#A389D4"]
+        }, {
+          "age": "60",
+          "visits": 32,
+          "color": ["#1de9b6", "#1dc4e9"]
+        }, {
+          "age": ">70",
+          "visits": 38,
+          "color": ["#899FD4", "#A389D4"]
+        }],
+        "valueAxes": [{
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0,
+          "fontSize": 0
+        }],
+        "startDuration": 1,
+        "graphs": [{
+          "balloonText": "<b>[[category]]: [[value]]</b>",
+          "fillColorsField": "color",
+          "fillAlphas": 0.9,
+          "lineAlpha": 0.2,
+          "columnWidth": 0.2,
+          "type": "column",
+          "valueField": "visits"
+        }],
+        "chartCursor": {
+          "categoryBalloonEnabled": false,
+          "cursorAlpha": 0,
+          "zoomable": false
+        },
+        "categoryField": "age",
+        "categoryAxis": {
+          "gridPosition": "start",
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "Stack-age",
+        className: "Stackchart",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartAge;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartAge);
 
 /***/ }),
 
-/***/ "./node_modules/slick-carousel/slick/fonts/slick.svg":
-/*!***********************************************************!*\
-  !*** ./node_modules/slick-carousel/slick/fonts/slick.svg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/Demo/Widget/Chart/AmChartStatistics11.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartStatistics11.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "/fonts/vendor/slick-carousel/slick/slick.svg?f97e3bbf73254b0112091d0192f17aec";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! amcharts3/amcharts/amcharts */ "./node_modules/amcharts3/amcharts/amcharts.js");
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! amcharts3/amcharts/serial */ "./node_modules/amcharts3/amcharts/serial.js");
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! amcharts3/amcharts/themes/light */ "./node_modules/amcharts3/amcharts/themes/light.js");
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts3-react */ "./node_modules/@amcharts/amcharts3-react/index.js");
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var AmChartStatistics11 = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartStatistics11, _Component);
+
+  var _super = _createSuper(AmChartStatistics11);
+
+  function AmChartStatistics11() {
+    _classCallCheck(this, AmChartStatistics11);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AmChartStatistics11, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("Statistics-sale", {
+        "type": "serial",
+        "theme": "light",
+        "autoMargins": false,
+        "addClassNames": true,
+        "zoomOutText": "",
+        "defs": {
+          "filter": [{
+            "id": "shadow",
+            "width": "150%",
+            "height": "150%",
+            "feOffset": {
+              "result": "offOut",
+              "in": "SourceAlpha",
+              "dx": "2",
+              "dy": "2"
+            },
+            "feGaussianBlur": {
+              "result": "blurOut",
+              "in": "offOut",
+              "stdDeviation": "10"
+            },
+            "feColorMatrix": {
+              "result": "blurOut",
+              "type": "matrix",
+              "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"
+            },
+            "feBlend": {
+              "in": "SourceGraphic",
+              "in2": "blurOut",
+              "mode": "normal"
+            }
+          }]
+        },
+        "fontSize": 15,
+        "pathToImages": "../amcharts/images/",
+        "dataProvider": [{
+          "year": "2001",
+          "bicycles": 55
+        }, {
+          "year": "2002",
+          "bicycles": 40
+        }, {
+          "year": "2003",
+          "bicycles": 50
+        }],
+        "dataDateFormat": "YYYY",
+        "marginTop": 10,
+        "marginRight": 0,
+        "marginLeft": 0,
+        "autoMarginOffset": 5,
+        "categoryField": "year",
+        "categoryAxis": {
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "startOnAxis": true,
+          "tickLength": 0,
+          "color": "#fff",
+          "parseDates": true,
+          "minPeriod": "YYYY",
+          "offset": 0,
+          "inside": true
+        },
+        "valueAxes": [{
+          "fontSize": 0,
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "minimum": 0,
+          "maximum": 100
+        }],
+        "graphs": [{
+          "id": "g3",
+          "title": "Bicycles",
+          "valueField": "bicycles",
+          "lineAlpha": 1,
+          "lineColor": "#FFFFFF",
+          "lineThickness": 3,
+          "bullet": "round",
+          "bulletBorderAlpha": 3,
+          "bulletAlpha": 1,
+          "bulletSize": 8,
+          "stackable": false,
+          "bulletColor": "#04A5F5",
+          "bulletBorderColor": "#fff",
+          "bulletBorderThickness": 3,
+          "balloonText": "<div style='margin-bottom:30px;text-shadow: 2px 2px rgba(0, 0, 0, 0.1); font-weight:200;font-size:30px; color:#ffffff'>[[value]]</div>"
+        }],
+        "chartCursor": {
+          "cursorAlpha": 1,
+          "fontSize": 0,
+          "zoomable": false,
+          "cursorColor": "#fff",
+          "categoryBalloonColor": "#04A5F5",
+          "fullWidth": true,
+          "categoryBalloonDateFormat": "YYYY",
+          "balloonPointerOrientation": "vertical"
+        },
+        "balloon": {
+          "borderAlpha": 0,
+          "fillAlpha": 0,
+          "shadowAlpha": 0,
+          "offsetX": 40,
+          "offsetY": -50
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "Statistics-sale",
+        className: "last-week-sales",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartStatistics11;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartStatistics11);
 
 /***/ }),
 
-/***/ "./node_modules/slick-carousel/slick/fonts/slick.ttf":
-/*!***********************************************************!*\
-  !*** ./node_modules/slick-carousel/slick/fonts/slick.ttf ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/Demo/Widget/Chart/AmChartStatistics6.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartStatistics6.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "/fonts/vendor/slick-carousel/slick/slick.ttf?d41f55a78e6f49a5512878df1737e58a";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! amcharts3/amcharts/amcharts */ "./node_modules/amcharts3/amcharts/amcharts.js");
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! amcharts3/amcharts/serial */ "./node_modules/amcharts3/amcharts/serial.js");
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! amcharts3/amcharts/themes/light */ "./node_modules/amcharts3/amcharts/themes/light.js");
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts3-react */ "./node_modules/@amcharts/amcharts3-react/index.js");
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var AmChartStatistics6 = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartStatistics6, _Component);
+
+  var _super = _createSuper(AmChartStatistics6);
+
+  function AmChartStatistics6() {
+    _classCallCheck(this, AmChartStatistics6);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AmChartStatistics6, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("bar-chart2", {
+        "type": "serial",
+        "theme": "light",
+        "marginTop": 10,
+        "marginRight": 0,
+        "valueAxes": [{
+          "id": "v1",
+          "position": "left",
+          "axisAlpha": 0,
+          "lineAlpha": 0,
+          "autoGridCount": false,
+          "labelFunction": function labelFunction(value) {
+            return +Math.round(value) + "00";
+          }
+        }],
+        "graphs": [{
+          "id": "g1",
+          "valueAxis": "v1",
+          "lineColor": ["#1de9b6", "#1dc4e9"],
+          "fillColors": ["#1de9b6", "#1dc4e9"],
+          "fillAlphas": 1,
+          "type": "column",
+          "title": "SALES",
+          "valueField": "sales",
+          "columnWidth": 0.3,
+          "legendValueText": "$[[value]]M",
+          "balloonText": "[[title]]<br /><b style='font-size: 130%'>$[[value]]M</b>"
+        }, {
+          "id": "g2",
+          "valueAxis": "v1",
+          "lineColor": ["#a389d4", "#899ed4"],
+          "fillColors": ["#a389d4", "#899ed4"],
+          "fillAlphas": 1,
+          "type": "column",
+          "title": "VISITS ",
+          "valueField": "visits",
+          "columnWidth": 0.3,
+          "legendValueText": "$[[value]]M",
+          "balloonText": "[[title]]<br /><b style='font-size: 130%'>$[[value]]M</b>"
+        }, {
+          "id": "g3",
+          "valueAxis": "v1",
+          "lineColor": ["#04a9f5", "#049df5"],
+          "fillColors": ["#04a9f5", "#049df5"],
+          "fillAlphas": 1,
+          "type": "column",
+          "title": "CLICKS",
+          "valueField": "clicks",
+          "columnWidth": 0.3,
+          "legendValueText": "$[[value]]M",
+          "balloonText": "[[title]]<br /><b style='font-size: 130%'>$[[value]]M</b>"
+        }],
+        "chartCursor": {
+          "pan": true,
+          "valueLineEnabled": true,
+          "valueLineBalloonEnabled": true,
+          "cursorAlpha": 0,
+          "valueLineAlpha": 0.2
+        },
+        "categoryField": "Year",
+        "categoryAxis": {
+          "dashLength": 1,
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0,
+          "minorGridEnabled": true
+        },
+        "legend": {
+          "useGraphSettings": true,
+          "position": "top"
+        },
+        "balloon": {
+          "borderThickness": 1,
+          "shadowAlpha": 0
+        },
+        "dataProvider": [{
+          "Year": "2014",
+          "sales": 2,
+          "visits": 4,
+          "clicks": 3
+        }, {
+          "Year": "2015",
+          "sales": 4,
+          "visits": 7,
+          "clicks": 5
+        }, {
+          "Year": "2016",
+          "sales": 2,
+          "visits": 3,
+          "clicks": 4
+        }, {
+          "Year": "2017",
+          "sales": 4.5,
+          "visits": 6,
+          "clicks": 4
+        }]
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bar-chart2",
+        className: "bar-chart2",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartStatistics6;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartStatistics6);
 
 /***/ }),
 
-/***/ "./node_modules/slick-carousel/slick/fonts/slick.woff":
-/*!************************************************************!*\
-  !*** ./node_modules/slick-carousel/slick/fonts/slick.woff ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/Demo/Widget/Chart/FlotChartTransactions.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/FlotChartTransactions.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "/fonts/vendor/slick-carousel/slick/slick.woff?b7c9e1e479de3b53f1e4e30ebac2403a";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-flot */ "./node_modules/react-flot/index.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_flot__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var optionsSaleView = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 50,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataSaleView = [{
+  data: [[0, 48], [1, 30], [2, 25], [3, 30], [4, 20], [5, 40], [6, 30]],
+  color: "#1dc4e9",
+  bars: {
+    show: true,
+    lineWidth: 1,
+    fill: true,
+    fillColor: {
+      colors: [{
+        opacity: 1
+      }, {
+        opacity: 1
+      }]
+    },
+    barWidth: 0.2,
+    align: 'center',
+    horizontal: false
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+
+var FlotChartTransactions = /*#__PURE__*/function (_Component) {
+  _inherits(FlotChartTransactions, _Component);
+
+  var _super = _createSuper(FlotChartTransactions);
+
+  function FlotChartTransactions() {
+    _classCallCheck(this, FlotChartTransactions);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FlotChartTransactions, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        id: "transactions",
+        options: optionsSaleView,
+        data: dataSaleView,
+        width: "80px",
+        height: this.props.height,
+        style: {
+          margin: '0 auto'
+        }
+      });
+    }
+  }]);
+
+  return FlotChartTransactions;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FlotChartTransactions);
+
+/***/ }),
+
+/***/ "./resources/js/Demo/Widget/Chart/FlotChartTransactions1.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/FlotChartTransactions1.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-flot */ "./node_modules/react-flot/index.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_flot__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var optionsSaleView = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 50,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataSaleView = [{
+  data: [[0, 48], [1, 30], [2, 25], [3, 30], [4, 20], [5, 40], [6, 30]],
+  color: "#a389d4",
+  bars: {
+    show: true,
+    lineWidth: 1,
+    fill: true,
+    fillColor: {
+      colors: [{
+        opacity: 1
+      }, {
+        opacity: 1
+      }]
+    },
+    barWidth: 0.2,
+    align: 'center',
+    horizontal: false
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+
+var FlotChartTransactions1 = /*#__PURE__*/function (_Component) {
+  _inherits(FlotChartTransactions1, _Component);
+
+  var _super = _createSuper(FlotChartTransactions1);
+
+  function FlotChartTransactions1() {
+    _classCallCheck(this, FlotChartTransactions1);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FlotChartTransactions1, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        className: "mx-auto",
+        id: "transactions1",
+        options: optionsSaleView,
+        data: dataSaleView,
+        width: "80px",
+        height: "50px"
+      });
+    }
+  }]);
+
+  return FlotChartTransactions1;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FlotChartTransactions1);
+
+/***/ }),
+
+/***/ "./resources/js/Demo/Widget/Chart/FlotChartTransactions2.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/FlotChartTransactions2.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-flot */ "./node_modules/react-flot/index.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_flot__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var optionsSaleView = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 50,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataSaleView = [{
+  data: [[0, 44], [1, 26], [2, 22], [3, 35], [4, 28], [5, 35], [6, 28]],
+  color: "#1dc4e9",
+  bars: {
+    show: true,
+    lineWidth: 1,
+    fill: true,
+    fillColor: {
+      colors: [{
+        opacity: 1
+      }, {
+        opacity: 1
+      }]
+    },
+    barWidth: 0.2,
+    align: 'center',
+    horizontal: false
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+
+var FlotChartTransactions2 = /*#__PURE__*/function (_Component) {
+  _inherits(FlotChartTransactions2, _Component);
+
+  var _super = _createSuper(FlotChartTransactions2);
+
+  function FlotChartTransactions2() {
+    _classCallCheck(this, FlotChartTransactions2);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FlotChartTransactions2, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        id: "transactions2",
+        options: optionsSaleView,
+        data: dataSaleView,
+        width: "80px",
+        height: "50px",
+        style: {
+          margin: '0 auto'
+        }
+      });
+    }
+  }]);
+
+  return FlotChartTransactions2;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FlotChartTransactions2);
+
+/***/ }),
+
+/***/ "./resources/js/Demo/Widget/Chart/FlotChartTransactions3.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/FlotChartTransactions3.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-flot */ "./node_modules/react-flot/index.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_flot__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var optionsSaleView = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 50,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataSaleView = [{
+  data: [[0, 40], [1, 30], [2, 25], [3, 38], [4, 30], [5, 38], [6, 30]],
+  color: "#1dc4e9",
+  bars: {
+    show: true,
+    lineWidth: 1,
+    fill: true,
+    fillColor: {
+      colors: [{
+        opacity: 1
+      }, {
+        opacity: 1
+      }]
+    },
+    barWidth: 0.2,
+    align: 'center',
+    horizontal: false
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+
+var FlotChartTransactions3 = /*#__PURE__*/function (_Component) {
+  _inherits(FlotChartTransactions3, _Component);
+
+  var _super = _createSuper(FlotChartTransactions3);
+
+  function FlotChartTransactions3() {
+    _classCallCheck(this, FlotChartTransactions3);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FlotChartTransactions3, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        id: "transactions3",
+        options: optionsSaleView,
+        data: dataSaleView,
+        width: "80px",
+        height: this.props.height,
+        style: {
+          margin: '0 auto'
+        }
+      });
+    }
+  }]);
+
+  return FlotChartTransactions3;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FlotChartTransactions3);
 
 /***/ })
 

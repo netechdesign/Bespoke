@@ -142,6 +142,7 @@ class ImportJobs implements ToModel, WithHeadingRow
             return new Vehicle_mileas([
                 'sheets_id' =>request()->sheets_id,
                 'registration' => $row['registration'],
+                'drive_date' => date('Y-m-d', strtotime(str_replace('/', '-', $row['end_time']))),
                 'start_time' => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['start_time']))),
                 'end_time' => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['end_time']))),
                 'start_location' => $row['start_location'],

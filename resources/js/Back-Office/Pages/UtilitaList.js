@@ -12,20 +12,21 @@ const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorag
 
 
 
+
+const baseurl= window.location.origin;
 export const Suppliers = [
     { value: '1', label: 'Morrison Data services'},
     { value: '2', label: 'Utilita'},
+    { value: '3', label:'Vehical Mileage'}
   
 ];
-
-const baseurl= window.location.origin;
 
 class UtilitaList extends React.Component {
 
    
     constructor(props) {
         super(props);
-        this.state={id:'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/export'}
+        this.state={id:'','report_type':'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/export',btnhide:'unset'}
     }
     onsearch = (e) => {
         var items  = [];
@@ -82,6 +83,15 @@ class UtilitaList extends React.Component {
         handleSubmit = (e)=> {
 
         } 
+        handleChange = (e) =>{
+            this.setState({report_type:e});
+            if(e.value==3){
+                this.setState({btnhide:'none'});
+            }else{
+                this.setState({btnhide:''});
+            }
+                 
+        }
     componentDidMount() {
         const { id } = this.props.match.params;
         this.setState({id:id});
@@ -101,6 +111,17 @@ class UtilitaList extends React.Component {
                            
                             <ValidationForm  method="get" action={this.state.baseurl} onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                             <Form.Row> 
+                                    <Form.Group as={Col} md="2">
+                                            <Form.Label htmlFor="type">Type</Form.Label>
+                                    <Select onChange={this.handleChange}
+                                            className="basic-single"
+                                            classNamePrefix="select"
+                                            name="file_id"
+                                            options={Suppliers}
+                                            placeholder="Select type"
+                                        />
+                                        </Form.Group>
+
                                 <Form.Group as={Col} md="2">
                                     <Form.Label htmlFor="start_date">Start Date</Form.Label>
                                     <Datetime onChange={this.startDateChange}  dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()} errorMessage={{required:"start_date is required"}}  inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />
@@ -112,11 +133,11 @@ class UtilitaList extends React.Component {
                                 </Form.Group>
                                 <Form.Group as={Col} md="8">
                                     
-                                    <Button className="primary" style={{'marginTop': '27px'}} onClick={this.onsearch} ><i  className="feather icon-search"></i>Search </Button>
+                                    <Button className="primary" style={{'marginTop': '27px','display':this.state.btnhide}} onClick={this.onsearch} ><i  className="feather icon-search"></i>Search </Button>
                                     
                                     <Button className="primary" style={{'marginTop': '27px'}}  as={Link} to={{ pathname: '/utilitachart',state: { detail: this.state }}} ><i  className="feather icon-eye"></i>View Chart</Button>
 
-                                    <Button type="submit" style={{'marginTop': '27px'}} className="primary" ><i  className="feather icon-download"></i>Download csv</Button>
+                                    <Button type="submit" style={{'marginTop': '27px','display':this.state.btnhide}} className="primary" ><i  className="feather icon-download"></i>Download csv</Button>
                                 
                                 </Form.Group>
                                 

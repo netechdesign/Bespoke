@@ -7,6 +7,14 @@ export default {
             icon: 'icon-app',
             children: [
                 {
+                    id: 'dashboard',
+                    title: 'Dashboard',
+                    type: 'item',
+                    classes: 'nav-item',
+                    url: '/dashboard',
+                    icon: 'feather icon-home'
+                },
+                {
                     id: 'data_import',
                     title: 'Data Import',
                     type: 'item',

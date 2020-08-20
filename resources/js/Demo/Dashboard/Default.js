@@ -9,70 +9,76 @@ import avatar1 from '../../assets/images/user/avatar-1.jpg';
 import avatar2 from '../../assets/images/user/avatar-2.jpg';
 import avatar3 from '../../assets/images/user/avatar-3.jpg';
 import AmChartStatistics6 from "../Widget/Chart/AmChartStatistics6";
+import axios from 'axios'
+const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+const baseurl= window.location.origin;
+
+export class Jobstatus extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {};
+      }
+      componentDidMount() {
+      this.props.statuslist.map(val=>{
+
+      });
+    }
+      render() {
+        console.log(this.props.statuslist);
+            return ( <Col md={6} xl={4}>
+                           <Card>
+                                <Card.Body>
+                                    <h6 className='mb-4'>Completed</h6>
+                                    <div className="row d-flex align-items-center">
+                                        <div className="col-9">
+                                            <h3 className="f-w-300 d-flex align-items-center m-b-0"><i className="feather icon-arrow-up text-c-green f-30 m-r-5"/> $249.95</h3>
+                                        </div>
+                
+                                        <div className="col-3 text-right">
+                                            <p className="m-b-0">50%</p>
+                                        </div>
+                                    </div>
+                                    <div className="progress m-t-30" style={{height: '7px'}}>
+                                        <div className="progress-bar progress-c-theme" role="progressbar" style={{width: '50%'}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                            </Col>
+                    )
+
+            }
+}
 
 class Dashboard extends React.Component {
+
+    
+          constructor(props) {
+            super(props);
+            this.state = {jobstatus: []};
+          }
+
+    componentDidMount() {
+        const data = new FormData()
+        data.append('start_date', '01/07/2020');
+        data.append('end_date', '31/07/2020');
+        axios.post(baseurl+'/api/jobstatus',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+          
+            if(res.data.job_status){
+                this.setState({jobstatus:res.data.job_status})
+                }
+          
+            }); 
+    }
     render() {
 
         return (
             <Aux>
                 <Row>
-                    <Col md={6} xl={4}>
-                        <Card>
-                            <Card.Body>
-                                <h6 className='mb-4'>Daily Sales</h6>
-                                <div className="row d-flex align-items-center">
-                                    <div className="col-9">
-                                        <h3 className="f-w-300 d-flex align-items-center m-b-0"><i className="feather icon-arrow-up text-c-green f-30 m-r-5"/> $249.95</h3>
-                                    </div>
+                    
+                 
+                    <Jobstatus  statuslist={this.state.jobstatus} />
 
-                                    <div className="col-3 text-right">
-                                        <p className="m-b-0">50%</p>
-                                    </div>
-                                </div>
-                                <div className="progress m-t-30" style={{height: '7px'}}>
-                                    <div className="progress-bar progress-c-theme" role="progressbar" style={{width: '50%'}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col md={6} xl={4}>
-                        <Card>
-                            <Card.Body>
-                                <h6 className='mb-4'>Monthly Sales</h6>
-                                <div className="row d-flex align-items-center">
-                                    <div className="col-9">
-                                        <h3 className="f-w-300 d-flex align-items-center m-b-0"><i className="feather icon-arrow-down text-c-red f-30 m-r-5"/> $2.942.32</h3>
-                                    </div>
-
-                                    <div className="col-3 text-right">
-                                        <p className="m-b-0">36%</p>
-                                    </div>
-                                </div>
-                                <div className="progress m-t-30" style={{height: '7px'}}>
-                                    <div className="progress-bar progress-c-theme2" role="progressbar" style={{width: '35%'}} aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"/>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col xl={4}>
-                        <Card>
-                            <Card.Body>
-                                <h6 className='mb-4'>Yearly Sales</h6>
-                                <div className="row d-flex align-items-center">
-                                    <div className="col-9">
-                                        <h3 className="f-w-300 d-flex align-items-center m-b-0"><i className="feather icon-arrow-up text-c-green f-30 m-r-5"/> $8.638.32</h3>
-                                    </div>
-
-                                    <div className="col-3 text-right">
-                                        <p className="m-b-0">70%</p>
-                                    </div>
-                                </div>
-                                <div className="progress m-t-30" style={{height: '7px'}}>
-                                    <div className="progress-bar progress-c-theme" role="progressbar" style={{width: '70%'}} aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"/>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                    
                     <Col md={6} xl={8}>
                         <Card>
                             <Card.Header>

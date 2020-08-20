@@ -1,5 +1,5 @@
 export default {
-    defaultPath: '/dataimport',// '/landing' 
+    defaultPath: '/dashboard',// '/landing' 
     companyName:'Bespoke Metering',
     basename: '', // only at build time to set, like /datta-able
     layout: 'vertical', // vertical, horizontal

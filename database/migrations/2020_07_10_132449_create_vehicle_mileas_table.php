@@ -17,6 +17,7 @@ class CreateVehicleMileasTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('sheets_id')->unsigned()->index();
             $table->string('registration');
+            $table->date('drive_date');
             $table->dateTime('start_time');
             $table->dateTime('end_time'); 
             $table->text('start_location');

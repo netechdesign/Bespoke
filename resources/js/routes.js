@@ -5,7 +5,7 @@ window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
 
-const DashboardDefault = React.lazy(() => import('./Demo/Dashboard/Default'));
+const DashboardDefault = React.lazy(() => import('./Back-office/Pages/Dashboard'));
 const DashboardEcommerce = React.lazy(() => import('./Demo/Dashboard/Ecommerce'));
 const DashboardCrm = React.lazy(() => import('./Demo/Dashboard/Crm'));
 const DashboardAnalytics = React.lazy(() => import('./Demo/Dashboard/Analytics'));
@@ -38,7 +38,7 @@ const routes = [
    
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
 
-    { path: '/dashboard/default', exact: true, name: 'Default', component: DashboardDefault },
+    { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },
     { path: '/dashboard/e-commerce', exact: true, name: 'Ecommerce', component: DashboardEcommerce },
     { path: '/dashboard/crm', exact: true, name: 'CRM', component: DashboardCrm },
     { path: '/dashboard/analytics', exact: true, name: 'Analytics', component: DashboardAnalytics },

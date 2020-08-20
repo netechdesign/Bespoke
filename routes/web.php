@@ -26,7 +26,21 @@ Route::group(array('prefix' => '/'), function() {
    Route::get('/list/morrison/{id}', function(){
       return view('welcome');
    }); 
+   Route::get('/dataimport', function(){
+      return view('welcome');
+   }); 
    
+   Route::get('/list', function(){
+      return view('welcome');
+   }); 
+   
+   Route::get('/siteengineer', function(){
+      return view('welcome');
+   }); 
+   
+   Route::get('/report', function(){
+      return view('welcome');
+   }); 
      
      Route::get('/auth/signin', function(){
         return view('welcome');

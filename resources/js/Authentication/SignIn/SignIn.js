@@ -93,7 +93,7 @@ class SignIn extends React.Component {
       isLoggedIn = AppState.isLoggedIn;
     }
     console.log(this.state.redirect.state);
-    const { prevLocation } = this.state.redirect.state || { prevLocation: { pathname: '/dashboard/default' } };
+    const { prevLocation } = this.state.redirect.state || { prevLocation: { pathname: '/dashboard' } };
     if (prevLocation && isLoggedIn) {
       return this.props.history.push(prevLocation);
     }

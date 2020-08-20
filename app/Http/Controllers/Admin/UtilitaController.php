@@ -13,11 +13,11 @@ use App\Models\utilita_job;
 
 use App\Http\Controllers\Admin\Utilita\Monday;
 use App\Http\Controllers\Admin\Utilita\Tuesday;
-use App\Exports\Wednesday;
-use App\Exports\Thursday;
-use App\Exports\Friday;
-use App\Exports\Saturday;
-use App\Exports\Sunday;
+use App\Http\Controllers\Admin\Utilita\Wednesday;
+use App\Http\Controllers\Admin\Utilita\Thursday;
+use App\Http\Controllers\Admin\Utilita\Friday;
+use App\Http\Controllers\Admin\Utilita\Saturday;
+use App\Http\Controllers\Admin\Utilita\Sunday;
 class UtilitaController extends Controller
 {
     /**
@@ -440,6 +440,41 @@ class UtilitaController extends Controller
                 $days  = new Tuesday($data);
                 $Viewthme .= $days->view();
                }
+
+               if(!empty($Wednesday)){
+                $data['site_engineer']=$parent_engineer;
+                $data['work']=$Wednesday;
+                $days  = new Wednesday($data);
+                $Viewthme .= $days->view();
+               }
+               
+               if(!empty($Thursday)){
+                $data['site_engineer']=$parent_engineer;
+                $data['work']=$Thursday;
+                $days  = new Thursday($data);
+                $Viewthme .= $days->view();
+               }
+
+                if(!empty($Friday)){
+                    $data['site_engineer']=$parent_engineer;
+                    $data['work']=$Friday;
+                    $days  = new Friday($data);
+                    $Viewthme .= $days->view();
+                }
+
+                if(!empty($Saturday)){
+                    $data['site_engineer']=$parent_engineer;
+                    $data['work']=$Saturday;
+                    $days  = new Saturday($data);
+                    $Viewthme .= $days->view();
+                }
+
+                if(!empty($Sunday)){
+                    $data['site_engineer']=$parent_engineer;
+                    $data['work']=$Sunday;
+                    $days  = new Sunday($data);
+                    $Viewthme .= $days->view();
+                }
            return $Viewthme;
        }else{
            return 'Sorry data not found';
