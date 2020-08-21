@@ -163,6 +163,7 @@ let result = res.data.complate;
       {
         var driver_name = [];
         var total_miles = [];
+        var max_speed = [];
         document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
         axios.post(baseurl+'/api/vehicalmileas/1',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
          if(res.data.success){
@@ -176,9 +177,17 @@ let result = res.data.complate;
           res.data.totalmileage.map((val,indx) =>{
             driver_name.push(val.driver_name);
             total_miles.push(val.total_miles);
+            max_speed.push(val.max_speed);
           })
-          console.log(driver_name);
+         
         var options = {
+          title: {
+            text: 'Miles'
+          },
+          subtitle: {
+              text: this.state.start_date +' to '+ this.state.end_date,
+              align: 'left'
+            },
             series: [{
             data: total_miles
           }],
@@ -217,6 +226,62 @@ let result = res.data.complate;
           var chart = new ApexCharts(document.querySelector("#vahicalMileage"), options);
           chart.render();
           
+          var options = {
+            title: {
+              text: 'Speed Spread'
+            },
+            subtitle: {
+              text: this.state.start_date +' to '+ this.state.end_date,
+              align: 'left'
+            },
+            fill: {
+              colors: [function({ value, seriesIndex, w }) {
+                if(value > 70) {
+                    return '#FF0000'
+                } else {
+                    return '#0099FF'
+                }
+              }]
+            },
+              series: [{
+              data: max_speed
+            }],
+              chart: {
+              type: 'bar',
+              height: 600
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+              }
+            },
+            dataLabels: {
+              enabled: false
+            },
+            xaxis: {
+              categories: driver_name,
+              title: {
+                text: 'Top speed'
+              }
+            },
+            yaxis: {
+              title: {
+                text: 'Driver Name'
+              },
+            },
+            tooltip: {
+              y: {
+                formatter: function (val) {
+                  return val + " Miles"
+                }
+              }
+            },
+            };
+          
+            var chart = new ApexCharts(document.querySelector("#vahicalMax_speed"), options);
+            chart.render();
+            
+          
         }
        
         })
@@ -244,6 +309,7 @@ let result = res.data.complate;
                                         <div id='StackedBar'></div>
                                         <div id='vahicalMileage'></div>
                                         
+                                        <div id='vahicalMax_speed'></div>
                                         </Card.Body>
                             </Card>
                            </Col>

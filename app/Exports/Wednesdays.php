@@ -12,7 +12,7 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use App\Models\Utilita_job;
 
-class Wednesday implements FromView,WithTitle,WithEvents 
+class Wednesdays implements FromView,WithTitle,WithEvents 
 {
     public $data;
     public function __construct($data) {

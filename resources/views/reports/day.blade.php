@@ -445,7 +445,11 @@
                 
                 <td style="text-align: right;"> 
                     <!--Aborts_Fuels = Aborts_Dual-->
+                    @if(($data['Aborts_Fuels'][$p][$k]+ $data['Dual'][$p][$k])*100 > 0)   
                 {{ round((($data['Aborts_Fuels'][$p][$k]+ $data['Dual'][$p][$k])*100)/($data['Aborts'][$p][$k]+$users),2).'%'}}
+                @else
+                0%
+                @endif
                 </td>
                 @endforeach 
                 @endforeach  
@@ -457,7 +461,11 @@
                 @foreach ($title as $k=> $users)
                 
                 <td style="text-align: right;"> 
+                    @if(($data['Aborts_Elec_Only'][$p][$k]+ $data['Elec_Only'][$p][$k])*100 > 0)     
                 {{ round((($data['Aborts_Elec_Only'][$p][$k]+ $data['Elec_Only'][$p][$k])*100)/($data['Aborts'][$p][$k]+$users),2).'%'}}
+                @else
+                0%
+                @endif
                 </td>
                 @endforeach 
                 @endforeach  
@@ -470,7 +478,11 @@
                 @foreach ($title as $k=> $users)
                 
                 <td style="text-align: right;"> 
+                    @if(($data['Aborts_Gas_Only'][$p][$k]+ $data['Gas_Only'][$p][$k])*100 > 0)     
                 {{ round((($data['Aborts_Gas_Only'][$p][$k]+ $data['Gas_Only'][$p][$k])*100)/($data['Aborts'][$p][$k]+$users),2).'%'}}
+                @else
+                0%
+                @endif
                 </td>
                 @endforeach 
                 @endforeach  
@@ -483,7 +495,11 @@
                 @foreach ($title as $k=> $users)
                 
                 <td style="text-align: right;"> 
+                    @if(($data['Aborts_Check_Comms'][$p][$k]+ $data['Check_Comms'][$p][$k])*100 > 0)  
                 {{ round((($data['Aborts_Check_Comms'][$p][$k]+ $data['Check_Comms'][$p][$k])*100)/($data['Aborts'][$p][$k]+$users),2).'%'}}
+                @else
+                0%
+                @endif
                 </td>
                 @endforeach 
                 @endforeach  

@@ -16,11 +16,12 @@ use App\Models\Utilita_job;
 
 use App\Exports\Monday;
 use App\Exports\Tuesday;
-use App\Exports\Wednesday;
+use App\Exports\Wednesdays;
 use App\Exports\Thursday;
 use App\Exports\Friday;
 use App\Exports\Saturday;
 use App\Exports\Sunday;
+
 class ExportJobs implements WithMultipleSheets
 {
     
@@ -116,7 +117,7 @@ class ExportJobs implements WithMultipleSheets
            if(!empty($Wednesday)){
             $data['site_engineer']=$parent_engineer;
             $data['work']=$Wednesday;
-             $sheets[] = new Wednesday($data);
+             $sheets[] = new Wednesdays($data);
            }
            if(!empty($Thursday)){
             $data['site_engineer']=$parent_engineer;

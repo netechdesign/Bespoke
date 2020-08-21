@@ -83,6 +83,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
   _createClass(UtilitaChart, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       var items = [];
       var _this$props = this.props,
           match = _this$props.match,
@@ -237,6 +239,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
       } else if (reportType == 3) {
         var driver_name = [];
         var total_miles = [];
+        var max_speed = [];
         document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/vehicalmileas/1', data, {
           headers: {
@@ -255,9 +258,16 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
             res.data.totalmileage.map(function (val, indx) {
               driver_name.push(val.driver_name);
               total_miles.push(val.total_miles);
+              max_speed.push(val.max_speed);
             });
-            console.log(driver_name);
             var options = {
+              title: {
+                text: 'Miles'
+              },
+              subtitle: {
+                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
+                align: 'left'
+              },
               series: [{
                 data: total_miles
               }],
@@ -294,6 +304,63 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
             };
             var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMileage"), options);
             chart.render();
+            var options = {
+              title: {
+                text: 'Speed Spread'
+              },
+              subtitle: {
+                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
+                align: 'left'
+              },
+              fill: {
+                colors: [function (_ref2) {
+                  var value = _ref2.value,
+                      seriesIndex = _ref2.seriesIndex,
+                      w = _ref2.w;
+
+                  if (value > 70) {
+                    return '#FF0000';
+                  } else {
+                    return '#0099FF';
+                  }
+                }]
+              },
+              series: [{
+                data: max_speed
+              }],
+              chart: {
+                type: 'bar',
+                height: 600
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: true
+                }
+              },
+              dataLabels: {
+                enabled: false
+              },
+              xaxis: {
+                categories: driver_name,
+                title: {
+                  text: 'Top speed'
+                }
+              },
+              yaxis: {
+                title: {
+                  text: 'Driver Name'
+                }
+              },
+              tooltip: {
+                y: {
+                  formatter: function formatter(val) {
+                    return val + " Miles";
+                  }
+                }
+              }
+            };
+            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMax_speed"), options);
+            chart.render();
           }
         });
       } //
@@ -329,6 +396,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         id: "StackedBar"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "vahicalMileage"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "vahicalMax_speed"
       }))))));
     }
   }]);
