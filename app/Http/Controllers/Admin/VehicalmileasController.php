@@ -62,7 +62,7 @@ class VehicalmileasController extends Controller
               $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $Request->end_date)));
             }
             //$query= new Utilita_job;
-             $q= Vehicle_mileas::select('driver_name',DB::Raw('count(*) as total_miles'));
+             $q= Vehicle_mileas::select('driver_name',DB::Raw('sum(miles) as total_miles'));
             
             
              if($month!=''){ $q->whereMonth('drive_date', '=', $month); }

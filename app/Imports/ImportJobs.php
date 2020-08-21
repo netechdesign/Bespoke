@@ -5,6 +5,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use App\Models\Jobs;
 use App\Models\Vehicle_mileas;
 use App\Models\Utilita_job;
+use App\Models\SheetDupdatas;
 use App\Models\Engineers;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -82,41 +83,45 @@ class ImportJobs implements ToModel, WithHeadingRow
                 $alreadyExist= Utilita_job::where('week_no',$week_no)->where('job_id',$row['job_id'])->where('customer_id',$row['customer_id'])->where('schedule_date',$schedule_date)->count();
                 
                 if($alreadyExist > 0) {
-                    throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
-                   
+                    
+                    return new SheetDupdatas([
+                        "sheets_id" =>request()->sheets_id,"data"=> json_encode($row),"file_id"=>2]); 
+                    // throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
+                 
                   }
-                  
-                  if (Engineers::where('engineer_id', '=', $row['engineer_id'])->count() ==0) {
-                     
-                        $engineers= new Engineers(["engineer_id" => $row['engineer_id'],"engineer_name" => $row['engineer']]);
-                        $engineers->save();
-                   }
-                return new Utilita_job([
-                            "sheets_id" =>request()->sheets_id,
-                            "month"=> $month,
-                            "week_no"=>$week_no,
-                            "week_day"=> $weekday,
-                            "week_date"=>  $sunday_date,
-                            "customer_id" => $row['customer_id'],
-                            "job_id" => $row['job_id'],
-                            "post_code" => $row['post_code'],
-                            "job_type" => $row['job_type'],
-                            "job_status" => $row['job_status'],
-                            "fault" => $row['fault'],
-                            "job_booked" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['job_booked']))),
-                            "appointment_time" => $row['appointment_time'],
-                            "schedule_start_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_start_time']))),
-                            "schedule_end_time" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_end_time']))),
-                            "on_site_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['on_site_time']))),
-                            "cancelled_by" => $row['cancelled_by'],
-                            "cancelled_time" => $cancelled_time,
-                            "engineer_id" => $row['engineer_id'],
-                            "engineer" => $row['engineer'],
-                            "company_name" => $row['company_name'],
-                            "schedule_date" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_date']))),
-                            "region" => $row['region'],
-                            'created_by' => request()->created_by
-                        ]);
+                  else{
+                        if (Engineers::where('engineer_id', '=', $row['engineer_id'])->count() ==0) {
+                            
+                                $engineers= new Engineers(["engineer_id" => $row['engineer_id'],"engineer_name" => $row['engineer']]);
+                                $engineers->save();
+                        }
+                            return new Utilita_job([
+                                        "sheets_id" =>request()->sheets_id,
+                                        "month"=> $month,
+                                        "week_no"=>$week_no,
+                                        "week_day"=> $weekday,
+                                        "week_date"=>  $sunday_date,
+                                        "customer_id" => $row['customer_id'],
+                                        "job_id" => $row['job_id'],
+                                        "post_code" => $row['post_code'],
+                                        "job_type" => $row['job_type'],
+                                        "job_status" => $row['job_status'],
+                                        "fault" => $row['fault'],
+                                        "job_booked" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['job_booked']))),
+                                        "appointment_time" => $row['appointment_time'],
+                                        "schedule_start_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_start_time']))),
+                                        "schedule_end_time" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_end_time']))),
+                                        "on_site_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['on_site_time']))),
+                                        "cancelled_by" => $row['cancelled_by'],
+                                        "cancelled_time" => $cancelled_time,
+                                        "engineer_id" => $row['engineer_id'],
+                                        "engineer" => $row['engineer'],
+                                        "company_name" => $row['company_name'],
+                                        "schedule_date" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_date']))),
+                                        "region" => $row['region'],
+                                        'created_by' => request()->created_by
+                                    ]);
+                     }
             }else{
                 // old data file
                     return new Jobs([
