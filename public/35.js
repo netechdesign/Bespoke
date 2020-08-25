@@ -106,10 +106,138 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         _method: 'get',
         id: id,
         start_date: start_date,
-        end_date: end_date
+        end_date: end_date,
+        file_id: reportType
       };
 
-      if (reportType == 2) {
+      if (reportType == 1) {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + auth_token
+          }
+        }).then(function (res) {
+          // let data = JSON.parse(res.data); 
+          var result = res.data.complate; //series
+
+          var options = {
+            series: result['series'],
+            chart: {
+              type: 'bar',
+              height: 500,
+              stacked: true
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true
+              }
+            },
+            stroke: {
+              width: 1,
+              colors: ['#fff']
+            },
+            title: {
+              text: 'Install Numbers'
+            },
+            subtitle: {
+              text: 'Complated',
+              align: 'left'
+            },
+            xaxis: {
+              categories: result['engineer'],
+              labels: {
+                formatter: function formatter(val) {
+                  return val + "";
+                }
+              },
+              title: {
+                text: 'Value'
+              }
+            },
+            yaxis: {
+              title: {
+                text: 'Engineer Name'
+              }
+            },
+            tooltip: {
+              y: {
+                formatter: function formatter(val) {
+                  return val + "";
+                }
+              }
+            },
+            fill: {
+              opacity: 1
+            },
+            legend: {
+              position: 'top',
+              horizontalAlign: 'left',
+              offsetX: 40
+            }
+          };
+          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
+          StackedBar.render();
+          var abortedrs = res.data.aborted; //series
+
+          var options = {
+            series: abortedrs['series'],
+            chart: {
+              type: 'bar',
+              height: 500,
+              stacked: true
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true
+              }
+            },
+            stroke: {
+              width: 1,
+              colors: ['#fff']
+            },
+            title: {
+              text: 'Install Numbers'
+            },
+            subtitle: {
+              text: 'aborted',
+              align: 'left'
+            },
+            xaxis: {
+              categories: abortedrs['engineer'],
+              labels: {
+                formatter: function formatter(val) {
+                  return val + "";
+                }
+              },
+              title: {
+                text: 'Value'
+              }
+            },
+            yaxis: {
+              title: {
+                text: 'Engineer Name'
+              }
+            },
+            tooltip: {
+              y: {
+                formatter: function formatter(val) {
+                  return val + "";
+                }
+              }
+            },
+            fill: {
+              opacity: 1
+            },
+            legend: {
+              position: 'top',
+              horizontalAlign: 'left',
+              offsetX: 40
+            }
+          };
+          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
+          abortedBar.render();
+        });
+      } else if (reportType == 2) {
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
           headers: {
             'Accept': 'application/json',

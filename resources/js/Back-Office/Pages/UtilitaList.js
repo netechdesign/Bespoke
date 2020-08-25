@@ -31,9 +31,9 @@ class UtilitaList extends React.Component {
     onsearch = (e) => {
         var items  = [];
         const { match, location, history } = this.props
-        const {id,start_date,end_date} = this.state;
+        const {id,start_date,end_date,report_type} = this.state;
         
-        let data={id:id,start_date:start_date,end_date:end_date};
+        let data={id:id,start_date:start_date,end_date:end_date,file_id:report_type.value};
         document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
       axios.post(baseurl+'/api/utilita/view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{

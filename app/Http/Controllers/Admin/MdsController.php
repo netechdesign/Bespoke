@@ -12,6 +12,7 @@ use App\Exports\ExportJobs;
 use DB;
 use App\Models\Jobs;
 use App\Models\Utilita_job;
+use App\Models\Morrison_jobs;
 use Illuminate\Support\Facades\Redirect;
 
 class MdsController extends Controller
@@ -197,7 +198,13 @@ class MdsController extends Controller
           $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['end_date'])));
         }
         //$query= new Utilita_job;
-         $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+        if($_REQUEST['file_id']=='1'){
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+           }
+          elseif($_REQUEST['file_id']=='2'){
+           $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+          }
+         
         
         
          if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
@@ -207,6 +214,7 @@ class MdsController extends Controller
          /** print query   toSql(); */
         // dd($q->toSql());
          $q=$q->count();
+        // dd($q);
        if($q>0){
         return Excel::download(new ExportJobs, 'users.xlsx');
        }else{

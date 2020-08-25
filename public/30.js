@@ -388,11 +388,13 @@ var UtilitaList = /*#__PURE__*/function (_React$Component) {
       var _this$state = _this.state,
           id = _this$state.id,
           start_date = _this$state.start_date,
-          end_date = _this$state.end_date;
+          end_date = _this$state.end_date,
+          report_type = _this$state.report_type;
       var data = {
         id: id,
         start_date: start_date,
-        end_date: end_date
+        end_date: end_date,
+        file_id: report_type.value
       };
       document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/utilita/view', data, {

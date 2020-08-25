@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 use Maatwebsite\Excel\Concerns\ToModel;
-use App\Models\Jobs;
+use App\Models\Morrison_jobs;
 use App\Models\Vehicle_mileas;
 use App\Models\Utilita_job;
 use App\Models\SheetDupdatas;
@@ -20,21 +20,46 @@ class ImportJobs implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         if(request()->file_id==1){
-        return new Jobs([
+            $engineer_id=0;
+            $job_status='';
+            if($row['complete']==1){
+            $job_status='Completed';
+            }
+            
+            if($row['abort']==1){
+            $job_status='Aborted';
+            }
+            $engineers =Engineers::where('engineer_name', '=', $row['name']);
+            if ($engineers->count() ==0) {
+                            
+                $engineers = new Engineers(["engineer_id"=> $engineer_id,"engineer_name" => $row['name'],'file_id'=>1]);
+                $engineers->save();
+                $engineers->engineer_id= $engineers->id;
+                $engineers->save();
+                $engineer_id= $engineers->id;
+
+                //["engineer_id" => $row['engineer_id'];
+            }else{
+                $engineers= $engineers->first();
+                $engineer_id = $engineers->engineer_id;
+            }  
+
+        return new Morrison_jobs([
             'sheets_id' =>request()->sheets_id,
             'file_id' =>request()->file_id,
             'file_name' =>request()->file_name,
             'month'=> $row['month'],
-            'week_day'=> $row['weekday'],
+            'week_day'=> trim($row['weekday']),
             'week_date'=>  date('Y-m-d', strtotime(str_replace('/', '-', $row['we']))),
-            'date'=> date('Y-m-d', strtotime(str_replace('/', '-', $row['date']))),
-            'start_time'=> $row['start_time'],
-            'end_time'=> $row['end_time'],
+            'schedule_date'=> date('Y-m-d', strtotime(str_replace('/', '-', $row['date']))),
+            'schedule_start_time'=> $row['start_time'],
+            'schedule_end_time'=> $row['end_time'],
             'time_difference'=> $row['time_difference'],
             'work_master_sign_id'=> $row['work_master_sign_id'],
-            'name'=> $row['name'],
+            'engineer_id'=> $engineer_id,
+            'engineer'=> $row['name'],
             'area'=> $row['area'],
-            'geo_area'=> $row['geo_area'],
+            'region'=> $row['geo_area'],
             'report_group'=> $row['report_group'],
             'field_force'=> $row['field_force'],
             'leaver_flg'=> $row['leaver_flg'],
@@ -42,6 +67,8 @@ class ImportJobs implements ToModel, WithHeadingRow
             'num'=> $row['num'],
             'complete'=> $row['complete'],
             'abort'=> $row['abort'],
+            'job_status'=> $job_status,
+            'fault'=>'',
             'no_access_rate'=> $row['no_access_rate'],
             'smart_book'=> $row['smart_book'],
             'warrant_book'=> $row['warrant_book'],
@@ -61,7 +88,8 @@ class ImportJobs implements ToModel, WithHeadingRow
             'work_type'=> $row['work_type'],
             'created_by' => request()->created_by
         ]);
-        }else if(request()->file_id==2){
+        
+    }else if(request()->file_id==2){
             
             if(isset($row['customer_id'])){
                
@@ -84,15 +112,14 @@ class ImportJobs implements ToModel, WithHeadingRow
                 
                 if($alreadyExist > 0) {
                     
-                    return new SheetDupdatas([
-                        "sheets_id" =>request()->sheets_id,"data"=> json_encode($row),"file_id"=>2]); 
+                    return new SheetDupdatas(["sheets_id" =>request()->sheets_id,"data"=> json_encode($row),"file_id"=>2]); 
                     // throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
                  
                   }
                   else{
                         if (Engineers::where('engineer_id', '=', $row['engineer_id'])->count() ==0) {
                             
-                                $engineers= new Engineers(["engineer_id" => $row['engineer_id'],"engineer_name" => $row['engineer']]);
+                                $engineers= new Engineers(["engineer_id" => $row['engineer_id'],"engineer_name" => $row['engineer'],'file_id'=>2]);
                                 $engineers->save();
                         }
                             return new Utilita_job([

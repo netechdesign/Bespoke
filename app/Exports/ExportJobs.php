@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use App\Models\Utilita_job;
-
+use App\Models\Morrison_jobs;
 use App\Exports\Monday;
 use App\Exports\Tuesday;
 use App\Exports\Wednesdays;
@@ -47,8 +47,12 @@ class ExportJobs implements WithMultipleSheets
         $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['end_date'])));
       }
       //$query= new Utilita_job;
+      if($_REQUEST['file_id']=='1'){
+        $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+       }
+      elseif($_REQUEST['file_id']=='2'){
        $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
-      
+      }
        if($week_no!=''){ $q->where('week_no','=',$week_no); }
        if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
        if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
@@ -58,7 +62,7 @@ class ExportJobs implements WithMultipleSheets
       // dd($q->toSql());
        $q=$q->get();
        
-     
+    
        $parent_engineer=array();
        foreach($q->groupBy('parent_engineer') as $k =>$vl){
         
@@ -73,6 +77,7 @@ class ExportJobs implements WithMultipleSheets
        $Saturday=[];
        $Sunday=[];
        foreach($q as $k =>$vl){
+       
         $vl->endtime = date('H:i', strtotime($vl->schedule_end_time));
         
         if($vl->week_day=='Monday'){
@@ -102,8 +107,6 @@ class ExportJobs implements WithMultipleSheets
        }
        }
       
-       
-
         if(!empty($Monday)){
             $data['site_engineer']=$parent_engineer;
             $data['work']=$Monday;

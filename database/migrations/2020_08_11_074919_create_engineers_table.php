@@ -17,6 +17,7 @@ class CreateEngineersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('engineer_id');
             $table->string('engineer_name');
+            $table->integer('file_id')->nullable()->comment('1=morrison,2=utilita'); 
             $table->timestamps();
         });
     }

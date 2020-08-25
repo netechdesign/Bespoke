@@ -10,7 +10,7 @@ use Excel;
 
 use DB;
 use App\Models\utilita_job;
-
+use App\Models\Morrison_jobs;
 use App\Http\Controllers\Admin\Utilita\Monday;
 use App\Http\Controllers\Admin\Utilita\Tuesday;
 use App\Http\Controllers\Admin\Utilita\Wednesday;
@@ -183,8 +183,18 @@ class UtilitaController extends Controller
           }
           
           //$query= new Utilita_job;
-           $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
           
+          if($Request->file_id=='1'){
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+           }
+          elseif($Request->file_id=='2'){
+           $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+          }else{
+            return 'Sorry data not found';
+       //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+ 
+        }
+         
           
            //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
            if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
@@ -200,6 +210,10 @@ class UtilitaController extends Controller
             $abortedcategories =array();
             $abortedseries=[];
             foreach($result as $row){
+                if($Request->file_id=='1'){
+                    $row->appointment_time = date('A', strtotime($row->schedule_start_time));
+               
+                 }
                 if($row->job_status=='Completed'){
                     if(!in_array($row->engineer,$categories)){
                         array_push($categories,$row->engineer);
@@ -300,11 +314,13 @@ class UtilitaController extends Controller
                 $installnum['series'] = $series;
                 $installnum['engineer'] = $engineer;
             //aborted
+            
             $engineeram= array_keys($abortedseries[0]->data);
             $engineerpm= array_keys($abortedseries[1]->data);
+            
             $engineers = $array = array_unique(array_merge($engineeram, $engineerpm));
             $engineers = array_values($engineers);
-
+            
             foreach($engineers as $vl){
                 if (!array_key_exists($vl, $abortedseries[0]->data)) {
                     $abortedseries[0]->data[$vl]=0;
@@ -313,12 +329,13 @@ class UtilitaController extends Controller
                     $abortedseries[1]->data[$vl]=0;
                 }
             }
-
+            
             ksort($abortedseries[0]->data);
             $engineer= array_keys($abortedseries[0]->data);
             $abortedseries[0]->data= array_values($abortedseries[0]->data);
-            ksort($series[1]->data);
+            ksort($abortedseries[1]->data);
             $abortedseries[1]->data=array_values($abortedseries[1]->data);
+         //   dd($abortedseries);
             $abortedinstallnum['series'] = $abortedseries;
             $abortedinstallnum['engineer'] = $engineer;    
             return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum));  
@@ -373,8 +390,17 @@ class UtilitaController extends Controller
           $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $Request->end_date)));
         }
         //$query= new Utilita_job;
-         $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
         
+        if($Request->file_id=='1'){
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+           }
+          elseif($Request->file_id=='2'){
+           $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+          }else{
+            return 'Sorry data not found';
+       //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+ 
+        }
         
          if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
          if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }

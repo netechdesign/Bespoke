@@ -36303,7 +36303,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var AdminLayout = react_loadable__WEBPACK_IMPORTED_MODULE_2___default()({
   loader: function loader() {
-    return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(38), __webpack_require__.e(22), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
+    return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(11), __webpack_require__.e(22), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
   },
   loading: _layout_Loader__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
@@ -36600,7 +36600,7 @@ __webpack_require__.r(__webpack_exports__);
  // start job portal route
 
 var SignIn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8), __webpack_require__.e(7), __webpack_require__.e(11), __webpack_require__.e(38), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(11), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
 }); // End job portal route
 
 var Landing = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {

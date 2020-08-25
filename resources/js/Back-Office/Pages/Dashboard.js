@@ -75,7 +75,19 @@ class Dashboard extends React.Component {
                     statuslist={result}
                     />
                     )}
-                  
+                  <Col md={6} xl={8}></Col>
+                  </Row>
+                  <Row>
+                  <Col md={6} xl={8}>
+                        <Card>
+                            <Card.Header>
+                                <Card.Title as='h5'>Statistics</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
+                                <AmChartStatistics6 height='450px'/>
+                            </Card.Body>
+                        </Card>
+                    </Col>
                     
                </Row>
             </Aux>
