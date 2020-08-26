@@ -1,11 +1,13 @@
 import React from 'react';
-import {Row, Col, Card, Form, Button, InputGroup, FormControl, DropdownButton, Dropdown} from 'react-bootstrap';
+import {Row, Col, Card, Form, Button, InputGroup, FormControl, DropdownButton, Dropdown,Table} from 'react-bootstrap';
 import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
 import axios from 'axios'
 import {Importfile} from '../../HttpFunctions'; 
 import Aux from "../../hoc/_Aux";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
@@ -27,6 +29,9 @@ class Data_import extends React.Component {
         file_id:'',
         file_name:'',
         file_type:[{id:1,name:'Morrison Data services'},{id:2,name:'Utilita'},{id:3,name:'Vehical Mileage'}],
+        duplicateformSubmitting: true,
+        duplicatebuttonName:'Add',
+        duplicate_data:[{visible:'none'}],
         progress:0
     };
 
@@ -70,6 +75,72 @@ class Data_import extends React.Component {
      return true
     };
     
+    duplicateSubmit= (e, formData, inputs) => {
+        e.preventDefault();
+        const baseurl= window.location.origin;
+        
+        const MySwal = withReactContent(Swal);
+        MySwal.fire({
+            title: 'Are you sure?',
+            text: 'Do You want to add Duplicate Data?',
+            type: 'warning',
+            showCloseButton: true,
+            showCancelButton: true
+        }).then((willDelete) => {
+
+            if (willDelete.value) {
+                const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+                const baseurl= window.location.origin;
+                this.setState({duplicateformSubmitting:true});
+                this.setState({duplicatebuttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />sending</span>});
+                const data = new FormData()
+                var arr = $('.checkMe:checked').map(function(){
+                    return this.value;
+                }).get();
+                data.append('id', arr);
+                axios.post(
+                    baseurl+'/api/mds/duplicatestore',
+                    data,
+                    {
+                        headers:{'Authorization':'Bearer '+auth_token}
+                    } 
+                ).then(res =>{
+                                  if(res.data.success){
+                                    this.setState({duplicateformSubmitting:false});
+                                    this.setState({duplicatebuttonName:'Add'});
+                                    this.setState({duplicate_data:[{visible:'none'}]});
+
+                                    PNotify.success({
+                                        title: 'Success',
+                                        text: res.data.message,
+                                        modules: {
+                                            Desktop: {
+                                                desktop: true
+                                            }
+                                        }
+                                    }).on('click', function(e) {
+                                        
+                                    });
+                                  }
+                })
+                .catch(err =>{
+                    PNotify.error({
+                        title: "System Error",
+                        text:err,
+                    });
+                    this.setState({duplicateformSubmitting:false});
+                    this.setState({duplicatebuttonName:'Add'});
+                   
+                          console.log(err);
+                      });
+                
+            } else {
+                this.setState({duplicate_data:[{visible:'none'}]});
+               // return MySwal.fire('', 'Your imaginary file is safe!', 'error');
+            }
+        });
+        
+    }
     handleSubmit = (e, formData, inputs) => {
         e.preventDefault();
         const baseurl= window.location.origin;
@@ -94,7 +165,12 @@ class Data_import extends React.Component {
                              this.setState({formSubmitting:false});
                              this.setState({buttonName:'Import'});
                              this.setState({selectedFile:null});
-                            $('#avatar').val('');
+                             
+                             if(res.data.duplicate_data){
+                                    this.setState({duplicate_data:[{visible:'',data:res.data.duplicate_data}]});
+                                }
+                            
+                             $('#avatar').val('');
                             /*console.clear(); */
                             //this.setState({progress:100});
                             PNotify.success({
@@ -137,7 +213,25 @@ class Data_import extends React.Component {
 
         this.setState({ showModal: true });
     };
-
+    onChangeselectAll = (e) =>{
+        
+        $('.checkMe').attr('checked',e.target.checked);
+        if(e.target.checked){
+        this.setState({duplicateformSubmitting:false});
+        }else{
+            this.setState({duplicateformSubmitting:true});
+        }
+    }
+    onChangeselect = (e) => {
+        var arr = $('.checkMe:checked').map(function(){
+            return this.value;
+        }).get();
+        if(arr.length){
+            this.setState({duplicateformSubmitting:false});
+        }else{
+            this.setState({duplicateformSubmitting:true});
+        }
+    }
     render() {
         const { validated, validatedTooltip } = this.state;
        
@@ -196,9 +290,61 @@ class Data_import extends React.Component {
                              
                             </Card.Body>
                         </Card>
+
+                        <Card style={{ display: this.state.duplicate_data[0].visible }}>
+                            <Card.Header>
+                            
+                                <Card.Title as="h5">Duplicate Data</Card.Title>
+                                <span className="d-block m-t-5">{this.state.file_name}</span>
+                            </Card.Header>
+                            <Card.Body>
+                            <ValidationForm onSubmit={this.duplicateSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                                <Table striped responsive>
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                        <Checkbox name="check-me" label='' onChange={this.onChangeselectAll} id="check-me"  inline  />
+                                        </th>
+                                        <th>Engineer</th>
+                                        <th>Schedule Date</th>
+                                        <th>Customer Id</th>
+                                        <th>Job Id</th>
+                                        <th>Job Type</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {this.state.duplicate_data[0].data ?
+                                    this.state.duplicate_data[0].data.map((value,index)=>{
+                                       const vl= value.data;
+
+                                        return (<tr key={index} >
+                                            <th scope="row">
+                                            <Checkbox name="checkMe[]" label='' onChange={this.onChangeselect} class="checkMe"  id="check-me" defaultValue={value.id} inline  />
+                                            </th>
+                                            <td>{vl.engineer}</td>
+                                            <td>{vl.schedule_date}</td>
+                                            <td>{vl.customer_id}</td>
+                                            <td>{vl.job_id}</td>
+                                            <td>{vl.job_type}</td>
+                                        </tr>);
+                                    })
+                                    
+                                      :<tr><th scope="row">record not found</th></tr>   
+                                    }     
+                                    </tbody>
+                                </Table>
+                                <Form.Group as={Col} sm={12} className="mt-3">
+                                        <Button disabled={this.state.duplicateformSubmitting}  type="submit"> {this.state.duplicatebuttonName}</Button>
+
+                                        </Form.Group>
+                                </ValidationForm>
+                            </Card.Body>
+                        </Card>
+                   
                     </Col>
                     
                 </Row>
+                
             </Aux>
         );
     }

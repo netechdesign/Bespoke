@@ -581,13 +581,23 @@ class Saturday extends Controller
                 $engineer_total.=' Total';
                 if(!array_key_exists($vl->parent_engineer,$InDayInstalls0['df'])){
                 $ttl= $InDayInstalls['Aborts'][$vl->parent_engineer][$engineer_total] + $InDayInstalls['InstallsJob'][$vl->parent_engineer][$engineer_total]; 
-                 $InDayInstalls0['df'][$vl->parent_engineer] = round((($InDayInstalls['Dual'][$vl->parent_engineer][$engineer_total]+$InDayInstalls['Aborts_Fuels'][$vl->parent_engineer][$engineer_total])*100)/$ttl,2);
+                $sum= ($InDayInstalls['Dual'][$vl->parent_engineer][$engineer_total]+$InDayInstalls['Aborts_Fuels'][$vl->parent_engineer][$engineer_total])*100;
+                if($sum>0){
+                $InDayInstalls0['df'][$vl->parent_engineer] = round($sum/$ttl,2);
+                }else{
+                    $InDayInstalls0['df'][$vl->parent_engineer] = 0;
+                } 
                
                 }
                 
                 if(!array_key_exists($vl->region,$InDayInstalls0['df'])){
                     $ttl= $InDayInstalls0['df_Aborts'][$vl->region] + $InDayInstalls0['df_InstallsJob'][$vl->region]; 
-                    $InDayInstalls0['df'][$vl->region] = round((($InDayInstalls0['df_Dual'][$vl->region]+$InDayInstalls0['df_Aborts_Fuels'][$vl->region])*100)/$ttl,2);
+                    $sum= ($InDayInstalls0['df_Dual'][$vl->region]+$InDayInstalls0['df_Aborts_Fuels'][$vl->region])*100;;
+                    if($sum>0){
+                    $InDayInstalls0['df'][$vl->region] = round($sum/$ttl,2);
+                    }else{
+                        $InDayInstalls0['df'][$vl->region] = 0; 
+                    }
                     $df_total= + $InDayInstalls0['df'][$vl->parent_engineer];
                 }
                 //$df_region[$vl->region]

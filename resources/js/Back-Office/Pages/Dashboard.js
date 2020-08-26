@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
                     )}
                   <Col md={6} xl={8}></Col>
                   </Row>
-                  <Row>
+                {/*  <Row>
                   <Col md={6} xl={8}>
                         <Card>
                             <Card.Header>
@@ -90,6 +90,8 @@ class Dashboard extends React.Component {
                     </Col>
                     
                </Row>
+                */}
+
             </Aux>
         );
     }

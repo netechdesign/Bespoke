@@ -185,7 +185,7 @@ class UtilitaController extends Controller
           //$query= new Utilita_job;
           
           if($Request->file_id=='1'){
-            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
            }
           elseif($Request->file_id=='2'){
            $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
@@ -392,7 +392,7 @@ class UtilitaController extends Controller
         //$query= new Utilita_job;
         
         if($Request->file_id=='1'){
-            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
            }
           elseif($Request->file_id=='2'){
            $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');

@@ -13,6 +13,7 @@ use DB;
 use App\Models\Jobs;
 use App\Models\Utilita_job;
 use App\Models\Morrison_jobs;
+use App\Models\Engineers;
 use Illuminate\Support\Facades\Redirect;
 
 class MdsController extends Controller
@@ -110,9 +111,16 @@ class MdsController extends Controller
                          
                                 if (!empty($data)) {
                                     DB::table('sheets')->where('id', $insret_id)->update(['is_inserted' => 1]);
-                                return response()->json(array('success' => true,
-                                'message' => 'Data inserted successfully'
-                                ), 200);
+                                    $dup_data =  DB::table('sheet_dupdatas')->where('sheets_id',$insret_id)->where('file_id',$Request->file_id)->where('is_deleted',0);
+                                    $rs=''; 
+                                    if($dup_data->count()>0){
+                                        $rs =  $dup_data->get();
+                                        foreach($rs as $v){
+                                            $v->data = json_decode($v->data);
+                                        }    
+                                    }
+                                    
+                                return response()->json(array('success' => true,'message' => 'Data inserted successfully','duplicate_data'=>$rs), 200);
                                 } else {
                                 return response()->json(array('success' => false));
                                 }
@@ -139,7 +147,83 @@ class MdsController extends Controller
             }
            
     }
-
+    public function duplicatestore(Request $Request){
+        try {
+            if(isset($Request->id)){
+               $data = explode(',', $Request->id);
+               $ImportJobs =new ImportJobs();
+               foreach($data as $val){
+                $dup_data =  DB::table('sheet_dupdatas')->where('id',$val)->where('is_deleted',0)->first();
+                
+                if($dup_data->file_id==2){
+                    $row = json_decode($dup_data->data);
+                    
+                    if(isset($row->customer_id)){
+               
+                        $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $row->schedule_date)));
+                        
+                        $w = date("w", strtotime($schedule_date));
+                        $n= 7- $w;
+                        $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$n.' day'));
+                      //  $day_no = date("W", strtotime($schedule_date));
+                        $week_no = $ImportJobs->getWeeks($schedule_date, "sunday");
+                        $weekday = date('l',strtotime($schedule_date));
+                        $month = '01'.date('-M-y',strtotime($schedule_date));
+                        
+                        $cancelled_time =null;
+                        if($row->cancelled_time!=''){
+                           $cancelled_time = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->cancelled_time)));
+                        }
+                        
+                        
+                                if (Engineers::where('engineer_id', '=', $row->engineer_id)->count() ==0) {
+                                    
+                                        $engineers= new Engineers(["engineer_id" => $row->engineer_id,"engineer_name" => $row->engineer,'file_id'=>2]);
+                                        $engineers->save();
+                                }
+                                $user = JWTAuth::toUser($Request->input('token'));
+                                $savedt = new Utilita_job([
+                                                "sheets_id" =>$dup_data->sheets_id,
+                                                "month"=> $month,
+                                                "week_no"=>$week_no,
+                                                "week_day"=> $weekday,
+                                                "week_date"=>  $sunday_date,
+                                                "customer_id" => $row->customer_id,
+                                                "job_id" => $row->job_id,
+                                                "post_code" => $row->post_code,
+                                                "job_type" => $row->job_type,
+                                                "job_status" => $row->job_status,
+                                                "fault" => $row->fault,
+                                                "job_booked" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->job_booked))),
+                                                "appointment_time" => $row->appointment_time,
+                                                "schedule_start_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->schedule_start_time))),
+                                                "schedule_end_time" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->schedule_end_time))),
+                                                "on_site_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->on_site_time))),
+                                                "cancelled_by" => $row->cancelled_by,
+                                                "cancelled_time" => $cancelled_time,
+                                                "engineer_id" => $row->engineer_id,
+                                                "engineer" => $row->engineer,
+                                                "company_name" => $row->company_name,
+                                                "schedule_date" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->schedule_date))),
+                                                "region" => $row->region,
+                                                'created_by' => $user->id
+                                            ]);
+                                            $savedt->save();
+                                            DB::table('sheet_dupdatas')->where('id', $val)->update(['is_deleted' => 1]);
+                    }
+                }
+               }
+            return response()->json(array('success' => true,'message' => 'Data inserted successfully'), 200);
+            }else{
+                return response()->json(array('success' => false,'message'=> 'selected data not found')); 
+            }
+        }catch (\Exception $e) 
+        {
+            $message = $e->getMessage();
+           
+            return response()->json(array('success' => false,'message'=> $message));
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -199,7 +283,7 @@ class MdsController extends Controller
         }
         //$query= new Utilita_job;
         if($_REQUEST['file_id']=='1'){
-            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','Morrison_jobs.engineer_id');
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
            }
           elseif($_REQUEST['file_id']=='2'){
            $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
