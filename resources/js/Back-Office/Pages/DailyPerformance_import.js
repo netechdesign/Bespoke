@@ -154,7 +154,7 @@ class DailyPerformance_import extends React.Component {
                     <Col>
                         <Card>
                             <Card.Header>
-                                <Card.Title as="h5">DailyPerformance ADD</Card.Title>
+                                <Card.Title as="h5">ADD Daily Performance</Card.Title>
                             </Card.Header>
                             <Card.Body>
                             <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
