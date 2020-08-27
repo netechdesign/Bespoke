@@ -264,6 +264,9 @@ class UtilitaController extends Controller
 
             $abortedcategories =array();
             $abortedseries=[];
+            
+            $descriptioncategories =array();
+            $descriptionseries=[];
             foreach($result as $row){
                 if($Request->file_id=='1'){
                     $row->appointment_time = date('A', strtotime($row->schedule_start_time));
@@ -309,10 +312,8 @@ class UtilitaController extends Controller
                 
                 if($row->job_status=='Aborted'){
                     if(!in_array($row->engineer,$abortedcategories)){
-                       // array_push($abortedcategories,$row->engineer);
+                      
                     }
-
-                   // $searchedValue = $row->appointment_time;
                     $data=  array_filter(
                         $abortedseries,
                         function ($e) use ($row) {
@@ -339,11 +340,41 @@ class UtilitaController extends Controller
                         }else{
                             $object = new \stdClass();
                             $object->name = $row->appointment_time;
-                          //  $object->engineers[] = $row->engineer;
-                            
                             $object->data[$row->engineer]=1;
                             array_push($abortedseries,$object);
+                            
                         }
+
+                            $descriptiondata=  array_filter(
+                                $descriptionseries,
+                                function ($e) use ($row) {
+                                    return ($e->name == $row->appointment_time);
+                                });
+                         
+                                if($descriptiondata){
+                                    
+                                    if(isset($descriptiondata[0]->data)){
+                                        if(isset($descriptiondata[0]->data[$row->description])){
+                                        $descriptiondata[0]->data[$row->description]=$descriptiondata[0]->data[$row->description] +1;
+                                        }else{
+                                            $descriptiondata[0]->data[$row->description] = 1;
+                                        }
+                                    }
+                                    if(isset($descriptiondata[1]->data)){
+                                        if(isset($descriptiondata[1]->data[$row->description])){
+                                        $descriptiondata[1]->data[$row->description]=$descriptiondata[1]->data[$row->description] +1;
+                                        }else{
+                                            $descriptiondata[1]->data[$row->description] = 1;
+                                        }
+                                    }
+        
+                                }else{
+                                    $object = new \stdClass();
+                                    $object->name = $row->appointment_time;
+                                    $object->data[$row->description]=1;
+                                    array_push($descriptionseries,$object);
+        
+                                }
                 }
                 
             }
@@ -393,7 +424,35 @@ class UtilitaController extends Controller
          //   dd($abortedseries);
             $abortedinstallnum['series'] = $abortedseries;
             $abortedinstallnum['engineer'] = $engineer;    
-            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum));  
+            
+        //descriptiondata
+        $descriptionam= array_keys($descriptionseries[0]->data);
+        $descriptionpm= array_keys($descriptionseries[1]->data);
+        
+        $descriptions = $array = array_unique(array_merge($descriptionam, $descriptionpm));
+        $descriptions = array_values($descriptions);
+        
+        foreach($descriptions as $vl){
+            if (!array_key_exists($vl, $descriptionseries[0]->data)) {
+                $descriptionseries[0]->data[$vl]=0;
+            }
+            if (!array_key_exists($vl, $descriptionseries[1]->data)) {
+                $descriptionseries[1]->data[$vl]=0;
+            }
+        }
+        
+        ksort($descriptionseries[0]->data);
+        $description= array_keys($descriptionseries[0]->data);
+        $descriptionseries[0]->data= array_values($descriptionseries[0]->data);
+        ksort($descriptionseries[1]->data);
+        $descriptionseries[1]->data=array_values($descriptionseries[1]->data);
+       
+        $descriptioninstallnum['series'] = $descriptionseries;
+        $descriptioninstallnum['description'] = $description;    
+        
+         
+
+            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum,'total_description'=>$descriptioninstallnum));  
           }
          
            return response()->json(array('success' => false,'message'=> 'data not found'));  

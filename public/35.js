@@ -238,6 +238,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           abortedBar.render();
         });
       } else if (reportType == 2) {
+        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
           headers: {
             'Accept': 'application/json',
@@ -245,10 +246,12 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           }
         }).then(function (res) {
           // let data = JSON.parse(res.data); 
+          document.getElementById("requestLoder").innerHTML = '';
           var result = res.data.complate; //series
 
           var options = {
             series: result['series'],
+            colors: ['#0d74bc', '#d8cb1b'],
             chart: {
               type: 'bar',
               height: 500,
@@ -308,6 +311,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
 
           var options = {
             series: abortedrs['series'],
+            colors: ['#0d74bc', '#d8cb1b'],
             chart: {
               type: 'bar',
               height: 500,
@@ -326,7 +330,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               text: 'Install Numbers'
             },
             subtitle: {
-              text: 'aborted',
+              text: 'Aborted',
               align: 'left'
             },
             xaxis: {
@@ -362,7 +366,69 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
             }
           };
           var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render();
+          abortedBar.render(); //Description chart reports
+
+          var descriptionBar = res.data.total_description;
+          var options = {
+            series: descriptionBar['series'],
+            colors: ['#0d74bc', '#d8cb1b'],
+            chart: {
+              type: 'bar',
+              height: 500,
+              stacked: true
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true
+              }
+            },
+            stroke: {
+              width: 1,
+              colors: ['#fff']
+            },
+            title: {
+              text: 'Aborts-reason'
+            },
+            subtitle: {
+              text: _this2.state.start_date + ' to ' + _this2.state.end_date,
+              align: 'left'
+            },
+            xaxis: {
+              categories: descriptionBar['description'],
+              labels: {
+                formatter: function formatter(val) {
+                  return val + "";
+                }
+              },
+              title: {
+                text: 'Value'
+              }
+            },
+            yaxis: {
+              title: {
+                text: 'Description',
+                align: 'left',
+                margin: 10
+              }
+            },
+            tooltip: {
+              y: {
+                formatter: function formatter(val) {
+                  return val + "";
+                }
+              }
+            },
+            fill: {
+              opacity: 1
+            },
+            legend: {
+              position: 'top',
+              horizontalAlign: 'left',
+              offsetX: 40
+            }
+          };
+          var descriptions = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#descriptionBar"), options);
+          descriptions.render();
         });
       } else if (reportType == 3) {
         var driver_name = [];
@@ -520,6 +586,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "abortedBar"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "descriptionBar"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "StackedBar"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
