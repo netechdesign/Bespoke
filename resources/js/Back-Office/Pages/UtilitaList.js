@@ -124,12 +124,12 @@ class UtilitaList extends React.Component {
 
                                 <Form.Group as={Col} md="2">
                                     <Form.Label htmlFor="start_date">Start Date</Form.Label>
-                                    <Datetime onChange={this.startDateChange}  dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()} errorMessage={{required:"start_date is required"}}  inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                    <Datetime closeOnSelect="true" onChange={this.startDateChange}  dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()} errorMessage={{required:"start_date is required"}}  inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />
                                 </Form.Group>
                                 
                                 <Form.Group as={Col} md="2">
                                     <Form.Label htmlFor="end_date">End Date</Form.Label>
-                                    <Datetime dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()}  errorMessage={{required:"end_date is required"}} onChange={this.endDateChange} inputProps={{required:'required',name:"end_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                    <Datetime closeOnSelect="true" dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()}  errorMessage={{required:"end_date is required"}} onChange={this.endDateChange} inputProps={{required:'required',name:"end_date",placeholder: 'Select Date',autoComplete:'off'}} />
                                 </Form.Group>
                                 <Form.Group as={Col} md="8">
                                     
