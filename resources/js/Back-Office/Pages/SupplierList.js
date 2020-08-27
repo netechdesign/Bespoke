@@ -134,9 +134,12 @@ oTable = $(tableResponsive).DataTable({
               
                 var view_buttons ='';
                 var delete_buttons ='';
-              //  view_buttons = '<a href="javascript:;"  target data-id="'+row.id+'" data-fileid="'+row.file_id+'"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
+                if(row.file_id==2){
+                view_buttons = '<a href="javascript:;"  target data-id="'+row.id+'" data-fileid="'+row.file_id+'"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
+                }
                  delete_buttons = '<button type="button" data-id="'+row.id+'" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
                 return [
+                    view_buttons,
                     delete_buttons,
                 ].join('');
                
@@ -186,10 +189,10 @@ class SupplierList extends React.Component {
             var id =  $(this).attr('data-id');
             var supplier =  $(this).attr('data-fileid');
              // var data = oTable.row( this ).data();
-              if(supplier==1){
-                self.props.history.push('list/morrison/'+id);
-              }else if(supplier==2){
-                self.props.history.push('list/utilita/'+id);
+              if(supplier==2){
+               
+                self.props.history.push('dailyperformance/'+id);
+                //self.props.history.push('/dailyperformance?sheet_id='+id+'&file_id='+supplier);
               }
               
           } );    

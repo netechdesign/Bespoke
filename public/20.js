@@ -636,7 +636,7 @@ __webpack_require__.r(__webpack_exports__);
       icon: 'feather icon-layers'
     }, {
       id: 'SiteEngineer',
-      title: 'Engineer',
+      title: 'Area Manager',
       type: 'item',
       classes: 'nav-item',
       url: '/siteengineer',

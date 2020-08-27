@@ -31,6 +31,12 @@ class utilita_job extends Model
     'company_name',
     'schedule_date',
     'region',
+    'is_daily_per_add',
+    'to_char',
+    'appoinment_type',
+    'description',
+    'engineer_comments',
+    'time_slot',
     'created_by'];
 
 }

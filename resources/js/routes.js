@@ -14,6 +14,7 @@ const DashboardProject = React.lazy(() => import('./Demo/Dashboard/Project'));
 
 
 const DataImport = React.lazy(() => import('./Back-office/Pages/Data_import'));
+const DailyPerformance_import = React.lazy(() => import('./Back-office/Pages/DailyPerformance_import'));
 const SupplierList = React.lazy(() => import('./Back-Office/Pages/SupplierList'));
 const MorrisonList = React.lazy(() => import('./Back-Office/Pages/MorrisonList'));
 const UtilitaList = React.lazy(() => import('./Back-Office/Pages/UtilitaList'));
@@ -25,6 +26,7 @@ const SiteEngineer = React.lazy(() => import('./Back-Office/Pages/SiteEngineer')
 const FormsSelect = React.lazy(() => import('./Demo/Forms/FormsSelect'));
 const routes = [
     { path: '/dataimport', exact: true, name: 'DataImport', component: DataImport },
+    { path: '/dailyperformance/:sheet_id', exact: true, name: 'DataImport', component: DailyPerformance_import },
     { path: '/list', exact: true, name: 'SupplierList', component: SupplierList },
     { path: '/list/morrison', exact: true, name: 'MorrisonList', component: MorrisonList },
     { path: '/list/morrison/:id', exact: true, name: 'MorrisonList', component: MorrisonList },
@@ -33,7 +35,7 @@ const routes = [
     { path: '/utilitachart', exact: true, name: 'UtilitaChart', component: UtilitaChart },
     { path: '/utilitaview', exact: true, name: 'UtilitaView', component: UtilitaView },
     { path: '/report', exact: true, name: 'UtilitaList', component: UtilitaList },
-
+    
     { path: '/siteengineer', exact: true, name: 'SiteEngineer', component: SiteEngineer },
    
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },

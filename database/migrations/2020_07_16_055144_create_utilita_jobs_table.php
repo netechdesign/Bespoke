@@ -38,6 +38,12 @@ class CreateUtilitaJobsTable extends Migration
             $table->string('company_name')->nullable();	
             $table->dateTime('schedule_date')->nullable();	
             $table->string('region')->nullable();
+            $table->integer('is_daily_per_add')->default('0')->comment('1= Daily Performance Report added');
+            $table->string('to_char')->nullable();
+            $table->string('appoinment_type')->nullable();
+            $table->text('description')->nullable();
+            $table->longText('engineer_comments')->nullable();
+            $table->string('time_slot')->nullable();
             $table->integer('created_by');
             $table->timestamps();
         });

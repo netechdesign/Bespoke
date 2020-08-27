@@ -37,6 +37,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         
         Route::post('mds/duplicatestore', 'MdsController@duplicatestore');
         Route::post('utilita/view', 'UtilitaController@view');
+        Route::post('utilita/DailyPerformance', 'UtilitaController@DailyPerformance');
+        
         Route::post('jobstatus', 'DashboardController@jobStatus');
         
         

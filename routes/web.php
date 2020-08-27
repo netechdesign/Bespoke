@@ -30,6 +30,9 @@ Route::group(array('prefix' => '/'), function() {
       return view('welcome');
    }); 
    
+   Route::get('/dailyperformance/{id}', function(){
+      return view('welcome');
+   });
    Route::get('/list', function(){
       return view('welcome');
    }); 

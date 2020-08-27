@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Input;
 use Excel;
-
+use App\Imports\ImportJobs;
 use DB;
 use App\Models\utilita_job;
 use App\Models\Morrison_jobs;
@@ -156,7 +156,62 @@ class UtilitaController extends Controller
             }
            
     }
+    
+    public function DailyPerformance(Request $Request)
+    {
+       
+       try {
+          
+                   // $validatedData = $Request->validate(['file' => 'mimes:csv|required']);
 
+                   
+                   $user = JWTAuth::toUser($Request->input('token'));
+                   
+                   $Request->request->add(['created_by'=> $user->id]);
+                   
+                   
+                    //$file_path = $Request->file->store('documents', 'public');
+
+                    $file_path = 1;
+                    
+                    if($file_path){          
+                            $file_name = $Request->file('file')->getClientOriginalName();
+                           //$insret_id = DB::table('sheets')->insertGetId(['file_id' =>$Request->file_id,'file_name' => $file_name, 'file_path' => $file_path]);
+                           
+                          
+                           $data =  Excel::import(new ImportJobs, request()->file('file'));
+                         
+                                if (!empty($data)) {
+                                   
+                                return response()->json(array('success' => true,
+                                'message' => 'Data inserted successfully'
+                                ), 200);
+                                } else {
+                                return response()->json(array('success' => false));
+                                }
+                            }
+                            else{
+                                    return response()->json(array('success' => false));
+                            }
+                         
+                         
+                            
+                         
+            }catch (\Exception $e) 
+            {
+               $sheets_id = request()->sheets_id;
+               DB::table('sheets')->where('id', $sheets_id)->delete();
+               DB::table('jobs')->where('sheets_id', $sheets_id)->delete();
+               $message = $e->getMessage();
+               
+               $text = strstr($message, ':', true);
+               if($text=='Undefined index'){
+                $message = 'Sorry '.strstr($message, ':').' title not match in file';
+               }
+                return response()->json(array('success' => false,'message'=> $message));
+            }
+           
+    }
     /**
      * Display the specified resource.
      *

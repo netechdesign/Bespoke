@@ -9,6 +9,7 @@ use App\Models\SheetDupdatas;
 use App\Models\Engineers;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use DB;
 class ImportJobs implements ToModel, WithHeadingRow
 {
    
@@ -169,7 +170,39 @@ class ImportJobs implements ToModel, WithHeadingRow
                         'created_by' => request()->created_by
                     ]);
             }
-        } else if(request()->file_id==3){
+
+        }
+        else if(request()->file_id==4){
+            $sheets_id = request()->sheet_id;
+            $job_id = $row['job_id'];
+           $schedule_date = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_date'])));
+        
+           $update =Utilita_job::where('schedule_date', $schedule_date)->where('is_daily_per_add',0)->where('sheets_id', $sheets_id)->where('job_id', $job_id)->first();
+           if($update){ 
+            $update->appoinment_type = $row['appointment_type'];
+            $update->description = $row['description'];	
+            $update->engineer_comments = $row['engineer_comments'];
+            $update->time_slot = $row['time_slot'];
+            $update->to_char = $row['to_charwaldate_of_actionhh24miss'];
+            $update->is_daily_per_add=1;
+            $update->save();
+           }
+    //--
+    /*
+           DB::table('utilita_jobs')
+              ->where('schedule_date', $schedule_date)
+              ->where('sheets_id', $sheets_id)
+              ->where('job_id', $job_id)
+              ->update(['to_char' => $row['to_charwaldate_of_actionhh24miss'],
+              'appoinment_type' => $row['appointment_type'],
+              'description' => $row['description'],	
+              'engineer_comments' => $row['engineer_comments'],
+              'time_slot' => $row['time_slot'],
+              'is_daily_per_add'=>1           
+              ]);
+         */   
+        }
+        else if(request()->file_id==3){
            
             return new Vehicle_mileas([
                 'sheets_id' =>request()->sheets_id,

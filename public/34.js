@@ -183,10 +183,14 @@ function atable() {
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
       var view_buttons = '';
-      var delete_buttons = ''; //  view_buttons = '<a href="javascript:;"  target data-id="'+row.id+'" data-fileid="'+row.file_id+'"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
+      var delete_buttons = '';
+
+      if (row.file_id == 2) {
+        view_buttons = '<a href="javascript:;"  target data-id="' + row.id + '" data-fileid="' + row.file_id + '"  class="viewfile btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-folder"></i></a>';
+      }
 
       delete_buttons = '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
-      return [delete_buttons].join('');
+      return [view_buttons, delete_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_8___default()('#data-table-responsive th#action').index(),
     "orderable": false,
@@ -238,10 +242,8 @@ var SupplierList = /*#__PURE__*/function (_React$Component) {
         var id = jquery__WEBPACK_IMPORTED_MODULE_8___default()(this).attr('data-id');
         var supplier = jquery__WEBPACK_IMPORTED_MODULE_8___default()(this).attr('data-fileid'); // var data = oTable.row( this ).data();
 
-        if (supplier == 1) {
-          self.props.history.push('list/morrison/' + id);
-        } else if (supplier == 2) {
-          self.props.history.push('list/utilita/' + id);
+        if (supplier == 2) {
+          self.props.history.push('dailyperformance/' + id); //self.props.history.push('/dailyperformance?sheet_id='+id+'&file_id='+supplier);
         }
       });
       jquery__WEBPACK_IMPORTED_MODULE_8___default()('#data-table-responsive tbody').on('click', '.deletefile', function () {
