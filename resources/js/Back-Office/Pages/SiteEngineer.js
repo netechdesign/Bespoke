@@ -62,7 +62,7 @@ oTable = $(tableResponsive).DataTable({
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin+'/api/engineer/1',
+    "sAjaxSource": window.location.origin+'/api/areamanager/1',
     'bPaginate': true,
     "fnServerParams": function (aoData) {
 
@@ -184,7 +184,7 @@ class SiteEngineer extends React.Component {
            
     componentDidMount() {
         var items  = [];
-      axios.get(baseurl+'/api/engineer',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+      axios.get(baseurl+'/api/areamanager',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
             
             this.setState({Engineers:res.data}); 
             }); 
@@ -205,7 +205,7 @@ class SiteEngineer extends React.Component {
                         const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
                         const baseurl= window.location.origin;
                         axios.post(
-                            baseurl+'/api/engineer/'+id,{_method: 'delete'},
+                            baseurl+'/api/areamanager/'+id,{_method: 'delete'},
                             {
                                 headers:{'Authorization':'Bearer '+auth_token}
                             } 
@@ -246,7 +246,7 @@ class SiteEngineer extends React.Component {
         
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         axios.post(
-            baseurl+'/api/engineer',
+            baseurl+'/api/areamanager',
             data,
             {
                 headers:{'Authorization':'Bearer '+auth_token}

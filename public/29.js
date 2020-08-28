@@ -133,7 +133,7 @@ function atable() {
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin + '/api/engineer/1'
+    "sAjaxSource": window.location.origin + '/api/areamanager/1'
   }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
     var acolumns = this.fnSettings().aoColumns,
         columns = [];
@@ -275,7 +275,7 @@ var SiteEngineer = /*#__PURE__*/function (_React$Component) {
           id = _ref2.id,
           auth_token = _ref2.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/engineer', data, {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/areamanager', data, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -373,7 +373,7 @@ var SiteEngineer = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var items = [];
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/engineer', {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/areamanager', {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -399,7 +399,7 @@ var SiteEngineer = /*#__PURE__*/function (_React$Component) {
                 _auth_token = _ref3.auth_token;
 
             var _baseurl = window.location.origin;
-            axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/engineer/' + id, {
+            axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/areamanager/' + id, {
               _method: 'delete'
             }, {
               headers: {
