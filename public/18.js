@@ -1241,7 +1241,14 @@ __webpack_require__.r(__webpack_exports__);
       type: 'item',
       classes: 'nav-item',
       url: '/siteengineer',
-      icon: 'feather icon-user-plus'
+      icon: 'feather icon-users'
+    }, {
+      id: 'Engineer',
+      title: 'Engineer',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/Engineer',
+      icon: 'feather icon-user'
     }, {
       id: 'Report',
       title: 'Report',

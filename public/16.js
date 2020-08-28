@@ -3504,7 +3504,14 @@ __webpack_require__.r(__webpack_exports__);
       type: 'item',
       classes: 'nav-item',
       url: '/siteengineer',
-      icon: 'feather icon-user-plus'
+      icon: 'feather icon-users'
+    }, {
+      id: 'Engineer',
+      title: 'Engineer',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/Engineer',
+      icon: 'feather icon-user'
     }, {
       id: 'Report',
       title: 'Report',
@@ -3578,6 +3585,9 @@ var UtilitaView = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy
 var SiteEngineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(39), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(12), __webpack_require__.e(44), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SiteEngineer */ "./resources/js/Back-Office/Pages/SiteEngineer.js"));
 });
+var Engineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(39), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(12), __webpack_require__.e(44), __webpack_require__.e(2), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Engineer */ "./resources/js/Back-Office/Pages/Engineer.js"));
+});
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(17), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./Demo/Forms/FormsSelect */ "./resources/js/Demo/Forms/FormsSelect.js"));
 });
@@ -3636,6 +3646,11 @@ var routes = [{
   exact: true,
   name: 'SiteEngineer',
   component: SiteEngineer
+}, {
+  path: '/engineer',
+  exact: true,
+  name: 'Engineer',
+  component: Engineer
 }, {
   path: '/forms/form-select',
   exact: true,

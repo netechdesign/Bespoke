@@ -22,6 +22,7 @@ const UtilitaChart = React.lazy(() => import('./Back-Office/Pages/UtilitaChart')
 const UtilitaView = React.lazy(() => import('./Back-Office/Pages/UtilitaView'));
 
 const SiteEngineer = React.lazy(() => import('./Back-Office/Pages/SiteEngineer'));
+const Engineer = React.lazy(() => import('./Back-Office/Pages/Engineer'));
 
 const FormsSelect = React.lazy(() => import('./Demo/Forms/FormsSelect'));
 const routes = [
@@ -35,9 +36,8 @@ const routes = [
     { path: '/utilitachart', exact: true, name: 'UtilitaChart', component: UtilitaChart },
     { path: '/utilitaview', exact: true, name: 'UtilitaView', component: UtilitaView },
     { path: '/report', exact: true, name: 'UtilitaList', component: UtilitaList },
-    
     { path: '/siteengineer', exact: true, name: 'SiteEngineer', component: SiteEngineer },
-   
+    { path: '/engineer', exact: true, name: 'Engineer', component: Engineer },
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
 
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },
