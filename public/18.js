@@ -1255,7 +1255,7 @@ __webpack_require__.r(__webpack_exports__);
       type: 'item',
       classes: 'nav-item',
       url: '/report',
-      icon: 'feather icon-layers'
+      icon: 'feather icon-file-text'
     }]
   }]
 });
