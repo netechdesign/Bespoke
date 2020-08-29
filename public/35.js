@@ -290,11 +290,21 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               }
             },
             tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
+              custom: function custom(_ref2) {
+                var series = _ref2.series,
+                    seriesIndex = _ref2.seriesIndex,
+                    dataPointIndex = _ref2.dataPointIndex,
+                    w = _ref2.w;
+                return '<div  style="width:100" class="arrow_box">' + "<span>" + w.globals.labels[dataPointIndex] + ": " + series[seriesIndex][dataPointIndex] + "</span>" + "</div>";
               }
+              /*
+              y: {
+                 formatter: function (val) {
+                   return val + ""
+                 }
+               }
+               */
+
             },
             fill: {
               opacity: 1
@@ -507,10 +517,10 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 align: 'left'
               },
               fill: {
-                colors: [function (_ref2) {
-                  var value = _ref2.value,
-                      seriesIndex = _ref2.seriesIndex,
-                      w = _ref2.w;
+                colors: [function (_ref3) {
+                  var value = _ref3.value,
+                      seriesIndex = _ref3.seriesIndex,
+                      w = _ref3.w;
 
                   if (value > 70) {
                     return '#FF0000';

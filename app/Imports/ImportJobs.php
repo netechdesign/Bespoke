@@ -10,7 +10,37 @@ use App\Models\Engineers;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use DB;
-class ImportJobs implements ToModel, WithHeadingRow
+
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
+use Maatwebsite\Excel\Concerns\WithConditionalSheets;
+
+class ImportJobs implements WithMultipleSheets 
+{
+   
+
+    public function sheets(): array
+    {
+        if(request()->file_id==1){
+        return [
+            'DataDropVolume' => new FirstSheetImport(),
+           ];
+        }else if(request()->file_id==2){
+            return [
+                'Bespoke Engineer Jobs Last Week' => new FirstSheetImport(),
+               ];
+        }
+        else if(request()->file_id==3){
+        }
+        else if(request()->file_id==4){
+            return [
+                'last week' => new FirstSheetImport(),
+               ];
+        }
+
+    }
+}
+
+class FirstSheetImport implements ToModel, WithHeadingRow
 {
    
        /**
@@ -51,8 +81,8 @@ class ImportJobs implements ToModel, WithHeadingRow
             'file_name' =>request()->file_name,
             'month'=> $row['month'],
             'week_day'=> trim($row['weekday']),
-            'week_date'=>  date('Y-m-d', strtotime(str_replace('/', '-', $row['we']))),
-            'schedule_date'=> date('Y-m-d', strtotime(str_replace('/', '-', $row['date']))),
+            'week_date'=>  date('Y-m-d', strtotime(str_replace('/', '-', $this->transformDate($row['we'])))),
+            'schedule_date'=> date('Y-m-d', strtotime(str_replace('/', '-', $this->transformDate($row['date'])))),
             'schedule_start_time'=> $row['start_time'],
             'schedule_end_time'=> $row['end_time'],
             'time_difference'=> $row['time_difference'],
@@ -93,8 +123,9 @@ class ImportJobs implements ToModel, WithHeadingRow
     }else if(request()->file_id==2){
             
             if(isset($row['customer_id'])){
-               
-                $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $row['schedule_date'])));
+                $schedule_date_fm = $this->transformDate($row['schedule_date']);
+                $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $schedule_date_fm)));
+                
                 
                 $w = date("w", strtotime($schedule_date));
                 $n= 7- $w;
@@ -106,7 +137,9 @@ class ImportJobs implements ToModel, WithHeadingRow
                 
                 $cancelled_time =null;
                 if($row['cancelled_time']!=''){
-                   $cancelled_time = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['cancelled_time'])));
+                    $cancelled_time = $this->transformDate($row['cancelled_time']);
+                   $cancelled_time = date('Y-m-d H:i', strtotime(str_replace('/', '-', $cancelled_time)));
+                   
                 }
                 //check already exist record 
                 $alreadyExist= Utilita_job::where('week_no',$week_no)->where('job_id',$row['job_id'])->where('customer_id',$row['customer_id'])->where('schedule_date',$schedule_date)->count();
@@ -135,17 +168,17 @@ class ImportJobs implements ToModel, WithHeadingRow
                                         "job_type" => $row['job_type'],
                                         "job_status" => $row['job_status'],
                                         "fault" => $row['fault'],
-                                        "job_booked" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['job_booked']))),
+                                        "job_booked" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['job_booked'])))),
                                         "appointment_time" => $row['appointment_time'],
-                                        "schedule_start_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_start_time']))),
-                                        "schedule_end_time" =>date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_end_time']))),
-                                        "on_site_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['on_site_time']))),
+                                        "schedule_start_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['schedule_start_time'])))),
+                                        "schedule_end_time" =>date('Y-m-d H:i', strtotime(str_replace('/', '-',$this->transformDate($row['schedule_end_time'])))),
+                                        "on_site_time" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['on_site_time'])))),
                                         "cancelled_by" => $row['cancelled_by'],
                                         "cancelled_time" => $cancelled_time,
                                         "engineer_id" => $row['engineer_id'],
                                         "engineer" => $row['engineer'],
                                         "company_name" => $row['company_name'],
-                                        "schedule_date" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_date']))),
+                                        "schedule_date" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $schedule_date_fm))),
                                         "region" => $row['region'],
                                         'created_by' => request()->created_by
                                     ]);
@@ -173,10 +206,13 @@ class ImportJobs implements ToModel, WithHeadingRow
 
         }
         else if(request()->file_id==4){
+           
             $sheets_id = request()->sheet_id;
             $job_id = $row['job_id'];
-           $schedule_date = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row['schedule_date'])));
-        
+            
+            $schedule_date_fm = $this->transformDate($row['schedule_date']);
+            $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $schedule_date_fm)));
+            
            $update =Utilita_job::where('schedule_date', $schedule_date)->where('is_daily_per_add',0)->where('sheets_id', $sheets_id)->where('job_id', $job_id)->first();
            if($update){ 
             $update->appoinment_type = $row['appointment_type'];
@@ -252,5 +288,13 @@ class ImportJobs implements ToModel, WithHeadingRow
 
         return $weeks;
     }
+    public function transformDate($value, $format = 'Y-m-d')
+{
+    try {
+        return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+    } catch (\ErrorException $e) {
+        return \Carbon\Carbon::createFromFormat($format, $value);
+    }
+}
     
 }

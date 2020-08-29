@@ -208,11 +208,25 @@ let result = res.data.complate;
              },
            },
            tooltip: {
-             y: {
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+              return (
+                '<div  style="width:100" class="arrow_box">' +
+                "<span>" +
+                w.globals.labels[dataPointIndex] +
+                ": " +
+                series[seriesIndex][dataPointIndex] +
+                "</span>" +
+                "</div>"
+                
+              );
+            } 
+            /*
+            y: {
                formatter: function (val) {
                  return val + ""
                }
              }
+             */
            },
            fill: {
              opacity: 1

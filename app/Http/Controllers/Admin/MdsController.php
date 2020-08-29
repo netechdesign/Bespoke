@@ -107,6 +107,7 @@ class MdsController extends Controller
                             $file_name = $Request->file('file')->getClientOriginalName();
                            $insret_id = DB::table('sheets')->insertGetId(['file_id' =>$Request->file_id,'file_name' => $file_name, 'file_path' => $file_path]);
                            $Request->request->add(['sheets_id'=> $insret_id]);
+                           
                            $data =  Excel::import(new ImportJobs, request()->file('file'));
                          
                                 if (!empty($data)) {
