@@ -27,9 +27,12 @@ class ImportJobs implements WithMultipleSheets
         }else if(request()->file_id==2){
             return [
                 'Bespoke Engineer Jobs Last Week' => new FirstSheetImport(),
-               ];
+                ];
         }
         else if(request()->file_id==3){
+            return [
+                0 => new FirstSheetImport(),
+               ];
         }
         else if(request()->file_id==4){
             return [
@@ -184,6 +187,7 @@ class FirstSheetImport implements ToModel, WithHeadingRow
                                     ]);
                      }
             }else{
+                
                 // old data file
                     return new Jobs([
                         'sheets_id' =>request()->sheets_id,
@@ -213,7 +217,8 @@ class FirstSheetImport implements ToModel, WithHeadingRow
             $schedule_date_fm = $this->transformDate($row['schedule_date']);
             $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $schedule_date_fm)));
             
-           $update =Utilita_job::where('schedule_date', $schedule_date)->where('is_daily_per_add',0)->where('sheets_id', $sheets_id)->where('job_id', $job_id)->first();
+          // $update =Utilita_job::where('schedule_date', $schedule_date)->where('is_daily_per_add',0)->where('sheets_id', $sheets_id)->where('job_id', $job_id)->first();
+          $update =Utilita_job::where('schedule_date', $schedule_date)->where('is_daily_per_add',0)->where('job_id', $job_id)->first();
            if($update){ 
             $update->appoinment_type = $row['appointment_type'];
             $update->description = $row['description'];	

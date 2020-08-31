@@ -105,9 +105,11 @@ class MdsController extends Controller
                     
                     if($file_path){          
                             $file_name = $Request->file('file')->getClientOriginalName();
+                            $insret_id=0;
+                            if($Request->file_id!=4){
                            $insret_id = DB::table('sheets')->insertGetId(['file_id' =>$Request->file_id,'file_name' => $file_name, 'file_path' => $file_path]);
                            $Request->request->add(['sheets_id'=> $insret_id]);
-                           
+                            }
                            $data =  Excel::import(new ImportJobs, request()->file('file'));
                          
                                 if (!empty($data)) {
@@ -152,7 +154,7 @@ class MdsController extends Controller
         try {
             if(isset($Request->id)){
                $data = explode(',', $Request->id);
-               $ImportJobs =new ImportJobs();
+               
                foreach($data as $val){
                 $dup_data =  DB::table('sheet_dupdatas')->where('id',$val)->where('is_deleted',0)->first();
                 
@@ -167,7 +169,7 @@ class MdsController extends Controller
                         $n= 7- $w;
                         $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$n.' day'));
                       //  $day_no = date("W", strtotime($schedule_date));
-                        $week_no = $ImportJobs->getWeeks($schedule_date, "sunday");
+                        $week_no = $this->getWeeks($schedule_date, "sunday");
                         $weekday = date('l',strtotime($schedule_date));
                         $month = '01'.date('-M-y',strtotime($schedule_date));
                         
@@ -306,5 +308,29 @@ class MdsController extends Controller
         return Redirect::back()->withErrors(['msg', 'Records not found']);
 
        }
+    }
+
+    public function getWeeks($date, $rollover)
+    {
+        $cut = substr($date, 0, 8);
+        $daylen = 86400;
+
+        $timestamp = strtotime($date);
+        $first = strtotime($cut . "00");
+        $elapsed = ($timestamp - $first) / $daylen;
+
+        $weeks = 1;
+
+        for ($i = 1; $i <= $elapsed; $i++)
+        {
+            $dayfind = $cut . (strlen($i) < 2 ? '0' . $i : $i);
+            $daytimestamp = strtotime($dayfind);
+
+            $day = strtolower(date("l", $daytimestamp));
+
+            if($day == strtolower($rollover))  $weeks ++;
+        }
+
+        return $weeks;
     }
 }

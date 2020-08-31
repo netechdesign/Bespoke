@@ -32,10 +32,17 @@ class Data_import extends React.Component {
         duplicateformSubmitting: true,
         duplicatebuttonName:'Add',
         duplicate_data:[{visible:'none'}],
-        progress:0
+        progress:0,
+        Daily_Performance:false,
+        Daily_PerformanceHide:'none'
     };
 
-    
+    Daily_PerformanceChange = (e, value) => {
+        this.setState({
+            [e.target.name]: value
+        })
+    };
+
     handleChange = (e) => {
         this.setState({progress:0});
         this.state.file_type.filter((val,index)=>{
@@ -46,6 +53,12 @@ class Data_import extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+
+        if(e.target.value==2){
+            this.setState({Daily_PerformanceHide:''});
+        }else{
+            this.setState({Daily_PerformanceHide:'none'});
+        }
     };
     onChangeHandler=event=>{
         var file = event.target.files[0];
@@ -146,10 +159,17 @@ class Data_import extends React.Component {
         const baseurl= window.location.origin;
         this.setState({formSubmitting:true});
         this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />sending</span>});
+    
         const data = new FormData()
         data.append('file', this.state.selectedFile);
-        data.append('file_id', this.state.file_id);
+       
         data.append('file_name', this.state.file_name);
+        
+        if(this.state.Daily_Performance){
+            data.append('file_id', 4);
+           }else{
+            data.append('file_id', this.state.file_id);
+           }
         
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         axios.post(
@@ -222,6 +242,7 @@ class Data_import extends React.Component {
             this.setState({duplicateformSubmitting:true});
         }
     }
+    
     onChangeselect = (e) => {
         var arr = $('.checkMe:checked').map(function(){
             return this.value;
@@ -232,6 +253,8 @@ class Data_import extends React.Component {
             this.setState({duplicateformSubmitting:true});
         }
     }
+
+    
     render() {
         const { validated, validatedTooltip } = this.state;
        
@@ -260,8 +283,12 @@ class Data_import extends React.Component {
                                                     <Radio.RadioItem id="radio6" label="Vehical Mileage" value="3" />
                                                 </Radio.RadioGroup>
                                             </div>
+                                            <div style={{'display':this.state.Daily_PerformanceHide}}>
+                                            <Checkbox style={{'display':this.state.Daily_PerformanceHide}} name="Daily_Performance" label="Daily Performance Report" id="chkBasic" value={this.state.Daily_Performance} onChange={this.Daily_PerformanceChange} />
+                                            </div>
                                         </Form.Group>
                                         <Form.Group as={Col} md="6">
+                                            
                                             <Form.Label htmlFor="upload_avatar">Upload File</Form.Label>
                                             <div className="custom-file">
                                                 <FileInput
