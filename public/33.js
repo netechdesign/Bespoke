@@ -145,6 +145,10 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
         _this.setState({
           Daily_PerformanceHide: 'none'
         });
+
+        _this.setState({
+          Daily_Performance: false
+        });
       }
     });
 
@@ -313,6 +317,10 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
 
           _this.setState({
             selectedFile: null
+          });
+
+          _this.setState({
+            Daily_Performance: false
           });
 
           if (res.data.duplicate_data) {

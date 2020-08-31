@@ -53,11 +53,13 @@ class Data_import extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-
+        
         if(e.target.value==2){
             this.setState({Daily_PerformanceHide:''});
         }else{
             this.setState({Daily_PerformanceHide:'none'});
+            this.setState({Daily_Performance:false});
+            
         }
     };
     onChangeHandler=event=>{
@@ -185,6 +187,7 @@ class Data_import extends React.Component {
                              this.setState({formSubmitting:false});
                              this.setState({buttonName:'Import'});
                              this.setState({selectedFile:null});
+                             this.setState({Daily_Performance:false});
                              
                              if(res.data.duplicate_data){
                                     this.setState({duplicate_data:[{visible:'',data:res.data.duplicate_data}]});
