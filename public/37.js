@@ -90,11 +90,27 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      var _location$state$detai = location.state.detail,
-          id = _location$state$detai.id,
-          start_date = _location$state$detai.start_date,
-          end_date = _location$state$detai.end_date,
-          report_type = _location$state$detai.report_type;
+
+      if (location.state.detail) {
+        var _location$state$detai = location.state.detail,
+            _id = _location$state$detai.id,
+            _start_date = _location$state$detai.start_date,
+            _end_date = _location$state$detai.end_date,
+            _report_type = _location$state$detai.report_type;
+        localStorage.setItem('bespokesearch', JSON.stringify(location.state.detail));
+      } else {
+        var _ref2 = localStorage.getItem('bespokesearch') ? JSON.parse(localStorage.getItem('bespokesearch')).user : 'Null',
+            _id2 = _ref2.id,
+            _start_date2 = _ref2.start_date,
+            _end_date2 = _ref2.end_date,
+            _report_type2 = _ref2.report_type;
+      }
+
+      var _location$state$detai2 = location.state.detail,
+          id = _location$state$detai2.id,
+          start_date = _location$state$detai2.start_date,
+          end_date = _location$state$detai2.end_date,
+          report_type = _location$state$detai2.report_type;
       var reportType = report_type['value'];
       this.setState({
         start_date: start_date
@@ -290,11 +306,11 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               }
             },
             tooltip: {
-              custom: function custom(_ref2) {
-                var series = _ref2.series,
-                    seriesIndex = _ref2.seriesIndex,
-                    dataPointIndex = _ref2.dataPointIndex,
-                    w = _ref2.w;
+              custom: function custom(_ref3) {
+                var series = _ref3.series,
+                    seriesIndex = _ref3.seriesIndex,
+                    dataPointIndex = _ref3.dataPointIndex,
+                    w = _ref3.w;
                 return '<div  style="width:100" class="arrow_box">' + "<span>" + w.globals.labels[dataPointIndex] + ": " + series[seriesIndex][dataPointIndex] + "</span>" + "</div>";
               }
               /*
@@ -517,10 +533,10 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 align: 'left'
               },
               fill: {
-                colors: [function (_ref3) {
-                  var value = _ref3.value,
-                      seriesIndex = _ref3.seriesIndex,
-                      w = _ref3.w;
+                colors: [function (_ref4) {
+                  var value = _ref4.value,
+                      seriesIndex = _ref4.seriesIndex,
+                      w = _ref4.w;
 
                   if (value > 70) {
                     return '#FF0000';

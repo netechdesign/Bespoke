@@ -24,6 +24,12 @@ class UtilitaChart extends React.Component {
         var items  = [];
         
         const { match, location, history } = this.props
+        if(location.state.detail){
+        const {id,start_date,end_date,report_type} = location.state.detail;
+        localStorage.setItem('bespokesearch',JSON.stringify(location.state.detail));
+        }else{
+          const {id,start_date,end_date,report_type} = localStorage.getItem('bespokesearch')? JSON.parse(localStorage.getItem('bespokesearch')).user : 'Null';
+        }
         
         const {id,start_date,end_date,report_type} =location.state.detail;
         const reportType = report_type['value'];

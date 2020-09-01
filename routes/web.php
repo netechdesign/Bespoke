@@ -41,6 +41,10 @@ Route::group(array('prefix' => '/'), function() {
       return view('welcome');
    }); 
    
+   Route::get('/utilitachart', function(){
+      return view('welcome');
+   }); 
+   
    Route::get('/Engineer', function(){
       return view('welcome');
    });
