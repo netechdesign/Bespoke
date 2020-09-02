@@ -243,7 +243,14 @@ class UtilitaController extends Controller
             $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
            }
           elseif($Request->file_id=='2'){
-           $q= Utilita_job::join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+           $q= Utilita_job::select("*",DB::raw('DATE_FORMAT(schedule_date,"%d/%m/%Y") as schedule_date'),
+           DB::raw('DATE_FORMAT(schedule_start_time,"%d/%m/%Y %H:%i") as schedule_start_time'),
+           DB::raw('DATE_FORMAT(schedule_end_time,"%d/%m/%Y %H:%i") as schedule_end_time'),
+           DB::raw('DATE_FORMAT(job_booked,"%d/%m/%Y %H:%i") as job_booked'),
+           DB::raw('DATE_FORMAT(on_site_time,"%d/%m/%Y %H:%i") as on_site_time'),
+           DB::raw('DATE_FORMAT(cancelled_time,"%d/%m/%Y %H:%i") as cancelled_time')
+                                     
+            )->join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
           }else{
             return 'Sorry data not found';
        //  return Redirect::back()->withErrors(['msg', 'Records not found']);
@@ -267,6 +274,10 @@ class UtilitaController extends Controller
             
             $descriptioncategories =array();
             $descriptionseries=[];
+            $CompletedjobData=[];
+            $AbortedjobData=[];
+            $AbortedReasonData=[];
+            
             foreach($result as $row){
                 if($Request->file_id=='1'){
                     $row->appointment_time = date('A', strtotime($row->schedule_start_time));
@@ -276,7 +287,9 @@ class UtilitaController extends Controller
                     if(!in_array($row->engineer,$categories)){
                         array_push($categories,$row->engineer);
                     }
-
+                    $CompletedjobData[$row->engineer][]=$row;
+                    
+                    
                    // $searchedValue = $row->appointment_time;
                     $data=  array_filter(
                         $series,
@@ -314,6 +327,8 @@ class UtilitaController extends Controller
                     if(!in_array($row->engineer,$abortedcategories)){
                       
                     }
+                    $AbortedjobData[$row->engineer][]=$row;
+                    $AbortedReasonData[$row->description][]=$row; 
                     $data=  array_filter(
                         $abortedseries,
                         function ($e) use ($row) {
@@ -452,7 +467,7 @@ class UtilitaController extends Controller
         
          
 
-            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum,'total_description'=>$descriptioninstallnum));  
+            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum,'total_description'=>$descriptioninstallnum,'CompletedjobData'=>$CompletedjobData,'AbortedjobData'=>$AbortedjobData,'AbortedReasonData'=>$AbortedReasonData));  
           }
          
            return response()->json(array('success' => false,'message'=> 'data not found'));  

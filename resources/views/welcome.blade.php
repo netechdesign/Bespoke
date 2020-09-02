@@ -17,9 +17,38 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
         <link href="{{url('assets/fonts/datta/datta-icons.css')}}" rel="stylesheet">
         <link href="{{url('assets/fonts/feather/icon-font.css')}}" rel="stylesheet">
+       
         <!-- Styles -->
         <style>
+            /** chart report css */
+                #chart {
+                max-width: 760px;
+                margin: 35px auto;
+                opacity: 0.9;
+                }
 
+                .arrow_box {
+                position: relative;
+                background: #fffff;
+                border: 2px solid #000000;
+                width:100%;
+                }
+
+
+                #StackedBar .apexcharts-tooltip {
+                
+                transform: translateX(10px) translateY(10px);
+                overflow: visible !important;
+                white-space: normal !important;
+                width:70% !important;
+                left: 100 !important;
+                
+                }
+
+                #StackedBar .apexcharts-tooltip span {
+                padding: 5px 10px;
+                display: inline-block;
+                }
         </style>
     </head>
     <body>

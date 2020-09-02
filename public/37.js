@@ -127,6 +127,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
       };
 
       if (reportType == 1) {
+        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
           headers: {
             'Accept': 'application/json',
@@ -263,7 +264,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         }).then(function (res) {
           // let data = JSON.parse(res.data); 
           document.getElementById("requestLoder").innerHTML = '';
-          var result = res.data.complate; //series
+          var result = res.data.complate;
+          var CompletedjobData = res.data.CompletedjobData; //series
 
           var options = {
             series: result['series'],
@@ -311,7 +313,40 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                     seriesIndex = _ref3.seriesIndex,
                     dataPointIndex = _ref3.dataPointIndex,
                     w = _ref3.w;
-                return '<div  style="width:100" class="arrow_box">' + "<span>" + w.globals.labels[dataPointIndex] + ": " + series[seriesIndex][dataPointIndex] + "</span>" + "</div>";
+                var lineName = '';
+
+                if (seriesIndex == 0) {
+                  lineName = 'AM';
+                } else if (seriesIndex == 1) {
+                  lineName = 'PM';
+                }
+
+                var listed = '';
+
+                if (CompletedjobData[w.globals.labels[dataPointIndex]]) {
+                  CompletedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
+                    if (vl.appointment_time == lineName) {
+                      listed += '<tr>';
+                      listed += '<td>' + vl.customer_id + '</td>';
+                      listed += '<td>' + vl.schedule_date + '</td>';
+                      listed += '<td>' + vl.schedule_start_time + '</td>';
+                      listed += '<td>' + vl.schedule_end_time + '</td>';
+                      listed += '<td>' + vl.job_type + '</td>';
+                      listed += '<td>' + vl.post_code + '</td>';
+                      listed += '<td>' + vl.region + '</td>';
+                      listed += '</tr>';
+                    }
+                  });
+                }
+
+                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>customer id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                "<th>schedule date</th>" + "<th>Start time</th>" + "<th>End time</th>" + "<th>job type</th>" + "<th>post code</th>" + "<th>region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
+              },
+              fixed: {
+                enabled: true,
+                position: "topRight",
+                offsetX: 0,
+                offsetY: 0
               }
               /*
               y: {
@@ -333,7 +368,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           };
           var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
           StackedBar.render();
-          var abortedrs = res.data.aborted; //series
+          var abortedrs = res.data.aborted;
+          var AbortedjobData = res.data.AbortedjobData; //series
 
           var options = {
             series: abortedrs['series'],
@@ -376,11 +412,54 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               }
             },
             tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
+              custom: function custom(_ref4) {
+                var series = _ref4.series,
+                    seriesIndex = _ref4.seriesIndex,
+                    dataPointIndex = _ref4.dataPointIndex,
+                    w = _ref4.w;
+                var lineName = '';
+
+                if (seriesIndex == 0) {
+                  lineName = 'AM';
+                } else if (seriesIndex == 1) {
+                  lineName = 'PM';
                 }
+
+                var listed = '';
+
+                if (AbortedjobData[w.globals.labels[dataPointIndex]]) {
+                  AbortedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
+                    if (vl.appointment_time == lineName) {
+                      listed += '<tr>';
+                      listed += '<td>' + vl.customer_id + '</td>';
+                      listed += '<td>' + vl.schedule_date + '</td>';
+                      listed += '<td>' + vl.schedule_start_time + '</td>';
+                      listed += '<td>' + vl.schedule_end_time + '</td>';
+                      listed += '<td>' + vl.job_type + '</td>';
+                      listed += '<td>' + vl.post_code + '</td>';
+                      listed += '<td>' + vl.region + '</td>';
+                      listed += '</tr>';
+                    }
+                  });
+                }
+
+                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>customer id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                "<th>schedule date</th>" + "<th>Start time</th>" + "<th>End time</th>" + "<th>job type</th>" + "<th>post code</th>" + "<th>region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
+              },
+              fixed: {
+                enabled: true,
+                position: "topRight",
+                offsetX: 0,
+                offsetY: 0
               }
+              /*
+              y: {
+                 formatter: function (val) {
+                   return val + ""
+                 }
+               }
+               */
+
             },
             fill: {
               opacity: 1
@@ -395,6 +474,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           abortedBar.render(); //Description chart reports
 
           var descriptionBar = res.data.total_description;
+          var AbortedReasonData = res.data.AbortedReasonData;
           var options = {
             series: descriptionBar['series'],
             colors: ['#0d74bc', '#d8cb1b'],
@@ -438,11 +518,54 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               }
             },
             tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
+              custom: function custom(_ref5) {
+                var series = _ref5.series,
+                    seriesIndex = _ref5.seriesIndex,
+                    dataPointIndex = _ref5.dataPointIndex,
+                    w = _ref5.w;
+                var lineName = '';
+
+                if (seriesIndex == 0) {
+                  lineName = 'AM';
+                } else if (seriesIndex == 1) {
+                  lineName = 'PM';
                 }
+
+                var listed = '';
+
+                if (AbortedReasonData[w.globals.labels[dataPointIndex]]) {
+                  AbortedReasonData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
+                    if (vl.appointment_time == lineName) {
+                      listed += '<tr>';
+                      listed += '<td>' + vl.customer_id + '</td>';
+                      listed += '<td>' + vl.schedule_date + '</td>';
+                      listed += '<td>' + vl.schedule_start_time + '</td>';
+                      listed += '<td>' + vl.schedule_end_time + '</td>';
+                      listed += '<td>' + vl.job_type + '</td>';
+                      listed += '<td>' + vl.post_code + '</td>';
+                      listed += '<td>' + vl.region + '</td>';
+                      listed += '</tr>';
+                    }
+                  });
+                }
+
+                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>customer id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                "<th>schedule date</th>" + "<th>Start time</th>" + "<th>End time</th>" + "<th>job type</th>" + "<th>post code</th>" + "<th>region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
+              },
+              fixed: {
+                enabled: true,
+                position: "topRight",
+                offsetX: 0,
+                offsetY: 0
               }
+              /*
+              y: {
+                 formatter: function (val) {
+                   return val + ""
+                 }
+               }
+               */
+
             },
             fill: {
               opacity: 1
@@ -533,10 +656,10 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 align: 'left'
               },
               fill: {
-                colors: [function (_ref4) {
-                  var value = _ref4.value,
-                      seriesIndex = _ref4.seriesIndex,
-                      w = _ref4.w;
+                colors: [function (_ref6) {
+                  var value = _ref6.value,
+                      seriesIndex = _ref6.seriesIndex,
+                      w = _ref6.w;
 
                   if (value > 70) {
                     return '#FF0000';
