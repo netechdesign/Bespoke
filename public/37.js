@@ -75,7 +75,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       start_date: '',
-      end_date: ''
+      end_date: '',
+      title: ''
     };
     return _this;
   }
@@ -127,6 +128,9 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
       };
 
       if (reportType == 1) {
+        this.setState({
+          title: 'Morrison Data services'
+        });
         document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
           headers: {
@@ -255,6 +259,9 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           abortedBar.render();
         });
       } else if (reportType == 2) {
+        this.setState({
+          title: 'Utilita'
+        });
         document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
           headers: {
@@ -580,6 +587,9 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           descriptions.render();
         });
       } else if (reportType == 3) {
+        this.setState({
+          title: 'Vehical Mileage'
+        });
         var driver_name = [];
         var total_miles = [];
         var max_speed = [];
@@ -603,6 +613,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               total_miles.push(val.total_miles);
               max_speed.push(val.max_speed);
             });
+            var listmileage = res.data.listmileage;
             var options = {
               title: {
                 text: 'Miles'
@@ -638,11 +649,55 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 }
               },
               tooltip: {
-                y: {
-                  formatter: function formatter(val) {
-                    return val + " Miles";
+                custom: function custom(_ref6) {
+                  var series = _ref6.series,
+                      seriesIndex = _ref6.seriesIndex,
+                      dataPointIndex = _ref6.dataPointIndex,
+                      w = _ref6.w;
+                  var lineName = '';
+
+                  if (seriesIndex == 0) {
+                    lineName = 'AM';
+                  } else if (seriesIndex == 1) {
+                    lineName = 'PM';
                   }
+
+                  var listed = '';
+
+                  if (listmileage) {
+                    listmileage.map(function (vl, inx) {
+                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
+                        listed += '<tr>';
+                        listed += '<td>' + vl.drive_date + '</td>';
+                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
+                        listed += '<td>' + vl.duration + '</td>';
+                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
+                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
+                        listed += '<td>' + vl.start_time + '</td>';
+                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
+                        listed += '<td>' + vl.end_time + '</td>';
+                        listed += '</tr>';
+                      }
+                    });
+                  }
+
+                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
+                },
+                fixed: {
+                  enabled: true,
+                  position: "topRight",
+                  offsetX: 0,
+                  offsetY: 0
                 }
+                /*
+                y: {
+                   formatter: function (val) {
+                     return val + ""
+                   }
+                 }
+                 */
+
               }
             };
             var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMileage"), options);
@@ -656,10 +711,10 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 align: 'left'
               },
               fill: {
-                colors: [function (_ref6) {
-                  var value = _ref6.value,
-                      seriesIndex = _ref6.seriesIndex,
-                      w = _ref6.w;
+                colors: [function (_ref7) {
+                  var value = _ref7.value,
+                      seriesIndex = _ref7.seriesIndex,
+                      w = _ref7.w;
 
                   if (value > 70) {
                     return '#FF0000';
@@ -695,11 +750,60 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 }
               },
               tooltip: {
-                y: {
-                  formatter: function formatter(val) {
-                    return val + " Miles";
+                custom: function custom(_ref8) {
+                  var series = _ref8.series,
+                      seriesIndex = _ref8.seriesIndex,
+                      dataPointIndex = _ref8.dataPointIndex,
+                      w = _ref8.w;
+                  var lineName = '';
+
+                  if (seriesIndex == 0) {
+                    lineName = 'AM';
+                  } else if (seriesIndex == 1) {
+                    lineName = 'PM';
                   }
+
+                  var listed = '';
+
+                  if (listmileage) {
+                    listmileage.map(function (vl, inx) {
+                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
+                        if (vl.max_speed > 70) {
+                          listed += '<tr style="background-color: #fbbfbf;color:white" >';
+                        } else {
+                          listed += '<tr>';
+                        }
+
+                        listed += '<td>' + vl.drive_date + '</td>';
+                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
+                        listed += '<td>' + vl.duration + '</td>';
+                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
+                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
+                        listed += '<td>' + vl.start_time + '</td>';
+                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
+                        listed += '<td>' + vl.end_time + '</td>';
+                        listed += '</tr>';
+                      }
+                    });
+                  }
+
+                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
+                },
+                fixed: {
+                  enabled: true,
+                  position: "topRight",
+                  offsetX: 0,
+                  offsetY: 0
                 }
+                /*
+                y: {
+                   formatter: function (val) {
+                     return val + ""
+                   }
+                 }
+                 */
+
               }
             };
             var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMax_speed"), options);
@@ -718,7 +822,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           history = _this$props2.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Utilita Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, this.state.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " From ", this.state.start_date, " To ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -728,7 +832,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, this.state.start_date, " to ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "requestLoder",
         style: {
           'textAlign': 'center'
@@ -737,7 +841,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         id: "abortedBar"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "descriptionBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "StackedBar"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "vahicalMileage"

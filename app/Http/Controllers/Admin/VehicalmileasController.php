@@ -63,20 +63,33 @@ class VehicalmileasController extends Controller
             }
             //$query= new Utilita_job;
              $q= Vehicle_mileas::select('driver_name',DB::Raw('sum(miles) as total_miles'),DB::Raw('max(max_speed) as max_speed'));
+             $listData= Vehicle_mileas::select("*",DB::raw('DATE_FORMAT(drive_date,"%d/%m/%Y") as drive_date'),
+             DB::raw('DATE_FORMAT(start_time,"%d/%m/%Y %H:%i") as start_time'),
+             DB::raw('DATE_FORMAT(end_time,"%d/%m/%Y %H:%i") as end_time')
+               );
             
             
-             if($month!=''){ $q->whereMonth('drive_date', '=', $month); }
-             if($start_date!=''){ $q->whereDate('drive_date', '>=', $start_date); }
-             if($today_date!=''){ $q->whereDate('drive_date', '<=', $today_date); }
+             if($month!=''){
+                   $q->whereMonth('drive_date', '=', $month);
+                   $listData->whereMonth('drive_date', '=', $month);
+                }
+             if($start_date!=''){ 
+                 $q->whereDate('drive_date', '>=', $start_date);
+                $listData->whereDate('drive_date', '>=', $start_date);
+            }
+             if($today_date!=''){ $q->whereDate('drive_date', '<=', $today_date);
+                $listData->whereDate('drive_date', '<=', $today_date);
+            }
              
              /** print query   toSql(); */
             // dd($q->toSql());
             $totalmileage ='';
             if($q->count() > 0){
                 $totalmileage =$q->groupBy('driver_name')->get();
+                $listmileage =$listData->get();
 
             }
-            return response()->json(array('success' => true,'totalmileage'=>$totalmileage));  
+            return response()->json(array('success' => true,'totalmileage'=>$totalmileage,'listmileage'=>$listmileage));  
     }
 
     /**

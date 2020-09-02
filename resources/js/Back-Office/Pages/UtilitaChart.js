@@ -18,7 +18,7 @@ class UtilitaChart extends React.Component {
 
     constructor(props){
         super(props);
-        this.state={start_date:'',end_date:''}
+        this.state={start_date:'',end_date:'',title:''}
     }
     componentDidMount() {
         var items  = [];
@@ -37,6 +37,7 @@ class UtilitaChart extends React.Component {
         this.setState({end_date:end_date});
         let data={_method: 'get',id:id,start_date:start_date,end_date:end_date,file_id:reportType};
         if(reportType==1){
+          this.setState({title:'Morrison Data services'});
            document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
       axios.post(baseurl+'/api/utilita/'+id,data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
          // let data = JSON.parse(res.data); 
@@ -169,7 +170,7 @@ let result = res.data.complate;
         }); 
       }else if(reportType==2)
       {
-      
+        this.setState({title:'Utilita'});
 
         document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
         axios.post(baseurl+'/api/utilita/'+id,data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
@@ -522,6 +523,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
       }
       else if(reportType==3)
       {
+        this.setState({title:'Vehical Mileage'});
         var driver_name = [];
         var total_miles = [];
         var max_speed = [];
@@ -540,7 +542,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
             total_miles.push(val.total_miles);
             max_speed.push(val.max_speed);
           })
-         
+          let listmileage = res.data.listmileage;
         var options = {
           title: {
             text: 'Miles'
@@ -575,12 +577,65 @@ let AbortedReasonData = res.data.AbortedReasonData;
               text: 'Driver Name'
             },
           },
-          tooltip: {
-            y: {
+          tooltip: { 
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+             let lineName ='';
+             if(seriesIndex==0){
+               lineName ='AM';
+             }else if(seriesIndex==1){
+               lineName ='PM';
+             }
+             let listed='';
+             if(listmileage){
+              listmileage.map((vl,inx)=>{
+                if(w.globals.labels[dataPointIndex]==vl.driver_name){
+                     listed+='<tr>';
+                     listed+='<td>'+vl.drive_date+'</td>';
+                     listed+='<td>'+vl.miles.toFixed(2)+'</td>';
+                     listed+='<td>'+vl.duration+'</td>';
+                     listed+='<td>'+vl.max_speed.toFixed(2)+'</td>';
+                     listed+='<td>'+vl.start_location+', '+vl.start_postcode+'</td>';
+                     listed+='<td>'+vl.start_time+'</td>';
+                     listed+='<td>'+vl.end_location+', '+vl.end_postcode+'</td>';
+                     listed+='<td>'+vl.end_time+'</td>';
+                     listed+='</tr>';
+                } 
+               })
+             }
+             return (
+               '<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
+               '<b style="margin-left:10px;"> Total Miles :'+series[seriesIndex][dataPointIndex].toFixed(2)+'</b>'+
+               '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
+               "<thead><tr>" +
+               "<th>Drive Date</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+               "<th>Miles</th>" +
+               "<th>Duration</th>" +
+               "<th>Max Speed</th>" +
+               "<th>Start Location</th>" +
+               "<th>Start Time</th>" +
+               "<th>End Location</th>" +
+               "<th>End Time</th>" +
+               "</tr></thead>" +
+               "<tbody>"+
+               listed+
+               "</tbody>"+
+               "</table>"
+               
+             );
+           },
+           fixed: {
+             enabled: true,
+             position: "topRight",
+             offsetX: 0,
+             offsetY: 0,
+           }
+           /*
+           y: {
               formatter: function (val) {
-                return val + " Miles"
+                return val + ""
               }
             }
+            */
           },
           };
         
@@ -630,13 +685,70 @@ let AbortedReasonData = res.data.AbortedReasonData;
                 text: 'Driver Name'
               },
             },
-            tooltip: {
-              y: {
+            tooltip: { 
+              custom: function({ series, seriesIndex, dataPointIndex, w }) {
+               let lineName ='';
+               if(seriesIndex==0){
+                 lineName ='AM';
+               }else if(seriesIndex==1){
+                 lineName ='PM';
+               }
+               let listed='';
+               if(listmileage){
+                listmileage.map((vl,inx)=>{
+                  if(w.globals.labels[dataPointIndex]==vl.driver_name){
+                    if(vl.max_speed>70){
+                       listed+='<tr style="background-color: #fbbfbf;color:white" >';
+                    }else{
+                      listed+='<tr>';
+                    }
+                       listed+='<td>'+vl.drive_date+'</td>';
+                       listed+='<td>'+vl.miles.toFixed(2)+'</td>';
+                       listed+='<td>'+vl.duration+'</td>';
+                       listed+='<td>'+vl.max_speed.toFixed(2)+'</td>';
+                       listed+='<td>'+vl.start_location+', '+vl.start_postcode+'</td>';
+                       listed+='<td>'+vl.start_time+'</td>';
+                       listed+='<td>'+vl.end_location+', '+vl.end_postcode+'</td>';
+                       listed+='<td>'+vl.end_time+'</td>';
+                       listed+='</tr>';
+                  } 
+                 })
+               }
+               return (
+                 '<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
+                 '<b style="margin-left:10px;"> Total Miles :'+series[seriesIndex][dataPointIndex].toFixed(2)+'</b>'+
+                 '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
+                 "<thead><tr>" +
+                 "<th>Drive Date</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                 "<th>Miles</th>" +
+                 "<th>Duration</th>" +
+                 "<th>Max Speed</th>" +
+                 "<th>Start Location</th>" +
+                 "<th>Start Time</th>" +
+                 "<th>End Location</th>" +
+                 "<th>End Time</th>" +
+                 "</tr></thead>" +
+                 "<tbody>"+
+                 listed+
+                 "</tbody>"+
+                 "</table>"
+                 
+               );
+             },
+             fixed: {
+               enabled: true,
+               position: "topRight",
+               offsetX: 0,
+               offsetY: 0,
+             }
+             /*
+             y: {
                 formatter: function (val) {
-                  return val + " Miles"
+                  return val + ""
                 }
               }
-            },
+              */
+            }
             };
           
             var chart = new ApexCharts(document.querySelector("#vahicalMax_speed"), options);
@@ -658,16 +770,16 @@ let AbortedReasonData = res.data.AbortedReasonData;
                             <Col>
                             <Card>
                                     <Card.Header>
-                                        <Card.Title as="h5">Utilita Chart</Card.Title>
-                                         
+                                       <Card.Title as="h5">{this.state.title}</Card.Title>
+                                       <b> From {this.state.start_date} To {this.state.end_date}</b>   
                                         <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
                                     </Card.Header>
                                     <Card.Body>
-                                        <b>{this.state.start_date} to {this.state.end_date}</b>
+                                       
                                         <div id="requestLoder" style={{'textAlign': 'center'}}></div>
                                         <div id='abortedBar'></div>
                                         <div id='descriptionBar'></div>
-                                        <hr/>
+                                        
                                         <div id='StackedBar'></div>
                                         <div id='vahicalMileage'></div>
                                         
