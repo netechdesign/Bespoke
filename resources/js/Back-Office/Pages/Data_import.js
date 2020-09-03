@@ -163,6 +163,7 @@ class Data_import extends React.Component {
         this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />sending</span>});
     
         const data = new FormData()
+        
         data.append('file', this.state.selectedFile);
        
         data.append('file_name', this.state.file_name);
@@ -178,7 +179,7 @@ class Data_import extends React.Component {
             baseurl+'/api/mds',
             data,
             {
-                headers:{'Authorization':'Bearer '+auth_token}
+                headers:{'Authorization':'Bearer '+auth_token,'content-type': 'multipart/form-data'}
             } 
         ).then(res =>{
                           if(res.data.success){

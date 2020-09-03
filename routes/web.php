@@ -19,7 +19,11 @@ Route::get('/', function () {
 Route::group(array('prefix' => '/'), function() {
      Route::get('/', function(){
         return view('welcome');
-     }); 
+     });
+     
+     Route::get('auth/signin', function(){
+      return view('welcome');
+   });
      Route::get('/list/utilita/{id}', function(){
       return view('welcome');
    });
@@ -37,6 +41,7 @@ Route::group(array('prefix' => '/'), function() {
       return view('welcome');
    }); 
    
+
    Route::get('/siteengineer', function(){
       return view('welcome');
    }); 

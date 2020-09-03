@@ -212,7 +212,7 @@
         <table style="border: 2px solid #000000;" >
             <thead>
                     <tr style="border: 2px solid #000000;">
-                    <td style="background-color: #808080;vertical-align: top;"> WC 6 July</td>
+                    <td style="background-color: #808080;vertical-align: top;"> WC {{ date('d F',strtotime(str_replace('/', '-',$on_site_time)))}}</td>
                     <td style="background-color: #808080;"> </td>
                    
                     @foreach ($data['Days_worked'] as $title)

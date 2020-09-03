@@ -77,7 +77,8 @@ class FirstSheetImport implements ToModel, WithHeadingRow
                 $engineers= $engineers->first();
                 $engineer_id = $engineers->engineer_id;
             }  
-
+            
+            
         return new Morrison_jobs([
             'sheets_id' =>request()->sheets_id,
             'file_id' =>request()->file_id,
@@ -86,8 +87,8 @@ class FirstSheetImport implements ToModel, WithHeadingRow
             'week_day'=> trim($row['weekday']),
             'week_date'=>  date('Y-m-d', strtotime(str_replace('/', '-', $this->transformDate($row['we'])))),
             'schedule_date'=> date('Y-m-d', strtotime(str_replace('/', '-', $this->transformDate($row['date'])))),
-            'schedule_start_time'=> $row['start_time'],
-            'schedule_end_time'=> $row['end_time'],
+            'schedule_start_time'=>  date('H:i:s', strtotime($this->transformTime($row['start_time']))),
+            'schedule_end_time'=> date('H:i:s', strtotime($this->transformTime($row['end_time']))),
             'time_difference'=> $row['time_difference'],
             'work_master_sign_id'=> $row['work_master_sign_id'],
             'engineer_id'=> $engineer_id,
@@ -301,5 +302,12 @@ class FirstSheetImport implements ToModel, WithHeadingRow
         return \Carbon\Carbon::createFromFormat($format, $value);
     }
 }
-    
+public function transformTime($value, $format = 'H:i')
+{
+    try {
+        return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+    } catch (\ErrorException $e) {
+        return \Carbon\Carbon::createFromFormat($format, $value);
+    }
+}
 }

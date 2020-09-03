@@ -97,8 +97,8 @@ class MdsController extends Controller
                    $user = JWTAuth::toUser($Request->input('token'));
                    
                    $Request->request->add(['created_by'=> $user->id]);
-                   
-                   
+                           
+
                     $file_path = $Request->file->store(
                         'documents', 'public' //public is drive name from config/filesystem.php
                     );

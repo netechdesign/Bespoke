@@ -39,28 +39,28 @@
                 </thead>
                 <tbody>
                     <tr valign="middle" style="border: 1px solid #000000;" >
-                        <td style="border: 1px solid #000000;">Days worked</td>
+                        <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Days worked</td>
                             
                             
                            
                                 @foreach ($table1['Days_worked'] as $title =>$vl)
                                 
-                                <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>
-                                <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>
-                                <td style="border: 1px solid #000000;text-align:right;">0</td>    
+                                <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>
+                                <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>
+                                <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">0</td>    
                             @endforeach
                            
                             
                     </tr>
 
 <tr>
-    <td>In day installs (jobs)</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">In day installs (jobs)</td>
        
         @foreach ($table1['In_day_installs_jobs'] as $title =>$vl)
             
-        <td style="border: 1px solid #000000;text-align:right;" >{{ $vl}}</td>
-        <td style="border: 1px solid #000000;text-align:right;">{{ $Variance = $table1['Days_worked'][$title]*6}}</td>
-        <td style="border: 1px solid #000000;text-align:right;">{{$Variance-$vl}}</td>    
+        <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;" >{{ $vl}}</td>
+        <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Variance = $table1['Days_worked'][$title]*6}}</td>
+        <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$Variance-$vl}}</td>    
         @endforeach
 
        
@@ -70,119 +70,119 @@
 
 
 <tr>
-    <td>OOH (jobs)</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">OOH (jobs)</td>
    
     
   
     @foreach ($table1['OOH_jobs'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ $Variance = $table1['Days_worked'][$title]*0.5}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{$Variance-$vl}}</td>    
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Variance = $table1['Days_worked'][$title]*0.5}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$Variance-$vl}}</td>    
     @endforeach
 
    
 </tr>
 
 <tr>
-    <td>Total installs (jobs)</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Total installs (jobs)</td>
   
     
     @foreach ($table1['total'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ $Variance = ($table1['Days_worked'][$title]*6) +($table1['Days_worked'][$title]*0.5)}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{$Variance-$vl}}</td>   
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Variance = ($table1['Days_worked'][$title]*6) +($table1['Days_worked'][$title]*0.5)}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$Variance-$vl}}</td>   
     @endforeach
 
 </tr>
 
 <tr>
-    <td>Faults In Day</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Faults In Day</td>
    
     
     @foreach ($table1['Faults_In_Day'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ 0}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>    
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ 0}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>    
     @endforeach
 
 </tr>
 
 <tr>
-    <td>Faults OOH</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Faults OOH</td>
    
     
     @foreach ($table1['Faults_OOH'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{ $vl}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">5.5</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ 5.5- $vl}}</td>    
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">5.5</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ 5.5- $vl}}</td>    
     @endforeach
 
 </tr>
 
 <tr>
-    <td>Fuels</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Fuels</td>
    
     
     @foreach ($table1['Fuels'] as $title =>$Fuelsvl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{ $Fuelsvl}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ $Variance = $table1['Days_worked'][$title]*8}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{$Variance-$Fuelsvl}}</td>    
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Fuelsvl}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Variance = $table1['Days_worked'][$title]*8}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$Variance-$Fuelsvl}}</td>    
     @endforeach
 
 </tr>
 
 <tr>
-    <td>Jobs per man day</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Jobs per man day</td>
     
 
     @foreach ($table1['total'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{$vl= round($vl/$table1['Days_worked'][$title],2)}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ $Variance = round((($table1['Days_worked'][$title]*6) +($table1['Days_worked'][$title]*0.5))/$table1['Days_worked'][$title],2)}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{$Variance-$vl}}</td>   
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$vl= round($vl/$table1['Days_worked'][$title],2)}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Variance = round((($table1['Days_worked'][$title]*6) +($table1['Days_worked'][$title]*0.5))/$table1['Days_worked'][$title],2)}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$Variance-$vl}}</td>   
     @endforeach
 
 </tr>
 
 <tr>
-    <td>Fuels per man day</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Fuels per man day</td>
     
 
     @foreach ($table1['Fuels'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{ $vl= round($vl/$table1['Days_worked'][$title],2)}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{ $Variance = round(($table1['Days_worked'][$title]*8)/$table1['Days_worked'][$title],2)}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{$Variance-$vl}}</td>   
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $vl= round($vl/$table1['Days_worked'][$title],2)}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{ $Variance = round(($table1['Days_worked'][$title]*8)/$table1['Days_worked'][$title],2)}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$Variance-$vl}}</td>   
     @endforeach
 
 </tr>
               
 <tr>
-    <td>DF %(inc aborts)</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">DF %(inc aborts)</td>
     
 
     @foreach ($table1['df'] as $title =>$vl)
             
-    <td style="border: 1px solid #000000;text-align:right;">{{$vl}}%</td>
-    <td style="border: 1px solid #000000;text-align:right;">75%</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{75- $vl}}%</td>   
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{$vl}}%</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">75%</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{75- $vl}}%</td>   
     @endforeach
 
 </tr>
 
 <tr>
-    <td>Abort %</td>
+    <td style="border: 1px solid #000000;text-align: left;padding-left: 10px;">Abort %</td>
    
     @foreach ($table1['Aborts'] as $title =>$vl)
             
-<td style="border: 1px solid #000000;text-align:right;">{{round(($vl*100)/($table1['total'][$title]),2).'%'}}</td>
-    <td style="border: 1px solid #000000;text-align:right;">15%</td>
-    <td style="border: 1px solid #000000;text-align:right;">{{15-round(($vl*100)/($table1['total'][$title]),2).'%'}}</td>   
+<td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{round(($vl*100)/($table1['total'][$title]),2).'%'}}</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">15%</td>
+    <td style="border: 1px solid #000000;text-align:right;padding-right: 5px;">{{15-round(($vl*100)/($table1['total'][$title]),2).'%'}}</td>   
     @endforeach
 
 </tr>

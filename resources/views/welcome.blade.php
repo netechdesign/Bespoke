@@ -49,6 +49,9 @@
                 padding: 5px 10px;
                 display: inline-block;
                 }
+                .apexcharts-yaxistooltip{
+                    z-index:700000 !important;
+                }
         </style>
     </head>
     <body>

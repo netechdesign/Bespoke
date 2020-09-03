@@ -302,7 +302,8 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
 
       axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/mds', data, {
         headers: {
-          'Authorization': 'Bearer ' + auth_token
+          'Authorization': 'Bearer ' + auth_token,
+          'content-type': 'multipart/form-data'
         }
       }).then(function (res) {
         if (res.data.success) {
