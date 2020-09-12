@@ -11,38 +11,58 @@ use JWTAuth;
 use JWTAuthException;
 class UserController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        //
+        if(!$request->ajax()){
+            view('error_handler', compact('exception'));
+          } 
+          else{
+          
+            try {
+                
+                $totalCol = $request->input('iColumns');
+                $search = $request->input('sSearch');
+                $columns = explode(',', $request->input('columns'));
+                $start = $request->input('iDisplayStart');
+                $page_length = $request->input('iDisplayLength');
+                
+                $jobsrow = User::select("*")
+                ->where(function($query) use ($request){
+                  if($request->input('file_id')!=''){
+                    $query->where('file_id','=',$request->input('file_id'));
+                    $query->where('file_id','=',$request->input('file_id'));
+                   } 
+                })->offset($start);
+               
+                $jobs = $jobsrow->limit($page_length)->get();
+                $totalRecords = $jobsrow->count();
+                
+                
+                $response = array(
+                "aaData" => $jobs,
+                "iTotalDisplayRecords" => $totalRecords,
+                "iTotalRecords" => $totalRecords,
+                "sColumns" => $request->input('sColumns'),
+                "sEcho" => $request->input('sEcho'),
+            );
+               
+                return response()->json($response, 201);
+            }
+            catch (exception $e) {
+                return response()->json([
+                    'response' => 'error',
+                    'message' => $e,
+                ]);
+            }
+          }
+    }
+
     private function getToken($email, $password)
     {
         $token = null;
-       // $credentials = $request->only('email', 'password');
-    /*   try {
-       if ( $user = User::where('email', '=',$email)->first() )
-    {
-        if ( !Hash::check($password, $user->password ) )
-            return response()->json([
-                'response' => 'error',
-                'message' => 'Password or email is invalid'
-                
-            ]);
-        else
-        {
-            $token = JWTAuth::fromUser($user);
-            if($token){
-              return  $token;
-            }
-           
-        }
-    }
-    else
-        return [ 'error' => true ];
-    } catch (JWTAuthException $e) {
-        return response()->json([
-            'response' => 'error',
-            'message' => 'Token creation failed',
-        ]);    
-    }
-    */    
-
+       
         try {
             if (!$token = JWTAuth::attempt( ['email'=>$email, 'password'=>$password])) {
                 return response()->json([
@@ -88,10 +108,15 @@ class UserController extends Controller
     }
     public function register(Request $request)
     { 
+        
+        $parmissions = json_encode($request->permission);
         $payload = [
             'password'=>\Hash::make($request->password),
             'email'=>$request->email,
             'name'=>$request->name,
+            'lastName'=>$request->lastName,
+            'roles' => $request->roles,
+            'parmissions' =>$parmissions,
             'auth_token'=> '',
             ];
            

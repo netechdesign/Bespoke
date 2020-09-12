@@ -3485,6 +3485,22 @@ __webpack_require__.r(__webpack_exports__);
       url: '/dashboard',
       icon: 'feather icon-home'
     }, {
+      id: 'RoleUser',
+      title: 'Role & User',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'Role',
+        title: 'Role',
+        type: 'item',
+        url: '/role'
+      }, {
+        id: 'v-fixed',
+        title: 'User',
+        type: 'item',
+        url: '/user'
+      }]
+    }, {
       id: 'data_import',
       title: 'Data Import',
       type: 'item',
@@ -3546,6 +3562,55 @@ global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 var DashboardDefault = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Dashboard */ "./resources/js/Back-office/Pages/Dashboard.js"));
 });
+var DataImport = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(34)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Data_import */ "./resources/js/Back-office/Pages/Data_import.js"));
+});
+var DailyPerformance_import = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(33)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/DailyPerformance_import */ "./resources/js/Back-office/Pages/DailyPerformance_import.js"));
+});
+var SupplierList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(8), __webpack_require__.e(10), __webpack_require__.e(37)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SupplierList */ "./resources/js/Back-Office/Pages/SupplierList.js"));
+});
+var MorrisonList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(8), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/MorrisonList */ "./resources/js/Back-Office/Pages/MorrisonList.js"));
+});
+var UtilitaList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6), __webpack_require__.e(2), __webpack_require__.e(1), __webpack_require__.e(15), __webpack_require__.e(31)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaList */ "./resources/js/Back-Office/Pages/UtilitaList.js"));
+});
+var UtilitaChart = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(36), __webpack_require__.e(38)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaChart */ "./resources/js/Back-Office/Pages/UtilitaChart.js"));
+});
+var UtilitaView = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(39)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaView */ "./resources/js/Back-Office/Pages/UtilitaView.js"));
+});
+var SiteEngineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(8), __webpack_require__.e(10), __webpack_require__.e(30)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SiteEngineer */ "./resources/js/Back-Office/Pages/SiteEngineer.js"));
+});
+var Engineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(8), __webpack_require__.e(40), __webpack_require__.e(10), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Engineer */ "./resources/js/Back-Office/Pages/Engineer.js"));
+});
+var RoleList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(8), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
+});
+var RoleAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(40), __webpack_require__.e(41)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/add */ "./resources/js/Back-Office/Role/add.js"));
+});
+var RoleEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(40), __webpack_require__.e(42)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/edit */ "./resources/js/Back-Office/Role/edit.js"));
+});
+var UserList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(8), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
+});
+var UserAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(2), __webpack_require__.e(40), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/add */ "./resources/js/Back-Office/User/add.js"));
+});
+var UserEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(40), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/edit */ "./resources/js/Back-Office/User/edit.js"));
+}); //For demo Examples
+
+var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(17), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./Demo/Forms/FormsSelect */ "./resources/js/Demo/Forms/FormsSelect.js"));
+});
 var DashboardEcommerce = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Ecommerce */ "./resources/js/Demo/Dashboard/Ecommerce.js"));
 });
@@ -3559,37 +3624,7 @@ var DashboardCrypto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(14), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crypto */ "./resources/js/Demo/Dashboard/Crypto.js"));
 });
 var DashboardProject = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(34), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Project */ "./resources/js/Demo/Dashboard/Project.js"));
-});
-var DataImport = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(41), __webpack_require__.e(6), __webpack_require__.e(10), __webpack_require__.e(33)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Data_import */ "./resources/js/Back-office/Pages/Data_import.js"));
-});
-var DailyPerformance_import = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(41), __webpack_require__.e(6), __webpack_require__.e(10), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/DailyPerformance_import */ "./resources/js/Back-office/Pages/DailyPerformance_import.js"));
-});
-var SupplierList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(41), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SupplierList */ "./resources/js/Back-Office/Pages/SupplierList.js"));
-});
-var MorrisonList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/MorrisonList */ "./resources/js/Back-Office/Pages/MorrisonList.js"));
-});
-var UtilitaList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(8), __webpack_require__.e(15), __webpack_require__.e(31)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaList */ "./resources/js/Back-Office/Pages/UtilitaList.js"));
-});
-var UtilitaChart = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(35), __webpack_require__.e(37)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaChart */ "./resources/js/Back-Office/Pages/UtilitaChart.js"));
-});
-var UtilitaView = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(38)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/UtilitaView */ "./resources/js/Back-Office/Pages/UtilitaView.js"));
-});
-var SiteEngineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(41), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(30)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/SiteEngineer */ "./resources/js/Back-Office/Pages/SiteEngineer.js"));
-});
-var Engineer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(41), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(39), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Engineer */ "./resources/js/Back-Office/Pages/Engineer.js"));
-});
-var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(17), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./Demo/Forms/FormsSelect */ "./resources/js/Demo/Forms/FormsSelect.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(35), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Project */ "./resources/js/Demo/Dashboard/Project.js"));
 });
 var routes = [{
   path: '/dataimport',
@@ -3652,6 +3687,37 @@ var routes = [{
   name: 'Engineer',
   component: Engineer
 }, {
+  path: '/role',
+  exact: true,
+  name: 'role',
+  component: RoleList
+}, {
+  path: '/role/add',
+  exact: true,
+  name: 'roleadd',
+  component: RoleAdd
+}, {
+  path: '/role/edit/:id',
+  exact: true,
+  name: 'roleedit',
+  component: RoleEdit
+}, {
+  path: '/user',
+  exact: true,
+  name: 'user',
+  component: UserList
+}, {
+  path: '/user/add',
+  exact: true,
+  name: 'useradd',
+  component: UserAdd
+}, {
+  path: '/user/edit/:id',
+  exact: true,
+  name: 'useredit',
+  component: UserEdit
+}, // for demo Examples.
+{
   path: '/forms/form-select',
   exact: true,
   name: 'Forms Select',

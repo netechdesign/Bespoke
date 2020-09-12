@@ -1222,6 +1222,22 @@ __webpack_require__.r(__webpack_exports__);
       url: '/dashboard',
       icon: 'feather icon-home'
     }, {
+      id: 'RoleUser',
+      title: 'Role & User',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'Role',
+        title: 'Role',
+        type: 'item',
+        url: '/role'
+      }, {
+        id: 'v-fixed',
+        title: 'User',
+        type: 'item',
+        url: '/user'
+      }]
+    }, {
       id: 'data_import',
       title: 'Data Import',
       type: 'item',

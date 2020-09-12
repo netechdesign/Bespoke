@@ -252,8 +252,7 @@ class SupplierList extends React.Component {
                                     placeholder="Select Supplier"
                                 />
                                 </Form.Group>
-                                </Form.Row>
-                            
+                            </Form.Row>
                             
                             </Card.Header>
                             <Card.Body>

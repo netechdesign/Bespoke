@@ -17,7 +17,11 @@ Route::get('/', function () {
 */
 
 Route::group(array('prefix' => '/'), function() {
-     Route::get('/', function(){
+  
+   Route::namespace('Admin')->group(function () {
+      Route::resource('parmission', 'ParmissionController');
+});
+   Route::get('/', function(){
         return view('welcome');
      });
      
@@ -63,6 +67,28 @@ Route::group(array('prefix' => '/'), function() {
      Route::get('/dashboard', function(){
         return view('welcome');
      }); 
+     
+     Route::get('/role', function(){
+      return view('welcome');
+   });
+   Route::get('/role/add', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/role/edit/{id}', function(){
+      return view('welcome');
+   });
+
+   Route::get('/user', function(){
+      return view('welcome');
+   });
+   Route::get('/user/add', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/user/edit/{id}', function(){
+      return view('welcome');
+   });
      Route::get('/export', 'Admin\MdsController@export');
 
     
