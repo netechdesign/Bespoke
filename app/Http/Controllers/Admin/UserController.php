@@ -36,11 +36,11 @@ class UserController extends Controller
                 $start = $request->input('iDisplayStart');
                 $page_length = $request->input('iDisplayLength');
                 
-                $jobsrow = User::select("*")
+                $jobsrow = User::select("users.id","users.name","users.email","roles.name as role_name")->leftJoin('roles','roles.id','=','users.roles')
                 ->where(function($query) use ($request){
-                  if($request->input('file_id')!=''){
-                    $query->where('file_id','=',$request->input('file_id'));
-                    $query->where('file_id','=',$request->input('file_id'));
+                  if($request->input('email')!=''){
+                    $query->where('email','=',$request->input('email'));
+                    
                    } 
                 })->offset($start);
                

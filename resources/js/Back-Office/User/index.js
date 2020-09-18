@@ -71,7 +71,9 @@ oTable = $(tableResponsive).DataTable({
 
     "columns": [  
          {"data": "name"},
-          {"data": "id"}
+         {"data": "email"},
+         {"data": "role_name"},
+         {"data": "id"}
     ],
     responsive: {
         responsive: {
@@ -178,12 +180,16 @@ class Role extends React.Component {
                                     <thead>
                                     <tr>
                                         <th id="name">Name</th>
+                                        <th id="email">Email</th>
+                                        <th id="role_name">Role</th>
                                         <th id="action">Action</th>
                                       </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th id="name">Name</th>
+                                        <th id="email">Email</th>
+                                        <th id="role_name">Role</th>
                                         <th id="action">Action</th>
                                     </tr>
                                     </tfoot>
