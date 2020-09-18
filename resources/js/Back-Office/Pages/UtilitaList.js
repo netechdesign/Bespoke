@@ -6,7 +6,7 @@ import Select from 'react-select';
 import Aux from "../../hoc/_Aux";
 import Datetime from 'react-datetime';
 import axios from 'axios'
-
+import {CheckPermission} from '../../HttpFunctions'; 
 
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 
@@ -93,6 +93,8 @@ class UtilitaList extends React.Component {
                  
         }
     componentDidMount() {
+        const { match, location, history } = this.props;
+        CheckPermission('Report','Report search',history);
         const { id } = this.props.match.params;
         this.setState({id:id});
         

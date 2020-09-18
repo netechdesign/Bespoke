@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Row, Col, Card, Table,Button} from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
-
+import {CheckPermission} from '../../HttpFunctions'; 
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
@@ -47,7 +47,7 @@ oTable = $(tableResponsive).DataTable({
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin+'/api/role/',
+    "sAjaxSource": window.location.origin+'/api/user',
     'bPaginate': true,
     "fnServerParams": function (aoData) {
 
@@ -149,12 +149,13 @@ class Role extends React.Component {
         }}
 
     componentDidMount() {
-       
-        atable()
         const { match, location, history } = this.props;
+        CheckPermission('user','show',history);
+        atable()
+        
         $('#data-table-responsive tbody').on('click', '.edit', function () {
             var id =  $(this).attr('data-id');
-            history.push('/role/edit/'+id);
+            history.push('/user/edit/'+id);
         
         })
     }

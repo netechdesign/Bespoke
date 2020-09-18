@@ -6,7 +6,7 @@ import Select from 'react-select';
 import Aux from "../../hoc/_Aux";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
+import {CheckPermission} from '../../HttpFunctions'; 
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
@@ -182,6 +182,8 @@ class SupplierList extends React.Component {
         }}
            
     componentDidMount() {
+        const { match, location, history } = this.props;
+        CheckPermission('File','Show Uploaded Data',history);
         
         atable();
         var self= this;
@@ -199,6 +201,11 @@ class SupplierList extends React.Component {
           $('#data-table-responsive tbody').on('click', '.deletefile', function () {
             var id =  $(this).attr('data-id');
             const MySwal = withReactContent(Swal);
+            const Permission = CheckPermission('File','Delete Uploaded Data',history,false);
+      if(Permission==1){
+        return false;
+      }
+        
             MySwal.fire({
                 title: 'Are you sure?',
                 text: 'Once deleted, you will not be able to recover this data!',

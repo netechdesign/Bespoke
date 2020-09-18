@@ -16,6 +16,8 @@ class AddFieldsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->longText('roles')->nullable();
             $table->longText('parmissions')->nullable();
+            $table->longText('parmissions_list')->nullable();
+            
             //
         });
     }

@@ -13,11 +13,19 @@ use DB;
 
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
+use Maatwebsite\Excel\Concerns\SkipsUnknownSheets;
 
 class ImportJobs implements WithMultipleSheets 
 {
    
-
+    public function registerEvents(): array
+    {
+        return [
+            BeforeSheet::class => function(BeforeSheet $event) {
+                $this->sheetNames[] = $event->getSheet()->getTitle();
+            } 
+        ];
+    }
     public function sheets(): array
     {
         if(request()->file_id==1){
@@ -27,6 +35,9 @@ class ImportJobs implements WithMultipleSheets
         }else if(request()->file_id==2){
             return [
                 'Bespoke Engineer Jobs Last Week' => new FirstSheetImport(),
+                'Bespoke Engineer Jobs Yesterday' => new FirstSheetImport(),
+                'Bespoke Engineer Jobs This Week' => new FirstSheetImport(),
+                
                 ];
         }
         else if(request()->file_id==3){
@@ -37,15 +48,22 @@ class ImportJobs implements WithMultipleSheets
         else if(request()->file_id==4){
             return [
                 'last week' => new FirstSheetImport(),
+                'this week' => new FirstSheetImport(),
+                'Yesterday' => new FirstSheetImport(),
                ];
         }
 
     }
 }
 
-class FirstSheetImport implements ToModel, WithHeadingRow
+class FirstSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets
 {
    
+    public function onUnknownSheet($sheetName)
+    {
+        // E.g. you can log that a sheet was not found.
+        info("Sheet {$sheetName} was skipped");
+    }
        /**
     * @param array $row
     *

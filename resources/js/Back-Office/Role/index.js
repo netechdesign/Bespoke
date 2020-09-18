@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Row, Col, Card, Table,Button} from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
-
+import PNotify from "pnotify/dist/es/PNotify";
+import {CheckPermission} from '../../HttpFunctions'; 
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
@@ -139,7 +140,7 @@ oTable = $(tableResponsive).DataTable({
    
 }
 
-class Role extends React.Component {
+class Role extends  React.Component {
 
    
     constructor(props) {
@@ -149,9 +150,10 @@ class Role extends React.Component {
         }}
 
     componentDidMount() {
-       
-        atable()
+        
         const { match, location, history } = this.props;
+        CheckPermission('role','show',history);
+        atable()
         $('#data-table-responsive tbody').on('click', '.edit', function () {
             var id =  $(this).attr('data-id');
             history.push('/role/edit/'+id);

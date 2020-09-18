@@ -265,12 +265,15 @@ class UtilitaController extends Controller
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
            
           if($q->count() > 0){
-            $result=$q->get();
+            $result=$q->orderBy('appointment_time','asc')->get();
             $categories =array();
             $series=[];
 
             $abortedcategories =array();
             $abortedseries=[];
+
+            $cancelledcategories =array();
+            $cancelledseries=[];
             
             $descriptioncategories =array();
             $descriptionseries=[];
@@ -395,8 +398,14 @@ class UtilitaController extends Controller
             }
            
             //complate
+            $engineeram=[];
+            if(isset($series[0]->data)){
             $engineeram= array_keys($series[0]->data);
+            }
+            $engineerpm=[];
+            if(isset($series[1]->data)){
             $engineerpm= array_keys($series[1]->data);
+            }
             $engineers = $array = array_unique(array_merge($engineeram, $engineerpm));
             $engineers = array_values($engineers);
             foreach($engineers as $vl){
@@ -407,61 +416,79 @@ class UtilitaController extends Controller
                     $series[1]->data[$vl]=0;
                 }
             }
+            if(isset($series[0]->data)){
                 ksort($series[0]->data);
                 $engineer= array_keys($series[0]->data);
                 $series[0]->data= array_values($series[0]->data);
+            }
+                if(isset($series[1]->data)){
                 ksort($series[1]->data);
-                $series[1]->data=array_values($series[1]->data);
+                $series[1]->data= array_values($series[1]->data);
+                }
                 $installnum['series'] = $series;
                 $installnum['engineer'] = $engineer;
             //aborted
+            $engineeram=[];
+            $engineerpm=[];
+            if(isset($abortedseries[0]->data)){$engineeram= array_keys($abortedseries[0]->data);}
+            if(isset($abortedseries[1]->data)){$engineerpm= array_keys($abortedseries[1]->data);}
             
-            $engineeram= array_keys($abortedseries[0]->data);
-            $engineerpm= array_keys($abortedseries[1]->data);
+            
             
             $engineers = $array = array_unique(array_merge($engineeram, $engineerpm));
             $engineers = array_values($engineers);
             
             foreach($engineers as $vl){
-                if (!array_key_exists($vl, $abortedseries[0]->data)) {
+                if (isset($abortedseries[0]->data) && !array_key_exists($vl, $abortedseries[0]->data)) {
                     $abortedseries[0]->data[$vl]=0;
                 }
-                if (!array_key_exists($vl, $abortedseries[1]->data)) {
+                if (isset($abortedseries[1]->data) && !array_key_exists($vl, $abortedseries[1]->data)) {
                     $abortedseries[1]->data[$vl]=0;
                 }
             }
-            
+            if(isset($abortedseries[0]->data)){   
             ksort($abortedseries[0]->data);
             $engineer= array_keys($abortedseries[0]->data);
             $abortedseries[0]->data= array_values($abortedseries[0]->data);
+            }
+            if(isset($abortedseries[1]->data)){
             ksort($abortedseries[1]->data);
             $abortedseries[1]->data=array_values($abortedseries[1]->data);
+            }
          //   dd($abortedseries);
             $abortedinstallnum['series'] = $abortedseries;
             $abortedinstallnum['engineer'] = $engineer;    
             
         //descriptiondata
+        $descriptionam=[];
+        if(isset($descriptionseries[0]->data)){
         $descriptionam= array_keys($descriptionseries[0]->data);
+        }
+        $descriptionpm=[];
+        if(isset($descriptionseries[1]->data)){
         $descriptionpm= array_keys($descriptionseries[1]->data);
-        
+        }
         $descriptions = $array = array_unique(array_merge($descriptionam, $descriptionpm));
         $descriptions = array_values($descriptions);
         
         foreach($descriptions as $vl){
-            if (!array_key_exists($vl, $descriptionseries[0]->data)) {
+            if (isset($descriptionseries[0]->data) && !array_key_exists($vl, $descriptionseries[0]->data)) {
                 $descriptionseries[0]->data[$vl]=0;
             }
-            if (!array_key_exists($vl, $descriptionseries[1]->data)) {
+            if (isset($descriptionseries[1]->data) && !array_key_exists($vl, $descriptionseries[1]->data)) {
                 $descriptionseries[1]->data[$vl]=0;
             }
         }
-        
+        $description=[];
+        if(isset($descriptionseries[0]->data)){
         ksort($descriptionseries[0]->data);
         $description= array_keys($descriptionseries[0]->data);
         $descriptionseries[0]->data= array_values($descriptionseries[0]->data);
+        }
+        if(isset($descriptionseries[1]->data)){
         ksort($descriptionseries[1]->data);
         $descriptionseries[1]->data=array_values($descriptionseries[1]->data);
-       
+        }
         $descriptioninstallnum['series'] = $descriptionseries;
         $descriptioninstallnum['description'] = $description;    
         

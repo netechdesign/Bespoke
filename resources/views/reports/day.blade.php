@@ -189,9 +189,22 @@
     <td></td>
     @foreach ($table1['Aborts'] as $title =>$vl)
             
-<td style="text-align:right">{{round(($vl*100)/($table1['total'][$title]),2).'%'}}</td>
+<td style="text-align:right">
+    @if(($vl*100) > 0)   
+    {{round(($vl*100)/($table1['total'][$title]),2).'%'}}
+    @else
+    0%
+    @endif
+        
+</td>
     <td style="text-align:right">15%</td>
-    <td style="text-align:right">{{15-round(($vl*100)/($table1['total'][$title]),2).'%'}}</td>   
+    <td style="text-align:right">
+        @if(($vl*100) > 0)   
+        {{15-round(($vl*100)/($table1['total'][$title]),2).'%'}}
+    @else
+    15%
+    @endif    
+    </td>   
     @endforeach
 
 </tr>

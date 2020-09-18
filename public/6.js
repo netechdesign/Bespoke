@@ -1,981 +1,1190 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
 
-/***/ "./node_modules/react-bootstrap4-form-validation/lib/index.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/react-bootstrap4-form-validation/lib/index.js ***!
-  \********************************************************************/
+/***/ "./node_modules/create-react-class/factory.js":
+/*!****************************************************!*\
+  !*** ./node_modules/create-react-class/factory.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ValidationForm = exports.Checkbox = exports.SelectGroup = exports.FileInput = exports.Radio = exports.TextInputGroup = exports.TextInput = exports.BaseFormControl = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var emptyObject = __webpack_require__(/*! fbjs/lib/emptyObject */ "./node_modules/fbjs/lib/emptyObject.js");
+var _invariant = __webpack_require__(/*! fbjs/lib/invariant */ "./node_modules/fbjs/lib/invariant.js");
 
-exports.parseFileSize = parseFileSize;
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-__webpack_require__(/*! ./polyfill */ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function parseFileSize(size) {
-    var num = parseFloat(size, 10);
-    var unit = size.match(/[a-zA-Z]+/)[0];
-    unit = unit.toLowerCase();
-    switch (unit) {
-        case "b":
-            return num;
-        case "kb":
-            return 1024 * num;
-        case "mb":
-            return 1024 * 1024 * num;
-        case "gb":
-            return 1024 * 1024 * 1024 * num;
-        default:
-            throw new Error("Unknown unit " + unit);
-    }
+if (true) {
+  var warning = __webpack_require__(/*! fbjs/lib/warning */ "./node_modules/fbjs/lib/warning.js");
 }
 
-var BaseFormControl = exports.BaseFormControl = function (_React$Component) {
-    _inherits(BaseFormControl, _React$Component);
+var MIXINS_KEY = 'mixins';
 
-    function BaseFormControl(props) {
-        _classCallCheck(this, BaseFormControl);
+// Helper function to allow the creation of anonymous functions which do not
+// have .name set to the name of the variable being assigned to.
+function identity(fn) {
+  return fn;
+}
 
-        var _this = _possibleConstructorReturn(this, (BaseFormControl.__proto__ || Object.getPrototypeOf(BaseFormControl)).call(this, props));
+var ReactPropTypeLocationNames;
+if (true) {
+  ReactPropTypeLocationNames = {
+    prop: 'prop',
+    context: 'context',
+    childContext: 'child context'
+  };
+} else {}
 
-        _this.setError = function (errorMessage) {
-            _this.getInputRef().setCustomValidity(errorMessage);
-            _this.setState({ errorMessage: errorMessage });
-        };
+function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
+  /**
+   * Policies that describe methods in `ReactClassInterface`.
+   */
 
-        _this.clearError = function () {
-            return _this.setError("");
-        };
+  var injectedMixins = [];
 
-        _this.checkError = function (e) {
-            var isPristine = _this.state.isPristine;
-            if (isPristine) _this.setDirty();
-            _this.buildErrorMessage();
-            _this.changeInputErrorClass();
-        };
+  /**
+   * Composite components are higher-level components that compose other composite
+   * or host components.
+   *
+   * To create a new type of `ReactClass`, pass a specification of
+   * your new class to `React.createClass`. The only requirement of your class
+   * specification is that you implement a `render` method.
+   *
+   *   var MyComponent = React.createClass({
+   *     render: function() {
+   *       return <div>Hello World</div>;
+   *     }
+   *   });
+   *
+   * The class specification supports a specific protocol of methods that have
+   * special meaning (e.g. `render`). See `ReactClassInterface` for
+   * more the comprehensive protocol. Any other properties and methods in the
+   * class specification will be available on the prototype.
+   *
+   * @interface ReactClassInterface
+   * @internal
+   */
+  var ReactClassInterface = {
+    /**
+     * An array of Mixin objects to include when defining your component.
+     *
+     * @type {array}
+     * @optional
+     */
+    mixins: 'DEFINE_MANY',
 
-        _this.handleBlur = function (e) {
-            if (_this.context.validationForm.immediate) return;
-            _this.checkError();
-        };
+    /**
+     * An object containing properties and methods that should be defined on
+     * the component's constructor instead of its prototype (static methods).
+     *
+     * @type {object}
+     * @optional
+     */
+    statics: 'DEFINE_MANY',
 
-        _this.handleChange = function (e) {
-            if (_this.props.onChange) _this.props.onChange(e);
-            if (!_this.context.validationForm.immediate) return;
-            _this.checkError();
-        };
+    /**
+     * Definition of prop types for this component.
+     *
+     * @type {object}
+     * @optional
+     */
+    propTypes: 'DEFINE_MANY',
 
-        _this.validateInput = function () {
-            _this.setDirty();
-            _this.buildErrorMessage();
-        };
+    /**
+     * Definition of context types for this component.
+     *
+     * @type {object}
+     * @optional
+     */
+    contextTypes: 'DEFINE_MANY',
 
-        _this.setDirty = function () {
-            _this.setState({ isPristine: false });
-        };
+    /**
+     * Definition of context types this component sets for its children.
+     *
+     * @type {object}
+     * @optional
+     */
+    childContextTypes: 'DEFINE_MANY',
 
-        _this.filterProps = function () {
-            var _this$props = _this.props,
-                errorMessage = _this$props.errorMessage,
-                successMessage = _this$props.successMessage,
-                validator = _this$props.validator,
-                defaultErrorMessage = _this$props.defaultErrorMessage,
-                attachToForm = _this$props.attachToForm,
-                detachFromForm = _this$props.detachFromForm,
-                setFormDirty = _this$props.setFormDirty,
-                label = _this$props.label,
-                immediate = _this$props.immediate,
-                rest = _objectWithoutProperties(_this$props, ['errorMessage', 'successMessage', 'validator', 'defaultErrorMessage', 'attachToForm', 'detachFromForm', 'setFormDirty', 'label', 'immediate']);
+    // ==== Definition methods ====
 
-            return rest;
-        };
+    /**
+     * Invoked when the component is mounted. Values in the mapping will be set on
+     * `this.props` if that prop is not specified (i.e. using an `in` check).
+     *
+     * This method is invoked before `getInitialState` and therefore cannot rely
+     * on `this.state` or use `this.setState`.
+     *
+     * @return {object}
+     * @optional
+     */
+    getDefaultProps: 'DEFINE_MANY_MERGED',
 
-        _this.state = {
-            isPristine: true,
-            errorMessage: ""
-        };
-        if (_react2.default.createRef) _this.inputRef = _react2.default.createRef();else _this.inputRef = function (element) {
-            //Before React 16.3
-            _this.inputRefLegacy = element;
-        };
-        return _this;
+    /**
+     * Invoked once before the component is mounted. The return value will be used
+     * as the initial value of `this.state`.
+     *
+     *   getInitialState: function() {
+     *     return {
+     *       isOn: false,
+     *       fooBaz: new BazFoo()
+     *     }
+     *   }
+     *
+     * @return {object}
+     * @optional
+     */
+    getInitialState: 'DEFINE_MANY_MERGED',
+
+    /**
+     * @return {object}
+     * @optional
+     */
+    getChildContext: 'DEFINE_MANY_MERGED',
+
+    /**
+     * Uses props from `this.props` and state from `this.state` to render the
+     * structure of the component.
+     *
+     * No guarantees are made about when or how often this method is invoked, so
+     * it must not have side effects.
+     *
+     *   render: function() {
+     *     var name = this.props.name;
+     *     return <div>Hello, {name}!</div>;
+     *   }
+     *
+     * @return {ReactComponent}
+     * @required
+     */
+    render: 'DEFINE_ONCE',
+
+    // ==== Delegate methods ====
+
+    /**
+     * Invoked when the component is initially created and about to be mounted.
+     * This may have side effects, but any external subscriptions or data created
+     * by this method must be cleaned up in `componentWillUnmount`.
+     *
+     * @optional
+     */
+    componentWillMount: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component has been mounted and has a DOM representation.
+     * However, there is no guarantee that the DOM node is in the document.
+     *
+     * Use this as an opportunity to operate on the DOM when the component has
+     * been mounted (initialized and rendered) for the first time.
+     *
+     * @param {DOMElement} rootNode DOM element representing the component.
+     * @optional
+     */
+    componentDidMount: 'DEFINE_MANY',
+
+    /**
+     * Invoked before the component receives new props.
+     *
+     * Use this as an opportunity to react to a prop transition by updating the
+     * state using `this.setState`. Current props are accessed via `this.props`.
+     *
+     *   componentWillReceiveProps: function(nextProps, nextContext) {
+     *     this.setState({
+     *       likesIncreasing: nextProps.likeCount > this.props.likeCount
+     *     });
+     *   }
+     *
+     * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
+     * transition may cause a state change, but the opposite is not true. If you
+     * need it, you are probably looking for `componentWillUpdate`.
+     *
+     * @param {object} nextProps
+     * @optional
+     */
+    componentWillReceiveProps: 'DEFINE_MANY',
+
+    /**
+     * Invoked while deciding if the component should be updated as a result of
+     * receiving new props, state and/or context.
+     *
+     * Use this as an opportunity to `return false` when you're certain that the
+     * transition to the new props/state/context will not require a component
+     * update.
+     *
+     *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
+     *     return !equal(nextProps, this.props) ||
+     *       !equal(nextState, this.state) ||
+     *       !equal(nextContext, this.context);
+     *   }
+     *
+     * @param {object} nextProps
+     * @param {?object} nextState
+     * @param {?object} nextContext
+     * @return {boolean} True if the component should update.
+     * @optional
+     */
+    shouldComponentUpdate: 'DEFINE_ONCE',
+
+    /**
+     * Invoked when the component is about to update due to a transition from
+     * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
+     * and `nextContext`.
+     *
+     * Use this as an opportunity to perform preparation before an update occurs.
+     *
+     * NOTE: You **cannot** use `this.setState()` in this method.
+     *
+     * @param {object} nextProps
+     * @param {?object} nextState
+     * @param {?object} nextContext
+     * @param {ReactReconcileTransaction} transaction
+     * @optional
+     */
+    componentWillUpdate: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component's DOM representation has been updated.
+     *
+     * Use this as an opportunity to operate on the DOM when the component has
+     * been updated.
+     *
+     * @param {object} prevProps
+     * @param {?object} prevState
+     * @param {?object} prevContext
+     * @param {DOMElement} rootNode DOM element representing the component.
+     * @optional
+     */
+    componentDidUpdate: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component is about to be removed from its parent and have
+     * its DOM representation destroyed.
+     *
+     * Use this as an opportunity to deallocate any external resources.
+     *
+     * NOTE: There is no `componentDidUnmount` since your component will have been
+     * destroyed by that point.
+     *
+     * @optional
+     */
+    componentWillUnmount: 'DEFINE_MANY',
+
+    /**
+     * Replacement for (deprecated) `componentWillMount`.
+     *
+     * @optional
+     */
+    UNSAFE_componentWillMount: 'DEFINE_MANY',
+
+    /**
+     * Replacement for (deprecated) `componentWillReceiveProps`.
+     *
+     * @optional
+     */
+    UNSAFE_componentWillReceiveProps: 'DEFINE_MANY',
+
+    /**
+     * Replacement for (deprecated) `componentWillUpdate`.
+     *
+     * @optional
+     */
+    UNSAFE_componentWillUpdate: 'DEFINE_MANY',
+
+    // ==== Advanced methods ====
+
+    /**
+     * Updates the component's currently mounted DOM representation.
+     *
+     * By default, this implements React's rendering and reconciliation algorithm.
+     * Sophisticated clients may wish to override this.
+     *
+     * @param {ReactReconcileTransaction} transaction
+     * @internal
+     * @overridable
+     */
+    updateComponent: 'OVERRIDE_BASE'
+  };
+
+  /**
+   * Similar to ReactClassInterface but for static methods.
+   */
+  var ReactClassStaticInterface = {
+    /**
+     * This method is invoked after a component is instantiated and when it
+     * receives new props. Return an object to update state in response to
+     * prop changes. Return null to indicate no change to state.
+     *
+     * If an object is returned, its keys will be merged into the existing state.
+     *
+     * @return {object || null}
+     * @optional
+     */
+    getDerivedStateFromProps: 'DEFINE_MANY_MERGED'
+  };
+
+  /**
+   * Mapping from class specification keys to special processing functions.
+   *
+   * Although these are declared like instance properties in the specification
+   * when defining classes using `React.createClass`, they are actually static
+   * and are accessible on the constructor instead of the prototype. Despite
+   * being static, they must be defined outside of the "statics" key under
+   * which all other static methods are defined.
+   */
+  var RESERVED_SPEC_KEYS = {
+    displayName: function(Constructor, displayName) {
+      Constructor.displayName = displayName;
+    },
+    mixins: function(Constructor, mixins) {
+      if (mixins) {
+        for (var i = 0; i < mixins.length; i++) {
+          mixSpecIntoComponent(Constructor, mixins[i]);
+        }
+      }
+    },
+    childContextTypes: function(Constructor, childContextTypes) {
+      if (true) {
+        validateTypeDef(Constructor, childContextTypes, 'childContext');
+      }
+      Constructor.childContextTypes = _assign(
+        {},
+        Constructor.childContextTypes,
+        childContextTypes
+      );
+    },
+    contextTypes: function(Constructor, contextTypes) {
+      if (true) {
+        validateTypeDef(Constructor, contextTypes, 'context');
+      }
+      Constructor.contextTypes = _assign(
+        {},
+        Constructor.contextTypes,
+        contextTypes
+      );
+    },
+    /**
+     * Special case getDefaultProps which should move into statics but requires
+     * automatic merging.
+     */
+    getDefaultProps: function(Constructor, getDefaultProps) {
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps = createMergedResultFunction(
+          Constructor.getDefaultProps,
+          getDefaultProps
+        );
+      } else {
+        Constructor.getDefaultProps = getDefaultProps;
+      }
+    },
+    propTypes: function(Constructor, propTypes) {
+      if (true) {
+        validateTypeDef(Constructor, propTypes, 'prop');
+      }
+      Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
+    },
+    statics: function(Constructor, statics) {
+      mixStaticSpecIntoComponent(Constructor, statics);
+    },
+    autobind: function() {}
+  };
+
+  function validateTypeDef(Constructor, typeDef, location) {
+    for (var propName in typeDef) {
+      if (typeDef.hasOwnProperty(propName)) {
+        // use a warning instead of an _invariant so components
+        // don't show up in prod but only in __DEV__
+        if (true) {
+          warning(
+            typeof typeDef[propName] === 'function',
+            '%s: %s type `%s` is invalid; it must be a function, usually from ' +
+              'React.PropTypes.',
+            Constructor.displayName || 'ReactClass',
+            ReactPropTypeLocationNames[location],
+            propName
+          );
+        }
+      }
+    }
+  }
+
+  function validateMethodOverride(isAlreadyDefined, name) {
+    var specPolicy = ReactClassInterface.hasOwnProperty(name)
+      ? ReactClassInterface[name]
+      : null;
+
+    // Disallow overriding of base class methods unless explicitly allowed.
+    if (ReactClassMixin.hasOwnProperty(name)) {
+      _invariant(
+        specPolicy === 'OVERRIDE_BASE',
+        'ReactClassInterface: You are attempting to override ' +
+          '`%s` from your class specification. Ensure that your method names ' +
+          'do not overlap with React methods.',
+        name
+      );
     }
 
-    _createClass(BaseFormControl, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.context.validationForm.attachToForm(this);
+    // Disallow defining methods more than once unless explicitly allowed.
+    if (isAlreadyDefined) {
+      _invariant(
+        specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED',
+        'ReactClassInterface: You are attempting to define ' +
+          '`%s` on your component more than once. This conflict may be due ' +
+          'to a mixin.',
+        name
+      );
+    }
+  }
+
+  /**
+   * Mixin helper which handles policy validation and reserved
+   * specification keys when building React classes.
+   */
+  function mixSpecIntoComponent(Constructor, spec) {
+    if (!spec) {
+      if (true) {
+        var typeofSpec = typeof spec;
+        var isMixinValid = typeofSpec === 'object' && spec !== null;
+
+        if (true) {
+          warning(
+            isMixinValid,
+            "%s: You're attempting to include a mixin that is either null " +
+              'or not an object. Check the mixins included by the component, ' +
+              'as well as any mixins they include themselves. ' +
+              'Expected object but got %s.',
+            Constructor.displayName || 'ReactClass',
+            spec === null ? null : typeofSpec
+          );
         }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.context.validationForm.detachFromForm(this);
-        }
-    }, {
-        key: 'getInputRef',
-        value: function getInputRef() {
-            return this.inputRefLegacy || this.inputRef.current;
-        }
-    }, {
-        key: 'buildErrorMessage',
-        value: function buildErrorMessage() {
-            var map = {
-                valueMissing: "required",
-                customError: "",
-                stepMismatch: "step",
-                patternMismatch: "pattern",
-                rangeUnderflow: "min",
-                rangeOverflow: "max",
-                typeMismatch: "type"
-            };
+      }
 
-            var errorMessage = this.props.errorMessage;
+      return;
+    }
 
-            var defaultErrorMessage = this.context.validationForm.defaultErrorMessage || {};
-            //If string was passed to errorMessage, default to required error Message
-            if (typeof errorMessage === "string") errorMessage = { required: errorMessage };
-            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, defaultErrorMessage, errorMessage);
-            var input = this.getInputRef();
-            if (input) {
-                var validityState = input.validity;
-                var newErrorMessage = "";
-                for (var prop in validityState) {
-                    if (validityState[prop]) {
-                        if (prop === "customError") newErrorMessage = input.validationMessage;else newErrorMessage = errorMessage[map[prop]];
-                        break;
-                    }
-                }
+    _invariant(
+      typeof spec !== 'function',
+      "ReactClass: You're attempting to " +
+        'use a component class or function as a mixin. Instead, just use a ' +
+        'regular object.'
+    );
+    _invariant(
+      !isValidElement(spec),
+      "ReactClass: You're attempting to " +
+        'use a component as a mixin. Instead, just use a regular object.'
+    );
 
-                //Add support for minLength attribute
-                if (this.props.minLength) {
-                    if (input.value.length < +this.props.minLength) {
-                        input.setCustomValidity(errorMessage["minLength"]);
-                        newErrorMessage = errorMessage["minLength"].replace("{minLength}", this.props.minLength);
-                    } else {
-                        if (newErrorMessage === errorMessage["minLength"]) {
-                            input.setCustomValidity("");
-                            newErrorMessage = "";
-                        }
-                    }
-                }
+    var proto = Constructor.prototype;
+    var autoBindPairs = proto.__reactAutoBindPairs;
 
-                if (typeof this.props.validator === "function") {
-                    var validatorFn = this.props.validator;
-                    var value = input.value;
-                    if (!validatorFn(value)) {
-                        input.setCustomValidity(errorMessage.validator);
-                        newErrorMessage = errorMessage.validator;
-                    } else {
-                        input.setCustomValidity("");
-                        newErrorMessage = "";
-                    }
-                }
+    // By handling mixins before any other properties, we ensure the same
+    // chaining order is applied to methods with DEFINE_MANY policy, whether
+    // mixins are listed before or after these methods in the spec.
+    if (spec.hasOwnProperty(MIXINS_KEY)) {
+      RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
+    }
 
-                this.setState({ errorMessage: newErrorMessage });
+    for (var name in spec) {
+      if (!spec.hasOwnProperty(name)) {
+        continue;
+      }
+
+      if (name === MIXINS_KEY) {
+        // We have already handled mixins in a special case above.
+        continue;
+      }
+
+      var property = spec[name];
+      var isAlreadyDefined = proto.hasOwnProperty(name);
+      validateMethodOverride(isAlreadyDefined, name);
+
+      if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
+        RESERVED_SPEC_KEYS[name](Constructor, property);
+      } else {
+        // Setup methods on prototype:
+        // The following member methods should not be automatically bound:
+        // 1. Expected ReactClass methods (in the "interface").
+        // 2. Overridden methods (that were mixed in).
+        var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
+        var isFunction = typeof property === 'function';
+        var shouldAutoBind =
+          isFunction &&
+          !isReactClassMethod &&
+          !isAlreadyDefined &&
+          spec.autobind !== false;
+
+        if (shouldAutoBind) {
+          autoBindPairs.push(name, property);
+          proto[name] = property;
+        } else {
+          if (isAlreadyDefined) {
+            var specPolicy = ReactClassInterface[name];
+
+            // These cases should already be caught by validateMethodOverride.
+            _invariant(
+              isReactClassMethod &&
+                (specPolicy === 'DEFINE_MANY_MERGED' ||
+                  specPolicy === 'DEFINE_MANY'),
+              'ReactClass: Unexpected spec policy %s for key %s ' +
+                'when mixing in component specs.',
+              specPolicy,
+              name
+            );
+
+            // For methods which are defined more than once, call the existing
+            // methods before calling the new property, merging if appropriate.
+            if (specPolicy === 'DEFINE_MANY_MERGED') {
+              proto[name] = createMergedResultFunction(proto[name], property);
+            } else if (specPolicy === 'DEFINE_MANY') {
+              proto[name] = createChainedFunction(proto[name], property);
             }
-        }
-    }, {
-        key: 'displayErrorMessage',
-        value: function displayErrorMessage() {
-            return this.state.errorMessage ? _react2.default.createElement(
-                'div',
-                { className: 'invalid-feedback' },
-                this.state.errorMessage
-            ) : null;
-        }
-
-        //displayBlock for radio group structure
-
-    }, {
-        key: 'displaySuccessMessage',
-        value: function displaySuccessMessage(displayBlock) {
-            return !this.state.isPristine && !this.state.errorMessage && this.props.successMessage ? _react2.default.createElement(
-                'div',
-                { className: "valid-feedback" + (displayBlock ? " d-block" : "") },
-                this.props.successMessage
-            ) : null;
-        }
-    }, {
-        key: 'changeInputErrorClass',
-        value: function changeInputErrorClass() {
-            var inputRef = this.getInputRef();
-            if (inputRef.type !== "radio") {
-                if (!inputRef.validity.valid) {
-                    inputRef.classList.add("is-invalid");
-                    inputRef.classList.remove("is-valid");
-                } else {
-                    inputRef.classList.remove("is-invalid");
-                    inputRef.classList.add("is-valid");
-                }
+          } else {
+            proto[name] = property;
+            if (true) {
+              // Add verbose displayName to the function, which helps when looking
+              // at profiling tools.
+              if (typeof property === 'function' && spec.displayName) {
+                proto[name].displayName = spec.displayName + '_' + name;
+              }
             }
+          }
         }
+      }
+    }
+  }
 
-        //Filter out non-DOM attribute
-
-    }]);
-
-    return BaseFormControl;
-}(_react2.default.Component);
-
-BaseFormControl.propTypes = {
-    name: _propTypes2.default.string.isRequired,
-    errorMessage: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string])
-};
-BaseFormControl.contextTypes = {
-    validationForm: _propTypes2.default.object
-};
-
-var TextInput = exports.TextInput = function (_BaseFormControl) {
-    _inherits(TextInput, _BaseFormControl);
-
-    function TextInput() {
-        _classCallCheck(this, TextInput);
-
-        return _possibleConstructorReturn(this, (TextInput.__proto__ || Object.getPrototypeOf(TextInput)).apply(this, arguments));
+  function mixStaticSpecIntoComponent(Constructor, statics) {
+    if (!statics) {
+      return;
     }
 
-    _createClass(TextInput, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
+    for (var name in statics) {
+      var property = statics[name];
+      if (!statics.hasOwnProperty(name)) {
+        continue;
+      }
 
-            var multiline = props.multiline,
-                successMessage = props.successMessage,
-                validator = props.validator,
-                domProps = _objectWithoutProperties(props, ['multiline', 'successMessage', 'validator']);
+      var isReserved = name in RESERVED_SPEC_KEYS;
+      _invariant(
+        !isReserved,
+        'ReactClass: You are attempting to define a reserved ' +
+          'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' +
+          'as an instance property instead; it will still be accessible on the ' +
+          'constructor.',
+        name
+      );
 
-            return _react2.default.createElement(
-                _react2.default.Fragment,
-                null,
-                multiline ? _react2.default.createElement('textarea', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })) : _react2.default.createElement('input', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
+      var isAlreadyDefined = name in Constructor;
+      if (isAlreadyDefined) {
+        var specPolicy = ReactClassStaticInterface.hasOwnProperty(name)
+          ? ReactClassStaticInterface[name]
+          : null;
+
+        _invariant(
+          specPolicy === 'DEFINE_MANY_MERGED',
+          'ReactClass: You are attempting to define ' +
+            '`%s` on your component more than once. This conflict may be ' +
+            'due to a mixin.',
+          name
+        );
+
+        Constructor[name] = createMergedResultFunction(Constructor[name], property);
+
+        return;
+      }
+
+      Constructor[name] = property;
+    }
+  }
+
+  /**
+   * Merge two objects, but throw if both contain the same key.
+   *
+   * @param {object} one The first object, which is mutated.
+   * @param {object} two The second object
+   * @return {object} one after it has been mutated to contain everything in two.
+   */
+  function mergeIntoWithNoDuplicateKeys(one, two) {
+    _invariant(
+      one && two && typeof one === 'object' && typeof two === 'object',
+      'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.'
+    );
+
+    for (var key in two) {
+      if (two.hasOwnProperty(key)) {
+        _invariant(
+          one[key] === undefined,
+          'mergeIntoWithNoDuplicateKeys(): ' +
+            'Tried to merge two objects with the same key: `%s`. This conflict ' +
+            'may be due to a mixin; in particular, this may be caused by two ' +
+            'getInitialState() or getDefaultProps() methods returning objects ' +
+            'with clashing keys.',
+          key
+        );
+        one[key] = two[key];
+      }
+    }
+    return one;
+  }
+
+  /**
+   * Creates a function that invokes two functions and merges their return values.
+   *
+   * @param {function} one Function to invoke first.
+   * @param {function} two Function to invoke second.
+   * @return {function} Function that invokes the two argument functions.
+   * @private
+   */
+  function createMergedResultFunction(one, two) {
+    return function mergedResult() {
+      var a = one.apply(this, arguments);
+      var b = two.apply(this, arguments);
+      if (a == null) {
+        return b;
+      } else if (b == null) {
+        return a;
+      }
+      var c = {};
+      mergeIntoWithNoDuplicateKeys(c, a);
+      mergeIntoWithNoDuplicateKeys(c, b);
+      return c;
+    };
+  }
+
+  /**
+   * Creates a function that invokes two functions and ignores their return vales.
+   *
+   * @param {function} one Function to invoke first.
+   * @param {function} two Function to invoke second.
+   * @return {function} Function that invokes the two argument functions.
+   * @private
+   */
+  function createChainedFunction(one, two) {
+    return function chainedFunction() {
+      one.apply(this, arguments);
+      two.apply(this, arguments);
+    };
+  }
+
+  /**
+   * Binds a method to the component.
+   *
+   * @param {object} component Component whose method is going to be bound.
+   * @param {function} method Method to be bound.
+   * @return {function} The bound method.
+   */
+  function bindAutoBindMethod(component, method) {
+    var boundMethod = method.bind(component);
+    if (true) {
+      boundMethod.__reactBoundContext = component;
+      boundMethod.__reactBoundMethod = method;
+      boundMethod.__reactBoundArguments = null;
+      var componentName = component.constructor.displayName;
+      var _bind = boundMethod.bind;
+      boundMethod.bind = function(newThis) {
+        for (
+          var _len = arguments.length,
+            args = Array(_len > 1 ? _len - 1 : 0),
+            _key = 1;
+          _key < _len;
+          _key++
+        ) {
+          args[_key - 1] = arguments[_key];
         }
-    }]);
 
-    return TextInput;
-}(BaseFormControl);
+        // User is trying to bind() an autobound method; we effectively will
+        // ignore the value of "this" that the user is trying to use, so
+        // let's warn.
+        if (newThis !== component && newThis !== null) {
+          if (true) {
+            warning(
+              false,
+              'bind(): React component methods may only be bound to the ' +
+                'component instance. See %s',
+              componentName
+            );
+          }
+        } else if (!args.length) {
+          if (true) {
+            warning(
+              false,
+              'bind(): You are binding a component method to the component. ' +
+                'React does this for you automatically in a high-performance ' +
+                'way, so you can safely remove this call. See %s',
+              componentName
+            );
+          }
+          return boundMethod;
+        }
+        var reboundMethod = _bind.apply(boundMethod, arguments);
+        reboundMethod.__reactBoundContext = component;
+        reboundMethod.__reactBoundMethod = method;
+        reboundMethod.__reactBoundArguments = args;
+        return reboundMethod;
+      };
+    }
+    return boundMethod;
+  }
 
-TextInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control",
-    multiline: false
-});
+  /**
+   * Binds all auto-bound methods in a component.
+   *
+   * @param {object} component Component whose method is going to be bound.
+   */
+  function bindAutoBindMethods(component) {
+    var pairs = component.__reactAutoBindPairs;
+    for (var i = 0; i < pairs.length; i += 2) {
+      var autoBindKey = pairs[i];
+      var method = pairs[i + 1];
+      component[autoBindKey] = bindAutoBindMethod(component, method);
+    }
+  }
 
-var TextInputGroup = exports.TextInputGroup = function (_BaseFormControl2) {
-    _inherits(TextInputGroup, _BaseFormControl2);
+  var IsMountedPreMixin = {
+    componentDidMount: function() {
+      this.__isMounted = true;
+    }
+  };
 
-    function TextInputGroup() {
-        _classCallCheck(this, TextInputGroup);
+  var IsMountedPostMixin = {
+    componentWillUnmount: function() {
+      this.__isMounted = false;
+    }
+  };
 
-        return _possibleConstructorReturn(this, (TextInputGroup.__proto__ || Object.getPrototypeOf(TextInputGroup)).apply(this, arguments));
+  /**
+   * Add more to the ReactClass base class. These are all legacy features and
+   * therefore not already part of the modern ReactComponent.
+   */
+  var ReactClassMixin = {
+    /**
+     * TODO: This will be deprecated because state should always keep a consistent
+     * type signature and the only use case for this, is to avoid that.
+     */
+    replaceState: function(newState, callback) {
+      this.updater.enqueueReplaceState(this, newState, callback);
+    },
+
+    /**
+     * Checks whether or not this composite component is mounted.
+     * @return {boolean} True if mounted, false otherwise.
+     * @protected
+     * @final
+     */
+    isMounted: function() {
+      if (true) {
+        warning(
+          this.__didWarnIsMounted,
+          '%s: isMounted is deprecated. Instead, make sure to clean up ' +
+            'subscriptions and pending requests in componentWillUnmount to ' +
+            'prevent memory leaks.',
+          (this.constructor && this.constructor.displayName) ||
+            this.name ||
+            'Component'
+        );
+        this.__didWarnIsMounted = true;
+      }
+      return !!this.__isMounted;
+    }
+  };
+
+  var ReactClassComponent = function() {};
+  _assign(
+    ReactClassComponent.prototype,
+    ReactComponent.prototype,
+    ReactClassMixin
+  );
+
+  /**
+   * Creates a composite component class given a class specification.
+   * See https://facebook.github.io/react/docs/top-level-api.html#react.createclass
+   *
+   * @param {object} spec Class specification (which must define `render`).
+   * @return {function} Component constructor function.
+   * @public
+   */
+  function createClass(spec) {
+    // To keep our warnings more understandable, we'll use a little hack here to
+    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
+    // unnecessarily identify a class without displayName as 'Constructor'.
+    var Constructor = identity(function(props, context, updater) {
+      // This constructor gets overridden by mocks. The argument is used
+      // by mocks to assert on what gets mounted.
+
+      if (true) {
+        warning(
+          this instanceof Constructor,
+          'Something is calling a React component directly. Use a factory or ' +
+            'JSX instead. See: https://fb.me/react-legacyfactory'
+        );
+      }
+
+      // Wire up auto-binding
+      if (this.__reactAutoBindPairs.length) {
+        bindAutoBindMethods(this);
+      }
+
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject;
+      this.updater = updater || ReactNoopUpdateQueue;
+
+      this.state = null;
+
+      // ReactClasses doesn't have constructors. Instead, they use the
+      // getInitialState and componentWillMount methods for initialization.
+
+      var initialState = this.getInitialState ? this.getInitialState() : null;
+      if (true) {
+        // We allow auto-mocks to proceed as if they're returning null.
+        if (
+          initialState === undefined &&
+          this.getInitialState._isMockFunction
+        ) {
+          // This is probably bad practice. Consider warning here and
+          // deprecating this convenience.
+          initialState = null;
+        }
+      }
+      _invariant(
+        typeof initialState === 'object' && !Array.isArray(initialState),
+        '%s.getInitialState(): must return an object or null',
+        Constructor.displayName || 'ReactCompositeComponent'
+      );
+
+      this.state = initialState;
+    });
+    Constructor.prototype = new ReactClassComponent();
+    Constructor.prototype.constructor = Constructor;
+    Constructor.prototype.__reactAutoBindPairs = [];
+
+    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
+
+    mixSpecIntoComponent(Constructor, IsMountedPreMixin);
+    mixSpecIntoComponent(Constructor, spec);
+    mixSpecIntoComponent(Constructor, IsMountedPostMixin);
+
+    // Initialize the defaultProps property after all mixins have been merged.
+    if (Constructor.getDefaultProps) {
+      Constructor.defaultProps = Constructor.getDefaultProps();
     }
 
-    _createClass(TextInputGroup, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-
-            var prepend = props.prepend,
-                append = props.append,
-                inputGroupClassName = props.inputGroupClassName,
-                inputGroupStyle = props.inputGroupStyle,
-                domProps = _objectWithoutProperties(props, ['prepend', 'append', 'inputGroupClassName', 'inputGroupStyle']);
-
-            return _react2.default.createElement(
-                'div',
-                { className: inputGroupClassName, style: inputGroupStyle },
-                prepend && _react2.default.createElement(
-                    'div',
-                    { className: 'input-group-prepend' },
-                    prepend
-                ),
-                _react2.default.createElement('input', _extends({}, domProps, { className: this.props.className, ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
-                append && _react2.default.createElement(
-                    'div',
-                    { className: 'input-group-append' },
-                    append
-                ),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return TextInputGroup;
-}(BaseFormControl);
-
-TextInputGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control",
-    inputGroupClassName: "input-group"
-});
-TextInputGroup.propTypes = {
-    className: _propTypes2.default.string,
-    inputGroupClassName: _propTypes2.default.string,
-    inputGroupStyle: _propTypes2.default.object,
-    prepend: _propTypes2.default.element,
-    append: _propTypes2.default.element
-};
-
-var RadioGroup = function (_BaseFormControl3) {
-    _inherits(RadioGroup, _BaseFormControl3);
-
-    function RadioGroup() {
-        _classCallCheck(this, RadioGroup);
-
-        return _possibleConstructorReturn(this, (RadioGroup.__proto__ || Object.getPrototypeOf(RadioGroup)).apply(this, arguments));
+    if (true) {
+      // This is a tag to indicate that the use of these method names is ok,
+      // since it's used with createClass. If it's not, then it's likely a
+      // mistake so we'll warn you to use the static property, property
+      // initializer or constructor respectively.
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps.isReactClassApproved = {};
+      }
+      if (Constructor.prototype.getInitialState) {
+        Constructor.prototype.getInitialState.isReactClassApproved = {};
+      }
     }
 
-    _createClass(RadioGroup, [{
-        key: 'getInputRef',
-        value: function getInputRef() {
-            var inputRef = window.document.querySelectorAll('[name="' + this.props.name + '"]')[0];
-            return inputRef;
-        }
-    }, {
-        key: 'mapRadioItems',
-        value: function mapRadioItems() {
-            var _this5 = this;
+    _invariant(
+      Constructor.prototype.render,
+      'createClass(...): Class specification must implement a `render` method.'
+    );
 
-            return _react2.default.Children.map(this.props.children, function (child) {
-                if (typeof child.type !== "function" || child.type.name !== RadioItem.name) {
-                    console.warn("Only RadioItem is allowed inside RadioGroup");
-                    return;
-                }
-                return _react2.default.cloneElement(child, _extends({}, child.props, {
-                    inline: _this5.props.inline,
-                    name: _this5.props.name,
-                    required: _this5.props.required,
-                    defaultValue: _this5.props.defaultValue,
-                    onChange: _this5.props.onChange,
-                    valueSelected: _this5.props.valueSelected,
-                    checkError: _this5.checkError
-                }));
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-            var containerStyle = props.containerStyle,
-                containerClassName = props.containerClassName;
-
-            return _react2.default.createElement(
-                'div',
-                { style: containerStyle, className: containerClassName },
-                this.mapRadioItems(),
-                this.state.errorMessage && _react2.default.createElement(
-                    'div',
-                    { className: 'invalid-feedback d-block' },
-                    this.state.errorMessage
-                ),
-                this.displaySuccessMessage(true)
-            );
-        }
-    }]);
-
-    return RadioGroup;
-}(BaseFormControl);
-
-RadioGroup.defaultProps = {
-    inline: true,
-    containerStyle: {}
-};
-RadioGroup.propTypes = {
-    inline: _propTypes2.default.bool,
-    name: _propTypes2.default.string.isRequired,
-    containerStyle: _propTypes2.default.object,
-    containerClassName: _propTypes2.default.string,
-    defaultValue: _propTypes2.default.string,
-    valueSelected: _propTypes2.default.string,
-    onChange: _propTypes2.default.func
-};
-
-var RadioItem = function (_Component) {
-    _inherits(RadioItem, _Component);
-
-    function RadioItem() {
-        var _ref;
-
-        var _temp, _this6, _ret;
-
-        _classCallCheck(this, RadioItem);
-
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this6 = _possibleConstructorReturn(this, (_ref = RadioItem.__proto__ || Object.getPrototypeOf(RadioItem)).call.apply(_ref, [this].concat(args))), _this6), _this6.onChange = function (e) {
-            if (_this6.props.onChange) _this6.props.onChange(e, e.target.value);
-            _this6.props.checkError();
-        }, _temp), _possibleConstructorReturn(_this6, _ret);
+    if (true) {
+      warning(
+        !Constructor.prototype.componentShouldUpdate,
+        '%s has a method called ' +
+          'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
+          'The name is phrased as a question because the function is ' +
+          'expected to return a value.',
+        spec.displayName || 'A component'
+      );
+      warning(
+        !Constructor.prototype.componentWillRecieveProps,
+        '%s has a method called ' +
+          'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?',
+        spec.displayName || 'A component'
+      );
+      warning(
+        !Constructor.prototype.UNSAFE_componentWillRecieveProps,
+        '%s has a method called UNSAFE_componentWillRecieveProps(). ' +
+          'Did you mean UNSAFE_componentWillReceiveProps()?',
+        spec.displayName || 'A component'
+      );
     }
 
-    _createClass(RadioItem, [{
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                checkError = _props.checkError,
-                containerStyle = _props.containerStyle,
-                containerClassName = _props.containerClassName,
-                label = _props.label,
-                inline = _props.inline,
-                defaultValue = _props.defaultValue,
-                valueSelected = _props.valueSelected,
-                onChange = _props.onChange,
-                domProps = _objectWithoutProperties(_props, ['checkError', 'containerStyle', 'containerClassName', 'label', 'inline', 'defaultValue', 'valueSelected', 'onChange']);
-
-            var checkProps = valueSelected !== undefined && onChange ? { checked: this.props.value === valueSelected } : { defaultChecked: this.props.value === defaultValue };
-
-            return _react2.default.createElement(
-                'div',
-                { className: containerClassName + " form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
-                _react2.default.createElement('input', _extends({ className: 'form-check-input', type: 'radio'
-                }, checkProps, {
-                    onChange: this.onChange
-                }, domProps)),
-                _react2.default.createElement(
-                    'label',
-                    { className: 'form-check-label', htmlFor: this.props.id },
-                    label
-                )
-            );
-        }
-    }]);
-
-    return RadioItem;
-}(_react.Component);
-
-RadioItem.defaultProps = {
-    containerStyle: {},
-    containerClassName: ""
-};
-RadioItem.propTypes = {
-    value: _propTypes2.default.string.isRequired,
-    id: _propTypes2.default.string.isRequired,
-    label: _propTypes2.default.string.isRequired,
-    containerStyle: _propTypes2.default.object,
-    containerClassName: _propTypes2.default.string
-};
-var Radio = exports.Radio = {
-    RadioGroup: RadioGroup,
-    RadioItem: RadioItem
-};
-
-var FileInput = exports.FileInput = function (_BaseFormControl4) {
-    _inherits(FileInput, _BaseFormControl4);
-
-    function FileInput() {
-        var _ref2;
-
-        var _temp2, _this7, _ret2;
-
-        _classCallCheck(this, FileInput);
-
-        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
-        }
-
-        return _ret2 = (_temp2 = (_this7 = _possibleConstructorReturn(this, (_ref2 = FileInput.__proto__ || Object.getPrototypeOf(FileInput)).call.apply(_ref2, [this].concat(args))), _this7), _this7.checkFileError = function (file) {
-            var _this7$props = _this7.props,
-                maxFileSize = _this7$props.maxFileSize,
-                fileType = _this7$props.fileType,
-                _this7$props$errorMes = _this7$props.errorMessage,
-                errorMessage = _this7$props$errorMes === undefined ? {} : _this7$props$errorMes;
-
-            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, errorMessage);
-            var limit = maxFileSize ? parseFileSize(maxFileSize) : null;
-            var newErrorMessage = "";
-            var fileExtension = file.name.slice(file.name.lastIndexOf(".") + 1).toLowerCase().trim();
-            fileType = fileType.map(function (type) {
-                return type.toLowerCase().trim();
-            });
-            if (fileType.length > 0 && !fileType.includes(fileExtension)) {
-                newErrorMessage = errorMessage["fileType"];
-            } else if (limit && file.size > limit) {
-                newErrorMessage = errorMessage["maxFileSize"];
-            } else {
-                newErrorMessage = "";
-            }
-            var inputRef = _this7.getInputRef();
-            inputRef.setCustomValidity(newErrorMessage);
-        }, _this7.handleChange = function (e) {
-            var inputRef = _this7.getInputRef();
-            var file = inputRef.files[0];
-            if (_this7.props.onChange) _this7.props.onChange(e, file);
-            if (!file) return _this7.checkError();
-            _this7.checkFileError(file);
-            _this7.checkError();
-        }, _temp2), _possibleConstructorReturn(_this7, _ret2);
+    // Reduce time spent doing lookups by setting these on the prototype.
+    for (var methodName in ReactClassInterface) {
+      if (!Constructor.prototype[methodName]) {
+        Constructor.prototype[methodName] = null;
+      }
     }
 
-    _createClass(FileInput, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
+    return Constructor;
+  }
 
-            var maxFileSize = props.maxFileSize,
-                fileType = props.fileType,
-                domProps = _objectWithoutProperties(props, ['maxFileSize', 'fileType']);
+  return createClass;
+}
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement('input', _extends({}, domProps, { ref: this.inputRef, type: 'file', onChange: this.handleChange })),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
+module.exports = factory;
 
-    return FileInput;
-}(BaseFormControl);
-
-FileInput.propTypes = {
-    fileType: _propTypes2.default.array,
-    maxFileSize: _propTypes2.default.string
-};
-FileInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control"
-});
-
-var SelectGroup = exports.SelectGroup = function (_BaseFormControl5) {
-    _inherits(SelectGroup, _BaseFormControl5);
-
-    function SelectGroup() {
-        _classCallCheck(this, SelectGroup);
-
-        return _possibleConstructorReturn(this, (SelectGroup.__proto__ || Object.getPrototypeOf(SelectGroup)).apply(this, arguments));
-    }
-
-    _createClass(SelectGroup, [{
-        key: 'render',
-        value: function render() {
-            var domProps = this.filterProps();
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'select',
-                    _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur,
-                        value: this.props.value }),
-                    this.props.children
-                ),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return SelectGroup;
-}(BaseFormControl);
-
-SelectGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-control"
-});
-
-var Checkbox = exports.Checkbox = function (_BaseFormControl6) {
-    _inherits(Checkbox, _BaseFormControl6);
-
-    function Checkbox() {
-        var _ref3;
-
-        var _temp3, _this9, _ret3;
-
-        _classCallCheck(this, Checkbox);
-
-        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
-        }
-
-        return _ret3 = (_temp3 = (_this9 = _possibleConstructorReturn(this, (_ref3 = Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).call.apply(_ref3, [this].concat(args))), _this9), _this9.handleChange = function (e) {
-            var checked = e.target.checked;
-            if (_this9.props.onChange) _this9.props.onChange(e, checked);
-            _this9.checkError();
-        }, _temp3), _possibleConstructorReturn(_this9, _ret3);
-    }
-
-    _createClass(Checkbox, [{
-        key: 'render',
-        value: function render() {
-            var props = this.filterProps();
-
-            var label = props.label,
-                inline = props.inline,
-                containerStyle = props.containerStyle,
-                className = props.className,
-                checked = props.checked,
-                domProps = _objectWithoutProperties(props, ['label', 'inline', 'containerStyle', 'className', 'checked']);
-
-            return _react2.default.createElement(
-                'div',
-                { className: "form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
-                _react2.default.createElement('input', _extends({ type: 'checkbox', className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, checked: this.props.value, defaultChecked: this.props.defaultChecked })),
-                _react2.default.createElement(
-                    'label',
-                    { className: 'form-check-label', htmlFor: domProps.id },
-                    this.props.label
-                ),
-                this.displayErrorMessage(),
-                this.displaySuccessMessage()
-            );
-        }
-    }]);
-
-    return Checkbox;
-}(BaseFormControl);
-
-Checkbox.defaultProps = _extends({}, BaseFormControl.defaultProps, {
-    className: "form-check-input",
-    containerStyle: {},
-    label: "",
-    inline: false
-});
-Checkbox.propTypes = {
-    name: _propTypes2.default.string.isRequired,
-    label: _propTypes2.default.string.isRequired,
-    containerStyle: _propTypes2.default.object,
-    inline: _propTypes2.default.bool,
-    id: _propTypes2.default.string.isRequired,
-    value: _propTypes2.default.bool,
-    defaultChecked: _propTypes2.default.bool
-};
-
-var ValidationForm = exports.ValidationForm = function (_React$Component2) {
-    _inherits(ValidationForm, _React$Component2);
-
-    function ValidationForm() {
-        var _ref4;
-
-        var _temp4, _this10, _ret4;
-
-        _classCallCheck(this, ValidationForm);
-
-        for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-            args[_key4] = arguments[_key4];
-        }
-
-        return _ret4 = (_temp4 = (_this10 = _possibleConstructorReturn(this, (_ref4 = ValidationForm.__proto__ || Object.getPrototypeOf(ValidationForm)).call.apply(_ref4, [this].concat(args))), _this10), _this10.inputs = {}, _this10.attachToForm = function (component) {
-            _this10.inputs[component.props.name] = component;
-        }, _this10.detachFromForm = function (component) {
-            delete _this10.inputs[component.props.name];
-        }, _this10.getChildContext = function () {
-            return {
-                validationForm: {
-                    attachToForm: _this10.attachToForm,
-                    detachFromForm: _this10.detachFromForm,
-                    immediate: _this10.props.immediate,
-                    defaultErrorMessage: _this10.props.defaultErrorMessage
-                }
-            };
-        }, _this10.setFormDiry = function () {
-            var form = _this10.refs.form;
-            if (!form.classList.contains('was-validated')) form.classList.add('was-validated');
-        }, _this10.mapInputs = function (inputs) {
-            var arr = Object.keys(inputs).map(function (prop) {
-                return inputs[prop];
-            });
-            return arr;
-        }, _this10.findFirstErrorInput = function (inputs) {
-            return inputs.find(function (input) {
-                return !input.getInputRef().validity.valid;
-            });
-        }, _this10.getErrorInputs = function (inputs) {
-            var map = {};
-            inputs.forEach(function (input) {
-                var inputRef = input.getInputRef();
-                var validityState = inputRef.validity;
-                if (!validityState.valid) map[inputRef.name] = input;
-            });
-            return map;
-        }, _this10.handleSubmit = function (event) {
-            var form = _this10.refs.form;
-            var formData = _this10.getFormData();
-            var inputArr = _this10.mapInputs(_this10.inputs);
-            _this10.setFormDiry();
-            _this10.validateInputs();
-
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-                if (_this10.props.onErrorSubmit) _this10.props.onErrorSubmit(event, formData, _this10.getErrorInputs(inputArr));
-                if (_this10.props.setFocusOnError) {
-                    var firstErrorInput = _this10.findFirstErrorInput(inputArr);
-                    firstErrorInput.getInputRef().focus();
-                }
-            } else {
-                if (_this10.props.onSubmit) _this10.props.onSubmit(event, formData, inputArr);
-            }
-        }, _this10.resetValidationState = function (isClearValue) {
-            for (var prop in _this10.inputs) {
-                _this10.inputs[prop].setState({ errorMessage: "", isPristine: true });
-                var inputRef = _this10.inputs[prop].getInputRef();
-                inputRef.classList.remove("is-valid");
-                inputRef.classList.remove("is-invalid");
-                inputRef.setCustomValidity("");
-                if (isClearValue) {
-                    if (inputRef.type == "checkbox") inputRef.checked = false;
-                    inputRef.value = "";
-                }
-            }
-            _this10.refs.form.classList.remove("was-validated");
-        }, _temp4), _possibleConstructorReturn(_this10, _ret4);
-    }
-
-    _createClass(ValidationForm, [{
-        key: 'isBaseFormControl',
-        value: function isBaseFormControl(element) {
-            if (typeof element !== "function") return false;
-            while (Object.getPrototypeOf(element) !== Object.prototype) {
-                if (Object.getPrototypeOf(element) === BaseFormControl) {
-                    return true;
-                }
-                element = Object.getPrototypeOf(element);
-            }
-            return false;
-        }
-
-        //Use context instead
-        // registerChildren(children) {
-        //     let newChildren = React.Children.map(children, (child) => {
-        //         //If child is our baseFormControl, then assign new props to it
-        //         if (!child) return child;
-        //         if (this.isBaseFormControl(child.type)) {
-        //             return React.cloneElement(child, {
-        //                 ...child.props,
-        //                 attachToForm: this.attachToForm,
-        //                 detachFromForm: this.detachFromForm,
-        //                 immediate: this.props.immediate,
-        //                 defaultErrorMessage: this.props.defaultErrorMessage
-        //             });
-        //         } else {
-        //             if (typeof child === 'string') return child;
-        //             return React.cloneElement(child, {
-        //                 children: (typeof child.props.children === "string") ? child.props.children : this.registerChildren(child.props.children)
-        //             });
-        //         }
-        //     });
-        //     return newChildren;
-        // }
-
-    }, {
-        key: 'validateInputs',
-        value: function validateInputs() {
-            for (var prop in this.inputs) {
-                this.inputs[prop].validateInput();
-            }
-        }
-    }, {
-        key: 'getFormData',
-        value: function getFormData() {
-            var model = {};
-            for (var name in this.inputs) {
-                var inputRef = this.inputs[name].getInputRef();
-                var value = null;
-                switch (inputRef.type) {
-                    case "checkbox":
-                        value = inputRef.checked;
-                        break;
-                    case "radio":
-                        var radios = document.querySelectorAll('[name="' + this.props.name + '"]');
-                        for (var i = 0; i < radios.length; i++) {
-                            if (radios[i].checked) {
-                                value = radios[i].value;
-                                break;
-                            }
-                        }
-                        break;
-                    case "file":
-                        value = inputRef.files[0];
-                        break;
-                    default:
-                        value = inputRef.value;
-                }
-                model[name] = value;
-            };
-            return model;
-        }
-
-        //By default only clear customError and class, if isClearValue is true, clear value also
-
-    }, {
-        key: 'render',
-        value: function render() {
-            var _props2 = this.props,
-                onSubmit = _props2.onSubmit,
-                onErrorSubmit = _props2.onErrorSubmit,
-                immediate = _props2.immediate,
-                setFocusOnError = _props2.setFocusOnError,
-                defaultErrorMessage = _props2.defaultErrorMessage,
-                domProps = _objectWithoutProperties(_props2, ['onSubmit', 'onErrorSubmit', 'immediate', 'setFocusOnError', 'defaultErrorMessage']);
-
-            return _react2.default.createElement(
-                'form',
-                _extends({ noValidate: true, ref: 'form'
-                }, domProps, {
-                    onSubmit: this.handleSubmit }),
-                this.props.children
-            );
-        }
-    }]);
-
-    return ValidationForm;
-}(_react2.default.Component);
-
-ValidationForm.defaultProps = {
-    className: "needs-validation",
-    setFocusOnError: true,
-    immediate: true,
-    defaultErrorMessage: {}
-};
-ValidationForm.propTypes = {
-    className: _propTypes2.default.string,
-    defaultErrorMessage: _propTypes2.default.object,
-    setFocusOnError: _propTypes2.default.bool,
-    immediate: _propTypes2.default.bool,
-    onSubmit: _propTypes2.default.func.isRequired,
-    onErrorSubmit: _propTypes2.default.func
-};
-ValidationForm.childContextTypes = {
-    validationForm: _propTypes2.default.object
-};
-ValidationForm.defaultErrorMessage = {
-    required: "This field is required",
-    pattern: "Input value does not match the pattern",
-    type: "Input value does not match the type",
-    step: "Step mismatch",
-    minLength: "Please enter at least {minLength} characters",
-    min: "Number is too low",
-    max: "Number is too high",
-    fileType: "File type mismatch",
-    maxFileSize: "File size exceed limit",
-    validator: "Validator check failed"
-};
 
 /***/ }),
 
-/***/ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/react-bootstrap4-form-validation/lib/polyfill.js ***!
-  \***********************************************************************/
+/***/ "./node_modules/create-react-class/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/create-react-class/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var factory = __webpack_require__(/*! ./factory */ "./node_modules/create-react-class/factory.js");
+
+if (typeof React === 'undefined') {
+  throw Error(
+    'create-react-class could not find the React object. If you are using script tags, ' +
+      'make sure that React is being loaded before create-react-class.'
+  );
+}
+
+// Hack to grab NoopUpdateQueue from isomorphic React
+var ReactNoopUpdateQueue = new React.Component().updater;
+
+module.exports = factory(
+  React.Component,
+  React.isValidElement,
+  ReactNoopUpdateQueue
+);
+
+
+/***/ }),
+
+/***/ "./node_modules/fbjs/lib/emptyFunction.js":
+/*!************************************************!*\
+  !*** ./node_modules/fbjs/lib/emptyFunction.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-if (!Array.prototype.find) {
-    Object.defineProperty(Array.prototype, 'find', {
-        value: function value(predicate) {
-            // 1. Let O be ? ToObject(this value).
-            if (this == null) {
-                throw new TypeError('"this" is null or not defined');
-            }
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
 
-            var o = Object(this);
-
-            // 2. Let len be ? ToLength(? Get(O, "length")).
-            var len = o.length >>> 0;
-
-            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
-            if (typeof predicate !== 'function') {
-                throw new TypeError('predicate must be a function');
-            }
-
-            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
-            var thisArg = arguments[1];
-
-            // 5. Let k be 0.
-            var k = 0;
-
-            // 6. Repeat, while k < len
-            while (k < len) {
-                // a. Let Pk be ! ToString(k).
-                // b. Let kValue be ? Get(O, Pk).
-                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
-                // d. If testResult is true, return kValue.
-                var kValue = o[k];
-                if (predicate.call(thisArg, kValue, k, o)) {
-                    return kValue;
-                }
-                // e. Increase k by 1.
-                k++;
-            }
-
-            // 7. Return undefined.
-            return undefined;
-        },
-        configurable: true,
-        writable: true
-    });
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
 }
 
-if (typeof Object.assign != 'function') {
-    // Must be writable: true, enumerable: false, configurable: true
-    Object.defineProperty(Object, "assign", {
-        value: function assign(target, varArgs) {
-            // .length of function is 2
-            'use strict';
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
 
-            if (target == null) {
-                // TypeError if undefined or null
-                throw new TypeError('Cannot convert undefined or null to object');
-            }
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
 
-            var to = Object(target);
+module.exports = emptyFunction;
 
-            for (var index = 1; index < arguments.length; index++) {
-                var nextSource = arguments[index];
+/***/ }),
 
-                if (nextSource != null) {
-                    // Skip over if undefined or null
-                    for (var nextKey in nextSource) {
-                        // Avoid bugs when hasOwnProperty is shadowed
-                        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                            to[nextKey] = nextSource[nextKey];
-                        }
-                    }
-                }
-            }
-            return to;
-        },
-        writable: true,
-        configurable: true
-    });
+/***/ "./node_modules/fbjs/lib/emptyObject.js":
+/*!**********************************************!*\
+  !*** ./node_modules/fbjs/lib/emptyObject.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var emptyObject = {};
+
+if (true) {
+  Object.freeze(emptyObject);
 }
+
+module.exports = emptyObject;
+
+/***/ }),
+
+/***/ "./node_modules/fbjs/lib/invariant.js":
+/*!********************************************!*\
+  !*** ./node_modules/fbjs/lib/invariant.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (true) {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+
+/***/ }),
+
+/***/ "./node_modules/fbjs/lib/warning.js":
+/*!******************************************!*\
+  !*** ./node_modules/fbjs/lib/warning.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var emptyFunction = __webpack_require__(/*! ./emptyFunction */ "./node_modules/fbjs/lib/emptyFunction.js");
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warning = emptyFunction;
+
+if (true) {
+  var printWarning = function printWarning(format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  warning = function warning(condition, format) {
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+
+    if (format.indexOf('Failed Composite propType: ') === 0) {
+      return; // Ignore CompositeComponent proptype check.
+    }
+
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
 
 /***/ })
 

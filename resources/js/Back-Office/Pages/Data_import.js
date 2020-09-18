@@ -13,7 +13,7 @@ import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
 import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
-
+import {CheckPermission} from '../../HttpFunctions'; 
 class Data_import extends React.Component {
     state = {
         validated: false,
@@ -36,7 +36,13 @@ class Data_import extends React.Component {
         Daily_Performance:false,
         Daily_PerformanceHide:'none'
     };
-
+    componentDidMount() {
+        const { match, location, history } = this.props;
+        CheckPermission('File','Data Import',history);
+        
+        
+        
+    }
     Daily_PerformanceChange = (e, value) => {
         this.setState({
             [e.target.name]: value
@@ -93,6 +99,11 @@ class Data_import extends React.Component {
     duplicateSubmit= (e, formData, inputs) => {
         e.preventDefault();
         const baseurl= window.location.origin;
+        const { match, location, history } = this.props;
+        const Permission = CheckPermission('File','Add Duplicate',history,false);
+      if(Permission==1){
+        return false;
+      }
         
         const MySwal = withReactContent(Swal);
         MySwal.fire({

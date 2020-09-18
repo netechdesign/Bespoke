@@ -27,9 +27,12 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         $response = ['success'=>true, 'data'=>$users];
         return response()->json($response, 201);
     });
-    Route::post('user/register', 'Auth\UserController@register');
+   
+    
 
     Route::namespace('Admin')->group(function () {
+        
+        Route::resource('user', 'UserController');
         Route::resource('mds', 'MdsController');
         Route::resource('supplier', 'SupplierController');
         Route::resource('utilita', 'UtilitaController');
@@ -124,6 +127,6 @@ Route::group(['middleware' => 'api-header'], function () {
     // as users at that point have not been authenticated yet
     // Therefore the jwtMiddleware will be exclusive of them
 
-    Route::post('user/login', 'Auth\UserController@login');
+    Route::post('user/login', 'Admin\UserController@login');
     //Route::post('user/register', 'Auth\UserController@register');
 });

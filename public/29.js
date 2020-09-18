@@ -195,24 +195,24 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Pages/MorrisonList.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/MorrisonList.js ***!
-  \********************************************************/
-/*! exports provided: Suppliers, default */
+/***/ "./resources/js/Back-Office/Role/index.js":
+/*!************************************************!*\
+  !*** ./resources/js/Back-Office/Role/index.js ***!
+  \************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Suppliers", function() { return Suppliers; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -243,10 +243,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_5___default.a;
-window.$ = jquery__WEBPACK_IMPORTED_MODULE_5___default.a;
-global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_5___default.a;
-jquery__WEBPACK_IMPORTED_MODULE_5___default.a.DataTable = __webpack_require__(/*! datatables.net-bs */ "./node_modules/datatables.net-bs/js/dataTables.bootstrap.js");
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
+global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
+jquery__WEBPACK_IMPORTED_MODULE_6___default.a.DataTable = __webpack_require__(/*! datatables.net-bs */ "./node_modules/datatables.net-bs/js/dataTables.bootstrap.js");
 
 __webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js"); //require('pdfmake/build/pdfmake.js');
 //require('pdfmake/build/vfs_fonts.js');
@@ -291,9 +292,8 @@ var oTable = "";
 function atable() {
   var _$$DataTable;
 
-  var sheets_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var tableResponsive = '#data-table-responsive';
-  oTable = jquery__WEBPACK_IMPORTED_MODULE_5___default()(tableResponsive).DataTable((_$$DataTable = {
+  oTable = jquery__WEBPACK_IMPORTED_MODULE_6___default()(tableResponsive).DataTable((_$$DataTable = {
     "bStateSave": true,
     "processing": true,
     "bPaginate": true,
@@ -301,11 +301,11 @@ function atable() {
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin + '/api/mds/'
+    "sAjaxSource": window.location.origin + '/api/role/'
   }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
     var acolumns = this.fnSettings().aoColumns,
         columns = [];
-    jquery__WEBPACK_IMPORTED_MODULE_5___default.a.each(acolumns, function (i, item) {
+    jquery__WEBPACK_IMPORTED_MODULE_6___default.a.each(acolumns, function (i, item) {
       columns.push(item.data);
     });
     aoData.push({
@@ -313,17 +313,10 @@ function atable() {
       value: columns
     });
 
-    if (jquery__WEBPACK_IMPORTED_MODULE_5___default()('input[name="file_id"]').val() != '') {
+    if (jquery__WEBPACK_IMPORTED_MODULE_6___default()('input[name="role_name"]').val() != '') {
       aoData.push({
-        name: 'file_id',
-        value: jquery__WEBPACK_IMPORTED_MODULE_5___default()('input[name="file_id"]').val()
-      });
-    }
-
-    if (sheets_id) {
-      aoData.push({
-        name: 'sheets_id',
-        value: sheets_id
+        name: 'role_name',
+        value: jquery__WEBPACK_IMPORTED_MODULE_6___default()('input[name="role_name"]').val()
       });
     }
     /*  if($('#status').val()!='') {
@@ -334,79 +327,11 @@ function atable() {
   }), _defineProperty(_$$DataTable, "columns", [{
     "data": "name"
   }, {
-    "data": "date"
-  }, {
-    "data": "start_time"
-  }, {
-    "data": "end_time"
-  }, {
-    "data": "time_difference"
-  }, {
-    "data": "work_master_sign_id"
-  }, {
-    "data": "area"
-  }, {
-    "data": "geo_area"
-  }, {
-    "data": "report_group"
-  }, {
-    "data": "field_force"
-  }, {
-    "data": "leaver_flg"
-  }, {
-    "data": "week_summary"
-  }, {
-    "data": "num"
-  }, {
-    "data": "complete"
-  }, {
-    "data": "abort"
-  }, {
-    "data": "no_access_rate"
-  }, {
-    "data": "smart_book"
-  }, {
-    "data": "warrant_book"
-  }, {
-    "data": "traditional_book"
-  }, {
-    "data": "smart_complete"
-  }, {
-    "data": "warrant_complete"
-  }, {
-    "data": "traditional_complete"
-  }, {
-    "data": "smart_abort"
-  }, {
-    "data": "warrant_abort"
-  }, {
-    "data": "traditional_abort"
-  }, {
-    "data": "smart_no_access"
-  }, {
-    "data": "warrant_no_access"
-  }, {
-    "data": "traditional_no_access"
-  }, {
-    "data": "sf_df"
-  }, {
-    "data": "job_type"
-  }, {
-    "data": "sf_df_helper"
-  }, {
-    "data": "work_type"
-  }, {
-    "data": "job_id"
-  }, {
-    "data": "schedule_date"
-  }, {
-    "data": "week_day"
-  }, {
     "data": "id"
   }]), _defineProperty(_$$DataTable, "responsive", {
     responsive: {
       details: {
-        display: jquery__WEBPACK_IMPORTED_MODULE_5___default.a.fn.dataTable.Responsive.display.childRowImmediate,
+        display: jquery__WEBPACK_IMPORTED_MODULE_6___default.a.fn.dataTable.Responsive.display.childRowImmediate,
         type: ''
       }
     }
@@ -419,27 +344,25 @@ function atable() {
 
   }), _defineProperty(_$$DataTable, "fnInitComplete", function fnInitComplete() {//oTable.fnAdjustColumnSizing();
   }), _defineProperty(_$$DataTable, 'fnServerData', function fnServerData(sSource, aoData, fnCallback) {
-    jquery__WEBPACK_IMPORTED_MODULE_5___default.a.ajax({
+    jquery__WEBPACK_IMPORTED_MODULE_6___default.a.ajax({
       'dataType': 'json',
       'type': 'GET',
       'url': sSource,
       'data': aoData,
-      "iDisplayLength": 10,
-      "bPaginate": true,
       'headers': {
         Authorization: "Bearer " + auth_token
       },
       'success': fnCallback
     });
   }), _defineProperty(_$$DataTable, "fnDrawCallback", function fnDrawCallback() {
-    jquery__WEBPACK_IMPORTED_MODULE_5___default()('body').css('min-height', jquery__WEBPACK_IMPORTED_MODULE_5___default()('#data-table-responsive tr').length * 50 + 200);
-    jquery__WEBPACK_IMPORTED_MODULE_5___default()(window).trigger('resize');
+    jquery__WEBPACK_IMPORTED_MODULE_6___default()('body').css('min-height', jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive tr').length * 50 + 200);
+    jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      var str_buttons = '<button type="button" class="btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
       return [str_buttons].join('');
     },
-    "targets": jquery__WEBPACK_IMPORTED_MODULE_5___default()('#data-table-responsive th#action').index(),
+    "targets": jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive th#action').index(),
     "orderable": false,
     "searchable": false
   }, {
@@ -448,56 +371,72 @@ function atable() {
   }]), _$$DataTable));
 }
 
-function handleChange() {
-  setTimeout(function () {
-    oTable.draw();
-  }, 500);
-}
+var Role = /*#__PURE__*/function (_React$Component) {
+  _inherits(Role, _React$Component);
 
-var Suppliers = [{
-  value: '1',
-  label: 'Morrison Data services'
-}, {
-  value: '2',
-  label: 'Utilita'
-}];
+  var _super = _createSuper(Role);
 
-var MorrisonList = /*#__PURE__*/function (_React$Component) {
-  _inherits(MorrisonList, _React$Component);
-
-  var _super = _createSuper(MorrisonList);
-
-  function MorrisonList(props) {
+  function Role(props) {
     var _this;
 
-    _classCallCheck(this, MorrisonList);
+    _classCallCheck(this, Role);
 
     _this = _super.call(this, props);
     _this.state = {};
     return _this;
   }
 
-  _createClass(MorrisonList, [{
+  _createClass(Role, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var id = this.props.match.params.id;
-      atable(id);
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_5__["CheckPermission"])('role', 'show', history);
+      /*
+        const {id,parmissions} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+      
+        const pages = parmissions.filter((vl,idx) =>{
+            if(Object.keys(vl)[0] =='role'){
+                return vl
+            }
+        })
+      const Ischeck =  pages[0]['role'].filter((v,i)=>{
+              if(v['page_name']=='show'){
+                  if(v['Ischeck']){
+                  return v;
+                  }
+              }
+      })
+      
+      if(Ischeck.length==0){
+        history.goBack();
+        PNotify.error({
+            title: "Permission Error",
+            text:config.AccessDeniedMessage,
+        });
+      }
+      */
+
+      atable();
+      jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive tbody').on('click', '.edit', function () {
+        var id = jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).attr('data-id');
+        history.push('/role/edit/' + id);
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Morrison"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "btn-sm",
+      }, "Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         style: {
           'float': 'right'
         },
         as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
-        to: "/list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        to: "/role/add"
+      }, "+ Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         ref: "tbl",
         striped: true,
         hover: true,
@@ -507,156 +446,31 @@ var MorrisonList = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "name"
       }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "date"
-      }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "start_time"
-      }, "Start Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "end_time"
-      }, "End Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "time_difference"
-      }, "Time Difference"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "work_master_sign_id"
-      }, "Work master sign id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "area"
-      }, "Area"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "geo_area"
-      }, "Geo area"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "report_group"
-      }, "Report group"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "field_force"
-      }, "Field force"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "leaver_flg"
-      }, "Leaver flg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "week_summary"
-      }, "Week summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "num"
-      }, "Num"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "complete"
-      }, "Complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "abort"
-      }, "Abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "no_access_rate"
-      }, "No access rate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_book"
-      }, "Smart book"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_book"
-      }, "Warrant book"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_book"
-      }, "Traditional book"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_complete"
-      }, "Smart complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_complete"
-      }, "Warrant complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_complete"
-      }, "Traditional complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_abort"
-      }, "Smart abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_abort"
-      }, "Warrant abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_abort"
-      }, "Traditional abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_no_access"
-      }, "Smart no access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_no_access"
-      }, "Warrant no access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_no_access"
-      }, "Traditional no access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "sf_df"
-      }, "sf df"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "job_type"
-      }, "Job type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "sf_df_helper"
-      }, "sf df helper"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "work_type"
-      }, "Work type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "job_id"
-      }, "Job id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "schedule_date"
-      }, "Date of action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "week_day"
-      }, "Week Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "name"
       }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "date"
-      }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "start_time"
-      }, "Start Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "end_time"
-      }, "End Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "time_difference"
-      }, "Time Difference"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "work_master_sign_id"
-      }, "Work master sign id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "area"
-      }, "Area"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "geo_area"
-      }, "Geo area"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "report_group"
-      }, "Report group"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "field_force"
-      }, "Field force"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "leaver_flg"
-      }, "Leaver flg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "week_summary"
-      }, "Week summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "num"
-      }, "Num"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "complete"
-      }, "Complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "abort"
-      }, "Abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "no_access_rate"
-      }, "No access rate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_book"
-      }, "Smart book"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_book"
-      }, "Warrant book"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_book"
-      }, "Traditional book"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_complete"
-      }, "Smart complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_complete"
-      }, "Warrant complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_complete"
-      }, "Traditional complete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_abort"
-      }, "Smart abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_abort"
-      }, "Warrant abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_abort"
-      }, "Traditional abort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "smart_no_access"
-      }, "Smart no access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "warrant_no_access"
-      }, "Warrant no access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "traditional_no_access"
-      }, "Traditional no access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "sf_df"
-      }, "sf df"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "job_type"
-      }, "Job type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "sf_df_helper"
-      }, "sf df helper"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "work_type"
-      }, "Work type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "job_id"
-      }, "Job id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "schedule_date"
-      }, "Date of action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "week_day"
-      }, "Week Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action")))))))));
     }
   }]);
 
-  return MorrisonList;
+  return Role;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (MorrisonList);
+/* harmony default export */ __webpack_exports__["default"] = (Role);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\wamp64\\www\\msd\\resources\\js\\HttpFunctions.js: Identifier 'history' has already been declared (13:52)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m\u001b[90m * @param {*} user for send Credentials\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m\u001b[90m */\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m    \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m  \u001b[33mCheckPermission\u001b[39m \u001b[33m=\u001b[39m (page\u001b[33m,\u001b[39mpage_name\u001b[33m,\u001b[39mhistory) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m        \u001b[36mconst\u001b[39m { match\u001b[33m,\u001b[39m location\u001b[33m,\u001b[39m history } \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m        \u001b[36mconst\u001b[39m {id\u001b[33m,\u001b[39mparmissions} \u001b[33m=\u001b[39m localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'userData'\u001b[39m)\u001b[33m?\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'userData'\u001b[39m))\u001b[33m.\u001b[39muser \u001b[33m:\u001b[39m \u001b[32m'Null'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object._raise (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:745:17)\n    at Object.raiseWithData (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:738:17)\n    at Object.raise (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:732:17)\n    at ScopeHandler.checkRedeclarationInScope (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:4792:12)\n    at ScopeHandler.declareName (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:4772:14)\n    at Object.checkLVal (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:9260:22)\n    at Object.checkParams (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:10741:12)\n    at Object.node.body.parseBlock.hasStrictModeDirective (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:10716:14)\n    at Object.parseBlockOrModuleBlockBody (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11756:23)\n    at Object.parseBlockBody (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11716:10)\n    at Object.parseBlock (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11700:10)\n    at Object.parseFunctionBody (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:10707:24)\n    at Object.parseArrowExpression (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:10676:10)\n    at Object.parseParenAndDistinguishExpression (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:10294:12)\n    at Object.parseExprAtom (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:10006:21)\n    at Object.parseExprAtom (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:4637:20)\n    at Object.parseExprSubscripts (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:9655:23)\n    at Object.parseMaybeUnary (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:9635:21)\n    at Object.parseExprOps (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:9505:23)\n    at Object.parseMaybeConditional (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:9478:23)\n    at Object.parseMaybeAssign (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:9433:21)\n    at Object.parseVar (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11814:26)\n    at Object.parseVarStatement (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11623:10)\n    at Object.parseStatementContent (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11222:21)\n    at Object.parseStatement (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11155:17)\n    at Object.parseExportDeclaration (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:12364:17)\n    at Object.maybeParseExportDeclaration (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:12320:31)\n    at Object.parseExport (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:12250:29)\n    at Object.parseStatementContent (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11259:27)\n    at Object.parseStatement (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11155:17)\n    at Object.parseBlockOrModuleBlockBody (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11730:25)\n    at Object.parseBlockBody (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11716:10)\n    at Object.parseTopLevel (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:11086:10)\n    at Object.parse (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:12767:10)\n    at parse (C:\\wamp64\\www\\msd\\node_modules\\@babel\\parser\\lib\\index.js:12820:38)\n    at parser (C:\\wamp64\\www\\msd\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)");
 
 /***/ })
 

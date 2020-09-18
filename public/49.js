@@ -1,383 +1,754 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[49],{
 
-/***/ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js ***!
-  \***************************************************************************/
-/*! exports provided: IGNORE_CLASS_NAME, default */
+/***/ "./resources/js/App/components/AnimatedModal.js":
+/*!******************************************************!*\
+  !*** ./resources/js/App/components/AnimatedModal.js ***!
+  \******************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IGNORE_CLASS_NAME", function() { return IGNORE_CLASS_NAME; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-animated-modal */ "./node_modules/react-animated-modal/build/index.js");
+/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_animated_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
 
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
 
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+var AnimatedModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnimatedModal, _React$Component);
+
+  var _super = _createSuper(AnimatedModal);
+
+  function AnimatedModal() {
+    _classCallCheck(this, AnimatedModal);
+
+    return _super.apply(this, arguments);
   }
 
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
+  _createClass(AnimatedModal, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        visible: this.props.showModal,
+        closemodal: this.props.modalClosed,
+        type: this.props.animation
+      }, this.props.children));
     }
-  }
+  }]);
 
-  return target;
+  return AnimatedModal;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (AnimatedModal);
+
+/***/ }),
+
+/***/ "./resources/js/Back-Office/User/add.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Back-Office/User/add.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function successDesktopPNotify() {
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+    title: 'Success',
+    text: "User added successfully",
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
 }
 
-/**
- * Check whether some DOM node is our Component's node.
- */
-function isNodeFound(current, componentNode, ignoreClass) {
-  if (current === componentNode) {
-    return true;
-  } // SVG <use/> elements do not technically reside in the rendered DOM, so
-  // they do not have classList directly, but they offer a link to their
-  // corresponding element, which can have classList. This extra check is for
-  // that case.
-  // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
-  // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
-
-
-  if (current.correspondingElement) {
-    return current.correspondingElement.classList.contains(ignoreClass);
-  }
-
-  return current.classList.contains(ignoreClass);
-}
-/**
- * Try to find our node in a hierarchy of nodes, returning the document
- * node as highest node if our node is not found in the path up.
- */
-
-function findHighest(current, componentNode, ignoreClass) {
-  if (current === componentNode) {
-    return true;
-  } // If source=local then this event came from 'somewhere'
-  // inside and should be ignored. We could handle this with
-  // a layered approach, too, but that requires going back to
-  // thinking in terms of Dom node nesting, running counter
-  // to React's 'you shouldn't care about the DOM' philosophy.
-
-
-  while (current.parentNode) {
-    if (isNodeFound(current, componentNode, ignoreClass)) {
-      return true;
+var Trrow = function Trrow(property) {
+  var pageName = property.rows.map(function (value, index) {
+    if (!value.Ischeck) {
+      value.Ischeck = false;
     }
 
-    current = current.parentNode;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      key: index
+    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+      name: value.name,
+      label: value.page_name,
+      id: property.index + '_' + value.name,
+      value: value.Ischeck,
+      onChange: property.onchildChange
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+    name: property.parent,
+    label: property.parent.toUpperCase(),
+    onChange: property.onparentChange,
+    id: property.index
+  })), pageName);
+};
+
+var baseurl = window.location.origin;
+
+var add = /*#__PURE__*/function (_React$Component) {
+  _inherits(add, _React$Component);
+
+  var _super = _createSuper(add);
+
+  function add() {
+    var _this;
+
+    _classCallCheck(this, add);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      role_id: '',
+      role_list: [],
+      chkCustom: false,
+      permission: [],
+      pageArray: [],
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Add'
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
+      // e.target.checked=true;
+      var checkValue = e.target.checked;
+      var parentname = e.target.name;
+      var parentIndex = e.target.id;
+
+      var permission = _toConsumableArray(_this.state.permission);
+
+      if (permission[parentIndex][parentname]) {
+        permission[parentIndex][parentname].map(function (vl, ind) {
+          vl.Ischeck = checkValue;
+        });
+      }
+
+      _this.setState({
+        permission: permission
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
+      var ckname = e.target.name;
+      var parentIndex = e.target.id.split("_")[0];
+      var checkValue = e.target.checked;
+
+      var permission = _toConsumableArray(_this.state.permission);
+
+      var parentname = Object.keys(permission[parentIndex]);
+
+      if (permission[parentIndex][parentname]) {
+        permission[parentIndex][parentname].filter(function (vl, i) {
+          if (vl.name == ckname) {
+            vl.Ischeck = checkValue;
+          }
+        });
+
+        _this.setState({
+          permission: permission
+        });
+      }
+      /*    
+      if(permission[parentIndex][parentname]){
+           permission[parentIndex][parentname].map((vl,ind)=>{
+               vl.Ischeck = checkValue;
+           })
+          }
+          this.setState({permission})
+          */
+
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+
+      var str = e.target.value;
+      str = str.replace(/\s/g, '-');
+
+      _this.setState({
+        slug: str
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "Loading")
+      });
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token; //const data = new FormData()
+      //data.append('name', this.state.name);
+
+
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/user', {
+        name: _this.state.firstName,
+        lastName: _this.state.lastName,
+        email: _this.state.email,
+        password: _this.state.password,
+        roles: _this.state.role_id,
+        permission: _this.state.permission
+      }, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+
+          _this.setState({
+            firstName: ''
+          });
+
+          _this.setState({
+            lastName: ''
+          });
+
+          _this.setState({
+            email: ''
+          });
+
+          _this.setState({
+            password: ''
+          });
+
+          _this.setState({
+            confirmPassword: ''
+          });
+
+          _this.setState({
+            role_id: ''
+          });
+
+          _this.setState({
+            permission: []
+          });
+
+          $('input[type="checkbox"]').prop('checked', false);
+          successDesktopPNotify();
+
+          _this.RoleList();
+        } else {
+          if (res.data.errors) {
+            res.data.message = res.data.errors.name;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+            title: "System Error",
+            text: res.data.errors.name
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      }); //  this.props.history.push('/role');
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["Pemissionlist"])().then(function (res) {
+        if (res.data.success) {
+          //console.log(res.data.data);
+          _this.setState({
+            permission: res.data.data
+          });
+
+          document.getElementById("requestLoder").innerHTML = '';
+          /*
+          this.state.permission.map((val,index)=>{
+                console.log(val[Object.keys(val)[0]]);
+          })
+          */
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "RoleList", function (e) {
+      var id = _this.state.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/roledropdown', {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            role_list: res.data.data
+          });
+
+          document.getElementById("requestLoder").innerHTML = '';
+          /*
+          this.state.permission.map((val,index)=>{
+                console.log(val[Object.keys(val)[0]]);
+          })
+          */
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "RoleChange", function (e) {
+      _this.setState({
+        role_id: e.value
+      });
+
+      var curPermission = _this.state.role_list.filter(function (vl, idx) {
+        return vl.value === e.value;
+      });
+
+      if (curPermission) {
+        _this.setState({
+          permission: curPermission[0].permission
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "matchPassword", function (value) {
+      return value && value === _this.state.password;
+    });
+
+    return _this;
   }
 
-  return current;
-}
+  _createClass(add, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
+      this.RoleList();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var addPage = [];
+      var _this$props2 = this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+        as: "h5"
+      }, "Add User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        className: "btn-sm",
+        style: {
+          'float': 'right'
+        },
+        onClick: function onClick() {
+          history.goBack();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-chevron-left"
+      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "firstName"
+      }, "First name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "firstName",
+        id: "firstName",
+        placeholder: "First Name",
+        required: true,
+        value: this.state.firstName,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "lastName"
+      }, "Last name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "lastName",
+        id: "lastName",
+        placeholder: "Last Name",
+        minLength: "4",
+        value: this.state.lastName,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "email"
+      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "email",
+        id: "email",
+        type: "email",
+        placeholder: "Email Address",
+        validator: validator__WEBPACK_IMPORTED_MODULE_6___default.a.isEmail,
+        errorMessage: {
+          validator: "Please enter a valid email"
+        },
+        value: this.state.email,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "password"
+      }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "password",
+        id: "password",
+        type: "password",
+        placeholder: "Password",
+        required: true,
+        pattern: "(?=.*[A-Z]).{6,}",
+        errorMessage: {
+          required: "Password is required",
+          pattern: "Password should be at least 6 characters and contains at least one upper case letter"
+        },
+        value: this.state.password,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "confirmPassword"
+      }, "Confirm Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "confirmPassword",
+        id: "confirmPassword",
+        type: "password",
+        placeholder: "Confirm Password",
+        required: true,
+        validator: this.matchPassword,
+        errorMessage: {
+          required: "Confirm password is required",
+          validator: "Password does not match"
+        },
+        value: this.state.confirmPassword,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "firstName"
+      }, "Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.RoleChange,
+        className: "basic-single",
+        classNamePrefix: "select",
+        name: "role_id",
+        options: this.state.role_list,
+        placeholder: "Select Role"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Permission"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder",
+        style: {
+          'textAlign': 'center'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        ref: "tbl",
+        striped: true,
+        hover: true,
+        responsive: true,
+        className: "table table-condensed",
+        id: "data-table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+        id: "listdata"
+      }, this.state.permission.map(function (val, index) {
+        //  console.log(val[Object.keys(val)[0]]);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Trrow, {
+          key: index,
+          index: index,
+          parent: Object.keys(val)[0],
+          onparentChange: _this2.chageParent,
+          rows: val[Object.keys(val)[0]],
+          onchildChange: _this2.handleCheckboxChange
+        });
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))))));
+    }
+  }]);
+
+  return add;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (add);
+
+/***/ }),
+
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+
+
+
 /**
- * Check if the browser scrollbar was clicked
+ *  baseurl  get baseurl
  */
 
-function clickedScrollbar(evt) {
-  return document.documentElement.clientWidth <= evt.clientX || document.documentElement.clientHeight <= evt.clientY;
-}
+var baseurl = window.location.origin;
+/**
+ * Login api request
+ * @param {*} user for send Credentials
+ */
 
-// ideally will get replaced with external dep
-// when rafrex/detect-passive-events#4 and rafrex/detect-passive-events#5 get merged in
-var testPassiveEventSupport = function testPassiveEventSupport() {
-  if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') {
-    return;
-  }
+var CheckPermission = function CheckPermission(page, page_name, history) {
+  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
-  var passive = false;
-  var options = Object.defineProperty({}, 'passive', {
-    get: function get() {
-      passive = true;
+  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref.id,
+      parmissions = _ref.parmissions;
+
+  var pages = parmissions.filter(function (vl, idx) {
+    if (Object.keys(vl)[0] == page) {
+      return vl;
     }
   });
 
-  var noop = function noop() {};
-
-  window.addEventListener('testPassiveEventSupport', noop, options);
-  window.removeEventListener('testPassiveEventSupport', noop, options);
-  return passive;
-};
-
-function autoInc(seed) {
-  if (seed === void 0) {
-    seed = 0;
-  }
-
-  return function () {
-    return ++seed;
-  };
-}
-
-var uid = autoInc();
-
-var passiveEventSupport;
-var handlersMap = {};
-var enabledInstances = {};
-var touchEvents = ['touchstart', 'touchmove'];
-var IGNORE_CLASS_NAME = 'ignore-react-onclickoutside';
-/**
- * Options for addEventHandler and removeEventHandler
- */
-
-function getEventHandlerOptions(instance, eventName) {
-  var handlerOptions = null;
-  var isTouchEvent = touchEvents.indexOf(eventName) !== -1;
-
-  if (isTouchEvent && passiveEventSupport) {
-    handlerOptions = {
-      passive: !instance.props.preventDefault
-    };
-  }
-
-  return handlerOptions;
-}
-/**
- * This function generates the HOC function that you'll use
- * in order to impart onOutsideClick listening to an
- * arbitrary component. It gets called at the end of the
- * bootstrapping code to yield an instance of the
- * onClickOutsideHOC function defined inside setupHOC().
- */
-
-
-function onClickOutsideHOC(WrappedComponent, config) {
-  var _class, _temp;
-
-  var componentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
-  return _temp = _class =
-  /*#__PURE__*/
-  function (_Component) {
-    _inheritsLoose(onClickOutside, _Component);
-
-    function onClickOutside(props) {
-      var _this;
-
-      _this = _Component.call(this, props) || this;
-
-      _this.__outsideClickHandler = function (event) {
-        if (typeof _this.__clickOutsideHandlerProp === 'function') {
-          _this.__clickOutsideHandlerProp(event);
-
-          return;
+  if (pages.length > 0) {
+    var Ischeck = pages[0][page].filter(function (v, i) {
+      if (v['page_name'] == page_name) {
+        if (v['Ischeck']) {
+          return v;
         }
+      }
+    });
 
-        var instance = _this.getInstance();
+    if (Ischeck.length == 0) {
+      if (redirect) {
+        history.goBack();
+      }
 
-        if (typeof instance.props.handleClickOutside === 'function') {
-          instance.props.handleClickOutside(event);
-          return;
-        }
-
-        if (typeof instance.handleClickOutside === 'function') {
-          instance.handleClickOutside(event);
-          return;
-        }
-
-        throw new Error("WrappedComponent: " + componentName + " lacks a handleClickOutside(event) function for processing outside click events.");
-      };
-
-      _this.__getComponentNode = function () {
-        var instance = _this.getInstance();
-
-        if (config && typeof config.setClickOutsideRef === 'function') {
-          return config.setClickOutsideRef()(instance);
-        }
-
-        if (typeof instance.setClickOutsideRef === 'function') {
-          return instance.setClickOutsideRef();
-        }
-
-        return Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"])(instance);
-      };
-
-      _this.enableOnClickOutside = function () {
-        if (typeof document === 'undefined' || enabledInstances[_this._uid]) {
-          return;
-        }
-
-        if (typeof passiveEventSupport === 'undefined') {
-          passiveEventSupport = testPassiveEventSupport();
-        }
-
-        enabledInstances[_this._uid] = true;
-        var events = _this.props.eventTypes;
-
-        if (!events.forEach) {
-          events = [events];
-        }
-
-        handlersMap[_this._uid] = function (event) {
-          if (_this.componentNode === null) return;
-
-          if (_this.props.preventDefault) {
-            event.preventDefault();
-          }
-
-          if (_this.props.stopPropagation) {
-            event.stopPropagation();
-          }
-
-          if (_this.props.excludeScrollbar && clickedScrollbar(event)) return;
-          var current = event.target;
-
-          if (findHighest(current, _this.componentNode, _this.props.outsideClickIgnoreClass) !== document) {
-            return;
-          }
-
-          _this.__outsideClickHandler(event);
-        };
-
-        events.forEach(function (eventName) {
-          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_this, eventName));
-        });
-      };
-
-      _this.disableOnClickOutside = function () {
-        delete enabledInstances[_this._uid];
-        var fn = handlersMap[_this._uid];
-
-        if (fn && typeof document !== 'undefined') {
-          var events = _this.props.eventTypes;
-
-          if (!events.forEach) {
-            events = [events];
-          }
-
-          events.forEach(function (eventName) {
-            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_this, eventName));
-          });
-          delete handlersMap[_this._uid];
-        }
-      };
-
-      _this.getRef = function (ref) {
-        return _this.instanceRef = ref;
-      };
-
-      _this._uid = uid();
-      return _this;
+      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
+        title: "Permission Error",
+        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
+      });
+      return 1;
     }
-    /**
-     * Access the WrappedComponent's instance.
-     */
+  } else {
+    history.goBack();
+  }
+};
+var Login = function Login(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
+    email: user.email,
+    password: user.password,
+    remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var Pemissionlist = function Pemissionlist(parameter) {
+  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref2.id,
+      auth_token = _ref2.auth_token;
 
-
-    var _proto = onClickOutside.prototype;
-
-    _proto.getInstance = function getInstance() {
-      if (!WrappedComponent.prototype.isReactComponent) {
-        return this;
-      }
-
-      var ref = this.instanceRef;
-      return ref.getInstance ? ref.getInstance() : ref;
-    };
-
-    /**
-     * Add click listeners to the current document,
-     * linked to this component's state.
-     */
-    _proto.componentDidMount = function componentDidMount() {
-      // If we are in an environment without a DOM such
-      // as shallow rendering or snapshots then we exit
-      // early to prevent any unhandled errors being thrown.
-      if (typeof document === 'undefined' || !document.createElement) {
-        return;
-      }
-
-      var instance = this.getInstance();
-
-      if (config && typeof config.handleClickOutside === 'function') {
-        this.__clickOutsideHandlerProp = config.handleClickOutside(instance);
-
-        if (typeof this.__clickOutsideHandlerProp !== 'function') {
-          throw new Error("WrappedComponent: " + componentName + " lacks a function for processing outside click events specified by the handleClickOutside config option.");
-        }
-      }
-
-      this.componentNode = this.__getComponentNode(); // return early so we dont initiate onClickOutside
-
-      if (this.props.disableOnClickOutside) return;
-      this.enableOnClickOutside();
-    };
-
-    _proto.componentDidUpdate = function componentDidUpdate() {
-      this.componentNode = this.__getComponentNode();
-    };
-    /**
-     * Remove all document's event listeners for this component
-     */
-
-
-    _proto.componentWillUnmount = function componentWillUnmount() {
-      this.disableOnClickOutside();
-    };
-    /**
-     * Can be called to explicitly enable event listening
-     * for clicks and touches outside of this element.
-     */
-
-
-    /**
-     * Pass-through render
-     */
-    _proto.render = function render() {
-      // eslint-disable-next-line no-unused-vars
-      var _props = this.props,
-          excludeScrollbar = _props.excludeScrollbar,
-          props = _objectWithoutProperties(_props, ["excludeScrollbar"]);
-
-      if (WrappedComponent.prototype.isReactComponent) {
-        props.ref = this.getRef;
-      } else {
-        props.wrappedRef = this.getRef;
-      }
-
-      props.disableOnClickOutside = this.disableOnClickOutside;
-      props.enableOnClickOutside = this.enableOnClickOutside;
-      return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WrappedComponent, props);
-    };
-
-    return onClickOutside;
-  }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.displayName = "OnClickOutside(" + componentName + ")", _class.defaultProps = {
-    eventTypes: ['mousedown', 'touchstart'],
-    excludeScrollbar: config && config.excludeScrollbar || false,
-    outsideClickIgnoreClass: IGNORE_CLASS_NAME,
-    preventDefault: false,
-    stopPropagation: false
-  }, _class.getClass = function () {
-    return WrappedComponent.getClass ? WrappedComponent.getClass() : WrappedComponent;
-  }, _temp;
-}
-
-
-/* harmony default export */ __webpack_exports__["default"] = (onClickOutsideHOC);
-
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
+    'id': id
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    }
+  });
+};
+var RoleAdd = function RoleAdd(role) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
+    email: role.email,
+    password: role.password,
+    remember_me: role.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
 
 /***/ })
 

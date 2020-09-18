@@ -15,7 +15,7 @@ import { extend } from 'jquery';
 import Select from 'react-select';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
+import {CheckPermission} from '../../HttpFunctions'; 
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
@@ -190,7 +190,13 @@ class SiteEngineer extends React.Component {
             }); 
             
             atable(11);    
+            const self= this;
             $('#data-table-responsive tbody').on('click', '.deletefile', function () {
+                const { match, location, history } = self.props;
+                const Permission = CheckPermission('areamanager','delete',history,false);
+                if(Permission==1){
+                    return false;
+                  }
                 var id =  $(this).attr('data-id');
                 const MySwal = withReactContent(Swal);
                 MySwal.fire({
@@ -237,6 +243,11 @@ class SiteEngineer extends React.Component {
     handleSubmit = (e, formData, inputs) => {
         
         e.preventDefault();
+        const { match, location, history } = this.props;
+        const Permission = CheckPermission('areamanager','add',history,false);
+      if(Permission==1){
+        return false;
+      }
         const baseurl= window.location.origin;
         this.setState({formSubmitting:true});
         this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />sending</span>});

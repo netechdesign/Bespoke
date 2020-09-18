@@ -239,7 +239,11 @@ class Tuesday implements FromView,WithTitle,WithEvents
                 if(array_key_exists($vl->parent_engineer,$InDayInstalls['InstallsJob']) && array_key_exists($vl->engineer,$InDayInstalls['InstallsJob'][$vl->parent_engineer])){
                     if($vl->job_status =='Completed'){
                     $InDayInstalls['InstallsJob'][$vl->parent_engineer][$vl->engineer] = $InDayInstalls['InstallsJob'][$vl->parent_engineer][$vl->engineer]+1;
-                    $InDayInstalls0['df_InstallsJob'][$vl->region] = $InDayInstalls0['df_InstallsJob'][$vl->region] + 1;
+                    if(isset($InDayInstalls0['df_InstallsJob'][$vl->region])){
+                        $InDayInstalls0['df_InstallsJob'][$vl->region] = $InDayInstalls0['df_InstallsJob'][$vl->region] + 1;
+                      }else{
+                         $InDayInstalls0['df_InstallsJob'][$vl->region] = 1;
+                      }
                     }
                    
 
@@ -260,7 +264,11 @@ class Tuesday implements FromView,WithTitle,WithEvents
                 if(array_key_exists($vl->parent_engineer,$InDayInstalls['Dual']) && array_key_exists($vl->engineer,$InDayInstalls['Dual'][$vl->parent_engineer])){
                     if($vl->job_status =='Completed' && $vl->job_type=='Dual Fuel Install'){
                     $InDayInstalls['Dual'][$vl->parent_engineer][$vl->engineer] = $InDayInstalls['Dual'][$vl->parent_engineer][$vl->engineer]+1;
-                    $InDayInstalls0['df_Dual'][$vl->region] = $InDayInstalls0['df_Dual'][$vl->region] +1;
+                    if(isset($InDayInstalls0['df_Dual'][$vl->region])){
+                        $InDayInstalls0['df_Dual'][$vl->region] = $InDayInstalls0['df_Dual'][$vl->region] + 1;
+                      }else{
+                         $InDayInstalls0['df_Dual'][$vl->region] = 1;
+                      }
                 
                     }
                    
@@ -602,8 +610,25 @@ class Tuesday implements FromView,WithTitle,WithEvents
                 }
                 
                 if(!array_key_exists($vl->region,$InDayInstalls0['df'])){
-                    $ttl= $InDayInstalls0['df_Aborts'][$vl->region] + $InDayInstalls0['df_InstallsJob'][$vl->region]; 
-                    $sum= ($InDayInstalls0['df_Dual'][$vl->region]+$InDayInstalls0['df_Aborts_Fuels'][$vl->region])*100;;
+                    $df_Aborts=0;
+                    if(isset($InDayInstalls0['df_Aborts'][$vl->region])){
+                        $df_Aborts =  $InDayInstalls0['df_Aborts'][$vl->region];
+                    }
+                    $df_InstallsJob=0;
+                    if(isset($InDayInstalls0['df_InstallsJob'][$vl->region])){
+                        $df_InstallsJob= $InDayInstalls0['df_InstallsJob'][$vl->region];
+                    }
+
+                    $ttl= $df_Aborts + $df_InstallsJob;
+                    $df_Dual=0;
+                    if(isset($InDayInstalls0['df_Dual'][$vl->region])){
+                        $df_Dual= $InDayInstalls0['df_Dual'][$vl->region];
+                    }
+                    $df_Aborts_Fuels=0;
+                    if(isset($InDayInstalls0['df_Aborts_Fuels'][$vl->region])){
+                        $df_Aborts_Fuels = $InDayInstalls0['df_Aborts_Fuels'][$vl->region];
+                    }
+                    $sum= ($df_Dual+$df_Aborts_Fuels)*100;;
                     if($sum>0){
                     $InDayInstalls0['df'][$vl->region] = round($sum/$ttl,2);
                     }else{
@@ -646,7 +671,7 @@ class Tuesday implements FromView,WithTitle,WithEvents
                         $InDayInstalls0['In_day_installs_jobs'][$vl->region] = 0; 
                     $In_day_installs_jobs_total+=0;
 
-                    $InDayInstalls0['total'][$vl->region] = 0; 
+                    $InDayInstalls0['total'][$vl->region] += 0; 
                         $Total_total+=0; 
                     }      
                 }
@@ -674,7 +699,7 @@ class Tuesday implements FromView,WithTitle,WithEvents
                             $InDayInstalls0['OOH_jobs'][$vl->region]=0;
                             $OOH_jobs_total+=0;
 
-                            $InDayInstalls0['total'][$vl->region] = 0; 
+                            $InDayInstalls0['total'][$vl->region] += 0; 
                         $Total_total+=0; 
                         }
                     }
@@ -737,6 +762,10 @@ class Tuesday implements FromView,WithTitle,WithEvents
                                                 $InDayInstalls0['Fuels'][$vl->region] = 1;
                                                 $Fuels_total+=1;
                                             }
+                                    }else{
+                                        $InDayInstalls0['Fuels'][$vl->region] = 0;
+                                                $Fuels_total+=0;
+
                                     }
                                      
                                 } 

@@ -12,7 +12,7 @@ import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
 import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
-
+import {CheckPermission} from '../../HttpFunctions'; 
 function successDesktopPNotify() {
     PNotify.success({
         title: 'Success',
@@ -210,6 +210,8 @@ class edit  extends React.Component{
        
     }
     componentDidMount(){
+        const { match, location, history } = this.props;
+        CheckPermission('role','edit',history);
         this.PemissionGet();
     }
  

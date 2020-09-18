@@ -13,7 +13,7 @@ import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
 import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
-
+import {CheckPermission} from '../../HttpFunctions'; 
 function successDesktopPNotify() {
     PNotify.success({
         title: 'Success',
@@ -136,7 +136,7 @@ class add  extends React.Component{
         //data.append('name', this.state.name);
        
         axios.post(
-            baseurl+'/api/user/register',
+            baseurl+'/api/user',
             {name:this.state.firstName,lastName:this.state.lastName,email:this.state.email,password:this.state.password,roles:this.state.role_id,permission:this.state.permission},
             {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
         ).then(res =>{
@@ -249,6 +249,8 @@ class add  extends React.Component{
          
       }
     componentDidMount(){
+        const { match, location, history } = this.props;
+        CheckPermission('user','add',history);
        this.RoleList();
     }
   

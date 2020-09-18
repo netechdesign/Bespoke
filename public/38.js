@@ -1,28 +1,216 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[38],{
 
-/***/ "./resources/js/Back-Office/Pages/UtilitaChart.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/UtilitaChart.js ***!
-  \********************************************************/
+/***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/process/browser.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ "./resources/js/Back-Office/User/index.js":
+/*!************************************************!*\
+  !*** ./resources/js/Back-Office/User/index.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
-/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45,816 +233,203 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_4___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_4___default.a;
+global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_4___default.a;
+jquery__WEBPACK_IMPORTED_MODULE_4___default.a.DataTable = __webpack_require__(/*! datatables.net-bs */ "./node_modules/datatables.net-bs/js/dataTables.bootstrap.js");
+
+__webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js"); //require('pdfmake/build/pdfmake.js');
+//require('pdfmake/build/vfs_fonts.js');
 
 
+__webpack_require__(/*! datatables.net-autofill */ "./node_modules/datatables.net-autofill/js/dataTables.autoFill.js");
 
+__webpack_require__(/*! datatables.net-buttons-bs */ "./node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.js");
 
+__webpack_require__(/*! datatables.net-buttons/js/buttons.colVis.js */ "./node_modules/datatables.net-buttons/js/buttons.colVis.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.flash.js */ "./node_modules/datatables.net-buttons/js/buttons.flash.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.html5.js */ "./node_modules/datatables.net-buttons/js/buttons.html5.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.print.js */ "./node_modules/datatables.net-buttons/js/buttons.print.js");
+
+__webpack_require__(/*! datatables.net-colreorder */ "./node_modules/datatables.net-colreorder/js/dataTables.colReorder.js");
+
+__webpack_require__(/*! datatables.net-keytable */ "./node_modules/datatables.net-keytable/js/dataTables.keyTable.js");
+
+__webpack_require__(/*! datatables.net-responsive-bs */ "./node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js");
+
+__webpack_require__(/*! datatables.net-rowgroup */ "./node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js");
+
+__webpack_require__(/*! datatables.net-rowreorder */ "./node_modules/datatables.net-rowreorder/js/dataTables.rowReorder.js");
+
+__webpack_require__(/*! datatables.net-scroller */ "./node_modules/datatables.net-scroller/js/dataTables.scroller.js");
+
+__webpack_require__(/*! datatables.net-select */ "./node_modules/datatables.net-select/js/dataTables.select.js");
+
+__webpack_require__(/*! datatables.net-fixedcolumns */ "./node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js");
+
+__webpack_require__(/*! datatables.net-fixedheader */ "./node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.js");
 
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
     auth_token = _ref.auth_token;
 
-var baseurl = window.location.origin;
+var oTable = "";
 
-var UtilitaChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(UtilitaChart, _React$Component);
+function atable() {
+  var _$$DataTable;
 
-  var _super = _createSuper(UtilitaChart);
+  var tableResponsive = '#data-table-responsive';
+  oTable = jquery__WEBPACK_IMPORTED_MODULE_4___default()(tableResponsive).DataTable((_$$DataTable = {
+    "bStateSave": true,
+    "processing": true,
+    "bPaginate": true,
+    "serverSide": true,
+    "bProcessing": true,
+    "iDisplayLength": 10,
+    "bServerSide": true,
+    "sAjaxSource": window.location.origin + '/api/user'
+  }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
+    var acolumns = this.fnSettings().aoColumns,
+        columns = [];
+    jquery__WEBPACK_IMPORTED_MODULE_4___default.a.each(acolumns, function (i, item) {
+      columns.push(item.data);
+    });
+    aoData.push({
+      name: 'columns',
+      value: columns
+    });
 
-  function UtilitaChart(props) {
+    if (jquery__WEBPACK_IMPORTED_MODULE_4___default()('input[name="role_name"]').val() != '') {
+      aoData.push({
+        name: 'role_name',
+        value: jquery__WEBPACK_IMPORTED_MODULE_4___default()('input[name="role_name"]').val()
+      });
+    }
+    /*  if($('#status').val()!='') {
+          aoData.push({name: 'is_active', value: $('#status').val()});
+      }
+    */
+
+  }), _defineProperty(_$$DataTable, "columns", [{
+    "data": "name"
+  }, {
+    "data": "id"
+  }]), _defineProperty(_$$DataTable, "responsive", {
+    responsive: {
+      details: {
+        display: jquery__WEBPACK_IMPORTED_MODULE_4___default.a.fn.dataTable.Responsive.display.childRowImmediate,
+        type: ''
+      }
+    }
+  }), _defineProperty(_$$DataTable, "order", [[0, "desc"]]), _defineProperty(_$$DataTable, "lengthMenu", [[10, 25, 50, 100], [10, 25, 50, 100]]), _defineProperty(_$$DataTable, "oLanguage", {
+    "sLengthMenu": "_MENU_",
+    "oPaginate": {
+      "sNext": '<span aria-hidden="true">»</span>',
+      "sPrevious": '<span aria-hidden="true">«</span>'
+    } // sProcessing: "<img width='33px' src='"+BASE_URL+"assets/layouts/layout/img/ajax-loading.gif'>"
+
+  }), _defineProperty(_$$DataTable, "fnInitComplete", function fnInitComplete() {//oTable.fnAdjustColumnSizing();
+  }), _defineProperty(_$$DataTable, 'fnServerData', function fnServerData(sSource, aoData, fnCallback) {
+    jquery__WEBPACK_IMPORTED_MODULE_4___default.a.ajax({
+      'dataType': 'json',
+      'type': 'GET',
+      'url': sSource,
+      'data': aoData,
+      'headers': {
+        Authorization: "Bearer " + auth_token
+      },
+      'success': fnCallback
+    });
+  }), _defineProperty(_$$DataTable, "fnDrawCallback", function fnDrawCallback() {
+    jquery__WEBPACK_IMPORTED_MODULE_4___default()('body').css('min-height', jquery__WEBPACK_IMPORTED_MODULE_4___default()('#data-table-responsive tr').length * 50 + 200);
+    jquery__WEBPACK_IMPORTED_MODULE_4___default()(window).trigger('resize');
+  }), _defineProperty(_$$DataTable, "columnDefs", [{
+    "render": function render(data, type, row) {
+      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      return [str_buttons].join('');
+    },
+    "targets": jquery__WEBPACK_IMPORTED_MODULE_4___default()('#data-table-responsive th#action').index(),
+    "orderable": false,
+    "searchable": false
+  }, {
+    "targets": 0,
+    "orderable": false
+  }]), _$$DataTable));
+}
+
+var Role = /*#__PURE__*/function (_React$Component) {
+  _inherits(Role, _React$Component);
+
+  var _super = _createSuper(Role);
+
+  function Role(props) {
     var _this;
 
-    _classCallCheck(this, UtilitaChart);
+    _classCallCheck(this, Role);
 
     _this = _super.call(this, props);
-    _this.state = {
-      start_date: '',
-      end_date: '',
-      title: ''
-    };
+    _this.state = {};
     return _this;
   }
 
-  _createClass(UtilitaChart, [{
+  _createClass(Role, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      var items = [];
+      atable();
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-
-      if (location.state.detail) {
-        var _location$state$detai = location.state.detail,
-            _id = _location$state$detai.id,
-            _start_date = _location$state$detai.start_date,
-            _end_date = _location$state$detai.end_date,
-            _report_type = _location$state$detai.report_type;
-        localStorage.setItem('bespokesearch', JSON.stringify(location.state.detail));
-      } else {
-        var _ref2 = localStorage.getItem('bespokesearch') ? JSON.parse(localStorage.getItem('bespokesearch')).user : 'Null',
-            _id2 = _ref2.id,
-            _start_date2 = _ref2.start_date,
-            _end_date2 = _ref2.end_date,
-            _report_type2 = _ref2.report_type;
-      }
-
-      var _location$state$detai2 = location.state.detail,
-          id = _location$state$detai2.id,
-          start_date = _location$state$detai2.start_date,
-          end_date = _location$state$detai2.end_date,
-          report_type = _location$state$detai2.report_type;
-      var reportType = report_type['value'];
-      this.setState({
-        start_date: start_date
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()('#data-table-responsive tbody').on('click', '.edit', function () {
+        var id = jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).attr('data-id');
+        history.push('/user/edit/' + id);
       });
-      this.setState({
-        end_date: end_date
-      });
-      var data = {
-        _method: 'get',
-        id: id,
-        start_date: start_date,
-        end_date: end_date,
-        file_id: reportType
-      };
-
-      if (reportType == 1) {
-        this.setState({
-          title: 'Morrison Data services'
-        });
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          // let data = JSON.parse(res.data); 
-          var result = res.data.complate; //series
-
-          var options = {
-            series: result['series'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Complated',
-              align: 'left'
-            },
-            xaxis: {
-              categories: result['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
-          StackedBar.render();
-          var abortedrs = res.data.aborted; //series
-
-          var options = {
-            series: abortedrs['series'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'aborted',
-              align: 'left'
-            },
-            xaxis: {
-              categories: abortedrs['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render();
-        });
-      } else if (reportType == 2) {
-        this.setState({
-          title: 'Utilita'
-        });
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          // let data = JSON.parse(res.data); 
-          document.getElementById("requestLoder").innerHTML = '';
-          var result = res.data.complate;
-          var CompletedjobData = res.data.CompletedjobData; //series
-
-          var options = {
-            series: result['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Complated',
-              align: 'left'
-            },
-            xaxis: {
-              categories: result['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref3) {
-                var series = _ref3.series,
-                    seriesIndex = _ref3.seriesIndex,
-                    dataPointIndex = _ref3.dataPointIndex,
-                    w = _ref3.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (CompletedjobData[w.globals.labels[dataPointIndex]]) {
-                  CompletedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>customer id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>schedule date</th>" + "<th>Start time</th>" + "<th>End time</th>" + "<th>job type</th>" + "<th>post code</th>" + "<th>region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
-          StackedBar.render();
-          var abortedrs = res.data.aborted;
-          var AbortedjobData = res.data.AbortedjobData; //series
-
-          var options = {
-            series: abortedrs['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Aborted',
-              align: 'left'
-            },
-            xaxis: {
-              categories: abortedrs['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref4) {
-                var series = _ref4.series,
-                    seriesIndex = _ref4.seriesIndex,
-                    dataPointIndex = _ref4.dataPointIndex,
-                    w = _ref4.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (AbortedjobData[w.globals.labels[dataPointIndex]]) {
-                  AbortedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>customer id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>schedule date</th>" + "<th>Start time</th>" + "<th>End time</th>" + "<th>job type</th>" + "<th>post code</th>" + "<th>region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render(); //Description chart reports
-
-          var descriptionBar = res.data.total_description;
-          var AbortedReasonData = res.data.AbortedReasonData;
-          var options = {
-            series: descriptionBar['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Aborts-reason'
-            },
-            subtitle: {
-              text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-              align: 'left'
-            },
-            xaxis: {
-              categories: descriptionBar['description'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Description',
-                align: 'left',
-                margin: 10
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref5) {
-                var series = _ref5.series,
-                    seriesIndex = _ref5.seriesIndex,
-                    dataPointIndex = _ref5.dataPointIndex,
-                    w = _ref5.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (AbortedReasonData[w.globals.labels[dataPointIndex]]) {
-                  AbortedReasonData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>customer id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>schedule date</th>" + "<th>Start time</th>" + "<th>End time</th>" + "<th>job type</th>" + "<th>post code</th>" + "<th>region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var descriptions = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#descriptionBar"), options);
-          descriptions.render();
-        });
-      } else if (reportType == 3) {
-        this.setState({
-          title: 'Vehical Mileage'
-        });
-        var driver_name = [];
-        var total_miles = [];
-        var max_speed = [];
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/vehicalmileas/1', data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          if (res.data.success) {
-            document.getElementById("requestLoder").innerHTML = '';
-
-            if (res.data.totalmileage.length == 0) {
-              document.getElementById("vahicalMileage").innerHTML = '<div>Record not found</div>';
-              return false;
-            }
-
-            res.data.totalmileage.map(function (val, indx) {
-              driver_name.push(val.driver_name);
-              total_miles.push(val.total_miles);
-              max_speed.push(val.max_speed);
-            });
-            var listmileage = res.data.listmileage;
-            var options = {
-              title: {
-                text: 'Miles'
-              },
-              subtitle: {
-                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-                align: 'left'
-              },
-              series: [{
-                data: total_miles
-              }],
-              chart: {
-                type: 'bar',
-                height: 600
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-              xaxis: {
-                categories: driver_name,
-                title: {
-                  text: 'Miles'
-                }
-              },
-              yaxis: {
-                title: {
-                  text: 'Driver Name'
-                }
-              },
-              tooltip: {
-                custom: function custom(_ref6) {
-                  var series = _ref6.series,
-                      seriesIndex = _ref6.seriesIndex,
-                      dataPointIndex = _ref6.dataPointIndex,
-                      w = _ref6.w;
-                  var lineName = '';
-
-                  if (seriesIndex == 0) {
-                    lineName = 'AM';
-                  } else if (seriesIndex == 1) {
-                    lineName = 'PM';
-                  }
-
-                  var listed = '';
-
-                  if (listmileage) {
-                    listmileage.map(function (vl, inx) {
-                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
-                        listed += '<tr>';
-                        listed += '<td>' + vl.drive_date + '</td>';
-                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.duration + '</td>';
-                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
-                        listed += '<td>' + vl.start_time + '</td>';
-                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
-                        listed += '<td>' + vl.end_time + '</td>';
-                        listed += '</tr>';
-                      }
-                    });
-                  }
-
-                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-                },
-                fixed: {
-                  enabled: true,
-                  position: "topRight",
-                  offsetX: 0,
-                  offsetY: 0
-                }
-                /*
-                y: {
-                   formatter: function (val) {
-                     return val + ""
-                   }
-                 }
-                 */
-
-              }
-            };
-            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMileage"), options);
-            chart.render();
-            var options = {
-              title: {
-                text: 'Speed Spread'
-              },
-              subtitle: {
-                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-                align: 'left'
-              },
-              fill: {
-                colors: [function (_ref7) {
-                  var value = _ref7.value,
-                      seriesIndex = _ref7.seriesIndex,
-                      w = _ref7.w;
-
-                  if (value > 70) {
-                    return '#FF0000';
-                  } else {
-                    return '#0099FF';
-                  }
-                }]
-              },
-              series: [{
-                data: max_speed
-              }],
-              chart: {
-                type: 'bar',
-                height: 600
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-              xaxis: {
-                categories: driver_name,
-                title: {
-                  text: 'Top speed'
-                }
-              },
-              yaxis: {
-                title: {
-                  text: 'Driver Name'
-                }
-              },
-              tooltip: {
-                custom: function custom(_ref8) {
-                  var series = _ref8.series,
-                      seriesIndex = _ref8.seriesIndex,
-                      dataPointIndex = _ref8.dataPointIndex,
-                      w = _ref8.w;
-                  var lineName = '';
-
-                  if (seriesIndex == 0) {
-                    lineName = 'AM';
-                  } else if (seriesIndex == 1) {
-                    lineName = 'PM';
-                  }
-
-                  var listed = '';
-
-                  if (listmileage) {
-                    listmileage.map(function (vl, inx) {
-                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
-                        if (vl.max_speed > 70) {
-                          listed += '<tr style="background-color: #fbbfbf;color:white" >';
-                        } else {
-                          listed += '<tr>';
-                        }
-
-                        listed += '<td>' + vl.drive_date + '</td>';
-                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.duration + '</td>';
-                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
-                        listed += '<td>' + vl.start_time + '</td>';
-                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
-                        listed += '<td>' + vl.end_time + '</td>';
-                        listed += '</tr>';
-                      }
-                    });
-                  }
-
-                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-                },
-                fixed: {
-                  enabled: true,
-                  position: "topRight",
-                  offsetX: 0,
-                  offsetY: 0
-                }
-                /*
-                y: {
-                   formatter: function (val) {
-                     return val + ""
-                   }
-                 }
-                 */
-
-              }
-            };
-            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMax_speed"), options);
-            chart.render();
-          }
-        });
-      } //
-
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, this.state.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " From ", this.state.start_date, " To ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm",
+      }, "User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         style: {
           'float': 'right'
         },
-        onClick: function onClick() {
-          history.goBack();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
-        style: {
-          'textAlign': 'center'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "abortedBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "descriptionBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "StackedBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "vahicalMileage"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "vahicalMax_speed"
-      }))))));
+        as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
+        to: "/user/add"
+      }, "+ Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        ref: "tbl",
+        striped: true,
+        hover: true,
+        responsive: true,
+        className: "table table-condensed",
+        id: "data-table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "name"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "action"
+      }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "name"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "action"
+      }, "Action")))))))));
     }
   }]);
 
-  return UtilitaChart;
+  return Role;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UtilitaChart);
+/* harmony default export */ __webpack_exports__["default"] = (Role);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })
 

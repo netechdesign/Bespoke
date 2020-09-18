@@ -1,6 +1,6 @@
 import axios from 'axios'
 import config from './config';
-
+import PNotify from "pnotify/dist/es/PNotify";
 /**
  *  baseurl  get baseurl
  */
@@ -10,7 +10,41 @@ export const baseurl= window.location.origin;
  * Login api request
  * @param {*} user for send Credentials
  */
+    export const  CheckPermission = (page,page_name,history,redirect=true) => {
 
+        
+        const {id,parmissions} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+      
+        const pages = parmissions.filter((vl,idx) =>{
+            if(Object.keys(vl)[0] ==page){
+                return vl
+            }
+        })
+
+        if(pages.length>0){
+      const Ischeck =  pages[0][page].filter((v,i)=>{
+              if(v['page_name']==page_name){
+                  if(v['Ischeck']){
+                  return v;
+                  }
+              }
+      })
+    
+    if(Ischeck.length==0){
+        if(redirect){
+        history.goBack();
+        }
+        PNotify.error({
+            title: "Permission Error",
+            text:config.AccessDeniedMessage,
+        });
+        return 1;
+    }
+}else{
+    history.goBack(); 
+}
+
+    }
     export const Login = user => {
         
         return axios.post(
