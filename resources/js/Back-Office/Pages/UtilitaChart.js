@@ -234,6 +234,7 @@ let result = res.data.complate;
                     if(vl.appointment_time==lineName){
                       listed+='<tr>';
                       listed+='<td>'+vl.customer_id+'</td>';
+                      listed+='<td>'+vl.job_id+'</td>';
                       listed+='<td>'+vl.schedule_date+'</td>';
                       listed+='<td>'+vl.schedule_start_time+'</td>';
                       listed+='<td>'+vl.schedule_end_time+'</td>';
@@ -247,13 +248,14 @@ let result = res.data.complate;
               return ('<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
                 '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
                 "<thead><tr>" +
-                "<th>customer id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>schedule date</th>" +
-                "<th>Start time</th>" +
-                "<th>End time</th>" +
-                "<th>job type</th>" +
-                "<th>post code</th>" +
-                "<th>region</th>" +
+                "<th>Customer Id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                "<th>Job Id</th>"+
+                "<th>Schedule Date</th>" +
+                "<th>Start Time</th>" +
+                "<th>End Time</th>" +
+                "<th>Job Type</th>" +
+                "<th>Post code</th>" +
+                "<th>Region</th>" +
                 "</tr></thead>" +
                 "<tbody>"+
                 listed+
@@ -346,6 +348,7 @@ let result = res.data.complate;
                    if(vl.appointment_time==lineName){
                      listed+='<tr>';
                      listed+='<td>'+vl.customer_id+'</td>';
+                     listed+='<td>'+vl.job_id+'</td>';
                      listed+='<td>'+vl.schedule_date+'</td>';
                      listed+='<td>'+vl.schedule_start_time+'</td>';
                      listed+='<td>'+vl.schedule_end_time+'</td>';
@@ -359,13 +362,14 @@ let result = res.data.complate;
              return ('<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
                '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
                "<thead><tr>" +
-               "<th>customer id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-               "<th>schedule date</th>" +
-               "<th>Start time</th>" +
-               "<th>End time</th>" +
-               "<th>job type</th>" +
-               "<th>post code</th>" +
-               "<th>region</th>" +
+               "<th>Customer Id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+               "<th>Job Id</th>"+
+               "<th>Schedule Date</th>" +
+               "<th>Start Time</th>" +
+               "<th>End Time</th>" +
+               "<th>Job Type</th>" +
+               "<th>Post Code</th>" +
+               "<th>Region</th>" +
                "</tr></thead>" +
                "<tbody>"+
                listed+
@@ -461,6 +465,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
                      if(vl.appointment_time==lineName){
                        listed+='<tr>';
                        listed+='<td>'+vl.customer_id+'</td>';
+                       listed+='<td>'+vl.job_id+'</td>';
                        listed+='<td>'+vl.schedule_date+'</td>';
                        listed+='<td>'+vl.schedule_start_time+'</td>';
                        listed+='<td>'+vl.schedule_end_time+'</td>';
@@ -474,13 +479,13 @@ let AbortedReasonData = res.data.AbortedReasonData;
                return ('<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
                  '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
                  "<thead><tr>" +
-                 "<th>customer id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                 "<th>schedule date</th>" +
-                 "<th>Start time</th>" +
-                 "<th>End time</th>" +
-                 "<th>job type</th>" +
-                 "<th>post code</th>" +
-                 "<th>region</th>" +
+                 "<th>Customer Id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                 "<th>Schedule Date</th>" +
+                 "<th>Start Time</th>" +
+                 "<th>End Time</th>" +
+                 "<th>Job Type</th>" +
+                 "<th>Post Code</th>" +
+                 "<th>Region</th>" +
                  "</tr></thead>" +
                  "<tbody>"+
                  listed+

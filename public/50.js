@@ -237,7 +237,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
       pageArray: [],
       visible: true,
       formSubmitting: false,
-      buttonName: 'SAve'
+      buttonName: 'Save'
     });
 
     _defineProperty(_assertThisInitialized(_this), "RoleList", function (e) {

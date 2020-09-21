@@ -65,7 +65,7 @@ class edit  extends React.Component{
         pageArray:[],
         visible : true,
         formSubmitting: false,
-        buttonName:'SAve',
+        buttonName:'Save',
         };
     
        
