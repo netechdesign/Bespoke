@@ -480,6 +480,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
                  '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
                  "<thead><tr>" +
                  "<th>Customer Id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                 "<th>Job Id</th>" +
                  "<th>Schedule Date</th>" +
                  "<th>Start Time</th>" +
                  "<th>End Time</th>" +

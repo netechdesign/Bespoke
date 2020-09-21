@@ -560,7 +560,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 }
 
                 return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>Job Type</th>" + "<th>Post Code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
+                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>Job Type</th>" + "<th>Post Code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
               },
               fixed: {
                 enabled: true,
