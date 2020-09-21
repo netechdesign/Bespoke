@@ -48,7 +48,7 @@ class add  extends React.Component{
         pageArray:[],
         visible : true,
         formSubmitting: false,
-        buttonName:'Add',
+        buttonName:'Save',
         };
     
        
@@ -137,7 +137,7 @@ class add  extends React.Component{
                           if(res.data.success){
                              // console.log(res.data.data);
                              this.setState({formSubmitting:false});
-                             this.setState({buttonName:'Add'});
+                             this.setState({buttonName:'Save'});
                              this.setState({name:''});
                              this.PemissionGet();
                              $('input[type="checkbox"]').prop('checked',false);

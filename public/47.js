@@ -207,7 +207,7 @@ var add = /*#__PURE__*/function (_React$Component) {
       pageArray: [],
       visible: true,
       formSubmitting: false,
-      buttonName: 'Add'
+      buttonName: 'Save'
     });
 
     _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
@@ -308,7 +308,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Add'
+            buttonName: 'Save'
           });
 
           _this.setState({
