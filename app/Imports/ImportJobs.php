@@ -178,6 +178,10 @@ class FirstSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets
                                 $engineers= new Engineers(["engineer_id" => $row['engineer_id'],"engineer_name" => $row['engineer'],'file_id'=>2]);
                                 $engineers->save();
                         }
+                        if($row['job_status']=='On Site'){
+                            $row['job_status'] ='Completed';
+                        }
+                        
                             return new Utilita_job([
                                         "sheets_id" =>request()->sheets_id,
                                         "month"=> $month,
