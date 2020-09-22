@@ -65,7 +65,7 @@ let result = res.data.complate;
             text: 'Install Numbers'
           },
           subtitle: {
-            text: 'Complated',
+            text: 'Completed',
             align: 'left'
           },
           xaxis: {
@@ -201,7 +201,7 @@ let result = res.data.complate;
              text: 'Install Numbers'
            },
            subtitle: {
-             text: 'Complated',
+             text: 'Completed',
              align: 'left'
            },
            xaxis: {
@@ -529,7 +529,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
       }
       else if(reportType==3)
       {
-        this.setState({title:'Vehical Mileage'});
+        this.setState({title:'Vehicle Mileage'});
         var driver_name = [];
         var total_miles = [];
         var max_speed = [];

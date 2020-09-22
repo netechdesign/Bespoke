@@ -34,7 +34,7 @@ class SupplierController extends Controller
                             \DB::raw('(CASE 
                                 WHEN file_id = "1" THEN "Morrison Data services" 
                                 WHEN file_id = "2" THEN "Utilita" 
-                                WHEN file_id = "3" THEN "Vehical Mileage"
+                                WHEN file_id = "3" THEN "Vehicle Mileage"
                                 ELSE "N.A" 
                                 END) AS file_type')
                     )

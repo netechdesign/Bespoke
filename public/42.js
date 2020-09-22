@@ -107,7 +107,7 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
         name: 'Utilita'
       }, {
         id: 3,
-        name: 'Vehical Mileage'
+        name: 'Vehicle Mileage'
       }],
       duplicateformSubmitting: true,
       duplicatebuttonName: 'Add',
@@ -481,7 +481,7 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
         value: "2"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Radio"].RadioItem, {
         id: "radio6",
-        label: "Vehical Mileage",
+        label: "Vehicle Mileage",
         value: "3"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {

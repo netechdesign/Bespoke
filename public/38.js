@@ -216,7 +216,7 @@ var Suppliers = [{
   label: 'Utilita'
 }, {
   value: '3',
-  label: 'Vehical Mileage'
+  label: 'Vehicle Mileage'
 }];
 
 var SupplierList = /*#__PURE__*/function (_React$Component) {

@@ -167,7 +167,7 @@ function handleChange(){
   export const Suppliers = [
     { value: '1', label: 'Morrison Data services'},
     { value: '2', label: 'Utilita'},
-    { value: '3', label:'Vehical Mileage'}
+    { value: '3', label:'Vehicle Mileage'}
   
 ];
 

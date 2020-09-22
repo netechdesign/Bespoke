@@ -28,12 +28,12 @@ class Data_import extends React.Component {
         selectedFile: null,
         file_id:'',
         file_name:'',
-        file_type:[{id:1,name:'Morrison Data services'},{id:2,name:'Utilita'},{id:3,name:'Vehical Mileage'}],
+        file_type:[{id:1,name:'Morrison Data services'},{id:2,name:'Utilita'},{id:3,name:'Vehicle Mileage'}],
         duplicateformSubmitting: true,
         duplicatebuttonName:'Add',
         duplicate_data:[{visible:'none'}],
         progress:0,
-        Daily_Performance:false,
+        Daily_Performance:false, 
         Daily_PerformanceHide:'none'
     };
     componentDidMount() {
@@ -295,7 +295,7 @@ class Data_import extends React.Component {
                                                     onChange={this.handleChange}>
                                                     <Radio.RadioItem id="radio4" label="Morrison Data services" value="1" />
                                                     <Radio.RadioItem id="radio5" label="Utilita" value="2" />
-                                                    <Radio.RadioItem id="radio6" label="Vehical Mileage" value="3" />
+                                                    <Radio.RadioItem id="radio6" label="Vehicle Mileage" value="3" />
                                                 </Radio.RadioGroup>
                                             </div>
                                             <div style={{'display':this.state.Daily_PerformanceHide}}>

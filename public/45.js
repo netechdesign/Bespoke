@@ -161,7 +161,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               text: 'Install Numbers'
             },
             subtitle: {
-              text: 'Complated',
+              text: 'Completed',
               align: 'left'
             },
             xaxis: {
@@ -295,7 +295,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
               text: 'Install Numbers'
             },
             subtitle: {
-              text: 'Complated',
+              text: 'Completed',
               align: 'left'
             },
             xaxis: {
@@ -591,7 +591,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
         });
       } else if (reportType == 3) {
         this.setState({
-          title: 'Vehical Mileage'
+          title: 'Vehicle Mileage'
         });
         var driver_name = [];
         var total_miles = [];
