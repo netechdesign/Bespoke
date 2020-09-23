@@ -238,6 +238,7 @@ let result = res.data.complate;
                       listed+='<td>'+vl.schedule_date+'</td>';
                       listed+='<td>'+vl.schedule_start_time+'</td>';
                       listed+='<td>'+vl.schedule_end_time+'</td>';
+                      listed+='<td>'+vl.on_site_time+'</td>';
                       listed+='<td>'+vl.job_type+'</td>';
                       listed+='<td>'+vl.post_code+'</td>';
                       listed+='<td>'+vl.region+'</td>';
@@ -253,6 +254,7 @@ let result = res.data.complate;
                 "<th>Schedule Date</th>" +
                 "<th>Start Time</th>" +
                 "<th>End Time</th>" +
+                "<th>On Site Time</th>" +
                 "<th>Job Type</th>" +
                 "<th>Post code</th>" +
                 "<th>Region</th>" +
@@ -352,6 +354,7 @@ let result = res.data.complate;
                      listed+='<td>'+vl.schedule_date+'</td>';
                      listed+='<td>'+vl.schedule_start_time+'</td>';
                      listed+='<td>'+vl.schedule_end_time+'</td>';
+                     listed+='<td>'+vl.on_site_time+'</td>';
                      listed+='<td>'+vl.job_type+'</td>';
                      listed+='<td>'+vl.post_code+'</td>';
                      listed+='<td>'+vl.region+'</td>';
@@ -367,6 +370,7 @@ let result = res.data.complate;
                "<th>Schedule Date</th>" +
                "<th>Start Time</th>" +
                "<th>End Time</th>" +
+               "<th>On Site Time</th>" +
                "<th>Job Type</th>" +
                "<th>Post Code</th>" +
                "<th>Region</th>" +
@@ -469,13 +473,14 @@ let AbortedReasonData = res.data.AbortedReasonData;
                        listed+='<td>'+vl.schedule_date+'</td>';
                        listed+='<td>'+vl.schedule_start_time+'</td>';
                        listed+='<td>'+vl.schedule_end_time+'</td>';
+                       listed+='<td>'+vl.on_site_time+'</td>';
                        listed+='<td>'+vl.job_type+'</td>';
                        listed+='<td>'+vl.post_code+'</td>';
                        listed+='<td>'+vl.region+'</td>';
                        listed+='</tr>';
                      }
                  })
-               }
+               } 
                return ('<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
                  '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
                  "<thead><tr>" +
@@ -484,6 +489,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
                  "<th>Schedule Date</th>" +
                  "<th>Start Time</th>" +
                  "<th>End Time</th>" +
+                 "<th>On Site Time</th>" +
                  "<th>Job Type</th>" +
                  "<th>Post Code</th>" +
                  "<th>Region</th>" +
