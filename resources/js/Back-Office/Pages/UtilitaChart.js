@@ -178,7 +178,7 @@ let result = res.data.complate;
           document.getElementById("requestLoder").innerHTML = '';
  let result = res.data.complate;
  let CompletedjobData = res.data.CompletedjobData;
- 
+ let totalEngineerMiles = res.data.totalEngineerMiles;
  //series
            var options = {
              series: result['series'],
@@ -229,8 +229,13 @@ let result = res.data.complate;
                 lineName ='PM';
               }
               let listed='';
+              let total_Miles ='traveller record not found';
+              if(totalEngineerMiles[w.globals.labels[dataPointIndex]]){
+                total_Miles = 'Travelled '+totalEngineerMiles[w.globals.labels[dataPointIndex]]+' miles';
+              }
               if(CompletedjobData[w.globals.labels[dataPointIndex]]){
                 CompletedjobData[w.globals.labels[dataPointIndex]].map((vl,inx)=>{
+                 
                     if(vl.appointment_time==lineName){
                       listed+='<tr>';
                       listed+='<td>'+vl.customer_id+'</td>';
@@ -246,7 +251,8 @@ let result = res.data.complate;
                     }
                 })
               }
-              return ('<h6 style="margin:10px;">'+w.globals.labels[dataPointIndex]+'</h6>'+
+              return ('<div><h6 style="margin:10px;float:left">'+w.globals.labels[dataPointIndex]+'</h6>'+
+                '<b style="float:right;margin: 6px 60px;">'+total_Miles+'</b></div>'+
                 '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' +
                 "<thead><tr>" +
                 "<th>Customer Id</th>"+//  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +

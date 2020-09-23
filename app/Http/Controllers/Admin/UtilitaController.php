@@ -11,6 +11,7 @@ use App\Imports\ImportJobs;
 use DB;
 use App\Models\utilita_job;
 use App\Models\Morrison_jobs;
+use App\Models\Vehicle_mileas;
 use App\Http\Controllers\Admin\Utilita\Monday;
 use App\Http\Controllers\Admin\Utilita\Tuesday;
 use App\Http\Controllers\Admin\Utilita\Wednesday;
@@ -280,11 +281,19 @@ class UtilitaController extends Controller
             $CompletedjobData=[];
             $AbortedjobData=[];
             $AbortedReasonData=[];
-            
+            $Miles=[];
+            $totalEngineerMiles=[];
             foreach($result as $row){
                 if($Request->file_id=='1'){
                     $row->appointment_time = date('A', strtotime($row->schedule_start_time));
                
+                 }
+                 if(!in_array($row->engineer,$Miles)){
+                 $Milesresult= Vehicle_mileas::select(DB::raw('sum(miles) as total_Miles'))->where('driver_name','=',$row->engineer)->whereDate('drive_date', '>=', $start_date)->whereDate('drive_date', '<=', $today_date)->groupBy('driver_name')->first();
+                   if($Milesresult){
+                    $totalEngineerMiles[$row->engineer] =round($Milesresult->total_Miles,3);
+                    }
+                  array_push($Miles,$row->engineer);
                  }
                 if($row->job_status=='Completed'){
                     if(!in_array($row->engineer,$categories)){
@@ -494,7 +503,7 @@ class UtilitaController extends Controller
         
          
 
-            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum,'total_description'=>$descriptioninstallnum,'CompletedjobData'=>$CompletedjobData,'AbortedjobData'=>$AbortedjobData,'AbortedReasonData'=>$AbortedReasonData));  
+            return response()->json(array('success' => true,'complate'=>$installnum,'aborted'=>$abortedinstallnum,'total_description'=>$descriptioninstallnum,'CompletedjobData'=>$CompletedjobData,'AbortedjobData'=>$AbortedjobData,'AbortedReasonData'=>$AbortedReasonData,'totalEngineerMiles'=>$totalEngineerMiles));  
           }
          
            return response()->json(array('success' => false,'message'=> 'data not found'));  

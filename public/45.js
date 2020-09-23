@@ -272,7 +272,8 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           // let data = JSON.parse(res.data); 
           document.getElementById("requestLoder").innerHTML = '';
           var result = res.data.complate;
-          var CompletedjobData = res.data.CompletedjobData; //series
+          var CompletedjobData = res.data.CompletedjobData;
+          var totalEngineerMiles = res.data.totalEngineerMiles; //series
 
           var options = {
             series: result['series'],
@@ -329,6 +330,11 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                 }
 
                 var listed = '';
+                var total_Miles = 'traveller record not found';
+
+                if (totalEngineerMiles[w.globals.labels[dataPointIndex]]) {
+                  total_Miles = 'Travelled ' + totalEngineerMiles[w.globals.labels[dataPointIndex]] + ' miles';
+                }
 
                 if (CompletedjobData[w.globals.labels[dataPointIndex]]) {
                   CompletedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
@@ -348,7 +354,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
                   });
                 }
 
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
+                return '<div><h6 style="margin:10px;float:left">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="float:right;margin: 6px 60px;">' + total_Miles + '</b></div>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
                 "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
               },
               fixed: {
