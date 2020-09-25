@@ -9,6 +9,7 @@ import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
 import { extend } from 'jquery';
 import ApexCharts from 'apexcharts';
+import domToPdf from 'dom-to-pdf';
 
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 const baseurl= window.location.origin;
@@ -19,6 +20,19 @@ class UtilitaChart extends React.Component {
     constructor(props){
         super(props);
         this.state={start_date:'',end_date:'',title:''}
+    }
+    generatePdf = () => {
+
+      const element = document.getElementById('pdf-container');
+  
+      const options = {
+        filename: this.state.title+'-'+this.state.start_date+".pdf",
+      };
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
+      return domToPdf(element, options, () => {
+        // callback function
+        document.getElementById("requestLoder").innerHTML = '';
+      });
     }
     componentDidMount() {
         var items  = [];
@@ -791,10 +805,12 @@ let AbortedReasonData = res.data.AbortedReasonData;
                                        <Card.Title as="h5">{this.state.title}</Card.Title>
                                        <b> From {this.state.start_date} To {this.state.end_date}</b>   
                                         <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
+                                        <Button className="btn-sm btn-light" style={{'float':'right'}} onClick={this.generatePdf} ><i  class="feather icon-download"></i>Download all</Button>
                                     </Card.Header>
                                     <Card.Body>
-                                       
+                                    
                                         <div id="requestLoder" style={{'textAlign': 'center'}}></div>
+                                        <div id='pdf-container'>
                                         <div id='abortedBar'></div>
                                         <div id='descriptionBar'></div>
                                         
@@ -802,6 +818,7 @@ let AbortedReasonData = res.data.AbortedReasonData;
                                         <div id='vahicalMileage'></div>
                                         
                                         <div id='vahicalMax_speed'></div>
+                                        </div>
                                         </Card.Body>
                             </Card>
                            </Col>
