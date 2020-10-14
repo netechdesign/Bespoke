@@ -8,8 +8,13 @@ import DEMO from "../../store/constant";
 import avatar1 from '../../assets/images/user/avatar-1.jpg';
 import avatar2 from '../../assets/images/user/avatar-2.jpg';
 import avatar3 from '../../assets/images/user/avatar-3.jpg';
-import AmChartStatistics6 from "../../Demo/Widget/Chart/AmChartStatistics6";
+
 import axios from 'axios'
+import ApexCharts from 'apexcharts';
+
+import UtilitaAborts from './Dashboard/UtilitaAborts'
+import UtilitaInstallsFuels from './Dashboard/UtilitaInstallsFuels'
+
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 const baseurl= window.location.origin;
 
@@ -75,22 +80,36 @@ class Dashboard extends React.Component {
                     statuslist={result}
                     />
                     )}
-                  <Col md={6} xl={8}></Col>
+                 
                   </Row>
-                {/*  <Row>
-                  <Col md={6} xl={8}>
-                        <Card>
-                            <Card.Header>
-                                <Card.Title as='h5'>Statistics</Card.Title>
-                            </Card.Header>
-                            <Card.Body>
-                                <AmChartStatistics6 height='450px'/>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    
+                  <Row>
+                      <Col md={12} xl={12}>
+                             <Card>
+                                <Card.Header>
+                                    <Card.Title as="h5">Utilita</Card.Title>
+                                </Card.Header>
+                                <Card.Body>
+                                    <Row>
+                                        <Col md={6} xl={6}>
+                                            <Card>
+                                                <Card.Body>
+                                                    <UtilitaInstallsFuels height='450px'/>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                        <Col md={6} xl={6}>
+                                            <Card>
+                                                <Card.Body>
+                                                    <UtilitaAborts height='450px'/>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                       </Col>
                </Row>
-                */}
+                
 
             </Aux>
         );

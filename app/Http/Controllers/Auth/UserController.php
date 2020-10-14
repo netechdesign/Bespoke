@@ -11,7 +11,7 @@ use JWTAuth;
 use JWTAuthException;
 class UserController extends Controller
 {
-
+/*
     public function index(Request $request)
     {
         //
@@ -142,6 +142,7 @@ class UserController extends Controller
         
         return response()->json($response, 201);
     }
+    */
     public function logout( Request $request ) {
 
         $token = $request->header( 'Authorization' );

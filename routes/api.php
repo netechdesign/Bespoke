@@ -44,7 +44,6 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::post('mds/duplicatestore', 'MdsController@duplicatestore')->name('duplicate add');
         Route::post('utilita/view', 'UtilitaController@view');
         Route::post('utilita/DailyPerformance', 'UtilitaController@DailyPerformance')->name('Daily Performance add');
-        Route::post('jobstatus', 'DashboardController@jobStatus');
         
         Route::resource('role', 'RoleController');
         Route::get('roledropdown', 'RoleController@roledropdown');
@@ -115,7 +114,13 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
                             return response()->json($response, 201);
                         })->name('permission');
                
-    });
+   /** dashboard route */
+   Route::post('jobstatus', 'DashboardController@jobStatus');
+   Route::post('utilita', 'DashboardController@utilita');
+   
+  
+                    });
+  
 
     Route::get('users/logout', 'Auth\UserController@logout');
     

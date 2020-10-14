@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[26],{
 
-/***/ "./resources/js/Demo/Dashboard/Crypto.js":
-/*!***********************************************!*\
-  !*** ./resources/js/Demo/Dashboard/Crypto.js ***!
-  \***********************************************/
+/***/ "./resources/js/Demo/Dashboard/Crm.js":
+/*!********************************************!*\
+  !*** ./resources/js/Demo/Dashboard/Crm.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12,11 +12,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
-/* harmony import */ var _Widget_Chart_AmChartStatistics1__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Widget/Chart/AmChartStatistics1 */ "./resources/js/Demo/Widget/Chart/AmChartStatistics1.js");
-/* harmony import */ var _Widget_Chart_AmChartWorldUser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Widget/Chart/AmChartWorldUser */ "./resources/js/Demo/Widget/Chart/AmChartWorldUser.js");
-/* harmony import */ var _Widget_Chart_AmChartStatistics8__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Widget/Chart/AmChartStatistics8 */ "./resources/js/Demo/Widget/Chart/AmChartStatistics8.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-flot */ "./node_modules/react-flot/index.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_flot__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _Widget_Chart_FlotChartTransactions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Widget/Chart/FlotChartTransactions */ "./resources/js/Demo/Widget/Chart/FlotChartTransactions.js");
+/* harmony import */ var _Widget_Chart_AmChartNewsStatistics__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Widget/Chart/AmChartNewsStatistics */ "./resources/js/Demo/Widget/Chart/AmChartNewsStatistics.js");
+/* harmony import */ var _Widget_Chart_AmChartPhoneCalls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Widget/Chart/AmChartPhoneCalls */ "./resources/js/Demo/Widget/Chart/AmChartPhoneCalls.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/images/user/avatar-1.jpg */ "./resources/js/assets/images/user/avatar-1.jpg");
+/* harmony import */ var _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../assets/images/user/avatar-2.jpg */ "./resources/js/assets/images/user/avatar-2.jpg");
+/* harmony import */ var _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../assets/images/user/avatar-3.jpg */ "./resources/js/assets/images/user/avatar-3.jpg");
+/* harmony import */ var _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_10__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47,157 +55,852 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Crypto = /*#__PURE__*/function (_React$Component) {
-  _inherits(Crypto, _React$Component);
 
-  var _super = _createSuper(Crypto);
 
-  function Crypto() {
-    _classCallCheck(this, Crypto);
+
+var optionsAppSale = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 40,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataAppSale = [{
+  data: [[0, 10], [2, 27], [4, 10], [6, 10], [8, 27], [10, 20], [12, 20]],
+  color: "#1DE3BE",
+  lines: {
+    show: true,
+    fill: false,
+    lineWidth: 3
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+var optionsAppSale1 = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 40,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataAppSale1 = [{
+  data: [[0, 27], [2, 10], [4, 20], [6, 15], [8, 27], [10, 20], [12, 20]],
+  color: "#FF4962",
+  lines: {
+    show: true,
+    fill: false,
+    lineWidth: 3
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+var optionsAppSale2 = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 40,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataAppSale2 = [{
+  data: [[0, 10], [2, 27], [4, 18], [6, 25], [8, 15], [10, 25], [12, 20]],
+  color: "#8C9CD4",
+  lines: {
+    show: true,
+    fill: false,
+    lineWidth: 3
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
+
+var Crm = /*#__PURE__*/function (_React$Component) {
+  _inherits(Crm, _React$Component);
+
+  var _super = _createSuper(Crm);
+
+  function Crm() {
+    _classCallCheck(this, Crm);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(Crypto, [{
+  _createClass(Crm, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "theme-bg bitcoin-wallet"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "text-white mb-2"
-      }, "Bitcoin Wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "text-white mb-3 f-w-300"
-      }, "$9,302"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-white d-block"
-      }, "Ratings by Market Capitalization"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-btc f-70 text-white"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "theme-bg2 bitcoin-wallet"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "text-white mb-2"
-      }, "Bitcoin Wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "text-white mb-3 f-w-300"
-      }, "$8,101"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-white d-block"
-      }, "Ratings by Market Capitalization"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-dollar f-70 text-white"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 12,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "bg-c-blue bitcoin-wallet"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "text-white mb-2"
-      }, "Bitcoin Wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "text-white mb-3 f-w-300"
-      }, "$7,501"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-white d-block"
-      }, "Ratings by Market Capitalization"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-gbp f-70 text-white"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xl: 8
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5"
-      }, "Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartStatistics1__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        height: "330px"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "note-bar"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5"
-      }, "Notifications")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "p-0"
+      var tabContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media friendlist-box align-items-center justify-content-center m-b-20"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "m-r-10 photo-table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_3__["default"].BLANK_LINK,
-        className: "media friendlist-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mr-3 photo-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bell f-30"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8___default.a,
+        alt: "activity-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media-body"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New order received"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-12 float-right text-muted"
-      }, "12.56"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted m-0"
-      }, "2 unread notification"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_3__["default"].BLANK_LINK,
-        className: "media friendlist-box border-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mr-3 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "m-0 d-inline"
+      }, "Silje Larsen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right d-flex  align-items-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bell f-30"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "media-body"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New user register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-12 float-right text-muted"
-      }, "12.36"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted m-0"
-      }, "xx messages"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_3__["default"].BLANK_LINK,
-        className: "media friendlist-box border-top"
+        className: "fa fa-caret-up f-22 m-r-10 text-c-green"
+      }), "3784"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media friendlist-box align-items-center justify-content-center m-b-20"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mr-3 photo-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bell f-30"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "m-r-10 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
+        alt: "activity-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media-body"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New order register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-12 float-right text-muted"
-      }, "11.45"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted m-0"
-      }, "2 read notification"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "media friendlist-box border-top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "m-0 d-inline"
+      }, "Storm Hanse"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right d-flex  align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-down f-22 m-r-10 text-c-red"
+      }), "2739"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media friendlist-box align-items-center justify-content-center m-b-20"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mr-3 photo-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bell f-30"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "m-r-10 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8___default.a,
+        alt: "activity-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media-body"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "New order prepend"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-12 float-right text-muted"
-      }, "9.39"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted m-0"
-      }, "xx messages")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xl: 8,
-        md: 6
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5"
-      }, "Users From United States")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartWorldUser__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        height: "350px"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "m-0 d-inline"
+      }, "Frida Thomse"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right d-flex  align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-down f-22 m-r-10 text-c-red"
+      }), "1032"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media friendlist-box align-items-center justify-content-center m-b-20"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "m-r-10 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_9___default.a,
+        alt: "activity-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "m-0 d-inline"
+      }, "Silje Larsen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right d-flex  align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-up f-22 m-r-10 text-c-green"
+      }), "8750"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media friendlist-box align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "m-r-10 photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
+        alt: "activity-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "m-0 d-inline"
+      }, "Storm Hanse"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right d-flex  align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-down f-22 m-r-10 text-c-red"
+      }), "8750"))));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         xl: 4,
         md: 6
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "f-w-300"
-      }, "$894.39")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+      }, "Transactions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, {
+        className: "mt-2"
+      }, "Jun 23 - Jul 23")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 mb-0 float-left"
+      }, "$59,48")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-auto"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_FlotChartTransactions__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        height: "80px"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Project Rating")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "f-w-300 d-flex align-items-center float-left"
+      }, "4.3 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-star f-12 m-l-10 text-c-yellow"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "f-w-300 d-flex  align-items-center float-right"
+      }, "0.4 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-up text-c-green f-24 m-l-10"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "News Statistics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "pl-0 pr-0 pb-2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartNewsStatistics__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        height: "225px"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "border-top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "theme-bg d-block rounded-circle mx-auto mb-2",
+        style: {
+          width: '10px',
+          height: '10px'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-2"
+      }, "53"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mt-2 mb-0"
+      }, "Sport")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "theme-bg2 d-block rounded-circle mx-auto mb-2",
+        style: {
+          width: '10px',
+          height: '10px'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-2"
+      }, "13"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mt-2 mb-0"
+      }, "Music")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bg-c-blue d-block rounded-circle mx-auto mb-2",
+        style: {
+          width: '10px',
+          height: '10px'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-2"
+      }, "30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mt-2 mb-0"
+      }, "Travel")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bg-c-red d-block rounded-circle mx-auto mb-2",
+        style: {
+          width: '10px',
+          height: '10px'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-2"
+      }, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mt-2 mb-0"
+      }, "News")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Phone Calls")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
         className: "p-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartStatistics8__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        height: "310px"
-      }))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Widget_Chart_AmChartPhoneCalls__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        height: "380px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 8,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "Recent-Users"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Recent Users")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
+        className: "px-0 py-1"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        responsive: true,
+        hover: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "unread"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8___default.a,
+        alt: "activity-user"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-1"
+      }, "Isabella Christensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "m-0"
+      }, "Lorem Ipsum is simply dummy text of\u2026")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-circle text-c-green f-10 m-r-15"
+      }), "11 MAY 12:56")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg2 text-white f-12"
+      }, "Reject"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg text-white f-12"
+      }, "Approve"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "unread"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_9___default.a,
+        alt: "activity-user"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-1"
+      }, "Mathilde Andersen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "m-0"
+      }, "Lorem Ipsum is simply dummy text of\u2026")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-circle text-c-red f-10 m-r-15"
+      }), "11 MAY 10:35")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg2 text-white f-12"
+      }, "Reject"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg text-white f-12"
+      }, "Approve"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "unread"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
+        alt: "activity-user"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-1"
+      }, "Karla Sorensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "m-0"
+      }, "Lorem Ipsum is simply dummy text of\u2026")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-circle text-c-green f-10 m-r-15"
+      }), "9 MAY 17:38")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg2 text-white f-12"
+      }, "Reject"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg text-white f-12"
+      }, "Approve"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "unread"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        style: {
+          width: '40px'
+        },
+        src: _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_8___default.a,
+        alt: "activity-user"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-1"
+      }, "Ida Jorgensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "m-0"
+      }, "Lorem Ipsum is simply dummy text of\u2026")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted f-w-300"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-circle text-c-red f-10 m-r-15"
+      }), "19 MAY 12:56")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg2 text-white f-12"
+      }, "Reject"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_7__["default"].BLANK_LINK,
+        className: "label theme-bg text-white f-12"
+      }, "Approve")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4,
+        md: 6,
+        className: "m-b-30"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tabs"], {
+        defaultActiveKey: "today",
+        id: "uncontrolled-tab-example"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"], {
+        eventKey: "today",
+        title: "Today"
+      }, tabContent), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"], {
+        eventKey: "week",
+        title: "This Week"
+      }, tabContent), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"], {
+        eventKey: "all",
+        title: "All"
+      }, tabContent))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 12
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "theme-bg earning-date"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+        className: "borderless"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5",
+        className: "text-white"
+      }, "Page View")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bd-example bd-example-tabs"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Container, {
+        id: "left-tabs-example",
+        defaultActiveKey: "mon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "mon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "9,456", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-up"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "tue"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "8,568", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-down"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "wed"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "3,756", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-up"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "thu"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "9,635", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-up"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "fri"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "23,486", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-down"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "sat"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "86,789", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-up"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "sun"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-white mb-3 f-w-300"
+      }, "93,628", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-down"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-white mb-4 d-block"
+      }, "TOTAL VIEWS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
+        variant: "pills",
+        className: "align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "mon"
+      }, "Mon")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "tue"
+      }, "Tue")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "wed"
+      }, "Wed")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "thu"
+      }, "Thu")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "fri"
+      }, "Fri")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "sat"
+      }, "Sat")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "sun"
+      }, "Sun")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 12
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mb-3 f-w-300"
+      }, "$894.39"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-muted"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "f-14 mr-1"
+      }, "Deposits:"), "$10,000"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mt-3 text-c-blue mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-down text-c-blue f-22"
+      }), " 5.2% ($456)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary",
+        className: "shadow-2 text-uppercase btn-block",
+        style: {
+          maxWidth: '150px',
+          margin: '0 auto'
+        }
+      }, "add funds")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "statistial-visit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Statistical"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, {
+        className: "text-muted d-block"
+      }, "Status : live")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300"
+      }, "4,445,701"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "d-block"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-map-marker m-r-10"
+      }), "256 Countries, 5667 Cites "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media mt-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, " Our Overseas visits"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-theme",
+        role: "progressbar",
+        style: {
+          width: '60%',
+          height: '6px'
+        },
+        "aria-valuenow": "60",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label theme-bg text-white f-14 f-w-400 float-right"
+      }, "14%"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media mt-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, " Our Overseas visits"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-theme2",
+        role: "progressbar",
+        style: {
+          width: '60%',
+          height: '6px'
+        },
+        "aria-valuenow": "60",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label theme-bg2 text-white f-14 f-w-400 float-right"
+      }, "14%"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media mt-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, " Our Overseas visits"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-blue",
+        role: "progressbar",
+        style: {
+          width: '60%',
+          height: '6px'
+        },
+        "aria-valuenow": "60",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label bg-c-blue text-white f-14 f-w-400 float-right"
+      }, "14%")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 12,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Markets")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, "Dash/USD", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-c-green ml-3"
+      }, "2.56%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "1,0452 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "ml-2"
+      }, " USD"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        id: "app-sale",
+        options: optionsAppSale,
+        data: dataAppSale,
+        width: "100px",
+        height: "40px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media mt-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, "ETH/USD", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-c-red ml-3"
+      }, "-0.87%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "0,0157", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "ml-2"
+      }, " USD"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        id: "app-sale-1",
+        options: optionsAppSale1,
+        data: dataAppSale1,
+        width: "100px",
+        height: "40px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media mt-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, "ZEC/USD", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-c-purple ml-3"
+      }, "1.56%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "2,0764", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "ml-2"
+      }, " USD"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        id: "app-sale-2",
+        options: optionsAppSale2,
+        data: dataAppSale2,
+        width: "100px",
+        height: "40px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media mt-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted"
+      }, "BTC/USD", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-c-green ml-3"
+      }, "2.56%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "1,0452", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "ml-2"
+      }, " USD"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        id: "app-sale-3",
+        options: optionsAppSale,
+        data: dataAppSale,
+        width: "100px",
+        height: "40px"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xl: 12,
+        md: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-center"
+      }, "Total Leads"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-auto"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 m-t-20"
+      }, "$59,48", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-up text-c-green f-26 m-l-10"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "EARNINGS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-pie-chart f-30 text-c-purple"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "leads-progress mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-3 text-center"
+      }, "Organic ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "ml-4"
+      }, "Purchesed")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-theme2",
+        role: "progressbar",
+        style: {
+          width: '30%',
+          height: '10px'
+        },
+        "aria-valuenow": "30",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-theme",
+        role: "progressbar",
+        style: {
+          width: '36%',
+          height: '10px'
+        },
+        "aria-valuenow": "35",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted f-w-300 mt-4"
+      }, "Organic Leads ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, "340")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted f-w-300 mt-4"
+      }, "Purchesed Leads ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, "150")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted f-w-300 mt-4"
+      }, "Blocked Leads ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, "120")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-muted f-w-300 mt-4 mb-0"
+      }, "Buy Leads ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "float-right"
+      }, "245"))))))))));
     }
   }]);
 
-  return Crypto;
+  return Crm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Crypto);
+/* harmony default export */ __webpack_exports__["default"] = (Crm);
 
 /***/ }),
 
-/***/ "./resources/js/Demo/Widget/Chart/AmChartStatistics1.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/Demo/Widget/Chart/AmChartStatistics1.js ***!
-  \**************************************************************/
+/***/ "./resources/js/Demo/Widget/Chart/AmChartNewsStatistics.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartNewsStatistics.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -241,113 +944,67 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var AmChartStatistics1 = /*#__PURE__*/function (_Component) {
-  _inherits(AmChartStatistics1, _Component);
+var AmChartNewsStatistics = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartNewsStatistics, _Component);
 
-  var _super = _createSuper(AmChartStatistics1);
+  var _super = _createSuper(AmChartNewsStatistics);
 
-  function AmChartStatistics1() {
-    _classCallCheck(this, AmChartStatistics1);
+  function AmChartNewsStatistics() {
+    _classCallCheck(this, AmChartNewsStatistics);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(AmChartStatistics1, [{
+  _createClass(AmChartNewsStatistics, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("line-area2", {
+      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("bar-chart", {
         "type": "serial",
         "theme": "light",
-        "marginTop": 10,
-        "marginRight": 0,
         "dataProvider": [{
-          "year": "Jan",
-          "value": 5,
-          "value2": 80
+          "game": "Sport",
+          "visits": 53,
+          "color": ["#1de9b6", "#1dc4e9"]
         }, {
-          "year": "Feb",
-          "value": 30,
-          "value2": 95
+          "game": "Music",
+          "visits": 13,
+          "color": ["#a389d4", "#899ed4"]
         }, {
-          "year": "Mar",
-          "value": 25,
-          "value2": 87
+          "game": "Travel",
+          "visits": 30,
+          "color": ["#04a9f5", "#049df5"]
         }, {
-          "year": "Apr",
-          "value": 55,
-          "value2": 155
-        }, {
-          "year": "May",
-          "value": 45,
-          "value2": 140
-        }, {
-          "year": "Jun",
-          "value": 65,
-          "value2": 147
-        }, {
-          "year": "Jul",
-          "value": 60,
-          "value2": 130
-        }, {
-          "year": "Aug",
-          "value": 105,
-          "value2": 180
-        }, {
-          "year": "Sep",
-          "value": 80,
-          "value2": 160
-        }, {
-          "year": "Oct",
-          "value": 110,
-          "value2": 175
-        }, {
-          "year": "Nov",
-          "value": 120,
-          "value2": 165
-        }, {
-          "year": "Dec",
-          "value": 150,
-          "value2": 200
+          "game": "News",
+          "visits": 4,
+          "color": ["#f44236", "#f48f36"]
         }],
         "valueAxes": [{
+          "gridAlpha": 0,
           "axisAlpha": 0,
-          "position": "left"
+          "lineAlpha": 0,
+          "fontSize": 0
         }],
+        "startDuration": 1,
         "graphs": [{
-          "id": "g1",
-          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-          "bullet": "round",
-          "lineColor": "#1de9b6",
-          "lineThickness": 3,
-          "negativeLineColor": "#1de9b6",
-          "valueField": "value"
-        }, {
-          "id": "g2",
-          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-          "bullet": "round",
-          "lineColor": "#10adf5",
-          "lineThickness": 3,
-          "negativeLineColor": "#10adf5",
-          "valueField": "value2"
+          "balloonText": "<b>[[category]]: [[value]]</b>",
+          "fillColorsField": "color",
+          "fillAlphas": 0.9,
+          "lineAlpha": 0,
+          "columnWidth": 0.2,
+          "type": "column",
+          "valueField": "visits"
         }],
         "chartCursor": {
+          "categoryBalloonEnabled": false,
           "cursorAlpha": 0,
-          "valueLineEnabled": true,
-          "valueLineBalloonEnabled": true,
-          "valueLineAlpha": 0.3,
-          "fullWidth": true
+          "zoomable": false
         },
-        "categoryField": "year",
+        "categoryField": "game",
         "categoryAxis": {
-          "minorGridAlpha": 0,
-          "minorGridEnabled": true,
+          "gridPosition": "start",
           "gridAlpha": 0,
           "axisAlpha": 0,
           "lineAlpha": 0
-        },
-        "legend": {
-          "useGraphSettings": true,
-          "position": "top"
         }
       });
     }
@@ -355,8 +1012,8 @@ var AmChartStatistics1 = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "line-area2",
-        className: "lineAreaDashboard",
+        id: "bar-chart",
+        className: "lineChart ChartShadow",
         style: {
           width: '100%',
           height: this.props.height
@@ -365,17 +1022,17 @@ var AmChartStatistics1 = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return AmChartStatistics1;
+  return AmChartNewsStatistics;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AmChartStatistics1);
+/* harmony default export */ __webpack_exports__["default"] = (AmChartNewsStatistics);
 
 /***/ }),
 
-/***/ "./resources/js/Demo/Widget/Chart/AmChartStatistics8.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/Demo/Widget/Chart/AmChartStatistics8.js ***!
-  \**************************************************************/
+/***/ "./resources/js/Demo/Widget/Chart/AmChartPhoneCalls.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartPhoneCalls.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -421,15 +1078,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
-  _inherits(AmChartStatistics8, _Component);
+var AmChartPhoneCalls = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartPhoneCalls, _Component);
 
-  var _super = _createSuper(AmChartStatistics8);
+  var _super = _createSuper(AmChartPhoneCalls);
 
-  function AmChartStatistics8() {
+  function AmChartPhoneCalls() {
     var _this;
 
-    _classCallCheck(this, AmChartStatistics8);
+    _classCallCheck(this, AmChartPhoneCalls);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -439,44 +1096,35 @@ var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       dataum: [{
-        "year": "1999",
-        "value": 30
-      }, {
         "year": "2000",
         "value": 55
       }, {
         "year": "2001",
-        "value": 80
+        "value": 45
       }, {
         "year": "2002",
         "value": 60
       }, {
         "year": "2003",
-        "value": 70
+        "value": 80
       }, {
         "year": "2004",
         "value": 70
       }, {
         "year": "2005",
-        "value": 110
-      }, {
-        "year": "2006",
-        "value": 90
-      }, {
-        "year": "2007",
-        "value": 130
+        "value": 55
       }]
     });
 
     return _this;
   }
 
-  _createClass(AmChartStatistics8, [{
+  _createClass(AmChartPhoneCalls, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      var chartm = _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("earnings-chart", {
+      var chartm = _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("call-chart", {
         "type": "serial",
         "addClassNames": true,
         "defs": {
@@ -521,10 +1169,8 @@ var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
         },
         "fontSize": 15,
         "dataProvider": this.state.dataum,
-        "dataDateFormat": "YYYY",
         "autoMarginOffset": 0,
-        "marginRight": -1,
-        "marginBottom": -2,
+        "marginRight": 0,
         "categoryField": "year",
         "categoryAxis": {
           "color": '#fff',
@@ -536,50 +1182,58 @@ var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
           "parseDates": true,
           "minPeriod": "YYYY"
         },
-        "chartCursor": {
-          "valueLineEnabled": false,
-          "valueLineBalloonEnabled": false,
-          "cursorAlpha": 0,
-          "zoomable": false,
-          "cursorColor": "#fff",
-          "categoryBalloonColor": "#88dcef",
-          "valueZoomable": false,
-          "valueLineAlpha": 0
-        },
         "valueAxes": [{
           "fontSize": 0,
           "inside": true,
           "gridAlpha": 0,
           "axisAlpha": 0,
-          "lineAlpha": 0
+          "lineAlpha": 0,
+          "minimum": 0,
+          "maximum": 100
         }],
+        "chartCursor": {
+          "valueLineEnabled": false,
+          "valueLineBalloonEnabled": false,
+          "cursorAlpha": 0,
+          "zoomable": false,
+          "valueZoomable": false,
+          "cursorColor": "#fff",
+          "categoryBalloonColor": "#95ead5",
+          "valueLineAlpha": 0
+        },
         "graphs": [{
           "id": "g1",
-          "type": "line",
+          "type": "smoothedLine",
           "valueField": "value",
-          "fillColors": ["#1dc4e9", "#A389D4"],
-          "lineColor": "#1dc4e9",
+          "fillColors": ["#1de9b6", "#1dc4e9"],
+          "lineAlpha": 0,
+          "fillAlphas": 1,
+          "showBalloon": true,
           "balloon": {
             "drop": true,
             "adjustBorderColor": false,
             "color": "#ffffff",
-            "type": "smoothedLine"
-          },
-          "lineAlpha": 1,
-          "lineThickness": 5,
-          "fillAlphas": 0.9,
-          "showBalloon": true
+            "fillAlphas": 0.2,
+            "bullet": "round",
+            "bulletBorderAlpha": 1,
+            "bulletSize": 5,
+            "hideBulletsCount": 50,
+            "lineThickness": 2,
+            "useLineColorForBulletBorder": true,
+            "valueField": "value",
+            "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
+          }
         }]
       });
       setTimeout(function () {
         chartm.zoomToIndexes(1, _this2.state.dataum.length - 2);
-      }, 400);
+      }, 1000);
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "earnings-chart",
+        id: "call-chart",
         style: {
           width: '100%',
           height: this.props.height
@@ -588,17 +1242,17 @@ var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return AmChartStatistics8;
+  return AmChartPhoneCalls;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AmChartStatistics8);
+/* harmony default export */ __webpack_exports__["default"] = (AmChartPhoneCalls);
 
 /***/ }),
 
-/***/ "./resources/js/Demo/Widget/Chart/AmChartWorldUser.js":
-/*!************************************************************!*\
-  !*** ./resources/js/Demo/Widget/Chart/AmChartWorldUser.js ***!
-  \************************************************************/
+/***/ "./resources/js/Demo/Widget/Chart/FlotChartTransactions.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/FlotChartTransactions.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -606,11 +1260,8 @@ var AmChartStatistics8 = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
-/* harmony import */ var _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/charts */ "./node_modules/@amcharts/amcharts4/charts.js");
-/* harmony import */ var _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @amcharts/amcharts4/maps */ "./node_modules/@amcharts/amcharts4/maps.js");
-/* harmony import */ var _amcharts_amcharts4_geodata_continentsLow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts4-geodata/continentsLow */ "./node_modules/@amcharts/amcharts4-geodata/continentsLow.js");
-/* harmony import */ var _amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @amcharts/amcharts4/themes/animated */ "./node_modules/@amcharts/amcharts4/themes/animated.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-flot */ "./node_modules/react-flot/index.js");
+/* harmony import */ var react_flot__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_flot__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -635,148 +1286,99 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var optionsSaleView = {
+  series: {
+    label: "",
+    curvedLines: {
+      active: true,
+      nrSplinePoints: 0
+    }
+  },
+  tooltip: {
+    show: true,
+    content: "x : %x | y : %y"
+  },
+  grid: {
+    hoverable: true,
+    borderWidth: 0,
+    labelMargin: 0,
+    axisMargin: 0,
+    minBorderMargin: 0
+  },
+  yaxis: {
+    min: 0,
+    max: 50,
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  },
+  xaxis: {
+    color: 'transparent',
+    font: {
+      size: 0
+    }
+  }
+};
+var dataSaleView = [{
+  data: [[0, 48], [1, 30], [2, 25], [3, 30], [4, 20], [5, 40], [6, 30]],
+  color: "#1dc4e9",
+  bars: {
+    show: true,
+    lineWidth: 1,
+    fill: true,
+    fillColor: {
+      colors: [{
+        opacity: 1
+      }, {
+        opacity: 1
+      }]
+    },
+    barWidth: 0.2,
+    align: 'center',
+    horizontal: false
+  },
+  points: {
+    show: false,
+    radius: 3,
+    fill: true
+  },
+  curvedLines: {
+    apply: false
+  }
+}];
 
+var FlotChartTransactions = /*#__PURE__*/function (_Component) {
+  _inherits(FlotChartTransactions, _Component);
 
+  var _super = _createSuper(FlotChartTransactions);
 
-
-_amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["useTheme"](_amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_5__["default"]);
-
-var AmChartWorldUser = /*#__PURE__*/function (_Component) {
-  _inherits(AmChartWorldUser, _Component);
-
-  var _super = _createSuper(AmChartWorldUser);
-
-  function AmChartWorldUser() {
-    _classCallCheck(this, AmChartWorldUser);
+  function FlotChartTransactions() {
+    _classCallCheck(this, FlotChartTransactions);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(AmChartWorldUser, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var chart = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["create"]("world-low", _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["MapChart"]);
-      chart.geodata = _amcharts_amcharts4_geodata_continentsLow__WEBPACK_IMPORTED_MODULE_4__["default"];
-      chart.projection = new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["projections"].Miller();
-      var polygonSeries = chart.series.push(new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["MapPolygonSeries"]());
-      polygonSeries.exclude = ["antarctica"];
-      polygonSeries.useGeodata = true;
-      var pieSeries = chart.series.push(new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_3__["MapImageSeries"]());
-      var pieTemplate = pieSeries.mapImages.template;
-      pieTemplate.propertyFields.latitude = "latitude";
-      pieTemplate.propertyFields.longitude = "longitude";
-      var pieChartTemplate = pieTemplate.createChild(_amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["PieChart"]);
-      pieChartTemplate.adapter.add("data", function (data, target) {
-        if (target.dataItem) {
-          return target.dataItem.dataContext.pieData;
-        } else {
-          return [];
-        }
-      });
-      pieChartTemplate.propertyFields.width = "width";
-      pieChartTemplate.propertyFields.height = "height";
-      pieChartTemplate.horizontalCenter = "middle";
-      pieChartTemplate.verticalCenter = "middle";
-      var pieTitle = pieChartTemplate.titles.create();
-      pieTitle.text = "{title}";
-      var pieSeriesTemplate = pieChartTemplate.series.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["PieSeries"]());
-      pieSeriesTemplate.dataFields.category = "category";
-      pieSeriesTemplate.dataFields.value = "value";
-      pieSeriesTemplate.labels.template.disabled = true;
-      pieSeriesTemplate.ticks.template.disabled = true;
-      pieSeries.data = [{
-        "title": "North America",
-        "latitude": 39.563353,
-        "longitude": -99.316406,
-        "width": 100,
-        "height": 100,
-        "pieData": [{
-          "category": "Category #1",
-          "value": 1200,
-          "fill": 'red'
-        }, {
-          "category": "Category #2",
-          "value": 500
-        }, {
-          "category": "Category #3",
-          "value": 765
-        }, {
-          "category": "Category #4",
-          "value": 260
-        }]
-      }, {
-        "title": "Europe",
-        "latitude": 50.896104,
-        "longitude": 19.160156,
-        "width": 50,
-        "height": 50,
-        "pieData": [{
-          "category": "Category #1",
-          "value": 200
-        }, {
-          "category": "Category #2",
-          "value": 600
-        }, {
-          "category": "Category #3",
-          "value": 350
-        }]
-      }, {
-        "title": "Asia",
-        "latitude": 47.212106,
-        "longitude": 103.183594,
-        "width": 80,
-        "height": 80,
-        "pieData": [{
-          "category": "Category #1",
-          "value": 352
-        }, {
-          "category": "Category #2",
-          "value": 266
-        }, {
-          "category": "Category #3",
-          "value": 512
-        }, {
-          "category": "Category #4",
-          "value": 199
-        }]
-      }, {
-        "title": "Africa",
-        "latitude": 11.081385,
-        "longitude": 21.621094,
-        "width": 50,
-        "height": 50,
-        "pieData": [{
-          "category": "Category #1",
-          "value": 200
-        }, {
-          "category": "Category #2",
-          "value": 300
-        }, {
-          "category": "Category #3",
-          "value": 599
-        }, {
-          "category": "Category #4",
-          "value": 512
-        }]
-      }];
-    }
-  }, {
+  _createClass(FlotChartTransactions, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "world-low",
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flot__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        id: "transactions",
+        options: optionsSaleView,
+        data: dataSaleView,
+        width: "80px",
+        height: this.props.height,
         style: {
-          width: '100%',
-          height: this.props.height
+          margin: '0 auto'
         }
       });
     }
   }]);
 
-  return AmChartWorldUser;
+  return FlotChartTransactions;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AmChartWorldUser);
+/* harmony default export */ __webpack_exports__["default"] = (FlotChartTransactions);
 
 /***/ })
 

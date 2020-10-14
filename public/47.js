@@ -1,19 +1,33 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[47],{
 
-/***/ "./resources/js/App/components/AnimatedModal.js":
-/*!******************************************************!*\
-  !*** ./resources/js/App/components/AnimatedModal.js ***!
-  \******************************************************/
-/*! exports provided: default */
+/***/ "./resources/js/Back-office/Pages/Dashboard.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Dashboard.js ***!
+  \*****************************************************/
+/*! exports provided: Jobstatus, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jobstatus", function() { return Jobstatus; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-animated-modal */ "./node_modules/react-animated-modal/build/index.js");
-/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_animated_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _Demo_Widget_Chart_AmChartEarnings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Demo/Widget/Chart/AmChartEarnings */ "./resources/js/Demo/Widget/Chart/AmChartEarnings.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/images/user/avatar-1.jpg */ "./resources/js/assets/images/user/avatar-1.jpg");
+/* harmony import */ var _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../assets/images/user/avatar-2.jpg */ "./resources/js/assets/images/user/avatar-2.jpg");
+/* harmony import */ var _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../assets/images/user/avatar-3.jpg */ "./resources/js/assets/images/user/avatar-3.jpg");
+/* harmony import */ var _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _Dashboard_UtilitaAborts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Dashboard/UtilitaAborts */ "./resources/js/Back-office/Pages/Dashboard/UtilitaAborts.js");
+/* harmony import */ var _Dashboard_UtilitaInstallsFuels__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Dashboard/UtilitaInstallsFuels */ "./resources/js/Back-office/Pages/Dashboard/UtilitaInstallsFuels.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40,547 +54,753 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var AnimatedModal = /*#__PURE__*/function (_React$Component) {
-  _inherits(AnimatedModal, _React$Component);
 
-  var _super = _createSuper(AnimatedModal);
 
-  function AnimatedModal() {
-    _classCallCheck(this, AnimatedModal);
 
-    return _super.apply(this, arguments);
+
+
+
+
+
+
+var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+    id = _ref.id,
+    auth_token = _ref.auth_token;
+
+var baseurl = window.location.origin;
+var Jobstatus = /*#__PURE__*/function (_React$Component) {
+  _inherits(Jobstatus, _React$Component);
+
+  var _super = _createSuper(Jobstatus);
+
+  function Jobstatus(props) {
+    var _this;
+
+    _classCallCheck(this, Jobstatus);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
   }
 
-  _createClass(AnimatedModal, [{
+  _createClass(Jobstatus, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        visible: this.props.showModal,
-        closemodal: this.props.modalClosed,
-        type: this.props.animation
-      }, this.props.children));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "mb-4"
+      }, this.props.statuslist.job_status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row d-flex align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-9"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "f-w-300 d-flex align-items-center m-b-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-arrow-up text-c-green f-30 m-r-5"
+      }), this.props.statuslist.total))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress m-t-30",
+        style: {
+          height: '7px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-c-theme",
+        role: "progressbar",
+        style: {
+          width: '50%'
+        },
+        "aria-valuenow": "50",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      })))));
     }
   }]);
 
-  return AnimatedModal;
+  return Jobstatus;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (AnimatedModal);
+var Dashboard = /*#__PURE__*/function (_React$Component2) {
+  _inherits(Dashboard, _React$Component2);
 
-/***/ }),
+  var _super2 = _createSuper(Dashboard);
 
-/***/ "./resources/js/Back-Office/Role/add.js":
-/*!**********************************************!*\
-  !*** ./resources/js/Back-Office/Role/add.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+  function Dashboard(props) {
+    var _this2;
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
-/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+    _classCallCheck(this, Dashboard);
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+    _this2 = _super2.call(this, props);
+    _this2.state = {
+      jobstatus: []
+    };
+    return _this2;
+  }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+  _createClass(Dashboard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+      var data = new FormData(); // data.append('start_date', '01/07/2020');
+      // data.append('end_date', '31/07/2020');
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function successDesktopPNotify() {
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].success({
-    title: 'Success',
-    text: "Role added successfully",
-    modules: {
-      Desktop: {
-        desktop: true
-      }
-    }
-  }).on('click', function (e) {});
-}
-
-var Trrow = function Trrow(property) {
-  var pageName = property.rows.map(function (value, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      key: index
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-      name: value.name,
-      label: value.page_name,
-      id: property.index + '_' + value.name,
-      value: value.Ischeck,
-      onChange: property.onchildChange
-    }));
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-    name: property.parent,
-    label: property.parent.toUpperCase(),
-    onChange: property.onparentChange,
-    id: property.index
-  })), pageName);
-};
-
-var baseurl = window.location.origin;
-
-var add = /*#__PURE__*/function (_React$Component) {
-  _inherits(add, _React$Component);
-
-  var _super = _createSuper(add);
-
-  function add() {
-    var _this;
-
-    _classCallCheck(this, add);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      name: "",
-      slug: "",
-      chkCustom: false,
-      permission: [],
-      pageArray: [],
-      visible: true,
-      formSubmitting: false,
-      buttonName: 'Save'
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
-      // e.target.checked=true;
-      var checkValue = e.target.checked;
-      var parentname = e.target.name;
-      var parentIndex = e.target.id;
-
-      var permission = _toConsumableArray(_this.state.permission);
-
-      if (permission[parentIndex][parentname]) {
-        permission[parentIndex][parentname].map(function (vl, ind) {
-          vl.Ischeck = checkValue;
-        });
-      }
-
-      _this.setState({
-        permission: permission
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
-      var ckname = e.target.name;
-      var parentIndex = e.target.id.split("_")[0];
-      var checkValue = e.target.checked;
-
-      var permission = _toConsumableArray(_this.state.permission);
-
-      var parentname = Object.keys(permission[parentIndex]);
-
-      if (permission[parentIndex][parentname]) {
-        permission[parentIndex][parentname].filter(function (vl, i) {
-          if (vl.name == ckname) {
-            vl.Ischeck = checkValue;
-          }
-        });
-
-        _this.setState({
-          permission: permission
-        });
-      }
-      /*    
-      if(permission[parentIndex][parentname]){
-           permission[parentIndex][parentname].map((vl,ind)=>{
-               vl.Ischeck = checkValue;
-           })
-          }
-          this.setState({permission})
-          */
-
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
-      _this.setState(_defineProperty({}, e.target.name, e.target.value));
-
-      var str = e.target.value;
-      str = str.replace(/\s/g, '-');
-
-      _this.setState({
-        slug: str
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
-      e.preventDefault();
-
-      _this.setState({
-        formSubmitting: true
-      });
-
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
-
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref.id,
-          auth_token = _ref.auth_token;
-
-      var data = new FormData();
-      data.append('name', _this.state.name);
-      data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role', {
-        name: _this.state.name,
-        permission: _this.state.permission
-      }, {
+      axios__WEBPACK_IMPORTED_MODULE_8___default.a.post(baseurl + '/api/jobstatus', data, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
-        if (res.data.success) {
-          // console.log(res.data.data);
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-
-          _this.setState({
-            name: ''
-          });
-
-          _this.PemissionGet();
-
-          $('input[type="checkbox"]').prop('checked', false);
-          successDesktopPNotify();
-        } else {
-          if (res.data.errors) {
-            res.data.message = res.data.errors.name;
-          }
-
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
-            title: "System Error",
-            text: res.data.errors.name
-          });
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Add'
+        if (res.data.job_status) {
+          _this3.setState({
+            jobstatus: res.data.job_status
           });
         }
-      })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
-      }); //  this.props.history.push('/role');
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["Pemissionlist"])().then(function (res) {
-        if (res.data.success) {
-          //console.log(res.data.data);
-          _this.setState({
-            permission: res.data.data
-          });
-
-          document.getElementById("requestLoder").innerHTML = '';
-          /*
-          this.state.permission.map((val,index)=>{
-                console.log(val[Object.keys(val)[0]]);
-          })
-          */
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
       });
-    });
-
-    return _this;
-  }
-
-  _createClass(add, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this$props = this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'add', history);
-      this.PemissionGet();
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var addPage = [];
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
-        as: "h5"
-      }, "Add Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "btn-sm",
-        style: {
-          'float': 'right'
-        },
-        onClick: function onClick() {
-          history.goBack();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
-        onSubmit: this.handleSubmit,
-        onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "name"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "name",
-        id: "name",
-        placeholder: "Name",
-        required: true,
-        value: this.state.name,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Permission"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
-        style: {
-          'textAlign': 'center'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
-        ref: "tbl",
-        striped: true,
-        hover: true,
-        responsive: true,
-        className: "table table-condensed",
-        id: "data-table-responsive"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
-        id: "listdata"
-      }, this.state.permission.map(function (val, index) {
-        //  console.log(val[Object.keys(val)[0]]);
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Trrow, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, this.state.jobstatus.map(function (result, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Jobstatus, {
           key: index,
-          index: index,
-          parent: Object.keys(val)[0],
-          onparentChange: _this2.chageParent,
-          rows: val[Object.keys(val)[0]],
-          onchildChange: _this2.handleCheckboxChange
+          statuslist: result
         });
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        sm: 12,
-        className: "mt-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        disabled: this.state.formSubmitting,
-        type: "submit"
-      }, " ", this.state.buttonName)))))))));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 12,
+        xl: 12
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Utilita")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dashboard_UtilitaInstallsFuels__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        height: "450px"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 6,
+        xl: 6
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dashboard_UtilitaAborts__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        height: "450px"
+      }))))))))));
     }
   }]);
 
-  return add;
+  return Dashboard;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (add);
+/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
 
 /***/ }),
 
-/***/ "./resources/js/HttpFunctions.js":
-/*!***************************************!*\
-  !*** ./resources/js/HttpFunctions.js ***!
-  \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ "./resources/js/Back-office/Pages/Dashboard/UtilitaAborts.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Dashboard/UtilitaAborts.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-/**
- *  baseurl  get baseurl
- */
+
+
+
+
+var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+    id = _ref.id,
+    auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
-/**
- * Login api request
- * @param {*} user for send Credentials
- */
 
-var CheckPermission = function CheckPermission(page, page_name, history) {
-  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+var UtilitaAborts = /*#__PURE__*/function (_React$Component) {
+  _inherits(UtilitaAborts, _React$Component);
 
-  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-      id = _ref.id,
-      parmissions = _ref.parmissions;
+  var _super = _createSuper(UtilitaAborts);
 
-  var pages = parmissions.filter(function (vl, idx) {
-    if (Object.keys(vl)[0] == page) {
-      return vl;
-    }
-  });
+  function UtilitaAborts(props) {
+    var _this;
 
-  if (pages.length > 0) {
-    var Ischeck = pages[0][page].filter(function (v, i) {
-      if (v['page_name'] == page_name) {
-        if (v['Ischeck']) {
-          return v;
-        }
-      }
-    });
+    _classCallCheck(this, UtilitaAborts);
 
-    if (Ischeck.length == 0) {
-      if (redirect) {
-        history.goBack();
-      }
-
-      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
-        title: "Permission Error",
-        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
-      });
-      return 1;
-    }
-  } else {
-    history.goBack();
+    _this = _super.call(this, props);
+    _this.state = {
+      start_date: '',
+      end_date: '',
+      title: ''
+    };
+    return _this;
   }
-};
-var Login = function Login(user) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
-    email: user.email,
-    password: user.password,
-    remember_me: user.remember
-  }, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-};
-var Pemissionlist = function Pemissionlist(parameter) {
-  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-      id = _ref2.id,
-      auth_token = _ref2.auth_token;
 
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
-    'id': id
+  _createClass(UtilitaAborts, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      //series
+      document.getElementById("UtilitaAbortsrequestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+      var data = new FormData();
+      data.append('job_status', 'Aborted'); //Utilita Installs Fuels (Total per day)
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita', data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        // let data = JSON.parse(res.data); 
+        document.getElementById("UtilitaAbortsrequestLoder").innerHTML = '';
+        var result = res.data;
+        console.log(result.week_day);
+        var options = {
+          series: [{
+            name: "Total",
+            type: 'column',
+            data: result.totals
+          }, {
+            name: "Target",
+            data: result.target
+          }],
+          colors: ['#0d74bc', '#d8cb1b'],
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false
+            }
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              dataLabels: {
+                position: 'top'
+              }
+            }
+          },
+          dataLabels: {
+            enabled: true,
+            offsetX: 0,
+            offsetY: -10,
+            enabledOnSeries: [0],
+            style: {
+              fontSize: '12px',
+              colors: ['#3fa0fc']
+            }
+          },
+          stroke: {
+            width: [0, 7, 5],
+            curve: 'straight',
+            dashArray: [0, 0, 5]
+          },
+          title: {
+            text: 'Utilita Aborts (Total per day)',
+            align: 'left'
+          },
+          legend: {
+            tooltipHoverFormatter: function tooltipHoverFormatter(val, opts) {
+              return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + '';
+            }
+          },
+          markers: {
+            size: 0,
+            hover: {
+              sizeOffset: 6
+            }
+          },
+          xaxis: {
+            categories: result.week_day,
+            title: {
+              text: 'Week'
+            }
+          },
+          tooltip: {
+            y: [{
+              title: {
+                formatter: function formatter(val) {
+                  return val + " ";
+                }
+              }
+            }, {
+              title: {
+                formatter: function formatter(val) {
+                  return val + " ";
+                }
+              }
+            }, {
+              title: {
+                formatter: function formatter(val) {
+                  return val;
+                }
+              }
+            }]
+          },
+          grid: {
+            borderColor: '#f1f1f1'
+          }
+        };
+        var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_4___default.a(document.querySelector("#UtilitaAborts"), options);
+        abortedBar.render();
+      });
+    } //
+
   }, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + auth_token
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "UtilitaAbortsrequestLoder",
+        style: {
+          'textAlign': 'center'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "UtilitaAborts"
+      }));
     }
-  });
-};
-var RoleAdd = function RoleAdd(role) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
-    email: role.email,
-    password: role.password,
-    remember_me: role.remember
+  }]);
+
+  return UtilitaAborts;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (UtilitaAborts);
+
+/***/ }),
+
+/***/ "./resources/js/Back-office/Pages/Dashboard/UtilitaInstallsFuels.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Dashboard/UtilitaInstallsFuels.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+    id = _ref.id,
+    auth_token = _ref.auth_token;
+
+var baseurl = window.location.origin;
+
+var UtilitaInstallsFuels = /*#__PURE__*/function (_React$Component) {
+  _inherits(UtilitaInstallsFuels, _React$Component);
+
+  var _super = _createSuper(UtilitaInstallsFuels);
+
+  function UtilitaInstallsFuels(props) {
+    var _this;
+
+    _classCallCheck(this, UtilitaInstallsFuels);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      start_date: '',
+      end_date: '',
+      title: ''
+    };
+    return _this;
+  }
+
+  _createClass(UtilitaInstallsFuels, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      //series
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+      var data = new FormData();
+      data.append('job_status', 'Completed'); //Utilita Installs Fuels (Total per day)
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita', data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        // let data = JSON.parse(res.data); 
+        document.getElementById("requestLoder").innerHTML = '';
+        var result = res.data;
+        console.log(result.week_day);
+        var options = {
+          series: [{
+            name: "Total",
+            type: 'column',
+            data: result.totals
+          }, {
+            name: "Target",
+            data: result.target
+          }],
+          colors: ['#0d74bc', '#d8cb1b'],
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false
+            }
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              dataLabels: {
+                position: 'top'
+              }
+            }
+          },
+          dataLabels: {
+            enabled: true,
+            offsetX: 0,
+            offsetY: -10,
+            enabledOnSeries: [0],
+            style: {
+              fontSize: '12px',
+              colors: ['#3fa0fc']
+            }
+          },
+          stroke: {
+            width: [0, 7, 5],
+            curve: 'straight',
+            dashArray: [0, 0, 5]
+          },
+          title: {
+            text: 'Utilita Installs Fuels (Total per day)',
+            align: 'left'
+          },
+          legend: {
+            tooltipHoverFormatter: function tooltipHoverFormatter(val, opts) {
+              return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + '';
+            }
+          },
+          markers: {
+            size: 0,
+            hover: {
+              sizeOffset: 6
+            }
+          },
+          xaxis: {
+            categories: result.week_day,
+            title: {
+              text: 'Week'
+            }
+          },
+          tooltip: {
+            y: [{
+              title: {
+                formatter: function formatter(val) {
+                  return val + " ";
+                }
+              }
+            }, {
+              title: {
+                formatter: function formatter(val) {
+                  return val + " ";
+                }
+              }
+            }, {
+              title: {
+                formatter: function formatter(val) {
+                  return val;
+                }
+              }
+            }]
+          },
+          grid: {
+            borderColor: '#f1f1f1'
+          }
+        };
+        var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_4___default.a(document.querySelector("#UtilitaInstallsFuels"), options);
+        abortedBar.render();
+      });
+    } //
+
   }, {
-    headers: {
-      'Content-Type': 'application/json'
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder",
+        style: {
+          'textAlign': 'center'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "UtilitaInstallsFuels"
+      }));
     }
-  });
-};
+  }]);
+
+  return UtilitaInstallsFuels;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (UtilitaInstallsFuels);
+
+/***/ }),
+
+/***/ "./resources/js/Demo/Widget/Chart/AmChartEarnings.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/Demo/Widget/Chart/AmChartEarnings.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! amcharts3/amcharts/amcharts */ "./node_modules/amcharts3/amcharts/amcharts.js");
+/* harmony import */ var amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_amcharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! amcharts3/amcharts/serial */ "./node_modules/amcharts3/amcharts/serial.js");
+/* harmony import */ var amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_serial__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! amcharts3/amcharts/themes/light */ "./node_modules/amcharts3/amcharts/themes/light.js");
+/* harmony import */ var amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(amcharts3_amcharts_themes_light__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts3-react */ "./node_modules/@amcharts/amcharts3-react/index.js");
+/* harmony import */ var _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var AmChartEarnings = /*#__PURE__*/function (_Component) {
+  _inherits(AmChartEarnings, _Component);
+
+  var _super = _createSuper(AmChartEarnings);
+
+  function AmChartEarnings() {
+    _classCallCheck(this, AmChartEarnings);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AmChartEarnings, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      _amcharts_amcharts3_react__WEBPACK_IMPORTED_MODULE_4___default.a.makeChart("widget-line-chart", {
+        "type": "serial",
+        "addClassNames": true,
+        "defs": {
+          "filter": [{
+            "x": "-50%",
+            "y": "-50%",
+            "width": "200%",
+            "height": "200%",
+            "id": "blur",
+            "feGaussianBlur": {
+              "in": "SourceGraphic",
+              "stdDeviation": "30"
+            }
+          }, {
+            "id": "shadow",
+            "x": "-10%",
+            "y": "-10%",
+            "width": "120%",
+            "height": "120%",
+            "feOffset": {
+              "result": "offOut",
+              "in": "SourceAlpha",
+              "dx": "0",
+              "dy": "20"
+            },
+            "feGaussianBlur": {
+              "result": "blurOut",
+              "in": "offOut",
+              "stdDeviation": "10"
+            },
+            "feColorMatrix": {
+              "result": "blurOut",
+              "type": "matrix",
+              "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"
+            },
+            "feBlend": {
+              "in": "SourceGraphic",
+              "in2": "blurOut",
+              "mode": "normal"
+            }
+          }]
+        },
+        "fontSize": 15,
+        "dataProvider": [{
+          "day": "Mon",
+          "value": 60
+        }, {
+          "day": "Tue",
+          "value": 45
+        }, {
+          "day": "Wed",
+          "value": 70
+        }, {
+          "day": "Thu",
+          "value": 55
+        }, {
+          "day": "Fri",
+          "value": 70
+        }, {
+          "day": "Sat",
+          "value": 55
+        }, {
+          "day": "Sun",
+          "value": 70
+        }],
+        "autoMarginOffset": 0,
+        "marginRight": 0,
+        "categoryField": "day",
+        "categoryAxis": {
+          "color": '#fff',
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0,
+          "offset": -20,
+          "inside": true
+        },
+        "valueAxes": [{
+          "fontSize": 0,
+          "inside": true,
+          "gridAlpha": 0,
+          "axisAlpha": 0,
+          "lineAlpha": 0,
+          "minimum": 0,
+          "maximum": 100
+        }],
+        "chartCursor": {
+          "valueLineEnabled": false,
+          "valueLineBalloonEnabled": false,
+          "cursorAlpha": 0,
+          "zoomable": false,
+          "valueZoomable": false,
+          "cursorColor": "#fff",
+          "categoryBalloonColor": "#51b4e6",
+          "valueLineAlpha": 0
+        },
+        "graphs": [{
+          "id": "g1",
+          "type": "line",
+          "valueField": "value",
+          "lineColor": "#ffffff",
+          "lineAlpha": 1,
+          "lineThickness": 3,
+          "fillAlphas": 0,
+          "showBalloon": true,
+          "balloon": {
+            "drop": true,
+            "adjustBorderColor": false,
+            "color": "#ffffff",
+            "fillAlphas": 0.2,
+            "bullet": "round",
+            "bulletBorderAlpha": 1,
+            "bulletSize": 5,
+            "hideBulletsCount": 50,
+            "lineThickness": 2,
+            "useLineColorForBulletBorder": true,
+            "valueField": "value",
+            "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
+          }
+        }]
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "widget-line-chart",
+        className: "WidgetlineChart2 ChartShadow",
+        style: {
+          width: '100%',
+          height: this.props.height
+        }
+      });
+    }
+  }]);
+
+  return AmChartEarnings;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AmChartEarnings);
 
 /***/ })
 
