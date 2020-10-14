@@ -270,7 +270,7 @@ var UtilitaAborts = /*#__PURE__*/function (_React$Component) {
       var data = new FormData();
       data.append('job_status', 'Aborted'); //Utilita Installs Fuels (Total per day)
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita', data, {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/dashboardutilita', data, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -474,7 +474,7 @@ var UtilitaInstallsFuels = /*#__PURE__*/function (_React$Component) {
       var data = new FormData();
       data.append('job_status', 'Completed'); //Utilita Installs Fuels (Total per day)
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita', data, {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/dashboardutilita', data, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token

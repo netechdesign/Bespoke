@@ -116,7 +116,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
                
    /** dashboard route */
    Route::post('jobstatus', 'DashboardController@jobStatus');
-   Route::post('utilita', 'DashboardController@utilita');
+   Route::post('dashboardutilita', 'DashboardController@utilita');
+   Route::post('dashboardmorrison', 'DashboardController@morrison');
    
   
                     });

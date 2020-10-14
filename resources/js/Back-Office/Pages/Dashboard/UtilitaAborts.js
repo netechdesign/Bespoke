@@ -19,7 +19,7 @@ class UtilitaAborts extends React.Component {
                 const data = new FormData()
                 data.append('job_status', 'Aborted');  //Utilita Installs Fuels (Total per day)
         
-                axios.post(baseurl+'/api/utilita',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+                axios.post(baseurl+'/api/dashboardutilita',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
                  
                 // let data = JSON.parse(res.data); 
         
