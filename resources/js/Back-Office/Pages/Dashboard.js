@@ -14,6 +14,8 @@ import ApexCharts from 'apexcharts';
 
 import UtilitaAborts from './Dashboard/UtilitaAborts'
 import UtilitaInstallsFuels from './Dashboard/UtilitaInstallsFuels'
+import MorrisonAborts from './Dashboard/MorrisonAborts'
+import MorrisonInstallsFuels from './Dashboard/MorrisonInstallsFuels'
 
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 const baseurl= window.location.origin;
@@ -101,6 +103,34 @@ class Dashboard extends React.Component {
                                             <Card>
                                                 <Card.Body>
                                                     <UtilitaAborts height='450px'/>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                       </Col>
+               </Row>
+                
+               <Row>
+                      <Col md={12} xl={12}>
+                             <Card>
+                                <Card.Header>
+                                    <Card.Title as="h5">Morrison Data services</Card.Title>
+                                </Card.Header>
+                                <Card.Body>
+                                    <Row>
+                                        <Col md={6} xl={6}>
+                                            <Card>
+                                                <Card.Body>
+                                                    <MorrisonInstallsFuels height='450px'/>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                        <Col md={6} xl={6}>
+                                            <Card>
+                                                <Card.Body>
+                                                    <MorrisonAborts height='450px'/>
                                                 </Card.Body>
                                             </Card>
                                         </Col>
