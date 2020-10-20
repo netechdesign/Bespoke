@@ -27,7 +27,7 @@ class UtilitaInstallsFuels extends React.Component {
 
         document.getElementById("requestLoder").innerHTML = '';
         let result = res.data;
-        console.log(result.week_day);
+        
           var options = {
             series: [{
               name: "Total",
@@ -124,10 +124,13 @@ class UtilitaInstallsFuels extends React.Component {
           };
           
 var abortedBar = new ApexCharts(document.querySelector("#UtilitaInstallsFuels"), options);
-          abortedBar.render();     
+          abortedBar.render();    
+          
+          
           
         })
        
+
         }
       
        //

@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[48],{
 
-/***/ "./resources/js/Back-Office/Pages/UtilitaChart.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/UtilitaChart.js ***!
-  \********************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12,19 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
-/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var dom_to_pdf__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! dom-to-pdf */ "./node_modules/dom-to-pdf/index.js");
-/* harmony import */ var dom_to_pdf__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(dom_to_pdf__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55,846 +47,316 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
-
-
-
-
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
     auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
 
-var UtilitaChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(UtilitaChart, _React$Component);
+var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
+  _inherits(UtilitaInstalls, _React$Component);
 
-  var _super = _createSuper(UtilitaChart);
+  var _super = _createSuper(UtilitaInstalls);
 
-  function UtilitaChart(props) {
+  function UtilitaInstalls(props) {
     var _this;
 
-    _classCallCheck(this, UtilitaChart);
+    _classCallCheck(this, UtilitaInstalls);
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "generatePdf", function () {
-      var element = document.getElementById('pdf-container');
-      var options = {
-        filename: _this.state.title + '-' + _this.state.start_date + ".pdf"
-      };
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-      return dom_to_pdf__WEBPACK_IMPORTED_MODULE_10___default()(element, options, function () {
-        // callback function
-        document.getElementById("requestLoder").innerHTML = '';
+    _defineProperty(_assertThisInitialized(_this), "graphload", function () {
+      _this.setState({
+        titleText: _this.props.match.params.id
+      });
+
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + window.location.origin + '/images/ajax_loader_gray_512.gif"></img>';
+      document.getElementById("htmlcontaint").innerHTML = '';
+      document.getElementById("grandTotal").innerHTML = '';
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token;
+
+      var baseurl = window.location.origin;
+      var data = new FormData();
+      data.append('file_id', '2');
+
+      if (_this.props.match.params.id) {
+        data.append('report_for', _this.props.match.params.id);
+      } else {
+        data.append('report_for', 'day');
+      }
+
+      if (_this.props.match.params.status) {
+        data.append('job_status', _this.props.match.params.status);
+      } else {
+        data.append('job_status', 'Completed');
+      }
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/install', data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          var results = res.data.complate;
+          var target_data = res.data.target_data;
+          var grand_total = 0;
+          var grand_target = 0;
+
+          var self = _assertThisInitialized(_this);
+
+          results.map(function (item, indx) {
+            var engineer_leader = Object.keys(item);
+            self.setState({
+              teamLeader: self.state.teamLeader.concat(engineer_leader)
+            });
+          }); //start
+
+          results.map(function (item, indx) {
+            var engineer_leader = Object.keys(item);
+            var endineer_data = item[engineer_leader];
+            var categories = endineer_data['engineer'];
+            var series_data = endineer_data['series'];
+            var options = {
+              series: series_data,
+              annotations: {
+                xaxis: [{
+                  x: target_data,
+                  borderColor: "#d8cb1b",
+                  borderWidth: 1,
+                  strokeDashArray: 0,
+                  offsetX: 0,
+                  offsetY: 0,
+                  label: {
+                    offsetY: -10,
+                    borderColor: "#d8cb1b",
+                    style: {
+                      color: "#fff",
+                      background: "#d8cb1b"
+                    },
+                    orientation: "horizontal",
+                    text: "Target " + target_data
+                  }
+                }]
+              },
+              chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                toolbar: {
+                  show: false
+                },
+                events: {
+                  mounted: function mounted(chartContext, config) {
+                    setTimeout(function () {
+                      addAnnotations(config);
+                    });
+                  }
+                }
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: true
+                }
+              },
+              dataLabels: {
+                enabled: true
+              },
+              stroke: {
+                width: 1,
+                colors: ['#fff']
+              },
+              title: {
+                text: 'Team Leader - ' + engineer_leader,
+                offsetX: 0,
+                offsetY: 30,
+                style: {
+                  fontSize: '11px',
+                  fontWeight: 'normal',
+                  colors: ['#3fa0fc']
+                }
+              },
+              xaxis: {
+                categories: categories,
+                labels: {
+                  show: false
+                }
+              },
+              yaxis: {
+                title: {
+                  text: ''
+                }
+              },
+              tooltip: {
+                y: {
+                  formatter: function formatter(val) {
+                    return val + "";
+                  }
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              legend: {
+                position: 'bottom',
+                horizontalAlign: 'right',
+                offsetX: 40,
+                show: false
+              }
+            };
+
+            var addAnnotations = function addAnnotations(config) {
+              var seriesTotals = config.globals.stackedSeriesTotals;
+              var isHorizontal = options.plotOptions.bar.horizontal; //  chart.clearAnnotations();
+
+              try {
+                categories.forEach(function (category, index) {
+                  chart.addPointAnnotation({
+                    y: isHorizontal ? calcHorizontalY(config, index) : seriesTotals[index],
+                    x: isHorizontal ? 0 : category,
+                    label: {
+                      text: "".concat(seriesTotals[index]),
+                      offsetY: 20,
+                      style: {
+                        color: "#fff",
+                        background: "#d8cb1b"
+                      }
+                    }
+                  }, false);
+
+                  if (isHorizontal) {//   adjustPointAnnotationXCoord(config, index);
+                  }
+                });
+              } catch (error) {
+                console.log("Add point annotation error: ".concat(error.message));
+              }
+            };
+
+            var calcHorizontalY = function calcHorizontalY(config, index) {
+              var catLength = categories.length;
+              var yRange = config.globals.yRange[0];
+              var minY = config.globals.minY;
+              var halfBarHeight = yRange / catLength / 2;
+              return minY + halfBarHeight + 2 * halfBarHeight * (catLength - 1 - index);
+            };
+
+            var adjustPointAnnotationXCoord = function adjustPointAnnotationXCoord(config, index) {
+              var gridWidth = config.globals.gridWidth;
+              var seriesTotal = config.globals.stackedSeriesTotals[index];
+              var minY = config.globals.minY;
+              var yRange = config.globals.yRange[0];
+              var xOffset = gridWidth * (seriesTotal + Math.abs(minY)) / yRange;
+              var circle = document.querySelector(".apexcharts-point-annotations circle:nth-of-type(".concat(index + 1, ")"));
+              var labelField = document.querySelector(".apexcharts-point-annotations rect:nth-of-type(".concat(index + 1));
+              var labelFieldXCoord = parseFloat(labelField.getAttribute("x"));
+              var text = document.querySelector(".apexcharts-point-annotations text:nth-of-type(".concat(index + 1));
+              labelField.setAttribute("x", gridWidth);
+              text.setAttribute("x", gridWidth);
+              circle.setAttribute("cx", gridWidth);
+            };
+
+            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_4___default.a(document.querySelector("#" + engineer_leader), options);
+            chart.render(); //target_data
+
+            var team_leader_total = 0;
+            var team_leader_target_total = 0;
+            series_data.map(function (vl, indx) {
+              if (vl['data']) {
+                vl['data'].map(function (v, indx) {
+                  team_leader_total = parseFloat(team_leader_total) + parseFloat(v);
+                  team_leader_target_total = parseFloat(team_leader_target_total) + parseFloat(target_data);
+                });
+              }
+            });
+            grand_total = parseFloat(grand_total) + parseFloat(team_leader_total);
+            grand_target = parseFloat(grand_target) + parseFloat(team_leader_target_total);
+            var total_text = '<div style="text-align: left !important;"><b style="margin: 0px 10px 0px 145px;color: #0e74bc;">Total = <span style="color: #05bb7b;">' + team_leader_total + '</span></b>';
+            total_text += '<b style="margin: 0px 10px 0px 56px;color: #0e74bc;">Target= <span style="color: #05bb7b;">' + team_leader_target_total + '</span></b></div>';
+            $("#" + engineer_leader).append(total_text); //end 
+          });
+          document.getElementById("requestLoder").innerHTML = '';
+          var grandTotal = '<b style="margin: 0px 10px 0px 0px;color: #0e74bc;">Total = <span style="color: #05bb7b;">' + grand_total + '</span></b>';
+          grandTotal += '<b style="margin: 0px 10px 0px 56px;color: #0e74bc;">Target= <span style="color: #05bb7b;">' + grand_target + '</span></b>';
+          document.getElementById("grandTotal").innerHTML = grandTotal;
+        } else {
+          document.getElementById("requestLoder").innerHTML = '';
+          document.getElementById("htmlcontaint").innerHTML = '<b>' + res.data.message + '</b>';
+        }
       });
     });
 
     _this.state = {
-      start_date: '',
-      end_date: '',
-      title: ''
+      titleText: '',
+      total: 0,
+      teamLeader: []
     };
     return _this;
   }
 
-  _createClass(UtilitaChart, [{
+  _createClass(UtilitaInstalls, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      console.log('tag', 'componentWillMount');
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.match.params.id != prevProps.match.params.id) {
+        this.graphload();
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      console.log('tag', 'componentDidMount');
+      this.graphload();
+    } //
 
-      var items = [];
+  }, {
+    key: "render",
+    //
+    value: function render() {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-
-      if (location.state.detail) {
-        var _location$state$detai = location.state.detail,
-            _id = _location$state$detai.id,
-            _start_date = _location$state$detai.start_date,
-            _end_date = _location$state$detai.end_date,
-            _report_type = _location$state$detai.report_type;
-        localStorage.setItem('bespokesearch', JSON.stringify(location.state.detail));
-      } else {
-        var _ref2 = localStorage.getItem('bespokesearch') ? JSON.parse(localStorage.getItem('bespokesearch')).user : 'Null',
-            _id2 = _ref2.id,
-            _start_date2 = _ref2.start_date,
-            _end_date2 = _ref2.end_date,
-            _report_type2 = _ref2.report_type;
-      }
-
-      var _location$state$detai2 = location.state.detail,
-          id = _location$state$detai2.id,
-          start_date = _location$state$detai2.start_date,
-          end_date = _location$state$detai2.end_date,
-          report_type = _location$state$detai2.report_type;
-      var reportType = report_type['value'];
-      this.setState({
-        start_date: start_date
-      });
-      this.setState({
-        end_date: end_date
-      });
-      var data = {
-        _method: 'get',
-        id: id,
-        start_date: start_date,
-        end_date: end_date,
-        file_id: reportType
-      };
-
-      if (reportType == 1) {
-        this.setState({
-          title: 'Morrison Data services'
-        });
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          // let data = JSON.parse(res.data); 
-          var result = res.data.complate; //series
-
-          var options = {
-            series: result['series'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Completed',
-              align: 'left'
-            },
-            xaxis: {
-              categories: result['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
-          StackedBar.render();
-          var abortedrs = res.data.aborted; //series
-
-          var options = {
-            series: abortedrs['series'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'aborted',
-              align: 'left'
-            },
-            xaxis: {
-              categories: abortedrs['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render();
-        });
-      } else if (reportType == 2) {
-        this.setState({
-          title: 'Utilita'
-        });
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          // let data = JSON.parse(res.data); 
-          document.getElementById("requestLoder").innerHTML = '';
-          var result = res.data.complate;
-          var CompletedjobData = res.data.CompletedjobData;
-          var totalEngineerMiles = res.data.totalEngineerMiles; //series
-
-          var options = {
-            series: result['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Completed',
-              align: 'left'
-            },
-            xaxis: {
-              categories: result['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref3) {
-                var series = _ref3.series,
-                    seriesIndex = _ref3.seriesIndex,
-                    dataPointIndex = _ref3.dataPointIndex,
-                    w = _ref3.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-                var total_Miles = 'traveller record not found';
-
-                if (totalEngineerMiles[w.globals.labels[dataPointIndex]]) {
-                  total_Miles = 'Travelled ' + totalEngineerMiles[w.globals.labels[dataPointIndex]] + ' miles';
-                }
-
-                if (CompletedjobData[w.globals.labels[dataPointIndex]]) {
-                  CompletedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.job_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.on_site_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<div><h6 style="margin:10px;float:left">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="float:right;margin: 6px 60px;">' + total_Miles + '</b></div>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
-          StackedBar.render();
-          var abortedrs = res.data.aborted;
-          var AbortedjobData = res.data.AbortedjobData; //series
-
-          var options = {
-            series: abortedrs['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Aborted',
-              align: 'left'
-            },
-            xaxis: {
-              categories: abortedrs['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref4) {
-                var series = _ref4.series,
-                    seriesIndex = _ref4.seriesIndex,
-                    dataPointIndex = _ref4.dataPointIndex,
-                    w = _ref4.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (AbortedjobData[w.globals.labels[dataPointIndex]]) {
-                  AbortedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.job_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.on_site_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post Code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render(); //Description chart reports
-
-          var descriptionBar = res.data.total_description;
-          var AbortedReasonData = res.data.AbortedReasonData;
-          var options = {
-            series: descriptionBar['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Aborts-reason'
-            },
-            subtitle: {
-              text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-              align: 'left'
-            },
-            xaxis: {
-              categories: descriptionBar['description'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Description',
-                align: 'left',
-                margin: 10
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref5) {
-                var series = _ref5.series,
-                    seriesIndex = _ref5.seriesIndex,
-                    dataPointIndex = _ref5.dataPointIndex,
-                    w = _ref5.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (AbortedReasonData[w.globals.labels[dataPointIndex]]) {
-                  AbortedReasonData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.job_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.on_site_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post Code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var descriptions = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#descriptionBar"), options);
-          descriptions.render();
-        });
-      } else if (reportType == 3) {
-        this.setState({
-          title: 'Vehicle Mileage'
-        });
-        var driver_name = [];
-        var total_miles = [];
-        var max_speed = [];
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/vehicalmileas/1', data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          if (res.data.success) {
-            document.getElementById("requestLoder").innerHTML = '';
-
-            if (res.data.totalmileage.length == 0) {
-              document.getElementById("vahicalMileage").innerHTML = '<div>Record not found</div>';
-              return false;
-            }
-
-            res.data.totalmileage.map(function (val, indx) {
-              driver_name.push(val.driver_name);
-              total_miles.push(val.total_miles);
-              max_speed.push(val.max_speed);
-            });
-            var listmileage = res.data.listmileage;
-            var options = {
-              title: {
-                text: 'Miles'
-              },
-              subtitle: {
-                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-                align: 'left'
-              },
-              series: [{
-                data: total_miles
-              }],
-              chart: {
-                type: 'bar',
-                height: 600
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-              xaxis: {
-                categories: driver_name,
-                title: {
-                  text: 'Miles'
-                }
-              },
-              yaxis: {
-                title: {
-                  text: 'Driver Name'
-                }
-              },
-              tooltip: {
-                custom: function custom(_ref6) {
-                  var series = _ref6.series,
-                      seriesIndex = _ref6.seriesIndex,
-                      dataPointIndex = _ref6.dataPointIndex,
-                      w = _ref6.w;
-                  var lineName = '';
-
-                  if (seriesIndex == 0) {
-                    lineName = 'AM';
-                  } else if (seriesIndex == 1) {
-                    lineName = 'PM';
-                  }
-
-                  var listed = '';
-
-                  if (listmileage) {
-                    listmileage.map(function (vl, inx) {
-                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
-                        listed += '<tr>';
-                        listed += '<td>' + vl.drive_date + '</td>';
-                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.duration + '</td>';
-                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
-                        listed += '<td>' + vl.start_time + '</td>';
-                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
-                        listed += '<td>' + vl.end_time + '</td>';
-                        listed += '</tr>';
-                      }
-                    });
-                  }
-
-                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-                },
-                fixed: {
-                  enabled: true,
-                  position: "topRight",
-                  offsetX: 0,
-                  offsetY: 0
-                }
-                /*
-                y: {
-                   formatter: function (val) {
-                     return val + ""
-                   }
-                 }
-                 */
-
-              }
-            };
-            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMileage"), options);
-            chart.render();
-            var options = {
-              title: {
-                text: 'Speed Spread'
-              },
-              subtitle: {
-                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-                align: 'left'
-              },
-              fill: {
-                colors: [function (_ref7) {
-                  var value = _ref7.value,
-                      seriesIndex = _ref7.seriesIndex,
-                      w = _ref7.w;
-
-                  if (value > 70) {
-                    return '#FF0000';
-                  } else {
-                    return '#0099FF';
-                  }
-                }]
-              },
-              series: [{
-                data: max_speed
-              }],
-              chart: {
-                type: 'bar',
-                height: 600
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-              xaxis: {
-                categories: driver_name,
-                title: {
-                  text: 'Top speed'
-                }
-              },
-              yaxis: {
-                title: {
-                  text: 'Driver Name'
-                }
-              },
-              tooltip: {
-                custom: function custom(_ref8) {
-                  var series = _ref8.series,
-                      seriesIndex = _ref8.seriesIndex,
-                      dataPointIndex = _ref8.dataPointIndex,
-                      w = _ref8.w;
-                  var lineName = '';
-
-                  if (seriesIndex == 0) {
-                    lineName = 'AM';
-                  } else if (seriesIndex == 1) {
-                    lineName = 'PM';
-                  }
-
-                  var listed = '';
-
-                  if (listmileage) {
-                    listmileage.map(function (vl, inx) {
-                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
-                        if (vl.max_speed > 70) {
-                          listed += '<tr style="background-color: #fbbfbf;color:white" >';
-                        } else {
-                          listed += '<tr>';
-                        }
-
-                        listed += '<td>' + vl.drive_date + '</td>';
-                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.duration + '</td>';
-                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
-                        listed += '<td>' + vl.start_time + '</td>';
-                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
-                        listed += '<td>' + vl.end_time + '</td>';
-                        listed += '</tr>';
-                      }
-                    });
-                  }
-
-                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-                },
-                fixed: {
-                  enabled: true,
-                  position: "topRight",
-                  offsetX: 0,
-                  offsetY: 0
-                }
-                /*
-                y: {
-                   formatter: function (val) {
-                     return val + ""
-                   }
-                 }
-                 */
-
-              }
-            };
-            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMax_speed"), options);
-            chart.render();
-          }
-        });
-      } //
-
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, this.state.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " From ", this.state.start_date, " To ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm",
-        style: {
-          'float': 'right'
-        },
-        onClick: function onClick() {
-          history.goBack();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm btn-light",
-        style: {
-          'float': 'right'
-        },
-        onClick: this.generatePdf
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-download"
-      }), "Download all")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        id: "grandTotal"
+      }), "\xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 12,
+        xl: 12
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "requestLoder",
         style: {
           'textAlign': 'center'
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "pdf-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "abortedBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "descriptionBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "StackedBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "vahicalMileage"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "vahicalMax_speed"
+        id: "htmlcontaint",
+        style: {
+          'textAlign': 'center'
+        }
+      }, this.state.teamLeader.map(function (item, indx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            'borderBottom': '2px solid #f1f1f1'
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: indx,
+          id: item
+        }));
       })))))));
     }
   }]);
 
-  return UtilitaChart;
+  return UtilitaInstalls;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UtilitaChart);
+/* harmony default export */ __webpack_exports__["default"] = (UtilitaInstalls);
 
 /***/ })
 

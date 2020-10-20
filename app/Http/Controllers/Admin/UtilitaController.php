@@ -673,4 +673,214 @@ class UtilitaController extends Controller
 
        }
     }
+     public function utilitainstall(Request $Request)
+    {
+        //
+        
+        switch($Request->report_for)
+        {
+        case "day":
+            $Request->start_date= date('Y-m-d', strtotime('-1 day'));
+            $Request->end_date = date('Y-m-d', strtotime('-1 day'));
+            break;
+            case "weektodate":
+                    $current_week_date =  $this->getStartAndEndDate(date("W"),date("Y"));
+                    $Request->start_date = $current_week_date['week_start'];
+                    $Request->end_date = date('Y-m-d');
+            break;
+            case "monthtodate":
+                $Request->start_date = date('Y-m-01');
+                $Request->end_date = date('Y-m-d');
+            break;
+            case "monthprior":
+                $Request->start_date = date('Y-m-1', strtotime('-1 months'));
+                $Request->end_date = date('Y-m-t', strtotime('-1 months'));
+            break;
+            case "yeartodate":
+                $Request->start_date = date('Y-01-01');
+                $Request->end_date = date('Y-m-d');
+            break;
+            case "yearprior":
+                $Request->start_date = date('Y-01-01', strtotime('-1 year'));
+                $Request->end_date = date('Y-12-31', strtotime('-1 year'));
+             
+            break;   
+               
+            
+                    
+         }
+         if($Request->job_status=='Aborts'){
+            $Request->job_status='Aborted';
+         }
+        $sheets_id = '';
+        $start_date = '';
+        $today_date = '';
+        if(isset($Request->start_date) && $Request->start_date!=''){
+            $start_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->start_date)));
+          }else{
+            return response()->json(array('success' => false,'message'=> 'start date not found'));  
+
+          }
+          if(isset($Request->end_date) && $Request->end_date!=''){
+            $today_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->end_date)));
+          }else{
+            return response()->json(array('success' => false,'message'=> 'end date not found'));  
+
+          }
+          
+          //$query= new Utilita_job;
+          
+          if($Request->file_id=='1'){
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
+           }
+          elseif($Request->file_id=='2'){
+           $q= Utilita_job::select("*",DB::raw('DATE_FORMAT(schedule_date,"%d/%m/%Y") as schedule_date'),
+           DB::raw('DATE_FORMAT(schedule_start_time,"%d/%m/%Y %H:%i") as schedule_start_time'),
+           DB::raw('DATE_FORMAT(schedule_end_time,"%d/%m/%Y %H:%i") as schedule_end_time'),
+           DB::raw('DATE_FORMAT(job_booked,"%d/%m/%Y %H:%i") as job_booked'),
+           DB::raw('DATE_FORMAT(on_site_time,"%d/%m/%Y %H:%i") as on_site_time'),
+           DB::raw('DATE_FORMAT(cancelled_time,"%d/%m/%Y %H:%i") as cancelled_time')
+                                     
+            )->join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+          }else{
+            return 'Sorry data not found';
+       //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+ 
+        }
+         
+          
+           //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+           if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
+           
+           if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+           if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+           
+          if($q->count() > 0){
+            $result=$q->orderBy('appointment_time','asc')->get();
+            
+            
+            $categories =array();
+            $series=[];
+
+            
+            foreach($result as $row){
+                if($Request->file_id=='1'){
+                    $row->appointment_time = date('A', strtotime($row->schedule_start_time));
+               
+                 }
+                 
+                if($row->job_status==$Request->job_status){
+                   
+                    if(!in_array($row->engineer,$categories)){
+                        array_push($categories,$row->engineer);
+                    }
+                  //  $CompletedjobData[$row->parent_engineer][$row->engineer][]=$row;
+                    
+                    
+                   // $searchedValue = $row->appointment_time;
+                   if(isset($series[$row->parent_engineer])){
+                    $data=  array_filter(
+                        $series[$row->parent_engineer],
+                        function ($e) use ($row) {
+                            return ($e->name == $row->appointment_time);
+                        });
+                 
+                        if($data){
+                            if(isset($data[0]->data)){
+                                if(isset($data[0]->data[$row->engineer])){
+                                $data[0]->data[$row->engineer]=$data[0]->data[$row->engineer] +1;
+                                }else{
+                                    $data[0]->data[$row->engineer] = 1;
+                                }
+                            }
+                            if(isset($data[1]->data)){
+                                if(isset($data[1]->data[$row->engineer])){
+                                $data[1]->data[$row->engineer]=$data[1]->data[$row->engineer] +1;
+                                }else{
+                                    $data[1]->data[$row->engineer] = 1;
+                                }
+                            }
+
+                        }
+                        else{
+                            $object = new \stdClass();
+                            $object->name = $row->appointment_time;
+                          //  $object->engineers[] = $row->engineer;
+                           
+                            $object->data[$row->engineer]=1;
+                            
+                            array_push($series[$row->parent_engineer],$object);
+                        }
+                    }else{
+                        $object = new \stdClass();
+                        $object->name = $row->appointment_time;
+                      //  $object->engineers[] = $row->engineer;
+                       
+                        $object->data[$row->engineer]=1;
+                        $series[$row->parent_engineer][]=$object;
+                        //array_push($series[$row->parent_engineer],$object);
+                    }    
+                }
+                
+                
+            }
+           
+            //complate
+            $teamLeader=[];
+            foreach($series as $ke => $series_vl){
+                $installnum=[]; 
+            $engineeram=[];
+            if(isset($series_vl[0]->data)){
+            $engineeram= array_keys($series_vl[0]->data);
+            }
+            $engineerpm=[];
+            if(isset($series_vl[1]->data)){
+            $engineerpm= array_keys($series_vl[1]->data);
+            }
+            $engineers = $array = array_unique(array_merge($engineeram, $engineerpm));
+            $engineers = array_values($engineers);
+            foreach($engineers as $vl){
+                if (!array_key_exists($vl, $series_vl[0]->data)) {
+                    $series_vl[0]->data[$vl]=0;
+                }
+                if (isset($series_vl[1]->data) && !array_key_exists($vl, $series_vl[1]->data)) {
+                    $series_vl[1]->data[$vl]=0;
+                }
+            }
+            if(isset($series_vl[0]->data)){
+                ksort($series_vl[0]->data);
+                $engineer= array_keys($series_vl[0]->data);
+                $series_vl[0]->data= array_values($series_vl[0]->data);
+            }
+                if(isset($series_vl[1]->data)){
+                ksort($series_vl[1]->data);
+                $series_vl[1]->data= array_values($series_vl[1]->data);
+                }
+                $leader_id= str_replace(" ", "_",$ke); 
+                $installnum[$leader_id]['series'] = $series_vl;
+                $installnum[$leader_id]['engineer'] = $engineer;
+                
+                $teamLeader[]=$installnum;
+            }
+            
+        
+         
+
+            return response()->json(array('success' => true,'complate'=>$teamLeader,'target_data'=>3.5));  
+          }
+         
+           return response()->json(array('success' => false,'message'=> 'data not found'));  
+    }
+
+    function getStartAndEndDate($week, $year) {
+        
+        $dto = new \DateTime();
+        $dto->setISODate($year, $week);
+        $ret['week_start'] = $dto->format('Y-m-d');
+        $dto->modify('+6 days');
+        $ret['week_end'] = $dto->format('Y-m-d');
+        return $ret;
+      }
+      
+
 }

@@ -75,7 +75,113 @@ export default {
                     classes: 'nav-item',
                     url: '/report',
                     icon: 'feather icon-file-text'
-                }
+                },
+                {
+                    id: 'Installs',
+                    title: 'Installs',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                           {  
+                            id: 'utilitainstallsday',
+                            title: 'Utilita Day',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/day/Completed'
+                           },
+                           {  
+                            id: 'utilitainstallsweektodate',
+                            title: 'Utilita Week to Date',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/weektodate/Completed'
+                           },
+                           {  
+                            id: 'utilitainstallsmonthtodate',
+                            title: 'Utilita Month to Date',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/monthtodate/Completed'
+                           },
+                           {  
+                            id: 'utilitainstallsmonthprior',
+                            title: 'Utilita Month Prior',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/monthprior/Completed'
+                           },
+                           {  
+                            id: 'utilitainstallsyeartodate',
+                            title: 'Utilita Year to date',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/yeartodate/Completed'
+                           },
+                           {  
+                            id: 'utilitainstallsyearprior',
+                            title: 'Utilita Year Prior',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/yearprior/Completed'
+                           }
+                           
+                           
+
+
+                        
+                    ]
+                },{
+                    id: 'Aborts',
+                    title: 'Aborts',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                           {  
+                            id: 'abortsutilitainstallsday',
+                            title: 'Utilita Day',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/day/Aborts'
+                           },
+                           {  
+                            id: 'abortsutilitainstallsweektodate',
+                            title: 'Utilita Week to Date',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/weektodate/Aborts'
+                           },
+                           {  
+                            id: 'abortsutilitainstallsmonthtodate',
+                            title: 'Utilita Month to Date',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/monthtodate/Aborts'
+                           },
+                           {  
+                            id: 'abortsutilitainstallsmonthprior',
+                            title: 'Utilita Month Prior',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/monthprior/Aborts'
+                           },
+                           {  
+                            id: 'abortsutilitainstallsyeartodate',
+                            title: 'Utilita Year to date',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/yeartodate/Aborts'
+                           },
+                           {  
+                            id: 'abortsutilitainstallsyearprior',
+                            title: 'Utilita Year Prior',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitainstalls/yearprior/Aborts'
+                           }
+
+                    ]
+                },
+                
                 ]
         }
        
