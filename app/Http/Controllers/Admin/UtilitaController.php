@@ -754,7 +754,7 @@ class UtilitaController extends Controller
            
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
-           
+           if(isset($Request->job_status)){ $q->where('job_status', '=', $Request->job_status); }
           if($q->count() > 0){
             $result=$q->orderBy('appointment_time','asc')->get();
             
@@ -871,6 +871,199 @@ class UtilitaController extends Controller
          
            return response()->json(array('success' => false,'message'=> 'data not found'));  
     }
+
+    public function utilitainstallTable(Request $Request)
+    {
+        //
+        
+        switch($Request->report_for)
+        {
+        case "day":
+            $Request->start_date= date('Y-m-d', strtotime('-1 day'));
+            $Request->end_date = date('Y-m-d', strtotime('-1 day'));
+            break;
+            case "weektodate":
+                    $current_week_date =  $this->getStartAndEndDate(date("W"),date("Y"));
+                    $Request->start_date = $current_week_date['week_start'];
+                    $Request->end_date = date('Y-m-d');
+            break;
+            case "monthtodate":
+                $Request->start_date = date('Y-m-01');
+                $Request->end_date = date('Y-m-d');
+            break;
+            case "monthprior":
+                $Request->start_date = date('Y-m-1', strtotime('-1 months'));
+                $Request->end_date = date('Y-m-t', strtotime('-1 months'));
+            break;
+            case "yeartodate":
+                $Request->start_date = date('Y-01-01');
+                $Request->end_date = date('Y-m-d');
+            break;
+            case "yearprior":
+                $Request->start_date = date('Y-01-01', strtotime('-1 year'));
+                $Request->end_date = date('Y-12-31', strtotime('-1 year'));
+             
+            break;   
+               
+            
+                    
+         }
+         if($Request->job_status=='Aborts'){
+            $Request->job_status='Aborted';
+         }
+        $sheets_id = '';
+        $start_date = '';
+        $today_date = '';
+        if(isset($Request->start_date) && $Request->start_date!=''){
+            $start_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->start_date)));
+          }else{
+            return response()->json(array('success' => false,'message'=> 'start date not found'));  
+
+          }
+          if(isset($Request->end_date) && $Request->end_date!=''){
+            $today_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->end_date)));
+          }else{
+            return response()->json(array('success' => false,'message'=> 'end date not found'));  
+
+          }
+          
+          //$query= new Utilita_job;
+          
+          if($Request->file_id=='1'){
+            $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
+           }
+          elseif($Request->file_id=='2'){
+           $q= Utilita_job::select('*',DB::raw('DATE_FORMAT(schedule_date,"%d/%m/%Y") as schedule_date'),
+           DB::raw('DATE_FORMAT(schedule_start_time,"%d/%m/%Y %H:%i") as schedule_start_time'),
+           DB::raw('DATE_FORMAT(schedule_end_time,"%d/%m/%Y %H:%i") as schedule_end_time'),
+           DB::raw('DATE_FORMAT(job_booked,"%d/%m/%Y %H:%i") as job_booked'),
+           DB::raw('DATE_FORMAT(on_site_time,"%d/%m/%Y %H:%i") as on_site_time'),
+           DB::raw('DATE_FORMAT(cancelled_time,"%d/%m/%Y %H:%i") as cancelled_time')
+                                     
+            )->join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+          }else{
+            return 'Sorry data not found';
+       //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+ 
+        }
+         
+          
+           //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+           if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
+           
+         if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+         if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+           if(isset($Request->job_status)){$q->where('job_status', '=', $Request->job_status); }
+          if($q->count() > 0){
+            $result=$q->orderBy('appointment_time','asc')->get();
+            
+        $TeamLeader=[];
+            foreach($result as $row){
+                if(isset($TeamLeader[$row->parent_engineer])){
+                    $data=  array_filter(
+                        $TeamLeader[$row->parent_engineer],
+                        function ($e) use ($row) {
+                            return ($e->engineer == $row->engineer);
+                        });
+                 
+                        if($data){
+                            $ky = array_keys($data);
+                            $ky =$ky[0];
+                            if($row->week_no==1){
+                                $data[$ky]->week_1 = (isset($data[$ky]->week_1)?$data[$ky]->week_1 +1:1);
+                                }
+                                if($row->week_no==2){
+                                    $data[$ky]->week_2 = (isset($data[$ky]->week_2)?$data[$ky]->week_2 +1:1);
+                                 }
+                                 if($row->week_no==3){
+                                    $data[$ky]->week_3 = (isset($data[$ky]->week_3)?$data[$ky]->week_3 +1:1);
+                                 }
+                                 if($row->week_no==4){
+                                    if(isset($data[$ky]->week_4)){
+                                        $data[$ky]->week_4 =$data[$ky]->week_4 +1; 
+                                    }
+                                 } 
+                                 if($row->week_no==5){
+                                    
+                                    if(isset($data[$ky]->week_5)){
+                                        $data[$ky]->week_5 =$data[$ky]->week_5 +1; 
+                                    }
+                                 }
+                                 
+                        }else{
+                            $object = new \stdClass();
+                           $object->engineer = $row->engineer;
+                           if($row->week_no==1){
+                           $object->week_1 = 1;
+                           }
+                           else{
+                            $object->week_1 =0;
+                           }
+                           if($row->week_no==2){
+                            $object->week_2 = 1;
+                            }
+                            else{
+                                $object->week_2 =0;
+                            }
+                            if($row->week_no==3){
+                                $object->week_3 = 1;
+                            }else{
+                                $object->week_3 =0;
+                            }
+                            if($row->week_no==4){
+                                $object->week_4 = 1;
+                            }else{
+                                $object->week_4 =0;
+                            } 
+                            if($row->week_no==5){
+                                $object->week_5 = 1;
+                            }
+
+                            $TeamLeader[$row->parent_engineer][]= $object;
+                        }
+                    }else{
+                            $object = new \stdClass();
+                           $object->engineer = $row->engineer;
+                           if($row->week_no==1){
+                           $object->week_1 = 1;
+                           }
+                           else{
+                            $object->week_1 =0;
+                           }
+                           if($row->week_no==2){
+                            $object->week_2 = 1;
+                            }
+                            else{
+                                $object->week_2 =0;
+                            }
+                            if($row->week_no==3){
+                                $object->week_3 = 1;
+                            }else{
+                                $object->week_3 =0;
+                            }
+                            if($row->week_no==4){
+                                $object->week_4 = 1;
+                            }else{
+                                $object->week_4 =0;
+                            } 
+                            if($row->week_no==5){
+                                $object->week_5 = 1;
+                            }
+
+                            $TeamLeader[$row->parent_engineer][]= $object;
+                        }
+            }
+        
+           // dd($TeamLeader);         
+            return view('reports.monthtodate',['data'=> $TeamLeader]);
+          //  return response()->json(array('success' => true,'complate'=>$teamLeader,'target_data'=>3.5));  
+          
+        }
+         
+           return response()->json(array('success' => false,'message'=> 'data not found'));  
+    }
+
+    
 
     function getStartAndEndDate($week, $year) {
         

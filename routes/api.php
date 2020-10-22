@@ -49,6 +49,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::get('roledropdown', 'RoleController@roledropdown');
         
         Route::post('utilita/install', 'UtilitaController@utilitainstall');
+        Route::post('utilita/installtable', 'UtilitaController@utilitainstallTable');
         //parmission list          
         
         Route::post('parmission/list', function(){
