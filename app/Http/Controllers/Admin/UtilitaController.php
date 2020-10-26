@@ -1060,7 +1060,7 @@ class UtilitaController extends Controller
           
         }
          
-           return response()->json(array('success' => false,'message'=> 'data not found'));  
+         //  return response()->json(array('success' => false,'message'=> 'data not found'));  
     }
 
     

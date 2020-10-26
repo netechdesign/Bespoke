@@ -278,7 +278,7 @@ let total_text = '<div style="text-align: left !important;"><b style="margin: 0p
       document.getElementById("monthtodateHtml").innerHTML ='';
       if(this.props.match.params.id=='monthtodate'){
       axios.post(baseurl+'/api/utilita/installtable',data,{headers:{'Authorization':'Bearer '+auth_token}}).then(res =>{
-        console.log(res);
+        
         document.getElementById("monthtodateHtml").innerHTML = res.data;
         });
       }
@@ -305,6 +305,7 @@ let total_text = '<div style="text-align: left !important;"><b style="margin: 0p
                           <div id="htmlcontaint" style={{'textAlign': 'center'}} >
                           {this.state.teamLeader.map(function(item,indx){return <div style={{'borderBottom':'2px solid #f1f1f1'}}><div key={indx} id={item}></div></div>}) }
                           </div>
+                          <hr/>
                           <div id="monthtodateHtml" style={{'textAlign': 'center'}} >
                             </div>
                           </Col>

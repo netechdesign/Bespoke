@@ -294,7 +294,6 @@ var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
             'Authorization': 'Bearer ' + auth_token
           }
         }).then(function (res) {
-          console.log(res);
           document.getElementById("monthtodateHtml").innerHTML = res.data;
         });
       }
@@ -361,7 +360,7 @@ var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
           key: indx,
           id: item
         }));
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "monthtodateHtml",
         style: {
           'textAlign': 'center'
