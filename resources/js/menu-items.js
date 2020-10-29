@@ -130,14 +130,15 @@ export default {
 
                         
                     ]
-                },{
+                },
+                {
                     id: 'Aborts',
                     title: 'Aborts',
                     type: 'collapse',
                     icon: 'feather icon-menu',
                     children: [
                            {  
-                            id: 'abortsutilitainstallsday',
+                            id: 'utilitainstallsday',
                             title: 'Utilita Day',
                             type: 'item',
                             classes: 'nav-item',
@@ -179,6 +180,89 @@ export default {
                             url: '/utilitainstalls/yearprior/Aborts'
                            }
 
+                    ]
+                },
+                {
+                    id: 'FuelMix',
+                    title: 'Fuel Mix',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                           {  
+                            id: 'FuelMixweektodate',
+                            title: 'Utilita Week',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitafuelmix/weektodate'
+                           },
+                           {  
+                            id: 'utilitafuelmixmonthtodate',
+                            title: 'Utilita Month',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitafuelmix/monthtodate'
+                           },
+                           {  
+                            id: 'utilitafuelmixyeartodate',
+                            title: 'Utilita Year',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitafuelmix/yeartodate'
+                           }
+                        
+                    ]
+                },
+                {
+                    id: 'ooh',
+                    title: 'ooh',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                           {  
+                            id: 'oohtodate',
+                            title: 'Utilita Week',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitaooh/weektodate'
+                           },
+                           {  
+                            id: 'oohmonthtodate',
+                            title: 'Utilita Month',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitaooh/monthtodate'
+                           },
+                           {  
+                            id: 'oohyeartodate',
+                            title: 'Utilita Year',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/utilitaooh/yeartodate'
+                           }
+                        
+                    ]
+                },
+                {
+                    id: 'Vehicles',
+                    title: 'Vehicles',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                        {
+                            id: 'Milestravelled',
+                            title: 'Miles travelled',
+                            type: 'collapse',
+                            classes: 'nav-item',
+                            children: [
+                                   {  
+                                    id: 'utilitmilestravelledsday',
+                                    title: 'Utilita Day',
+                                    type: 'item',
+                                    classes: 'nav-item',
+                                    url: '/Inprocess'
+                                   }
+                            ]
+                        }
                     ]
                 },
                 

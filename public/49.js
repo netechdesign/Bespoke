@@ -3308,10 +3308,19 @@ __webpack_require__.r(__webpack_exports__);
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 window.$ = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
+var Inprocess = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Inprocess */ "./resources/js/Back-office/Pages/Inprocess.js"));
+});
 /** Start Report */
 
 var UtilitaInstalls = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14), __webpack_require__.e(48)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Reports/UtilitaInstalls */ "./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js"));
+});
+var Utilitafuelmix = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Reports/Utilitafuelmix */ "./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js"));
+});
+var Utilitaooh = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Reports/Utilitaooh */ "./resources/js/Back-office/Pages/Reports/Utilitaooh.js"));
 });
 /** End Report */
 
@@ -3477,6 +3486,21 @@ var routes = [{
   exact: true,
   name: 'useredit',
   component: UtilitaInstalls
+}, {
+  path: '/utilitafuelmix/:id',
+  exact: true,
+  name: 'useredit',
+  component: Utilitafuelmix
+}, {
+  path: '/utilitaooh/:id',
+  exact: true,
+  name: 'Utilitaooh',
+  component: Utilitaooh
+}, {
+  path: '/Inprocess',
+  exact: true,
+  name: 'Default',
+  component: Inprocess
 }, // for demo Examples.
 {
   path: '/forms/form-select',

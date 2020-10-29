@@ -750,7 +750,8 @@ class UtilitaController extends Controller
          
           
            //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
-           if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
+           $time = "17:00:00";
+            $q->whereTime('schedule_end_time', '<=', $time); 
            
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
@@ -949,7 +950,9 @@ class UtilitaController extends Controller
          
           
            //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
-           if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
+           $time = "17:00:00";
+           $q->whereTime('schedule_end_time', '<=', $time); 
+          
            
          if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
          if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
@@ -1063,7 +1066,859 @@ class UtilitaController extends Controller
          //  return response()->json(array('success' => false,'message'=> 'data not found'));  
     }
 
-    
+    public function utilitaFuelmix(Request $Request)
+   {
+       //
+       
+       switch($Request->report_for)
+       {
+       case "day":
+           $Request->start_date= date('Y-m-d', strtotime('-1 day'));
+           $Request->end_date = date('Y-m-d', strtotime('-1 day'));
+           break;
+           case "weektodate":
+                   $current_week_date =  $this->getStartAndEndDate(date("W"),date("Y"));
+                   $Request->start_date = $current_week_date['week_start'];
+                   $Request->end_date = date('Y-m-d');
+           break;
+           case "monthtodate":
+               $Request->start_date = date('Y-m-01');
+               $Request->end_date = date('Y-m-d');
+           break;
+           case "monthprior":
+               $Request->start_date = date('Y-m-1', strtotime('-1 months'));
+               $Request->end_date = date('Y-m-t', strtotime('-1 months'));
+           break;
+           case "yeartodate":
+               $Request->start_date = date('Y-01-01');
+               $Request->end_date = date('Y-m-d');
+           break;
+           case "yearprior":
+               $Request->start_date = date('Y-01-01', strtotime('-1 year'));
+               $Request->end_date = date('Y-12-31', strtotime('-1 year'));
+            
+           break;   
+              
+           
+                   
+        }
+        
+       $sheets_id = '';
+       $start_date = '';
+       $today_date = '';
+       if(isset($Request->start_date) && $Request->start_date!=''){
+           $start_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->start_date)));
+         }else{
+           return response()->json(array('success' => false,'message'=> 'start date not found'));  
+
+         }
+         if(isset($Request->end_date) && $Request->end_date!=''){
+           $today_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->end_date)));
+         }else{
+           return response()->json(array('success' => false,'message'=> 'end date not found'));  
+
+         }
+         
+         //$query= new Utilita_job;
+         
+         if($Request->file_id=='1'){
+           $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
+          }
+         elseif($Request->file_id=='2'){
+          $q= Utilita_job::select("*");
+         }else{
+           return 'Sorry data not found';
+      //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+
+       }
+        
+         
+          //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+          if($Request->id!=''){ $q->where('sheets_id', '=', $Request->id); }
+          
+          if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+          if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+        
+         if($q->count() > 0){
+           $result=$q->orderBy('appointment_time','asc')->get();
+           
+           $TeamLeader=[];           
+           foreach($result as $row){
+               if($Request->file_id=='1'){
+                   $row->appointment_time = date('A', strtotime($row->schedule_start_time));
+              
+                }
+
+                $data=  array_filter(
+                    $TeamLeader,
+                    function ($e) use ($row) {
+                        return ($e->job_type == $row->job_type);
+                    });
+             
+                    if($data){
+                        $ky = array_keys($data);
+                        $ky =$ky[0];
+                        if($Request->report_for=='weektodate'){
+                                if($row->week_day=='Monday'){
+                                $data[$ky]->Mon = (isset($data[$ky]->Mon)?$data[$ky]->Mon +1:1);
+                                }
+                                if($row->week_day=='Tuesday'){
+                                $data[$ky]->Tue = (isset($data[$ky]->Tue)?$data[$ky]->Tue +1:1);
+                                }
+                                if($row->week_day=='Wednesday'){
+                                $data[$ky]->Wed = (isset($data[$ky]->Wed)?$data[$ky]->Wed +1:1);
+                                }
+                                if($row->week_day=='Thursday'){
+                                $data[$ky]->Thu = (isset($data[$ky]->Thu)?$data[$ky]->Thu +1:1);
+                                }
+                                if($row->week_day=='Friday'){
+                                $data[$ky]->Fri = (isset($data[$ky]->Fri)?$data[$ky]->Fri +1:1);
+                                }
+                                if($row->week_day=='Saturday'){
+                                $data[$ky]->Sat = (isset($data[$ky]->Sat)?$data[$ky]->Sat +1:1);
+                                }
+                                
+                                if($row->week_day=='Sunday'){
+                                $data[$ky]->Sun = (isset($data[$ky]->Sun)?$data[$ky]->Sun +1:1);
+                                }
+                            }elseif($Request->report_for=='monthtodate'){
+                                if($row->week_no==1){
+                                    $data[$ky]->week_1 = (isset($data[$ky]->week_1)?$data[$ky]->week_1 +1:1);
+                                    }
+                                    if($row->week_no==2){
+                                        $data[$ky]->week_2 = (isset($data[$ky]->week_2)?$data[$ky]->week_2 +1:1);
+                                     }
+                                     if($row->week_no==3){
+                                        $data[$ky]->week_3 = (isset($data[$ky]->week_3)?$data[$ky]->week_3 +1:1);
+                                     }
+                                     if($row->week_no==4){
+                                        if(isset($data[$ky]->week_4)){
+                                            $data[$ky]->week_4 =$data[$ky]->week_4 +1; 
+                                        }
+                                     } 
+                                     if($row->week_no==5){
+                                        
+                                        if(isset($data[$ky]->week_5)){
+                                            $data[$ky]->week_5 =$data[$ky]->week_5 +1; 
+                                        }
+                                     }
+                            }
+                            elseif($Request->report_for=='yeartodate'){
+                                $month_vl=date('M',strtotime($row->schedule_date));
+                                        if($month_vl=='Jan'){
+                                        $data[$ky]->Jan = (isset($data[$ky]->Jan)?$data[$ky]->Jan +1:1);
+                                        }
+                                        if($month_vl=='Feb'){
+                                        $data[$ky]->Feb = (isset($data[$ky]->Feb)?$data[$ky]->Feb +1:1);
+                                        }
+                                        if($month_vl=='Mar'){
+                                        $data[$ky]->Mar = (isset($data[$ky]->Mar)?$data[$ky]->Mar +1:1);
+                                        }
+                                        if($month_vl=='Apr'){
+                                            $data[$ky]->Apr = (isset($data[$ky]->Apr)?$data[$ky]->Apr +1:1);
+                                        } 
+                                        if($month_vl=='May'){
+                                            $data[$ky]->May = (isset($data[$ky]->May)?$data[$ky]->May +1:1);
+                                        }
+                                        if($month_vl=='Jun'){
+                                            $data[$ky]->Jun = (isset($data[$ky]->Jul)?$data[$ky]->Jul +1:1);
+                                        }  
+                                        if($month_vl=='Jul'){
+                                            $data[$ky]->Jul = (isset($data[$ky]->Jul)?$data[$ky]->Jul +1:1);
+                                        } 
+                                           
+                                        if($month_vl=='Aug'){
+                                            $data[$ky]->Aug = (isset($data[$ky]->Aug)?$data[$ky]->Aug +1:1);
+                                        }
+                                          
+                                        if($month_vl=='Sep'){
+                                            $data[$ky]->Sep = (isset($data[$ky]->Sep)?$data[$ky]->Sep +1:1);
+                                        }
+                                         
+                                        if($month_vl=='Oct'){
+                                            $data[$ky]->Oct = (isset($data[$ky]->Oct)?$data[$ky]->Oct +1:1);
+                                        }
+                                        
+                                        if($month_vl=='Nov'){
+                                            $data[$ky]->Nov = (isset($data[$ky]->Nov)?$data[$ky]->Nov +1:1);
+                                        }
+                                          
+                                        if($month_vl=='Dec'){
+                                            $data[$ky]->Dec = (isset($data[$ky]->Dec)?$data[$ky]->Dec +1:1);
+                                        }
+                            }
+                            
+                    }else{
+                        $object = new \stdClass();
+
+                                    if($row->job_type=='Dual Fuel Install'){
+                                        //$object->job_type = 'Dual Fuel';
+                                    }
+                            $object->job_type = $row->job_type;
+
+                          if($Request->report_for=='weektodate'){
+                            if($row->week_day=='Monday'){
+                            $object->Mon = 1;
+                            }
+                            else{
+                            $object->Mon =0;
+                            }
+
+                            if($row->week_day=='Tuesday'){
+                            $object->Tue = 1;
+                            }
+                            else{
+                            $object->Tue =0;
+                            }
+
+                            if($row->week_day=='Wednesday'){
+                            $object->Wed = 1;
+                            }
+                            else{
+                            $object->Wed =0;
+                            }
+                            if($row->week_day=='Thursday'){
+                            $object->Thu = 1;
+                            }
+                            else{
+                            $object->Thu =0;
+                            }
+
+                            if($row->week_day=='Friday'){
+                            $object->Fri = 1;
+                            }
+                            else{
+                            $object->Fri =0;
+                            }
+
+                            if($row->week_day=='Saturday'){
+                            $object->Sat = 1;
+                            }
+                            else{
+                            $object->Sat =0;
+                            }
+
+                            if($row->week_day=='Sunday'){
+                            $object->Sun = 1;
+                            }
+                            else{
+                            $object->Sun =0;
+                            }
+                        }
+                        elseif($Request->report_for=='monthtodate'){
+                            if($row->week_no==1){
+                                $object->week_1 = 1;
+                                }
+                                else{
+                                 $object->week_1 =0;
+                                }
+                                if($row->week_no==2){
+                                 $object->week_2 = 1;
+                                 }
+                                 else{
+                                     $object->week_2 =0;
+                                 }
+                                 if($row->week_no==3){
+                                     $object->week_3 = 1;
+                                 }else{
+                                     $object->week_3 =0;
+                                 }
+                                 if($row->week_no==4){
+                                     $object->week_4 = 1;
+                                 }else{
+                                     $object->week_4 =0;
+                                 } 
+                                 if($row->week_no==5){
+                                     $object->week_5 = 1;
+                                 }else{
+                                    $object->week_5 = 0;
+                                 }
+     
+                        }
+                        elseif($Request->report_for=='yeartodate'){
+                         
+                            if(date('M',strtotime($row->schedule_date))=='Jan'){
+                                $object->Jan = 1;
+                                }
+                                else{
+                                 $object->Jan =0;
+                                }
+                                if($row->week_no=='Feb'){
+                                 $object->Feb = 1;
+                                 }
+                                 else{
+                                     $object->Feb =0;
+                                 }
+                                 if(date('M',strtotime($row->schedule_date))=='Mar'){
+                                     $object->Mar = 1;
+                                 }else{
+                                     $object->Mar =0;
+                                 }
+                                 if(date('M',strtotime($row->schedule_date))=='Apr'){
+                                    $object->Apr = 1;
+                                }else{
+                                    $object->Apr =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='May'){
+                                    $object->May = 1;
+                                }else{
+                                    $object->May =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Jun'){
+                                    $object->Jun = 1;
+                                }else{
+                                    $object->Jun =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Jul'){
+                                    $object->Jul = 1;
+                                }else{
+                                    $object->Jul =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Aug'){
+                                    $object->Aug = 1;
+                                }else{
+                                    $object->Aug =0;
+                                }
+
+                                // 
+                                if(date('M',strtotime($row->schedule_date))=='Sep'){
+                                    $object->Sep = 1;
+                                }else{
+                                    $object->Sep =0;
+                                }
+                                
+                                if(date('M',strtotime($row->schedule_date))=='Oct'){
+                                    $object->Oct = 1;
+                                }else{
+                                    $object->Oct =0;
+                                }
+                                
+                                if(date('M',strtotime($row->schedule_date))=='Nov'){
+                                    $object->Nov = 1;
+                                }else{
+                                    $object->Nov =0;
+                                }
+                                 
+                                 if(date('M',strtotime($row->schedule_date))=='Dec'){
+                                    $object->Dec = 1;
+                                }else{
+                                    $object->Dec =0;
+                                }
+                        }
+
+
+                        $TeamLeader[]= $object;
+
+                       
+                    }
+                
+               
+               
+           }
+          
+           //complate
+          
+      
+           return view('reports.fuelmix',['report_for'=>$Request->report_for,'data'=> $TeamLeader]);
+         }
+        
+          return 'Record not found';  
+   }
+
+   
+   public function utilitaooh(Request $Request)
+   {
+       //
+       
+       switch($Request->report_for)
+       {
+       case "day":
+           $Request->start_date= date('Y-m-d', strtotime('-1 day'));
+           $Request->end_date = date('Y-m-d', strtotime('-1 day'));
+           break;
+           case "weektodate":
+                   $current_week_date =  $this->getStartAndEndDate(date("W"),date("Y"));
+                   $Request->start_date = $current_week_date['week_start'];
+                   $Request->end_date = date('Y-m-d');
+           break;
+           case "monthtodate":
+               $Request->start_date = date('Y-m-01');
+               $Request->end_date = date('Y-m-d');
+           break;
+           case "monthprior":
+               $Request->start_date = date('Y-m-1', strtotime('-1 months'));
+               $Request->end_date = date('Y-m-t', strtotime('-1 months'));
+           break;
+           case "yeartodate":
+               $Request->start_date = date('Y-01-01');
+               $Request->end_date = date('Y-m-d');
+           break;
+           case "yearprior":
+               $Request->start_date = date('Y-01-01', strtotime('-1 year'));
+               $Request->end_date = date('Y-12-31', strtotime('-1 year'));
+            
+           break;   
+              
+           
+                   
+        }
+        
+       $sheets_id = '';
+       $start_date = '';
+       $today_date = '';
+       if(isset($Request->start_date) && $Request->start_date!=''){
+           $start_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->start_date)));
+         }else{
+           return response()->json(array('success' => false,'message'=> 'start date not found'));  
+
+         }
+         if(isset($Request->end_date) && $Request->end_date!=''){
+           $today_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->end_date)));
+         }else{
+           return response()->json(array('success' => false,'message'=> 'end date not found'));  
+
+         }
+         
+         //$query= new Utilita_job;
+         
+         if($Request->file_id=='1'){
+           $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
+          }
+         elseif($Request->file_id=='2'){
+          $q= Utilita_job::select('*')->join('engineer_groups','engineer_groups.child_engineer_id','=','utilita_jobs.engineer_id');
+         }else{
+           return 'Sorry data not found';
+      //  return Redirect::back()->withErrors(['msg', 'Records not found']);
+
+       }
+        
+         
+          //if($month!=''){ $q->whereMonth('schedule_date', '=', $month); }
+          $time = "17:00:00";
+          $q->whereTime('schedule_end_time', '>=', $time); 
+           if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
+          if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
+          if(isset($Request->job_status)){$q->where('job_status', '=', 'Completed'); }
+         if($q->count() > 0){
+           $result=$q->orderBy('appointment_time','asc')->get();
+           $TeamLeader=[];
+           foreach($result as $row){
+               if(isset($TeamLeader[$row->parent_engineer])){
+                   $data=  array_filter(
+                       $TeamLeader[$row->parent_engineer],
+                       function ($e) use ($row) {
+                           return ($e->engineer == $row->engineer);
+                       });
+                
+                       if($data){
+                           $ky = array_keys($data);
+                           $ky =$ky[0];
+                           
+                           if($Request->report_for=='weektodate'){
+                            if($row->week_day=='Monday'){
+                            $data[$ky]->Mon = (isset($data[$ky]->Mon)?$data[$ky]->Mon +1:1);
+                            }
+                            if($row->week_day=='Tuesday'){
+                            $data[$ky]->Tue = (isset($data[$ky]->Tue)?$data[$ky]->Tue +1:1);
+                            }
+                            if($row->week_day=='Wednesday'){
+                            $data[$ky]->Wed = (isset($data[$ky]->Wed)?$data[$ky]->Wed +1:1);
+                            }
+                            if($row->week_day=='Thursday'){
+                            $data[$ky]->Thu = (isset($data[$ky]->Thu)?$data[$ky]->Thu +1:1);
+                            }
+                            if($row->week_day=='Friday'){
+                            $data[$ky]->Fri = (isset($data[$ky]->Fri)?$data[$ky]->Fri +1:1);
+                            }
+                            if($row->week_day=='Saturday'){
+                            $data[$ky]->Sat = (isset($data[$ky]->Sat)?$data[$ky]->Sat +1:1);
+                            }
+                            
+                            if($row->week_day=='Sunday'){
+                            $data[$ky]->Sun = (isset($data[$ky]->Sun)?$data[$ky]->Sun +1:1);
+                            }
+                        }elseif($Request->report_for=='monthtodate'){
+                            if($row->week_no==1){
+                                $data[$ky]->week_1 = (isset($data[$ky]->week_1)?$data[$ky]->week_1 +1:1);
+                                }
+                                if($row->week_no==2){
+                                    $data[$ky]->week_2 = (isset($data[$ky]->week_2)?$data[$ky]->week_2 +1:1);
+                                 }
+                                 if($row->week_no==3){
+                                    $data[$ky]->week_3 = (isset($data[$ky]->week_3)?$data[$ky]->week_3 +1:1);
+                                 }
+                                 if($row->week_no==4){
+                                    if(isset($data[$ky]->week_4)){
+                                        $data[$ky]->week_4 =$data[$ky]->week_4 +1; 
+                                    }
+                                 } 
+                                 if($row->week_no==5){
+                                    
+                                    if(isset($data[$ky]->week_5)){
+                                        $data[$ky]->week_5 =$data[$ky]->week_5 +1; 
+                                    }
+                                 }
+                        }
+                        elseif($Request->report_for=='yeartodate'){
+                            $month_vl=date('M',strtotime($row->schedule_date));
+                                    if($month_vl=='Jan'){
+                                    $data[$ky]->Jan = (isset($data[$ky]->Jan)?$data[$ky]->Jan +1:1);
+                                    }
+                                    if($month_vl=='Feb'){
+                                    $data[$ky]->Feb = (isset($data[$ky]->Feb)?$data[$ky]->Feb +1:1);
+                                    }
+                                    if($month_vl=='Mar'){
+                                    $data[$ky]->Mar = (isset($data[$ky]->Mar)?$data[$ky]->Mar +1:1);
+                                    }
+                                    if($month_vl=='Apr'){
+                                        $data[$ky]->Apr = (isset($data[$ky]->Apr)?$data[$ky]->Apr +1:1);
+                                    } 
+                                    if($month_vl=='May'){
+                                        $data[$ky]->May = (isset($data[$ky]->May)?$data[$ky]->May +1:1);
+                                    }
+                                    if($month_vl=='Jun'){
+                                        $data[$ky]->Jun = (isset($data[$ky]->Jul)?$data[$ky]->Jul +1:1);
+                                    }  
+                                    if($month_vl=='Jul'){
+                                        $data[$ky]->Jul = (isset($data[$ky]->Jul)?$data[$ky]->Jul +1:1);
+                                    } 
+                                       
+                                    if($month_vl=='Aug'){
+                                        $data[$ky]->Aug = (isset($data[$ky]->Aug)?$data[$ky]->Aug +1:1);
+                                    }
+                                      
+                                    if($month_vl=='Sep'){
+                                        $data[$ky]->Sep = (isset($data[$ky]->Sep)?$data[$ky]->Sep +1:1);
+                                    }
+                                     
+                                    if($month_vl=='Oct'){
+                                        $data[$ky]->Oct = (isset($data[$ky]->Oct)?$data[$ky]->Oct +1:1);
+                                    }
+                                    
+                                    if($month_vl=='Nov'){
+                                        $data[$ky]->Nov = (isset($data[$ky]->Nov)?$data[$ky]->Nov +1:1);
+                                    }
+                                      
+                                    if($month_vl=='Dec'){
+                                        $data[$ky]->Dec = (isset($data[$ky]->Dec)?$data[$ky]->Dec +1:1);
+                                    }
+                        }
+                                
+                       }else{
+                           $object = new \stdClass();
+                          $object->engineer = $row->engineer;
+                          if($Request->report_for=='weektodate'){
+                            if($row->week_day=='Monday'){
+                            $object->Mon = 1;
+                            }
+                            else{
+                            $object->Mon =0;
+                            }
+
+                            if($row->week_day=='Tuesday'){
+                            $object->Tue = 1;
+                            }
+                            else{
+                            $object->Tue =0;
+                            }
+
+                            if($row->week_day=='Wednesday'){
+                            $object->Wed = 1;
+                            }
+                            else{
+                            $object->Wed =0;
+                            }
+                            if($row->week_day=='Thursday'){
+                            $object->Thu = 1;
+                            }
+                            else{
+                            $object->Thu =0;
+                            }
+
+                            if($row->week_day=='Friday'){
+                            $object->Fri = 1;
+                            }
+                            else{
+                            $object->Fri =0;
+                            }
+
+                            if($row->week_day=='Saturday'){
+                            $object->Sat = 1;
+                            }
+                            else{
+                            $object->Sat =0;
+                            }
+
+                            if($row->week_day=='Sunday'){
+                            $object->Sun = 1;
+                            }
+                            else{
+                            $object->Sun =0;
+                            }
+                        }
+                        elseif($Request->report_for=='monthtodate'){
+                          if($row->week_no==1){
+                          $object->week_1 = 1;
+                          }
+                          else{
+                           $object->week_1 =0;
+                          }
+                          if($row->week_no==2){
+                           $object->week_2 = 1;
+                           }
+                           else{
+                               $object->week_2 =0;
+                           }
+                           if($row->week_no==3){
+                               $object->week_3 = 1;
+                           }else{
+                               $object->week_3 =0;
+                           }
+                           if($row->week_no==4){
+                               $object->week_4 = 1;
+                           }else{
+                               $object->week_4 =0;
+                           } 
+                           if($row->week_no==5){
+                               $object->week_5 = 1;
+                           }else{
+                            $object->week_5 = 0;
+                           }
+                        }  elseif($Request->report_for=='yeartodate'){
+                         
+                            if(date('M',strtotime($row->schedule_date))=='Jan'){
+                                $object->Jan = 1;
+                                }
+                                else{
+                                 $object->Jan =0;
+                                }
+                                if($row->week_no=='Feb'){
+                                 $object->Feb = 1;
+                                 }
+                                 else{
+                                     $object->Feb =0;
+                                 }
+                                 if(date('M',strtotime($row->schedule_date))=='Mar'){
+                                     $object->Mar = 1;
+                                 }else{
+                                     $object->Mar =0;
+                                 }
+                                 if(date('M',strtotime($row->schedule_date))=='Apr'){
+                                    $object->Apr = 1;
+                                }else{
+                                    $object->Apr =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='May'){
+                                    $object->May = 1;
+                                }else{
+                                    $object->May =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Jun'){
+                                    $object->Jun = 1;
+                                }else{
+                                    $object->Jun =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Jul'){
+                                    $object->Jul = 1;
+                                }else{
+                                    $object->Jul =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Aug'){
+                                    $object->Aug = 1;
+                                }else{
+                                    $object->Aug =0;
+                                }
+
+                                // 
+                                if(date('M',strtotime($row->schedule_date))=='Sep'){
+                                    $object->Sep = 1;
+                                }else{
+                                    $object->Sep =0;
+                                }
+                                
+                                if(date('M',strtotime($row->schedule_date))=='Oct'){
+                                    $object->Oct = 1;
+                                }else{
+                                    $object->Oct =0;
+                                }
+                                
+                                if(date('M',strtotime($row->schedule_date))=='Nov'){
+                                    $object->Nov = 1;
+                                }else{
+                                    $object->Nov =0;
+                                }
+                                 
+                                 if(date('M',strtotime($row->schedule_date))=='Dec'){
+                                    $object->Dec = 1;
+                                }else{
+                                    $object->Dec =0;
+                                }
+                        }
+                           $TeamLeader[$row->parent_engineer][]= $object;
+                       }
+                   }else{
+                           $object = new \stdClass();
+                          $object->engineer = $row->engineer;
+                         
+                          if($Request->report_for=='weektodate'){
+                            if($row->week_day=='Monday'){
+                            $object->Mon = 1;
+                            }
+                            else{
+                            $object->Mon =0;
+                            }
+
+                            if($row->week_day=='Tuesday'){
+                            $object->Tue = 1;
+                            }
+                            else{
+                            $object->Tue =0;
+                            }
+
+                            if($row->week_day=='Wednesday'){
+                            $object->Wed = 1;
+                            }
+                            else{
+                            $object->Wed =0;
+                            }
+                            if($row->week_day=='Thursday'){
+                            $object->Thu = 1;
+                            }
+                            else{
+                            $object->Thu =0;
+                            }
+
+                            if($row->week_day=='Friday'){
+                            $object->Fri = 1;
+                            }
+                            else{
+                            $object->Fri =0;
+                            }
+
+                            if($row->week_day=='Saturday'){
+                            $object->Sat = 1;
+                            }
+                            else{
+                            $object->Sat =0;
+                            }
+
+                            if($row->week_day=='Sunday'){
+                            $object->Sun = 1;
+                            }
+                            else{
+                            $object->Sun =0;
+                            }
+                        }
+                        elseif($Request->report_for=='monthtodate'){
+                          if($row->week_no==1){
+                          $object->week_1 = 1;
+                          }
+                          else{
+                           $object->week_1 =0;
+                          }
+                          if($row->week_no==2){
+                           $object->week_2 = 1;
+                           }
+                           else{
+                               $object->week_2 =0;
+                           }
+                           if($row->week_no==3){
+                               $object->week_3 = 1;
+                           }else{
+                               $object->week_3 =0;
+                           }
+                           if($row->week_no==4){
+                               $object->week_4 = 1;
+                           }else{
+                               $object->week_4 =0;
+                           } 
+                           if($row->week_no==5){
+                               $object->week_5 = 1;
+                           }else{
+                            $object->week_5 = 0;
+                           }
+                        }  elseif($Request->report_for=='yeartodate'){
+                         
+                            if(date('M',strtotime($row->schedule_date))=='Jan'){
+                                $object->Jan = 1;
+                                }
+                                else{
+                                 $object->Jan =0;
+                                }
+                                if($row->week_no=='Feb'){
+                                 $object->Feb = 1;
+                                 }
+                                 else{
+                                     $object->Feb =0;
+                                 }
+                                 if(date('M',strtotime($row->schedule_date))=='Mar'){
+                                     $object->Mar = 1;
+                                 }else{
+                                     $object->Mar =0;
+                                 }
+                                 if(date('M',strtotime($row->schedule_date))=='Apr'){
+                                    $object->Apr = 1;
+                                }else{
+                                    $object->Apr =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='May'){
+                                    $object->May = 1;
+                                }else{
+                                    $object->May =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Jun'){
+                                    $object->Jun = 1;
+                                }else{
+                                    $object->Jun =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Jul'){
+                                    $object->Jul = 1;
+                                }else{
+                                    $object->Jul =0;
+                                }
+                                if(date('M',strtotime($row->schedule_date))=='Aug'){
+                                    $object->Aug = 1;
+                                }else{
+                                    $object->Aug =0;
+                                }
+
+                                // 
+                                if(date('M',strtotime($row->schedule_date))=='Sep'){
+                                    $object->Sep = 1;
+                                }else{
+                                    $object->Sep =0;
+                                }
+                                
+                                if(date('M',strtotime($row->schedule_date))=='Oct'){
+                                    $object->Oct = 1;
+                                }else{
+                                    $object->Oct =0;
+                                }
+                                
+                                if(date('M',strtotime($row->schedule_date))=='Nov'){
+                                    $object->Nov = 1;
+                                }else{
+                                    $object->Nov =0;
+                                }
+                                 
+                                 if(date('M',strtotime($row->schedule_date))=='Dec'){
+                                    $object->Dec = 1;
+                                }else{
+                                    $object->Dec =0;
+                                }
+                        }
+                           $TeamLeader[$row->parent_engineer][]= $object;
+                       }
+           }
+       
+          // dd($TeamLeader);         
+           return view('reports.ooh',['report_for'=>$Request->report_for,'data'=> $TeamLeader]);
+         //  return response()->json(array('success' => true,'complate'=>$teamLeader,'target_data'=>3.5));  
+         
+       }
+        
+        //  return response()->json(array('success' => false,'message'=> 'data not found'));  
+   }
 
     function getStartAndEndDate($week, $year) {
         

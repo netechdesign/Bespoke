@@ -5,8 +5,12 @@ window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
 
+
+const Inprocess = React.lazy(() => import('./Back-office/Pages/Inprocess'));
 /** Start Report */
 const UtilitaInstalls = React.lazy(() => import('./Back-office/Pages/Reports/UtilitaInstalls'));
+const Utilitafuelmix = React.lazy(() => import('./Back-office/Pages/Reports/Utilitafuelmix'));
+const Utilitaooh = React.lazy(() => import('./Back-office/Pages/Reports/Utilitaooh'));
 /** End Report */
 const DashboardDefault = React.lazy(() => import('./Back-office/Pages/Dashboard'));
 const DataImport = React.lazy(() => import('./Back-office/Pages/Data_import'));
@@ -53,7 +57,10 @@ const routes = [
     { path:'/user/add', exact:true, name:'useradd',component:UserAdd},
     { path:'/user/edit/:id', exact:true, name:'useredit',component:UserEdit},
     { path:'/utilitainstalls/:id/:status', exact:true, name:'useredit',component:UtilitaInstalls},
+    { path:'/utilitafuelmix/:id', exact:true, name:'useredit',component:Utilitafuelmix},
+    { path:'/utilitaooh/:id', exact:true, name:'Utilitaooh',component:Utilitaooh},
     
+    { path: '/Inprocess', exact: true, name: 'Default', component: Inprocess },
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },

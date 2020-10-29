@@ -50,6 +50,9 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         
         Route::post('utilita/install', 'UtilitaController@utilitainstall');
         Route::post('utilita/installtable', 'UtilitaController@utilitainstallTable');
+        Route::post('utilita/fuelmix', 'UtilitaController@utilitaFuelmix');
+        Route::post('utilita/ooh', 'UtilitaController@utilitaooh');
+        
         //parmission list          
         
         Route::post('parmission/list', function(){

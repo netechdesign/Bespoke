@@ -287,7 +287,7 @@ let total_text = '<div style="text-align: left !important;"><b style="margin: 0p
       
        //
          
-    
+     
 
     render(){ 
         const { match, location, history } = this.props
