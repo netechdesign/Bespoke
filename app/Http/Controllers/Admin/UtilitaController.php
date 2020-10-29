@@ -266,7 +266,11 @@ class UtilitaController extends Controller
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
            
           if($q->count() > 0){
-            $result=$q->orderBy('appointment_time','asc')->get();
+            if($Request->file_id=='2'){
+                $result=$q->orderBy('appointment_time','asc')->get();
+            }else{
+                $result=$q->orderBy('schedule_start_time','asc')->get();
+            }
             $categories =array();
             $series=[];
 

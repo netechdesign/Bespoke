@@ -157,6 +157,7 @@ var UtilitaChart = /*#__PURE__*/function (_React$Component) {
           }
         }).then(function (res) {
           // let data = JSON.parse(res.data); 
+          document.getElementById("requestLoder").innerHTML = '';
           var result = res.data.complate; //series
 
           var options = {

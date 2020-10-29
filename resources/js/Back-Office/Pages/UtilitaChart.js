@@ -55,7 +55,7 @@ class UtilitaChart extends React.Component {
            document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
       axios.post(baseurl+'/api/utilita/'+id,data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
          // let data = JSON.parse(res.data); 
-  
+         document.getElementById("requestLoder").innerHTML = '';
 let result = res.data.complate;
 
 //series
