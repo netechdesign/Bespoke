@@ -25,7 +25,7 @@ const Engineer = React.lazy(() => import('./Back-Office/Pages/Engineer'));
 const RoleList = React.lazy(() => import("./Back-Office/Role"));
 const RoleAdd = React.lazy(() => import("./Back-Office/Role/add"));
 const RoleEdit = React.lazy(() => import("./Back-Office/Role/edit"));
-
+const Settarget = React.lazy(() => import("./Back-Office/Pages/Settarget"));
 const UserList = React.lazy(() => import("./Back-Office/User"));
 const UserAdd = React.lazy(() => import("./Back-Office/User/add"));
 const UserEdit = React.lazy(() => import("./Back-Office/User/edit"));
@@ -59,6 +59,7 @@ const routes = [
     { path:'/utilitainstalls/:id/:status', exact:true, name:'useredit',component:UtilitaInstalls},
     { path:'/utilitafuelmix/:id', exact:true, name:'useredit',component:Utilitafuelmix},
     { path:'/utilitaooh/:id', exact:true, name:'Utilitaooh',component:Utilitaooh},
+    { path:'/settarget', exact:true, name:'Settarget',component:Settarget},
     
     { path: '/Inprocess', exact: true, name: 'Default', component: Inprocess },
     // for demo Examples.

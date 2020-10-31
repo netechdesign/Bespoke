@@ -11,6 +11,7 @@ use Excel;
 use DB;
 use App\Models\Utilita_job;
 use App\Models\Morrison_jobs;
+use App\Models\Targets;
 class DashboardController extends Controller
 {
     //
@@ -20,7 +21,12 @@ class DashboardController extends Controller
         try{
             
             
-        $total_data='5.5';
+        $total_data='0';
+        $targets=Targets::first();
+            if($targets){
+            $total_data = $targets->daily_target;
+            }
+            
           $q= Utilita_job::select("week_day",DB::raw('count("*") as totals'));
             
 
@@ -78,7 +84,12 @@ class DashboardController extends Controller
         try{
             
             
-        $total_data='5.5';
+            $total_data='0';
+            $targets=Targets::first();
+                if($targets){
+                $total_data = $targets->daily_target;
+                }
+                
           $q= Morrison_jobs::select("week_day",DB::raw('count("*") as totals'));
             
 

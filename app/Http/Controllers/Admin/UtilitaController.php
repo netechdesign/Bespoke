@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Utilita\Thursday;
 use App\Http\Controllers\Admin\Utilita\Friday;
 use App\Http\Controllers\Admin\Utilita\Saturday;
 use App\Http\Controllers\Admin\Utilita\Sunday;
+use App\Models\Targets;
 class UtilitaController extends Controller
 {
     /**
@@ -868,10 +869,15 @@ class UtilitaController extends Controller
                 $teamLeader[]=$installnum;
             }
             
-        
-         
-
-            return response()->json(array('success' => true,'complate'=>$teamLeader,'target_data'=>3.5));  
+            $targets=Targets::first();
+            if($targets){
+            $targets_no = $targets->daily_target;
+            }
+            else
+            {
+            $targets_no=0;
+            }  
+            return response()->json(array('success' => true,'complate'=>$teamLeader,'target_data'=>$targets_no));  
           }
          
            return response()->json(array('success' => false,'message'=> 'data not found'));  

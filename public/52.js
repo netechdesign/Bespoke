@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[52],{
 
-/***/ "./resources/js/Back-office/Pages/Reports/Utilitaooh.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/Back-office/Pages/Reports/Utilitaooh.js ***!
-  \**************************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,15 +53,15 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
 
 var baseurl = window.location.origin;
 
-var Utilitaooh = /*#__PURE__*/function (_React$Component) {
-  _inherits(Utilitaooh, _React$Component);
+var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
+  _inherits(Utilitafuelmix, _React$Component);
 
-  var _super = _createSuper(Utilitaooh);
+  var _super = _createSuper(Utilitafuelmix);
 
-  function Utilitaooh(props) {
+  function Utilitafuelmix(props) {
     var _this;
 
-    _classCallCheck(this, Utilitaooh);
+    _classCallCheck(this, Utilitafuelmix);
 
     _this = _super.call(this, props);
 
@@ -87,7 +87,7 @@ var Utilitaooh = /*#__PURE__*/function (_React$Component) {
       }
 
       document.getElementById("monthtodateHtml").innerHTML = '';
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/ooh', data, {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/fuelmix', data, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -105,7 +105,7 @@ var Utilitaooh = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Utilitaooh, [{
+  _createClass(Utilitafuelmix, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       console.log('tag', 'componentWillMount');
@@ -153,10 +153,10 @@ var Utilitaooh = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Utilitaooh;
+  return Utilitafuelmix;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Utilitaooh);
+/* harmony default export */ __webpack_exports__["default"] = (Utilitafuelmix);
 
 /***/ })
 

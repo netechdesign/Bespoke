@@ -89,6 +89,10 @@ Route::group(array('prefix' => '/'), function() {
    Route::get('/user/edit/{id}', function(){
       return view('welcome');
    });
+   
+   Route::get('/settarget', function(){
+      return view('welcome');
+   });
      Route::get('/export', 'Admin\MdsController@export');
 
     

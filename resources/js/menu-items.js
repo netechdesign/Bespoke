@@ -265,10 +265,17 @@ export default {
                         }
                     ]
                 },
-                
+                {
+                    id: 'settarget',
+                    title: 'Set Target',
+                    type: 'item',
+                    classes: 'nav-item',
+                    url: '/settarget',
+                    icon: 'feather icon-feather icon-target'
+                }
                 ]
         }
        
       
-    ]
+    ] 
 }
