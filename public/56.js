@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[56],{
 
-/***/ "./resources/js/Back-Office/Pages/UtilitaView.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/UtilitaView.js ***!
-  \*******************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/Utilitaooh.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/Utilitaooh.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12,15 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43,9 +39,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-
-
-
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -59,89 +53,110 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
 
 var baseurl = window.location.origin;
 
-var UtilitaView = /*#__PURE__*/function (_React$Component) {
-  _inherits(UtilitaView, _React$Component);
+var Utilitaooh = /*#__PURE__*/function (_React$Component) {
+  _inherits(Utilitaooh, _React$Component);
 
-  var _super = _createSuper(UtilitaView);
+  var _super = _createSuper(Utilitaooh);
 
-  function UtilitaView(props) {
+  function Utilitaooh(props) {
     var _this;
 
-    _classCallCheck(this, UtilitaView);
+    _classCallCheck(this, Utilitaooh);
 
     _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "graphload", function () {
+      _this.setState({
+        titleText: _this.props.match.params.id
+      });
+
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + window.location.origin + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token;
+
+      var baseurl = window.location.origin;
+      var data = new FormData();
+      data.append('file_id', '2');
+
+      if (_this.props.match.params.id) {
+        data.append('report_for', _this.props.match.params.id);
+      } else {
+        data.append('report_for', 'day');
+      }
+
+      document.getElementById("monthtodateHtml").innerHTML = '';
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/ooh', data, {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        document.getElementById("monthtodateHtml").innerHTML = res.data;
+        document.getElementById("requestLoder").innerHTML = '';
+      });
+    });
+
     _this.state = {
-      start_date: '',
-      end_date: '',
-      monday_view: ''
+      titleText: '',
+      total: 0,
+      teamLeader: []
     };
     return _this;
   }
 
-  _createClass(UtilitaView, [{
+  _createClass(Utilitaooh, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      console.log('tag', 'componentWillMount');
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.match.params.id != prevProps.match.params.id) {
+        this.graphload();
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var items = [];
+      console.log('tag', 'componentDidMount');
+      this.graphload();
+    } //
+
+  }, {
+    key: "render",
+    //
+    value: function render() {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      var _location$state$detai = location.state.detail,
-          id = _location$state$detai.id,
-          start_date = _location$state$detai.start_date,
-          end_date = _location$state$detai.end_date;
-      this.setState({
-        start_date: start_date
-      });
-      this.setState({
-        end_date: end_date
-      });
-      var data = {
-        id: id,
-        start_date: start_date,
-        end_date: end_date
-      };
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/view', data, {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        var node = document.getElementById('monday_view');
-        node.insertAdjacentHTML('afterend', res.data); //   this.setState({monday_view:res});
-      }); //
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Utilita Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        id: "grandTotal"
+      }), "\xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 12,
+        xl: 12
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder",
         style: {
-          'float': 'right'
-        },
-        onClick: function onClick() {
-          history.goBack();
+          'textAlign': 'center'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, this.state.start_date, " to ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "monday_view"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "images/ajax_loader_gray_512.gif"
-      })))))));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "monthtodateHtml",
+        style: {
+          'textAlign': 'center'
+        }
+      }))))));
     }
   }]);
 
-  return UtilitaView;
+  return Utilitaooh;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UtilitaView);
+/* harmony default export */ __webpack_exports__["default"] = (Utilitaooh);
 
 /***/ })
 

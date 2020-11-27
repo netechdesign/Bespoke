@@ -33,6 +33,13 @@ class Settarget extends React.Component{
         super(props);
         this.state={
                    daily_target:'',
+                    Monday:'',
+                    Tuesday:'',
+                    Wednesday:'',
+                    Thursday:'',
+                    Friday:'',
+                    Saturday:'',
+                    Sunday:'',
                    buttonName:'Save',
                    visible : true,
                    formSubmitting: false
@@ -63,7 +70,7 @@ class Settarget extends React.Component{
         
         axios.post(
             baseurl+'/api/target/1',
-            {_method: 'PUT',daily_target:this.state.daily_target},
+            {_method: 'PUT',daily_target:this.state.daily_target,Monday:this.state.Monday,Tuesday:this.state.Tuesday,Wednesday:this.state.Wednesday,Thursday:this.state.Thursday,Friday:this.state.Friday,Saturday:this.state.Saturday,Sunday:this.state.Sunday},
             {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
         ).then(res =>{
                           if(res.data.success){
@@ -123,7 +130,14 @@ class Settarget extends React.Component{
                         if(res.data.success){
                             
                          
-                           this.setState({daily_target:res.data.data.daily_target})
+                           this.setState({daily_target:res.data.data.daily_target,
+                                          Monday:res.data.data.Monday,
+                                          Tuesday:res.data.data.Tuesday,
+                                          Wednesday:res.data.data.Wednesday,
+                                          Thursday:res.data.data.Thursday,
+                                          Friday:res.data.data.Friday,
+                                          Saturday:res.data.data.Saturday,
+                                          Sunday:res.data.data.Sunday})
                            document.getElementById("requestLoder").innerHTML = '';
                          
                          
@@ -151,13 +165,91 @@ class Settarget extends React.Component{
                         <div id="requestLoder" style={{'textAlign': 'center'}}></div>
                         <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                 <Form.Row>
-                                    <Form.Group as={Col} md="6">
+                                    { /* <Form.Group as={Col} md="6">
                                             <Form.Label htmlFor="target">Target</Form.Label>
                                             <TextInput
                                                 name="daily_target"
                                                 id="daily_target"
                                                 placeholder="Target"
                                                 required value={this.state.daily_target}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    */}
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Monday</Form.Label>
+                                            <TextInput
+                                                name="Monday"
+                                                id="Monday"
+                                                placeholder="Monday"
+                                                required value={this.state.Monday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Tuesday</Form.Label>
+                                            <TextInput
+                                                name="Tuesday"
+                                                id="Tuesday"
+                                                placeholder="Tuesday"
+                                                required value={this.state.Tuesday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Wednesday</Form.Label>
+                                            <TextInput
+                                                name="Wednesday"
+                                                id="Wednesday"
+                                                placeholder="Wednesday"
+                                                required value={this.state.Wednesday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Thursday</Form.Label>
+                                            <TextInput
+                                                name="Thursday"
+                                                id="Thursday"
+                                                placeholder="Thursday"
+                                                required value={this.state.Thursday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Friday</Form.Label>
+                                            <TextInput
+                                                name="Friday"
+                                                id="Friday"
+                                                placeholder="Friday"
+                                                required value={this.state.Friday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Saturday</Form.Label>
+                                            <TextInput
+                                                name="Saturday"
+                                                id="Saturday"
+                                                placeholder="Saturday"
+                                                required value={this.state.Saturday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Sunday</Form.Label>
+                                            <TextInput
+                                                name="Sunday"
+                                                id="Sunday"
+                                                placeholder="Sunday"
+                                                required value={this.state.Sunday}
                                                 onChange={this.handleChange}
                                                 autoComplete="off"
                                             />

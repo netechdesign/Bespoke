@@ -96,8 +96,18 @@ class FirstSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets
                 $engineer_id = $engineers->engineer_id;
             }  
             
+            //check already exist record 
+            $alreadyExist= Morrison_jobs::where('week_day',trim($row['weekday']))->where('job_status',$job_status)->where('engineer_id',$engineer_id)->where('sf_df_helper', $row['sf_df_helper'])->where('schedule_date',date('Y-m-d', strtotime(str_replace('/', '-', $this->transformDate($row['date'])))))->count();
+                
+            if($alreadyExist > 0) {
+                    
+                return new SheetDupdatas(["sheets_id" =>request()->sheets_id,"data"=> json_encode($row),"file_id"=>1]); 
+                // throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
+             
+              }
+              else{
             
-        return new Morrison_jobs([
+            return new Morrison_jobs([
             'sheets_id' =>request()->sheets_id,
             'file_id' =>request()->file_id,
             'file_name' =>request()->file_name,
@@ -141,7 +151,7 @@ class FirstSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets
             'work_type'=> $row['work_type'],
             'created_by' => request()->created_by
         ]);
-        
+        }
     }else if(request()->file_id==2){
             
             if(isset($row['customer_id'])){

@@ -45,6 +45,13 @@ class TargetController extends Controller
                 $user = JWTAuth::toUser($request->input('token'));
                 $Targets = Targets::find($id);
                 $Targets->daily_target = $request->daily_target;
+                $Targets->Monday = $request->Monday;
+                $Targets->Tuesday = $request->Tuesday;
+                $Targets->Wednesday = $request->Wednesday;
+                $Targets->Thursday = $request->Thursday;
+                $Targets->Friday = $request->Friday;
+                $Targets->Saturday = $request->Saturday;
+                $Targets->Sunday = $request->Sunday;
                 $Targets->updated_by = $user->id;
             
            

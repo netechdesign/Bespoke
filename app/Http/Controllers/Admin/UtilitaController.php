@@ -762,8 +762,11 @@ class UtilitaController extends Controller
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
            if(isset($Request->job_status)){ $q->where('job_status', '=', $Request->job_status); }
           if($q->count() > 0){
-            $result=$q->orderBy('appointment_time','asc')->get();
-            
+            if($Request->file_id=='2'){
+                        $result=$q->orderBy('appointment_time','asc')->get();
+                }else{
+                    $result=$q->get();
+                }
             
             $categories =array();
             $series=[];
@@ -968,7 +971,11 @@ class UtilitaController extends Controller
          if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
            if(isset($Request->job_status)){$q->where('job_status', '=', $Request->job_status); }
           if($q->count() > 0){
-            $result=$q->orderBy('appointment_time','asc')->get();
+            if($Request->file_id=='2'){
+                $result=$q->orderBy('appointment_time','asc')->get();
+        }else{
+            $result=$q->get();
+        }
             
         $TeamLeader=[];
             foreach($result as $row){
@@ -1116,6 +1123,7 @@ class UtilitaController extends Controller
        $sheets_id = '';
        $start_date = '';
        $today_date = '';
+       $file_name='';
        if(isset($Request->start_date) && $Request->start_date!=''){
            $start_date=date('Y-m-d', strtotime(str_replace('/', '-',$Request->start_date)));
          }else{
@@ -1150,7 +1158,13 @@ class UtilitaController extends Controller
           if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
         
          if($q->count() > 0){
-           $result=$q->orderBy('appointment_time','asc')->get();
+                    if($Request->file_id=='2'){
+                          $result=$q->orderBy('appointment_time','asc')->get();
+                          $file_name='Utilita';
+                    }else{
+                          $result=$q->get();
+                          $file_name='Mds';
+                    }
            
            $TeamLeader=[];           
            foreach($result as $row){
@@ -1429,7 +1443,7 @@ class UtilitaController extends Controller
            //complate
           
       
-           return view('reports.fuelmix',['report_for'=>$Request->report_for,'data'=> $TeamLeader]);
+           return view('reports.fuelmix',['report_for'=>$Request->report_for,'file_name'=>$file_name,'data'=> $TeamLeader]);
          }
         
           return 'Record not found';  
@@ -1510,7 +1524,13 @@ class UtilitaController extends Controller
           if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }
           if(isset($Request->job_status)){$q->where('job_status', '=', 'Completed'); }
          if($q->count() > 0){
-           $result=$q->orderBy('appointment_time','asc')->get();
+            if($Request->file_id=='2'){
+                $result=$q->orderBy('appointment_time','asc')->get();
+                $file_name='Utilita';
+          }else{
+                $result=$q->get();
+                $file_name='Mds';
+          }
            $TeamLeader=[];
            foreach($result as $row){
                if(isset($TeamLeader[$row->parent_engineer])){
@@ -1922,7 +1942,7 @@ class UtilitaController extends Controller
            }
        
           // dd($TeamLeader);         
-           return view('reports.ooh',['report_for'=>$Request->report_for,'data'=> $TeamLeader]);
+           return view('reports.ooh',['report_for'=>$Request->report_for,'file_name'=>$file_name,'data'=> $TeamLeader]);
          //  return response()->json(array('success' => true,'complate'=>$teamLeader,'target_data'=>3.5));  
          
        }

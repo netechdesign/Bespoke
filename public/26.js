@@ -95,7 +95,7 @@ var Jobstatus = /*#__PURE__*/function (_React$Component) {
         xl: 4
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
         className: "mb-4"
-      }, this.props.statuslist.job_status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.name, " ", this.props.statuslist.job_status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row d-flex align-items-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-9"
@@ -106,18 +106,19 @@ var Jobstatus = /*#__PURE__*/function (_React$Component) {
       }), this.props.statuslist.total))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress m-t-30",
         style: {
-          height: '7px'
+          'height': '20px'
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-bar progress-c-theme",
         role: "progressbar",
         style: {
-          width: '50%'
+          fontSize: '15px',
+          width: this.props.statuslist.parsentage + '%'
         },
-        "aria-valuenow": "50",
+        "aria-valuenow": this.props.statuslist.parsentage,
         "aria-valuemin": "0",
         "aria-valuemax": "100"
-      })))));
+      }, this.props.statuslist.parsentage + '%')))));
     }
   }]);
 
@@ -136,7 +137,8 @@ var Dashboard = /*#__PURE__*/function (_React$Component2) {
 
     _this2 = _super2.call(this, props);
     _this2.state = {
-      jobstatus: []
+      jobstatus: [],
+      msd_job_status: []
     };
     return _this2;
   }
@@ -157,7 +159,8 @@ var Dashboard = /*#__PURE__*/function (_React$Component2) {
       }).then(function (res) {
         if (res.data.job_status) {
           _this3.setState({
-            jobstatus: res.data.job_status
+            jobstatus: res.data.job_status,
+            msd_job_status: res.data.msd_job_status
           });
         }
       });
@@ -168,6 +171,7 @@ var Dashboard = /*#__PURE__*/function (_React$Component2) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, this.state.jobstatus.map(function (result, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Jobstatus, {
           key: index,
+          name: "Utilita",
           statuslist: result
         });
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -185,7 +189,13 @@ var Dashboard = /*#__PURE__*/function (_React$Component2) {
         xl: 6
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dashboard_UtilitaAborts__WEBPACK_IMPORTED_MODULE_10__["default"], {
         height: "450px"
-      }))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, this.state.msd_job_status.map(function (result, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Jobstatus, {
+          key: index,
+          name: "MSD",
+          statuslist: result
+        });
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         md: 12,
         xl: 12
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
@@ -951,7 +961,7 @@ var UtilitaInstallsFuels = /*#__PURE__*/function (_React$Component) {
             dashArray: [0, 0, 5]
           },
           title: {
-            text: 'Utilita Installs Fuels (Total per day)',
+            text: 'Utilita Jobs (Total per day)',
             align: 'left'
           },
           legend: {

@@ -122,7 +122,14 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
 
       axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/target/1', {
         _method: 'PUT',
-        daily_target: _this.state.daily_target
+        daily_target: _this.state.daily_target,
+        Monday: _this.state.Monday,
+        Tuesday: _this.state.Tuesday,
+        Wednesday: _this.state.Wednesday,
+        Thursday: _this.state.Thursday,
+        Friday: _this.state.Friday,
+        Saturday: _this.state.Saturday,
+        Sunday: _this.state.Sunday
       }, {
         headers: {
           'Accept': 'application/json',
@@ -177,6 +184,13 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       daily_target: '',
+      Monday: '',
+      Tuesday: '',
+      Wednesday: '',
+      Thursday: '',
+      Friday: '',
+      Saturday: '',
+      Sunday: '',
       buttonName: 'Save',
       visible: true,
       formSubmitting: false
@@ -209,7 +223,14 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           _this2.setState({
-            daily_target: res.data.data.daily_target
+            daily_target: res.data.data.daily_target,
+            Monday: res.data.data.Monday,
+            Tuesday: res.data.data.Tuesday,
+            Wednesday: res.data.data.Wednesday,
+            Thursday: res.data.data.Thursday,
+            Friday: res.data.data.Friday,
+            Saturday: res.data.data.Saturday,
+            Sunday: res.data.data.Sunday
           });
 
           document.getElementById("requestLoder").innerHTML = '';
@@ -236,12 +257,90 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
         md: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "target"
-      }, "Target"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "daily_target",
-        id: "daily_target",
-        placeholder: "Target",
+      }, "Monday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Monday",
+        id: "Monday",
+        placeholder: "Monday",
         required: true,
-        value: this.state.daily_target,
+        value: this.state.Monday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Tuesday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Tuesday",
+        id: "Tuesday",
+        placeholder: "Tuesday",
+        required: true,
+        value: this.state.Tuesday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Wednesday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Wednesday",
+        id: "Wednesday",
+        placeholder: "Wednesday",
+        required: true,
+        value: this.state.Wednesday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Thursday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Thursday",
+        id: "Thursday",
+        placeholder: "Thursday",
+        required: true,
+        value: this.state.Thursday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Friday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Friday",
+        id: "Friday",
+        placeholder: "Friday",
+        required: true,
+        value: this.state.Friday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Saturday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Saturday",
+        id: "Saturday",
+        placeholder: "Saturday",
+        required: true,
+        value: this.state.Saturday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Sunday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "Sunday",
+        id: "Sunday",
+        placeholder: "Sunday",
+        required: true,
+        value: this.state.Sunday,
         onChange: this.handleChange,
         autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {

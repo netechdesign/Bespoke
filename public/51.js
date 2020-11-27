@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[51],{
 
-/***/ "./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js ***!
-  \*******************************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/MdsInstalls.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/MdsInstalls.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,15 +53,15 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
 
 var baseurl = window.location.origin;
 
-var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
-  _inherits(UtilitaInstalls, _React$Component);
+var MdsInstalls = /*#__PURE__*/function (_React$Component) {
+  _inherits(MdsInstalls, _React$Component);
 
-  var _super = _createSuper(UtilitaInstalls);
+  var _super = _createSuper(MdsInstalls);
 
-  function UtilitaInstalls(props) {
+  function MdsInstalls(props) {
     var _this;
 
-    _classCallCheck(this, UtilitaInstalls);
+    _classCallCheck(this, MdsInstalls);
 
     _this = _super.call(this, props);
 
@@ -80,7 +80,7 @@ var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
 
       var baseurl = window.location.origin;
       var data = new FormData();
-      data.append('file_id', '2');
+      data.append('file_id', '1');
 
       if (_this.props.match.params.id) {
         data.append('report_for', _this.props.match.params.id);
@@ -307,7 +307,7 @@ var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(UtilitaInstalls, [{
+  _createClass(MdsInstalls, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       console.log('tag', 'componentWillMount');
@@ -369,10 +369,10 @@ var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return UtilitaInstalls;
+  return MdsInstalls;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UtilitaInstalls);
+/* harmony default export */ __webpack_exports__["default"] = (MdsInstalls);
 
 /***/ })
 

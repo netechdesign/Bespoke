@@ -4,7 +4,7 @@
     <tbody>
       
         <tr>
-            <th style="border: solid 1px;" width="10%">Utilita</th>
+            <th style="border: solid 1px;" width="10%">{{$file_name}}</th>
             <th style="border: solid 1px;" width="5%">Mon</th>
             <th style="border: solid 1px;" width="5%">Tue</th>
             <th style="border: solid 1px;" width="5%">Wed</th>
@@ -56,7 +56,7 @@
                 <th style="border: solid 1px;"width="5%"></th>
             </tr>
             <tr>
-                <th style="border: solid 1px;" width="10%">Utilita</th>
+                <th style="border: solid 1px;" width="10%">{{$file_name}}</th>
                 <th style="border: solid 1px;" width="5%">Mon</th>
                 <th style="border: solid 1px;" width="5%">Tue</th>
                 <th style="border: solid 1px;" width="5%">Wed</th>
@@ -130,7 +130,7 @@
         <tbody>
           
             <tr>
-                <th style="border: solid 1px;" width="10%">Utilita</th>
+                <th style="border: solid 1px;" width="10%">{{$file_name}}</th>
                 <th style="border: solid 1px;" width="5%">Week 1</th>
                 <th style="border: solid 1px;" width="5%">Week 2</th>
                 <th style="border: solid 1px;" width="5%">Week 3</th>
@@ -233,7 +233,7 @@
         <tbody>
             
             <tr>
-                <th style="border: solid 1px;" width="10%">Utilita</th>
+            <th style="border: solid 1px;" width="10%">{{$file_name}}</th>
                 <th style="border: solid 1px;" width="5%">Jan</th>
                 <th style="border: solid 1px;" width="5%">Feb</th>
                 <th style="border: solid 1px;" width="5%">March</th>

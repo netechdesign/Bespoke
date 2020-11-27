@@ -73,7 +73,7 @@ class UtilitaInstallsFuels extends React.Component {
             dashArray: [0, 0, 5]
           },
           title: {
-            text: 'Utilita Installs Fuels (Total per day)',
+            text: 'Utilita Jobs (Total per day)',
             align: 'left'
           },
           legend: {

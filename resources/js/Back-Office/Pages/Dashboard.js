@@ -32,16 +32,16 @@ export class Jobstatus extends React.Component{
             return ( <Col md={6} xl={4}>
                            <Card>
                                 <Card.Body>
-            <h6 className='mb-4'>{this.props.statuslist.job_status}</h6>
-                                    <div className="row d-flex align-items-center">
+            <h6 className='mb-4'>{this.props.name} {this.props.statuslist.job_status}</h6>
+                                    <div className="row d-flex align-items-center" >
                                         <div className="col-9">
                                             <h3 className="f-w-300 d-flex align-items-center m-b-0"><i className="feather icon-arrow-up text-c-green f-30 m-r-5"/>{this.props.statuslist.total}</h3>
                                         </div>
                 
                                         
                                     </div>
-                                    <div className="progress m-t-30" style={{height: '7px'}}>
-                                        <div className="progress-bar progress-c-theme" role="progressbar" style={{width: '50%'}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
+                                    <div className="progress m-t-30" style={{'height':'20px'}} >
+            <div className="progress-bar progress-c-theme" role="progressbar" style={{fontSize:'15px',width: this.props.statuslist.parsentage+'%'}} aria-valuenow={this.props.statuslist.parsentage} aria-valuemin="0" aria-valuemax="100">{this.props.statuslist.parsentage+'%'}</div>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
     
           constructor(props) {
             super(props);
-            this.state = {jobstatus: []};
+            this.state = {jobstatus: [],msd_job_status:[]};
           }
 
     componentDidMount() {
@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
         axios.post(baseurl+'/api/jobstatus',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
           
             if(res.data.job_status){
-                this.setState({jobstatus:res.data.job_status})
+                this.setState({jobstatus:res.data.job_status,msd_job_status:res.data.msd_job_status})
                 }
           
             }); 
@@ -78,10 +78,11 @@ class Dashboard extends React.Component {
                 <Row>
                     
                     {this.state.jobstatus.map( (result,index) => 
-                    <Jobstatus key={index}
+                    <Jobstatus key={index} name='Utilita'
                     statuslist={result}
                     />
                     )}
+                    
                  
                   </Row>
                   <Row>
@@ -111,7 +112,15 @@ class Dashboard extends React.Component {
                             </Card>
                        </Col>
                </Row>
-                
+               <Row>
+                    
+                    {this.state.msd_job_status.map( (result,index) => 
+                    <Jobstatus key={index} name='MSD'
+                    statuslist={result}
+                    />
+                    )}
+                 
+                  </Row>
                <Row>
                       <Col md={12} xl={12}>
                              <Card>

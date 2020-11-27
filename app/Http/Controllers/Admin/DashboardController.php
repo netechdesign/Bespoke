@@ -26,7 +26,7 @@ class DashboardController extends Controller
             if($targets){
             $total_data = $targets->daily_target;
             }
-            
+           
           $q= Utilita_job::select("week_day",DB::raw('count("*") as totals'));
             
 
@@ -44,13 +44,13 @@ class DashboardController extends Controller
                         $last_week_date =  $this->getStartAndEndDate($last_week,date("Y"));
                         $lastq = Utilita_job::select('*');
                         if(isset($last_week_date['week_start'])){ $lastq->whereDate('schedule_date', '>=', $last_week_date['week_start']); }
-                        if(isset($last_week_date['week_end'])){ $lastq->whereDate('schedule_date', '<=', $last_week_date['week_end']); }
+                       if(isset($last_week_date['week_end'])){ $lastq->whereDate('schedule_date', '<=', $last_week_date['week_end']); }
                         $lastq->where('job_status', '=', $request['job_status']); 
                         $lastweek_total = $lastq->count();
                     }
                     $week_day[]='Prior Week';
                     $totals[]=$lastweek_total;
-                    $target[]=$total_data;
+                    $target[]= round(($targets->Monday + $targets->Tuesday + $targets->Wednesday+ $targets->Thursday+ $targets->Friday+$targets->Saturday+$targets->Sunday)/7,1); //$target[]=$total_data;
             
                     //current week data
                     if(isset($current_week_date['week_start'])){ $q->whereDate('schedule_date', '>=', $current_week_date['week_start']); }
@@ -63,7 +63,33 @@ class DashboardController extends Controller
                         foreach($result as $vl){
                             $week_day[]=$vl->week_day;
                             $totals[]=$vl->totals;
+                           // $target[]=$total_data;
+                           switch($vl->week_day){
+                            case "Monday":
+                                $target[] =$targets->Monday;
+                            break;
+                            case "Tuesday":
+                                $target[] =$targets->Tuesday;
+                            break;
+                            case "Wednesday":
+                                $target[] =$targets->Wednesday;
+                            break;
+                            case "Thursday":
+                                $target[] =$targets->Thursday;
+                            break;
+                            case "Friday":
+                                $target[] =$targets->Friday;
+                            break;
+                            case "Saturday":
+                                $target[] =$targets->Saturday;
+                            break;
+                            case "Sunday":
+                                $target[] =$targets->Sunday;
+                            break;
+                            default:
                             $target[]=$total_data;
+                           }
+                           
                             
                         }
                     
@@ -113,10 +139,10 @@ class DashboardController extends Controller
                     }
                     $week_day[]='Prior Week';
                     $totals[]=$lastweek_total;
-                    $target[]=$total_data;
+                    $target[]= round(($targets->Monday + $targets->Tuesday + $targets->Wednesday+ $targets->Thursday+ $targets->Friday+$targets->Saturday+$targets->Sunday)/7,1); //$target[]=$total_data;
             
                     //current week data
-                    if(isset($current_week_date['week_start'])){ $q->whereDate('schedule_date', '>=', $current_week_date['week_start']); }
+                   if(isset($current_week_date['week_start'])){ $q->whereDate('schedule_date', '>=', $current_week_date['week_start']); }
                     if(isset($current_week_date['week_end'])){ $q->whereDate('schedule_date', '<=', $current_week_date['week_end']); }
                     $q->where('job_status', '=', $request['job_status']); 
                  
@@ -126,7 +152,33 @@ class DashboardController extends Controller
                         foreach($result as $vl){
                             $week_day[]=$vl->week_day;
                             $totals[]=$vl->totals;
+                          //  $target[]=$total_data;
+                          switch($vl->week_day){
+                            case "Monday":
+                                $target[] =$targets->Monday;
+                            break;
+                            case "Tuesday":
+                                $target[] =$targets->Tuesday;
+                            break;
+                            case "Wednesday":
+                                $target[] =$targets->Wednesday;
+                            break;
+                            case "Thursday":
+                                $target[] =$targets->Thursday;
+                            break;
+                            case "Friday":
+                                $target[] =$targets->Friday;
+                            break;
+                            case "Saturday":
+                                $target[] =$targets->Saturday;
+                            break;
+                            case "Sunday":
+                                $target[] =$targets->Sunday;
+                            break;
+                            default:
                             $target[]=$total_data;
+                           }
+                           
                             
                         }
                     
@@ -177,13 +229,38 @@ class DashboardController extends Controller
             /** print query   toSql(); */
             // dd($q->toSql());
             $job_status = $q->groupBy('job_status')->orderBy('job_status','desc');
-            if($job_status->count()>0){ 
-                $job_status = $job_status->get();
+            $job_status = $job_status->get();
+            $totalutilita= 0;
+            foreach($job_status as $vl){
+                $totalutilita = $totalutilita + $vl->total;
+            }
+            foreach($job_status as $vl){
+                $vl->parsentage =  round((($vl->total/$totalutilita) * 100),2);
+            }
+            // msd
+            
+            $msd = Morrison_jobs::select('job_status',DB::Raw('count(*) as total'))->join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
+
+            if($start_date!=''){ $msd->whereDate('schedule_date', '>=', $start_date); }
+            
+            if($today_date!=''){ $msd->whereDate('schedule_date', '<=', $today_date); }
+            $msd_job_status = $msd->groupBy('job_status')->orderBy('job_status','desc');
+            $msd_job_status = $msd_job_status->get();
+            
+            $totalmds= 0;
+            foreach($msd_job_status as $vl){
+                $totalmds = $totalmds + $vl->total;
+            }
+            foreach($msd_job_status as $vl){
+                $vl->parsentage =  round((($vl->total/$totalmds) * 100),2);
+            }
+               
                 $response = array(
                 "job_status" => $job_status,
+                "msd_job_status"=> $msd_job_status
                 );
                 return response()->json($response, 201);
-                }
+                
             }
             catch (exception $e) {
                 return response()->json([
@@ -195,7 +272,7 @@ class DashboardController extends Controller
     }
     
     function getStartAndEndDate($week, $year) {
-        
+       
   $dto = new \DateTime();
   $dto->setISODate($year, $week);
   $ret['week_start'] = $dto->format('Y-m-d');

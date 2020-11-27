@@ -287,6 +287,43 @@ __webpack_require__.r(__webpack_exports__);
         type: 'item',
         classes: 'nav-item',
         url: '/utilitainstalls/yearprior/Completed'
+      } //mds
+      , {
+        id: 'mdsinstallsday',
+        title: 'Mds Day',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/day/Completed'
+      }, {
+        id: 'mdsinstallsweektodate',
+        title: 'Mds Week to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/weektodate/Completed'
+      }, {
+        id: 'mdsinstallsmonthtodate',
+        title: 'Mds Month to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthtodate/Completed'
+      }, {
+        id: 'mdsinstallsmonthprior',
+        title: 'Mds Month Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthprior/Completed'
+      }, {
+        id: 'mdsinstallsyeartodate',
+        title: 'Mds Year to date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yeartodate/Completed'
+      }, {
+        id: 'mdsinstallsyearprior',
+        title: 'Mds Year Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yearprior/Completed'
       }]
     }, {
       id: 'Aborts',
@@ -329,6 +366,43 @@ __webpack_require__.r(__webpack_exports__);
         type: 'item',
         classes: 'nav-item',
         url: '/utilitainstalls/yearprior/Aborts'
+      } //mds
+      , {
+        id: 'mdsinstallsday',
+        title: 'Mds Day',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/day/Aborts'
+      }, {
+        id: 'abortsmdsinstallsweektodate',
+        title: 'Mds Week to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/weektodate/Aborts'
+      }, {
+        id: 'abortsmdsinstallsmonthtodate',
+        title: 'Mds Month to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthtodate/Aborts'
+      }, {
+        id: 'abortsmdsinstallsmonthprior',
+        title: 'Mds Month Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthprior/Aborts'
+      }, {
+        id: 'abortsmdsinstallsyeartodate',
+        title: 'Mds Year to date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yeartodate/Aborts'
+      }, {
+        id: 'abortsmdsinstallsyearprior',
+        title: 'Mds Year Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yearprior/Aborts'
       }]
     }, {
       id: 'FuelMix',
@@ -353,6 +427,25 @@ __webpack_require__.r(__webpack_exports__);
         type: 'item',
         classes: 'nav-item',
         url: '/utilitafuelmix/yeartodate'
+      }, //mds
+      {
+        id: 'mdsFuelMixweektodate',
+        title: 'Mds Utilita Week',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsfuelmix/weektodate'
+      }, {
+        id: 'mdsfuelmixmonthtodate',
+        title: 'Mds Month',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsfuelmix/monthtodate'
+      }, {
+        id: 'mdsfuelmixyeartodate',
+        title: 'Mds Year',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsfuelmix/yeartodate'
       }]
     }, {
       id: 'ooh',
@@ -377,6 +470,25 @@ __webpack_require__.r(__webpack_exports__);
         type: 'item',
         classes: 'nav-item',
         url: '/utilitaooh/yeartodate'
+      } //mds
+      , {
+        id: 'mdsoohtodate',
+        title: 'Mds Week',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsooh/weektodate'
+      }, {
+        id: 'mdsoohmonthtodate',
+        title: 'Mds Month',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsooh/monthtodate'
+      }, {
+        id: 'mdsoohyeartodate',
+        title: 'Mds Year',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsooh/yeartodate'
       }]
     }, {
       id: 'Vehicles',

@@ -11,6 +11,11 @@ const Inprocess = React.lazy(() => import('./Back-office/Pages/Inprocess'));
 const UtilitaInstalls = React.lazy(() => import('./Back-office/Pages/Reports/UtilitaInstalls'));
 const Utilitafuelmix = React.lazy(() => import('./Back-office/Pages/Reports/Utilitafuelmix'));
 const Utilitaooh = React.lazy(() => import('./Back-office/Pages/Reports/Utilitaooh'));
+const Mdsooh = React.lazy(() => import('./Back-office/Pages/Reports/Mdsooh'));
+
+const MdsInstalls = React.lazy(() => import('./Back-office/Pages/Reports/MdsInstalls'));
+
+const Mdsfuelmix = React.lazy(() => import('./Back-office/Pages/Reports/Mdsfuelmix'));
 /** End Report */
 const DashboardDefault = React.lazy(() => import('./Back-office/Pages/Dashboard'));
 const DataImport = React.lazy(() => import('./Back-office/Pages/Data_import'));
@@ -57,10 +62,12 @@ const routes = [
     { path:'/user/add', exact:true, name:'useradd',component:UserAdd},
     { path:'/user/edit/:id', exact:true, name:'useredit',component:UserEdit},
     { path:'/utilitainstalls/:id/:status', exact:true, name:'useredit',component:UtilitaInstalls},
+    { path:'/mdsinstalls/:id/:status', exact:true, name:'useredit',component:MdsInstalls},
     { path:'/utilitafuelmix/:id', exact:true, name:'useredit',component:Utilitafuelmix},
+    { path:'/mdsfuelmix/:id', exact:true, name:'useredit',component:Mdsfuelmix},
     { path:'/utilitaooh/:id', exact:true, name:'Utilitaooh',component:Utilitaooh},
+    { path:'/mdsooh/:id', exact:true, name:'Mdsooh',component:Mdsooh},
     { path:'/settarget', exact:true, name:'Settarget',component:Settarget},
-    
     { path: '/Inprocess', exact: true, name: 'Default', component: Inprocess },
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
