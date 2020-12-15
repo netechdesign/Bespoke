@@ -122,26 +122,6 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
             var series_data = endineer_data['series'];
             var options = {
               series: series_data,
-              annotations: {
-                xaxis: [{
-                  x: target_data,
-                  borderColor: "#d8cb1b",
-                  borderWidth: 1,
-                  strokeDashArray: 0,
-                  offsetX: 0,
-                  offsetY: 0,
-                  label: {
-                    offsetY: -10,
-                    borderColor: "#d8cb1b",
-                    style: {
-                      color: "#fff",
-                      background: "#d8cb1b"
-                    },
-                    orientation: "horizontal",
-                    text: "Target " + target_data
-                  }
-                }]
-              },
               chart: {
                 type: 'bar',
                 height: 350,
@@ -206,7 +186,30 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
                 offsetX: 40,
                 show: false
               }
-            };
+            }; // condition for year  target
+
+            if (self.props.match.params.id == 'weektodate' || self.props.match.params.id == 'day') {
+              options.annotations = {
+                xaxis: [{
+                  x: target_data,
+                  borderColor: "#d8cb1b",
+                  borderWidth: 1,
+                  strokeDashArray: 0,
+                  offsetX: 0,
+                  offsetY: 0,
+                  label: {
+                    offsetY: -10,
+                    borderColor: "#d8cb1b",
+                    style: {
+                      color: "#fff",
+                      background: "#d8cb1b"
+                    },
+                    orientation: "horizontal",
+                    text: "Target " + target_data
+                  }
+                }]
+              };
+            }
 
             var addAnnotations = function addAnnotations(config) {
               var seriesTotals = config.globals.stackedSeriesTotals;
@@ -318,6 +321,20 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
       if (this.props.match.params.id != prevProps.match.params.id) {
         this.graphload();
       }
+
+      document.getElementById("fromto").innerHTML = ' ';
+
+      if (this.props.match.params.id == 'yeartodate') {
+        var d = new Date();
+        var monthName = d.toLocaleString("default", {
+          month: "long"
+        });
+        document.getElementById("fromto").innerHTML = 'From January To ' + monthName;
+      }
+
+      if (this.props.match.params.id == 'weektodate') {
+        document.getElementById("fromto").innerHTML = '(Job)';
+      }
     }
   }, {
     key: "componentDidMount",
@@ -338,7 +355,15 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
         as: "h5"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
         id: "grandTotal"
-      }), "\xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }), "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        id: "fromto",
+        style: {
+          'color': 'black',
+          'position': 'absolute',
+          'top': '-37px',
+          'left': '250px'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         md: 12,
         xl: 12
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

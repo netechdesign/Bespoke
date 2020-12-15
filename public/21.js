@@ -3314,7 +3314,7 @@ var Inprocess = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(f
 /** Start Report */
 
 var UtilitaInstalls = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(54)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Reports/UtilitaInstalls */ "./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(54), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Reports/UtilitaInstalls */ "./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js"));
 });
 var Utilitafuelmix = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Reports/Utilitafuelmix */ "./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js"));
@@ -3398,7 +3398,7 @@ var DashboardAnalytics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default
   return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(11), __webpack_require__.e(16), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Analytics */ "./resources/js/Demo/Dashboard/Analytics.js"));
 });
 var DashboardCrypto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(11), __webpack_require__.e(18), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crypto */ "./resources/js/Demo/Dashboard/Crypto.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(11), __webpack_require__.e(54), __webpack_require__.e(29), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crypto */ "./resources/js/Demo/Dashboard/Crypto.js"));
 });
 var DashboardProject = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(11), __webpack_require__.e(48), __webpack_require__.e(37)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Project */ "./resources/js/Demo/Dashboard/Project.js"));

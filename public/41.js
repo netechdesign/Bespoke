@@ -129,7 +129,8 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
         Thursday: _this.state.Thursday,
         Friday: _this.state.Friday,
         Saturday: _this.state.Saturday,
-        Sunday: _this.state.Sunday
+        Sunday: _this.state.Sunday,
+        week_to_date: _this.state.week_to_date
       }, {
         headers: {
           'Accept': 'application/json',
@@ -191,6 +192,7 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
       Friday: '',
       Saturday: '',
       Sunday: '',
+      week_to_date: '',
       buttonName: 'Save',
       visible: true,
       formSubmitting: false
@@ -230,7 +232,8 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
             Thursday: res.data.data.Thursday,
             Friday: res.data.data.Friday,
             Saturday: res.data.data.Saturday,
-            Sunday: res.data.data.Sunday
+            Sunday: res.data.data.Sunday,
+            week_to_date: res.data.data.week_to_date
           });
 
           document.getElementById("requestLoder").innerHTML = '';
@@ -341,6 +344,19 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
         placeholder: "Sunday",
         required: true,
         value: this.state.Sunday,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "target"
+      }, "Week to Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "week_to_date",
+        id: "week_to_date",
+        placeholder: "week_to_date",
+        required: true,
+        value: this.state.week_to_date,
         onChange: this.handleChange,
         autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {

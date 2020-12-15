@@ -40,6 +40,7 @@ class Settarget extends React.Component{
                     Friday:'',
                     Saturday:'',
                     Sunday:'',
+                    week_to_date:'',
                    buttonName:'Save',
                    visible : true,
                    formSubmitting: false
@@ -70,7 +71,7 @@ class Settarget extends React.Component{
         
         axios.post(
             baseurl+'/api/target/1',
-            {_method: 'PUT',daily_target:this.state.daily_target,Monday:this.state.Monday,Tuesday:this.state.Tuesday,Wednesday:this.state.Wednesday,Thursday:this.state.Thursday,Friday:this.state.Friday,Saturday:this.state.Saturday,Sunday:this.state.Sunday},
+            {_method: 'PUT',daily_target:this.state.daily_target,Monday:this.state.Monday,Tuesday:this.state.Tuesday,Wednesday:this.state.Wednesday,Thursday:this.state.Thursday,Friday:this.state.Friday,Saturday:this.state.Saturday,Sunday:this.state.Sunday,week_to_date:this.state.week_to_date},
             {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
         ).then(res =>{
                           if(res.data.success){
@@ -137,7 +138,9 @@ class Settarget extends React.Component{
                                           Thursday:res.data.data.Thursday,
                                           Friday:res.data.data.Friday,
                                           Saturday:res.data.data.Saturday,
-                                          Sunday:res.data.data.Sunday})
+                                          Sunday:res.data.data.Sunday,
+                                          week_to_date:res.data.data.week_to_date
+                                        })
                            document.getElementById("requestLoder").innerHTML = '';
                          
                          
@@ -250,6 +253,17 @@ class Settarget extends React.Component{
                                                 id="Sunday"
                                                 placeholder="Sunday"
                                                 required value={this.state.Sunday}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="target">Week to Date</Form.Label>
+                                            <TextInput
+                                                name="week_to_date"
+                                                id="week_to_date"
+                                                placeholder="week_to_date"
+                                                required value={this.state.week_to_date}
                                                 onChange={this.handleChange}
                                                 autoComplete="off"
                                             />

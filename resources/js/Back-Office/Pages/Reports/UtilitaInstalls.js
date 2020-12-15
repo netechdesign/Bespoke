@@ -3,6 +3,7 @@ import {Row, Col, Card, Table} from 'react-bootstrap';
 import Aux from "../../../hoc/_Aux";
 import axios from 'axios'
 import ApexCharts from 'apexcharts';
+import { or } from '@amcharts/amcharts4/core';
 
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 const baseurl= window.location.origin;
@@ -25,6 +26,16 @@ class UtilitaInstalls extends React.Component {
       if(this.props.match.params.id!=prevProps.match.params.id){
         this.graphload();  
       }
+      document.getElementById("fromto").innerHTML = ' ';
+      if(this.props.match.params.id=='yeartodate'){
+        const d = new Date();
+        const monthName = d.toLocaleString("default", {month: "long"});
+        document.getElementById("fromto").innerHTML = 'From January To '+monthName;
+      }
+      if(this.props.match.params.id=='weektodate'){
+        document.getElementById("fromto").innerHTML = '(Job)';
+      }
+      
     }
     componentDidMount() {
       console.log('tag', 'componentDidMount');
@@ -79,28 +90,6 @@ class UtilitaInstalls extends React.Component {
       
       var options ={
       series:series_data,
-      annotations: {
-        xaxis: [
-          {
-            x: target_data,
-            borderColor: "#d8cb1b",
-            borderWidth: 1,
-            strokeDashArray: 0,
-            offsetX: 0,
-            offsetY: 0,
-            label: {
-              offsetY: -10,
-              borderColor: "#d8cb1b",
-              style: {
-                color: "#fff",
-                background: "#d8cb1b"
-              },
-              orientation: "horizontal",
-              text: "Target "+target_data
-            }
-          }
-        ]
-      },
       chart: {
         type: 'bar',
         height: 350,
@@ -169,7 +158,32 @@ class UtilitaInstalls extends React.Component {
         show: false
       }
     };
-
+// condition for year  target
+if(self.props.match.params.id =='weektodate' || self.props.match.params.id =='day'){
+    options.annotations= {
+      xaxis: [
+        {
+          x: target_data,
+          borderColor: "#d8cb1b",
+          borderWidth: 1,
+          strokeDashArray: 0,
+          offsetX: 0,
+          offsetY: 0,
+          label: {
+            offsetY: -10,
+            borderColor: "#d8cb1b",
+            style: {
+              color: "#fff",
+              background: "#d8cb1b"
+            },
+            orientation: "horizontal",
+            text: "Target "+target_data
+          }
+        }
+      ]
+    };
+  }
+    console.log(options);
     const addAnnotations = (config) => {
       const seriesTotals = config.globals.stackedSeriesTotals;
       const isHorizontal = options.plotOptions.bar.horizontal;
@@ -295,7 +309,7 @@ let total_text = '<div style="text-align: left !important;"><b style="margin: 0p
                   <Card>
                     <Card.Header>
                         <Card.Title as="h5"><b id='grandTotal' ></b>&nbsp;</Card.Title>
-                        
+                        <b id="fromto" style={{'color': 'black','position': 'absolute','top':'-37px','left': '250px'}}></b>
                     </Card.Header>
                     <Card.Body>
                       <Row>
