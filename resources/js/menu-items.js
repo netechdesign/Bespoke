@@ -371,35 +371,20 @@ export default {
                     ]
                 },
                 {
-                    id: 'Vehicles',
-                    title: 'Vehicles',
-                    type: 'collapse',
-                    icon: 'feather icon-menu',
-                    children: [
-                        {
-                            id: 'Milestravelled',
-                            title: 'Miles travelled',
-                            type: 'collapse',
-                            classes: 'nav-item',
-                            children: [
-                                   {  
-                                    id: 'utilitmilestravelledsday',
-                                    title: 'Utilita Day',
-                                    type: 'item',
-                                    classes: 'nav-item',
-                                    url: '/Inprocess'
-                                   }
-                            ]
-                        }
-                    ]
-                },
-                {
                     id: 'settarget',
                     title: 'Set Target',
                     type: 'item',
                     classes: 'nav-item',
                     url: '/settarget',
                     icon: 'feather icon-feather icon-target'
+                },
+                {
+                    id: 'vehicle',
+                    title: 'Vehicle',
+                    type: 'item',
+                    classes: 'nav-item',
+                    url: '/vehicle',
+                    icon: 'feather icon-feather icon-file-text'
                 }
                 ]
         }

@@ -7,6 +7,9 @@ global.jQuery = $;
 
 
 const Inprocess = React.lazy(() => import('./Back-office/Pages/Inprocess'));
+/**vehicle api */
+const VehicleReport = React.lazy(()=>import('./Back-office/MatrixtelematicsApi/VehicleReport'));
+
 /** Start Report */
 const UtilitaInstalls = React.lazy(() => import('./Back-office/Pages/Reports/UtilitaInstalls'));
 const Utilitafuelmix = React.lazy(() => import('./Back-office/Pages/Reports/Utilitafuelmix'));
@@ -69,6 +72,8 @@ const routes = [
     { path:'/mdsooh/:id', exact:true, name:'Mdsooh',component:Mdsooh},
     { path:'/settarget', exact:true, name:'Settarget',component:Settarget},
     { path: '/Inprocess', exact: true, name: 'Default', component: Inprocess },
+    { path: '/vehicle', exact: true, name: 'VehicleReport', component: VehicleReport },
+    
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },

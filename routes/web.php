@@ -93,6 +93,10 @@ Route::group(array('prefix' => '/'), function() {
    Route::get('/settarget', function(){
       return view('welcome');
    });
+   
+   Route::get('/vehicle', function(){
+      return view('welcome');
+   });
      Route::get('/export', 'Admin\MdsController@export');
 
     

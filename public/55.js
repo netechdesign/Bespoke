@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[55],{
 
-/***/ "./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js ***!
-  \******************************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/Mdsooh.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/Mdsooh.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,15 +53,15 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
 
 var baseurl = window.location.origin;
 
-var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
-  _inherits(Utilitafuelmix, _React$Component);
+var Mdsooh = /*#__PURE__*/function (_React$Component) {
+  _inherits(Mdsooh, _React$Component);
 
-  var _super = _createSuper(Utilitafuelmix);
+  var _super = _createSuper(Mdsooh);
 
-  function Utilitafuelmix(props) {
+  function Mdsooh(props) {
     var _this;
 
-    _classCallCheck(this, Utilitafuelmix);
+    _classCallCheck(this, Mdsooh);
 
     _this = _super.call(this, props);
 
@@ -78,7 +78,7 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
 
       var baseurl = window.location.origin;
       var data = new FormData();
-      data.append('file_id', '2');
+      data.append('file_id', '1');
 
       if (_this.props.match.params.id) {
         data.append('report_for', _this.props.match.params.id);
@@ -87,7 +87,7 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
       }
 
       document.getElementById("monthtodateHtml").innerHTML = '';
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/fuelmix', data, {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/ooh', data, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -105,7 +105,7 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Utilitafuelmix, [{
+  _createClass(Mdsooh, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       console.log('tag', 'componentWillMount');
@@ -153,10 +153,10 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Utilitafuelmix;
+  return Mdsooh;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Utilitafuelmix);
+/* harmony default export */ __webpack_exports__["default"] = (Mdsooh);
 
 /***/ })
 
