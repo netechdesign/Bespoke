@@ -875,9 +875,6 @@ class UtilitaController extends Controller
             $targets=Targets::first();
             if($targets){
             $targets_no = $targets->daily_target;
-              if($Request->report_for=='weektodate'){
-                $targets_no = $targets->week_to_date;
-              }
             }
             else
             {

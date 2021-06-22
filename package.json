@@ -34,7 +34,7 @@
         "amcharts3": "^3.21.15",
         "apexcharts": "^3.20.0",
         "aphrodite": "^2.3.1",
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "bootstrap": "^4.3.1",
         "chart.js": "^2.8.0",
         "chroma-js": "^2.0.3",
@@ -140,5 +140,4 @@
         "not ie <= 11",
         "not op_mini all"
     ]
-     
 }

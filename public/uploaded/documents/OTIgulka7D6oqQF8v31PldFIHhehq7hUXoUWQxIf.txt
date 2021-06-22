@@ -1,0 +1,374 @@
+Registration,Start Time,End Time,Start Location,End Location,Start POI ,End POI,Driver,Duration,Idle,Miles,Max Speed,Start Postcode, End Postcode,,Driver Name
+DP69YJR Michael Ball01,11/01/2021 11:33,11/01/2021 11:40,"Keswick Drive,  Spennymoor","A167, Hett, Durham",,,,00:06:39,00:00:00,1.815647,37.20025,DL16 6EQ,DH6 5JU,,Michael Ball01
+DP69YJR Michael Ball01,11/01/2021 11:44,11/01/2021 12:25,"A167, Hett, Durham","Lees Road,  Middlesbrough",,,,00:41:54,00:00:00,21.00545,57.4669,DH6 5JU,TS1 5NB,,Michael Ball01
+DP69YJR Michael Ball01,11/01/2021 12:54,11/01/2021 13:36,"Lees Road,  Middlesbrough","Keswick Drive,  Spennymoor",,,,00:41:56,00:00:00,22.29853,51.94167,TS1 5NB,DL16 6EQ,,Michael Ball01
+DP69YJR Michael Ball01,12/01/2021 11:13,12/01/2021 11:28,"St Andrews Lane,  Spennymoor","Collingwood Street, Coundon, Bishop Auckland",,,,00:14:06,00:00:38,5.030621,52.00877,DL16 6ET,DL14 8LL,,Michael Ball01
+DP69YJR Michael Ball01,12/01/2021 12:18,12/01/2021 12:29,"Collingwood Street, Coundon, Bishop Auckland","Keswick Drive,  Spennymoor",,,,00:10:37,00:00:00,4.700673,44.73873,DL14 8LL,DL16 6EQ,,Michael Ball01
+DP69YJR Michael Ball01,12/01/2021 13:04,12/01/2021 13:17,"Keswick Drive,  Spennymoor","Hawthorne Road,  Ferryhill",,,,00:12:35,00:00:00,3.63005,49.07838,DL16 6EQ,DL17 8DG,,Michael Ball01
+DP69YJR Michael Ball01,12/01/2021 13:19,12/01/2021 13:20,"Hawthorne Road,  Ferryhill","Hawthorne Road,  Ferryhill",,,,00:00:44,00:00:00,0,0,DL17 8DG,DL17 8DG,,Michael Ball01
+DP69YJR Michael Ball01,12/01/2021 13:25,12/01/2021 13:28,"Hawthorne Road,  Ferryhill","Hawthorne Road,  Ferryhill",,,,00:03:38,00:00:36,0,0.1789549,DL17 8DG,DL17 8DG,,Michael Ball01
+DP69YJR Michael Ball01,12/01/2021 15:07,12/01/2021 15:22,"Hawthorne Road,  Ferryhill","Keswick Drive,  Spennymoor",,,,00:14:06,00:01:39,3.452338,48.94416,DL17 8DG,DL16 6EQ,,Michael Ball01
+DP69YJR Michael Ball01,13/01/2021 10:22,13/01/2021 10:56,"St Andrews Lane,  Spennymoor","Badminton Close,  Darlington",,,,00:34:10,00:00:36,15.13039,50.12975,DL16 6ET,DL1 2SZ,,Michael Ball01
+DP69YJR Michael Ball01,13/01/2021 11:05,13/01/2021 11:36,"Badminton Close,  Darlington","Keswick Drive,  Spennymoor",,,,00:31:04,00:00:00,15.09497,49.39156,DL1 2SZ,DL16 6EQ,,Michael Ball01
+DP69YJR Michael Ball01,13/01/2021 12:12, n/a,"Keswick Drive,  , Spennymoor",Current Journey,,n/a, ,00:00:00,00:00:00,0,19.30476,DL1 2SZ,DL16 6EQ,,Michael Ball01
+DP69YKY Shaun Henderson,11/01/2021 10:27,11/01/2021 10:31,"Simon Crescent, Methilhill, Leven","Methilhaven Road, Methil, Leven",,,,00:04:03,00:00:00,0.8332587,24.33787,KY8 2DS,KY8 3HR,,Shaun Henderson
+DP69YKY Shaun Henderson,11/01/2021 10:32,11/01/2021 11:38,"Methilhaven Road, Methil, Leven","Pitreuchie Place,  Forfar",,,,01:06:23,00:00:00,43.05605,59.39066,KY8 3HR,DD8 2DG,,Shaun Henderson
+DP69YKY Shaun Henderson,11/01/2021 12:19,11/01/2021 12:29,"Pitreuchie Place,  Forfar","South Street,  Forfar",,,,00:10:02,00:05:32,0.3386473,13.2874,DD8 2DG,DD8 2BS,,Shaun Henderson
+DP69YKY Shaun Henderson,11/01/2021 12:32,11/01/2021 13:25,"South Street,  Forfar","A92, Freuchie, Cupar",,,,00:53:13,00:01:04,33.11908,58.40641,DD8 2BS,KY15 7EG,,Shaun Henderson
+DP69YKY Shaun Henderson,11/01/2021 13:31,11/01/2021 13:40,"A92, Freuchie, Cupar",",  Glenrothes",,,,00:09:26,00:00:00,4.943008,48.38493,KY15 7EG,KY7 5PY,,Shaun Henderson
+DP69YKY Shaun Henderson,11/01/2021 13:47,11/01/2021 13:58,",  Glenrothes","Simon Crescent, Methilhill, Leven",,,,00:11:03,00:00:00,5.839025,48.65337,KY7 5PY,KY8 2DS,,Shaun Henderson
+DP69YKY Shaun Henderson,12/01/2021 08:37,12/01/2021 09:53,"Simon Crescent, Methilhill, Leven","Sidney Street,  Arbroath",,,,01:16:46,00:06:58,45.50736,58.27219,KY8 2DS,DD11 1HQ,,Shaun Henderson
+DP69YKY Shaun Henderson,12/01/2021 11:13,12/01/2021 11:22,"Sidney Street,  Arbroath","Sidney Street,  Arbroath",,,,00:08:49,00:05:49,0,0.1118468,DD11 1HQ,DD11 1HQ,,Shaun Henderson
+DP69YKY Shaun Henderson,12/01/2021 11:23,12/01/2021 11:58,"Sidney Street,  Arbroath","Hilltown Terrace,  Dundee",,,,00:35:36,00:00:00,18.12353,58.16034,DD11 1HQ,DD3 7BB,,Shaun Henderson
+DP69YKY Shaun Henderson,12/01/2021 13:17,12/01/2021 14:07,"Hilltown Terrace,  Dundee","Simon Crescent, Methilhill, Leven",,,,00:50:26,00:01:56,29.03605,56.03526,DD3 7,KY8 2DS,,Shaun Henderson
+DP69YKY Shaun Henderson,13/01/2021 08:49,13/01/2021 09:59,"Simon Crescent, Methilhill, Leven","Wren Court, Strathclyde Business Park, Bellshill",,,,01:09:37,00:05:00,57.21897,67.95812,KY8 2DS,ML4 3NQ,,Shaun Henderson
+DP69YKY Shaun Henderson,13/01/2021 10:15,13/01/2021 10:15,"Wren Court, Strathclyde Business Park, Bellshill","Wren Court, Strathclyde Business Park, Bellshill",,,,00:00:33,00:00:00,0.01864114,0,ML4 3NQ,ML4 3NQ,,Shaun Henderson
+DP69YKY Shaun Henderson,13/01/2021 10:36,13/01/2021 11:09,"Wren Court, Strathclyde Business Park, Bellshill","Harthill, Harthill, Shotts",,,,00:33:46,00:15:54,12.13165,67.28705,ML4 3NQ,ML7,,Shaun Henderson
+DP69YKY Shaun Henderson,13/01/2021 11:15,13/01/2021 12:19,"Harthill, Harthill, Shotts","Simon Crescent, Methilhill, Leven",,,,01:03:36,00:08:31,45.71179,67.84628,ML7,KY8 2DS,,Shaun Henderson
+DP69YKY Shaun Henderson,13/01/2021 12:36,13/01/2021 12:38,"Simon Crescent, Methilhill, Leven","Simon Crescent, Methilhill, Leven",,,,00:02:17,00:00:00,0.2106448,13.42162,KY8 2DS,KY8 2DR,,Shaun Henderson
+SB19GYR Craig Paterson01,11/01/2021 16:57,11/01/2021 17:02,"Albert Street, Rosyth, Dunfermline","Elm Grove,  Dunfermline",,,,00:04:43,00:00:00,1.784578,0,KY11 2RZ,KY11 8AA,,Craig Paterson01
+SB19GYR Craig Paterson01,11/01/2021 17:10,11/01/2021 17:17,"Elm Grove,  Dunfermline","Boreland Park,  Inverkeithing",,,,00:06:43,00:00:00,3.700265,67.35416,KY11 8AA,KY11 1ES,,Craig Paterson01
+SB19GYR Craig Paterson01,11/01/2021 18:41,11/01/2021 18:48,"Boreland Park,  Inverkeithing","Albert Street, Rosyth, Dunfermline",,,,00:06:09,00:00:00,1.918173,32.16714,KY11 1ES,KY11 2RZ,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 12:06,12/01/2021 12:06,"Albert Street, Rosyth, Dunfermline","Albert Street, Rosyth, Dunfermline",,,,00:00:30,00:00:00,0,0,KY11 2RZ,KY11 2RZ,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 12:09,12/01/2021 12:09,"Albert Street, Rosyth, Dunfermline","Albert Street, Rosyth, Dunfermline",,,,00:00:43,00:00:00,0,0,KY11 2RZ,KY11 2RZ,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 12:11,12/01/2021 12:40,"Albert Street, Rosyth, Dunfermline","The Henge, Balfarg, Glenrothes",,,,00:29:27,00:00:00,21.76291,66.28044,KY11 2RZ,KY7 6XW,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 12:49,12/01/2021 13:04,"The Henge, Balfarg, Glenrothes","The Henge, Balfarg, Glenrothes",,,,00:15:20,00:12:15,0,0.04473872,KY7 6XW,KY7 6XW,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 14:03,12/01/2021 14:14,"The Henge, Balfarg, Glenrothes","Dunbeath Drive,  Glenrothes",,,,00:11:23,00:00:00,3.664847,41.00304,KY7 6XW,KY7 4,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 14:58,12/01/2021 14:59,"Dunbeath Drive,  Glenrothes","Dunbeath Drive,  Glenrothes",,,,00:00:21,00:00:00,0,0,KY7 4,KY7 4,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 15:03,12/01/2021 15:41,"Dunbeath Drive,  Glenrothes","High Street,  Inverkeithing",,,,00:38:21,00:03:04,19.00402,68.15945,KY7 4,KY11 1PA,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 15:45,12/01/2021 15:51,"High Street,  Inverkeithing","Admiralty Road, Rosyth, Dunfermline",,,,00:05:57,00:00:00,1.638556,29.01307,KY11 1NW,KY11 2BW,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 15:54,12/01/2021 15:55,"Admiralty Road, Rosyth, Dunfermline","Albert Street, Rosyth, Dunfermline",,,,00:01:31,00:00:00,0.3995417,31.56317,KY11 2BW,KY11 2RZ,,Craig Paterson01
+SB19GYR Craig Paterson01,12/01/2021 18:56,12/01/2021 20:04,"Albert Street, Rosyth, Dunfermline","Albert Street, Rosyth, Dunfermline",,,,01:07:23,00:17:39,31.058,67.10809,KY11 2RZ,KY11 2RZ,,Craig Paterson01
+SB19GYR Craig Paterson01,13/01/2021 10:11,13/01/2021 10:49,"Albert Street, Rosyth, Dunfermline","Muirhouse Place West, Muirhouse, Edinburgh",,,,00:38:08,00:11:56,12.72444,68.58447,KY11 2RZ,EH4 4PY,,Craig Paterson01
+SB19GYR Craig Paterson01,13/01/2021 10:49,13/01/2021 10:50,"Muirhouse Place West, Muirhouse, Edinburgh","Muirhouse Place West, Muirhouse, Edinburgh",,,,00:00:29,00:00:00,0.01677702,0,EH4 4PY,EH4 4PY,,Craig Paterson01
+SB19GYR Craig Paterson01,13/01/2021 11:03,13/01/2021 11:03,"Muirhouse Place West, Muirhouse, Edinburgh","Muirhouse Place West, Muirhouse, Edinburgh",,,,00:00:10,00:00:00,0,0,EH4 4PY,EH4 4PY,,Craig Paterson01
+SB19GYR Craig Paterson01,13/01/2021 11:18,13/01/2021 11:59,"Muirhouse Place West, Muirhouse, Edinburgh","Cavendish Way,  Glenrothes",,,,00:41:48,00:00:00,31.51967,66.59359,EH4 4PY,KY6 2SB,,Craig Paterson01
+SB19GYR Craig Paterson01,13/01/2021 12:05,13/01/2021 12:30,"Cavendish Way,  Glenrothes","Backmarch Road, Rosyth, Dunfermline",,,,00:24:30,00:00:00,17.4568,68.15945,KY6 2SB,KY11 2BN,,Craig Paterson01
+SB19GYR Craig Paterson01,13/01/2021 12:37, n/a,"Backmarch Road, Rosyth , Dunfermline",Current Journey,,n/a, ,00:00:00,00:00:00,0,18.18629,KY6 2SB,KY11 2BN,,Craig Paterson01
+SH68VFG Michael Seaman,11/01/2021 08:05,11/01/2021 08:54,"Aysgarth Avenue,  Sunderland","Rothwell Crescent,  Stockton-on-Tees",,,,00:49:08,00:01:43,24.33725,56.90767,SR2 9SF,TS19 9AW,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 09:41,11/01/2021 09:57,"Rothwell Crescent,  Stockton-on-Tees","Rothwell Crescent,  Stockton-on-Tees",,,,00:15:48,00:11:11,0.2299073,7.762169,TS19 9AW,TS19 9AF,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 09:58,11/01/2021 10:03,"Rothwell Crescent,  Stockton-on-Tees","Valley Gardens,  Stockton-on-Tees",,,,00:04:44,00:00:00,0.6393909,24.15891,TS19 9AF,TS19 8BE,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 10:05,11/01/2021 10:05,"Valley Gardens,  Stockton-on-Tees","Valley Gardens,  Stockton-on-Tees",,,,00:00:15,00:00:00,0.003106856,0,TS19 8BE,TS19 8BE,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 11:19,11/01/2021 11:35,"Valley Gardens,  Stockton-on-Tees","The Willows,  Stockton-on-Tees",,,,00:16:42,00:13:42,0.04038913,0.2908017,TS19 8BE,TS19 8BE,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 11:37,11/01/2021 11:37,"The Willows,  Stockton-on-Tees","The Willows,  Stockton-on-Tees",,,,00:00:19,00:00:00,0,0,TS19 8BE,TS19 8BE,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 11:40,11/01/2021 12:21,"The Willows,  Stockton-on-Tees","Everett Street,  Hartlepool",,,,00:40:46,00:07:34,15.66104,56.90767,TS19 8BE,TS26 0JD,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 13:21,11/01/2021 13:37,"Everett Street,  Hartlepool","Everett Street,  Hartlepool",,,,00:15:47,00:12:46,0,0.1118468,TS26 0JD,TS26 0JD,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 13:39,11/01/2021 13:48,"Everett Street,  Hartlepool","Everett Street,  Hartlepool",,,,00:09:11,00:06:09,0,0.3579098,TS26 0JD,TS26 0JD,,Michael Seaman
+SH68VFG Michael Seaman,11/01/2021 13:53,11/01/2021 14:29,"Everett Street,  Hartlepool","Aysgarth Avenue,  Sunderland",,,,00:36:04,00:00:00,18.79896,60.68808,TS26 0JD,SR2 9SF,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 08:18,12/01/2021 08:51,"Aysgarth Avenue,  Sunderland","Camp Street, Easington Colliery, Peterlee",,,,00:32:24,00:11:17,10.57636,56.6616,SR2 9SF,SR8 3RB,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 08:56,12/01/2021 09:16,"Camp Street, Easington Colliery, Peterlee","Camp Street, Easington Colliery, Peterlee",,,,00:20:19,00:14:15,0.1000408,2.482999,SR8 3RB,SR8 3RB,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 09:27,12/01/2021 09:31,"Camp Street, Easington Colliery, Peterlee","Camp Street, Easington Colliery, Peterlee",,,,00:04:13,00:01:08,0,0.3579098,SR8 3RB,SR8 3RB,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 10:17,12/01/2021 10:28,"Camp Street, Easington Colliery, Peterlee","Camp Street, Easington Colliery, Peterlee",,,,00:10:49,00:07:47,0,0,SR8 3RB,SR8 3RB,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 10:30,12/01/2021 10:49,"Camp Street, Easington Colliery, Peterlee","Aysgarth Avenue,  Sunderland",,,,00:19:44,00:00:00,10.7025,56.72871,SR8 3RB,SR2 9SF,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 10:53,12/01/2021 11:33,"Aysgarth Avenue,  Sunderland","Aysgarth Avenue,  Sunderland",,,,00:40:26,00:19:21,3.455445,28.63279,SR2 9SF,SR2 9SF,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 12:03,12/01/2021 13:04,"Aysgarth Avenue,  Sunderland","Barrass Grove,  Middlesbrough",,,,01:01:15,00:13:45,29.58721,61.51575,SR2 9SF,TS3 9DW,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 13:31,12/01/2021 13:47,"Barrass Grove,  Middlesbrough","Barrass Grove,  Middlesbrough",,,,00:15:42,00:12:41,0,0.6039729,TS3 9DW,TS3 9DW,,Michael Seaman
+SH68VFG Michael Seaman,12/01/2021 13:48,12/01/2021 14:36,"Barrass Grove,  Middlesbrough","Aysgarth Avenue,  Sunderland",,,,00:48:00,00:01:49,30.13526,57.84718,TS3 9DW,SR2 9SF,,Michael Seaman
+SH68VFG Michael Seaman,13/01/2021 08:16,13/01/2021 08:21,"Aysgarth Avenue,  Sunderland","Carrmere Road, Leechmere Industrial Estate, Sunderland",,,,00:04:20,00:00:00,1.122196,27.40247,SR2 9SF,SR2 9TE,,Michael Seaman
+SH68VFG Michael Seaman,13/01/2021 08:31,13/01/2021 09:20,"Carrmere Road, Leechmere Industrial Estate, Sunderland","Four Winds Court,  Hartlepool",,,,00:48:36,00:05:43,20.12745,62.00788,SR2 9TE,TS26 0LP,,Michael Seaman
+SH68VFG Michael Seaman,13/01/2021 12:37,13/01/2021 12:38,"Elwick Road,  Hartlepool","Elwick Road,  Hartlepool",,,,00:00:41,00:00:00,0,0,TS26 0DD,TS26 0DD,,Michael Seaman
+SB68CFU Rich Brannen,11/01/2021 11:15,11/01/2021 11:17,"Ashbrooke Gardens,  Wallsend","Rosehill Bank,  Wallsend",,,,00:02:38,00:00:00,0.1714984,12.54921,NE28 7AQ,NE28 7BH,,Rich Brannen
+SB68CFU Rich Brannen,11/01/2021 11:20,11/01/2021 11:46,"Rosehill Bank,  Wallsend","West Court,  Blyth",,,,00:25:22,00:01:17,12.94751,59.32355,NE28 7BH,NE24 5RY,,Rich Brannen
+SB68CFU Rich Brannen,11/01/2021 12:10,11/01/2021 12:28,"West Court,  Blyth","Manley View, North Seaton, Ashington",,,,00:18:20,00:00:00,6.401988,60.57624,NE24 5RY,NE63 9TD,,Rich Brannen
+SB68CFU Rich Brannen,11/01/2021 13:33,11/01/2021 14:32,"Manley View, North Seaton, Ashington","Ashbrooke Gardens,  Wallsend",,,,00:59:08,00:33:32,15.76108,60.12885,NE63 9TD,NE28 7AQ,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 07:59,12/01/2021 08:05,"Ashbrooke Gardens,  Wallsend","Rosehill Bank,  Wallsend",,,,00:06:10,00:02:22,0.1702557,8.634574,NE28 7AQ,NE28 7BH,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 08:07,12/01/2021 08:27,"Rosehill Bank,  Wallsend","Spire Road,  Washington",,,,00:20:07,00:00:00,8.262994,44.67162,NE28 7BH,NE37 3AG,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 09:13,12/01/2021 09:13,"Spire Road,  Washington","Spire Road,  Washington",,,,00:00:18,00:00:00,0.02050525,0,NE37 3AG,NE37 3AG,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 11:10,12/01/2021 11:44,"Spire Road,  Washington","Elizabeth Street, Annfield Plain, Stanley",,,,00:33:15,00:02:16,13.04382,48.20598,NE37 3AG,DH9 7SN,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 12:33,12/01/2021 13:14,"Elizabeth Street, Annfield Plain, Stanley","Spire Road,  Washington",,,,00:40:26,00:04:37,13.98085,50.68898,DH9 7SN,NE37 3AG,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 14:23,12/01/2021 14:35,"Spire Road,  Washington","Brentwood Road, Shiney Row, Houghton le Spring",,,,00:11:51,00:00:00,5.458125,44.85057,NE37 3AG,DH4 7LX,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 14:41,12/01/2021 14:41,"Brentwood Road, Shiney Row, Houghton le Spring","Brentwood Road, Shiney Row, Houghton le Spring",,,,00:00:13,00:00:00,0.004349598,0,DH4 7LX,DH4 7LX,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 16:35,12/01/2021 17:08,"Brentwood Road, Shiney Row, Houghton le Spring","Stanley Street,  Wallsend",,,,00:33:07,00:02:14,11.64015,47.57964,DH4 7LX,NE28 0AA,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 17:17,12/01/2021 17:22,"Stanley Street,  Wallsend","Ashbrooke Gardens,  Wallsend",,,,00:04:18,00:00:00,0.4107264,11.92287,NE28 0AA,NE28 7AQ,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 17:29,12/01/2021 17:30,"Ashbrooke Gardens,  Wallsend","Chester Avenue,  Wallsend",,,,00:01:08,00:00:00,0.2423348,7.001611,NE28 7AQ,NE28 7BE,,Rich Brannen
+SB68CFU Rich Brannen,12/01/2021 17:31,12/01/2021 17:32,"Chester Avenue,  Wallsend","Ashbrooke Gardens,  Wallsend",,,,00:01:08,00:00:00,0.2212081,8.254295,NE28 7BE,NE28 7AQ,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 09:48,13/01/2021 09:54,"Ashbrooke Gardens,  Wallsend","Crow Bank,  Wallsend",,,,00:05:35,00:00:00,1.351482,19.99821,NE28 7AQ,NE28 7PH,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 10:05,13/01/2021 10:11,"Crow Bank,  Wallsend","Ashbrooke Gardens,  Wallsend",,,,00:05:48,00:00:00,1.346511,27.69327,NE28 7PJ,NE28 7AQ,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 10:22,13/01/2021 10:26,"Ashbrooke Gardens,  Wallsend","Tynemouth Road,  Wallsend",,,,00:03:20,00:00:00,0.4480086,22.05619,NE28 7AQ,NE28 6JY,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 10:30,13/01/2021 10:40,"Tynemouth Road,  Wallsend","Silver Fox Way, Shiremoor, Newcastle upon Tyne",,,,00:10:02,00:00:00,4.637293,52.67986,NE28 6JY,NE27 0QH,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 10:46,13/01/2021 11:01,"Silver Fox Way, Shiremoor, Newcastle upon Tyne","Second Avenue, Tyne Tunnel Trading Estate, North Shields",,,,00:15:21,00:02:53,2.458144,27.58142,NE27 0QH,NE29 7SJ,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 11:04,13/01/2021 11:06,"Second Avenue, Tyne Tunnel Trading Estate, North Shields","A19, Tyne Tunnel Trading Estate, North Shields",,,,00:01:33,00:00:00,0.3237344,22.97334,NE29 7SJ,NE28 0HW,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 11:12,13/01/2021 11:18,"A19, Tyne Tunnel Trading Estate, North Shields","Rosehill Bank,  Wallsend",,,,00:06:11,00:00:00,1.574555,26.88797,NE28 0HW,NE28 7BH,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 11:19,13/01/2021 11:21,"Rosehill Bank,  Wallsend","Ashbrooke Gardens,  Wallsend",,,,00:01:56,00:00:00,0.1777122,0.246063,NE28 7BH,NE28 7AQ,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 11:37,13/01/2021 12:17,"Ashbrooke Gardens,  Wallsend","Gartland Road,  Sunderland",,,,00:39:22,00:15:53,9.618205,43.73211,NE28 7AQ,SR4 9PZ,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 12:23,13/01/2021 12:25,"Gartland Road,  Sunderland","Sevenoaks Drive,  Sunderland",,,,00:02:23,00:00:00,0.2771316,19.43898,SR4 9PZ,SR4 9LS,,Rich Brannen
+SB68CFU Rich Brannen,13/01/2021 12:27, n/a,"Sevenoaks Drive,  , Sunderland",Current Journey,,n/a, ,00:00:00,00:00:00,0,40.06353,SR4 9PZ,SR4 9LS,,Rich Brannen
+SE19VGG Thomas Leisk,11/01/2021 08:38,11/01/2021 08:55,"Markinch Road,  Port Glasgow","Cathcart Street,  Greenock",,,,00:17:26,00:02:58,4.410493,35.23175,PA14 6HN,PA15 1DH,,Thomas Leisk
+SE19VGG Thomas Leisk,11/01/2021 08:56,11/01/2021 09:52,"Cathcart Street,  Greenock","Stanley Place,  Saltcoats",,,,00:55:27,00:00:00,26.75003,55.65498,PA15 1DH,KA21 5BB,,Thomas Leisk
+SE19VGG Thomas Leisk,11/01/2021 10:39,11/01/2021 11:02,"Stanley Place,  Saltcoats","New Street,  Stevenston",,,,00:23:08,00:08:12,2.115769,28.07355,KA21 5BB,KA20 3HB,,Thomas Leisk
+SE19VGG Thomas Leisk,11/01/2021 12:38,11/01/2021 12:44,"New Street,  Stevenston","New Street,  Stevenston",,,,00:05:30,00:02:28,0,0.04473872,KA20 3HB,KA20 3HB,,Thomas Leisk
+SE19VGG Thomas Leisk,11/01/2021 12:47,11/01/2021 13:21,"New Street,  Stevenston","James Brown Avenue,  Ayr",,,,00:34:32,00:04:24,17.68982,56.6616,KA20 3HB,KA8 9QZ,,Thomas Leisk
+SE19VGG Thomas Leisk,11/01/2021 15:08,11/01/2021 16:22,"James Brown Avenue,  Ayr","Markinch Road,  Port Glasgow",,,,01:13:51,00:04:29,49.63513,66.28044,KA8 9QZ,PA14 6HN,,Thomas Leisk
+SE19VGG Thomas Leisk,12/01/2021 09:13,12/01/2021 11:28,"Markinch Road,  Port Glasgow","Pollock Crescent,  Kilwinning",,,,02:14:48,01:07:09,35.2013,65.60934,PA14 6HN,KA13 6HR,,Thomas Leisk
+SE19VGG Thomas Leisk,12/01/2021 12:54,12/01/2021 13:46,"Pollock Crescent,  Kilwinning","Lauder Court,  Kilmarnock",,,,00:51:58,00:25:31,13.63413,63.43951,KA13 6HR,KA3 7QN,,Thomas Leisk
+SE19VGG Thomas Leisk,12/01/2021 14:17,12/01/2021 15:32,"Lauder Court,  Kilmarnock","Markinch Road,  Port Glasgow",,,,01:14:51,00:18:10,37.13625,58.76432,KA3 7QN,PA14 6HN,,Thomas Leisk
+SE19VGG Thomas Leisk,13/01/2021 09:09,13/01/2021 09:28,"Markinch Road,  Port Glasgow","Cathcart Street,  Greenock",,,,00:18:14,00:02:26,4.400551,29.75126,PA14 6HN,PA15 1DH,,Thomas Leisk
+SE19VGG Thomas Leisk,13/01/2021 09:28,13/01/2021 10:32,"Cathcart Street,  Greenock","Markinch Road,  Port Glasgow",,,,01:03:45,00:38:16,5.046777,31.49606,PA15 1DH,PA14 6HN,,Thomas Leisk
+SE19VGG Thomas Leisk,13/01/2021 12:04, n/a,"Markinch Road,  , Port Glasgow",Current Journey,,n/a, ,00:00:00,00:00:00,0,46.66249,PA15 1DH,PA14 6HN,,Thomas Leisk
+SB19GYK Liam Flaherty01,12/01/2021 08:37,12/01/2021 09:12,"Seventh Avenue,  Blyth","Spire Road,  Washington",,,,00:34:59,00:02:09,18.86856,60.19596,NE24 2PS,NE37 3AG,,Liam Flaherty01
+SB19GYK Liam Flaherty01,12/01/2021 10:41,12/01/2021 11:03,"Spire Road,  Washington","Coquet Avenue,  South Shields",,,,00:22:38,00:00:00,8.820986,48.38493,NE37 3AG,NE34 7TF,,Liam Flaherty01
+SB19GYK Liam Flaherty01,12/01/2021 11:58,12/01/2021 12:36,"Coquet Avenue,  South Shields","Seventh Avenue,  Blyth",,,,00:37:48,00:00:00,18.57962,59.07749,NE34 7TF,NE24 2PS,,Liam Flaherty01
+SB19GYK Liam Flaherty01,13/01/2021 08:45,13/01/2021 09:24,"Seventh Avenue,  Blyth","Ravenswood Road,  Sunderland",,,,00:39:09,00:04:33,18.044,59.07749,NE24 2PS,SR5 5DE,,Liam Flaherty01
+SB19GYK Liam Flaherty01,13/01/2021 11:06,13/01/2021 11:21,"Ravenswood Road,  Sunderland","Carley Road,  Sunderland",,,,00:15:22,00:00:33,2.647041,26.77613,SR5 5DE,SR5 2RJ,,Liam Flaherty01
+SB19GYK Liam Flaherty01,13/01/2021 12:24, n/a,"Carley Road,  , Sunderland",Current Journey,,n/a, ,00:00:00,00:00:00,0,0,SR5 5DE,SR5 2RJ,,Liam Flaherty01
+SB19GYO Gav Brown,11/01/2021 10:29,11/01/2021 11:07,"Viewfield Place, Slamannan, Falkirk","Parkhead Crescent, Wester Hailes, Edinburgh",,,,00:37:32,00:00:00,27.85793,68.40551,FK1 3BT,EH11 4RY,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 11:14,11/01/2021 11:15,"Parkhead Crescent, Wester Hailes, Edinburgh","Parkhead Crescent, Wester Hailes, Edinburgh",,,,00:00:45,00:00:00,0.01056331,0,EH11 4RY,EH11 4RY,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 11:52,11/01/2021 12:38,"Parkhead Crescent, Wester Hailes, Edinburgh","Viewfield Place, Slamannan, Falkirk",,,,00:46:44,00:03:51,28.18478,68.15945,EH11 4RY,FK1 3BT,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 13:37,11/01/2021 14:29,"Viewfield Place, Slamannan, Falkirk","Annandale Gardens,  Glenrothes",,,,00:52:27,00:00:00,40.25926,68.33841,FK1 3BT,KY6 1JD,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 14:36,11/01/2021 14:40,"Annandale Gardens,  Glenrothes","Annandale Gardens,  Glenrothes",,,,00:03:38,00:00:00,0.02485485,0.04473872,KY6 1JD,KY6 1JD,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 15:09,11/01/2021 16:04,"Annandale Gardens,  Glenrothes","Viewfield Place, Slamannan, Falkirk",,,,00:55:00,00:00:00,40.58362,68.27131,KY6 1JD,FK1 3BT,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 17:13,11/01/2021 17:30,"Viewfield Place, Slamannan, Falkirk","Russel Street,  Falkirk",,,,00:16:58,00:00:00,8.479853,47.22173,FK1 3BT,FK2 7HX,,Gav Brown
+SB19GYO Gav Brown,11/01/2021 19:03,11/01/2021 19:22,"Russel Street,  Falkirk","Viewfield Place, Slamannan, Falkirk",,,,00:19:23,00:00:00,8.543233,43.55315,FK2 7HX,FK1 3BT,,Gav Brown
+SB19GYO Gav Brown,12/01/2021 13:02,12/01/2021 13:51,"Viewfield Place, Slamannan, Falkirk","Cumberland Street, New Town, Edinburgh",,,,00:49:14,00:00:00,29.24173,68.22656,FK1 3BT,EH3 6RD,,Gav Brown
+SB19GYO Gav Brown,12/01/2021 15:17,12/01/2021 16:14,"Cumberland Street, New Town, Edinburgh","Viewfield Place, Slamannan, Falkirk",,,,00:56:33,00:02:38,29.0025,68.22656,EH3 6RD,FK1 3BT,,Gav Brown
+SB19GYO Gav Brown,13/01/2021 10:40,13/01/2021 11:03,"Viewfield Place, Slamannan, Falkirk","North Reeves Place, Whitburn, Bathgate",,,,00:23:27,00:00:00,10.73667,48.65337,FK1 3BT,EH47 8HD,,Gav Brown
+SB19GYO Gav Brown,13/01/2021 12:26, n/a,"North Reeves Place, Whitburn , Bathgate",Current Journey,,n/a, ,00:00:00,00:00:00,0,48.76521,FK1 3BT,EH47 8HD,,Gav Brown
+SE19HNL Chris Stein,11/01/2021 14:53,11/01/2021 15:05,"Hollybank, Methil, Leven","Newark Road South,  Glenrothes",,,,00:12:26,00:00:00,6.510106,52.67986,KY8 2AR,KY7 4ND,,Chris Stein
+SE19HNL Chris Stein,11/01/2021 15:11,11/01/2021 15:12,"Newark Road South,  Glenrothes","Newark Road South,  Glenrothes",,,,00:00:33,00:00:00,0.01491291,0,KY7 4ND,KY7 4ND,,Chris Stein
+SE19HNL Chris Stein,11/01/2021 15:13,11/01/2021 15:26,"Newark Road South,  Glenrothes","Hollybank, Methil, Leven",,,,00:12:50,00:00:00,6.8879,55.09574,KY7 4ND,KY8 2AX,,Chris Stein
+SE19HNL Chris Stein,11/01/2021 15:29,11/01/2021 15:30,"Hollybank, Methil, Leven","Cedar Avenue, Methil, Leven",,,,00:00:56,00:00:00,0.04846695,0,KY8 2AX,KY8 2AR,,Chris Stein
+SE19HNL Chris Stein,11/01/2021 16:49,11/01/2021 17:51,"Cedar Avenue, Methil, Leven","Ashley Terrace,  Alloa",,,,01:02:14,00:00:11,40.12939,67.21994,KY8 2AR,FK10 2LZ,,Chris Stein
+SE19HNL Chris Stein,11/01/2021 18:01,11/01/2021 18:58,"Ashley Terrace,  Alloa","Hollybank, Methil, Leven",,,,00:57:01,00:00:00,34.89931,66.23569,FK10 2LZ,KY8 2AX,,Chris Stein
+SE19HNL Chris Stein,12/01/2021 15:51,12/01/2021 16:48,"Hollybank, Methil, Leven","Parkside Street, Old Town, Edinburgh",,,,00:57:37,00:00:00,35.55424,68.96474,KY8 2AX,EH8 9RA,,Chris Stein
+SE19HNL Chris Stein,12/01/2021 17:16,12/01/2021 18:24,"Parkside Street, Old Town, Edinburgh","High Street, Methil, Leven",,,,01:07:51,00:04:58,36.68762,70.39639,EH8 9,KY8 3HL,,Chris Stein
+SE19HNL Chris Stein,12/01/2021 18:25,12/01/2021 18:30,"High Street, Methil, Leven","Cedar Avenue, Methil, Leven",,,,00:04:57,00:00:00,1.303015,26.01557,KY8 3HL,KY8 2AR,,Chris Stein
+SB19HFY Tim Boniface,12/01/2021 08:11,12/01/2021 08:18,"Wood Street, Pelton, Chester le Street","Wood Street, Pelton, Chester le Street",,,,00:06:53,00:03:49,0,0,DH2 1EQ,DH2 1EQ,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 08:29,12/01/2021 08:38,"Wood Street, Pelton, Chester le Street","The Brooms, Ouston, Chester le Street",,,,00:09:37,00:01:37,1.476999,27.58142,DH2 1EE,DH2 1RP,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 09:25,12/01/2021 09:53,"The Brooms, Ouston, Chester le Street","Goschen Street, Southwick, Sunderland",,,,00:28:33,00:00:00,12.73376,55.36417,DH2 1RP,SR5 2JF,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 10:04,12/01/2021 10:26,"Goschen Street, Southwick, Sunderland","The Brooms, Ouston, Chester le Street",,,,00:21:56,00:00:00,9.759877,49.63762,SR5 2JF,DH2 1RP,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 11:59,12/01/2021 12:09,"The Brooms, Ouston, Chester le Street","Chowdene Bank, Team Valley Trading Estate, Gateshead",,,,00:09:24,00:00:00,3.21311,35.65676,DH2 1RP,NE11 0JY,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 12:27,12/01/2021 12:36,"Chowdene Bank, Team Valley Trading Estate, Gateshead","The Brooms, Ouston, Chester le Street",,,,00:08:48,00:00:00,3.159672,32.9277,NE11 0JY,DH2 1RP,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 14:54,12/01/2021 14:59,"The Brooms, Ouston, Chester le Street","Wood Street, Pelton, Chester le Street",,,,00:05:32,00:00:00,1.550943,25.59055,DH2 1RP,DH2 1EE,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 17:19,12/01/2021 17:26,"Wood Street, Pelton, Chester le Street","The Brooms, Ouston, Chester le Street",,,,00:06:43,00:00:00,1.454009,23.73389,DH2 1EE,DH2 1RP,,Tim Boniface
+SB19HFY Tim Boniface,12/01/2021 19:31,12/01/2021 19:37,"The Brooms, Ouston, Chester le Street","Wood Street, Pelton, Chester le Street",,,,00:06:00,00:00:00,1.545972,25.65766,DH2 1RP,DH2 1EE,,Tim Boniface
+SB19HFY Tim Boniface,13/01/2021 08:16,13/01/2021 08:52,"Wood Street, Pelton, Chester le Street","Herton Close,  Peterlee",,,,00:36:39,00:00:00,18.88533,53.17199,DH2 1EE,SR8 2AF,,Tim Boniface
+SB19HFY Tim Boniface,13/01/2021 09:23,13/01/2021 09:42,"Herton Close,  Peterlee","College Burn Road,  Sunderland",,,,00:19:49,00:00:00,11.47983,61.44864,SR8 2AF,SR3 2SW,,Tim Boniface
+SB19HFY Tim Boniface,13/01/2021 10:36,13/01/2021 11:06,"College Burn Road,  Sunderland","A1052, New Lambton, Houghton le Spring",,,,00:29:47,00:11:28,4.759082,43.41893,SR3 2SW,DH4 6AD,,Tim Boniface
+SB19HFY Tim Boniface,13/01/2021 11:16,13/01/2021 11:30,"A1052, New Lambton, Houghton le Spring","The Brooms, Ouston, Chester le Street",,,,00:13:56,00:00:00,5.60539,42.79259,DH4 6AD,DH2 1RP,,Tim Boniface
+DV69CEU Richard Lang,11/01/2021 09:55,11/01/2021 10:36,"Newfield Square, Crookston, Glasgow","Kelburne Drive,  Paisley",,,,00:40:21,00:00:00,18.94685,64.1106,G53 6RA,PA1 3PF,,Richard Lang
+DV69CEU Richard Lang,11/01/2021 12:40,11/01/2021 13:04,"Kelburne Drive,  Paisley","Portpatrick Road, Old Kilpatrick, Glasgow",,,,00:23:37,00:00:00,12.56413,51.00216,PA1 3PF,G60 5JS,,Richard Lang
+DV69CEU Richard Lang,11/01/2021 15:13,11/01/2021 15:40,"Portpatrick Road, Old Kilpatrick, Glasgow","Newfield Square, Crookston, Glasgow",,,,00:26:54,00:00:00,14.44874,56.72871,G60 5JS,G53 6RA,,Richard Lang
+DV69CEU Richard Lang,12/01/2021 09:25,12/01/2021 09:28,"Newfield Square, Crookston, Glasgow","Newfield Square, Crookston, Glasgow",,,,00:03:23,00:00:07,0.02982582,8.947745,G53 6RA,G53 6RA,,Richard Lang
+SJ68ZRL Alistair Cavan,11/01/2021 14:52,11/01/2021 15:06,"Brewster Wynd,  Paisley","Fulbar Road,  Paisley",,,,00:13:09,00:00:00,5.026893,55.78919,PA3 4NR,PA2 9AT,,Alistair Cavan
+SJ68ZRL Alistair Cavan,11/01/2021 15:55,11/01/2021 16:08,"Fulbar Road,  Paisley","Priory Avenue,  Paisley",,,,00:12:13,00:00:00,5.32018,52.81407,PA2 9AT,PA3 4NR,,Alistair Cavan
+SJ68ZRL Alistair Cavan,11/01/2021 16:59,11/01/2021 17:38,"Brewster Wynd,  Paisley","Huntly Drive,  Greenock",,,,00:38:45,00:00:00,20.04419,68.02523,PA3 4NR,PA16 0YP,,Alistair Cavan
+SJ68ZRL Alistair Cavan,11/01/2021 17:40,11/01/2021 17:40,"Huntly Drive,  Greenock","Huntly Drive,  Greenock",,,,00:00:31,00:00:00,0.02299073,0,PA16 0YP,PA16 0YP,,Alistair Cavan
+SJ68ZRL Alistair Cavan,11/01/2021 19:09,11/01/2021 19:46,"Huntly Drive,  Greenock","John Knox Street,  Clydebank",,,,00:37:50,00:00:00,20.73454,68.22656,PA16 0YP,G81 1ND,,Alistair Cavan
+SJ68ZRL Alistair Cavan,11/01/2021 20:08,11/01/2021 20:27,"John Knox Street,  Clydebank","Priory Avenue,  Paisley",,,,00:19:32,00:00:00,8.756363,66.72781,G81 1ND,PA3 4NR,,Alistair Cavan
+SB19GYG Craig Barnes,12/01/2021 08:30,12/01/2021 08:44,"Birdsfield Drive, Blantyre, Glasgow","Birdsfield Drive, Blantyre, Glasgow",,,,00:13:33,00:10:30,0.003728227,0.1789549,G72 0XQ,G72 0XQ,,Craig Barnes
+SB19GYG Craig Barnes,12/01/2021 09:08,12/01/2021 09:48,"Birdsfield Drive, Blantyre, Glasgow","Wren Court, Strathclyde Business Park, Bellshill",,,,00:40:06,00:27:53,5.068525,59.56961,G72 0XQ,ML4 3NQ,,Craig Barnes
+SB19GYG Craig Barnes,12/01/2021 10:18,12/01/2021 10:26,"Wren Court, Strathclyde Business Park, Bellshill","North Road,  Bellshill",,,,00:08:27,00:00:00,1.688887,30.93683,ML4 3NQ,ML4 1AG,,Craig Barnes
+SB19GYG Craig Barnes,12/01/2021 10:35,12/01/2021 13:33,"North Road,  Bellshill","Cothall,  Aberdeen",,,,02:58:16,00:01:01,155.0911,71.20169,ML4 1AG,AB21 0HT,,Craig Barnes
+SB19GYG Craig Barnes,12/01/2021 14:18,12/01/2021 17:45,"Cothall,  Aberdeen","Finnart Square, Bridgeton, Glasgow",,,,03:27:31,00:01:28,165.3699,70.7543,AB21 0HT,G40 4BB,,Craig Barnes
+SB19GYG Craig Barnes,12/01/2021 18:23,12/01/2021 18:32,"Finnart Street, Bridgeton, Glasgow","King's Park, King's Park, Glasgow",,,,00:08:56,00:00:00,1.916309,30.80261,G40 4BB,G42 0AE,,Craig Barnes
+SB19GYG Craig Barnes,12/01/2021 18:49,12/01/2021 19:08,"King's Park, King's Park, Glasgow","Birdsfield Drive, Blantyre, Glasgow",,,,00:18:56,00:00:00,12.91831,70.46349,G42 0AE,G72 0XW,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 08:38,13/01/2021 08:44,"Birdsfield Drive, Blantyre, Glasgow","Broompark Road, Blantyre, Glasgow",,,,00:05:59,00:00:22,0.5231946,7.829278,G72 0XW,G72 0DP,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 08:45,13/01/2021 08:52,"Broompark Road, Blantyre, Glasgow","Birdsfield Drive, Blantyre, Glasgow",,,,00:06:04,00:00:29,0.5921667,11.43075,G72 0DH,G72 0XL,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 08:56,13/01/2021 08:58,"Birdsfield Drive, Blantyre, Glasgow","Birdsfield Drive, Blantyre, Glasgow",,,,00:01:50,00:00:00,0.04908833,0,G72 0XL,G72 0XW,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 09:32,13/01/2021 09:43,"Birdsfield Drive, Blantyre, Glasgow","Wren Court, Strathclyde Business Park, Bellshill",,,,00:10:06,00:00:00,5.068525,60.75519,G72 0XW,ML4 3NQ,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 09:46,13/01/2021 09:47,"Wren Court, Strathclyde Business Park, Bellshill","Wren Court, Strathclyde Business Park, Bellshill",,,,00:01:00,00:00:00,0.06027301,0,ML4 3NQ,ML4 3NQ,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 10:15,13/01/2021 10:15,"Wren Court, Strathclyde Business Park, Bellshill","Wren Court, Strathclyde Business Park, Bellshill",,,,00:00:43,00:00:00,0.02050525,0,ML4 3NQ,ML4 3NQ,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 10:36,13/01/2021 10:47,"Wren Court, Strathclyde Business Park, Bellshill","Birdsfield Drive, Blantyre, Glasgow",,,,00:11:02,00:00:00,5.243752,52.29957,ML4 3NQ,G72 0XQ,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 11:07,13/01/2021 11:17,"Birdsfield Drive, Blantyre, Glasgow","Wren Court, Strathclyde Business Park, Bellshill",,,,00:09:29,00:00:00,5.064796,61.13548,G72 0XQ,ML4 3NQ,,Craig Barnes
+SB19GYG Craig Barnes,13/01/2021 11:20,13/01/2021 11:29,"Wren Court, Strathclyde Business Park, Bellshill","Birdsfield Drive, Blantyre, Glasgow",,,,00:09:09,00:00:00,5.275442,51.62849,ML4 3NQ,G72 0XQ,,Craig Barnes
+DP69YLR Robert Bowie,11/01/2021 12:13,11/01/2021 12:24,"Langstile Place, Penilee, Glasgow","Langstile Place, Penilee, Glasgow",,,,00:11:33,00:00:00,1.549078,25.16553,G52 4,G52 4,,Robert Bowie
+SG19WLH Michael Jennings,11/01/2021 16:38,11/01/2021 16:41,"Valebrooke Gardens,  Sunderland","Briery Vale Close,  Sunderland",,,,00:03:04,00:00:00,0.1329734,4.764675,SR2 7RU,SR2 7RU,,Michael Jennings
+SG19WLH Michael Jennings,11/01/2021 16:44,11/01/2021 17:42,"Briery Vale Close,  Sunderland","Tithe Barn Road,  Stockton-on-Tees",,,,00:58:16,00:11:07,26.34365,58.76432,SR2 7RU,TS19 8QJ,,Michael Jennings
+SG19WLH Michael Jennings,11/01/2021 18:55,11/01/2021 19:03,"Tithe Barn Road,  Stockton-on-Tees","Castlereagh Road,  Stockton-on-Tees",,,,00:08:21,00:00:00,2.033748,28.07355,TS19 8QJ,TS19 0DL,,Michael Jennings
+SG19WLH Michael Jennings,11/01/2021 19:37,11/01/2021 20:22,"Castlereagh Road,  Stockton-on-Tees","Valebrooke Gardens,  Sunderland",,,,00:44:48,00:00:00,27.98594,58.76432,TS19 0DL,SR2 7RU,,Michael Jennings
+SG19WLH Michael Jennings,12/01/2021 13:21,12/01/2021 13:31,"Valebrooke Gardens,  Sunderland","West Hill,  Sunderland",,,,00:10:01,00:00:00,1.861007,24.29313,SR2 7RU,SR4 8PU,,Michael Jennings
+SG19WLH Michael Jennings,12/01/2021 13:47,12/01/2021 13:55,"West Hill,  Sunderland","Woodside,  Sunderland",,,,00:07:38,00:00:00,1.839259,24.96421,SR4 8PU,SR2 7ET,,Michael Jennings
+SG19WLH Michael Jennings,12/01/2021 16:46,12/01/2021 16:57,"Valebrooke Gardens,  Sunderland","Springwell Road,  Sunderland",,,,00:11:21,00:00:00,2.204004,24.71815,SR2 7RU,SR4 8NW,,Michael Jennings
+SG19WLH Michael Jennings,12/01/2021 17:03,12/01/2021 17:23,"Springwell Road,  Sunderland","Snaith Terrace,  Wingate",,,,00:19:37,00:00:00,14.84145,58.71959,SR4 8NW,TS28 5BL,,Michael Jennings
+SG19WLH Michael Jennings,12/01/2021 17:24,12/01/2021 20:24,"Snaith Terrace,  Wingate","Valebrooke Gardens,  Sunderland",,,,02:59:56,01:17:45,54.54583,58.83142,TS28 5BL,SR2 7RU,,Michael Jennings
+SB19GYU William Fletcher01,11/01/2021 16:34,11/01/2021 18:01,"Windsor Road, Holytown, Motherwell","Dalawoodie Court,  Dumfries",,,,01:26:09,00:00:00,68.47137,70.57535,ML1 4QT,DG2 0HW,,William Fletcher01
+SB19GYU William Fletcher01,11/01/2021 18:02,11/01/2021 18:03,"Dalawoodie Court,  Dumfries","Farnland Court,  Dumfries",,,,00:01:15,00:00:00,0.1516146,3.400143,DG2 0HW,DG2 0QD,,William Fletcher01
+SB19GYU William Fletcher01,11/01/2021 18:09,11/01/2021 18:19,"Farnland Court,  Dumfries","Farnland Court,  Dumfries",,,,00:10:18,00:07:18,0,0,DG2 0QD,DG2 0QD,,William Fletcher01
+SB19GYU William Fletcher01,11/01/2021 18:52,11/01/2021 20:17,"Farnland Court,  Dumfries","Windsor Road, Holytown, Motherwell",,,,01:25:04,00:02:01,67.97242,70.7543,DG2 0QD,ML1 4QT,,William Fletcher01
+SH68FNO Dale Burrell,11/01/2021 12:30,11/01/2021 12:46,"Denton View,  Blaydon on Tyne","The Valley Shopping Village, Team Valley Trading Estate, Gateshead",,,,00:15:39,00:00:00,6.310024,51.56139,NE21 4DZ,NE11 0JS,,Dale Burrell
+SH68FNO Dale Burrell,11/01/2021 13:02,11/01/2021 13:16,"The Valley Shopping Village, Team Valley Trading Estate, Gateshead","Victor Street,  Chester le Street",,,,00:13:20,00:00:00,7.802558,64.49088,NE11 0JS,DH3 3DP,,Dale Burrell
+SH68FNO Dale Burrell,11/01/2021 14:15,11/01/2021 14:51,"Victor Street,  Chester le Street","Ede Avenue, Dunston, Gateshead",,,,00:35:56,00:04:01,11.56931,60.33017,DH3 3DP,NE11 9US,,Dale Burrell
+SH68FNO Dale Burrell,11/01/2021 16:31,11/01/2021 17:14,"Ede Avenue, Dunston, Gateshead","Denton View,  Blaydon on Tyne",,,,00:42:35,00:24:15,4.573914,42.74785,NE11 9US,NE21 4DZ,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 08:25,12/01/2021 08:33,"Denton View,  Blaydon on Tyne","Stella Cottages,  Blaydon on Tyne",,,,00:08:00,00:00:00,1.659061,30.55655,NE21 4DZ,NE21 4LX,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 08:39,12/01/2021 10:20,"Stella Cottages,  Blaydon on Tyne","Edinburgh Road,  Jedburgh",,,,01:40:49,00:05:47,56.20986,51.44954,NE21 4LX,TD8 6EA,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 10:26,12/01/2021 11:08,"Edinburgh Road,  Jedburgh","Sanderson Court,  Galashiels",,,,00:42:42,00:06:07,17.27474,46.41643,TD8 6EA,TD1 2HY,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 12:21,12/01/2021 12:21,"Sanderson Court,  Galashiels","Sanderson Court,  Galashiels",,,,00:00:31,00:00:00,0,0,TD1 2HY,TD1 2HY,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 12:25,12/01/2021 12:40,"Sanderson Court,  Galashiels","Wilderhaugh Street,  Galashiels",,,,00:15:24,00:02:39,2.25682,22.48121,TD1 2HY,TD1 1PW,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 13:01,12/01/2021 13:52,"Wilderhaugh Street,  Galashiels","A68, Huntford, Jedburgh",,,,00:51:26,00:01:39,27.96978,52.00877,TD1 1PW,TD8 6PT,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 13:55,12/01/2021 15:08,"A68, Huntford, Jedburgh","Parkland,  Blaydon on Tyne",,,,01:13:19,00:01:21,46.03366,56.59449,TD8 6PT,NE21 4LD,,Dale Burrell
+SH68FNO Dale Burrell,12/01/2021 15:24,12/01/2021 15:32,"Parkland,  Blaydon on Tyne","Denton View,  Blaydon on Tyne",,,,00:08:15,00:00:00,1.746053,27.26825,NE21 4LD,NE21 4DZ,,Dale Burrell
+SH68FNO Dale Burrell,13/01/2021 08:17,13/01/2021 08:32,"Denton View,  Blaydon on Tyne","Stella Cottages,  Blaydon on Tyne",,,,00:15:14,00:07:22,1.560263,27.40247,NE21 4DZ,NE21 4LX,,Dale Burrell
+SH68FNO Dale Burrell,13/01/2021 08:47,13/01/2021 09:00,"Stella Cottages,  Blaydon on Tyne","Denton View,  Blaydon on Tyne",,,,00:13:12,00:01:55,1.732383,29.63941,NE21 4LX,NE21 4DZ,,Dale Burrell
+SH68FNO Dale Burrell,13/01/2021 10:32,13/01/2021 11:18,"Denton View,  Blaydon on Tyne","Lumley Drive, Crookhall, Consett",,,,00:45:45,00:09:05,11.33443,39.63851,NE21 4DZ,DH8 7HJ,,Dale Burrell
+SB19WXT Andrew Bulford,11/01/2021 08:48,11/01/2021 09:11,"Eddrington Grove, North Walbottle, Newcastle upon Tyne","Spire Road,  Washington",finish,,,00:22:42,00:00:00,13.51544,56.59449,NE5 1HW,NE37 3AG,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 09:51,11/01/2021 10:15,"Spire Road,  Washington","Eddrington Grove, North Walbottle, Newcastle upon Tyne",,finish,,00:23:23,00:00:00,14.14552,51.38243,NE37 3AG,NE5 1HW,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 10:21,11/01/2021 10:53,"Eddrington Grove, North Walbottle, Newcastle upon Tyne","Bluebell Way,  South Shields",finish,,,00:31:52,00:00:00,14.01006,55.54313,NE5 1HW,NE34 0BZ,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 11:38,11/01/2021 12:10,"Bluebell Way,  South Shields","Eddrington Grove, North Walbottle, Newcastle upon Tyne",,finish,,00:31:33,00:00:00,14.05107,56.16948,NE34 0BZ,NE5 1HW,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 13:06,11/01/2021 13:25,"Eddrington Grove, North Walbottle, Newcastle upon Tyne","Brinkburn Street, Byker, Newcastle upon Tyne",finish,,,00:18:59,00:00:00,7.330937,56.77344,NE5 1HW,NE6 2LE,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 13:29,11/01/2021 13:53,"Brinkburn Street, Byker, Newcastle upon Tyne","Mersey Road,  Gateshead",,,,00:23:57,00:00:00,9.384569,54.84968,NE6 2LE,NE8 3UB,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 13:55,11/01/2021 13:56,"Mersey Road,  Gateshead","Mersey Place,  Gateshead",,,,00:01:03,00:00:00,0.05654478,0.1118468,NE8 3UB,NE8 3SR,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 14:37,11/01/2021 14:54,"Mersey Place,  Gateshead","Fairspring, Westerhope, Newcastle upon Tyne",,,,00:16:47,00:00:00,6.605176,56.41553,NE8 3SR,NE5 2PY,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 14:56,11/01/2021 15:00,"Fairspring, Westerhope, Newcastle upon Tyne","West Denton Way, West Denton, Newcastle upon Tyne",,,,00:03:51,00:00:00,0.798462,27.02219,NE5 2PY,NE5 2YS,,Andrew Bulford
+SB19WXT Andrew Bulford,11/01/2021 15:07,11/01/2021 15:14,"West Denton Way, West Denton, Newcastle upon Tyne","Eddrington Grove, North Walbottle, Newcastle upon Tyne",,finish,,00:07:27,00:00:00,1.093613,27.13404,NE5 2YS,NE5 1HW,,Andrew Bulford
+SB19WXT Andrew Bulford,12/01/2021 08:40,12/01/2021 09:04,"Eddrington Grove, North Walbottle, Newcastle upon Tyne","Stuart Terrace,  Gateshead",finish,,,00:23:37,00:00:36,8.159225,56.03526,NE5 1HW,NE10 0ET,,Andrew Bulford
+SB19WXT Andrew Bulford,12/01/2021 09:44,12/01/2021 10:52,"Stuart Terrace,  Gateshead","Eddrington Grove, North Walbottle, Newcastle upon Tyne",,finish,,01:07:24,00:41:34,9.722595,56.28131,NE10 0ET,NE5 1HW,,Andrew Bulford
+SB19WXT Andrew Bulford,13/01/2021 10:16,13/01/2021 10:37,"Eddrington Grove, North Walbottle, Newcastle upon Tyne","Eddrington Grove, North Walbottle, Newcastle upon Tyne",finish,finish,,00:20:41,00:17:38,0,0.04473872,NE5 1HW,NE5 1HW,,Andrew Bulford
+SB19WXT Andrew Bulford,13/01/2021 10:41,13/01/2021 10:51,"Eddrington Grove, North Walbottle, Newcastle upon Tyne","Aisgill Drive, West Denton, Newcastle upon Tyne",finish,finish,,00:09:44,00:04:21,0.6170216,20.13243,NE5 1HW,NE5 1AY,,Andrew Bulford
+SB19WXT Andrew Bulford,13/01/2021 11:07,13/01/2021 11:12,"Aisgill Drive, West Denton, Newcastle upon Tyne","West Denton Way, West Denton, Newcastle upon Tyne",finish,,,00:04:57,00:00:00,0.7276257,22.16804,NE5 1AY,NE5 2,,Andrew Bulford
+SB19WXT Andrew Bulford,13/01/2021 11:22,13/01/2021 11:27,"West Denton Way, West Denton, Newcastle upon Tyne","Grosvenor Court, Chapel Park, Newcastle upon Tyne",,finish,,00:05:18,00:00:00,1.255791,25.16553,NE5 2,NE5 1RU,,Andrew Bulford
+SB19WXT Andrew Bulford,13/01/2021 11:33,13/01/2021 11:51,"Grosvenor Court, Chapel Park, Newcastle upon Tyne","Finchale Gardens, Throckley, Newcastle upon Tyne",finish,,,00:18:00,00:05:44,3.269034,35.96994,NE5 1RU,NE15 9EP,,Andrew Bulford
+SB19WXT Andrew Bulford,13/01/2021 12:00,13/01/2021 12:18,"Finchale Gardens, Throckley, Newcastle upon Tyne","Eddrington Grove, North Walbottle, Newcastle upon Tyne",,finish,,00:18:14,00:04:54,3.318122,57.64585,NE15 9EP,NE5 1HW,,Andrew Bulford
+DP69YKF DAMAGED Michael Ball01,11/01/2021 10:13,11/01/2021 11:46,"Conway Road, Carlton, Nottingham","Queens Drive,  Ossett",,,,01:33:48,00:01:21,72.45002,71.38063,NG4 3BN,WF5 0NP,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 11:46,11/01/2021 11:48,"Queens Drive,  Ossett","Queens Drive,  Ossett",,,,00:01:20,00:00:00,0,0,WF5 0NP,WF5 0NP,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 11:59,11/01/2021 12:01,"Queens Drive,  Ossett","Queens Drive,  Ossett",,,,00:01:48,00:00:00,0,0,WF5 0NP,WF5 0NP,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 12:03,11/01/2021 12:24,"Queens Drive,  Ossett","Wakefield Road,  Ossett",,,,00:21:36,00:16:36,0.1708771,11.36364,WF5 0NP,WF5 9AB,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 12:33,11/01/2021 12:33,"Queens Drive,  Ossett","Queens Drive,  Ossett",,,,00:00:00,00:00:00,0,0,WF5 0NP,WF5 0NP,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 12:35,11/01/2021 12:39,"Queens Drive,  Ossett","Queens Drive,  Ossett",,,,00:04:53,00:03:52,0,0,WF5 0NP,WF5 0NP,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 12:42,11/01/2021 12:42,"Queens Drive,  Ossett","Queens Drive,  Ossett",,,,00:00:06,00:00:00,0,0,WF5 0NP,WF5 0NP,,DAMAGED Michael Ball01
+DP69YKF DAMAGED Michael Ball01,11/01/2021 15:53,11/01/2021 17:14,"Queens Drive,  Ossett","Conway Road, Carlton, Nottingham",,,,01:20:42,00:00:00,66.22202,72.63333,WF5 0NP,NG4 3BN,,DAMAGED Michael Ball01
+DV69CDZ Fibre,11/01/2021 13:22,11/01/2021 13:25,"Spire Road,  Washington","Spire Road,  Washington",,,,00:02:53,00:00:00,0.0279617,1.722441,NE37 3AG,NE37 3AG,,Fibre
+DV69CDZ Fibre,11/01/2021 13:33,11/01/2021 13:34,"Spire Road,  Washington","Spire Road,  Washington",,,,00:00:58,00:00:00,0,0,NE37 3AG,NE37 3AG,,Fibre
+DV69CDZ Fibre,11/01/2021 13:35,11/01/2021 13:38,"Spire Road,  Washington","Spire Road,  Washington",,,,00:03:08,00:00:08,0.001864114,2.10272,NE37 3AG,NE37 3AG,,Fibre
+DV69CDZ Fibre,11/01/2021 14:11,11/01/2021 14:13,"Spire Road,  Washington","Spire Road,  Washington",,,,00:01:59,00:00:00,0.006835083,2.035612,NE37 3AG,NE37 3AG,,Fibre
+CN69KVJ John Meechan,13/01/2021 07:58,13/01/2021 08:08,"McLaren Drive, Orbiston, Bellshill","Community Road, Orbiston, Bellshill",,,,00:10:21,00:01:32,1.861007,33.03955,ML4 2FB,ML4,,John Meechan
+CN69KVJ John Meechan,13/01/2021 08:58,13/01/2021 09:15,"Community Road, Orbiston, Bellshill","McLaren Drive, Orbiston, Bellshill",,,,00:17:26,00:00:00,4.485679,41.11489,ML4,ML4 2FB,,John Meechan
+SB19GYF Martin Gray,11/01/2021 07:46,11/01/2021 07:46,"Westfield Road, Foveran, Ellon","Westfield Road, Foveran, Ellon",,,,00:00:04,00:00:00,0,0,AB41 6DE,AB41 6DE,,Martin Gray
+SB19GYF Martin Gray,11/01/2021 07:47,11/01/2021 08:10,"Westfield Road, Foveran, Ellon","Commercial Road,  Ellon",,,,00:22:19,00:04:16,5.654478,62.25394,AB41 6DE,AB41 9DF,,Martin Gray
+SB19GYF Martin Gray,11/01/2021 08:18,11/01/2021 08:28,"Commercial Road,  Ellon","Commercial Road,  Ellon",,,,00:09:30,00:06:25,0,0,AB41 9DF,AB41 9DF,,Martin Gray
+SB19GYF Martin Gray,11/01/2021 10:31,11/01/2021 10:56,"Commercial Road,  Ellon","Findhorn Drive,  Ellon",,,,00:24:28,00:12:40,1.773393,32.23425,AB41 9DF,AB41 8AD,,Martin Gray
+SB19GYF Martin Gray,11/01/2021 13:27,11/01/2021 13:53,"Findhorn Drive,  Ellon","Kildrummy Road,  Ellon",,,,00:25:42,00:14:14,2.42459,37.8937,AB41 8AD,AB41 9FY,,Martin Gray
+SB19GYF Martin Gray,11/01/2021 14:49,11/01/2021 14:52,"Kildrummy Road,  Ellon","Kildrummy Road,  Ellon",,,,00:03:14,00:00:13,0,0.04473872,AB41 9FY,AB41 9FY,,Martin Gray
+SB19GYF Martin Gray,11/01/2021 14:56,11/01/2021 15:21,"Kildrummy Road,  Ellon","Westfield Road, Foveran, Ellon",,,,00:25:36,00:11:49,5.993746,56.72871,AB41 9FY,AB41 6DE,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 07:41,12/01/2021 08:25,"Westfield Road, Foveran, Ellon","Hunters Rise,  Ellon",,,,00:44:15,00:10:52,10.68883,38.76611,AB41 6DE,AB41 7QD,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 09:21,12/01/2021 09:59,"Hunters Rise,  Ellon","Forsyth Drive, Oldmeldrum, Inverurie",,,,00:38:41,00:20:21,6.551116,47.15462,AB41 7QD,AB51 0DT,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 12:16,12/01/2021 12:58,"Forsyth Drive, Oldmeldrum, Inverurie","North Anderson Drive, Woodside, Aberdeen",,,,00:42:08,00:11:15,16.06431,57.78006,AB51 0DT,AB16 7PG,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 13:09,12/01/2021 13:28,"North Anderson Drive, Woodside, Aberdeen","Westfield Road, Foveran, Ellon",,,,00:18:25,00:00:00,12.24101,66.16858,AB16 7PG,AB41 6DE,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 13:42,12/01/2021 13:53,"Westfield Road, Foveran, Ellon","Eilean Rise,  Ellon",,,,00:10:25,00:00:00,5.207712,63.48425,AB41 6DE,AB41 9NF,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 13:53,12/01/2021 13:55,"Eilean Rise,  Ellon","Eilean Rise,  Ellon",,,,00:01:30,00:00:00,0.03106856,0.04473872,AB41 9NF,AB41 9NF,,Martin Gray
+SB19GYF Martin Gray,12/01/2021 15:45,12/01/2021 15:56,"Eilean Rise,  Ellon","Westfield Road, Foveran, Ellon",,,,00:11:06,00:00:00,5.352491,59.88279,AB41 9NF,AB41 6DE,,Martin Gray
+SB19GYF Martin Gray,13/01/2021 07:31,13/01/2021 08:11,"Westfield Road, Foveran, Ellon","Esslemont Circle,  Ellon",,,,00:40:00,00:21:33,6.062719,56.97477,AB41 6DE,AB41 9UF,,Martin Gray
+SB19GYF Martin Gray,13/01/2021 10:05,13/01/2021 10:20,"Esslemont Circle,  Ellon","Westfield Road, Foveran, Ellon",,,,00:15:11,00:00:00,7.54966,59.27882,AB41 9UF,AB41 6DE,,Martin Gray
+SB19GYF Martin Gray,13/01/2021 10:49,13/01/2021 11:11,"Westfield Road, Foveran, Ellon","Joss Court,  Aberdeen",,,,00:22:10,00:04:12,9.655487,60.8894,AB41 6DE,AB23 8DL,,Martin Gray
+SB68CFP Stock Van Faulty Door,13/01/2021 08:06,13/01/2021 08:07,"Spire Road,  Washington","Spire Road,  Washington",,,,00:00:17,00:00:00,0,0,NE37 3AG,NE37 3AG,,Stock Van Faulty Door
+SB68CFP Stock Van Faulty Door,13/01/2021 08:07,13/01/2021 08:09,"Spire Road,  Washington","Spire Road,  Washington",,,,00:02:37,00:00:00,0.02050525,1.722441,NE37 3AG,NE37 3AG,,Stock Van Faulty Door
+SB68CFP Stock Van Faulty Door,13/01/2021 08:10,13/01/2021 08:10,"Spire Road,  Washington","Spire Road,  Washington",,,,00:00:23,00:00:00,0,0,NE37 3AG,NE37 3AG,,Stock Van Faulty Door
+DY70UEP Andrew Powell,12/01/2021 12:05,12/01/2021 12:07,"Stockerhead Lane, Slaithwaite, Huddersfield","Stockerhead Lane, Slaithwaite, Huddersfield",,,,00:02:12,00:00:00,0.003106856,1.543486,HD7 5LD,HD7 5LD,,Andrew Powell
+DY70UEP Andrew Powell,12/01/2021 12:09,12/01/2021 12:09,"Stockerhead Lane, Slaithwaite, Huddersfield","Stockerhead Lane, Slaithwaite, Huddersfield",,,,00:00:51,00:00:00,0.000621371,0,HD7 5LD,HD7 5LD,,Andrew Powell
+DY70UEP Andrew Powell,13/01/2021 09:16,13/01/2021 09:25,"Stockerhead Lane, Slaithwaite, Huddersfield","Shaws Terrace, Marsden, Huddersfield",,,,00:09:07,00:00:00,2.885026,33.59878,HD7 5LD,HD7 6DQ,,Andrew Powell
+DY70UEP Andrew Powell,13/01/2021 09:48,13/01/2021 10:09,"Victoria Street, Marsden, Huddersfield","Stockerhead Lane, Slaithwaite, Huddersfield",,,,00:21:31,00:00:00,5.892463,32.54742,HD7 6DG,HD7 5LD,,Andrew Powell
+SB19GVX John Coyle,11/01/2021 09:12,11/01/2021 09:22,"Carbisdale Street, Ashfield, Glasgow","Liddesdale Road, Milton, Glasgow",,,,00:09:59,00:00:00,1.778986,27.64853,G22 6BE,G22 7QX,,John Coyle
+SB19GVX John Coyle,11/01/2021 10:16,11/01/2021 10:38,"Liddesdale Road, Milton, Glasgow","Carbisdale Street, Ashfield, Glasgow",,,,00:21:10,00:11:13,1.927493,28.38672,G22 7QX,G22 6BE,,John Coyle
+SB19GVX John Coyle,11/01/2021 10:40,11/01/2021 10:50,"Carbisdale Street, Ashfield, Glasgow","Ancroft Street, Firhill, Glasgow",,,,00:09:36,00:00:25,2.285403,25.21027,G22 6BE,G20 7JP,,John Coyle
+SB19GVX John Coyle,11/01/2021 11:44,11/01/2021 12:03,"Ancroft Street, Firhill, Glasgow","Kilmair Place, Wyndford, Glasgow",,,,00:18:58,00:07:01,1.813782,25.21027,G20 7JP,G20 8EX,,John Coyle
+SB19GVX John Coyle,11/01/2021 12:36,11/01/2021 13:01,"Kilmair Place, Wyndford, Glasgow","Seamill Street, Nitshill, Glasgow",,,,00:24:22,00:00:00,9.079475,51.62849,G20 8,G53 7QQ,,John Coyle
+SB19GVX John Coyle,11/01/2021 13:39,11/01/2021 14:02,"Seamill Street, Nitshill, Glasgow","Hawthorn Street, Keppochhill, Glasgow",,,,00:22:59,00:00:00,8.760713,46.46117,G53 7QQ,G22 6HZ,,John Coyle
+SB19GVX John Coyle,11/01/2021 14:06,11/01/2021 14:11,"Hawthorn Street, Keppochhill, Glasgow","Liddesdale Road, Milton, Glasgow",,,,00:05:21,00:00:00,1.509311,26.70902,G22 6HZ,G22 7QX,,John Coyle
+SB19GVX John Coyle,11/01/2021 14:14,11/01/2021 14:22,"Liddesdale Road, Milton, Glasgow","Carbisdale Street, Ashfield, Glasgow",,,,00:07:56,00:00:00,1.923144,29.50519,G22 7QX,G22 6BE,,John Coyle
+SB19GVX John Coyle,12/01/2021 11:05,12/01/2021 11:24,"Carbisdale Street, Ashfield, Glasgow","Castlebay Street, Milton, Glasgow",,,,00:18:46,00:07:58,2.426455,26.53007,G22 6BE,G22 7PL,,John Coyle
+SB19GVX John Coyle,12/01/2021 12:25,12/01/2021 12:56,"Castlebay Street, Milton, Glasgow","Raithburn Avenue, Carmunnock, Glasgow",,,,00:31:00,00:00:00,10.45457,46.28222,G22 7PL,G45 9SA,,John Coyle
+SB19GVX John Coyle,12/01/2021 13:22,12/01/2021 13:44,"Raithburn Avenue, Carmunnock, Glasgow","Bellfield Street, Dennistoun, Glasgow",,,,00:21:15,00:00:00,4.930581,28.20777,G45 9SA,G31 1RL,,John Coyle
+SB19GVX John Coyle,12/01/2021 14:27,12/01/2021 14:43,"Bellfield Street, Dennistoun, Glasgow","Carbisdale Street, Ashfield, Glasgow",,,,00:15:18,00:00:00,3.425619,27.69327,G31 1RL,G22 6BE,,John Coyle
+SB19GVX John Coyle,13/01/2021 08:55,13/01/2021 09:05,"Carbisdale Street, Ashfield, Glasgow","Roystonhill, Royston, Glasgow",,,,00:09:47,00:00:00,2.067302,25.76951,G22 6BE,G21 2,,John Coyle
+SB19GVX John Coyle,13/01/2021 10:22,13/01/2021 10:34,"Roystonhill, Royston, Glasgow","Carbisdale Street, Ashfield, Glasgow",,,,00:12:05,00:00:00,2.017592,27.40247,G21 2,G22 6BE,,John Coyle
+SB19GVX John Coyle,13/01/2021 10:54,13/01/2021 11:13,"Carbisdale Street, Ashfield, Glasgow","Monument Drive, Robroyston, Glasgow",,,,00:18:47,00:03:26,3.556107,25.97083,G22 6BE,G33 1AD,,John Coyle
+SB19GVX John Coyle,13/01/2021 11:48,13/01/2021 12:02,"Monument Drive, Robroyston, Glasgow","Carbisdale Street, Ashfield, Glasgow",,,,00:14:07,00:00:00,3.304452,27.9617,G33 1AD,G22 6BE,,John Coyle
+SE19HNJ Garry Graham,11/01/2021 12:58,11/01/2021 13:21,"Castlebrae Avenue, Craigmillar, Edinburgh","Kemp's End,  Tranent",,,,00:22:55,00:00:00,8.99062,58.89854,EH16 4FJ,EH33 2GZ,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 13:26,11/01/2021 13:42,"Kemp's End,  Tranent","Whitehill Road, EH15, Edinburgh",,,,00:15:57,00:00:00,7.084874,51.06926,EH33 2GZ,EH15 3HS,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 13:51,11/01/2021 13:52,"Newcraighall, EH15, Musselburgh","Newcraighall, Newcraighall, Musselburgh",,,,00:01:31,00:00:00,0.1752267,11.6097,EH15 3HS,EH22 1SQ,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 14:05,11/01/2021 14:09,"Newcraighall, Newcraighall, Musselburgh","Niddrie Cottages, EH15, Edinburgh",,,,00:04:08,00:00:00,0.2715392,3.914639,EH22 1SQ,EH15 3HS,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 14:33,11/01/2021 14:39,"Niddrie Cottages, EH15, Edinburgh","Newcraighall, Newcraighall, Musselburgh",,,,00:05:57,00:00:06,0.2746461,11.54259,EH15 3HS,EH21 8RX,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 15:11,11/01/2021 15:18,"Newcraighall, Newcraighall, Musselburgh","Duddingston Park South, Niddrie, Edinburgh",,,,00:07:21,00:00:00,1.330977,21.5417,EH21 8RX,EH15 3EJ,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 15:33,11/01/2021 15:39,"Duddingston Park South, Niddrie, Edinburgh","Niddrie Mains Road, Niddrie, Edinburgh",,,,00:06:41,00:00:00,0.9233576,24.47208,EH15 3EJ,EH16 4EA,,Garry Graham
+SE19HNJ Garry Graham,11/01/2021 15:51,11/01/2021 15:56,"Niddrie Mains Road, Niddrie, Edinburgh","Castlebrae Avenue, Craigmillar, Edinburgh",,,,00:05:06,00:00:00,0.5530204,13.15318,EH16 4EA,EH16 4FJ,,Garry Graham
+SB19HLV Richard Johnson01,11/01/2021 14:19,11/01/2021 14:41,"Langside Avenue,  Glasgow","Elphinstone Crescent, East Kilbride, Glasgow",,,,00:21:40,00:00:57,9.800266,49.25734,G71 6NE,G75 0PS,,Richard Johnson01
+SB19HLV Richard Johnson01,11/01/2021 15:58,11/01/2021 16:18,"Elphinstone Crescent, East Kilbride, Glasgow","Langside Avenue,  Glasgow",,,,00:20:27,00:00:00,9.794053,51.94167,G75 0PS,G71 6NE,,Richard Johnson01
+SB19HLV Richard Johnson01,11/01/2021 16:36,11/01/2021 17:15,"Langside Avenue,  Glasgow","Henry Street, Barrhead, Glasgow",,,,00:39:10,00:02:30,17.09268,58.51826,G71 6NE,G78 1RF,,Richard Johnson01
+SB19HLV Richard Johnson01,11/01/2021 18:14,11/01/2021 19:03,"Cross Arthurlie Street, Barrhead, Glasgow","Monks Way, Lesmahagow, Lanark",,,,00:49:45,00:03:57,32.5207,69.63583,G78 1RR,ML11 0BH,,Richard Johnson01
+SB19HLV Richard Johnson01,11/01/2021 20:24,11/01/2021 20:50,"Monks Way, Lesmahagow, Lanark","Langside Avenue,  Glasgow",,,,00:26:21,00:03:00,17.19272,69.52398,ML11 0BH,G71 6NE,,Richard Johnson01
+SB19HLV Richard Johnson01,12/01/2021 17:15,12/01/2021 17:41,"Langside Avenue,  Glasgow","Monach Road, Queenslie, Glasgow",,,,00:26:15,00:07:18,6.84254,58.76432,G71 6NE,G33 3NN,,Richard Johnson01
+SB19HLV Richard Johnson01,12/01/2021 18:51,12/01/2021 19:20,"Monach Road, Queenslie, Glasgow","Craighead Road, Milton of Campsie, Glasgow",,,,00:28:52,00:00:00,8.538261,41.94256,G33 3NN,G66 8DE,,Richard Johnson01
+SB19HLV Richard Johnson01,12/01/2021 20:16,12/01/2021 20:57,"Craighead Road, Milton of Campsie, Glasgow","Langside Avenue,  Glasgow",,,,00:40:40,00:05:47,17.03303,59.63672,G66 8DE,G71 6NE,,Richard Johnson01
+SB19GXU Andrew Brydon01,11/01/2021 08:50,11/01/2021 10:24,"Uplands Close,  Crook","Waverley Drive,  Bedlington",,,,01:33:53,00:15:09,43.73024,60.64334,DL15 9NW,NE22 5HL,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 10:27,11/01/2021 11:09,"Waverley Drive,  Bedlington","Carrigill Drive, Longbenton, Newcastle upon Tyne",,,,00:41:57,00:12:25,10.84541,55.051,NE22 5HL,NE12 8NG,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 11:11,11/01/2021 11:44,"Carrigill Drive, Longbenton, Newcastle upon Tyne","Winchester Court,  Jarrow",,,,00:32:45,00:01:58,10.9672,47.5349,NE12 8NG,NE32 4TN,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 13:35,11/01/2021 13:51,"Winchester Court,  Jarrow","Trafalgar Road,  Washington",,,,00:15:51,00:00:51,4.211654,50.44292,NE32 4TN,NE37 3EZ,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 13:53,11/01/2021 14:32,"Trafalgar Road,  Washington","Victor Street,  Chester le Street",,,,00:39:14,00:00:16,14.25301,59.70383,NE37 3EZ,DH3 3DP,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 14:35,11/01/2021 15:24,"Victor Street,  Chester le Street","Keswick Drive,  Spennymoor",,,,00:48:13,00:18:57,11.31828,49.77183,DH3 3DP,DL16 6EQ,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 15:26,11/01/2021 15:52,"Keswick Drive,  Spennymoor","Glenholme Drive,  Crook",,,,00:25:23,00:00:33,9.014853,54.98389,DL16 6EQ,DL15 8QE,,Andrew Brydon01
+SB19GXU Andrew Brydon01,11/01/2021 16:25,11/01/2021 16:30,"Glenholme Drive,  Crook","Uplands Close,  Crook",,,,00:05:00,00:00:00,1.225965,27.0893,DL15 8QE,DL15 9NW,,Andrew Brydon01
+SB19GXU Andrew Brydon01,12/01/2021 08:28,12/01/2021 09:31,"Uplands Close,  Crook","The Peel Centre,  Washington",,,,01:03:42,00:17:22,22.73349,57.39979,DL15 9NW,NE37,,Andrew Brydon01
+SB19GXU Andrew Brydon01,12/01/2021 09:35,12/01/2021 09:52,"The Peel Centre,  Washington","Spire Road,  Washington",,,,00:17:30,00:12:55,0.4194255,28.07355,NE37,NE37 3AG,,Andrew Brydon01
+SB19GXU Andrew Brydon01,12/01/2021 15:50,12/01/2021 16:26,"Spire Road,  Washington","A167, Pity Me, Durham",,,,00:36:43,00:00:00,9.418744,56.48264,NE37 3AG,DH1 5EX,,Andrew Brydon01
+SB19GXU Andrew Brydon01,13/01/2021 08:40,13/01/2021 09:45,"Uplands Close,  Crook","The Peel Centre,  Washington",,,,01:05:06,00:14:23,22.81799,54.98389,DL15 9NW,NE37,,Andrew Brydon01
+SB19GXU Andrew Brydon01,13/01/2021 09:53,13/01/2021 09:55,"The Peel Centre,  Washington","Spire Road,  Washington",,,,00:01:44,00:00:00,0.3423755,23.77864,NE37,NE37 3AG,,Andrew Brydon01
+CN69FRR Gary Cowie,12/01/2021 11:42,12/01/2021 11:43,"Tyndrum Place,  Kirkcaldy","Tyndrum Place,  Kirkcaldy",,,,00:01:00,00:00:00,0.02609759,0,KY2 6LU,KY2 6LU,,Gary Cowie
+CN69FRR Gary Cowie,12/01/2021 12:50,12/01/2021 12:51,"Tyndrum Place,  Kirkcaldy","Tyndrum Place,  Kirkcaldy",,,,00:00:32,00:00:00,0.01739839,0,KY2 6LU,KY2 6LU,,Gary Cowie
+SJ68ZRA Bijan Lajevardi,11/01/2021 09:54,11/01/2021 10:00,"Spinneyside Gardens, Dunston, Gateshead","Ellison Road, Dunston, Gateshead",,,,00:05:19,00:00:00,1.313579,18.38762,NE11 9RJ,NE11 9SS,,Bijan Lajevardi
+SJ68ZRA Bijan Lajevardi,11/01/2021 10:26,11/01/2021 10:48,"Clavering Court, Dunston, Gateshead","Spinneyside Gardens, Dunston, Gateshead",,,,00:21:44,00:02:28,3.651177,25.52344,NE11 9AB,NE11 9RJ,,Bijan Lajevardi
+SH68FNL Martin Gordon,11/01/2021 15:51,11/01/2021 15:53,"Westerton Road,  Grangemouth","Westerton Road,  Grangemouth",,,,00:01:53,00:00:00,0.002485485,0,FK3 9EQ,FK3 9EQ,,Martin Gordon
+SH68FNL Martin Gordon,11/01/2021 16:25,11/01/2021 18:26,"Westerton Road,  Grangemouth","Queens Road,  Eyemouth",,,,02:01:22,00:07:06,77.22649,66.41465,FK3 9EQ,TD14 5DR,,Martin Gordon
+SH68FNL Martin Gordon,11/01/2021 20:09,11/01/2021 21:50,"Queens Road,  Eyemouth","Westerton Road,  Grangemouth",,,,01:41:22,00:00:00,77.27123,61.87366,TD14 5DR,FK3 9EQ,,Martin Gordon
+SH68FNL Martin Gordon,12/01/2021 11:54,12/01/2021 12:03,"Westerton Road,  Grangemouth","Westerton Road,  Grangemouth",,,,00:09:28,00:06:27,0,0.04473872,FK3 9EU,FK3 9EU,,Martin Gordon
+SH68FNL Martin Gordon,12/01/2021 12:03,12/01/2021 12:04,"Westerton Road,  Grangemouth","Westerton Road,  Grangemouth",,,,00:00:13,00:00:00,0,0,FK3 9EU,FK3 9EQ,,Martin Gordon
+SH68FNL Martin Gordon,12/01/2021 14:17,12/01/2021 14:47,"Westerton Road,  Grangemouth","Ashley Terrace,  Alloa",,,,00:30:17,00:00:00,16.25258,63.99875,FK3 9EQ,FK10 2LZ,,Martin Gordon
+SH68FNL Martin Gordon,12/01/2021 15:08,12/01/2021 15:34,"Ashley Terrace,  Alloa","Westerton Road,  Grangemouth",,,,00:25:44,00:00:00,14.66995,61.24732,FK10 2LZ,FK3 9EQ,,Martin Gordon
+SH68FNL Martin Gordon,12/01/2021 15:42,12/01/2021 16:11,"Westerton Road,  Grangemouth","Blackmuir Place, Tullibody, Alloa",,,,00:28:57,00:00:00,16.64902,63.68559,FK3 9EQ,FK10 2TR,,Martin Gordon
+SH68FNL Martin Gordon,12/01/2021 17:10,12/01/2021 17:50,"The Braes, Tullibody, Alloa","Westerton Road,  Grangemouth",,,,00:39:55,00:07:56,15.93444,62.18683,FK10 2TR,FK3 9EQ,,Martin Gordon
+SJ68ZPG Martin Stephen,12/01/2021 12:09,12/01/2021 12:20,"Wellgrove Drive,  Westhill","Straik Road,  Westhill",,,,00:11:06,00:07:03,0.26284,9.238547,AB32 6FB,AB32 6TP,,Martin Stephen
+SJ68ZPG Martin Stephen,12/01/2021 12:25,12/01/2021 12:46,"Straik Road,  Westhill","Cothall,  Aberdeen",,,,00:20:42,00:00:00,12.13041,61.69471,AB32 6TP,AB21 0HT,,Martin Stephen
+SJ68ZPG Martin Stephen,12/01/2021 13:10,12/01/2021 13:12,"Cothall,  Aberdeen","Cothall,  Aberdeen",,,,00:01:53,00:00:00,0.006213712,0,AB21 0HT,AB21 0HT,,Martin Stephen
+SJ68ZPG Martin Stephen,12/01/2021 14:19,12/01/2021 14:40,"Cothall,  Aberdeen","Wellgrove Drive,  Westhill",,,,00:21:22,00:00:00,12.30191,61.56049,AB21 0HT,AB32 6FB,,Martin Stephen
+SJ68ZPG Martin Stephen,12/01/2021 15:43,12/01/2021 15:58,"Wellgrove Drive,  Westhill","Invercauld Place,  Aberdeen",,,,00:15:17,00:00:00,5.988776,40.30959,AB32 6FB,AB16 5TZ,,Martin Stephen
+SJ68ZPG Martin Stephen,12/01/2021 16:33,12/01/2021 16:50,"Invercauld Place,  Aberdeen","Wellgrove Drive,  Westhill",,,,00:17:12,00:00:00,6.014252,40.13064,AB16 5TZ,AB32 6FB,,Martin Stephen
+SB19GXZ James Mclean,11/01/2021 08:19,11/01/2021 09:06,"Edzell Drive, Elderslie, Johnstone","Winning Quadrant,  Wishaw",,,,00:47:51,00:03:07,26.55616,59.27882,PA5 9AP,ML2 7ST,,James Mclean
+SB19GXZ James Mclean,11/01/2021 10:52,11/01/2021 12:13,"Winning Quadrant,  Wishaw","Main Street,  Wishaw",,,,01:21:04,00:00:00,54.25068,66.03436,ML2 7ST,ML2,,James Mclean
+SB19GXZ James Mclean,11/01/2021 12:13,11/01/2021 12:14,"Main Street,  Wishaw","Main Street,  Wishaw",,,,00:00:09,00:00:00,0,0,ML2,ML2,,James Mclean
+SB19GXZ James Mclean,11/01/2021 12:16,11/01/2021 12:21,"Main Street,  Wishaw","Northmuir Drive,  Wishaw",,,,00:05:16,00:00:00,1.098584,22.54832,ML2,ML2 8LR,,James Mclean
+SB19GXZ James Mclean,11/01/2021 14:10,11/01/2021 14:16,"Northmuir Drive,  Wishaw","Northmuir Drive,  Wishaw",,,,00:06:21,00:02:15,0.09382705,10.91625,ML2 8LR,ML2 8LR,,James Mclean
+SB19GXZ James Mclean,11/01/2021 14:28,11/01/2021 14:33,"Northmuir Drive,  Wishaw","Main Street,  Wishaw",,,,00:04:59,00:00:00,1.01035,26.5748,ML2 8LR,ML2,,James Mclean
+SB19GXZ James Mclean,11/01/2021 14:35,11/01/2021 15:34,"Main Street,  Wishaw","Edzell Drive, Elderslie, Johnstone",,,,00:59:26,00:11:20,27.71005,65.7883,ML2,PA5 9AP,,James Mclean
+SB19GXZ James Mclean,12/01/2021 13:13,12/01/2021 14:01,"Edzell Drive, Elderslie, Johnstone","Varnsdorf Way,  Airdrie",,,,00:47:34,00:01:55,28.13693,60.44202,PA5 9AP,ML6 8EG,,James Mclean
+SB19GXZ James Mclean,12/01/2021 15:31,12/01/2021 16:47,"Varnsdorf Way,  Airdrie","Edzell Drive, Elderslie, Johnstone",,,,01:16:44,00:25:07,30.9505,67.15283,ML6 8EG,PA5 9AP,,James Mclean
+SB19GXZ James Mclean,13/01/2021 09:58,13/01/2021 10:15,"Edzell Drive, Elderslie, Johnstone","Edzell Drive, Elderslie, Johnstone",,,,00:16:45,00:13:40,0.02858307,0.04473872,PA5 9AP,PA5 9AP,,James Mclean
+SB19GXZ James Mclean,13/01/2021 10:29,13/01/2021 10:50,"Edzell Drive, Elderslie, Johnstone","Rufflees Avenue, Barrhead, Glasgow",,,,00:20:34,00:00:00,6.311267,29.12491,PA5 9AP,G78 1BA,,James Mclean
+CF19FRL Richard McPhail,12/01/2021 13:04,12/01/2021 13:18,"Kestrel Grove, Buckhaven, Leven","Promenade,  Leven",,,,00:14:30,00:03:24,2.351269,32.12241,KY8 1HB,KY8 4NR,,Richard McPhail
+CF19FRL Richard McPhail,12/01/2021 15:03,12/01/2021 15:09,"Promenade,  Leven","Riverside Road,  Leven",,,,00:06:22,00:00:00,0.4281248,14.65193,KY8 4NR,KY8 4LT,,Richard McPhail
+CF19FRL Richard McPhail,12/01/2021 15:23,12/01/2021 15:28,"Riverside Road,  Leven","Oakvale Road, Methil, Leven",,,,00:05:16,00:00:00,1.442824,21.5417,KY8 4LT,KY8 2AP,,Richard McPhail
+CF19FRL Richard McPhail,12/01/2021 15:49,12/01/2021 15:51,"Oakvale Road, Methil, Leven","Kirke Park, Methil, Leven",,,,00:01:41,00:00:00,0.3206275,19.0587,KY8 2AP,KY8 2BT,,Richard McPhail
+CF19FRL Richard McPhail,12/01/2021 15:58,12/01/2021 16:03,"Kirke Park, Methil, Leven","Wellesley Road, Buckhaven, Leven",,,,00:05:41,00:00:00,1.550943,27.20115,KY8 2BT,KY8 1HY,,Richard McPhail
+CF19FRL Richard McPhail,12/01/2021 16:44,12/01/2021 16:48,"Wellesley Road, Buckhaven, Leven","Kestrel Grove, Buckhaven, Leven",,,,00:03:47,00:00:00,0.7841704,25.21027,KY8 1HY,KY8 1HB,,Richard McPhail
+SE19VGJ Brian Bailey,13/01/2021 09:44,13/01/2021 09:45,"Wren Court, Strathclyde Business Park, Bellshill","Wren Court, Strathclyde Business Park, Bellshill",,,,00:01:21,00:00:00,0.01367017,1.163207,ML4 3NQ,ML4 3NQ,,Brian Bailey
+SB68CFO Simon Snowdon01,11/01/2021 15:46,11/01/2021 15:48,"Kestrel Way,  North Shields","Kestrel Way,  North Shields",,,,00:01:54,00:00:00,0,0,NE29 6XH,NE29 6XH,,Simon Snowdon01
+SB68CFO Simon Snowdon01,11/01/2021 15:49,11/01/2021 16:31,"Kestrel Way,  North Shields","Oakland Terrace, Lynemouth, Morpeth",,,,00:41:54,00:00:00,20.71776,60.95652,NE29 6XH,NE61 5XJ,,Simon Snowdon01
+SB68CFO Simon Snowdon01,11/01/2021 17:15,11/01/2021 17:39,"Oakland Terrace, Lynemouth, Morpeth","Tynedale, Amble, Morpeth",,,,00:24:09,00:01:21,10.14823,48.83232,NE61 5XJ,NE65 0HY,,Simon Snowdon01
+SB68CFO Simon Snowdon01,11/01/2021 18:18,11/01/2021 19:07,"Tynedale, Amble, Morpeth","McIlvenna Gardens,  Wallsend",,,,00:49:25,00:09:05,27.48511,60.19596,NE65 0HY,NE28 9EX,,Simon Snowdon01
+SB68CFO Simon Snowdon01,11/01/2021 19:39,11/01/2021 20:03,"McIlvenna Gardens,  Wallsend","Kestrel Way,  North Shields",,,,00:24:03,00:07:02,5.205848,38.94506,NE28 9EX,NE29 6XH,,Simon Snowdon01
+SB68CFO Simon Snowdon01,12/01/2021 11:01,12/01/2021 11:07,"Kestrel Way,  North Shields","Elsdon Street,  North Shields",,,,00:06:14,00:01:23,0.487155,27.02219,NE29 6XH,NE29 6SY,,Simon Snowdon01
+SB68CFO Simon Snowdon01,12/01/2021 12:10,12/01/2021 12:14,"Elsdon Street,  North Shields","Kestrel Way,  North Shields",,,,00:03:44,00:00:00,0.4529796,23.2194,NE29 6SY,NE29 6XH,,Simon Snowdon01
+SB68CFO Simon Snowdon01,12/01/2021 15:16,12/01/2021 15:39,"Kestrel Way,  North Shields","Relton Avenue, St Anthonys, Newcastle upon Tyne",,,,00:23:15,00:01:09,7.964736,51.80745,NE29 6XH,NE6 2SX,,Simon Snowdon01
+SB68CFO Simon Snowdon01,12/01/2021 16:31,12/01/2021 16:56,"Relton Avenue, St Anthonys, Newcastle upon Tyne","Kestrel Way,  North Shields",,,,00:24:25,00:01:48,6.89722,38.83321,NE6 2SX,NE29 6XH,,Simon Snowdon01
+SB68CFO Simon Snowdon01,12/01/2021 17:52,12/01/2021 18:17,"Kestrel Way,  North Shields","Ermine Crescent, Carr Hill, Gateshead",,,,00:25:09,00:00:00,10.79198,59.63672,NE29 6XH,NE9 5QN,,Simon Snowdon01
+SB68CFO Simon Snowdon01,12/01/2021 19:04,12/01/2021 19:39,"Ermine Crescent, Carr Hill, Gateshead","Kestrel Way,  North Shields",,,,00:34:38,00:08:33,10.70809,59.1446,NE9 5QN,NE29 6XH,,Simon Snowdon01
+DY70UET Faisal Yousaf,11/01/2021 07:58,11/01/2021 08:02,"Belle Vue Road,  Leeds","Burley Place,  Leeds",,,,00:03:45,00:00:00,0.8525213,23.97996,LS3 1DY,LS4 2AH,,Faisal Yousaf
+DY70UET Faisal Yousaf,11/01/2021 08:06,11/01/2021 08:11,"Burley Place,  Leeds","Burley Street,  Leeds",,,,00:05:28,00:00:00,0.7760926,28.56568,LS4 2AH,LS3 1LD,,Faisal Yousaf
+DY70UET Faisal Yousaf,11/01/2021 08:16,11/01/2021 08:51,"Burley Street,  Leeds","Aviation Road, Sherburn in Elmet, Leeds",,,,00:35:00,00:00:00,17.79856,67.04099,LS3 1LD,LS25 6NB,,Faisal Yousaf
+DY70UET Faisal Yousaf,11/01/2021 12:42,11/01/2021 12:46,"Aviation Road, Sherburn in Elmet, Leeds","Aviation Road, Sherburn in Elmet, Leeds",,,,00:03:47,00:00:42,0,0.04473872,LS25 6NB,LS25 6NB,,Faisal Yousaf
+DY70UET Faisal Yousaf,11/01/2021 14:54,11/01/2021 15:35,"Aviation Road, Sherburn in Elmet, Leeds","Belle Vue Road,  Leeds",,,,00:40:19,00:00:00,24.40932,71.2688,LS25 6NB,LS3 1HG,,Faisal Yousaf
+DY70UET Faisal Yousaf,11/01/2021 15:36,11/01/2021 15:38,"Belle Vue Road,  Leeds","Broadway Avenue, Hyde Park, Leeds",,,,00:02:46,00:00:00,0.7499951,20.87062,LS3 1DY,LS4 2ET,,Faisal Yousaf
+DY70UET Faisal Yousaf,11/01/2021 15:41,11/01/2021 15:44,"Broadway Avenue, Hyde Park, Leeds","Belle Vue Road,  Leeds",,,,00:03:01,00:00:05,0.8543854,29.5723,LS4 2ET,LS3 1DY,,Faisal Yousaf
+DY70UET Faisal Yousaf,12/01/2021 08:18,12/01/2021 08:56,"Belle Vue Road,  Leeds","Enterprise Way, Sherburn in Elmet, Leeds",,,,00:38:12,00:03:14,18.12105,70.32928,LS3 1DY,LS25 6NB,,Faisal Yousaf
+DY70UET Faisal Yousaf,12/01/2021 12:09,12/01/2021 12:18,"Enterprise Way, Sherburn in Elmet, Leeds","Church View, Sherburn in Elmet, Leeds",,,,00:09:30,00:03:05,1.248956,33.55405,LS25 6NB,LS25 6HZ,,Faisal Yousaf
+DY70UET Faisal Yousaf,12/01/2021 12:30,12/01/2021 12:47,"Church View, Sherburn in Elmet, Leeds","Enterprise Way, Sherburn in Elmet, Leeds",,,,00:17:17,00:09:11,1.290588,29.50519,LS25 6HZ,LS25 6NB,,Faisal Yousaf
+DY70UET Faisal Yousaf,12/01/2021 13:52,12/01/2021 14:29,"Enterprise Way, Sherburn in Elmet, Leeds","Westfield Terrace,  Leeds",,,,00:37:38,00:00:00,16.11464,50.26396,LS25 6NB,LS3 1JP,,Faisal Yousaf
+DY70UET Faisal Yousaf,12/01/2021 14:33,12/01/2021 14:34,"Westfield Terrace,  Leeds","Belle Vue Road,  Leeds",,,,00:01:42,00:00:01,0.4952329,13.53347,LS3 1JP,LS3 1DY,,Faisal Yousaf
+SB19HFX Michael Charlton,11/01/2021 14:02,11/01/2021 14:28,"Fairlands West,  Sunderland","Lofthill,  Sunderland",,,,00:25:35,00:01:56,6.248509,39.43719,SR6 9QY,SR3 2RX,,Michael Charlton
+SB19HFX Michael Charlton,11/01/2021 15:21,11/01/2021 15:25,"Lofthill,  Sunderland","College Burn Road,  Sunderland",,,,00:04:13,00:00:00,0.06959357,9.193808,SR3 2RX,SR3 2SW,,Michael Charlton
+SB19HFX Michael Charlton,11/01/2021 15:33,11/01/2021 15:55,"College Burn Road,  Sunderland","Fairlands West,  Sunderland",,,,00:22:12,00:00:00,6.989805,36.03704,SR3 2SW,SR6 9QY,,Michael Charlton
+SB19HFX Michael Charlton,11/01/2021 16:44,11/01/2021 17:15,"Fairlands West,  Sunderland","Maritime Crescent, Easington Colliery, Peterlee",,,,00:31:09,00:00:00,13.90194,56.6616,SR6 9QY,SR8 3SX,,Michael Charlton
+SB19HFX Michael Charlton,11/01/2021 18:19,11/01/2021 18:52,"Maritime Crescent, Easington Colliery, Peterlee","Fairlands West,  Sunderland",,,,00:32:44,00:01:00,16.75341,59.32355,SR8 3SX,SR6 9QY,,Michael Charlton
+SB19HFX Michael Charlton,12/01/2021 13:49,12/01/2021 14:22,"Fairlands West,  Sunderland","Naisbitt Avenue,  Peterlee",,,,00:33:53,00:01:12,13.93922,58.89854,SR6 9QY,SR8 4AW,,Michael Charlton
+SB19HFX Michael Charlton,12/01/2021 15:27,12/01/2021 16:04,"Naisbitt Avenue,  Peterlee","Rembrandt Avenue,  South Shields",,,,00:37:09,00:02:29,19.39486,61.13548,SR8 4AW,NE34 8RY,,Michael Charlton
+SB19HFX Michael Charlton,12/01/2021 17:06,12/01/2021 17:44,"Rembrandt Avenue,  South Shields","Weardale Street, Hetton le Hole, Houghton le Spring",,,,00:37:40,00:00:00,16.76335,53.23909,NE34 8RY,DH5 0ED,,Michael Charlton
+SB19HFX Michael Charlton,12/01/2021 17:58,12/01/2021 18:27,"Weardale Street, Hetton le Hole, Houghton le Spring","Chilton Lane,  Ferryhill",,,,00:28:26,00:00:00,16.23643,61.51575,DH5 0ED,DL17 0DU,,Michael Charlton
+SB19HFX Michael Charlton,12/01/2021 19:35,12/01/2021 19:56,"Chilton Lane,  Ferryhill","Weardale Street, Hetton le Hole, Houghton le Spring",,,,00:21:52,00:00:00,15.82508,60.57624,DL17 0DU,DH5 0ED,,Michael Charlton
+SB19HFX Michael Charlton,12/01/2021 21:09,12/01/2021 21:34,"Weardale Street, Hetton le Hole, Houghton le Spring","Fairlands West,  Sunderland",,,,00:24:45,00:00:00,12.23293,58.83142,DH5 0ED,SR6 9QY,,Michael Charlton

@@ -52,7 +52,6 @@ class TargetController extends Controller
                 $Targets->Friday = $request->Friday;
                 $Targets->Saturday = $request->Saturday;
                 $Targets->Sunday = $request->Sunday;
-                $Targets->week_to_date = $request->week_to_date;
                 $Targets->updated_by = $user->id;
             
            

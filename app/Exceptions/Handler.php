@@ -9,7 +9,6 @@ use Mail;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
 use App\Mail\ExceptionOccured;
-
 class Handler extends ExceptionHandler
 {
     /**
@@ -40,7 +39,7 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         if ($this->shouldReport($exception)) {
-            $this->sendEmail($exception);
+           // $this->sendEmail($exception);
         }
         parent::report($exception);
     }
