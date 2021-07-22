@@ -1,47 +1,981 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[2],{
 
-/***/ "./node_modules/pnotify/dist/es/PNotifyButtons.js":
-/*!********************************************************!*\
-  !*** ./node_modules/pnotify/dist/es/PNotifyButtons.js ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/react-bootstrap4-form-validation/lib/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-bootstrap4-form-validation/lib/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PNotify_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PNotify.js */ "./node_modules/pnotify/dist/es/PNotify.js");
-function _showSticker({sticker:e,_notice:t}){return e&&!(t&&t.refs.elem.classList.contains("nonblock"))}function _showCloser({closer:e,_notice:t}){return e&&!(t&&t.refs.elem.classList.contains("nonblock"))}function _pinUpClass({classes:e,_notice:t}){return t?null===e.pinUp?t.get()._icons.pinUp:e.pinUp:""}function _pinDownClass({classes:e,_notice:t}){return t?null===e.pinDown?t.get()._icons.pinDown:e.pinDown:""}function _closerClass({classes:e,_notice:t}){return t?null===e.closer?t.get()._icons.closer:e.closer:""}function data(){return Object.assign({_notice:null,_options:{},_mouseIsIn:!1},_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modules.Buttons.defaults)}var methods={initModule(e){this.set(e);const{_notice:t}=this.get();t.on("mouseenter",()=>this.set({_mouseIsIn:!0})),t.on("mouseleave",()=>this.set({_mouseIsIn:!1})),t.on("state",({changed:e,current:t})=>{if(!e.hide)return;const{sticker:s}=this.get();if(!s)return;const i=t.hide?this.get().classes.pinUp:this.get().classes.pinDown;("fontawesome5"===this.get()._notice.get().icons||"string"==typeof i&&i.match(/(^| )fa[srlb]($| )/))&&(this.set({sticker:!1}),this.set({sticker:!0}))})},handleStickerClick(){const{_notice:e}=this.get();e.update({hide:!e.get().hide})},handleCloserClick(){this.get()._notice.close(!1),this.set({_mouseIsIn:!1})}};function oncreate(){this.fire("init",{module:this})}function setup(e){e.key="Buttons",e.defaults={closer:!0,closerHover:!0,sticker:!0,stickerHover:!0,labels:{close:"Close",stick:"Stick",unstick:"Unstick"},classes:{closer:null,pinUp:null,pinDown:null}},_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modules.Buttons=e,_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modulesPrependContainer.push(e),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].icons.brighttheme,{closer:"brighttheme-icon-closer",pinUp:"brighttheme-icon-sticker",pinDown:"brighttheme-icon-sticker brighttheme-icon-stuck"}),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].icons.bootstrap3,{closer:"glyphicon glyphicon-remove",pinUp:"glyphicon glyphicon-pause",pinDown:"glyphicon glyphicon-play"}),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].icons.fontawesome4,{closer:"fa fa-times",pinUp:"fa fa-pause",pinDown:"fa fa-play"}),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].icons.fontawesome5,{closer:"fas fa-times",pinUp:"fas fa-pause",pinDown:"fas fa-play"})}function add_css(){var e=createElement("style");e.id="svelte-1yjle82-style",e.textContent=".ui-pnotify-closer.svelte-1yjle82,.ui-pnotify-sticker.svelte-1yjle82{float:right;margin-left:.5em;cursor:pointer}[dir=rtl] .ui-pnotify-closer.svelte-1yjle82,[dir=rtl] .ui-pnotify-sticker.svelte-1yjle82{float:left;margin-right:.5em;margin-left:0}.ui-pnotify-buttons-hidden.svelte-1yjle82{visibility:hidden}",append(document.head,e)}function create_main_fragment(e,t){var s,i,n=t._showCloser&&create_if_block_1(e,t),o=t._showSticker&&create_if_block(e,t);return{c(){n&&n.c(),s=createText("\n"),o&&o.c(),i=createComment()},m(e,t){n&&n.m(e,t),insert(e,s,t),o&&o.m(e,t),insert(e,i,t)},p(t,r){r._showCloser?n?n.p(t,r):((n=create_if_block_1(e,r)).c(),n.m(s.parentNode,s)):n&&(n.d(1),n=null),r._showSticker?o?o.p(t,r):((o=create_if_block(e,r)).c(),o.m(i.parentNode,i)):o&&(o.d(1),o=null)},d(e){n&&n.d(e),e&&detachNode(s),o&&o.d(e),e&&detachNode(i)}}}function create_if_block_1(e,t){var s,i,n,o;function r(t){e.handleCloserClick()}return{c(){s=createElement("div"),(i=createElement("span")).className=t._closerClass+" svelte-1yjle82",addListener(s,"click",r),s.className=n="ui-pnotify-closer "+(!t.closerHover||t._mouseIsIn?"":"ui-pnotify-buttons-hidden")+" svelte-1yjle82",setAttribute(s,"role","button"),s.tabIndex="0",s.title=o=t.labels.close},m(e,t){insert(e,s,t),append(s,i)},p(e,t){e._closerClass&&(i.className=t._closerClass+" svelte-1yjle82"),(e.closerHover||e._mouseIsIn)&&n!==(n="ui-pnotify-closer "+(!t.closerHover||t._mouseIsIn?"":"ui-pnotify-buttons-hidden")+" svelte-1yjle82")&&(s.className=n),e.labels&&o!==(o=t.labels.close)&&(s.title=o)},d(e){e&&detachNode(s),removeListener(s,"click",r)}}}function create_if_block(e,t){var s,i,n,o,r,c;function l(t){e.handleStickerClick()}return{c(){s=createElement("div"),(i=createElement("span")).className=n=(t._options.hide?t._pinUpClass:t._pinDownClass)+" svelte-1yjle82",addListener(s,"click",l),s.className=o="ui-pnotify-sticker "+(!t.stickerHover||t._mouseIsIn?"":"ui-pnotify-buttons-hidden")+" svelte-1yjle82",setAttribute(s,"role","button"),setAttribute(s,"aria-pressed",r=t._options.hide),s.tabIndex="0",s.title=c=t._options.hide?t.labels.stick:t.labels.unstick},m(e,t){insert(e,s,t),append(s,i)},p(e,t){(e._options||e._pinUpClass||e._pinDownClass)&&n!==(n=(t._options.hide?t._pinUpClass:t._pinDownClass)+" svelte-1yjle82")&&(i.className=n),(e.stickerHover||e._mouseIsIn)&&o!==(o="ui-pnotify-sticker "+(!t.stickerHover||t._mouseIsIn?"":"ui-pnotify-buttons-hidden")+" svelte-1yjle82")&&(s.className=o),e._options&&r!==(r=t._options.hide)&&setAttribute(s,"aria-pressed",r),(e._options||e.labels)&&c!==(c=t._options.hide?t.labels.stick:t.labels.unstick)&&(s.title=c)},d(e){e&&detachNode(s),removeListener(s,"click",l)}}}function PNotifyButtons(e){init(this,e),this._state=assign(data(),e.data),this._recompute({sticker:1,_notice:1,closer:1,classes:1},this._state),this._intro=!0,document.getElementById("svelte-1yjle82-style")||add_css(),this._fragment=create_main_fragment(this,this._state),this.root._oncreate.push(()=>{oncreate.call(this),this.fire("update",{changed:assignTrue({},this._state),current:this._state})}),e.target&&(this._fragment.c(),this._mount(e.target,e.anchor),flush(this))}function createElement(e){return document.createElement(e)}function append(e,t){e.appendChild(t)}function createText(e){return document.createTextNode(e)}function createComment(){return document.createComment("")}function insert(e,t,s){e.insertBefore(t,s)}function detachNode(e){e.parentNode.removeChild(e)}function addListener(e,t,s,i){e.addEventListener(t,s,i)}function setAttribute(e,t,s){null==s?e.removeAttribute(t):e.setAttribute(t,s)}function removeListener(e,t,s,i){e.removeEventListener(t,s,i)}function init(e,t){e._handlers=blankObject(),e._slots=blankObject(),e._bind=t._bind,e._staged={},e.options=t,e.root=t.root||e,e.store=t.store||e.root.store,t.root||(e._beforecreate=[],e._oncreate=[],e._aftercreate=[])}function assign(e,t){for(var s in t)e[s]=t[s];return e}function assignTrue(e,t){for(var s in t)e[s]=1;return e}function flush(e){e._lock=!0,callAll(e._beforecreate),callAll(e._oncreate),callAll(e._aftercreate),e._lock=!1}function destroy(e){this.destroy=noop,this.fire("destroy"),this.set=noop,this._fragment.d(!1!==e),this._fragment=null,this._state={}}function get(){return this._state}function fire(e,t){var s=e in this._handlers&&this._handlers[e].slice();if(s)for(var i=0;i<s.length;i+=1){var n=s[i];if(!n.__calling)try{n.__calling=!0,n.call(this,t)}finally{n.__calling=!1}}}function on(e,t){var s=this._handlers[e]||(this._handlers[e]=[]);return s.push(t),{cancel:function(){var e=s.indexOf(t);~e&&s.splice(e,1)}}}function set(e){this._set(assign({},e)),this.root._lock||flush(this.root)}function _set(e){var t=this._state,s={},i=!1;for(var n in e=assign(this._staged,e),this._staged={},e)this._differs(e[n],t[n])&&(s[n]=i=!0);i&&(this._state=assign(assign({},t),e),this._recompute(s,this._state),this._bind&&this._bind(s,this._state),this._fragment&&(this.fire("state",{changed:s,current:this._state,previous:t}),this._fragment.p(s,this._state),this.fire("update",{changed:s,current:this._state,previous:t})))}function _stage(e){assign(this._staged,e)}function _mount(e,t){this._fragment[this._fragment.i?"i":"m"](e,t||null)}function _differs(e,t){return e!=e?t==t:e!==t||e&&"object"==typeof e||"function"==typeof e}function blankObject(){return Object.create(null)}function callAll(e){for(;e&&e.length;)e.shift()()}function noop(){}assign(PNotifyButtons.prototype,{destroy:destroy,get:get,fire:fire,on:on,set:set,_set:_set,_stage:_stage,_mount:_mount,_differs:_differs}),assign(PNotifyButtons.prototype,methods),PNotifyButtons.prototype._recompute=function(e,t){(e.sticker||e._notice)&&this._differs(t._showSticker,t._showSticker=_showSticker(t))&&(e._showSticker=!0),(e.closer||e._notice)&&this._differs(t._showCloser,t._showCloser=_showCloser(t))&&(e._showCloser=!0),(e.classes||e._notice)&&(this._differs(t._pinUpClass,t._pinUpClass=_pinUpClass(t))&&(e._pinUpClass=!0),this._differs(t._pinDownClass,t._pinDownClass=_pinDownClass(t))&&(e._pinDownClass=!0),this._differs(t._closerClass,t._closerClass=_closerClass(t))&&(e._closerClass=!0))},setup(PNotifyButtons);/* harmony default export */ __webpack_exports__["default"] = (PNotifyButtons);
-//# sourceMappingURL=PNotifyButtons.js.map
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ValidationForm = exports.Checkbox = exports.SelectGroup = exports.FileInput = exports.Radio = exports.TextInputGroup = exports.TextInput = exports.BaseFormControl = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+exports.parseFileSize = parseFileSize;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./polyfill */ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function parseFileSize(size) {
+    var num = parseFloat(size, 10);
+    var unit = size.match(/[a-zA-Z]+/)[0];
+    unit = unit.toLowerCase();
+    switch (unit) {
+        case "b":
+            return num;
+        case "kb":
+            return 1024 * num;
+        case "mb":
+            return 1024 * 1024 * num;
+        case "gb":
+            return 1024 * 1024 * 1024 * num;
+        default:
+            throw new Error("Unknown unit " + unit);
+    }
+}
+
+var BaseFormControl = exports.BaseFormControl = function (_React$Component) {
+    _inherits(BaseFormControl, _React$Component);
+
+    function BaseFormControl(props) {
+        _classCallCheck(this, BaseFormControl);
+
+        var _this = _possibleConstructorReturn(this, (BaseFormControl.__proto__ || Object.getPrototypeOf(BaseFormControl)).call(this, props));
+
+        _this.setError = function (errorMessage) {
+            _this.getInputRef().setCustomValidity(errorMessage);
+            _this.setState({ errorMessage: errorMessage });
+        };
+
+        _this.clearError = function () {
+            return _this.setError("");
+        };
+
+        _this.checkError = function (e) {
+            var isPristine = _this.state.isPristine;
+            if (isPristine) _this.setDirty();
+            _this.buildErrorMessage();
+            _this.changeInputErrorClass();
+        };
+
+        _this.handleBlur = function (e) {
+            if (_this.context.validationForm.immediate) return;
+            _this.checkError();
+        };
+
+        _this.handleChange = function (e) {
+            if (_this.props.onChange) _this.props.onChange(e);
+            if (!_this.context.validationForm.immediate) return;
+            _this.checkError();
+        };
+
+        _this.validateInput = function () {
+            _this.setDirty();
+            _this.buildErrorMessage();
+        };
+
+        _this.setDirty = function () {
+            _this.setState({ isPristine: false });
+        };
+
+        _this.filterProps = function () {
+            var _this$props = _this.props,
+                errorMessage = _this$props.errorMessage,
+                successMessage = _this$props.successMessage,
+                validator = _this$props.validator,
+                defaultErrorMessage = _this$props.defaultErrorMessage,
+                attachToForm = _this$props.attachToForm,
+                detachFromForm = _this$props.detachFromForm,
+                setFormDirty = _this$props.setFormDirty,
+                label = _this$props.label,
+                immediate = _this$props.immediate,
+                rest = _objectWithoutProperties(_this$props, ['errorMessage', 'successMessage', 'validator', 'defaultErrorMessage', 'attachToForm', 'detachFromForm', 'setFormDirty', 'label', 'immediate']);
+
+            return rest;
+        };
+
+        _this.state = {
+            isPristine: true,
+            errorMessage: ""
+        };
+        if (_react2.default.createRef) _this.inputRef = _react2.default.createRef();else _this.inputRef = function (element) {
+            //Before React 16.3
+            _this.inputRefLegacy = element;
+        };
+        return _this;
+    }
+
+    _createClass(BaseFormControl, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.context.validationForm.attachToForm(this);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            this.context.validationForm.detachFromForm(this);
+        }
+    }, {
+        key: 'getInputRef',
+        value: function getInputRef() {
+            return this.inputRefLegacy || this.inputRef.current;
+        }
+    }, {
+        key: 'buildErrorMessage',
+        value: function buildErrorMessage() {
+            var map = {
+                valueMissing: "required",
+                customError: "",
+                stepMismatch: "step",
+                patternMismatch: "pattern",
+                rangeUnderflow: "min",
+                rangeOverflow: "max",
+                typeMismatch: "type"
+            };
+
+            var errorMessage = this.props.errorMessage;
+
+            var defaultErrorMessage = this.context.validationForm.defaultErrorMessage || {};
+            //If string was passed to errorMessage, default to required error Message
+            if (typeof errorMessage === "string") errorMessage = { required: errorMessage };
+            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, defaultErrorMessage, errorMessage);
+            var input = this.getInputRef();
+            if (input) {
+                var validityState = input.validity;
+                var newErrorMessage = "";
+                for (var prop in validityState) {
+                    if (validityState[prop]) {
+                        if (prop === "customError") newErrorMessage = input.validationMessage;else newErrorMessage = errorMessage[map[prop]];
+                        break;
+                    }
+                }
+
+                //Add support for minLength attribute
+                if (this.props.minLength) {
+                    if (input.value.length < +this.props.minLength) {
+                        input.setCustomValidity(errorMessage["minLength"]);
+                        newErrorMessage = errorMessage["minLength"].replace("{minLength}", this.props.minLength);
+                    } else {
+                        if (newErrorMessage === errorMessage["minLength"]) {
+                            input.setCustomValidity("");
+                            newErrorMessage = "";
+                        }
+                    }
+                }
+
+                if (typeof this.props.validator === "function") {
+                    var validatorFn = this.props.validator;
+                    var value = input.value;
+                    if (!validatorFn(value)) {
+                        input.setCustomValidity(errorMessage.validator);
+                        newErrorMessage = errorMessage.validator;
+                    } else {
+                        input.setCustomValidity("");
+                        newErrorMessage = "";
+                    }
+                }
+
+                this.setState({ errorMessage: newErrorMessage });
+            }
+        }
+    }, {
+        key: 'displayErrorMessage',
+        value: function displayErrorMessage() {
+            return this.state.errorMessage ? _react2.default.createElement(
+                'div',
+                { className: 'invalid-feedback' },
+                this.state.errorMessage
+            ) : null;
+        }
+
+        //displayBlock for radio group structure
+
+    }, {
+        key: 'displaySuccessMessage',
+        value: function displaySuccessMessage(displayBlock) {
+            return !this.state.isPristine && !this.state.errorMessage && this.props.successMessage ? _react2.default.createElement(
+                'div',
+                { className: "valid-feedback" + (displayBlock ? " d-block" : "") },
+                this.props.successMessage
+            ) : null;
+        }
+    }, {
+        key: 'changeInputErrorClass',
+        value: function changeInputErrorClass() {
+            var inputRef = this.getInputRef();
+            if (inputRef.type !== "radio") {
+                if (!inputRef.validity.valid) {
+                    inputRef.classList.add("is-invalid");
+                    inputRef.classList.remove("is-valid");
+                } else {
+                    inputRef.classList.remove("is-invalid");
+                    inputRef.classList.add("is-valid");
+                }
+            }
+        }
+
+        //Filter out non-DOM attribute
+
+    }]);
+
+    return BaseFormControl;
+}(_react2.default.Component);
+
+BaseFormControl.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    errorMessage: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string])
+};
+BaseFormControl.contextTypes = {
+    validationForm: _propTypes2.default.object
+};
+
+var TextInput = exports.TextInput = function (_BaseFormControl) {
+    _inherits(TextInput, _BaseFormControl);
+
+    function TextInput() {
+        _classCallCheck(this, TextInput);
+
+        return _possibleConstructorReturn(this, (TextInput.__proto__ || Object.getPrototypeOf(TextInput)).apply(this, arguments));
+    }
+
+    _createClass(TextInput, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var multiline = props.multiline,
+                successMessage = props.successMessage,
+                validator = props.validator,
+                domProps = _objectWithoutProperties(props, ['multiline', 'successMessage', 'validator']);
+
+            return _react2.default.createElement(
+                _react2.default.Fragment,
+                null,
+                multiline ? _react2.default.createElement('textarea', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })) : _react2.default.createElement('input', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return TextInput;
+}(BaseFormControl);
+
+TextInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control",
+    multiline: false
+});
+
+var TextInputGroup = exports.TextInputGroup = function (_BaseFormControl2) {
+    _inherits(TextInputGroup, _BaseFormControl2);
+
+    function TextInputGroup() {
+        _classCallCheck(this, TextInputGroup);
+
+        return _possibleConstructorReturn(this, (TextInputGroup.__proto__ || Object.getPrototypeOf(TextInputGroup)).apply(this, arguments));
+    }
+
+    _createClass(TextInputGroup, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var prepend = props.prepend,
+                append = props.append,
+                inputGroupClassName = props.inputGroupClassName,
+                inputGroupStyle = props.inputGroupStyle,
+                domProps = _objectWithoutProperties(props, ['prepend', 'append', 'inputGroupClassName', 'inputGroupStyle']);
+
+            return _react2.default.createElement(
+                'div',
+                { className: inputGroupClassName, style: inputGroupStyle },
+                prepend && _react2.default.createElement(
+                    'div',
+                    { className: 'input-group-prepend' },
+                    prepend
+                ),
+                _react2.default.createElement('input', _extends({}, domProps, { className: this.props.className, ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
+                append && _react2.default.createElement(
+                    'div',
+                    { className: 'input-group-append' },
+                    append
+                ),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return TextInputGroup;
+}(BaseFormControl);
+
+TextInputGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control",
+    inputGroupClassName: "input-group"
+});
+TextInputGroup.propTypes = {
+    className: _propTypes2.default.string,
+    inputGroupClassName: _propTypes2.default.string,
+    inputGroupStyle: _propTypes2.default.object,
+    prepend: _propTypes2.default.element,
+    append: _propTypes2.default.element
+};
+
+var RadioGroup = function (_BaseFormControl3) {
+    _inherits(RadioGroup, _BaseFormControl3);
+
+    function RadioGroup() {
+        _classCallCheck(this, RadioGroup);
+
+        return _possibleConstructorReturn(this, (RadioGroup.__proto__ || Object.getPrototypeOf(RadioGroup)).apply(this, arguments));
+    }
+
+    _createClass(RadioGroup, [{
+        key: 'getInputRef',
+        value: function getInputRef() {
+            var inputRef = window.document.querySelectorAll('[name="' + this.props.name + '"]')[0];
+            return inputRef;
+        }
+    }, {
+        key: 'mapRadioItems',
+        value: function mapRadioItems() {
+            var _this5 = this;
+
+            return _react2.default.Children.map(this.props.children, function (child) {
+                if (typeof child.type !== "function" || child.type.name !== RadioItem.name) {
+                    console.warn("Only RadioItem is allowed inside RadioGroup");
+                    return;
+                }
+                return _react2.default.cloneElement(child, _extends({}, child.props, {
+                    inline: _this5.props.inline,
+                    name: _this5.props.name,
+                    required: _this5.props.required,
+                    defaultValue: _this5.props.defaultValue,
+                    onChange: _this5.props.onChange,
+                    valueSelected: _this5.props.valueSelected,
+                    checkError: _this5.checkError
+                }));
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+            var containerStyle = props.containerStyle,
+                containerClassName = props.containerClassName;
+
+            return _react2.default.createElement(
+                'div',
+                { style: containerStyle, className: containerClassName },
+                this.mapRadioItems(),
+                this.state.errorMessage && _react2.default.createElement(
+                    'div',
+                    { className: 'invalid-feedback d-block' },
+                    this.state.errorMessage
+                ),
+                this.displaySuccessMessage(true)
+            );
+        }
+    }]);
+
+    return RadioGroup;
+}(BaseFormControl);
+
+RadioGroup.defaultProps = {
+    inline: true,
+    containerStyle: {}
+};
+RadioGroup.propTypes = {
+    inline: _propTypes2.default.bool,
+    name: _propTypes2.default.string.isRequired,
+    containerStyle: _propTypes2.default.object,
+    containerClassName: _propTypes2.default.string,
+    defaultValue: _propTypes2.default.string,
+    valueSelected: _propTypes2.default.string,
+    onChange: _propTypes2.default.func
+};
+
+var RadioItem = function (_Component) {
+    _inherits(RadioItem, _Component);
+
+    function RadioItem() {
+        var _ref;
+
+        var _temp, _this6, _ret;
+
+        _classCallCheck(this, RadioItem);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this6 = _possibleConstructorReturn(this, (_ref = RadioItem.__proto__ || Object.getPrototypeOf(RadioItem)).call.apply(_ref, [this].concat(args))), _this6), _this6.onChange = function (e) {
+            if (_this6.props.onChange) _this6.props.onChange(e, e.target.value);
+            _this6.props.checkError();
+        }, _temp), _possibleConstructorReturn(_this6, _ret);
+    }
+
+    _createClass(RadioItem, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                checkError = _props.checkError,
+                containerStyle = _props.containerStyle,
+                containerClassName = _props.containerClassName,
+                label = _props.label,
+                inline = _props.inline,
+                defaultValue = _props.defaultValue,
+                valueSelected = _props.valueSelected,
+                onChange = _props.onChange,
+                domProps = _objectWithoutProperties(_props, ['checkError', 'containerStyle', 'containerClassName', 'label', 'inline', 'defaultValue', 'valueSelected', 'onChange']);
+
+            var checkProps = valueSelected !== undefined && onChange ? { checked: this.props.value === valueSelected } : { defaultChecked: this.props.value === defaultValue };
+
+            return _react2.default.createElement(
+                'div',
+                { className: containerClassName + " form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
+                _react2.default.createElement('input', _extends({ className: 'form-check-input', type: 'radio'
+                }, checkProps, {
+                    onChange: this.onChange
+                }, domProps)),
+                _react2.default.createElement(
+                    'label',
+                    { className: 'form-check-label', htmlFor: this.props.id },
+                    label
+                )
+            );
+        }
+    }]);
+
+    return RadioItem;
+}(_react.Component);
+
+RadioItem.defaultProps = {
+    containerStyle: {},
+    containerClassName: ""
+};
+RadioItem.propTypes = {
+    value: _propTypes2.default.string.isRequired,
+    id: _propTypes2.default.string.isRequired,
+    label: _propTypes2.default.string.isRequired,
+    containerStyle: _propTypes2.default.object,
+    containerClassName: _propTypes2.default.string
+};
+var Radio = exports.Radio = {
+    RadioGroup: RadioGroup,
+    RadioItem: RadioItem
+};
+
+var FileInput = exports.FileInput = function (_BaseFormControl4) {
+    _inherits(FileInput, _BaseFormControl4);
+
+    function FileInput() {
+        var _ref2;
+
+        var _temp2, _this7, _ret2;
+
+        _classCallCheck(this, FileInput);
+
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
+
+        return _ret2 = (_temp2 = (_this7 = _possibleConstructorReturn(this, (_ref2 = FileInput.__proto__ || Object.getPrototypeOf(FileInput)).call.apply(_ref2, [this].concat(args))), _this7), _this7.checkFileError = function (file) {
+            var _this7$props = _this7.props,
+                maxFileSize = _this7$props.maxFileSize,
+                fileType = _this7$props.fileType,
+                _this7$props$errorMes = _this7$props.errorMessage,
+                errorMessage = _this7$props$errorMes === undefined ? {} : _this7$props$errorMes;
+
+            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, errorMessage);
+            var limit = maxFileSize ? parseFileSize(maxFileSize) : null;
+            var newErrorMessage = "";
+            var fileExtension = file.name.slice(file.name.lastIndexOf(".") + 1).toLowerCase().trim();
+            fileType = fileType.map(function (type) {
+                return type.toLowerCase().trim();
+            });
+            if (fileType.length > 0 && !fileType.includes(fileExtension)) {
+                newErrorMessage = errorMessage["fileType"];
+            } else if (limit && file.size > limit) {
+                newErrorMessage = errorMessage["maxFileSize"];
+            } else {
+                newErrorMessage = "";
+            }
+            var inputRef = _this7.getInputRef();
+            inputRef.setCustomValidity(newErrorMessage);
+        }, _this7.handleChange = function (e) {
+            var inputRef = _this7.getInputRef();
+            var file = inputRef.files[0];
+            if (_this7.props.onChange) _this7.props.onChange(e, file);
+            if (!file) return _this7.checkError();
+            _this7.checkFileError(file);
+            _this7.checkError();
+        }, _temp2), _possibleConstructorReturn(_this7, _ret2);
+    }
+
+    _createClass(FileInput, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var maxFileSize = props.maxFileSize,
+                fileType = props.fileType,
+                domProps = _objectWithoutProperties(props, ['maxFileSize', 'fileType']);
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('input', _extends({}, domProps, { ref: this.inputRef, type: 'file', onChange: this.handleChange })),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return FileInput;
+}(BaseFormControl);
+
+FileInput.propTypes = {
+    fileType: _propTypes2.default.array,
+    maxFileSize: _propTypes2.default.string
+};
+FileInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control"
+});
+
+var SelectGroup = exports.SelectGroup = function (_BaseFormControl5) {
+    _inherits(SelectGroup, _BaseFormControl5);
+
+    function SelectGroup() {
+        _classCallCheck(this, SelectGroup);
+
+        return _possibleConstructorReturn(this, (SelectGroup.__proto__ || Object.getPrototypeOf(SelectGroup)).apply(this, arguments));
+    }
+
+    _createClass(SelectGroup, [{
+        key: 'render',
+        value: function render() {
+            var domProps = this.filterProps();
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'select',
+                    _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur,
+                        value: this.props.value }),
+                    this.props.children
+                ),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return SelectGroup;
+}(BaseFormControl);
+
+SelectGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control"
+});
+
+var Checkbox = exports.Checkbox = function (_BaseFormControl6) {
+    _inherits(Checkbox, _BaseFormControl6);
+
+    function Checkbox() {
+        var _ref3;
+
+        var _temp3, _this9, _ret3;
+
+        _classCallCheck(this, Checkbox);
+
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
+        }
+
+        return _ret3 = (_temp3 = (_this9 = _possibleConstructorReturn(this, (_ref3 = Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).call.apply(_ref3, [this].concat(args))), _this9), _this9.handleChange = function (e) {
+            var checked = e.target.checked;
+            if (_this9.props.onChange) _this9.props.onChange(e, checked);
+            _this9.checkError();
+        }, _temp3), _possibleConstructorReturn(_this9, _ret3);
+    }
+
+    _createClass(Checkbox, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var label = props.label,
+                inline = props.inline,
+                containerStyle = props.containerStyle,
+                className = props.className,
+                checked = props.checked,
+                domProps = _objectWithoutProperties(props, ['label', 'inline', 'containerStyle', 'className', 'checked']);
+
+            return _react2.default.createElement(
+                'div',
+                { className: "form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
+                _react2.default.createElement('input', _extends({ type: 'checkbox', className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, checked: this.props.value, defaultChecked: this.props.defaultChecked })),
+                _react2.default.createElement(
+                    'label',
+                    { className: 'form-check-label', htmlFor: domProps.id },
+                    this.props.label
+                ),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return Checkbox;
+}(BaseFormControl);
+
+Checkbox.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-check-input",
+    containerStyle: {},
+    label: "",
+    inline: false
+});
+Checkbox.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    label: _propTypes2.default.string.isRequired,
+    containerStyle: _propTypes2.default.object,
+    inline: _propTypes2.default.bool,
+    id: _propTypes2.default.string.isRequired,
+    value: _propTypes2.default.bool,
+    defaultChecked: _propTypes2.default.bool
+};
+
+var ValidationForm = exports.ValidationForm = function (_React$Component2) {
+    _inherits(ValidationForm, _React$Component2);
+
+    function ValidationForm() {
+        var _ref4;
+
+        var _temp4, _this10, _ret4;
+
+        _classCallCheck(this, ValidationForm);
+
+        for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+            args[_key4] = arguments[_key4];
+        }
+
+        return _ret4 = (_temp4 = (_this10 = _possibleConstructorReturn(this, (_ref4 = ValidationForm.__proto__ || Object.getPrototypeOf(ValidationForm)).call.apply(_ref4, [this].concat(args))), _this10), _this10.inputs = {}, _this10.attachToForm = function (component) {
+            _this10.inputs[component.props.name] = component;
+        }, _this10.detachFromForm = function (component) {
+            delete _this10.inputs[component.props.name];
+        }, _this10.getChildContext = function () {
+            return {
+                validationForm: {
+                    attachToForm: _this10.attachToForm,
+                    detachFromForm: _this10.detachFromForm,
+                    immediate: _this10.props.immediate,
+                    defaultErrorMessage: _this10.props.defaultErrorMessage
+                }
+            };
+        }, _this10.setFormDiry = function () {
+            var form = _this10.refs.form;
+            if (!form.classList.contains('was-validated')) form.classList.add('was-validated');
+        }, _this10.mapInputs = function (inputs) {
+            var arr = Object.keys(inputs).map(function (prop) {
+                return inputs[prop];
+            });
+            return arr;
+        }, _this10.findFirstErrorInput = function (inputs) {
+            return inputs.find(function (input) {
+                return !input.getInputRef().validity.valid;
+            });
+        }, _this10.getErrorInputs = function (inputs) {
+            var map = {};
+            inputs.forEach(function (input) {
+                var inputRef = input.getInputRef();
+                var validityState = inputRef.validity;
+                if (!validityState.valid) map[inputRef.name] = input;
+            });
+            return map;
+        }, _this10.handleSubmit = function (event) {
+            var form = _this10.refs.form;
+            var formData = _this10.getFormData();
+            var inputArr = _this10.mapInputs(_this10.inputs);
+            _this10.setFormDiry();
+            _this10.validateInputs();
+
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                if (_this10.props.onErrorSubmit) _this10.props.onErrorSubmit(event, formData, _this10.getErrorInputs(inputArr));
+                if (_this10.props.setFocusOnError) {
+                    var firstErrorInput = _this10.findFirstErrorInput(inputArr);
+                    firstErrorInput.getInputRef().focus();
+                }
+            } else {
+                if (_this10.props.onSubmit) _this10.props.onSubmit(event, formData, inputArr);
+            }
+        }, _this10.resetValidationState = function (isClearValue) {
+            for (var prop in _this10.inputs) {
+                _this10.inputs[prop].setState({ errorMessage: "", isPristine: true });
+                var inputRef = _this10.inputs[prop].getInputRef();
+                inputRef.classList.remove("is-valid");
+                inputRef.classList.remove("is-invalid");
+                inputRef.setCustomValidity("");
+                if (isClearValue) {
+                    if (inputRef.type == "checkbox") inputRef.checked = false;
+                    inputRef.value = "";
+                }
+            }
+            _this10.refs.form.classList.remove("was-validated");
+        }, _temp4), _possibleConstructorReturn(_this10, _ret4);
+    }
+
+    _createClass(ValidationForm, [{
+        key: 'isBaseFormControl',
+        value: function isBaseFormControl(element) {
+            if (typeof element !== "function") return false;
+            while (Object.getPrototypeOf(element) !== Object.prototype) {
+                if (Object.getPrototypeOf(element) === BaseFormControl) {
+                    return true;
+                }
+                element = Object.getPrototypeOf(element);
+            }
+            return false;
+        }
+
+        //Use context instead
+        // registerChildren(children) {
+        //     let newChildren = React.Children.map(children, (child) => {
+        //         //If child is our baseFormControl, then assign new props to it
+        //         if (!child) return child;
+        //         if (this.isBaseFormControl(child.type)) {
+        //             return React.cloneElement(child, {
+        //                 ...child.props,
+        //                 attachToForm: this.attachToForm,
+        //                 detachFromForm: this.detachFromForm,
+        //                 immediate: this.props.immediate,
+        //                 defaultErrorMessage: this.props.defaultErrorMessage
+        //             });
+        //         } else {
+        //             if (typeof child === 'string') return child;
+        //             return React.cloneElement(child, {
+        //                 children: (typeof child.props.children === "string") ? child.props.children : this.registerChildren(child.props.children)
+        //             });
+        //         }
+        //     });
+        //     return newChildren;
+        // }
+
+    }, {
+        key: 'validateInputs',
+        value: function validateInputs() {
+            for (var prop in this.inputs) {
+                this.inputs[prop].validateInput();
+            }
+        }
+    }, {
+        key: 'getFormData',
+        value: function getFormData() {
+            var model = {};
+            for (var name in this.inputs) {
+                var inputRef = this.inputs[name].getInputRef();
+                var value = null;
+                switch (inputRef.type) {
+                    case "checkbox":
+                        value = inputRef.checked;
+                        break;
+                    case "radio":
+                        var radios = document.querySelectorAll('[name="' + this.props.name + '"]');
+                        for (var i = 0; i < radios.length; i++) {
+                            if (radios[i].checked) {
+                                value = radios[i].value;
+                                break;
+                            }
+                        }
+                        break;
+                    case "file":
+                        value = inputRef.files[0];
+                        break;
+                    default:
+                        value = inputRef.value;
+                }
+                model[name] = value;
+            };
+            return model;
+        }
+
+        //By default only clear customError and class, if isClearValue is true, clear value also
+
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props2 = this.props,
+                onSubmit = _props2.onSubmit,
+                onErrorSubmit = _props2.onErrorSubmit,
+                immediate = _props2.immediate,
+                setFocusOnError = _props2.setFocusOnError,
+                defaultErrorMessage = _props2.defaultErrorMessage,
+                domProps = _objectWithoutProperties(_props2, ['onSubmit', 'onErrorSubmit', 'immediate', 'setFocusOnError', 'defaultErrorMessage']);
+
+            return _react2.default.createElement(
+                'form',
+                _extends({ noValidate: true, ref: 'form'
+                }, domProps, {
+                    onSubmit: this.handleSubmit }),
+                this.props.children
+            );
+        }
+    }]);
+
+    return ValidationForm;
+}(_react2.default.Component);
+
+ValidationForm.defaultProps = {
+    className: "needs-validation",
+    setFocusOnError: true,
+    immediate: true,
+    defaultErrorMessage: {}
+};
+ValidationForm.propTypes = {
+    className: _propTypes2.default.string,
+    defaultErrorMessage: _propTypes2.default.object,
+    setFocusOnError: _propTypes2.default.bool,
+    immediate: _propTypes2.default.bool,
+    onSubmit: _propTypes2.default.func.isRequired,
+    onErrorSubmit: _propTypes2.default.func
+};
+ValidationForm.childContextTypes = {
+    validationForm: _propTypes2.default.object
+};
+ValidationForm.defaultErrorMessage = {
+    required: "This field is required",
+    pattern: "Input value does not match the pattern",
+    type: "Input value does not match the type",
+    step: "Step mismatch",
+    minLength: "Please enter at least {minLength} characters",
+    min: "Number is too low",
+    max: "Number is too high",
+    fileType: "File type mismatch",
+    maxFileSize: "File size exceed limit",
+    validator: "Validator check failed"
+};
 
 /***/ }),
 
-/***/ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/pnotify/dist/es/PNotifyCallbacks.js ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/react-bootstrap4-form-validation/lib/polyfill.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PNotify_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PNotify.js */ "./node_modules/pnotify/dist/es/PNotify.js");
-let _open=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.open,_close=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.close;const callbacks=(t,e,s)=>{let i=t?t.get().modules:e.modules,o=i&&i.Callbacks?i.Callbacks:{};return o[s]?o[s]:()=>!0};function setup(t){t.key="Callbacks",t.getCallbacks=callbacks;let e=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].alert,s=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].notice,i=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].info,o=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].success,n=_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].error,a=(t,e)=>{callbacks(null,e,"beforeInit")(e);let s=t(e);return callbacks(s,null,"afterInit")(s),s};_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].alert=(t=>a(e,t)),_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].notice=(t=>a(s,t)),_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].info=(t=>a(i,t)),_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].success=(t=>a(o,t)),_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].error=(t=>a(n,t)),_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modules.Callbacks=t}function create_main_fragment(t,e){return{c:noop,m:noop,p:noop,d:noop}}function PNotifyCallbacks(t){init(this,t),this._state=assign({},t.data),this._intro=!0,this._fragment=create_main_fragment(this,this._state),t.target&&(this._fragment.c(),this._mount(t.target,t.anchor))}function noop(){}function init(t,e){t._handlers=blankObject(),t._slots=blankObject(),t._bind=e._bind,t._staged={},t.options=e,t.root=e.root||t,t.store=e.store||t.root.store,e.root||(t._beforecreate=[],t._oncreate=[],t._aftercreate=[])}function assign(t,e){for(var s in e)t[s]=e[s];return t}function destroy(t){this.destroy=noop,this.fire("destroy"),this.set=noop,this._fragment.d(!1!==t),this._fragment=null,this._state={}}function get(){return this._state}function fire(t,e){var s=t in this._handlers&&this._handlers[t].slice();if(s)for(var i=0;i<s.length;i+=1){var o=s[i];if(!o.__calling)try{o.__calling=!0,o.call(this,e)}finally{o.__calling=!1}}}function on(t,e){var s=this._handlers[t]||(this._handlers[t]=[]);return s.push(e),{cancel:function(){var t=s.indexOf(e);~t&&s.splice(t,1)}}}function set(t){this._set(assign({},t)),this.root._lock||flush(this.root)}function _set(t){var e=this._state,s={},i=!1;for(var o in t=assign(this._staged,t),this._staged={},t)this._differs(t[o],e[o])&&(s[o]=i=!0);i&&(this._state=assign(assign({},e),t),this._recompute(s,this._state),this._bind&&this._bind(s,this._state),this._fragment&&(this.fire("state",{changed:s,current:this._state,previous:e}),this._fragment.p(s,this._state),this.fire("update",{changed:s,current:this._state,previous:e})))}function _stage(t){assign(this._staged,t)}function _mount(t,e){this._fragment[this._fragment.i?"i":"m"](t,e||null)}function _differs(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function blankObject(){return Object.create(null)}function flush(t){t._lock=!0,callAll(t._beforecreate),callAll(t._oncreate),callAll(t._aftercreate),t._lock=!1}function callAll(t){for(;t&&t.length;)t.shift()()}_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.open=function(...t){!1!==callbacks(this,null,"beforeOpen")(this)&&(_open.apply(this,t),callbacks(this,null,"afterOpen")(this))},_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.close=function(t,...e){!1!==callbacks(this,null,"beforeClose")(this,t)&&(_close.apply(this,[t,...e]),callbacks(this,null,"afterClose")(this,t))},assign(PNotifyCallbacks.prototype,{destroy:destroy,get:get,fire:fire,on:on,set:set,_set:_set,_stage:_stage,_mount:_mount,_differs:_differs}),PNotifyCallbacks.prototype._recompute=noop,setup(PNotifyCallbacks);/* harmony default export */ __webpack_exports__["default"] = (PNotifyCallbacks);
-//# sourceMappingURL=PNotifyCallbacks.js.map
 
-/***/ }),
 
-/***/ "./node_modules/pnotify/dist/es/PNotifyConfirm.js":
-/*!********************************************************!*\
-  !*** ./node_modules/pnotify/dist/es/PNotifyConfirm.js ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+if (!Array.prototype.find) {
+    Object.defineProperty(Array.prototype, 'find', {
+        value: function value(predicate) {
+            // 1. Let O be ? ToObject(this value).
+            if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+            }
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PNotify_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PNotify.js */ "./node_modules/pnotify/dist/es/PNotify.js");
-function data(){return Object.assign({_notice:null,_options:{}},_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modules.Confirm.defaults)}var methods={initModule(t){this.set(t)},afterOpen(){if(this.get().prompt&&!1!==this.get().focus)this.get().promptMultiLine?this.refs.promptMulti.focus():this.refs.promptSingle.focus();else if(this.get().confirm&&(!0===this.get().focus||null===this.get().focus&&this.get()._options.stack.modal)){const t=this.get().buttons;if(t.length){let e=t.length-1;for(;e>=0&&!t[e].promptTrigger;)e--;this.refs.buttons.children[e].focus()}}},handleClick(t,e){t.click&&t.click(this.get()._notice,this.get().prompt?this.get().promptValue:null,e)},handleKeyPress(t){if(13===t.keyCode&&!t.shiftKey){t.preventDefault();const{buttons:e}=this.get();for(let n=0;n<e.length;n++)e[n].promptTrigger&&e[n].click&&e[n].click(this.get()._notice,this.get().prompt?this.get().promptValue:null,t)}}};function oncreate(){this.fire("init",{module:this})}function setup(t){t.key="Confirm",t.defaults={confirm:!1,prompt:!1,promptClass:"",promptValue:"",promptMultiLine:!1,focus:null,align:"flex-end",buttons:[{text:"Ok",textTrusted:!1,addClass:"",primary:!0,promptTrigger:!0,click:(t,e)=>{t.close(),t.fire("pnotify.confirm",{notice:t,value:e})}},{text:"Cancel",textTrusted:!1,addClass:"",click:t=>{t.close(),t.fire("pnotify.cancel",{notice:t})}}]},_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modules.Confirm=t,_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].modulesAppendContainer.push(t),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].styling.brighttheme,{actionBar:"",promptBar:"",btn:"",btnPrimary:"brighttheme-primary",input:""}),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].styling.bootstrap3,{actionBar:"ui-pnotify-confirm-ml",promptBar:"ui-pnotify-confirm-ml",btn:"btn btn-default ui-pnotify-confirm-mx-1",btnPrimary:"btn btn-default ui-pnotify-confirm-mx-1 btn-primary",input:"form-control"}),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].styling.bootstrap4,{actionBar:"ui-pnotify-confirm-ml",promptBar:"ui-pnotify-confirm-ml",btn:"btn btn-secondary mx-1",btnPrimary:"btn btn-primary mx-1",input:"form-control"}),_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].styling.material||(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].styling.material={}),Object.assign(_PNotify_js__WEBPACK_IMPORTED_MODULE_0__["default"].styling.material,{actionBar:"",promptBar:"",btn:"",btnPrimary:"ui-pnotify-material-primary",input:""})}function add_css(){var t=createElement("style");t.id="svelte-1y9suua-style",t.textContent=".ui-pnotify-action-bar.svelte-1y9suua,.ui-pnotify-prompt-bar.svelte-1y9suua{margin-top:5px;clear:both}.ui-pnotify-action-bar.svelte-1y9suua{display:flex;flex-wrap:wrap;justify-content:flex-end}.ui-pnotify-prompt-input.svelte-1y9suua{margin-bottom:5px;display:block;width:100%}.ui-pnotify-confirm-mx-1.svelte-1y9suua{margin:0 5px}.ui-pnotify.ui-pnotify-with-icon .ui-pnotify-confirm-ml.svelte-1y9suua{margin-left:24px}[dir=rtl] .ui-pnotify.ui-pnotify-with-icon .ui-pnotify-confirm-ml.svelte-1y9suua{margin-right:24px;margin-left:0}",append(document.head,t)}function click_handler(t){const{component:e,ctx:n}=this._svelte;e.handleClick(n.button,t)}function get_each_context(t,e,n){const i=Object.create(t);return i.button=e[n],i}function create_main_fragment(t,e){var n,i=(e.confirm||e.prompt)&&create_if_block(t,e);return{c(){i&&i.c(),n=createComment()},m(t,e){i&&i.m(t,e),insert(t,n,e)},p(e,o){o.confirm||o.prompt?i?i.p(e,o):((i=create_if_block(t,o)).c(),i.m(n.parentNode,n)):i&&(i.d(1),i=null)},d(t){i&&i.d(t),t&&detachNode(n)}}}function create_if_block(t,e){for(var n,i,o,s,r=e.prompt&&create_if_block_2(t,e),a=e.buttons,c=[],l=0;l<a.length;l+=1)c[l]=create_each_block(t,get_each_context(e,a,l));return{c(){n=createElement("div"),r&&r.c(),i=createText("\n    "),o=createElement("div");for(var t=0;t<c.length;t+=1)c[t].c();o.className=s="\n          ui-pnotify-action-bar\n          "+(e._notice.get()._styles.actionBar?e._notice.get()._styles.actionBar:"")+"\n          "+(e._notice.get()._styles.text?e._notice.get()._styles.text:"")+"\n         svelte-1y9suua",setStyle(o,"justify-content",e.align),n.className="ui-pnotify-confirm"},m(e,s){insert(e,n,s),r&&r.m(n,null),append(n,i),append(n,o);for(var a=0;a<c.length;a+=1)c[a].m(o,null);t.refs.buttons=o},p(e,l){if(l.prompt?r?r.p(e,l):((r=create_if_block_2(t,l)).c(),r.m(n,i)):r&&(r.d(1),r=null),e.buttons||e._notice){a=l.buttons;for(var u=0;u<a.length;u+=1){const n=get_each_context(l,a,u);c[u]?c[u].p(e,n):(c[u]=create_each_block(t,n),c[u].c(),c[u].m(o,null))}for(;u<c.length;u+=1)c[u].d(1);c.length=a.length}e._notice&&s!==(s="\n          ui-pnotify-action-bar\n          "+(l._notice.get()._styles.actionBar?l._notice.get()._styles.actionBar:"")+"\n          "+(l._notice.get()._styles.text?l._notice.get()._styles.text:"")+"\n         svelte-1y9suua")&&(o.className=s),e.align&&setStyle(o,"justify-content",l.align)},d(e){e&&detachNode(n),r&&r.d(),destroyEach(c,e),t.refs.buttons===o&&(t.refs.buttons=null)}}}function create_if_block_2(t,e){var n,i;function o(t){return t.promptMultiLine?create_if_block_3:create_else_block_1}var s=o(e),r=s(t,e);return{c(){n=createElement("div"),r.c(),n.className=i="\n            ui-pnotify-prompt-bar\n            "+(e._notice.get()._styles.promptBar?e._notice.get()._styles.promptBar:"")+"\n            "+(e._notice.get()._styles.text?e._notice.get()._styles.text:"")+"\n           svelte-1y9suua"},m(t,e){insert(t,n,e),r.m(n,null)},p(e,a){s===(s=o(a))&&r?r.p(e,a):(r.d(1),(r=s(t,a)).c(),r.m(n,null)),e._notice&&i!==(i="\n            ui-pnotify-prompt-bar\n            "+(a._notice.get()._styles.promptBar?a._notice.get()._styles.promptBar:"")+"\n            "+(a._notice.get()._styles.text?a._notice.get()._styles.text:"")+"\n           svelte-1y9suua")&&(n.className=i)},d(t){t&&detachNode(n),r.d()}}}function create_else_block_1(t,e){var n,i,o=!1;function s(){o=!0,t.set({promptValue:n.value}),o=!1}function r(e){t.handleKeyPress(e)}return{c(){addListener(n=createElement("input"),"input",s),addListener(n,"keypress",r),setAttribute(n,"type","text"),n.className=i="\n                ui-pnotify-prompt-input\n                "+(e._notice.get()._styles.input?e._notice.get()._styles.input:"")+"\n                "+e.promptClass+"\n               svelte-1y9suua"},m(i,o){insert(i,n,o),t.refs.promptSingle=n,n.value=e.promptValue},p(t,e){!o&&t.promptValue&&(n.value=e.promptValue),(t._notice||t.promptClass)&&i!==(i="\n                ui-pnotify-prompt-input\n                "+(e._notice.get()._styles.input?e._notice.get()._styles.input:"")+"\n                "+e.promptClass+"\n               svelte-1y9suua")&&(n.className=i)},d(e){e&&detachNode(n),removeListener(n,"input",s),removeListener(n,"keypress",r),t.refs.promptSingle===n&&(t.refs.promptSingle=null)}}}function create_if_block_3(t,e){var n,i,o=!1;function s(){o=!0,t.set({promptValue:n.value}),o=!1}function r(e){t.handleKeyPress(e)}return{c(){addListener(n=createElement("textarea"),"input",s),addListener(n,"keypress",r),n.rows="5",n.className=i="\n                ui-pnotify-prompt-input\n                "+(e._notice.get()._styles.input?e._notice.get()._styles.input:"")+"\n                "+e.promptClass+"\n               svelte-1y9suua"},m(i,o){insert(i,n,o),t.refs.promptMulti=n,n.value=e.promptValue},p(t,e){!o&&t.promptValue&&(n.value=e.promptValue),(t._notice||t.promptClass)&&i!==(i="\n                ui-pnotify-prompt-input\n                "+(e._notice.get()._styles.input?e._notice.get()._styles.input:"")+"\n                "+e.promptClass+"\n               svelte-1y9suua")&&(n.className=i)},d(e){e&&detachNode(n),removeListener(n,"input",s),removeListener(n,"keypress",r),t.refs.promptMulti===n&&(t.refs.promptMulti=null)}}}function create_else_block(t,e){var n,i=e.button.text;return{c(){n=createText(i)},m(t,e){insert(t,n,e)},p(t,e){t.buttons&&i!==(i=e.button.text)&&setData(n,i)},d(t){t&&detachNode(n)}}}function create_if_block_1(t,e){var n,i,o=e.button.text;return{c(){n=createElement("noscript"),i=createElement("noscript")},m(t,e){insert(t,n,e),n.insertAdjacentHTML("afterend",o),insert(t,i,e)},p(t,e){t.buttons&&o!==(o=e.button.text)&&(detachBetween(n,i),n.insertAdjacentHTML("afterend",o))},d(t){t&&(detachBetween(n,i),detachNode(n),detachNode(i))}}}function create_each_block(t,e){var n,i;function o(t){return t.button.textTrusted?create_if_block_1:create_else_block}var s=o(e),r=s(t,e);return{c(){n=createElement("button"),r.c(),n._svelte={component:t,ctx:e},addListener(n,"click",click_handler),n.type="button",n.className=i="\n              ui-pnotify-action-button\n              "+(e.button.primary?e._notice.get()._styles.btnPrimary?e._notice.get()._styles.btnPrimary:"":e._notice.get()._styles.btn?e._notice.get()._styles.btn:"")+"\n              "+(e.button.addClass?e.button.addClass:"")+"\n             svelte-1y9suua"},m(t,e){insert(t,n,e),r.m(n,null)},p(a,c){s===(s=o(e=c))&&r?r.p(a,e):(r.d(1),(r=s(t,e)).c(),r.m(n,null)),n._svelte.ctx=e,(a.buttons||a._notice)&&i!==(i="\n              ui-pnotify-action-button\n              "+(e.button.primary?e._notice.get()._styles.btnPrimary?e._notice.get()._styles.btnPrimary:"":e._notice.get()._styles.btn?e._notice.get()._styles.btn:"")+"\n              "+(e.button.addClass?e.button.addClass:"")+"\n             svelte-1y9suua")&&(n.className=i)},d(t){t&&detachNode(n),r.d(),removeListener(n,"click",click_handler)}}}function PNotifyConfirm(t){init(this,t),this.refs={},this._state=assign(data(),t.data),this._intro=!0,document.getElementById("svelte-1y9suua-style")||add_css(),this._fragment=create_main_fragment(this,this._state),this.root._oncreate.push(()=>{oncreate.call(this),this.fire("update",{changed:assignTrue({},this._state),current:this._state})}),t.target&&(this._fragment.c(),this._mount(t.target,t.anchor),flush(this))}function createElement(t){return document.createElement(t)}function append(t,e){t.appendChild(e)}function createComment(){return document.createComment("")}function insert(t,e,n){t.insertBefore(e,n)}function detachNode(t){t.parentNode.removeChild(t)}function createText(t){return document.createTextNode(t)}function setStyle(t,e,n){t.style.setProperty(e,n)}function destroyEach(t,e){for(var n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}function addListener(t,e,n,i){t.addEventListener(e,n,i)}function setAttribute(t,e,n){null==n?t.removeAttribute(e):t.setAttribute(e,n)}function removeListener(t,e,n,i){t.removeEventListener(e,n,i)}function setData(t,e){t.data=""+e}function detachBetween(t,e){for(;t.nextSibling&&t.nextSibling!==e;)t.parentNode.removeChild(t.nextSibling)}function init(t,e){t._handlers=blankObject(),t._slots=blankObject(),t._bind=e._bind,t._staged={},t.options=e,t.root=e.root||t,t.store=e.store||t.root.store,e.root||(t._beforecreate=[],t._oncreate=[],t._aftercreate=[])}function assign(t,e){for(var n in e)t[n]=e[n];return t}function assignTrue(t,e){for(var n in e)t[n]=1;return t}function flush(t){t._lock=!0,callAll(t._beforecreate),callAll(t._oncreate),callAll(t._aftercreate),t._lock=!1}function destroy(t){this.destroy=noop,this.fire("destroy"),this.set=noop,this._fragment.d(!1!==t),this._fragment=null,this._state={}}function get(){return this._state}function fire(t,e){var n=t in this._handlers&&this._handlers[t].slice();if(n)for(var i=0;i<n.length;i+=1){var o=n[i];if(!o.__calling)try{o.__calling=!0,o.call(this,e)}finally{o.__calling=!1}}}function on(t,e){var n=this._handlers[t]||(this._handlers[t]=[]);return n.push(e),{cancel:function(){var t=n.indexOf(e);~t&&n.splice(t,1)}}}function set(t){this._set(assign({},t)),this.root._lock||flush(this.root)}function _set(t){var e=this._state,n={},i=!1;for(var o in t=assign(this._staged,t),this._staged={},t)this._differs(t[o],e[o])&&(n[o]=i=!0);i&&(this._state=assign(assign({},e),t),this._recompute(n,this._state),this._bind&&this._bind(n,this._state),this._fragment&&(this.fire("state",{changed:n,current:this._state,previous:e}),this._fragment.p(n,this._state),this.fire("update",{changed:n,current:this._state,previous:e})))}function _stage(t){assign(this._staged,t)}function _mount(t,e){this._fragment[this._fragment.i?"i":"m"](t,e||null)}function _differs(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function noop(){}function blankObject(){return Object.create(null)}function callAll(t){for(;t&&t.length;)t.shift()()}assign(PNotifyConfirm.prototype,{destroy:destroy,get:get,fire:fire,on:on,set:set,_set:_set,_stage:_stage,_mount:_mount,_differs:_differs}),assign(PNotifyConfirm.prototype,methods),PNotifyConfirm.prototype._recompute=noop,setup(PNotifyConfirm);/* harmony default export */ __webpack_exports__["default"] = (PNotifyConfirm);
-//# sourceMappingURL=PNotifyConfirm.js.map
+            var o = Object(this);
+
+            // 2. Let len be ? ToLength(? Get(O, "length")).
+            var len = o.length >>> 0;
+
+            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+
+            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+            var thisArg = arguments[1];
+
+            // 5. Let k be 0.
+            var k = 0;
+
+            // 6. Repeat, while k < len
+            while (k < len) {
+                // a. Let Pk be ! ToString(k).
+                // b. Let kValue be ? Get(O, Pk).
+                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                // d. If testResult is true, return kValue.
+                var kValue = o[k];
+                if (predicate.call(thisArg, kValue, k, o)) {
+                    return kValue;
+                }
+                // e. Increase k by 1.
+                k++;
+            }
+
+            // 7. Return undefined.
+            return undefined;
+        },
+        configurable: true,
+        writable: true
+    });
+}
+
+if (typeof Object.assign != 'function') {
+    // Must be writable: true, enumerable: false, configurable: true
+    Object.defineProperty(Object, "assign", {
+        value: function assign(target, varArgs) {
+            // .length of function is 2
+            'use strict';
+
+            if (target == null) {
+                // TypeError if undefined or null
+                throw new TypeError('Cannot convert undefined or null to object');
+            }
+
+            var to = Object(target);
+
+            for (var index = 1; index < arguments.length; index++) {
+                var nextSource = arguments[index];
+
+                if (nextSource != null) {
+                    // Skip over if undefined or null
+                    for (var nextKey in nextSource) {
+                        // Avoid bugs when hasOwnProperty is shadowed
+                        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                            to[nextKey] = nextSource[nextKey];
+                        }
+                    }
+                }
+            }
+            return to;
+        },
+        writable: true,
+        configurable: true
+    });
+}
 
 /***/ })
 

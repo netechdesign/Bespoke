@@ -7,6 +7,8 @@ use App\Models\Vehicle_mileas;
 use App\Models\Utilita_job;
 use App\Models\SheetDupdatas;
 use App\Models\Engineers;
+use App\Models\Sms_job;
+use App\Models\Engineer_group;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use DB;
@@ -52,8 +54,130 @@ class ImportJobs implements WithMultipleSheets
                 'Yesterday' => new FirstSheetImport(),
                ];
         }
+        else if(request()->file_id==5){
+            return [
+                0 => new SmsSheetImport(),
+               ];
+        }
 
     }
+}
+
+class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
+
+    public function onUnknownSheet($sheetName)
+    {
+        // E.g. you can log that a sheet was not found.
+        info("Sheet {$sheetName} was skipped");
+    }
+    public function model(array $row)
+        {
+            
+                $schedule_date_fm = $this->transformDate($row['appointment_date']);
+                $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $schedule_date_fm)));
+
+                
+                $w = date("w", strtotime($schedule_date));
+                $n= 7- $w;
+                $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$n.' day'));
+              //  $day_no = date("W", strtotime($schedule_date));
+                $week_no = $this->getWeeks($schedule_date, "sunday");
+                $weekday = date('l',strtotime($schedule_date));
+                $month = '01'.date('-M-y',strtotime($schedule_date));
+                $engineers =Engineers::where('engineer_name', '=', $row['engineer']);
+                $is_in_team	=0;
+            if ($engineers->count() ==0) {
+                            
+                $engineers = new Engineers(["engineer_id"=> '0',"engineer_name" => $row['engineer'],'file_id'=>5]);
+                $engineers->save();
+                $engineers->engineer_id= $engineers->id;
+                $engineers->save();
+                $engineer_id= $engineers->id;
+                $is_in_team	=0;
+                //["engineer_id" => $row['engineer_id'];
+            }else{
+                $engineers= $engineers->first();
+                $engineer_id = $engineers->engineer_id;
+                $engineer_group =Engineer_group::where('child_engineer_id',$engineer_id)->first();
+                if($engineer_group){
+                    $is_in_team	=1;
+                }
+                
+            }  
+            
+            return new Sms_job([
+                "sheets_id" =>request()->sheets_id,
+                "month"=> $month,
+                "week_no"=>$week_no,
+                "week_day"=> $weekday,
+                "week_date"=>  $sunday_date,
+                "engineer_id" =>$engineer_id,
+                "engineer" =>$row['engineer'],
+                "is_in_team" => $is_in_team,
+                "job_reference" =>$row['job_reference'],
+                "energy_supplier" =>$row['energy_supplier'],
+                "address" =>$row['address'],
+                "town" =>$row['town'],
+                "post_code" =>$row['post_code'],
+                "work_type" =>$row['work_type'],
+                "select_work_type" =>$row['please_select_work_type'],
+                "meter_type" =>$row['meter_type'],
+                "appointment_date" =>$schedule_date,
+                "time_slot" => $row['time_slot'],
+                "arrived_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['arrived_at'])))),
+                "status" =>$row['status'],
+                "abort_code" =>$row['abort_code'],
+                "abort_comments" =>$row['abort_comments'],
+                "job_comments" =>$row['job_comments'],
+                "time_slot_start" => date('H:i:s', strtotime($this->transformTime($row['time_slot_start']))),
+                "time_slot_end" =>date('H:i:s', strtotime($this->transformTime($row['time_slot_end']))),
+                "completed_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['completed_at'])))),
+                "aborted_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['aborted_at'])))),
+                "client" =>$row['client'],
+                "reason_for_abort" =>$row['reason_for_abort'],
+                'created_by' => request()->created_by
+            ]);
+                
+        }
+        public function getWeeks($date, $rollover)
+    {
+        $cut = substr($date, 0, 8);
+        $daylen = 86400;
+
+        $timestamp = strtotime($date);
+        $first = strtotime($cut . "00");
+        $elapsed = ($timestamp - $first) / $daylen;
+
+        $weeks = 1;
+
+        for ($i = 1; $i <= $elapsed; $i++)
+        {
+            $dayfind = $cut . (strlen($i) < 2 ? '0' . $i : $i);
+            $daytimestamp = strtotime($dayfind);
+
+            $day = strtolower(date("l", $daytimestamp));
+
+            if($day == strtolower($rollover))  $weeks ++;
+        }
+
+        return $weeks;
+    }
+        public function transformDate($value, $format = 'Y-m-d')
+        {
+            try {
+                return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+            } catch (\ErrorException $e) {
+                return \Carbon\Carbon::createFromFormat($format, $value);
+            }
+        }
+        public function transformTime($value, $format = 'H:i')
+        {
+            try {
+                return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+            } catch (\ErrorException $e) {
+                return \Carbon\Carbon::createFromFormat($format, $value);
+            }
+        }
 }
 
 class FirstSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets

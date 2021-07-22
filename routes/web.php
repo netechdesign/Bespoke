@@ -97,9 +97,49 @@ Route::group(array('prefix' => '/'), function() {
    Route::get('/vehicle', function(){
       return view('welcome');
    });
-     Route::get('/export', 'Admin\MdsController@export');
 
-    
+   Route::get('/team/add', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/team', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/employee_lookup', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/job_lookup', function(){
+      return view('welcome');
+   });
+   Route::get('/job_lookup/add', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/time_lookup', function(){
+      return view('welcome');
+   });
+   
+   Route::get('/bonus_period/add', function(){
+      return view('welcome');
+   });
+   Route::get('/performance', function(){
+      return view('welcome');
+   });
+   Route::get('/bonus-periods', function(){
+      return view('welcome');
+   });
+   Route::get('/work-mix', function(){
+      return view('welcome');
+   });
+   
+     Route::get('/export', 'Admin\MdsController@export');
+     Route::get('/sms/export', 'Admin\Sms_report@export');
+     Route::get('/bonus_periods/export', 'Admin\Bonus_periodsController@export');
+     Route::get('/sms/workmixexport', 'Admin\Sms_report@workmixexport');
+     
+
     
     });
 

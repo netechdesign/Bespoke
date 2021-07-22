@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Engineers;
 use App\Models\Engineer_group;
-
+use App\Models\Sms_job;
 use DB;
 class AreamanagerController extends Controller
 {
@@ -29,6 +29,21 @@ class AreamanagerController extends Controller
         }
     }
 
+    public function manager_list(Request $request)
+    {
+        try {
+            $manager = Engineer_group::select(DB::raw('parent_engineer_id as value'),DB::raw('parent_engineer as label'))->groupBy('parent_engineer_id')->get();
+
+            $regions = DB::table('regions')->select(DB::raw('id as value'),DB::raw('name as label'),'sort_name')->get();
+            return response()->json(array('success' => true,'manager' => json_decode($manager),'region'=>json_decode($regions)), 200);
+        }
+        catch (exception $e) {
+            return response()->json([
+                'response' => 'error',
+                'message' => $e,
+            ]);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -63,10 +78,25 @@ class AreamanagerController extends Controller
                     $is_available= DB::table('engineer_groups')->where('child_engineer_id',$vl->value);
                    if($is_available->count()==0){
                         $insret_id = DB::table('engineer_groups')->insertGetId(['parent_engineer_id' =>$SiteEngineer->value,'parent_engineer' => $SiteEngineer->label, 'child_engineer_id' => $vl->value, 'child_engineer_name' => $vl->label]);
+                        if(isset($request['is_sms'])){
+                            
+                            $engineer_lookup = DB::table('teams')->where('engineer_id',$SiteEngineer->value)->first();
+                                if($engineer_lookup)
+                                {
+                                DB::table('engineer_lookups')->insertGetId(['engineer_id'=>$vl->value,'employee_name'=>$vl->label,'team_id'=> $engineer_lookup->id,'regions_sort_name' =>$engineer_lookup->regions_sort_name,'perfomance_level'=>'6','cost'=>'240.00','Monday'=>'Yes','Tuesday'=>'Yes','Wednesday'=>'Yes','Thursday'=>'Yes','Friday'=>'Yes']);
+
+                                }
+
+                            $values = Sms_job::where('engineer_id', $vl->value)->update(['is_in_team'=>1]);
+
+                        }
                    }else{
+                    
                     $is_available  = $is_available->first();
                     $available.= $is_available->child_engineer_name.' is in '.$is_available->parent_engineer.',';
                    }
+
+                   
 
 
 
@@ -213,4 +243,72 @@ class AreamanagerController extends Controller
              ]);
          }
     }
+    public function sms_engineer(Request $request)
+    {
+        //
+        if(!$request->ajax()){
+            view('error_handler', compact('exception'));
+          } 
+          else{
+          
+            try {
+                
+                $totalCol = $request->input('iColumns');
+               
+                
+                $columns = explode(',', $request->input('columns'));
+                $start = $request->input('iDisplayStart');
+                $page_length = $request->input('iDisplayLength');
+                
+                $jobsrow = Sms_job::select("*")->where(function($query) use ($request){
+                    $search = $request->input('sSearch');
+                  if($request->input('sheets_id')!=''){
+                  //  $query->where('sheets_id','=',$request->input('sheets_id'));
+                   }
+                   
+                   $query->where('is_in_team', 0)->where('engineer','!=','');
+                   if($search!=''){
+                       
+                    $query->Where('engineer_id', 'LIKE', "%{$search}%");
+                    $query->orWhere('engineer_name', 'LIKE', "%{$search}%");
+                    
+                    
+                    
+                   } 
+                   
+                })->offset($start);
+                $jobs = $jobsrow->orderBy('id', 'DESC')->limit($page_length)->get();
+                $totalRecords = Sms_job::select("*")->where(function($query) use ($request){
+                    $search = $request->input('sSearch');
+                  if($request->input('sheets_id')!=''){
+                  //  $query->where('sheets_id','=',$request->input('sheets_id'));
+                   }
+                   $query->where('is_in_team', '0')->where('engineer','!=','');
+                   if($search!=''){
+                        $query->Where('engineer_id', 'LIKE', "%{$search}%");
+                        $query->orWhere('engineer_name', 'LIKE', "%{$search}%");
+            
+                   } 
+                   
+                })->count();
+                
+                $response = array(
+                "aaData" => $jobs,
+                "iTotalDisplayRecords" => $totalRecords,
+                "iTotalRecords" => $totalRecords,
+                "sColumns" => $request->input('sColumns'),
+                "sEcho" => $request->input('sEcho'),
+            );
+               
+                return response()->json($response, 201);
+            }
+            catch (exception $e) {
+                return response()->json([
+                    'response' => 'error',
+                    'message' => $e,
+                ]);
+            }
+          }
+    }
+
 }

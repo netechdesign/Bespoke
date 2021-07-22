@@ -44,7 +44,24 @@ const DashboardCrm = React.lazy(() => import('./Demo/Dashboard/Crm'));
 const DashboardAnalytics = React.lazy(() => import('./Demo/Dashboard/Analytics'));
 const DashboardCrypto = React.lazy(() => import('./Demo/Dashboard/Crypto'));
 const DashboardProject = React.lazy(() => import('./Demo/Dashboard/Project'));
-
+//Team
+const TeamAdd = React.lazy(() => import("./Back-Office/Team/add"));
+const TeamList = React.lazy(() => import("./Back-Office/Team"));
+const Engineer_lookup = React.lazy(() => import("./Back-Office/Engineer_lookup"));
+const Engineer_lookup_add = React.lazy(() => import("./Back-Office/Engineer_lookup/add"));
+const Employee_lookup_edit = React.lazy(() => import("./Back-Office/Engineer_lookup/edit"));
+//Job look_up
+const Job_lookup = React.lazy(() => import("./Back-Office/Job_lookup"));
+const Job_lookup_add = React.lazy(() => import("./Back-Office/Job_lookup/add"));
+ const Job_lookup_edit = React.lazy(() => import("./Back-Office/Job_lookup/edit"));
+ const Time_lookup = React.lazy(() => import('./Back-Office/Pages/Time_lookup'));
+ //Bonus_period_lookup
+ const Bonus_period_add = React.lazy(() => import("./Back-Office/Bonus_period_lookup/add"));
+ //report
+ const Performance = React.lazy(() => import('./Back-Office/Sms_report/Performance'));
+ const Workmix = React.lazy(() => import('./Back-Office/Sms_report/Workmix'));
+ const Bonus_periods = React.lazy(() => import('./Back-Office/Sms_report/Bonus_periods'));
+ 
 const routes = [
     { path: '/dataimport', exact: true, name: 'DataImport', component: DataImport },
     { path: '/dailyperformance/:sheet_id', exact: true, name: 'DataImport', component: DailyPerformance_import },
@@ -82,7 +99,21 @@ const routes = [
     { path: '/dashboard/analytics', exact: true, name: 'Analytics', component: DashboardAnalytics },
     { path: '/dashboard/crypto', exact: true, name: 'Crypto', component: DashboardCrypto },
     { path: '/dashboard/project', exact: true, name: 'Project', component: DashboardProject },
-   
+    { path:'/team/add', exact:true, name:'teamadd',component:TeamAdd},
+    {path:'/team',exact:true,name:'teamlist',component:TeamList},
+    {path:'/employee_lookup',exact:true,name:'teamlist',component:Engineer_lookup},
+    {path:'/employee_lookup/add',exact:true,name:'teamlist',component:Engineer_lookup_add},
+    { path:'/employee_lookup/edit/:id', exact:true, name:'employee_lookup',component:Employee_lookup_edit},
+    //Job_lookup_add
+    {path:'/job_lookup',exact:true,name:'job_lookup',component:Job_lookup},
+    {path:'/job_lookup/add',exact:true,name:'job_lookup',component:Job_lookup_add},
+    { path:'/job_lookup/edit/:id', exact:true, name:'job_lookup',component:Job_lookup_edit},
+    { path: '/time_lookup', exact: true, name: 'Engineer', component: Time_lookup},
+    {path:'/bonus_period/add',exact:true,name:'job_lookup',component:Bonus_period_add},
+    { path: '/performance', exact: true, name: 'Engineer', component: Performance},
+    { path: '/bonus-periods', exact: true, name: 'Engineer', component: Bonus_periods},
+    { path: '/work-mix', exact: true, name: 'Engineer', component: Workmix},
+    
   ];
 
 export default routes;

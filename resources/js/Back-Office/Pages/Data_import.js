@@ -7,13 +7,150 @@ import axios from 'axios'
 import {Importfile} from '../../HttpFunctions'; 
 import Aux from "../../hoc/_Aux";
 import Swal from 'sweetalert2';
+import Select from 'react-select';
 import withReactContent from 'sweetalert2-react-content';
-
 import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
 import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
 import {CheckPermission} from '../../HttpFunctions'; 
+import { extend } from 'jquery';
+import $ from 'jquery';
+import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
+window.jQuery = $;
+window.$ = $;
+global.jQuery = $;
+
+// create engineer attach to manager
+$.DataTable = require( 'datatables.net-bs' );
+require( 'jszip' );
+//require('pdfmake/build/pdfmake.js');
+//require('pdfmake/build/vfs_fonts.js');
+require( 'datatables.net-autofill' );
+require( 'datatables.net-buttons-bs' );
+require( 'datatables.net-buttons/js/buttons.colVis.js' );
+require( 'datatables.net-buttons/js/buttons.flash.js' );
+require( 'datatables.net-buttons/js/buttons.html5.js' );
+require( 'datatables.net-buttons/js/buttons.print.js' );
+require( 'datatables.net-colreorder' );
+require( 'datatables.net-keytable' );
+require( 'datatables.net-responsive-bs' );
+require( 'datatables.net-rowgroup' );
+require( 'datatables.net-rowreorder' );
+require( 'datatables.net-scroller' );
+require( 'datatables.net-select' );
+require( 'datatables.net-fixedcolumns' );
+require( 'datatables.net-fixedheader' );
+
+
+const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+const baseurl= window.location.origin;
+
+var oTable="";
+
+function atable() {
+  
+    
+    let tableResponsive = '#data-table-responsive';
+
+oTable = $(tableResponsive).DataTable({
+    "bStateSave": true,
+    "processing": true,
+    "bPaginate": true,
+    "serverSide": true,
+    "bProcessing": true,
+    "iDisplayLength": 10,
+    "bServerSide": true,
+    "sAjaxSource": window.location.origin+'/api/sms_engineer',
+    'bPaginate': true,
+    "fnServerParams": function (aoData) {
+
+        var acolumns = this.fnSettings().aoColumns,
+            columns = [];
+
+        $.each(acolumns, function (i, item) {
+            columns.push(item.data);
+        })
+        aoData.push({name: 'columns', value: columns});
+
+          /*  if($('#status').val()!='') {
+                aoData.push({name: 'is_active', value: $('#status').val()});
+            }
+          */  
+        },
+
+    "columns": [  
+        {"data": "engineer_id"},
+        {"data":"engineer"},
+        
+    ],
+    responsive: {
+        responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                type: ''
+            }
+        }
+    },
+    "order": [[0, "desc"]],
+    "lengthMenu": [
+        [10, 25, 50, 100],
+        [10, 25, 50, 100]
+    ],
+    "oLanguage": {
+        "sLengthMenu": "_MENU_",
+        "oPaginate": {
+            "sNext": '<span aria-hidden="true">»</span>',
+            "sPrevious": '<span aria-hidden="true">«</span>'
+        },
+       // sProcessing: "<img width='33px' src='"+BASE_URL+"assets/layouts/layout/img/ajax-loading.gif'>"
+
+    },
+    "fnInitComplete": function () {
+//oTable.fnAdjustColumnSizing();
+    },
+    'fnServerData': function (sSource, aoData, fnCallback) {
+
+        $.ajax
+        ({
+            'dataType': 'json',
+            'type': 'GET',
+            'url': sSource,
+            'data': aoData,
+            "iDisplayLength": 10,
+            "bPaginate": true,
+            'headers': { Authorization: `Bearer `+auth_token },
+            'success': fnCallback
+        });
+    },
+    "fnDrawCallback": function () {
+        $('body').css('min-height', ($('#data-table-responsive tr').length * 50) + 200);
+        $(window).trigger('resize');
+      
+    },
+    "columnDefs": [
+        {
+            "render": function (data, type, row) {
+              
+                var str_buttons = '<div class="form-check"><input type="checkbox" data-id="'+row.engineer_id+'" data-value="'+row.engineer+'" id="formBasicChecbox" class="engineerSelect form-check-input"></div>';
+                return [
+                    str_buttons,
+                ].join('');
+               
+            },
+            "targets": $('#data-table-responsive th#action').index(),
+            "orderable": false,
+            "searchable": false
+        }, 
+        {
+            "targets": 0,
+            "orderable": false
+        }
+    ]
+});
+   
+}
+
 class Data_import extends React.Component {
     state = {
         validated: false,
@@ -34,12 +171,59 @@ class Data_import extends React.Component {
         duplicate_data:[{visible:'none'}],
         progress:0,
         Daily_Performance:false, 
-        Daily_PerformanceHide:'none'
+        Daily_PerformanceHide:'none',
+        Engineers:[],
+        engineerSelect:[],
+        SiteEngineer:[],
+        AreabuttonName:'Add',
+        showsmsengineer:false
     };
     componentDidMount() {
         const { match, location, history } = this.props;
         CheckPermission('File','Data Import',history);
+        axios.get(baseurl+'/api/areamanager',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+            
+            this.setState({Engineers:res.data}); 
+            
+            }); 
+            
         
+        let self = this;
+        atable();
+        $('#data-table-responsive tbody').on('click', '.engineerSelect', function () {
+            var id =  $(this).attr('data-id');
+            var engineer = $(this).attr('data-value');
+            var array ={'label':engineer,'value':id};
+            // array['label']=engineer;
+            // array['value']=id;
+            
+            var checked = $(this).is(":checked");
+                        if(checked){
+                            let check_vl = self.state.engineerSelect.filter((vl,inx)=>{
+                                
+                            return vl.value==id;
+                            });
+                            console.log(check_vl);
+                            if(check_vl.length==0)
+                            {
+                            self.setState(previousState => ({engineerSelect: [...previousState.engineerSelect, array]}));
+                             }
+                        }else{
+                            var array = [...self.state.engineerSelect]; // make a separate copy of the array
+                            //var index = array.indexOf(id)
+                            let index = self.state.engineerSelect.filter((vl,inx)=>{
+                                if(vl.value==id){
+                                     return inx;
+                                }
+                                });
+                            if (index !== -1) {
+                              array.splice(index, 1);
+                              self.setState({engineerSelect: array});
+                            }
+                        }
+                    
+            
+        });
         
         
     }
@@ -167,6 +351,7 @@ class Data_import extends React.Component {
         });
         
     }
+    
     handleSubmit = (e, formData, inputs) => {
         e.preventDefault();
         const baseurl= window.location.origin;
@@ -195,7 +380,10 @@ class Data_import extends React.Component {
         ).then(res =>{
                           if(res.data.success){
                              // console.log(res.data.data);
-                             
+                             if(this.state.file_id==5){
+                                oTable.draw();
+                                this.setState({showsmsengineer:true});
+                             }
                              this.setState({formSubmitting:false});
                              this.setState({buttonName:'Import'});
                              this.setState({selectedFile:null});
@@ -269,7 +457,95 @@ class Data_import extends React.Component {
         }
     }
 
+    checkAll = ()=>{
+         $('.engineerSelect').trigger('click'); 
+         if(!$('#allselect').is(':checked')){
+            this.setState({engineerSelect: []});
+        }
+    }
+
+    ManagerSubmit = (e, formData, inputs) => {
+        
+        e.preventDefault();
+        const { match, location, history } = this.props;
+        const Permission = CheckPermission('areamanager','add',history,false);
+      if(Permission==1){
+        return false;
+      }
+        const baseurl= window.location.origin;
+        this.setState({formSubmitting:true});
+        this.setState({AreabuttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />sending</span>});
+        const data = new FormData()
+        data.append('SiteEngineer', JSON.stringify(this.state.SiteEngineer));
+        
+        data.append('Engineer', JSON.stringify(this.state.engineerSelect));
+        data.append('is_sms', 1);
+        const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        axios.post(
+            baseurl+'/api/areamanager',
+            data,
+            {
+                headers:{'Authorization':'Bearer '+auth_token}
+            } 
+        ).then(res =>{
+                          if(res.data.success){
+                             // console.log(res.data.data);
+                             
+                             this.setState({formSubmitting:false});
+                             this.setState({AreabuttonName:'Add'});
+                             this.setState({selectedFile:null});
+                             this.setState({engineerSelect:[]});
+                             $('#allselect').attr('checked',false);
+                             
+
+                             
+                            /*console.clear(); */
+                            //this.setState({progress:100});
+                            oTable.draw();
+                            PNotify.success({
+                                title: 'Success',
+                                text: res.data.message,
+                                modules: {
+                                    Desktop: {
+                                        desktop: true
+                                    }
+                                }
+                            }).on('click', function(e) {
+                                
+                            });
+                          }else{
+                            oTable.draw();
+                            $('#avatar').val('');
+                            PNotify.error({
+                                title: "System Error",
+                                text:res.data.message,
+                            });
+                            this.setState({formSubmitting:false});
+                             this.setState({AreabuttonName:'Add'});
+                            this.setState({selectedFile:null});
+                          }
+                     }
+          )
+          .catch(err =>{
+                    PNotify.error({
+                        title: "System Error",
+                        text:err,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Add'});
+                    this.setState({selectedFile:null});
+                          console.log(err);
+                      }
+          )
+       
+       
+    };
     
+    SiteEngineerchange =(e)=>{
+        let self= this;
+        setTimeout(function(){  self.setState({SiteEngineer:e});}, 500);
+       
+    }
     render() {
         const { validated, validatedTooltip } = this.state;
        
@@ -296,6 +572,7 @@ class Data_import extends React.Component {
                                                     <Radio.RadioItem id="radio4" label="Morrison Data services" value="1" />
                                                     <Radio.RadioItem id="radio5" label="Utilita" value="2" />
                                                     <Radio.RadioItem id="radio6" label="Vehicle Mileage" value="3" />
+                                                    <Radio.RadioItem id="radio7" label="SMS" value="5" />
                                                 </Radio.RadioGroup>
                                             </div>
                                             <div style={{'display':this.state.Daily_PerformanceHide}}>
@@ -387,6 +664,56 @@ class Data_import extends React.Component {
                     
                 </Row>
                 
+                <Row style={{display:(this.state.showsmsengineer?'':'none')}}>
+                    <Col>
+                      <Card>
+                        <Card.Header>
+                        {(this.state.engineerSelect.length>0?<ValidationForm  onSubmit={this.ManagerSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                                <Form.Row>
+                                    <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="SiteEngineer">Area Manager</Form.Label>
+                                    <Select required onChange={this.SiteEngineerchange}
+                                            className="basic-single"
+                                            classNamePrefix="select"
+                                            name="SiteEngineer"
+                                            options={this.state.Engineers}
+                                            placeholder="Select Area Manager"
+                                        />
+                                        </Form.Group>
+                                
+                                    <Form.Group as={Col} md="3" className="mt-3">
+                                            <Button style={{marginTop:'10px'}} disabled={this.state.formSubmitting}  type="submit"> {this.state.AreabuttonName}</Button>
+                                    </Form.Group>
+                                </Form.Row>
+                        </ValidationForm>
+                        :'')}
+                        </Card.Header>
+                        <Card.Body>
+                          
+                        <Table ref="tbl" striped hover responsive className="table table-condensed" id="data-table-responsive">
+                                    <thead>
+                                    <tr>
+                       <th width="5%" id="action">
+                       <Form.Check type="checkbox" label="" id="allselect"  onChange={this.checkAll} />
+                           </th>
+                                        <th id="parent_engineer">Engineer Name</th>
+                                        
+                                      </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                         <th id="action">Action</th>
+                                         <th id="parent_engineer">Engineer Name</th>
+                                         
+                                    </tr>
+                                    </tfoot>
+                                </Table>
+                           </Card.Body>
+                           </Card>
+                        
+                    </Col>
+                </Row> 
+              
             </Aux>
         );
     }

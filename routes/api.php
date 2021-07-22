@@ -39,6 +39,17 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('utilita', 'UtilitaController');
         Route::resource('areamanager', 'AreamanagerController');
         Route::resource('engineer', 'EngineerController');
+        Route::resource('team', 'TeamsController');
+        Route::resource('engineer_lookup', 'Engineer_lookupController');
+        Route::resource('job_lookup', 'Job_lookupController');
+        Route::resource('time_lookup', 'Time_lookupController');
+        Route::resource('bonus_periods', 'Bonus_periodsController');
+        
+        Route::post('team/check_sort_name', 'TeamsController@check_sort_name');
+        Route::get('sms_engineer', 'AreamanagerController@sms_engineer');
+        Route::get('manager_list', 'AreamanagerController@manager_list');
+        Route::get('dropdown_list', 'Engineer_lookupController@dropdown_list');
+        Route::get('joblookup/dropdown_list', 'Job_lookupController@dropdown_list');
         
         Route::resource('vehicalmileas', 'VehicalmileasController');
         

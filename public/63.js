@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[63],{
 
-/***/ "./resources/js/Demo/Widget/WdgtUsers.js":
-/*!***********************************************!*\
-  !*** ./resources/js/Demo/Widget/WdgtUsers.js ***!
-  \***********************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/MdsInstalls.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/MdsInstalls.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12,38 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _assets_images_widget_dashborad_1_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/images/widget/dashborad-1.jpg */ "./resources/js/assets/images/widget/dashborad-1.jpg");
-/* harmony import */ var _assets_images_widget_dashborad_1_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_dashborad_1_jpg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_images_widget_dashborad_2_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/images/widget/dashborad-2.jpg */ "./resources/js/assets/images/widget/dashborad-2.jpg");
-/* harmony import */ var _assets_images_widget_dashborad_2_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_dashborad_2_jpg__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _assets_images_widget_dashborad_3_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/images/widget/dashborad-3.jpg */ "./resources/js/assets/images/widget/dashborad-3.jpg");
-/* harmony import */ var _assets_images_widget_dashborad_3_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_dashborad_3_jpg__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _assets_images_widget_dashborad_4_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../assets/images/widget/dashborad-4.jpg */ "./resources/js/assets/images/widget/dashborad-4.jpg");
-/* harmony import */ var _assets_images_widget_dashborad_4_jpg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_dashborad_4_jpg__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _assets_images_widget_dashborad_5_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../assets/images/widget/dashborad-5.jpg */ "./resources/js/assets/images/widget/dashborad-5.jpg");
-/* harmony import */ var _assets_images_widget_dashborad_5_jpg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_dashborad_5_jpg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _assets_images_widget_emoticon_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/images/widget/emoticon.jpg */ "./resources/js/assets/images/widget/emoticon.jpg");
-/* harmony import */ var _assets_images_widget_emoticon_jpg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_emoticon_jpg__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../assets/images/user/avatar-1.jpg */ "./resources/js/assets/images/user/avatar-1.jpg");
-/* harmony import */ var _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../assets/images/user/avatar-2.jpg */ "./resources/js/assets/images/user/avatar-2.jpg");
-/* harmony import */ var _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../assets/images/user/avatar-3.jpg */ "./resources/js/assets/images/user/avatar-3.jpg");
-/* harmony import */ var _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _assets_images_widget_visa_background_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../assets/images/widget/visa-background.png */ "./resources/js/assets/images/widget/visa-background.png");
-/* harmony import */ var _assets_images_widget_visa_background_png__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_visa_background_png__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _assets_images_widget_visa_logo_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../assets/images/widget/visa-logo.png */ "./resources/js/assets/images/widget/visa-logo.png");
-/* harmony import */ var _assets_images_widget_visa_logo_png__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_visa_logo_png__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _assets_images_widget_master_background_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../assets/images/widget/master-background.png */ "./resources/js/assets/images/widget/master-background.png");
-/* harmony import */ var _assets_images_widget_master_background_png__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_master_background_png__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _assets_images_widget_master_logo_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../assets/images/widget/master-logo.png */ "./resources/js/assets/images/widget/master-logo.png");
-/* harmony import */ var _assets_images_widget_master_logo_png__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_master_logo_png__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _assets_images_widget_rupay_background_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../assets/images/widget/rupay-background.png */ "./resources/js/assets/images/widget/rupay-background.png");
-/* harmony import */ var _assets_images_widget_rupay_background_png__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_rupay_background_png__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _assets_images_widget_rupay_logo_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../assets/images/widget/rupay-logo.png */ "./resources/js/assets/images/widget/rupay-logo.png");
-/* harmony import */ var _assets_images_widget_rupay_logo_png__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_assets_images_widget_rupay_logo_png__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
+/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62,10 +35,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -73,779 +47,357 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+    id = _ref.id,
+    auth_token = _ref.auth_token;
 
+var baseurl = window.location.origin;
 
+var MdsInstalls = /*#__PURE__*/function (_React$Component) {
+  _inherits(MdsInstalls, _React$Component);
 
+  var _super = _createSuper(MdsInstalls);
 
+  function MdsInstalls(props) {
+    var _this;
 
+    _classCallCheck(this, MdsInstalls);
 
+    _this = _super.call(this, props);
 
+    _defineProperty(_assertThisInitialized(_this), "graphload", function () {
+      _this.setState({
+        titleText: _this.props.match.params.id
+      });
 
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + window.location.origin + '/images/ajax_loader_gray_512.gif"></img>';
+      document.getElementById("htmlcontaint").innerHTML = '';
+      document.getElementById("grandTotal").innerHTML = '';
 
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token;
 
+      var baseurl = window.location.origin;
+      var data = new FormData();
+      data.append('file_id', '1');
 
+      if (_this.props.match.params.id) {
+        data.append('report_for', _this.props.match.params.id);
+      } else {
+        data.append('report_for', 'day');
+      }
 
+      if (_this.props.match.params.status) {
+        data.append('job_status', _this.props.match.params.status);
+      } else {
+        data.append('job_status', 'Completed');
+      }
 
-var WdgtUsers = /*#__PURE__*/function (_React$Component) {
-  _inherits(WdgtUsers, _React$Component);
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/install', data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          var results = res.data.complate;
+          var target_data = res.data.target_data;
+          var grand_total = 0;
+          var grand_target = 0;
 
-  var _super = _createSuper(WdgtUsers);
+          var self = _assertThisInitialized(_this);
 
-  function WdgtUsers() {
-    _classCallCheck(this, WdgtUsers);
+          results.map(function (item, indx) {
+            var engineer_leader = Object.keys(item);
+            self.setState({
+              teamLeader: self.state.teamLeader.concat(engineer_leader)
+            });
+          }); //start
 
-    return _super.apply(this, arguments);
+          results.map(function (item, indx) {
+            var engineer_leader = Object.keys(item);
+            var endineer_data = item[engineer_leader];
+            var categories = endineer_data['engineer'];
+            var series_data = endineer_data['series'];
+            var options = {
+              series: series_data,
+              chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                toolbar: {
+                  show: false
+                },
+                events: {
+                  mounted: function mounted(chartContext, config) {
+                    setTimeout(function () {
+                      addAnnotations(config);
+                    });
+                  }
+                }
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: true
+                }
+              },
+              dataLabels: {
+                enabled: true
+              },
+              stroke: {
+                width: 1,
+                colors: ['#fff']
+              },
+              title: {
+                text: 'Team Leader - ' + engineer_leader,
+                offsetX: 0,
+                offsetY: 30,
+                style: {
+                  fontSize: '11px',
+                  fontWeight: 'normal',
+                  colors: ['#3fa0fc']
+                }
+              },
+              xaxis: {
+                categories: categories,
+                labels: {
+                  show: false
+                }
+              },
+              yaxis: {
+                title: {
+                  text: ''
+                }
+              },
+              tooltip: {
+                y: {
+                  formatter: function formatter(val) {
+                    return val + "";
+                  }
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              legend: {
+                position: 'bottom',
+                horizontalAlign: 'right',
+                offsetX: 40,
+                show: false
+              }
+            }; // condition for year  target
+
+            if (self.props.match.params.id == 'weektodate' || self.props.match.params.id == 'day') {
+              options.annotations = {
+                xaxis: [{
+                  x: target_data,
+                  borderColor: "#d8cb1b",
+                  borderWidth: 1,
+                  strokeDashArray: 0,
+                  offsetX: 0,
+                  offsetY: 0,
+                  label: {
+                    offsetY: -10,
+                    borderColor: "#d8cb1b",
+                    style: {
+                      color: "#fff",
+                      background: "#d8cb1b"
+                    },
+                    orientation: "horizontal",
+                    text: "Target " + target_data
+                  }
+                }]
+              };
+            }
+
+            var addAnnotations = function addAnnotations(config) {
+              var seriesTotals = config.globals.stackedSeriesTotals;
+              var isHorizontal = options.plotOptions.bar.horizontal; //  chart.clearAnnotations();
+
+              try {
+                categories.forEach(function (category, index) {
+                  chart.addPointAnnotation({
+                    y: isHorizontal ? calcHorizontalY(config, index) : seriesTotals[index],
+                    x: isHorizontal ? 0 : category,
+                    label: {
+                      text: "".concat(seriesTotals[index]),
+                      offsetY: 20,
+                      style: {
+                        color: "#fff",
+                        background: "#d8cb1b"
+                      }
+                    }
+                  }, false);
+
+                  if (isHorizontal) {//   adjustPointAnnotationXCoord(config, index);
+                  }
+                });
+              } catch (error) {
+                console.log("Add point annotation error: ".concat(error.message));
+              }
+            };
+
+            var calcHorizontalY = function calcHorizontalY(config, index) {
+              var catLength = categories.length;
+              var yRange = config.globals.yRange[0];
+              var minY = config.globals.minY;
+              var halfBarHeight = yRange / catLength / 2;
+              return minY + halfBarHeight + 2 * halfBarHeight * (catLength - 1 - index);
+            };
+
+            var adjustPointAnnotationXCoord = function adjustPointAnnotationXCoord(config, index) {
+              var gridWidth = config.globals.gridWidth;
+              var seriesTotal = config.globals.stackedSeriesTotals[index];
+              var minY = config.globals.minY;
+              var yRange = config.globals.yRange[0];
+              var xOffset = gridWidth * (seriesTotal + Math.abs(minY)) / yRange;
+              var circle = document.querySelector(".apexcharts-point-annotations circle:nth-of-type(".concat(index + 1, ")"));
+              var labelField = document.querySelector(".apexcharts-point-annotations rect:nth-of-type(".concat(index + 1));
+              var labelFieldXCoord = parseFloat(labelField.getAttribute("x"));
+              var text = document.querySelector(".apexcharts-point-annotations text:nth-of-type(".concat(index + 1));
+              labelField.setAttribute("x", gridWidth);
+              text.setAttribute("x", gridWidth);
+              circle.setAttribute("cx", gridWidth);
+            };
+
+            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_4___default.a(document.querySelector("#" + engineer_leader), options);
+            chart.render(); //target_data
+
+            var team_leader_total = 0;
+            var team_leader_target_total = 0;
+            series_data.map(function (vl, indx) {
+              if (vl['data']) {
+                vl['data'].map(function (v, indx) {
+                  team_leader_total = parseFloat(team_leader_total) + parseFloat(v);
+                  team_leader_target_total = parseFloat(team_leader_target_total) + parseFloat(target_data);
+                });
+              }
+            });
+            grand_total = parseFloat(grand_total) + parseFloat(team_leader_total);
+            grand_target = parseFloat(grand_target) + parseFloat(team_leader_target_total);
+            var total_text = '<div style="text-align: left !important;"><b style="margin: 0px 10px 0px 145px;color: #0e74bc;">Total = <span style="color: #05bb7b;">' + team_leader_total + '</span></b>';
+            total_text += '<b style="margin: 0px 10px 0px 56px;color: #0e74bc;">Target= <span style="color: #05bb7b;">' + team_leader_target_total + '</span></b></div>';
+            $("#" + engineer_leader).append(total_text); //end 
+          });
+          document.getElementById("requestLoder").innerHTML = '';
+          var grandTotal = '<b style="margin: 0px 10px 0px 0px;color: #0e74bc;">Total = <span style="color: #05bb7b;">' + grand_total + '</span></b>';
+          grandTotal += '<b style="margin: 0px 10px 0px 56px;color: #0e74bc;">Target= <span style="color: #05bb7b;">' + grand_target + '</span></b>';
+          document.getElementById("grandTotal").innerHTML = grandTotal;
+        } else {
+          document.getElementById("requestLoder").innerHTML = '';
+          document.getElementById("htmlcontaint").innerHTML = '<b>' + res.data.message + '</b>';
+        }
+      });
+      document.getElementById("monthtodateHtml").innerHTML = '';
+
+      if (_this.props.match.params.id == 'monthtodate') {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(baseurl + '/api/utilita/installtable', data, {
+          headers: {
+            'Authorization': 'Bearer ' + auth_token
+          }
+        }).then(function (res) {
+          document.getElementById("monthtodateHtml").innerHTML = res.data;
+        });
+      }
+    });
+
+    _this.state = {
+      titleText: '',
+      total: 0,
+      teamLeader: []
+    };
+    return _this;
   }
 
-  _createClass(WdgtUsers, [{
+  _createClass(MdsInstalls, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      console.log('tag', 'componentWillMount');
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.match.params.id != prevProps.match.params.id) {
+        this.graphload();
+      }
+
+      document.getElementById("fromto").innerHTML = ' ';
+
+      if (this.props.match.params.id == 'yeartodate') {
+        var d = new Date();
+        var monthName = d.toLocaleString("default", {
+          month: "long"
+        });
+        document.getElementById("fromto").innerHTML = 'From January To ' + monthName;
+      }
+
+      if (this.props.match.params.id == 'weektodate') {
+        document.getElementById("fromto").innerHTML = '(Job)';
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('tag', 'componentDidMount');
+      this.graphload();
+    } //
+
+  }, {
     key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        variant: "top",
-        src: _assets_images_widget_dashborad_1_jpg__WEBPACK_IMPORTED_MODULE_3___default.a
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dashboard UI Kit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "By Creative Studio Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row m-t-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6 p-r-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn btn-primary text-uppercase btn-block"
-      }, "add friend")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn text-uppercase border btn-block btn-outline-secondary"
-      }, "message")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        src: _assets_images_widget_dashborad_2_jpg__WEBPACK_IMPORTED_MODULE_4___default.a
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "m-t-35"
-      }, "Dashboard UI Kit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "By Creative Studio Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "border-top m-b-20 p-t-10 m-t-20"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "$5236.42"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "BUDGET")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "9 May 2017"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "DEADLINE")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        src: _assets_images_widget_dashborad_3_jpg__WEBPACK_IMPORTED_MODULE_5___default.a
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "m-t-35"
-      }, "Dashboard UI Kit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted d-block m-b-30"
-      }, "By Creative Studio Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "m-b-0"
-      }, "$2356.23 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "$3200.00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress m-t-10",
-        style: {
-          height: '7px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme",
-        role: "progressbar",
-        style: {
-          width: '69%'
-        },
-        "aria-valuenow": "69",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row m-t-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6 p-r-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn btn-primary  text-uppercase btn-block"
-      }, "add friend")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn text-uppercase border btn-block btn-outline-secondary"
-      }, "message")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "align-items-center justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: "auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        src: _assets_images_widget_dashborad_5_jpg__WEBPACK_IMPORTED_MODULE_7___default.a
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "m-t-35"
-      }, "Dashboard UI Kit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "m-b-0"
-      }, "$2356.23 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "$32")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress m-t-10",
-        style: {
-          height: '7px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme",
-        role: "progressbar",
-        style: {
-          width: '69%'
-        },
-        "aria-valuenow": "69",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "p-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "align-items-center justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: "auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        src: _assets_images_widget_dashborad_4_jpg__WEBPACK_IMPORTED_MODULE_6___default.a
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        className: "p-l-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "$59,48 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-caret-up text-c-green f-22 m-l-5"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "EARNINGS")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "align-items-center justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: "auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        src: _assets_images_widget_dashborad_5_jpg__WEBPACK_IMPORTED_MODULE_7___default.a
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "m-t-35"
-      }, "Dashboard UI Kit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "m-b-0"
-      }, "$2463.23 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "$64")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress m-t-10",
-        style: {
-          height: '7px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme2",
-        role: "progressbar",
-        style: {
-          width: '40%'
-        },
-        "aria-valuenow": "40",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "dashboard-kit"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dashboard UI Kit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "By Creative Studio Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        className: "mt-4",
-        width: "100%",
-        src: _assets_images_widget_dashborad_1_jpg__WEBPACK_IMPORTED_MODULE_3___default.a
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "design-image"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn bg-muted"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-plus f-14 mr-0"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        style: {
-          width: '40px'
-        },
-        src: _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_9___default.a,
-        alt: "chat-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        style: {
-          width: '40px'
-        },
-        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
-        alt: "chat-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        style: {
-          width: '40px'
-        },
-        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11___default.a,
-        alt: "chat-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "text-muted"
-      }, "+63"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
-        className: "borderless"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+    value: //
+    function render() {
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Post with emoticons"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, {
-        className: "text-muted d-block"
-      }, "May 12, 2017")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "post-emoticon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        width: "100%",
-        src: _assets_images_widget_emoticon_jpg__WEBPACK_IMPORTED_MODULE_8___default.a
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "m-r-25"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-smile-o f-26 text-c-green m-r-10"
-      }), "235"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "m-r-25"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-smile-o f-26 text-c-purple m-r-10"
-      }), "95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "m-r-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-smile-o f-26 text-c-red m-r-10"
-      }), "18"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "p-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-        src: _assets_images_widget_dashborad_2_jpg__WEBPACK_IMPORTED_MODULE_4___default.a
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ux-designer"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-plus f-14 mr-0"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Alma Christensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "UX Designer"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "theme-bg2 visa-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
-        className: "borderless"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5",
-        className: "text-white float-left"
-      }, "John Doe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets_images_widget_visa_logo_png__WEBPACK_IMPORTED_MODULE_13___default.a,
-        className: "img-fluid float-right",
-        alt: "card title"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "visa"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "f-w-600 text-white "
-      }, "VALID ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-w-300 m-l-10"
-      }, "05/17")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "f-w-300 text-white m-t-25 m-b-0"
-      }, "4883 2359 9932 3445"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-white"
-      }, "5346"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets_images_widget_visa_background_png__WEBPACK_IMPORTED_MODULE_12___default.a,
-        className: "img-fluid",
-        alt: "card back"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "theme-bg visa-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
-        className: "borderless"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5",
-        className: "text-white float-left"
-      }, "Villads Johansen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets_images_widget_master_logo_png__WEBPACK_IMPORTED_MODULE_15___default.a,
-        className: "img-fluid float-right",
-        alt: "card title"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "visa"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "f-w-600 text-white "
-      }, "NOT VALID ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-w-300 m-l-10"
-      }, "10/17")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "f-w-300 text-white m-t-25 m-b-0"
-      }, "5635 2489 8596 3445"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-white"
-      }, "1025"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets_images_widget_master_background_png__WEBPACK_IMPORTED_MODULE_14___default.a,
-        className: "img-fluid",
-        alt: "card back"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "bg-c-blue visa-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
-        className: "borderless"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5",
-        className: "text-white float-left"
-      }, "Silje Larsen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets_images_widget_rupay_logo_png__WEBPACK_IMPORTED_MODULE_17___default.a,
-        className: "img-fluid float-right",
-        alt: "card title"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "visa"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "f-w-600 text-white "
-      }, "VALID ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "f-w-300 m-l-10"
-      }, "09/18")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "f-w-300 text-white m-t-25 m-b-0"
-      }, "7895 2359 1534 6548"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-white"
-      }, "7852"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets_images_widget_rupay_background_png__WEBPACK_IMPORTED_MODULE_16___default.a,
-        className: "img-fluid",
-        alt: "card back"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "loction-user"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "p-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row align-items-center justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid rounded-circle",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        id: "grandTotal"
+      }), "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        id: "fromto",
         style: {
-          width: '80px'
-        },
-        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11___default.a,
-        alt: "dashboard-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Villads Johansen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-map-marker f-18 m-r-5"
-      }), " Berlin, Germany"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "border-top"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loction-progress"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "m-b-10"
-      }, "Twitter", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "Google +")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme2",
-        role: "progressbar",
-        style: {
-          width: '30%',
-          height: '10px'
-        },
-        "aria-valuenow": "30",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme",
-        role: "progressbar",
-        style: {
-          width: '30%',
-          height: '10px'
-        },
-        "aria-valuenow": "30",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "f-w-300 m-t-20  text-muted"
-      }, "62%", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "28%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "m-b-10 m-t-20"
-      }, "Facebook ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "Youtube")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme2",
-        role: "progressbar",
-        style: {
-          width: '40%',
-          height: '10px'
-        },
-        "aria-valuenow": "40",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme",
-        role: "progressbar",
-        style: {
-          width: '30%',
-          height: '10px'
-        },
-        "aria-valuenow": "30",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "f-w-300 m-t-20  text-muted"
-      }, "60%", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "40%")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-center m-b-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid rounded-circle",
-        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
-        alt: "dashboard-user"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "mt-3"
-      }, "Mille Jensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "d-block"
-      }, "Ninja Level 14")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: " m-b-0"
-      }, "754 Points ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right"
-      }, "1000")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress m-t-10",
-        style: {
-          height: '7px'
+          'color': 'black',
+          'position': 'absolute',
+          'top': '-37px',
+          'left': '250px'
         }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 12,
+        xl: 12
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar progress-c-theme",
-        role: "progressbar",
+        id: "requestLoder",
         style: {
-          width: '70%'
-        },
-        "aria-valuenow": "70",
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row m-t-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6 p-r-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn btn-primary text-uppercase btn-block"
-      }, "add friend")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn text-uppercase border btn-block btn-outline-secondary"
-      }, "message")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "user-designer"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Alma Christensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "d-block mb-4"
-      }, "UX Designer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid rounded-circle",
-        style: {
-          width: '70px'
-        },
-        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
-        alt: "dashboard-user"
+          'textAlign': 'center'
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row m-t-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4 col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "974"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "IMAGES")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4 col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "35.7k"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "LIKES")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4 col-12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "236"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "FOLLOW"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "designer m-t-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn btn-primary shadow-2 text-uppercase btn-block"
-      }, "add friend"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "Design-sprint theme-bg2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
-        className: "borderless"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
-        as: "h5",
-        className: "text-white"
-      }, "Project Design Sprint"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, {
-        className: "d-block f-w-300 text-white"
-      }, "11 MAY 10:35")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white f-w-300"
-      }, "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white f-w-300"
-      }, "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "design-image"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn bg-white"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-plus f-14 mr-0"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
+        id: "htmlcontaint",
         style: {
-          width: '40px'
-        },
-        src: _assets_images_user_avatar_1_jpg__WEBPACK_IMPORTED_MODULE_9___default.a,
-        alt: "chat-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
+          'textAlign': 'center'
+        }
+      }, this.state.teamLeader.map(function (item, indx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            'borderBottom': '2px solid #f1f1f1'
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: indx,
+          id: item
+        }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "monthtodateHtml",
         style: {
-          width: '40px'
-        },
-        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
-        alt: "chat-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        style: {
-          width: '40px'
-        },
-        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11___default.a,
-        alt: "chat-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "text-white"
-      }, "+63"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row align-items-center justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid rounded-circle",
-        style: {
-          width: '70px'
-        },
-        src: _assets_images_user_avatar_2_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
-        alt: "dashboard-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Alma Christensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "UX Designer"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "task-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "task-icon bg-c-green"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Anton Knudsen", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right text-muted"
-      }, "14 MAY")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted"
-      }, "Lorem ipsum is dolorem\u2026")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "task-icon bg-c-green"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Anton Knudsen", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right text-muted"
-      }, "14 MAY")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted"
-      }, "Lorem ipsum is dolorem\u2026")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "task-icon bg-c-green"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Anton Knudsen", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "float-right text-muted"
-      }, "14 MAY")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted"
-      }, "Lorem ipsum is dolorem\u2026")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: 6,
-        xl: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        className: "p-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-center project-main"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid rounded-circle",
-        src: _assets_images_user_avatar_3_jpg__WEBPACK_IMPORTED_MODULE_11___default.a,
-        alt: "dashboard-user"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "mt-4"
-      }, "Alma Christensen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "UX Designer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row m-t-30"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6 p-r-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn btn-primary  text-uppercase btn-block"
-      }, "add friend")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: _store_constant__WEBPACK_IMPORTED_MODULE_18__["default"].BLANK_LINK,
-        className: "btn text-uppercase border btn-block btn-outline-secondary"
-      }, "message")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "border-top"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-main"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4 col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "text-muted"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-star m-r-5"
-      }), " 4.8")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4 col-6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "text-muted"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-map-marker m-r-5"
-      }), "USA")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4 col-12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "text-muted m-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-file-text m-r-5"
-      }), " 28 Task")))))))));
+          'textAlign': 'center'
+        }
+      }))))));
     }
   }]);
 
-  return WdgtUsers;
+  return MdsInstalls;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (WdgtUsers);
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/dashborad-1.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/widget/dashborad-1.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/dashborad-1.jpg?fe78b2790b02331c0517ca76cae0a1e0";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/dashborad-2.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/widget/dashborad-2.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/dashborad-2.jpg?d44716556b9b737f6023aa40e54c2a00";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/dashborad-3.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/widget/dashborad-3.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/dashborad-3.jpg?ae4cc8c1517161784df667c451577f5a";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/dashborad-4.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/widget/dashborad-4.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/dashborad-4.jpg?064e738318950039c2b09d9f109ecd2c";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/dashborad-5.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/widget/dashborad-5.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/dashborad-5.jpg?fc29582a4a02827ca4a9a5c1d72d55cf";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/emoticon.jpg":
-/*!********************************************************!*\
-  !*** ./resources/js/assets/images/widget/emoticon.jpg ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/emoticon.jpg?dd8027d1eb99280fb7beb5c66f3cd2f1";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/master-background.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/assets/images/widget/master-background.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/master-background.png?6529258dd214904ae943aea97e8748ec";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/master-logo.png":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/widget/master-logo.png ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/master-logo.png?a279c03aa5689599fce1e4d43258a30b";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/rupay-background.png":
-/*!****************************************************************!*\
-  !*** ./resources/js/assets/images/widget/rupay-background.png ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/rupay-background.png?5f43a1c4b8ab36bf9af5be85b60b53ac";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/rupay-logo.png":
-/*!**********************************************************!*\
-  !*** ./resources/js/assets/images/widget/rupay-logo.png ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/rupay-logo.png?ab261d50fe947b52e9e898565c5e60bd";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/visa-background.png":
-/*!***************************************************************!*\
-  !*** ./resources/js/assets/images/widget/visa-background.png ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/visa-background.png?811ec31143fbf36e27ada996fa2a3978";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/widget/visa-logo.png":
-/*!*********************************************************!*\
-  !*** ./resources/js/assets/images/widget/visa-logo.png ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/visa-logo.png?af84b36e611cb51406e8df0c28759e84";
+/* harmony default export */ __webpack_exports__["default"] = (MdsInstalls);
 
 /***/ })
 

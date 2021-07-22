@@ -370,6 +370,73 @@ export default {
                            }
                     ]
                 },
+                //sms
+                {
+                    id: 'sms',
+                    title: 'SMS',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                           {  
+                            id: 'team',
+                            title: 'Team',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/team'
+                           },
+                           {  
+                            id: 'engineer_lookup',
+                            title: 'Employee Lookup',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/employee_lookup'
+                           },
+                           {  
+                            id: 'job_lookup',
+                            title: 'Job Lookup',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/job_lookup'
+                           },
+                           {  
+                            id: 'time_lookup',
+                            title: 'Time Lookup',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/time_lookup'
+                           },
+                           {  
+                            id: 'bonus_period',
+                            title: 'Bonus Period',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/bonus_period/add'
+                           },
+                           {  
+                            id: 'performance',
+                            title: 'Performance',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/performance'
+                           },
+                           {  
+                            id: 'bonus_periods',
+                            title: 'Bonus Periods',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/bonus-periods'
+                           },
+                           {  
+                            id: 'work-mix',
+                            title: 'Work Mix',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/work-mix'
+                           },
+                           
+                           
+                    ]
+                },
                 {
                     id: 'settarget',
                     title: 'Set Target',
