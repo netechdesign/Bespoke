@@ -33,10 +33,10 @@ class Workmix extends React.Component {
         let data={id:id,start_date:start_date,end_date:end_date,file_id:report_type.value};
         document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
-      axios.post(baseurl+'/api/utilita/view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+      axios.post(baseurl+'/api/workmix/report_view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
               
         document.getElementById("monday_view").innerHTML = res.data;
-
+$("#monday_view th").css("background","lightgray");
         this.setState({searching:false});
          //   this.setState({monday_view:res});
         }); 
@@ -171,7 +171,7 @@ class Workmix extends React.Component {
                             </ValidationForm>
                             </Card.Header>
                             <Card.Body>
-                            <div id="monday_view" style={{'textAlign': 'center'}}></div>
+                            <div id="monday_view" style={{'textAlign': 'center','color':'black'}}></div>
                             </Card.Body>
                         </Card>
                     </Col>

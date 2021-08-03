@@ -1,6 +1,7 @@
 
-<table>
+<table id="view_report" width="100%">
     <tbody>
+        <?php if(!isset($view)) {?>
          <tr>
             <td colspan="18" style="text-align: center;font-weight: bold;font-size:15px">Performance</td>
         </tr>
@@ -8,12 +9,13 @@
             <td colspan="2"><b>Date :</b>{{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['start_date'])))}} To {{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['end_date'])))}}</td>
             @if(isset($_REQUEST['work_completed']))<td colspan="3">
 
-                <b>Work Completed :</b>@if($_REQUEST['work_completed']=='all') All @elseif($_REQUEST['work_completed']=='in_hours') In Hours @else Out of Hours @endif</td>
+                <b>Work Completed :</b>@if($_REQUEST['work_completed']=='out_of_hours') Out of Hours  @elseif($_REQUEST['work_completed']=='in_hours') In Hours @else All @endif</td>
             @endif
         </tr> 
         <tr>
         <td colspan="2"><b>Reporting Date :</b>{{date('d-m-Y')}}</td>
-        </tr>       
+        </tr>
+       <?php } ?>        
         <tr>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Total Jobs</th>
@@ -44,20 +46,20 @@
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['open']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['cancelled']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['pu_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['pu']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus_pus'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus_pus_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus_pus']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['revenue'],2)}}</th> 
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['revenue_day'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['profit'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['profit_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['revenue']/$national['total_work_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-" >{{round($national['profit'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{round($national['profit']/$national['total_work_day'],2)}}</th>
 
         </tr>
         @endif
         <tr>
-            <td></td>
+            <td>&nbsp;</td>
         </tr>
         @foreach ($data as $ky => $regions)
         
@@ -80,6 +82,7 @@
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Profit/Day</th>
         </tr>
         <?php
+          $engineer_days=0;
           $total_job=0;
           $completed=0;
             $aborted=0;
@@ -99,7 +102,7 @@
             @foreach ($regions as $k=> $users)
               @if($k!='regions_engineer_total')
             <?php
-             
+          $engineer_days = $engineer_days+$users['working_day'];   
           $total_job = $total_job + $users['total_job'];
           $completed= $completed + $users['completed'];
           $aborted=$aborted + $users['aborted'];;
@@ -122,7 +125,7 @@
                 <td style="border: 1px solid #000000;">{{$users['completed']}}</td>
                 <td style="border: 1px solid #000000;text-align: right;">{{$users['completed_per']}}%</td>
                 <td style="border: 1px solid #000000;" >{{$users['aborted']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{$users['aborted_per']}}%</td>
+                <td style="border: 1px solid #000000;text-align: right;">@if(isset($users['aborted_per'])) {{$users['aborted_per']}} @else 0.00 @endif %</td>
                 <td style="width:10;border: 1px solid #000000;">{{$users['open']}}</td>
                 <td style="width:10;border: 1px solid #000000;">{{$users['cancelled']}}</td>
                 <td style="width:10;border: 1px solid #000000;">{{$users['pu']}}</td>
@@ -133,8 +136,8 @@
                 <td style="width:10;border: 1px solid #000000;">{{round($users['bonus_day'],2)}}</td>
                 <td style="width:10;border: 1px solid #000000;">{{round($users['revenue'],2)}}</td>
                 <td style="width:15;border: 1px solid #000000;">{{round($users['revenue_day'],2)}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{round($users['profit'],2)}}</td>
-                <td style="width:15;border: 1px solid #000000;">{{round($users['profit_day'],2)}}</td>
+                <td style="width:15;border: 1px solid #000000;" data-format="£#,##0.00_-">{{round($users['profit'],2)}}</td>
+                <td style="width:15;border: 1px solid #000000;" data-format="£#,##0.00_-">{{round($users['profit_day'],2)}}</td>
                 
             </tr>
             @endif
@@ -150,17 +153,17 @@
                 <td style="border: 1px solid #000000;font-weight: bold;">{{$open}}</td>
                 <td style="border: 1px solid #000000;font-weight: bold;">{{$cancelled}}</td>
                 <td style="border: 1px solid #000000;font-weight: bold;">{{$pu}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($pu_day,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;">{{round($pu/$engineer_days,2)}}</td>
                 <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus_pus,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus_pus_day,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus_pus/$engineer_days,2)}}</td>
                 <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus_day,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus/$engineer_days,2)}}</td>
                 <td style="border: 1px solid #000000;font-weight: bold;">{{round($revenue,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($revenue_day,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($profit,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($profit_day,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;">{{round($revenue/$engineer_days,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;" data-format="£#,##0.00_-">{{round($profit,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;" data-format="£#,##0.00_-">{{round($profit/$engineer_days,2)}}</td>
             </tr>
-            <tr><td></td></tr>
+            <tr><td>&nbsp;</td></tr>
         
         @endforeach 
     </tbody>

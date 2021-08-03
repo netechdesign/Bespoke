@@ -93,7 +93,8 @@ class MdsController extends Controller
           
                    // $validatedData = $Request->validate(['file' => 'mimes:csv|required']);
 
-                   
+                   ini_set('memory_limit', '-1');
+                   set_time_limit(0);
                    $user = JWTAuth::toUser($Request->input('token'));
                    
                    $Request->request->add(['created_by'=> $user->id]);

@@ -32,7 +32,7 @@ class AreamanagerController extends Controller
     public function manager_list(Request $request)
     {
         try {
-            $manager = Engineer_group::select(DB::raw('parent_engineer_id as value'),DB::raw('parent_engineer as label'))->groupBy('parent_engineer_id')->get();
+            $manager = Engineer_group::select(DB::raw('parent_engineer_id as value'),DB::raw('parent_engineer as label'))->groupBy('engineer_groups.parent_engineer_id')->get();
 
             $regions = DB::table('regions')->select(DB::raw('id as value'),DB::raw('name as label'),'sort_name')->get();
             return response()->json(array('success' => true,'manager' => json_decode($manager),'region'=>json_decode($regions)), 200);
@@ -81,14 +81,18 @@ class AreamanagerController extends Controller
                         if(isset($request['is_sms'])){
                             
                             $engineer_lookup = DB::table('teams')->where('engineer_id',$SiteEngineer->value)->first();
-                                if($engineer_lookup)
+                            $engineer = Engineers::where('engineer_id',$vl->value)->first();    
+                            if($engineer_lookup)
                                 {
+                                   
                                 DB::table('engineer_lookups')->insertGetId(['engineer_id'=>$vl->value,'employee_name'=>$vl->label,'team_id'=> $engineer_lookup->id,'regions_sort_name' =>$engineer_lookup->regions_sort_name,'perfomance_level'=>'6','cost'=>'240.00','Monday'=>'Yes','Tuesday'=>'Yes','Wednesday'=>'Yes','Thursday'=>'Yes','Friday'=>'Yes']);
 
                                 }
 
                             $values = Sms_job::where('engineer_id', $vl->value)->update(['is_in_team'=>1]);
 
+                        }else{
+                            
                         }
                    }else{
                     
@@ -270,14 +274,14 @@ class AreamanagerController extends Controller
                    if($search!=''){
                        
                     $query->Where('engineer_id', 'LIKE', "%{$search}%");
-                    $query->orWhere('engineer_name', 'LIKE', "%{$search}%");
+                    $query->orWhere('engineer', 'LIKE', "%{$search}%");
                     
                     
                     
                    } 
                    
                 })->offset($start);
-                $jobs = $jobsrow->orderBy('id', 'DESC')->limit($page_length)->get();
+                $jobs = $jobsrow->groupBy('engineer_id')->orderBy('engineer', 'ASC')->limit($page_length)->get();
                 $totalRecords = Sms_job::select("*")->where(function($query) use ($request){
                     $search = $request->input('sSearch');
                   if($request->input('sheets_id')!=''){
@@ -286,11 +290,11 @@ class AreamanagerController extends Controller
                    $query->where('is_in_team', '0')->where('engineer','!=','');
                    if($search!=''){
                         $query->Where('engineer_id', 'LIKE', "%{$search}%");
-                        $query->orWhere('engineer_name', 'LIKE', "%{$search}%");
+                        $query->orWhere('engineer', 'LIKE', "%{$search}%");
             
                    } 
                    
-                })->count();
+                })->groupBy('engineer_id')->count();
                 
                 $response = array(
                 "aaData" => $jobs,

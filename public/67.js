@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[67],{
 
-/***/ "./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/Back-office/Pages/Reports/Utilitafuelmix.js ***!
-  \******************************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/Mdsfuelmix.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/Mdsfuelmix.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,15 +53,15 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
 
 var baseurl = window.location.origin;
 
-var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
-  _inherits(Utilitafuelmix, _React$Component);
+var Mdsfuelmix = /*#__PURE__*/function (_React$Component) {
+  _inherits(Mdsfuelmix, _React$Component);
 
-  var _super = _createSuper(Utilitafuelmix);
+  var _super = _createSuper(Mdsfuelmix);
 
-  function Utilitafuelmix(props) {
+  function Mdsfuelmix(props) {
     var _this;
 
-    _classCallCheck(this, Utilitafuelmix);
+    _classCallCheck(this, Mdsfuelmix);
 
     _this = _super.call(this, props);
 
@@ -78,7 +78,7 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
 
       var baseurl = window.location.origin;
       var data = new FormData();
-      data.append('file_id', '2');
+      data.append('file_id', '1');
 
       if (_this.props.match.params.id) {
         data.append('report_for', _this.props.match.params.id);
@@ -105,7 +105,7 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Utilitafuelmix, [{
+  _createClass(Mdsfuelmix, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       console.log('tag', 'componentWillMount');
@@ -153,10 +153,10 @@ var Utilitafuelmix = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Utilitafuelmix;
+  return Mdsfuelmix;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Utilitafuelmix);
+/* harmony default export */ __webpack_exports__["default"] = (Mdsfuelmix);
 
 /***/ })
 

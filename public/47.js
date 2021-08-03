@@ -302,17 +302,16 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Sms_report/Performance.js":
-/*!************************************************************!*\
-  !*** ./resources/js/Back-Office/Sms_report/Performance.js ***!
-  \************************************************************/
-/*! exports provided: Work_Type, Work_Completed, default */
+/***/ "./resources/js/Back-Office/Pages/UtilitaList.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/UtilitaList.js ***!
+  \*******************************************************/
+/*! exports provided: Suppliers, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Work_Type", function() { return Work_Type; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Work_Completed", function() { return Work_Completed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Suppliers", function() { return Suppliers; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
@@ -365,36 +364,26 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
     auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
-var Work_Type = [{
-  value: 'all',
-  label: 'All'
+var Suppliers = [{
+  value: '1',
+  label: 'Morrison Data services'
 }, {
-  value: 'domestic',
-  label: 'Domestic'
+  value: '2',
+  label: 'Utilita'
 }, {
-  value: 'non_domestic',
-  label: 'Non Domestic'
-}];
-var Work_Completed = [{
-  value: 'all',
-  label: 'All'
-}, {
-  value: 'in_hours',
-  label: 'In Hours'
-}, {
-  value: 'out_of_hours',
-  label: 'Out of Hours'
+  value: '3',
+  label: 'Vehicle Mileage'
 }];
 
-var Performance = /*#__PURE__*/function (_React$Component) {
-  _inherits(Performance, _React$Component);
+var UtilitaList = /*#__PURE__*/function (_React$Component) {
+  _inherits(UtilitaList, _React$Component);
 
-  var _super = _createSuper(Performance);
+  var _super = _createSuper(UtilitaList);
 
-  function Performance(props) {
+  function UtilitaList(props) {
     var _this;
 
-    _classCallCheck(this, Performance);
+    _classCallCheck(this, UtilitaList);
 
     _this = _super.call(this, props);
 
@@ -491,44 +480,19 @@ var Performance = /*#__PURE__*/function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "job_type_list", function () {
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/joblookup/dropdown_list', {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            job_type_list: res.data.job_lookups
-          });
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "RegionChange", function (e) {
-      _this.setState({
-        job_type: e.value
-      });
-    });
-
     _this.state = {
       id: '',
-      job_type_list: [],
-      job_type: '',
       'report_type': '',
       start_date: '',
       end_date: '',
       searching: false,
-      baseurl: window.location.origin + '/sms/export',
+      baseurl: window.location.origin + '/export',
       btnhide: 'unset'
     };
     return _this;
   }
 
-  _createClass(Performance, [{
+  _createClass(UtilitaList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props2 = this.props,
@@ -540,14 +504,13 @@ var Performance = /*#__PURE__*/function (_React$Component) {
       this.setState({
         id: id
       });
-      this.job_type_list();
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
         as: "h5"
-      }, "Performance Report"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      }, "Report"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -562,6 +525,18 @@ var Performance = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
+        htmlFor: "type"
+      }, "Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.handleChange,
+        className: "basic-single",
+        classNamePrefix: "select",
+        name: "file_id",
+        options: Suppliers,
+        placeholder: "Select type"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
@@ -603,42 +578,6 @@ var Performance = /*#__PURE__*/function (_React$Component) {
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "type"
-      }, "Work Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.handleChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "work_completed",
-        options: Work_Completed,
-        placeholder: "Select type"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "firstName"
-      }, "Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.RegionChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "job_type",
-        options: this.state.job_type_list,
-        placeholder: "Select Job Type"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "type"
-      }, "Work Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.handleChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "file_id",
-        options: Work_Type,
-        placeholder: "Select type"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "primary",
@@ -650,6 +589,20 @@ var Performance = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "feather icon-search"
       }), "Search "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        className: "primary",
+        style: {
+          'marginTop': '27px'
+        },
+        as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
+        to: {
+          pathname: '/utilitachart',
+          state: {
+            detail: this.state
+          }
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-eye"
+      }), "View Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         type: "submit",
         style: {
           'marginTop': '27px',
@@ -667,10 +620,10 @@ var Performance = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Performance;
+  return UtilitaList;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Performance);
+/* harmony default export */ __webpack_exports__["default"] = (UtilitaList);
 
 /***/ }),
 

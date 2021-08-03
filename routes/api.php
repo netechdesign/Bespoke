@@ -57,6 +57,10 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::post('utilita/view', 'UtilitaController@view');
         Route::post('utilita/DailyPerformance', 'UtilitaController@DailyPerformance')->name('Daily Performance add');
         
+        Route::post('sms_report/performance_view', 'Sms_report@performance_view');
+        Route::post('bonus_periods/report_view', 'Bonus_periodsController@report_view');
+        Route::post('workmix/report_view', 'Sms_report@workmixexport_view');
+          
         Route::resource('role', 'RoleController');
         Route::get('roledropdown', 'RoleController@roledropdown');
         

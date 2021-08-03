@@ -268,12 +268,13 @@ class Data_import extends React.Component {
       
       validateSize=(event)=>{
       let file = event.target.files[0];
-      let size = 3000000;
+      let size = 1700000;
+                  
       let err = '';
       console.log(file.size);
       if (file.size > size) {
           
-       err = file.type+'is too large, please pick a smaller file\n';
+       err = file.type+' is too large, please pick a smaller file\n';
        alert(err);
      //  toast.error(err);
      }
@@ -375,7 +376,7 @@ class Data_import extends React.Component {
             baseurl+'/api/mds',
             data,
             {
-                headers:{'Authorization':'Bearer '+auth_token,'content-type': 'multipart/form-data'}
+                headers:{'Authorization':'Bearer '+auth_token,'content-type': 'multipart/form-data'},
             } 
         ).then(res =>{
                           if(res.data.success){

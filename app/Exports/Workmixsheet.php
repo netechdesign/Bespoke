@@ -165,12 +165,12 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                  //Completed per
                      
                         
-                         $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']/($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']))*100,2) ;
+                         $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
 
                        //  $national['completed_per'] = $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] + $national['completed_per'];
                      
                          if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['Single']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['Single']!=0){
-                         $team[$vl->teams_engineer_name][$vl->engineer_id]['Single_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['Single']/($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']))*100,2) ;
+                         $team[$vl->teams_engineer_name][$vl->engineer_id]['Single_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['Single']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
                          
                          
                          }else{
@@ -178,7 +178,7 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                          }
                    
                          if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['Dual']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['Dual']!=0){
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['Dual_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['Dual']/($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']))*100,2) ;
+                            $team[$vl->teams_engineer_name][$vl->engineer_id]['Dual_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['Dual']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
                             
                            
                             }else{
@@ -186,7 +186,7 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                             }
 
                           if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['Other']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['Other']!=0){
-                                $team[$vl->teams_engineer_name][$vl->engineer_id]['Other_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['Other']/($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']))*100,2) ;
+                                $team[$vl->teams_engineer_name][$vl->engineer_id]['Other_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['Other']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
                                 
                                
                                 }else{
@@ -194,7 +194,7 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                                 }
                                 
                                 if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']!=0){
-                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']/($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']))*100,2) ;
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
                                     
                                     
                                     }else{
@@ -202,7 +202,7 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                                     }
                                 
                                 if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']!=0){
-                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']/($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']))*100,2) ;
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
                                     
                                     
                                     }else{

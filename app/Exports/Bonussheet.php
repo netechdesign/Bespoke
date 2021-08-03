@@ -46,7 +46,7 @@ class Bonussheet implements FromView,WithTitle,WithEvents
 
     
     $current_column = 'A';
-    $subject_data =19; //10 + $site_engineer;
+    $subject_data =2; //10 + $site_engineer;
 
     for($i=0; $i < $subject_data; $i++) {
     $current_column; // Will be C, D, E, etc...
@@ -70,7 +70,8 @@ class Bonussheet implements FromView,WithTitle,WithEvents
                        ],
                    ]
                );
-               $event->sheet->getStyle('A'.$row.':'.$current_column.$second_row)->applyFromArray([
+               $second_row = count($d) +$row+1;
+               $event->sheet->getStyle('A'.$row.':T'.$second_row)->applyFromArray([
                    'borders' => [
                        'allBorders' => [
                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -79,8 +80,21 @@ class Bonussheet implements FromView,WithTitle,WithEvents
                    ],
              ]);
            
-            
-             $row = count($d) + $row+5;
+            /*
+             $event->sheet->styleCells(
+                $current_column-1.$row.':'.$current_column.count($d) +$row+6,
+                ['fill' => [
+                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                        'startColor' => [
+                            'rgb' => 'D3D3D3',
+                        ]           
+                    ],
+                ]
+            );
+            */
+             $row = count($d) +$row+6;
+
+             
        
            }
                 

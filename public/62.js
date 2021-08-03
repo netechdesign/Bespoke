@@ -1,27 +1,52 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[62],{
 
-/***/ "./resources/js/Back-Office/Pages/UtilitaView.js":
+/***/ "./resources/js/Back-office/Pages/Data_import.js":
 /*!*******************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/UtilitaView.js ***!
+  !*** ./resources/js/Back-office/Pages/Data_import.js ***!
   \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react_bootstrap_esm_FormCheckLabel__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-bootstrap/esm/FormCheckLabel */ "./node_modules/react-bootstrap/esm/FormCheckLabel.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43,6 +68,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -52,96 +78,1010 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_15___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_15___default.a;
+global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_15___default.a; // create engineer attach to manager
+
+jquery__WEBPACK_IMPORTED_MODULE_15___default.a.DataTable = __webpack_require__(/*! datatables.net-bs */ "./node_modules/datatables.net-bs/js/dataTables.bootstrap.js");
+
+__webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js"); //require('pdfmake/build/pdfmake.js');
+//require('pdfmake/build/vfs_fonts.js');
+
+
+__webpack_require__(/*! datatables.net-autofill */ "./node_modules/datatables.net-autofill/js/dataTables.autoFill.js");
+
+__webpack_require__(/*! datatables.net-buttons-bs */ "./node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.colVis.js */ "./node_modules/datatables.net-buttons/js/buttons.colVis.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.flash.js */ "./node_modules/datatables.net-buttons/js/buttons.flash.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.html5.js */ "./node_modules/datatables.net-buttons/js/buttons.html5.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.print.js */ "./node_modules/datatables.net-buttons/js/buttons.print.js");
+
+__webpack_require__(/*! datatables.net-colreorder */ "./node_modules/datatables.net-colreorder/js/dataTables.colReorder.js");
+
+__webpack_require__(/*! datatables.net-keytable */ "./node_modules/datatables.net-keytable/js/dataTables.keyTable.js");
+
+__webpack_require__(/*! datatables.net-responsive-bs */ "./node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js");
+
+__webpack_require__(/*! datatables.net-rowgroup */ "./node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js");
+
+__webpack_require__(/*! datatables.net-rowreorder */ "./node_modules/datatables.net-rowreorder/js/dataTables.rowReorder.js");
+
+__webpack_require__(/*! datatables.net-scroller */ "./node_modules/datatables.net-scroller/js/dataTables.scroller.js");
+
+__webpack_require__(/*! datatables.net-select */ "./node_modules/datatables.net-select/js/dataTables.select.js");
+
+__webpack_require__(/*! datatables.net-fixedcolumns */ "./node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js");
+
+__webpack_require__(/*! datatables.net-fixedheader */ "./node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.js");
 
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
     auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
+var oTable = "";
 
-var UtilitaView = /*#__PURE__*/function (_React$Component) {
-  _inherits(UtilitaView, _React$Component);
+function atable() {
+  var _$$DataTable;
 
-  var _super = _createSuper(UtilitaView);
+  var tableResponsive = '#data-table-responsive';
+  oTable = jquery__WEBPACK_IMPORTED_MODULE_15___default()(tableResponsive).DataTable((_$$DataTable = {
+    "bStateSave": true,
+    "processing": true,
+    "bPaginate": true,
+    "serverSide": true,
+    "bProcessing": true,
+    "iDisplayLength": 10,
+    "bServerSide": true,
+    "sAjaxSource": window.location.origin + '/api/sms_engineer'
+  }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
+    var acolumns = this.fnSettings().aoColumns,
+        columns = [];
+    jquery__WEBPACK_IMPORTED_MODULE_15___default.a.each(acolumns, function (i, item) {
+      columns.push(item.data);
+    });
+    aoData.push({
+      name: 'columns',
+      value: columns
+    });
+    /*  if($('#status').val()!='') {
+          aoData.push({name: 'is_active', value: $('#status').val()});
+      }
+    */
+  }), _defineProperty(_$$DataTable, "columns", [{
+    "data": "engineer_id"
+  }, {
+    "data": "engineer"
+  }]), _defineProperty(_$$DataTable, "responsive", {
+    responsive: {
+      details: {
+        display: jquery__WEBPACK_IMPORTED_MODULE_15___default.a.fn.dataTable.Responsive.display.childRowImmediate,
+        type: ''
+      }
+    }
+  }), _defineProperty(_$$DataTable, "order", [[0, "desc"]]), _defineProperty(_$$DataTable, "lengthMenu", [[10, 25, 50, 100], [10, 25, 50, 100]]), _defineProperty(_$$DataTable, "oLanguage", {
+    "sLengthMenu": "_MENU_",
+    "oPaginate": {
+      "sNext": '<span aria-hidden="true">»</span>',
+      "sPrevious": '<span aria-hidden="true">«</span>'
+    } // sProcessing: "<img width='33px' src='"+BASE_URL+"assets/layouts/layout/img/ajax-loading.gif'>"
 
-  function UtilitaView(props) {
+  }), _defineProperty(_$$DataTable, "fnInitComplete", function fnInitComplete() {//oTable.fnAdjustColumnSizing();
+  }), _defineProperty(_$$DataTable, 'fnServerData', function fnServerData(sSource, aoData, fnCallback) {
+    jquery__WEBPACK_IMPORTED_MODULE_15___default.a.ajax({
+      'dataType': 'json',
+      'type': 'GET',
+      'url': sSource,
+      'data': aoData,
+      "iDisplayLength": 10,
+      "bPaginate": true,
+      'headers': {
+        Authorization: "Bearer " + auth_token
+      },
+      'success': fnCallback
+    });
+  }), _defineProperty(_$$DataTable, "fnDrawCallback", function fnDrawCallback() {
+    jquery__WEBPACK_IMPORTED_MODULE_15___default()('body').css('min-height', jquery__WEBPACK_IMPORTED_MODULE_15___default()('#data-table-responsive tr').length * 50 + 200);
+    jquery__WEBPACK_IMPORTED_MODULE_15___default()(window).trigger('resize');
+  }), _defineProperty(_$$DataTable, "columnDefs", [{
+    "render": function render(data, type, row) {
+      var str_buttons = '<div class="form-check"><input type="checkbox" data-id="' + row.engineer_id + '" data-value="' + row.engineer + '" id="formBasicChecbox" class="engineerSelect form-check-input"></div>';
+      return [str_buttons].join('');
+    },
+    "targets": jquery__WEBPACK_IMPORTED_MODULE_15___default()('#data-table-responsive th#action').index(),
+    "orderable": false,
+    "searchable": false
+  }, {
+    "targets": 0,
+    "orderable": false
+  }]), _$$DataTable));
+}
+
+var Data_import = /*#__PURE__*/function (_React$Component) {
+  _inherits(Data_import, _React$Component);
+
+  var _super = _createSuper(Data_import);
+
+  function Data_import() {
     var _this;
 
-    _classCallCheck(this, UtilitaView);
+    _classCallCheck(this, Data_import);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      start_date: '',
-      end_date: '',
-      monday_view: ''
-    };
-    return _this;
-  }
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-  _createClass(UtilitaView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var items = [];
-      var _this$props = this.props,
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      validated: false,
+      validatedTooltip: false,
+      supportedCheckbox: false,
+      supportedRadio: false,
+      supportedSelect: 0,
+      supportedFile: 0,
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Import',
+      selectedFile: null,
+      file_id: '',
+      file_name: '',
+      file_type: [{
+        id: 1,
+        name: 'Morrison Data services'
+      }, {
+        id: 2,
+        name: 'Utilita'
+      }, {
+        id: 3,
+        name: 'Vehicle Mileage'
+      }],
+      duplicateformSubmitting: true,
+      duplicatebuttonName: 'Add',
+      duplicate_data: [{
+        visible: 'none'
+      }],
+      progress: 0,
+      Daily_Performance: false,
+      Daily_PerformanceHide: 'none',
+      Engineers: [],
+      engineerSelect: [],
+      SiteEngineer: [],
+      AreabuttonName: 'Add',
+      showsmsengineer: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "Daily_PerformanceChange", function (e, value) {
+      _this.setState(_defineProperty({}, e.target.name, value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState({
+        progress: 0
+      });
+
+      _this.state.file_type.filter(function (val, index) {
+        if (val.id == e.target.value) {
+          _this.setState({
+            file_name: val.name
+          });
+        }
+      });
+
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+
+      if (e.target.value == 2) {
+        _this.setState({
+          Daily_PerformanceHide: ''
+        });
+      } else {
+        _this.setState({
+          Daily_PerformanceHide: 'none'
+        });
+
+        _this.setState({
+          Daily_Performance: false
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeHandler", function (event) {
+      var file = event.target.files[0];
+
+      if (_this.validateSize(event)) {
+        // if return true allow to setState
+        _this.setState({
+          selectedFile: file
+        });
+
+        _this.setState({
+          progress: 0
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "validateSize", function (event) {
+      var file = event.target.files[0];
+      var size = 1700000;
+      var err = '';
+      console.log(file.size);
+
+      if (file.size > size) {
+        err = file.type + ' is too large, please pick a smaller file\n';
+        alert(err); //  toast.error(err);
+      }
+
+      return true;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "duplicateSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+      var baseurl = window.location.origin;
+      var _this$props = _this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      var _location$state$detai = location.state.detail,
-          id = _location$state$detai.id,
-          start_date = _location$state$detai.start_date,
-          end_date = _location$state$detai.end_date;
-      this.setState({
-        start_date: start_date
+      var Permission = Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('File', 'Add Duplicate', history, false);
+
+      if (Permission == 1) {
+        return false;
+      }
+
+      var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a);
+      MySwal.fire({
+        title: 'Are you sure?',
+        text: 'Do You want to add Duplicate Data?',
+        type: 'warning',
+        showCloseButton: true,
+        showCancelButton: true
+      }).then(function (willDelete) {
+        if (willDelete.value) {
+          var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+              _auth_token = _ref2.auth_token;
+
+          var _baseurl = window.location.origin;
+
+          _this.setState({
+            duplicateformSubmitting: true
+          });
+
+          _this.setState({
+            duplicatebuttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+              className: "spinner-grow spinner-grow-sm mr-1",
+              role: "status"
+            }), "sending")
+          });
+
+          var data = new FormData();
+          var arr = jquery__WEBPACK_IMPORTED_MODULE_15___default()('.checkMe:checked').map(function () {
+            return this.value;
+          }).get();
+          data.append('id', arr);
+          axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/mds/duplicatestore', data, {
+            headers: {
+              'Authorization': 'Bearer ' + _auth_token
+            }
+          }).then(function (res) {
+            if (res.data.success) {
+              _this.setState({
+                duplicateformSubmitting: false
+              });
+
+              _this.setState({
+                duplicatebuttonName: 'Add'
+              });
+
+              _this.setState({
+                duplicate_data: [{
+                  visible: 'none'
+                }]
+              });
+
+              pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+                title: 'Success',
+                text: res.data.message,
+                modules: {
+                  Desktop: {
+                    desktop: true
+                  }
+                }
+              }).on('click', function (e) {});
+            }
+          })["catch"](function (err) {
+            pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+              title: "System Error",
+              text: err
+            });
+
+            _this.setState({
+              duplicateformSubmitting: false
+            });
+
+            _this.setState({
+              duplicatebuttonName: 'Add'
+            });
+
+            console.log(err);
+          });
+        } else {
+          _this.setState({
+            duplicate_data: [{
+              visible: 'none'
+            }]
+          }); // return MySwal.fire('', 'Your imaginary file is safe!', 'error');
+
+        }
       });
-      this.setState({
-        end_date: end_date
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+      var baseurl = window.location.origin;
+
+      _this.setState({
+        formSubmitting: true
       });
-      var data = {
-        id: id,
-        start_date: start_date,
-        end_date: end_date
-      };
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/view', data, {
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "sending")
+      });
+
+      var data = new FormData();
+      data.append('file', _this.state.selectedFile);
+      data.append('file_name', _this.state.file_name);
+
+      if (_this.state.Daily_Performance) {
+        data.append('file_id', 4);
+      } else {
+        data.append('file_id', _this.state.file_id);
+      }
+
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref3.id,
+          auth_token = _ref3.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/mds', data, {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token,
+          'content-type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          if (_this.state.file_id == 5) {
+            oTable.draw();
+
+            _this.setState({
+              showsmsengineer: true
+            });
+          }
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Import'
+          });
+
+          _this.setState({
+            selectedFile: null
+          });
+
+          _this.setState({
+            Daily_Performance: false
+          });
+
+          if (res.data.duplicate_data) {
+            _this.setState({
+              duplicate_data: [{
+                visible: '',
+                data: res.data.duplicate_data
+              }]
+            });
+          }
+
+          jquery__WEBPACK_IMPORTED_MODULE_15___default()('#avatar').val('');
+          /*console.clear(); */
+          //this.setState({progress:100});
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+            title: 'Success',
+            text: res.data.message,
+            modules: {
+              Desktop: {
+                desktop: true
+              }
+            }
+          }).on('click', function (e) {});
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_15___default()('#avatar').val('');
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+            title: "System Error",
+            text: res.data.message
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Import'
+          });
+
+          _this.setState({
+            selectedFile: null
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Import'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+
+        console.log(err);
+      }); // successDesktopPNotify();
+      //  this.props.history.push('/role');
+
+      _this.setState({
+        showModal: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeselectAll", function (e) {
+      jquery__WEBPACK_IMPORTED_MODULE_15___default()('.checkMe').attr('checked', e.target.checked);
+
+      if (e.target.checked) {
+        _this.setState({
+          duplicateformSubmitting: false
+        });
+      } else {
+        _this.setState({
+          duplicateformSubmitting: true
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeselect", function (e) {
+      var arr = jquery__WEBPACK_IMPORTED_MODULE_15___default()('.checkMe:checked').map(function () {
+        return this.value;
+      }).get();
+
+      if (arr.length) {
+        _this.setState({
+          duplicateformSubmitting: false
+        });
+      } else {
+        _this.setState({
+          duplicateformSubmitting: true
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkAll", function () {
+      jquery__WEBPACK_IMPORTED_MODULE_15___default()('.engineerSelect').trigger('click');
+
+      if (!jquery__WEBPACK_IMPORTED_MODULE_15___default()('#allselect').is(':checked')) {
+        _this.setState({
+          engineerSelect: []
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "ManagerSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+      var _this$props2 = _this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
+      var Permission = Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('areamanager', 'add', history, false);
+
+      if (Permission == 1) {
+        return false;
+      }
+
+      var baseurl = window.location.origin;
+
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        AreabuttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "sending")
+      });
+
+      var data = new FormData();
+      data.append('SiteEngineer', JSON.stringify(_this.state.SiteEngineer));
+      data.append('Engineer', JSON.stringify(_this.state.engineerSelect));
+      data.append('is_sms', 1);
+
+      var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref4.id,
+          auth_token = _ref4.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/areamanager', data, {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            AreabuttonName: 'Add'
+          });
+
+          _this.setState({
+            selectedFile: null
+          });
+
+          _this.setState({
+            engineerSelect: []
+          });
+
+          jquery__WEBPACK_IMPORTED_MODULE_15___default()('#allselect').attr('checked', false);
+          /*console.clear(); */
+          //this.setState({progress:100});
+
+          oTable.draw();
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+            title: 'Success',
+            text: res.data.message,
+            modules: {
+              Desktop: {
+                desktop: true
+              }
+            }
+          }).on('click', function (e) {});
+        } else {
+          oTable.draw();
+          jquery__WEBPACK_IMPORTED_MODULE_15___default()('#avatar').val('');
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+            title: "System Error",
+            text: res.data.message
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            AreabuttonName: 'Add'
+          });
+
+          _this.setState({
+            selectedFile: null
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+
+        console.log(err);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "SiteEngineerchange", function (e) {
+      var self = _assertThisInitialized(_this);
+
+      setTimeout(function () {
+        self.setState({
+          SiteEngineer: e
+        });
+      }, 500);
+    });
+
+    return _this;
+  }
+
+  _createClass(Data_import, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var _this$props3 = this.props,
+          match = _this$props3.match,
+          location = _this$props3.location,
+          history = _this$props3.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('File', 'Data Import', history);
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/areamanager', {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
-        var node = document.getElementById('monday_view');
-        node.insertAdjacentHTML('afterend', res.data); //   this.setState({monday_view:res});
-      }); //
+        _this2.setState({
+          Engineers: res.data
+        });
+      });
+      var self = this;
+      atable();
+      jquery__WEBPACK_IMPORTED_MODULE_15___default()('#data-table-responsive tbody').on('click', '.engineerSelect', function () {
+        var id = jquery__WEBPACK_IMPORTED_MODULE_15___default()(this).attr('data-id');
+        var engineer = jquery__WEBPACK_IMPORTED_MODULE_15___default()(this).attr('data-value');
+        var array = {
+          'label': engineer,
+          'value': id
+        }; // array['label']=engineer;
+        // array['value']=id;
+
+        var checked = jquery__WEBPACK_IMPORTED_MODULE_15___default()(this).is(":checked");
+
+        if (checked) {
+          var check_vl = self.state.engineerSelect.filter(function (vl, inx) {
+            return vl.value == id;
+          });
+          console.log(check_vl);
+
+          if (check_vl.length == 0) {
+            self.setState(function (previousState) {
+              return {
+                engineerSelect: [].concat(_toConsumableArray(previousState.engineerSelect), [array])
+              };
+            });
+          }
+        } else {
+          var array = _toConsumableArray(self.state.engineerSelect); // make a separate copy of the array
+          //var index = array.indexOf(id)
+
+
+          var index = self.state.engineerSelect.filter(function (vl, inx) {
+            if (vl.value == id) {
+              return inx;
+            }
+          });
+
+          if (index !== -1) {
+            array.splice(index, 1);
+            self.setState({
+              engineerSelect: array
+            });
+          }
+        }
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      var _this3 = this;
+
+      var _this$state = this.state,
+          validated = _this$state.validated,
+          validatedTooltip = _this$state.validatedTooltip;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Utilita Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm",
+      }, "ADD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "custom"
+      }, "Select File Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Radio"].RadioGroup, {
+        name: "file_id",
+        required: true,
+        valueSelected: this.state.file_id,
+        inline: false,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Radio"].RadioItem, {
+        id: "radio4",
+        label: "Morrison Data services",
+        value: "1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Radio"].RadioItem, {
+        id: "radio5",
+        label: "Utilita",
+        value: "2"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Radio"].RadioItem, {
+        id: "radio6",
+        label: "Vehicle Mileage",
+        value: "3"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Radio"].RadioItem, {
+        id: "radio7",
+        label: "SMS",
+        value: "5"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          'float': 'right'
-        },
-        onClick: function onClick() {
-          history.goBack();
+          'display': this.state.Daily_PerformanceHide
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, this.state.start_date, " to ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "monday_view"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "images/ajax_loader_gray_512.gif"
-      })))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Checkbox"], {
+        style: {
+          'display': this.state.Daily_PerformanceHide
+        },
+        name: "Daily_Performance",
+        label: "Daily Performance Report",
+        id: "chkBasic",
+        value: this.state.Daily_Performance,
+        onChange: this.Daily_PerformanceChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Upload File"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["FileInput"], {
+        name: "avatar",
+        id: "avatar",
+        required: true,
+        fileType: ["csv", "CSV", "xls", "xlsx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only .xls and csv file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onChangeHandler
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        style: {
+          display: this.state.duplicate_data[0].visible
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Duplicate Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "d-block m-t-5"
+      }, this.state.file_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+        onSubmit: this.duplicateSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        striped: true,
+        responsive: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Checkbox"], {
+        name: "check-me",
+        label: "",
+        onChange: this.onChangeselectAll,
+        id: "check-me",
+        inline: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Schedule Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Customer Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Job Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Job Type"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.duplicate_data[0].data ? this.state.duplicate_data[0].data.map(function (value, index) {
+        var vl = value.data;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Checkbox"], {
+          name: "checkMe[]",
+          label: "",
+          onChange: _this3.onChangeselect,
+          "class": "checkMe",
+          id: "check-me",
+          defaultValue: value.id,
+          inline: true
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.engineer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.schedule_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.customer_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.job_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.job_type));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, "record not found")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        disabled: this.state.duplicateformSubmitting,
+        type: "submit"
+      }, " ", this.state.duplicatebuttonName))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        style: {
+          display: this.state.showsmsengineer ? '' : 'none'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, this.state.engineerSelect.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+        onSubmit: this.ManagerSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "SiteEngineer"
+      }, "Area Manager"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        required: true,
+        onChange: this.SiteEngineerchange,
+        className: "basic-single",
+        classNamePrefix: "select",
+        name: "SiteEngineer",
+        options: this.state.Engineers,
+        placeholder: "Select Area Manager"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "3",
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        style: {
+          marginTop: '10px'
+        },
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.AreabuttonName)))) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        ref: "tbl",
+        striped: true,
+        hover: true,
+        responsive: true,
+        className: "table table-condensed",
+        id: "data-table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        width: "5%",
+        id: "action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "checkbox",
+        label: "",
+        id: "allselect",
+        onChange: this.checkAll
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "parent_engineer"
+      }, "Engineer Name"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "action"
+      }, "Action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "parent_engineer"
+      }, "Engineer Name")))))))));
     }
   }]);
 
-  return UtilitaView;
+  return Data_import;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UtilitaView);
+/* harmony default export */ __webpack_exports__["default"] = (Data_import);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+
+
+
+/**
+ *  baseurl  get baseurl
+ */
+
+var baseurl = window.location.origin;
+/**
+ * Login api request
+ * @param {*} user for send Credentials
+ */
+
+var CheckPermission = function CheckPermission(page, page_name, history) {
+  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref.id,
+      parmissions = _ref.parmissions;
+
+  var pages = parmissions.filter(function (vl, idx) {
+    if (Object.keys(vl)[0] == page) {
+      return vl;
+    }
+  });
+
+  if (pages.length > 0) {
+    var Ischeck = pages[0][page].filter(function (v, i) {
+      if (v['page_name'] == page_name) {
+        if (v['Ischeck']) {
+          return v;
+        }
+      }
+    });
+
+    if (Ischeck.length == 0) {
+      if (redirect) {
+        history.goBack();
+      }
+
+      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
+        title: "Permission Error",
+        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
+      });
+      return 1;
+    }
+  } else {
+    history.goBack();
+  }
+};
+var Login = function Login(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
+    email: user.email,
+    password: user.password,
+    remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var Pemissionlist = function Pemissionlist(parameter) {
+  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref2.id,
+      auth_token = _ref2.auth_token;
+
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
+    'id': id
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    }
+  });
+};
+var RoleAdd = function RoleAdd(role) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
+    email: role.email,
+    password: role.password,
+    remember_me: role.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
 
 /***/ })
 

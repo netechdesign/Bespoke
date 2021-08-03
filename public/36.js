@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Job_lookup/edit.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/Back-Office/Job_lookup/edit.js ***!
-  \*****************************************************/
+/***/ "./resources/js/Back-Office/Job_lookup/add.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Back-Office/Job_lookup/add.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -142,7 +142,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function successDesktopPNotify() {
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
     title: 'Success',
-    text: "Job Type updated successfully",
+    text: "Job type added successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -153,15 +153,15 @@ function successDesktopPNotify() {
 
 var baseurl = window.location.origin;
 
-var Edit = /*#__PURE__*/function (_React$Component) {
-  _inherits(Edit, _React$Component);
+var Add = /*#__PURE__*/function (_React$Component) {
+  _inherits(Add, _React$Component);
 
-  var _super = _createSuper(Edit);
+  var _super = _createSuper(Add);
 
-  function Edit() {
+  function Add() {
     var _this;
 
-    _classCallCheck(this, Edit);
+    _classCallCheck(this, Add);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -170,21 +170,11 @@ var Edit = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      _method: 'PUT',
-      id: '',
-      engineer_id: '',
-      engineer_name: '',
-      manager_list: [],
-      team_id: '',
-      regions_sort_name: '',
-      region_list: [],
-      perfomance_level: '',
-      cost: '',
-      Monday: '',
-      Tuesday: '',
-      Wednesday: '',
-      Thursday: '',
-      Friday: '',
+      job_type: '',
+      mix: '',
+      revenue: '',
+      pu: '',
+      contract: '',
       chkCustom: false,
       visible: true,
       formSubmitting: false,
@@ -193,42 +183,6 @@ var Edit = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "update", function () {
-      var _this$props = _this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      var id = match.params.id;
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref.auth_token;
-
-      var data = new FormData();
-      data.append('name', _this.state.name);
-      data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/job_lookup/' + id + '/edit', {
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            id: res.data.data.id,
-            job_type: res.data.data.job_type,
-            mix: res.data.data.mix,
-            revenue: res.data.data.revenue,
-            pu: res.data.data.pu,
-            contract: res.data.data.contract
-          });
-
-          document.getElementById("requestLoder").innerHTML = '';
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
-      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
@@ -245,13 +199,13 @@ var Edit = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          auth_token = _ref2.auth_token; //const data = new FormData()
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/job_lookup/' + _this.state.id, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/job_lookup', _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -318,26 +272,25 @@ var Edit = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Edit, [{
+  _createClass(Add, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
       Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
-      this.update();
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props3 = this.props,
-          match = _this$props3.match,
-          location = _this$props3.location,
-          history = _this$props3.history;
+      var _this$props2 = this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Edit Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Add Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -431,10 +384,10 @@ var Edit = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Edit;
+  return Add;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Edit);
+/* harmony default export */ __webpack_exports__["default"] = (Add);
 
 /***/ }),
 

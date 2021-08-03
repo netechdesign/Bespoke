@@ -23,19 +23,26 @@ class Performance extends React.Component {
    
     constructor(props) {
         super(props);
-        this.state={id:'',job_type_list:[],job_type:'','report_type':'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/export',btnhide:'unset'}
+        this.state={id:'',job_type_list:[],job_type:'',work_type:'',work_completed:'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/export',btnhide:'unset'}
     }
     onsearch = (e) => {
         var items  = [];
         const { match, location, history } = this.props
-        const {id,start_date,end_date,report_type} = this.state;
+        const {id,start_date,end_date,report_type,job_type,work_completed,work_type} = this.state;
         
-        let data={id:id,start_date:start_date,end_date:end_date,file_id:report_type.value};
-        document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
+        let data={id:id,start_date:start_date,end_date:end_date,report_type:report_type,job_type:job_type,work_completed:work_completed,work_type:work_type};
+        document.getElementById("loaders").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
-      axios.post(baseurl+'/api/utilita/view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
-              
+      axios.post(baseurl+'/api/sms_report/performance_view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+        $('#monday_view').css({"height":"500px"});
+   
         document.getElementById("monday_view").innerHTML = res.data;
+
+        document.getElementById("loaders").innerHTML = '';
+        $("#view_report th").css("color","black");
+        $("#view_report th").css("background","lightgray");
+        
+
 
         this.setState({searching:false});
          //   this.setState({monday_view:res});
@@ -81,14 +88,13 @@ class Performance extends React.Component {
 
         } 
         handleChange = (e) =>{
-            this.setState({report_type:e});
-            if(e.value==3){
-                this.setState({btnhide:'none'});
-            }else{
-                this.setState({btnhide:''});
+            this.setState({work_type:e});
+            
             }
-                 
-        }
+            work_completedChange = (e) =>{
+                this.setState({work_completed:e});
+                
+                }    
     job_type_list = () => {
         axios.get(
             baseurl+'/api/joblookup/dropdown_list',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
@@ -146,7 +152,7 @@ class Performance extends React.Component {
                                 
                                         <Form.Group as={Col} md="2">
                                             <Form.Label htmlFor="type">Work Completed</Form.Label>
-                                    <Select onChange={this.handleChange}
+                                    <Select onChange={this.work_completedChange}
                                             className="basic-single"
                                             classNamePrefix="select"
                                             name="work_completed"
@@ -169,7 +175,7 @@ class Performance extends React.Component {
                                     <Select onChange={this.handleChange}
                                             className="basic-single"
                                             classNamePrefix="select"
-                                            name="file_id"
+                                            name="work_type"
                                             options={Work_Type}
                                             placeholder="Select type"
                                         />
@@ -190,7 +196,8 @@ class Performance extends React.Component {
                             </ValidationForm>
                             </Card.Header>
                             <Card.Body>
-                            <div id="monday_view" style={{'textAlign': 'center'}}></div>
+                            <div id="loaders" style={{'textAlign': 'center'}}></div>
+                            <div id="monday_view" style={{'textAlign': 'center','overflowY':'scroll'}}></div>
                             </Card.Body>
                         </Card>
                     </Col>

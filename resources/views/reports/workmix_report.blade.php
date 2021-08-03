@@ -1,6 +1,7 @@
 
-<table>
+<table width="100%">
     <tbody>
+    <?php if(!isset($view)) {?>
          <tr>
             <td colspan="12" style="text-align: center;font-weight: bold;font-size:15px">Work Mix</td>
         </tr>
@@ -10,7 +11,8 @@
         </tr> 
         <tr>
         <td colspan="2"><b>Reporting Date :</b>{{date('d-m-Y')}}</td>
-        </tr>       
+        </tr>
+        <?php } ?>       
         <tr>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Total Jobs</th>
@@ -27,20 +29,20 @@
             <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['completed']}}</th>
 
             
-                 <td style="border: 1px solid #000000;" >{{$national['Dual']}}</td>
-                 <td style="border: 1px solid #000000;text-align: right;">{{round(($national['Dual']/$national['completed'])*100,2)}}%</td>
+                 <th style="border: 1px solid #000000;" >{{$national['Dual']}}</th>
+                 <th style="border: 1px solid #000000;text-align: right;">{{round(($national['Dual']/$national['completed'])*100,2)}}%</th>
                 
-                <td style="border: 1px solid #000000;" >{{$national['Single']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{round(($national['Single']/$national['completed'])*100,2)}}%</td>
+                <th style="border: 1px solid #000000;" >{{$national['Single']}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">{{round(($national['Single']/$national['completed'])*100,2)}}%</th>
                 
-                <td style="border: 1px solid #000000;" >{{$national['Other']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{round(($national['Other']/$national['completed'])*100,2)}}%</td>
+                <th style="border: 1px solid #000000;" >{{$national['Other']}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">{{round(($national['Other']/$national['completed'])*100,2)}}%</th>
                 
-                <td style="border: 1px solid #000000;" >{{$national['in_hours']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{round(($national['in_hours']/$national['completed'])*100,2)}}%</td>
+                <th style="border: 1px solid #000000;" >{{$national['in_hours']}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">{{round(($national['in_hours']/$national['completed'])*100,2)}}%</th>
                 
-                <td style="border: 1px solid #000000;" >{{$national['out_hours']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{round(($national['out_hours']/$national['completed'])*100,2)}}%</td>
+                <th style="border: 1px solid #000000;" >{{$national['out_hours']}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">{{round(($national['out_hours']/$national['completed'])*100,2)}}%</th>
 
         </tr>
         @endif
@@ -107,34 +109,34 @@
                 <td style="border: 1px solid #000000;" >@if(isset($users['Other'])){{$users['Other']}} @else 0 @endif</td>
                 <td style="border: 1px solid #000000;text-align: right;">@if(isset($users['Other_per'])){{round($users['Other_per'],2)}} @else 0.00 @endif %</td>
                 
-                <td style="border: 1px solid #000000;" >@if(isset($users['Other'])){{$users['in_hours']}} @else 0 @endif</td>
+                <td style="border: 1px solid #000000;" >@if(isset($users['in_hours'])){{$users['in_hours']}} @else 0 @endif</td>
                 <td style="border: 1px solid #000000;text-align: right;">@if(isset($users['in_hours_per'])){{round($users['in_hours_per'],2)}} @else 0.00 @endif %</td>
                 
-                <td style="border: 1px solid #000000;" >@if(isset($users['Other'])){{$users['out_hours']}} @endif</td>
+                <td style="border: 1px solid #000000;" >@if(isset($users['out_hours'])){{$users['out_hours']}} @else 0 @endif</td>
                 <td style="border: 1px solid #000000;text-align: right;">@if(isset($users['out_hours_per'])){{round($users['out_hours_per'],2)}} @else 0.00 @endif %</td>
             </tr>
             @endif
             @endforeach 
             
            <tr>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$ky}}</td>
+                <th style="border: 1px solid #000000;font-weight: bold;">{{$ky}}</th>
                 
-                <td  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$completed}}</td>
+                <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$completed}}</th>
                 
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$Dual}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">@if($Dual!=0){{round(($Dual/($completed))*100,2)}}@else 0.00 @endif %</td>
+                <th style="border: 1px solid #000000;font-weight: bold;">{{$Dual}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">@if($Dual!=0){{round(($Dual/($completed))*100,2)}}@else 0.00 @endif %</th>
 
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$Single}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">@if($Single!=0){{round(($Single/($completed))*100,2)}} @else 0.00 @endif%</td>
+                <th style="border: 1px solid #000000;font-weight: bold;">{{$Single}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">@if($Single!=0){{round(($Single/($completed))*100,2)}} @else 0.00 @endif%</th>
 
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$Other}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">@if($Other!=0){{round(($Other/($completed))*100,2)}} @else 0.00 @endif %</td>
+                <th style="border: 1px solid #000000;font-weight: bold;">{{$Other}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">@if($Other!=0){{round(($Other/($completed))*100,2)}} @else 0.00 @endif %</th>
 
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$in_hours}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">@if($in_hours!=0){{round(($in_hours/($completed))*100,2)}} @else 0.00 @endif %</td>
+                <th style="border: 1px solid #000000;font-weight: bold;">{{$in_hours}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">@if($in_hours!=0){{round(($in_hours/($completed))*100,2)}} @else 0.00 @endif %</th>
 
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$out_hours}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">@if($out_hours!=0){{round(($out_hours/($completed))*100,2)}} @else 0.00 @endif % %</td>
+                <th style="border: 1px solid #000000;font-weight: bold;">{{$out_hours}}</th>
+                <th style="border: 1px solid #000000;text-align: right;">@if($out_hours!=0){{round(($out_hours/($completed))*100,2)}} @else 0.00 @endif % %</th>
             </tr> 
             <tr><td></td></tr>
         

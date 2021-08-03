@@ -90,9 +90,9 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                             
                 $engineers = new Engineers(["engineer_id"=> '0',"engineer_name" => $row['engineer'],'file_id'=>5]);
                 $engineers->save();
-                $engineers->engineer_id= $engineers->id;
+                $engineers->engineer_id= 'sms'.$engineers->id;
                 $engineers->save();
-                $engineer_id= $engineers->id;
+                $engineer_id= 'sms'.$engineers->id;
                 $is_in_team	=0;
                 //["engineer_id" => $row['engineer_id'];
             }else{

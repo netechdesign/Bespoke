@@ -46,7 +46,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
 //dd($seleceted_days);
       }
       $national=[];
-         
+      $national['total_work_day']=0; 
       $national['total_job']=0;
       $national['completed']=0;
       $national['completed_per']=0;
@@ -91,7 +91,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
                  if (in_array($vl->appointment_date, $team[$vl->regions_sort_name][$vl->engineer_id]['appointment_date'])) {
                     //$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['working_day']+1;
                 }else{
-                    
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['appointment_date'][] =$vl->appointment_date;
                     $team[$vl->regions_sort_name][$vl->engineer_id]['working_day'] =$team[$vl->regions_sort_name][$vl->engineer_id]['working_day']+1;
                 }
                 //total
@@ -118,7 +118,8 @@ class Smssheet implements FromView,WithTitle,WithEvents
 
                  } 
                 //awaiting info  
-                 if($vl->status=='awaiting info'){
+                 if($vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
+                 {
                     $team[$vl->regions_sort_name][$vl->engineer_id]['open']=(isset($team[$vl->regions_sort_name][$vl->engineer_id]['open'])?$team[$vl->regions_sort_name][$vl->engineer_id]['open']+1:1);
                     }
 
@@ -197,6 +198,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
             
              if(isset($team[$vl->regions_sort_name][$vl->engineer_id])){
                  
+                
                  //Completed per
                      if($vl->status=='completed'){
                         
@@ -212,38 +214,41 @@ class Smssheet implements FromView,WithTitle,WithEvents
 
                      $national['aborted_per'] = $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] + $national['aborted_per'];
                   }else{
-                    $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] =0;
+                   // $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] =0;
                   }
                     
                 //pu_day  
                    if(isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])){
                        //$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$total_engineer,4) ;
                        
-                       $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$team[$vl->regions_sort_name]['regions_engineer_total'],4) ;
-                     // $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'])/$total_engineer,4) ;
+                      // $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$team[$vl->regions_sort_name]['regions_engineer_total'],4) ;
+                      $total_engineer=1;
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'])/$total_engineer,4) ;
                      $team[$vl->regions_sort_name][$vl->engineer_id]['regions_engineer_total']=$team[$vl->regions_sort_name]['regions_engineer_total'];
                       
-                     $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day']-6);
-                      //$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu']-6);
+                     //$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day']-6);
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu']-($team[$vl->regions_sort_name][$vl->engineer_id]['working_day']*6));
                       
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']/$seleceted_days;
-                      //$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
+                     // $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']/$seleceted_days;
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
                       
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['bonus'] = ($team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']*20)+10;     
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['bonus'] = ($team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']*20)+($team[$vl->regions_sort_name][$vl->engineer_id]['working_day']*10);     
                        //=(Bonus PU*20)+10
-                       $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus']/$seleceted_days;
-                      // $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
+                      // $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus']/$seleceted_days;
+                       $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
                        
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['revenue_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['revenue']/$seleceted_days;
-                      // $team[$vl->regions_sort_name][$vl->engineer_id]['revenue_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['revenue']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
+                     // $team[$vl->regions_sort_name][$vl->engineer_id]['revenue_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['revenue']/$seleceted_days;
+                       $team[$vl->regions_sort_name][$vl->engineer_id]['revenue_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['revenue']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
                     }
                  //profit
                  $team[$vl->regions_sort_name][$vl->engineer_id]['profit'] = $team[$vl->regions_sort_name][$vl->engineer_id]['revenue']-(($team[$vl->regions_sort_name][$vl->engineer_id]['working_day']*$team[$vl->regions_sort_name][$vl->engineer_id]['cost_per_day'])+$team[$vl->regions_sort_name][$vl->engineer_id]['bonus']);
                  //Profit/Day
-                 $team[$vl->regions_sort_name][$vl->engineer_id]['profit_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['profit']/$seleceted_days;  
+                // $team[$vl->regions_sort_name][$vl->engineer_id]['profit_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['profit']/$seleceted_days;
+                $team[$vl->regions_sort_name][$vl->engineer_id]['profit_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['profit']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];  
                  
                  $team[$vl->regions_sort_name][$vl->engineer_id]['seleceted_DATE_days'] = $seleceted_days;
-                 
+            
+                
              }
              
              
@@ -251,7 +256,9 @@ class Smssheet implements FromView,WithTitle,WithEvents
          foreach($team as $k => $tm){
             foreach($tm as $d => $t){
                 if($d!='regions_engineer_total'){
-
+                    if(isset($t['working_day'])){
+                        $national['total_work_day'] = $t['working_day'] + $national['total_work_day'];
+                        }
                                 if(isset($t['pu'])){
                                 $national['pu'] = $t['pu'] + $national['pu'];
                                 }

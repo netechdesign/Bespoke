@@ -42,7 +42,7 @@ class Exportsms implements WithMultipleSheets
         $today_date=date('Y-m-d', strtotime(str_replace('/', '-', $_REQUEST['end_date'])));
       }
       
-      
+      $_REQUEST['file_id']=3;
       //$query= new Utilita_job;
       if($_REQUEST['file_id']=='1'){
         $q= Morrison_jobs::join('engineer_groups','engineer_groups.child_engineer_id','=','morrison_jobs.engineer_id');
@@ -63,11 +63,11 @@ class Exportsms implements WithMultipleSheets
         $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
-        if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
+        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
-        if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
-          $q->where('job_lookups.contract',$_REQUEST['file_id']);
+        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
+          $q->where('job_lookups.contract',$_REQUEST['work_type']);
         }
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
         if($start_date!=''){ $q->whereDate('appointment_date', '>=', $start_date); }

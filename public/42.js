@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Team/add.js":
-/*!**********************************************!*\
-  !*** ./resources/js/Back-Office/Team/add.js ***!
-  \**********************************************/
+/***/ "./resources/js/Back-Office/Role/edit.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Back-Office/Role/edit.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -84,21 +84,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
 /* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
-/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -138,11 +149,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 function successDesktopPNotify() {
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].success({
     title: 'Success',
-    text: "Team added successfully",
+    text: "Role updated successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -151,17 +161,37 @@ function successDesktopPNotify() {
   }).on('click', function (e) {});
 }
 
+var Trrow = function Trrow(property) {
+  var pageName = property.rows.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      key: index
+    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+      name: value.name,
+      label: value.page_name,
+      id: property.index + '_' + value.name,
+      value: value.Ischeck,
+      onChange: property.onchildChange
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+    name: property.parent,
+    label: property.parent.toUpperCase(),
+    onChange: property.onparentChange,
+    id: property.index
+  })), pageName);
+};
+
 var baseurl = window.location.origin;
 
-var Add = /*#__PURE__*/function (_React$Component) {
-  _inherits(Add, _React$Component);
+var edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(edit, _React$Component);
 
-  var _super = _createSuper(Add);
+  var _super = _createSuper(edit);
 
-  function Add() {
+  function edit() {
     var _this;
 
-    _classCallCheck(this, Add);
+    _classCallCheck(this, edit);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -170,41 +200,74 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      engineer_id: '',
-      engineer_name: '',
-      manager_list: [],
-      regions_id: '',
-      region_list: [],
-      regions_sort_name: '',
+      name: "",
+      id: _this.props.match.params.id,
       chkCustom: false,
+      permission: [],
+      pageArray: [],
       visible: true,
       formSubmitting: false,
       buttonName: 'Save'
     });
 
-    _defineProperty(_assertThisInitialized(_this), "ManagerList", function (e) {
-      var id = _this.state.id;
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+    _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
+      // e.target.checked=true;
+      var checkValue = e.target.checked;
+      var parentname = e.target.name;
+      var parentIndex = e.target.id;
 
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref.auth_token;
+      var permission = _toConsumableArray(_this.state.permission);
 
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/manager_list', {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            manager_list: res.data.manager,
-            region_list: res.data.region
-          });
+      if (permission[parentIndex][parentname]) {
+        permission[parentIndex][parentname].map(function (vl, ind) {
+          vl.Ischeck = checkValue;
+        });
+      }
 
-          document.getElementById("requestLoder").innerHTML = '';
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
+      _this.setState({
+        permission: permission
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
+      var ckname = e.target.name;
+      var parentIndex = e.target.id.split("_")[0];
+      var checkValue = e.target.checked;
+
+      var permission = _toConsumableArray(_this.state.permission);
+
+      var parentname = Object.keys(permission[parentIndex]);
+
+      if (permission[parentIndex][parentname]) {
+        permission[parentIndex][parentname].filter(function (vl, i) {
+          if (vl.name == ckname) {
+            vl.Ischeck = checkValue;
+          }
+        });
+
+        _this.setState({
+          permission: permission
+        });
+      }
+      /*    
+      if(permission[parentIndex][parentname]){
+           permission[parentIndex][parentname].map((vl,ind)=>{
+               vl.Ischeck = checkValue;
+           })
+          }
+          this.setState({permission})
+          */
+
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+
+      var str = e.target.value;
+      str = str.replace(/\s/g, '-');
+
+      _this.setState({
+        slug: str
       });
     });
 
@@ -222,13 +285,18 @@ var Add = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          auth_token = _ref2.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token;
 
-
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/team', _this.state, {
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role/' + _this.state.id, {
+        _method: 'PUT',
+        name: _this.state.name,
+        permission: _this.state.permission
+      }, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -236,26 +304,15 @@ var Add = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           // console.log(res.data.data);
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-
-          _this.setState({
-            engineer_name: ''
-          });
-
-          $('input[type="checkbox"]').prop('checked', false);
           successDesktopPNotify();
+          var history = _this.props.history;
+          history.push('/role');
         } else {
           if (res.data.errors) {
             res.data.message = res.data.errors.name;
           }
 
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
             title: "System Error",
             text: res.data.errors.name
           });
@@ -265,11 +322,11 @@ var Add = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Save'
+            buttonName: 'Edit'
           });
         }
       })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
           title: "System Error",
           text: err
         });
@@ -291,96 +348,67 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "ManagerChange", function (e) {
-      _this.setState({
-        engineer_id: e.value
-      });
+    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
+      var id = _this.state.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
 
-      var engineer_name = _this.state.manager_list.filter(function (vl, index) {
-        return vl.value == e.value;
-      });
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
 
-      if (engineer_name) {
-        _this.setState({
-          engineer_name: engineer_name[0].label
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "RegionChange", function (e) {
-      _this.setState({
-        regions_id: e.value
-      });
-
-      var region = _this.state.region_list.filter(function (vl, index) {
-        return vl.value == e.value;
-      });
-
-      if (region) {
-        _this.CheckSortname(e.value, region[0].sort_name);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "CheckSortname", function (regions_id, regions_sort_name) {
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref3.id,
-          auth_token = _ref3.auth_token;
-
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/team/check_sort_name', {
-        regions_id: regions_id,
-        regions_sort_name: regions_sort_name
-      }, {
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.get(baseurl + '/api/role/' + id + '/edit', {
         headers: {
-          'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
-        _this.setState({
-          regions_sort_name: res.data.regions_sort_name
-        });
+        if (res.data.success) {
+          var parmissions = res.data.data.parmissions;
+
+          _this.setState({
+            name: res.data.data.name,
+            permission: parmissions
+          });
+
+          document.getElementById("requestLoder").innerHTML = '';
+          /*
+          this.state.permission.map((val,index)=>{
+                console.log(val[Object.keys(val)[0]]);
+          })
+          */
+        } else {}
       })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
+        console.log(err);
       });
     });
 
     return _this;
   }
 
-  _createClass(Add, [{
+  _createClass(edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
-      this.ManagerList();
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'edit', history);
+      this.PemissionGet();
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var addPage = [];
       var _this$props2 = this.props,
           match = _this$props2.match,
           location = _this$props2.location,
           history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Add Team"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Edit Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -389,45 +417,51 @@ var Add = /*#__PURE__*/function (_React$Component) {
           history.goBack();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
-        style: {
-          'textAlign': 'center'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+        className: "feather icon-chevron-left"
+      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
+        md: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "firstName"
-      }, "Manager"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.ManagerChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "engineer_id",
-        options: this.state.manager_list,
-        placeholder: "Select Manager"
+        htmlFor: "name"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "name",
+        id: "name",
+        placeholder: "Name",
+        required: true,
+        value: this.state.name,
+        onChange: this.handleChange,
+        autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "firstName"
-      }, "Region"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.RegionChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "regions_id",
-        options: this.state.region_list,
-        placeholder: "Select Region"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Permission"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder",
         style: {
-          color: 'green'
-        },
-        htmlFor: "firstName"
-      }, this.state.regions_sort_name ? 'Team id is ' + this.state.regions_sort_name : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+          'textAlign': 'center'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        ref: "tbl",
+        striped: true,
+        hover: true,
+        responsive: true,
+        className: "table table-condensed",
+        id: "data-table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+        id: "listdata"
+      }, this.state.permission.map(function (val, index) {
+        //  console.log(val[Object.keys(val)[0]]);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Trrow, {
+          key: index,
+          index: index,
+          parent: Object.keys(val)[0],
+          onparentChange: _this2.chageParent,
+          rows: val[Object.keys(val)[0]],
+          onchildChange: _this2.handleCheckboxChange
+        });
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
@@ -438,10 +472,10 @@ var Add = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Add;
+  return edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Add);
+/* harmony default export */ __webpack_exports__["default"] = (edit);
 
 /***/ }),
 

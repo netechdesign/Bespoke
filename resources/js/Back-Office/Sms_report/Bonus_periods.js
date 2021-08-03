@@ -21,17 +21,17 @@ class Bonus_periods extends React.Component {
    
     constructor(props) {
         super(props);
-    this.state={id:'',job_type_list:[],job_type:'','report_type':'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/bonus_periods/export',btnhide:'unset',period:'',region_list:[],regions_sort_name:""}
+    this.state={searching:false,baseurl:window.location.origin+'/bonus_periods/export',btnhide:'unset',period:'',region_list:[],regions_sort_name:"",team_id:''}
     }
     onsearch = (e) => {
         var items  = [];
         const { match, location, history } = this.props
-        const {id,start_date,end_date,report_type} = this.state;
+        const {period,team_id} = this.state;
         
-        let data={id:id,start_date:start_date,end_date:end_date,file_id:report_type.value};
+        let data={period:period,team_id:team_id};
         document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
-      axios.post(baseurl+'/api/utilita/view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+      axios.post(baseurl+'/api/bonus_periods/report_view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
               
         document.getElementById("monday_view").innerHTML = res.data;
 

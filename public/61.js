@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[61],{
 
-/***/ "./resources/js/Back-Office/Pages/UtilitaChart.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/UtilitaChart.js ***!
-  \********************************************************/
+/***/ "./resources/js/Back-office/Pages/DailyPerformance_import.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/DailyPerformance_import.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,20 +11,26 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
-/* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var dom_to_pdf__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! dom-to-pdf */ "./node_modules/dom-to-pdf/index.js");
-/* harmony import */ var dom_to_pdf__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(dom_to_pdf__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61,841 +67,352 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-    id = _ref.id,
-    auth_token = _ref.auth_token;
 
-var baseurl = window.location.origin;
 
-var UtilitaChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(UtilitaChart, _React$Component);
 
-  var _super = _createSuper(UtilitaChart);
 
-  function UtilitaChart(props) {
+var DailyPerformance_import = /*#__PURE__*/function (_React$Component) {
+  _inherits(DailyPerformance_import, _React$Component);
+
+  var _super = _createSuper(DailyPerformance_import);
+
+  function DailyPerformance_import(props) {
     var _this;
 
-    _classCallCheck(this, UtilitaChart);
+    _classCallCheck(this, DailyPerformance_import);
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "generatePdf", function () {
-      var element = document.getElementById('pdf-container');
-      var options = {
-        filename: _this.state.title + '-' + _this.state.start_date + ".pdf"
-      };
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-      return dom_to_pdf__WEBPACK_IMPORTED_MODULE_10___default()(element, options, function () {
-        // callback function
-        document.getElementById("requestLoder").innerHTML = '';
+    _defineProperty(_assertThisInitialized(_this), "onChangeHandler", function (event) {
+      var file = event.target.files[0];
+
+      if (_this.validateSize(event)) {
+        // if return true allow to setState
+        _this.setState({
+          selectedFile: file
+        });
+
+        _this.setState({
+          progress: 0
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "validateSize", function (event) {
+      var file = event.target.files[0];
+      var size = 3000000;
+      var err = '';
+      console.log(file.size);
+
+      if (file.size > size) {
+        err = file.type + 'is too large, please pick a smaller file\n';
+        alert(err); //  toast.error(err);
+      }
+
+      return true;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+      var baseurl = window.location.origin;
+
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "sending")
+      });
+
+      var data = new FormData();
+      data.append('file', _this.state.selectedFile);
+      data.append('file_id', _this.state.file_id);
+      data.append('file_name', _this.state.file_name);
+      data.append('sheet_id', _this.state.sheet_id);
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/utilita/DailyPerformance', data, {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Import'
+          });
+
+          _this.setState({
+            selectedFile: null
+          });
+
+          if (res.data.duplicate_data) {
+            _this.setState({
+              duplicate_data: [{
+                visible: '',
+                data: res.data.duplicate_data
+              }]
+            });
+          }
+
+          $('#avatar').val('');
+          /*console.clear(); */
+          //this.setState({progress:100});
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+            title: 'Success',
+            text: res.data.message,
+            modules: {
+              Desktop: {
+                desktop: true
+              }
+            }
+          }).on('click', function (e) {});
+        } else {
+          $('#avatar').val('');
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+            title: "System Error",
+            text: res.data.message
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Import'
+          });
+
+          _this.setState({
+            selectedFile: null
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Import'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+
+        console.log(err);
+      }); // successDesktopPNotify();
+      //  this.props.history.push('/role');
+
+      _this.setState({
+        showModal: true
       });
     });
 
     _this.state = {
-      start_date: '',
-      end_date: '',
-      title: ''
+      validated: false,
+      validatedTooltip: false,
+      supportedCheckbox: false,
+      supportedRadio: false,
+      supportedSelect: 0,
+      supportedFile: 0,
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Import',
+      selectedFile: null,
+      file_id: '4',
+      file_name: 'Daily Performance',
+      sheet_id: '',
+      file_type: [{
+        id: 1,
+        name: 'Morrison Data services'
+      }, {
+        id: 2,
+        name: 'Utilita'
+      }, {
+        id: 3,
+        name: 'Vehical Mileage'
+      }],
+      progress: 0
     };
     return _this;
   }
 
-  _createClass(UtilitaChart, [{
+  _createClass(DailyPerformance_import, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      var items = [];
-      var _this$props = this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-
-      if (location.state.detail) {
-        var _location$state$detai = location.state.detail,
-            _id = _location$state$detai.id,
-            _start_date = _location$state$detai.start_date,
-            _end_date = _location$state$detai.end_date,
-            _report_type = _location$state$detai.report_type;
-        localStorage.setItem('bespokesearch', JSON.stringify(location.state.detail));
-      } else {
-        var _ref2 = localStorage.getItem('bespokesearch') ? JSON.parse(localStorage.getItem('bespokesearch')).user : 'Null',
-            _id2 = _ref2.id,
-            _start_date2 = _ref2.start_date,
-            _end_date2 = _ref2.end_date,
-            _report_type2 = _ref2.report_type;
-      }
-
-      var _location$state$detai2 = location.state.detail,
-          id = _location$state$detai2.id,
-          start_date = _location$state$detai2.start_date,
-          end_date = _location$state$detai2.end_date,
-          report_type = _location$state$detai2.report_type;
-      var reportType = report_type['value'];
+      var sheet_id = this.props.match.params.sheet_id;
       this.setState({
-        start_date: start_date
+        'sheet_id': sheet_id
       });
-      this.setState({
-        end_date: end_date
-      });
-      var data = {
-        _method: 'get',
-        id: id,
-        start_date: start_date,
-        end_date: end_date,
-        file_id: reportType
-      };
-
-      if (reportType == 1) {
-        this.setState({
-          title: 'Morrison Data services'
-        });
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          // let data = JSON.parse(res.data); 
-          document.getElementById("requestLoder").innerHTML = '';
-          var result = res.data.complate; //series
-
-          var options = {
-            series: result['series'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Completed',
-              align: 'left'
-            },
-            xaxis: {
-              categories: result['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
-          StackedBar.render();
-          var abortedrs = res.data.aborted; //series
-
-          var options = {
-            series: abortedrs['series'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'aborted',
-              align: 'left'
-            },
-            xaxis: {
-              categories: abortedrs['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              y: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render();
-        });
-      } else if (reportType == 2) {
-        this.setState({
-          title: 'Utilita'
-        });
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/utilita/' + id, data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          // let data = JSON.parse(res.data); 
-          document.getElementById("requestLoder").innerHTML = '';
-          var result = res.data.complate;
-          var CompletedjobData = res.data.CompletedjobData;
-          var totalEngineerMiles = res.data.totalEngineerMiles; //series
-
-          var options = {
-            series: result['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Completed',
-              align: 'left'
-            },
-            xaxis: {
-              categories: result['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref3) {
-                var series = _ref3.series,
-                    seriesIndex = _ref3.seriesIndex,
-                    dataPointIndex = _ref3.dataPointIndex,
-                    w = _ref3.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-                var total_Miles = 'traveller record not found';
-
-                if (totalEngineerMiles[w.globals.labels[dataPointIndex]]) {
-                  total_Miles = 'Travelled ' + totalEngineerMiles[w.globals.labels[dataPointIndex]] + ' miles';
-                }
-
-                if (CompletedjobData[w.globals.labels[dataPointIndex]]) {
-                  CompletedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.job_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.on_site_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<div><h6 style="margin:10px;float:left">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="float:right;margin: 6px 60px;">' + total_Miles + '</b></div>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var StackedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#StackedBar"), options);
-          StackedBar.render();
-          var abortedrs = res.data.aborted;
-          var AbortedjobData = res.data.AbortedjobData; //series
-
-          var options = {
-            series: abortedrs['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Install Numbers'
-            },
-            subtitle: {
-              text: 'Aborted',
-              align: 'left'
-            },
-            xaxis: {
-              categories: abortedrs['engineer'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Engineer Name'
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref4) {
-                var series = _ref4.series,
-                    seriesIndex = _ref4.seriesIndex,
-                    dataPointIndex = _ref4.dataPointIndex,
-                    w = _ref4.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (AbortedjobData[w.globals.labels[dataPointIndex]]) {
-                  AbortedjobData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.job_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.on_site_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post Code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var abortedBar = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#abortedBar"), options);
-          abortedBar.render(); //Description chart reports
-
-          var descriptionBar = res.data.total_description;
-          var AbortedReasonData = res.data.AbortedReasonData;
-          var options = {
-            series: descriptionBar['series'],
-            colors: ['#0d74bc', '#d8cb1b'],
-            chart: {
-              type: 'bar',
-              height: 500,
-              stacked: true
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            title: {
-              text: 'Aborts-reason'
-            },
-            subtitle: {
-              text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-              align: 'left'
-            },
-            xaxis: {
-              categories: descriptionBar['description'],
-              labels: {
-                formatter: function formatter(val) {
-                  return val + "";
-                }
-              },
-              title: {
-                text: 'Value'
-              }
-            },
-            yaxis: {
-              title: {
-                text: 'Description',
-                align: 'left',
-                margin: 10
-              }
-            },
-            tooltip: {
-              custom: function custom(_ref5) {
-                var series = _ref5.series,
-                    seriesIndex = _ref5.seriesIndex,
-                    dataPointIndex = _ref5.dataPointIndex,
-                    w = _ref5.w;
-                var lineName = '';
-
-                if (seriesIndex == 0) {
-                  lineName = 'AM';
-                } else if (seriesIndex == 1) {
-                  lineName = 'PM';
-                }
-
-                var listed = '';
-
-                if (AbortedReasonData[w.globals.labels[dataPointIndex]]) {
-                  AbortedReasonData[w.globals.labels[dataPointIndex]].map(function (vl, inx) {
-                    if (vl.appointment_time == lineName) {
-                      listed += '<tr>';
-                      listed += '<td>' + vl.customer_id + '</td>';
-                      listed += '<td>' + vl.job_id + '</td>';
-                      listed += '<td>' + vl.schedule_date + '</td>';
-                      listed += '<td>' + vl.schedule_start_time + '</td>';
-                      listed += '<td>' + vl.schedule_end_time + '</td>';
-                      listed += '<td>' + vl.on_site_time + '</td>';
-                      listed += '<td>' + vl.job_type + '</td>';
-                      listed += '<td>' + vl.post_code + '</td>';
-                      listed += '<td>' + vl.region + '</td>';
-                      listed += '</tr>';
-                    }
-                  });
-                }
-
-                return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Customer Id</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                "<th>Job Id</th>" + "<th>Schedule Date</th>" + "<th>Start Time</th>" + "<th>End Time</th>" + "<th>On Site Time</th>" + "<th>Job Type</th>" + "<th>Post Code</th>" + "<th>Region</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-              },
-              fixed: {
-                enabled: true,
-                position: "topRight",
-                offsetX: 0,
-                offsetY: 0
-              }
-              /*
-              y: {
-                 formatter: function (val) {
-                   return val + ""
-                 }
-               }
-               */
-
-            },
-            fill: {
-              opacity: 1
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-              offsetX: 40
-            }
-          };
-          var descriptions = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#descriptionBar"), options);
-          descriptions.render();
-        });
-      } else if (reportType == 3) {
-        this.setState({
-          title: 'Vehicle Mileage'
-        });
-        var driver_name = [];
-        var total_miles = [];
-        var max_speed = [];
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(baseurl + '/api/vehicalmileas/1', data, {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          if (res.data.success) {
-            document.getElementById("requestLoder").innerHTML = '';
-
-            if (res.data.totalmileage.length == 0) {
-              document.getElementById("vahicalMileage").innerHTML = '<div>Record not found</div>';
-              return false;
-            }
-
-            res.data.totalmileage.map(function (val, indx) {
-              driver_name.push(val.driver_name);
-              total_miles.push(val.total_miles);
-              max_speed.push(val.max_speed);
-            });
-            var listmileage = res.data.listmileage;
-            var options = {
-              title: {
-                text: 'Miles'
-              },
-              subtitle: {
-                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-                align: 'left'
-              },
-              series: [{
-                data: total_miles
-              }],
-              chart: {
-                type: 'bar',
-                height: 600
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-              xaxis: {
-                categories: driver_name,
-                title: {
-                  text: 'Miles'
-                }
-              },
-              yaxis: {
-                title: {
-                  text: 'Driver Name'
-                }
-              },
-              tooltip: {
-                custom: function custom(_ref6) {
-                  var series = _ref6.series,
-                      seriesIndex = _ref6.seriesIndex,
-                      dataPointIndex = _ref6.dataPointIndex,
-                      w = _ref6.w;
-                  var lineName = '';
-
-                  if (seriesIndex == 0) {
-                    lineName = 'AM';
-                  } else if (seriesIndex == 1) {
-                    lineName = 'PM';
-                  }
-
-                  var listed = '';
-
-                  if (listmileage) {
-                    listmileage.map(function (vl, inx) {
-                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
-                        listed += '<tr>';
-                        listed += '<td>' + vl.drive_date + '</td>';
-                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.duration + '</td>';
-                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
-                        listed += '<td>' + vl.start_time + '</td>';
-                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
-                        listed += '<td>' + vl.end_time + '</td>';
-                        listed += '</tr>';
-                      }
-                    });
-                  }
-
-                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-                },
-                fixed: {
-                  enabled: true,
-                  position: "topRight",
-                  offsetX: 0,
-                  offsetY: 0
-                }
-                /*
-                y: {
-                   formatter: function (val) {
-                     return val + ""
-                   }
-                 }
-                 */
-
-              }
-            };
-            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMileage"), options);
-            chart.render();
-            var options = {
-              title: {
-                text: 'Speed Spread'
-              },
-              subtitle: {
-                text: _this2.state.start_date + ' to ' + _this2.state.end_date,
-                align: 'left'
-              },
-              fill: {
-                colors: [function (_ref7) {
-                  var value = _ref7.value,
-                      seriesIndex = _ref7.seriesIndex,
-                      w = _ref7.w;
-
-                  if (value > 70) {
-                    return '#FF0000';
-                  } else {
-                    return '#0099FF';
-                  }
-                }]
-              },
-              series: [{
-                data: max_speed
-              }],
-              chart: {
-                type: 'bar',
-                height: 600
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-              xaxis: {
-                categories: driver_name,
-                title: {
-                  text: 'Top speed'
-                }
-              },
-              yaxis: {
-                title: {
-                  text: 'Driver Name'
-                }
-              },
-              tooltip: {
-                custom: function custom(_ref8) {
-                  var series = _ref8.series,
-                      seriesIndex = _ref8.seriesIndex,
-                      dataPointIndex = _ref8.dataPointIndex,
-                      w = _ref8.w;
-                  var lineName = '';
-
-                  if (seriesIndex == 0) {
-                    lineName = 'AM';
-                  } else if (seriesIndex == 1) {
-                    lineName = 'PM';
-                  }
-
-                  var listed = '';
-
-                  if (listmileage) {
-                    listmileage.map(function (vl, inx) {
-                      if (w.globals.labels[dataPointIndex] == vl.driver_name) {
-                        if (vl.max_speed > 70) {
-                          listed += '<tr style="background-color: #fbbfbf;color:white" >';
-                        } else {
-                          listed += '<tr>';
-                        }
-
-                        listed += '<td>' + vl.drive_date + '</td>';
-                        listed += '<td>' + vl.miles.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.duration + '</td>';
-                        listed += '<td>' + vl.max_speed.toFixed(2) + '</td>';
-                        listed += '<td>' + vl.start_location + ', ' + vl.start_postcode + '</td>';
-                        listed += '<td>' + vl.start_time + '</td>';
-                        listed += '<td>' + vl.end_location + ', ' + vl.end_postcode + '</td>';
-                        listed += '<td>' + vl.end_time + '</td>';
-                        listed += '</tr>';
-                      }
-                    });
-                  }
-
-                  return '<h6 style="margin:10px;">' + w.globals.labels[dataPointIndex] + '</h6>' + '<b style="margin-left:10px;"> Total Miles :' + series[seriesIndex][dataPointIndex].toFixed(2) + '</b>' + '<table width="100%" class="table table-striped"  style="width:100" class="arrow_box">' + "<thead><tr>" + "<th>Drive Date</th>" + //  w.globals.labels[dataPointIndex] + //  series[seriesIndex][dataPointIndex] +
-                  "<th>Miles</th>" + "<th>Duration</th>" + "<th>Max Speed</th>" + "<th>Start Location</th>" + "<th>Start Time</th>" + "<th>End Location</th>" + "<th>End Time</th>" + "</tr></thead>" + "<tbody>" + listed + "</tbody>" + "</table>";
-                },
-                fixed: {
-                  enabled: true,
-                  position: "topRight",
-                  offsetX: 0,
-                  offsetY: 0
-                }
-                /*
-                y: {
-                   formatter: function (val) {
-                     return val + ""
-                   }
-                 }
-                 */
-
-              }
-            };
-            var chart = new apexcharts__WEBPACK_IMPORTED_MODULE_9___default.a(document.querySelector("#vahicalMax_speed"), options);
-            chart.render();
-          }
-        });
-      } //
-
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      var _this$state = this.state,
+          validated = _this$state.validated,
+          validatedTooltip = _this$state.validatedTooltip;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, this.state.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " From ", this.state.start_date, " To ", this.state.end_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm",
-        style: {
-          'float': 'right'
+      }, "ADD Daily Performance")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Upload File"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        name: "avatar",
+        id: "avatar",
+        required: true,
+        fileType: ["csv", "CSV", "xls", "xlsx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only .xls and csv file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
         },
-        onClick: function onClick() {
-          history.goBack();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
-      }), "Back"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "btn-sm btn-light",
-        style: {
-          'float': 'right'
-        },
-        onClick: this.generatePdf
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-download"
-      }), "Download all")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
-        style: {
-          'textAlign': 'center'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "pdf-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "abortedBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "descriptionBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "StackedBar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "vahicalMileage"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "vahicalMax_speed"
-      })))))));
+        onChange: this.onChangeHandler
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))))));
     }
   }]);
 
-  return UtilitaChart;
+  return DailyPerformance_import;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UtilitaChart);
+/* harmony default export */ __webpack_exports__["default"] = (DailyPerformance_import);
+
+/***/ }),
+
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+
+
+
+/**
+ *  baseurl  get baseurl
+ */
+
+var baseurl = window.location.origin;
+/**
+ * Login api request
+ * @param {*} user for send Credentials
+ */
+
+var CheckPermission = function CheckPermission(page, page_name, history) {
+  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref.id,
+      parmissions = _ref.parmissions;
+
+  var pages = parmissions.filter(function (vl, idx) {
+    if (Object.keys(vl)[0] == page) {
+      return vl;
+    }
+  });
+
+  if (pages.length > 0) {
+    var Ischeck = pages[0][page].filter(function (v, i) {
+      if (v['page_name'] == page_name) {
+        if (v['Ischeck']) {
+          return v;
+        }
+      }
+    });
+
+    if (Ischeck.length == 0) {
+      if (redirect) {
+        history.goBack();
+      }
+
+      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
+        title: "Permission Error",
+        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
+      });
+      return 1;
+    }
+  } else {
+    history.goBack();
+  }
+};
+var Login = function Login(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
+    email: user.email,
+    password: user.password,
+    remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var Pemissionlist = function Pemissionlist(parameter) {
+  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref2.id,
+      auth_token = _ref2.auth_token;
+
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
+    'id': id
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    }
+  });
+};
+var RoleAdd = function RoleAdd(role) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
+    email: role.email,
+    password: role.password,
+    remember_me: role.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
 
 /***/ })
 
