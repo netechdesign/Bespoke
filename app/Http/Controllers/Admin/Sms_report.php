@@ -177,7 +177,7 @@ class Sms_report extends Controller
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }  
         }else{
-            $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+            $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
         if(isset($request->file_id) && $request->file_id!=''){
@@ -251,7 +251,7 @@ class Sms_report extends Controller
             
             
             $national['total_job'] = $national['total_job']+1;
-            
+
             if(isset($team[$vl->teams_engineer_name][$vl->engineer_id])){
                  //working_day 
                  
