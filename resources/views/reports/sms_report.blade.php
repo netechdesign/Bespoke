@@ -40,21 +40,21 @@
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">National</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['total_job']}}</th>
             <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['completed']}}</th>
-<td style="border: 1px solid #000000;text-align: right;">{{round(($national['completed']/($national['total_job']-$national['cancelled']))*100,2)}}%</td>
+<td style="border: 1px solid #000000;text-align: right;">{{number_format(($national['completed']/($national['total_job']-$national['cancelled']))*100,2)}}%</td>
             <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['aborted']}}</th>
-             <td style="border: 1px solid #000000;text-align: right;">{{round(($national['aborted']/($national['total_job']-$national['cancelled']))*100,2)}}%</td>
+             <td style="border: 1px solid #000000;text-align: right;">{{number_format(($national['aborted']/($national['total_job']-$national['cancelled']))*100,2)}}%</td>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['open']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['cancelled']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['pu']/$national['total_work_day'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus_pus'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus_pus']/$national['total_work_day'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['bonus']/$national['total_work_day'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['revenue'],2)}}</th> 
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{round($national['revenue']/$national['total_work_day'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-" >{{round($national['profit'],2)}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{round($national['profit']/$national['total_work_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['pu']/$national['total_work_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus']/$national['total_work_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus']/$national['total_work_day'],2)}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($national['revenue'],2))}}</th> 
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($national['revenue']/$national['total_work_day'],2))}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-" >{{str_replace(',','',number_format($national['profit'],2))}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($national['profit']/$national['total_work_day'],2))}}</th>
 
         </tr>
         @endif
@@ -64,7 +64,7 @@
         @foreach ($data as $ky => $regions)
         
         <tr>
-            <th></th>
+            <th style="border: 1px solid #000000;font-weight: bold;">{{$ky}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Total Jobs</th>
             <th colspan="2" style="border: 1px solid #000000;text-align: center;font-weight: bold;">Completed</th>
             <th colspan="2" style="border: 1px solid #000000;text-align: center;font-weight: bold;">Aborted</th>
@@ -121,47 +121,47 @@
         ?>
             <tr>
                 <td style="width:20;border: 1px solid #000000;">{{$users['engineer_name']}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{$users['total_job']}}</td>
-                <td style="border: 1px solid #000000;">{{$users['completed']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{$users['completed_per']}}%</td>
-                <td style="border: 1px solid #000000;" >{{$users['aborted']}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">@if(isset($users['aborted_per'])) {{$users['aborted_per']}} @else 0.00 @endif %</td>
-                <td style="width:10;border: 1px solid #000000;">{{$users['open']}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{$users['cancelled']}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{$users['pu']}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{round($users['pu_day'],2)}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{round($users['bonus_pus'],2)}}</td>
-                <td style="width:15;border: 1px solid #000000;">{{round($users['bonus_pus_day'],2)}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{round($users['bonus'],2)}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{round($users['bonus_day'],2)}}</td>
-                <td style="width:10;border: 1px solid #000000;">{{round($users['revenue'],2)}}</td>
-                <td style="width:15;border: 1px solid #000000;">{{round($users['revenue_day'],2)}}</td>
-                <td style="width:15;border: 1px solid #000000;" data-format="£#,##0.00_-">{{round($users['profit'],2)}}</td>
-                <td style="width:15;border: 1px solid #000000;" data-format="£#,##0.00_-">{{round($users['profit_day'],2)}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['total_job']}}</td>
+                <td style="border: 1px solid #000000;text-align: center;">{{$users['completed']}}</td>
+                <td style="border: 1px solid #000000;text-align: center;">{{$users['completed_per']}}%</td>
+                <td style="border: 1px solid #000000;text-align: center;" >{{$users['aborted']}}</td>
+                <td style="border: 1px solid #000000;text-align: center;">@if(isset($users['aborted_per'])) {{$users['aborted_per']}} @else 0.00 @endif %</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['open']}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['cancelled']}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['pu']}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{number_format($users['pu_day'],2)}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{number_format($users['bonus_pus'],2)}}</td>
+                <td style="width:15;border: 1px solid #000000;text-align: center;">{{number_format($users['bonus_pus_day'],2)}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{number_format($users['bonus'],2)}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">{{number_format($users['bonus_day'],2)}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($users['revenue'],2))}}</td>
+                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($users['revenue_day'],2))}}</td>
+                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($users['profit'],2))}}</td>
+                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($users['profit_day'],2))}}</td>
                 
             </tr>
             @endif
             @endforeach 
             
             <tr>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$ky}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$total_job}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;"></td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$total_job}}</td>
                 <td  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$completed}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{round(($completed/($total_job-$cancelled))*100,2)}}%</td>
+                <td style="border: 1px solid #000000;text-align: center;">{{number_format(($completed/($total_job-$cancelled))*100,2)}}%</td>
                 <td  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$aborted}}</td>
-                <td style="border: 1px solid #000000;text-align: right;">{{round(($aborted/($total_job-$cancelled))*100,2)}}%</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$open}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$cancelled}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{$pu}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($pu/$engineer_days,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus_pus,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus_pus/$engineer_days,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($bonus/$engineer_days,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($revenue,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;">{{round($revenue/$engineer_days,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;" data-format="£#,##0.00_-">{{round($profit,2)}}</td>
-                <td style="border: 1px solid #000000;font-weight: bold;" data-format="£#,##0.00_-">{{round($profit/$engineer_days,2)}}</td>
+                <td style="border: 1px solid #000000;text-align: center;">{{number_format(($aborted/($total_job-$cancelled))*100,2)}}%</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$open}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$cancelled}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$pu}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{number_format($pu/$engineer_days,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{number_format($bonus_pus,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{number_format($bonus_pus/$engineer_days,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{number_format($bonus,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{number_format($bonus/$engineer_days,2)}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($revenue,2))}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($revenue/$engineer_days,2))}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($profit,2))}}</td>
+                <td style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($profit/$engineer_days,2))}}</td>
             </tr>
             <tr><td>&nbsp;</td></tr>
         

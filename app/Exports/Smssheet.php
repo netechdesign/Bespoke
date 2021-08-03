@@ -202,7 +202,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
                  //Completed per
                      if($vl->status=='completed'){
                         
-                         $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['completed']/($team[$vl->regions_sort_name][$vl->engineer_id]['total_job']-(isset($team[$vl->regions_sort_name][$vl->engineer_id]['cancelled'])?$team[$vl->regions_sort_name][$vl->engineer_id]['cancelled']:0)))*100,2) ;
+                         $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['completed']/($team[$vl->regions_sort_name][$vl->engineer_id]['total_job']-(isset($team[$vl->regions_sort_name][$vl->engineer_id]['cancelled'])?$team[$vl->regions_sort_name][$vl->engineer_id]['cancelled']:0)))*100,2) ;
 
                          $national['completed_per'] = $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] + $national['completed_per'];
                      }
@@ -210,7 +210,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
                  //aborted per
                  if($vl->status=='aborted'){
                     
-                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['aborted']/($team[$vl->regions_sort_name][$vl->engineer_id]['total_job']-(isset($team[$vl->regions_sort_name][$vl->engineer_id]['cancelled'])?$team[$vl->regions_sort_name][$vl->engineer_id]['cancelled']:0)))*100,2) ;
+                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['aborted']/($team[$vl->regions_sort_name][$vl->engineer_id]['total_job']-(isset($team[$vl->regions_sort_name][$vl->engineer_id]['cancelled'])?$team[$vl->regions_sort_name][$vl->engineer_id]['cancelled']:0)))*100,2) ;
 
                      $national['aborted_per'] = $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] + $national['aborted_per'];
                   }else{
@@ -219,11 +219,11 @@ class Smssheet implements FromView,WithTitle,WithEvents
                     
                 //pu_day  
                    if(isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])){
-                       //$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$total_engineer,4) ;
+                       //$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$total_engineer,4) ;
                        
-                      // $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$team[$vl->regions_sort_name]['regions_engineer_total'],4) ;
+                      // $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$seleceted_days)/$team[$vl->regions_sort_name]['regions_engineer_total'],4) ;
                       $total_engineer=1;
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = round(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'])/$total_engineer,4) ;
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'])/$total_engineer,4) ;
                      $team[$vl->regions_sort_name][$vl->engineer_id]['regions_engineer_total']=$team[$vl->regions_sort_name]['regions_engineer_total'];
                       
                      //$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day']-6);
