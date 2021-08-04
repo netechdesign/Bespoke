@@ -172,19 +172,13 @@ var Edit = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: 'PUT',
       id: '',
-      engineer_id: '',
-      engineer_name: '',
-      manager_list: [],
-      team_id: '',
-      regions_sort_name: '',
-      region_list: [],
-      perfomance_level: '',
-      cost: '',
-      Monday: '',
-      Tuesday: '',
-      Wednesday: '',
-      Thursday: '',
-      Friday: '',
+      job_type: '',
+      mix: '',
+      revenue: '',
+      pu: '',
+      revenue_aborted: '',
+      pu_aborted: '',
+      contract: '',
       chkCustom: false,
       visible: true,
       formSubmitting: false,
@@ -221,6 +215,8 @@ var Edit = /*#__PURE__*/function (_React$Component) {
             mix: res.data.data.mix,
             revenue: res.data.data.revenue,
             pu: res.data.data.pu,
+            revenue_aborted: res.data.data.revenue_aborted,
+            pu_aborted: res.data.data.pu_aborted,
             contract: res.data.data.contract
           });
 
@@ -385,6 +381,19 @@ var Edit = /*#__PURE__*/function (_React$Component) {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "contract"
+      }, "Contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "contract",
+        id: "contract",
+        placeholder: "Contract",
+        required: true,
+        value: this.state.contract,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         htmlFor: "bank_name"
       }, "Revenue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
         name: "revenue",
@@ -411,13 +420,26 @@ var Edit = /*#__PURE__*/function (_React$Component) {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "contract"
-      }, "Contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "contract",
-        id: "contract",
-        placeholder: "Contract",
+        htmlFor: "bank_name"
+      }, "Revenue - Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "revenue_aborted",
+        id: "revenue_aborted",
+        placeholder: "Revenue Aborted",
         required: true,
-        value: this.state.contract,
+        value: this.state.revenue_aborted,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "PU - Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "pu_aborted",
+        id: "pu_aborted",
+        placeholder: "Pu Aborted",
+        required: true,
+        value: this.state.pu_aborted,
         onChange: this.handleChange,
         autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {

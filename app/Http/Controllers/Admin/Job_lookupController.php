@@ -91,13 +91,15 @@ class Job_lookupController extends Controller
     public function store(Request $request)
     {
         try{
-            $user = JWTAuth::toUser($Request->input('token'));
+            $user = JWTAuth::toUser($request->input('token'));
                        
             $engineers = new Job_lookup();
             $engineers->job_type = $request->job_type;
             $engineers->mix= $request->mix;
             $engineers->revenue = $request->revenue;
             $engineers->pu= $request->pu;
+            $engineers->revenue_aborted = $request->revenue_aborted;
+            $engineers->pu_aborted= $request->pu_aborted;
             $engineers->contract= $request->contract;
             $engineers->created_by = $user->id;
             if($engineers->save()){
@@ -163,6 +165,8 @@ class Job_lookupController extends Controller
             $engineers->mix= $request->mix;
             $engineers->revenue = $request->revenue;
             $engineers->pu= $request->pu;
+            $engineers->revenue_aborted = $request->revenue_aborted;
+            $engineers->pu_aborted= $request->pu_aborted;
             $engineers->contract= $request->contract;
             
             if($engineers->save()){

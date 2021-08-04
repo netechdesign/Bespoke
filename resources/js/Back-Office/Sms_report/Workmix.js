@@ -128,7 +128,7 @@ $("#monday_view th").css("background","lightgray");
                        
                       <Card>
                             <Card.Header>
-                            <Card.Title as="h5">Performance Report</Card.Title>
+                            <Card.Title as="h5">Work Mix Report</Card.Title>
                             <Button className="btn-sm" style={{'float':'right'}}  as={Link} to="/list" ><i  class="feather icon-chevron-left"></i>Back</Button>
                            
                             <ValidationForm  method="get" action={this.state.baseurl} onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>

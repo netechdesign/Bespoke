@@ -33,19 +33,13 @@ class Edit extends React.Component{
     state = {
         _method: 'PUT',
         id:'',
-        engineer_id:'',
-        engineer_name:'',
-        manager_list:[],
-        team_id:'',
-        regions_sort_name:'',
-        region_list:[],
-        perfomance_level:'',
-        cost:'',
-        Monday:'',	
-        Tuesday:'',
-        Wednesday:'',
-        Thursday:'',
-        Friday:'',
+        job_type:'',
+        mix:'',
+        revenue:'',
+        pu:'',
+        revenue_aborted:'',
+        pu_aborted:'',
+        contract:'',
         chkCustom:false,
         visible : true,
         formSubmitting: false,
@@ -87,6 +81,8 @@ class Edit extends React.Component{
                                                 mix:res.data.data.mix,
                                                 revenue:res.data.data.revenue,
                                                 pu:res.data.data.pu,
+                                                revenue_aborted:res.data.data.revenue_aborted,
+                                                pu_aborted:res.data.data.pu_aborted,
                                                 contract:res.data.data.contract});
                                                 document.getElementById("requestLoder").innerHTML = '';                         
                           
@@ -195,6 +191,19 @@ class Edit extends React.Component{
                                             />
                                         </Form.Group>
                                         <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="contract">Contract</Form.Label>
+                                            <TextInput
+                                            name="contract"
+                                            id="contract"
+                                            placeholder="Contract"
+                                            required value={this.state.contract}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        </Form.Row>
+                                   <Form.Row>
+                                        <Form.Group as={Col} md="3">
                                             <Form.Label htmlFor="bank_name">Revenue</Form.Label>
                                             <TextInput
                                             name="revenue"
@@ -217,20 +226,30 @@ class Edit extends React.Component{
                                             />
                                         </Form.Group>
                                         <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="contract">Contract</Form.Label>
+                                            <Form.Label htmlFor="bank_name">Revenue - Aborted</Form.Label>
                                             <TextInput
-                                            name="contract"
-                                            id="contract"
-                                            placeholder="Contract"
-                                            required value={this.state.contract}
+                                            name="revenue_aborted"
+                                            id="revenue_aborted"
+                                            placeholder="Revenue Aborted"
+                                            required value={this.state.revenue_aborted}
                                             onChange={this.handleChange}
                                             autoComplete="off"
                                             />
                                         </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">PU - Aborted</Form.Label>
+                                            <TextInput
+                                            name="pu_aborted"
+                                            id="pu_aborted"
+                                            placeholder="Pu Aborted"
+                                            required value={this.state.pu_aborted}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                       
                                 </Form.Row>
-                                   
-                                    
-                                    <Form.Row>
+                                   <Form.Row>
                                             <Form.Group as={Col} sm={12} className="mt-3">
                                                 <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
                                             </Form.Group>

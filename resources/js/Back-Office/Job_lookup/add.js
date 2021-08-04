@@ -35,6 +35,8 @@ class Add extends React.Component{
         mix:'',
         revenue:'',
         pu:'',
+        revenue_aborted:'',
+        pu_aborted:'',
         contract:'',
         chkCustom:false,
         visible : true,
@@ -148,34 +150,58 @@ class Add extends React.Component{
                                             />
                                         </Form.Group>
                                         <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">Revenue</Form.Label>
-                                            <TextInput
-                                            name="revenue"
-                                            id="revenue"
-                                            placeholder="Revenue"
-                                            required value={this.state.revenue}
-                                            onChange={this.handleChange}
-                                            autoComplete="off"
-                                            />
-                                        </Form.Group>
-                                        <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">Pu</Form.Label>
-                                            <TextInput
-                                            name="pu"
-                                            id="pu"
-                                            placeholder="Pu"
-                                            required value={this.state.pu}
-                                            onChange={this.handleChange}
-                                            autoComplete="off"
-                                            />
-                                        </Form.Group>
-                                        <Form.Group as={Col} md="3">
                                             <Form.Label htmlFor="contract">Contract</Form.Label>
                                             <TextInput
                                             name="contract"
                                             id="contract"
                                             placeholder="Contract"
                                             required value={this.state.contract}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        </Form.Row>
+                                    <Form.Row>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">Revenue - Completed</Form.Label>
+                                            <TextInput
+                                            name="revenue"
+                                            id="revenue"
+                                            placeholder="Revenue Completed"
+                                            required value={this.state.revenue}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">PU - Completed</Form.Label>
+                                            <TextInput
+                                            name="pu"
+                                            id="pu"
+                                            placeholder="Pu Completed"
+                                            required value={this.state.pu}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">Revenue - Aborted</Form.Label>
+                                            <TextInput
+                                            name="revenue_aborted"
+                                            id="revenue_aborted"
+                                            placeholder="Revenue Aborted"
+                                            required value={this.state.revenue_aborted}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">PU - Aborted</Form.Label>
+                                            <TextInput
+                                            name="pu_aborted"
+                                            id="pu_aborted"
+                                            placeholder="Pu Aborted"
+                                            required value={this.state.pu_aborted}
                                             onChange={this.handleChange}
                                             autoComplete="off"
                                             />

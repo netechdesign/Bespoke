@@ -229,6 +229,10 @@ function atable() {
   }, {
     "data": 'pu'
   }, {
+    "data": 'revenue_aborted'
+  }, {
+    "data": 'pu_aborted'
+  }, {
     "data": 'contract'
   }, {
     "data": "id"
@@ -380,9 +384,13 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
         id: "mix"
       }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "revenue"
-      }, "Revenue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Revenue-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "pu"
-      }, "Pu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Pu-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "revenue_aborted"
+      }, "Revenue-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "pu_aborted"
+      }, "Pu-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "contract"
       }, "contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
@@ -392,9 +400,13 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
         id: "mix"
       }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "revenue"
-      }, "Revenue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Revenue-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "pu"
-      }, "Pu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Pu-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "revenue_aborted"
+      }, "Revenue-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "pu_aborted"
+      }, "Pu-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "contract"
       }, "contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"

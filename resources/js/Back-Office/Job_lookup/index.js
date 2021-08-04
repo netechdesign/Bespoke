@@ -86,6 +86,8 @@ oTable = $(tableResponsive).DataTable({
         {"data":"mix"},
         {"data":'revenue'},
         {"data":'pu'},
+        {"data":'revenue_aborted'},
+        {"data":'pu_aborted'},
         {"data":'contract'},
         {"data": "id"}
     ],
@@ -246,8 +248,10 @@ class Job_lookup extends React.Component {
                                     <tr>
                                         <th id="job_type">Job Type</th>
                                         <th id="mix">Mix</th>
-                                        <th id="revenue">Revenue</th>
-                                        <th id="pu">Pu</th>
+                                        <th id="revenue">Revenue-Completed</th>
+                                        <th id="pu">Pu-Completed</th>
+                                        <th id="revenue_aborted">Revenue-Aborted</th>
+                                        <th id="pu_aborted">Pu-Aborted</th>
                                         <th id="contract">contract</th>
                                         <th id="action">Action</th>
                                       </tr>
@@ -256,8 +260,10 @@ class Job_lookup extends React.Component {
                                     <tr>
                                         <th id="job_type">Job Type</th>
                                         <th id="mix">Mix</th>
-                                        <th id="revenue">Revenue</th>
-                                        <th id="pu">Pu</th>
+                                        <th id="revenue">Revenue-Completed</th>
+                                        <th id="pu">Pu-Completed</th>
+                                        <th id="revenue_aborted">Revenue-Aborted</th>
+                                        <th id="pu_aborted">Pu-Aborted</th>
                                         <th id="contract">contract</th>
                                         <th id="action">Action</th>
                                     </tr>

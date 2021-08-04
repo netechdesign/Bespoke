@@ -545,6 +545,7 @@ class Sms_report extends Controller
             }
             if($vl->status=='aborted'){
                 $national['aborted'] = $national['aborted'] +1;
+                
             }
             if($vl->status=='cancelled'){
                 $national['cancelled'] = $national['cancelled'] +1;
@@ -585,6 +586,16 @@ class Sms_report extends Controller
                 //aborted
                 if($vl->status=='aborted'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['aborted'])?$team[$vl->regions_sort_name][$vl->engineer_id]['aborted']+1:1);
+                   
+                      $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->first();
+
+                      if($pu_result){
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu_aborted:0);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue_aborted:0);
+                      }else{
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
+                      }
 
                  } 
                 //awaiting info  
@@ -618,8 +629,23 @@ class Sms_report extends Controller
                 //aborted
                 if($vl->status=='aborted'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = 1;
+
+                    //pu
+                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->first();
+                    
+                    if($pu_result){
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu_aborted;
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = $pu_result->revenue_aborted;
+                        }else{
+                               
+                            $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
+                            $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
+                        }
                    }else{
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = 0;
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
+                            $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
                    }
                  if($vl->status=='awaiting info'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['open'] = 1;
