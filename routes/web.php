@@ -134,6 +134,12 @@ Route::group(array('prefix' => '/'), function() {
       return view('welcome');
    });
    
+   Route::get('/sms-groups/add', function(){
+      return view('welcome');
+   });
+   Route::get('/sms-groups', function(){
+      return view('welcome');
+   });
      Route::get('/export', 'Admin\MdsController@export');
      Route::get('/sms/export', 'Admin\Sms_report@export');
      Route::get('/bonus_periods/export', 'Admin\Bonus_periodsController@export');

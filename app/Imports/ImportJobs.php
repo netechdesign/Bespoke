@@ -16,7 +16,7 @@ use DB;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\SkipsUnknownSheets;
-
+use App\Models\Sms_teams;
 class ImportJobs implements WithMultipleSheets 
 {
    
@@ -86,6 +86,7 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 $month = '01'.date('-M-y',strtotime($schedule_date));
                 $engineers =Engineers::where('engineer_name', '=', $row['engineer']);
                 $is_in_team	=0;
+                
             if ($engineers->count() ==0) {
                             
                 $engineers = new Engineers(["engineer_id"=> '0',"engineer_name" => $row['engineer'],'file_id'=>5]);
@@ -94,13 +95,20 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 $engineers->save();
                 $engineer_id= 'sms'.$engineers->id;
                 $is_in_team	=0;
+                $regions_sort_name='';
                 //["engineer_id" => $row['engineer_id'];
             }else{
                 $engineers= $engineers->first();
                 $engineer_id = $engineers->engineer_id;
-                $engineer_group =Engineer_group::where('child_engineer_id',$engineer_id)->first();
+                //$engineer_group =Engineer_group::where('child_engineer_id',$engineer_id)->first();
+                $engineer_group = Sms_teams::select('regions_sort_name')->where('child_engineer_id',$engineer_id)->whereDate('from_date', '<=', $schedule_date)->whereDate('to_date', '>=', $schedule_date)->first();
                 if($engineer_group){
+                    $regions_sort_name = $engineer_group->regions_sort_name;
+                    
                     $is_in_team	=1;
+                }else{
+                    $regions_sort_name ='';
+                    $is_in_team	=0;
                 }
                 
             }  
@@ -113,6 +121,7 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 "week_date"=>  $sunday_date,
                 "engineer_id" =>$engineer_id,
                 "engineer" =>$row['engineer'],
+                "regions_sort_name"=> $regions_sort_name,
                 "is_in_team" => $is_in_team,
                 "job_reference" =>$row['job_reference'],
                 "energy_supplier" =>$row['energy_supplier'],

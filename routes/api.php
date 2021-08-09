@@ -44,6 +44,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('job_lookup', 'Job_lookupController');
         Route::resource('time_lookup', 'Time_lookupController');
         Route::resource('bonus_periods', 'Bonus_periodsController');
+        Route::resource('smsteam', 'SmsteamController');
         
         Route::post('team/check_sort_name', 'TeamsController@check_sort_name');
         Route::get('sms_engineer', 'AreamanagerController@sms_engineer');

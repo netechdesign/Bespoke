@@ -46,16 +46,18 @@ class Sms_report extends Controller
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }  
         }else{
-            $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
-        $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
+           // $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+           $q= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end');
+           $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
         if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
+
         if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
           $q->where('job_lookups.contract',$_REQUEST['work_type']);
         }
-        
+        $q->where('sms_jobs.regions_sort_name','!=','');
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
         if($start_date!=''){ $q->whereDate('appointment_date', '>=', $start_date); }
         if($today_date!=''){ $q->whereDate('appointment_date', '<=', $today_date); }
@@ -464,9 +466,10 @@ class Sms_report extends Controller
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }  
         }else{
           
-            $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
-        $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
-        
+            //$q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+            $q= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end');
+            $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
+        $q->where('sms_jobs.regions_sort_name','!=','');
         if(isset($request->file_idwork_type) && $request->file_idwork_type!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
@@ -496,8 +499,10 @@ class Sms_report extends Controller
         // dd($q->toSql());
         $job=$q->get();
         
-       if($job){
-         
+        //echo '<pre/>'; print_r($job); exit;
+
+       if($q->count()>0){
+        
         $team=[];
         $total_engineer=0;
         $seleceted_days = 0;

@@ -60,12 +60,15 @@ class Exportsms implements WithMultipleSheets
       }
       else{
         
-        $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+        // $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+        $q= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end');
+        
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
         if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
+        $q->where('sms_jobs.regions_sort_name','!=','');
         if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
           $q->where('job_lookups.contract',$_REQUEST['work_type']);
         }

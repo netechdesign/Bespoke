@@ -80,7 +80,7 @@ class Engineer_lookupController extends Controller
             })->get();
             
 
-            $regions = DB::table('teams')->select(DB::raw('id as value'),DB::raw('CONCAT(engineer_name, " ", regions_sort_name) AS label'),'regions_sort_name')->get();
+            $regions = DB::table('teams')->select('*',DB::raw('id as value'),DB::raw('CONCAT(engineer_name, " ", regions_sort_name) AS label'),'regions_sort_name')->get();
             
             return response()->json(array('success' => true,'manager' => json_decode($manager),'region'=>json_decode($regions)), 200);
         }

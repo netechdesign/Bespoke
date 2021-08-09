@@ -383,6 +383,12 @@ export default {
                             type: 'item',
                             classes: 'nav-item',
                             url: '/team'
+                           },{  
+                            id: 'sms_groups',
+                            title: 'Team Groups',
+                            type: 'item',
+                            classes: 'nav-item',
+                            url: '/sms-groups'
                            },
                            {  
                             id: 'engineer_lookup',

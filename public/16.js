@@ -503,6 +503,12 @@ __webpack_require__.r(__webpack_exports__);
         classes: 'nav-item',
         url: '/team'
       }, {
+        id: 'sms_groups',
+        title: 'Team Groups',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/sms-groups'
+      }, {
         id: 'engineer_lookup',
         title: 'Employee Lookup',
         type: 'item',

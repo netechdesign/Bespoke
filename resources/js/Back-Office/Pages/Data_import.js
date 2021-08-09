@@ -20,7 +20,7 @@ import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
-
+import Datetime from 'react-datetime';
 // create engineer attach to manager
 $.DataTable = require( 'datatables.net-bs' );
 require( 'jszip' );
@@ -132,7 +132,7 @@ oTable = $(tableResponsive).DataTable({
         {
             "render": function (data, type, row) {
               
-                var str_buttons = '<div class="form-check"><input type="checkbox" data-id="'+row.engineer_id+'" data-value="'+row.engineer+'" id="formBasicChecbox" class="engineerSelect form-check-input"></div>';
+                var str_buttons = '<div class="form-check"><input type="checkbox" data-smsid="'+row.id+'" data-id="'+row.engineer_id+'" data-value="'+row.engineer+'" id="formBasicChecbox" class="engineerSelect form-check-input"></div>';
                 return [
                     str_buttons,
                 ].join('');
@@ -176,11 +176,90 @@ class Data_import extends React.Component {
         engineerSelect:[],
         SiteEngineer:[],
         AreabuttonName:'Add',
+        region_list:[],
+        from_date:'',
+        to_date:'',
+        parent_engineer_id:'',
+        parent_engineer:'',
+        team_id:'',
+        regions_sort_name:'',
         showsmsengineer:false
     };
+    dropdownList = (e) =>{
+            
+              
+     //   document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        
+          axios.get(
+            baseurl+'/api/dropdown_list',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+        ).then(res =>{
+                        if(res.data.success){
+                           this.setState({manager_list:res.data.manager,region_list:res.data.region})
+                           document.getElementById("requestLoder").innerHTML = '';
+                          }else{
+                           
+                        }
+                   }
+        )
+        .catch(err =>{
+                        console.log(err);
+                    }
+        )
+       
+    }
+
+    startDateChange = (e) => {
+        var today = new Date(e);
+        var dd = today.getDate(); 
+        var mm = today.getMonth() + 1; 
+  
+        var yyyy = today.getFullYear(); 
+        if (dd < 10) { 
+            dd = '0' + dd; 
+        } 
+        if (mm < 10) { 
+            mm = '0' + mm; 
+        } 
+        var today = dd + '/' + mm + '/' + yyyy; 
+
+       this.setState({from_date:today});
+    };
+    
+    endDateChange = (e) => {
+        var today = new Date(e);
+        var dd = today.getDate(); 
+        var mm = today.getMonth() + 1; 
+  
+        var yyyy = today.getFullYear(); 
+        if (dd < 10) { 
+            dd = '0' + dd; 
+        } 
+        if (mm < 10) { 
+            mm = '0' + mm; 
+        } 
+        var today = dd + '/' + mm + '/' + yyyy; 
+
+       this.setState({to_date:today});
+    };
+    RegionChange = (e) =>{
+      this.setState({team_id: e.value});
+      
+      let region = this.state.region_list.filter((vl,index)=> vl.value==e.value);
+      if(region){
+          
+          this.setState({parent_engineer_id:region[0].engineer_id});
+          this.setState({parent_engineer:region[0].engineer_name});
+          this.setState({team_id:region[0].id});
+          this.setState({regions_sort_name:region[0].regions_sort_name});
+          
+          }
+  }
     componentDidMount() {
         const { match, location, history } = this.props;
+
         CheckPermission('File','Data Import',history);
+        this.dropdownList();
         axios.get(baseurl+'/api/areamanager',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
             
             this.setState({Engineers:res.data}); 
@@ -193,7 +272,9 @@ class Data_import extends React.Component {
         $('#data-table-responsive tbody').on('click', '.engineerSelect', function () {
             var id =  $(this).attr('data-id');
             var engineer = $(this).attr('data-value');
-            var array ={'label':engineer,'value':id};
+            
+            var smsid =$(this).attr('data-smsid');
+            var array ={'label':engineer,'value':id,'sms_id':smsid};
             // array['label']=engineer;
             // array['value']=id;
             
@@ -477,13 +558,19 @@ class Data_import extends React.Component {
         this.setState({formSubmitting:true});
         this.setState({AreabuttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />sending</span>});
         const data = new FormData()
-        data.append('SiteEngineer', JSON.stringify(this.state.SiteEngineer));
+       // data.append('SiteEngineer', JSON.stringify(this.state.SiteEngineer));
         
         data.append('Engineer', JSON.stringify(this.state.engineerSelect));
+        data.append('from_date',this.state.from_date);
+        data.append('to_date',this.state.to_date);
+        data.append('parent_engineer_id',this.state.parent_engineer_id);
+        data.append('parent_engineer',this.state.parent_engineer);
+        data.append('team_id',this.state.team_id);
+        data.append('regions_sort_name',this.state.regions_sort_name);
         data.append('is_sms', 1);
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         axios.post(
-            baseurl+'/api/areamanager',
+            baseurl+'/api/smsteam',
             data,
             {
                 headers:{'Authorization':'Bearer '+auth_token}
@@ -671,16 +758,27 @@ class Data_import extends React.Component {
                         <Card.Header>
                         {(this.state.engineerSelect.length>0?<ValidationForm  onSubmit={this.ManagerSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                 <Form.Row>
-                                    <Form.Group as={Col} md="2">
-                                    <Form.Label htmlFor="SiteEngineer">Area Manager</Form.Label>
-                                    <Select required onChange={this.SiteEngineerchange}
-                                            className="basic-single"
-                                            classNamePrefix="select"
-                                            name="SiteEngineer"
-                                            options={this.state.Engineers}
-                                            placeholder="Select Area Manager"
-                                        />
+                                <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="firstName">Team</Form.Label>
+                            <Select onChange={this.RegionChange}
+                                    className="basic-single"
+                                    classNamePrefix="select"
+                                    name="regions_sort_name"
+                                    options={this.state.region_list}
+                                    placeholder="Select Team"
+                                />
+                            <Form.Label style={{color:'green'}} htmlFor="firstName">{(this.state.regions_sort_name?'Team id is '+this.state.regions_sort_name:'')}</Form.Label>
+                            <div id="requestLoder" style={{'textAlign': 'center'}}></div>
                                         </Form.Group>
+                                        <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="start_date">From</Form.Label>
+                                    <Datetime closeOnSelect={true} onChange={this.startDateChange}  dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()} errorMessage={{required:"start_date is required"}}  inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                </Form.Group>
+                                
+                                <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="end_date">To</Form.Label>
+                                    <Datetime  closeOnSelect={true} dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()}  errorMessage={{required:"end_date is required"}} onChange={this.endDateChange} inputProps={{required:'required',name:"end_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                </Form.Group>       
                                 
                                     <Form.Group as={Col} md="3" className="mt-3">
                                             <Button style={{marginTop:'10px'}} disabled={this.state.formSubmitting}  type="submit"> {this.state.AreabuttonName}</Button>

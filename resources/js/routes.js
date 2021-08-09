@@ -61,7 +61,11 @@ const Job_lookup_add = React.lazy(() => import("./Back-Office/Job_lookup/add"));
  const Performance = React.lazy(() => import('./Back-Office/Sms_report/Performance'));
  const Workmix = React.lazy(() => import('./Back-Office/Sms_report/Workmix'));
  const Bonus_periods = React.lazy(() => import('./Back-Office/Sms_report/Bonus_periods'));
+ const Sms_groups = React.lazy(() => import('./Back-Office/Sms_groups/add'));
+ const Sms_groups_list = React.lazy(() => import('./Back-Office/Sms_groups')); 
+ const Sms_groups_edit = React.lazy(() => import('./Back-Office/Sms_groups/edit')); 
  
+
 const routes = [
     { path: '/dataimport', exact: true, name: 'DataImport', component: DataImport },
     { path: '/dailyperformance/:sheet_id', exact: true, name: 'DataImport', component: DailyPerformance_import },
@@ -113,6 +117,9 @@ const routes = [
     { path: '/performance', exact: true, name: 'Engineer', component: Performance},
     { path: '/bonus-periods', exact: true, name: 'Engineer', component: Bonus_periods},
     { path: '/work-mix', exact: true, name: 'Engineer', component: Workmix},
+    { path: '/sms-groups/add', exact: true, name: 'Engineer', component: Sms_groups},
+    { path: '/sms-groups', exact: true, name: 'Sms_groups_list', component: Sms_groups_list},
+    { path:'/sms-groups/edit/:id', exact:true, name:'job_lookup',component:Sms_groups_edit},
     
   ];
 
