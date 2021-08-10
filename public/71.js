@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[71],{
 
-/***/ "./resources/js/Back-office/Pages/Reports/Utilitaooh.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/Back-office/Pages/Reports/Utilitaooh.js ***!
-  \**************************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/Mdsooh.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/Mdsooh.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,15 +53,15 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
 
 var baseurl = window.location.origin;
 
-var Utilitaooh = /*#__PURE__*/function (_React$Component) {
-  _inherits(Utilitaooh, _React$Component);
+var Mdsooh = /*#__PURE__*/function (_React$Component) {
+  _inherits(Mdsooh, _React$Component);
 
-  var _super = _createSuper(Utilitaooh);
+  var _super = _createSuper(Mdsooh);
 
-  function Utilitaooh(props) {
+  function Mdsooh(props) {
     var _this;
 
-    _classCallCheck(this, Utilitaooh);
+    _classCallCheck(this, Mdsooh);
 
     _this = _super.call(this, props);
 
@@ -78,7 +78,7 @@ var Utilitaooh = /*#__PURE__*/function (_React$Component) {
 
       var baseurl = window.location.origin;
       var data = new FormData();
-      data.append('file_id', '2');
+      data.append('file_id', '1');
 
       if (_this.props.match.params.id) {
         data.append('report_for', _this.props.match.params.id);
@@ -105,7 +105,7 @@ var Utilitaooh = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Utilitaooh, [{
+  _createClass(Mdsooh, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       console.log('tag', 'componentWillMount');
@@ -153,10 +153,10 @@ var Utilitaooh = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Utilitaooh;
+  return Mdsooh;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Utilitaooh);
+/* harmony default export */ __webpack_exports__["default"] = (Mdsooh);
 
 /***/ })
 

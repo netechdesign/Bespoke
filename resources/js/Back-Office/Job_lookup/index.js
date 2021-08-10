@@ -89,6 +89,8 @@ oTable = $(tableResponsive).DataTable({
         {"data":'revenue_aborted'},
         {"data":'pu_aborted'},
         {"data":'contract'},
+        {"data":"from_date"},
+        {"data":"to_date"},
         {"data": "id"}
     ],
     responsive: {
@@ -140,6 +142,7 @@ oTable = $(tableResponsive).DataTable({
             "render": function (data, type, row) {
               
                 var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+                str_buttons += '<button type="button" data-id="'+row.id+'" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
                 return [
                     str_buttons,
                 ].join('');
@@ -204,14 +207,14 @@ class Job_lookup extends React.Component {
                         const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
                         const baseurl= window.location.origin;
                         axios.post(
-                            baseurl+'/api/engineer/'+id,{_method: 'delete'},
+                            baseurl+'/api/job_lookup/'+id,{_method: 'delete'},
                             {
                                 headers:{'Authorization':'Bearer '+auth_token}
                             } 
                         ).then(res =>{
                                           if(res.data.success){
                         oTable.draw();
-                        return MySwal.fire('', 'Engineer has been deleted!', 'success');
+                        return MySwal.fire('', 'Job Type has been deleted!', 'success');
                                           }
                                         })
                     } else {
@@ -253,6 +256,8 @@ class Job_lookup extends React.Component {
                                         <th id="revenue_aborted">Revenue-Aborted</th>
                                         <th id="pu_aborted">Pu-Aborted</th>
                                         <th id="contract">contract</th>
+                                        <th id="from_date">From</th>
+                                        <th id="to_date">To</th>
                                         <th id="action">Action</th>
                                       </tr>
                                     </thead>
@@ -265,6 +270,8 @@ class Job_lookup extends React.Component {
                                         <th id="revenue_aborted">Revenue-Aborted</th>
                                         <th id="pu_aborted">Pu-Aborted</th>
                                         <th id="contract">contract</th>
+                                        <th id="from_date">From</th>
+                                        <th id="to_date">To</th>
                                         <th id="action">Action</th>
                                     </tr>
                                     </tfoot>

@@ -235,6 +235,10 @@ function atable() {
   }, {
     "data": 'contract'
   }, {
+    "data": "from_date"
+  }, {
+    "data": "to_date"
+  }, {
     "data": "id"
   }]), _defineProperty(_$$DataTable, "responsive", {
     responsive: {
@@ -270,6 +274,7 @@ function atable() {
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
       var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      str_buttons += '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive th#action').index(),
@@ -343,7 +348,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
                 _auth_token = _ref2.auth_token;
 
             var _baseurl = window.location.origin;
-            axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(_baseurl + '/api/engineer/' + id, {
+            axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(_baseurl + '/api/job_lookup/' + id, {
               _method: 'delete'
             }, {
               headers: {
@@ -352,7 +357,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
             }).then(function (res) {
               if (res.data.success) {
                 oTable.draw();
-                return MySwal.fire('', 'Engineer has been deleted!', 'success');
+                return MySwal.fire('', 'Job Type has been deleted!', 'success');
               }
             });
           } else {// return MySwal.fire('', 'Your imaginary file is safe!', 'error');
@@ -393,6 +398,10 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
       }, "Pu-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "contract"
       }, "contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "from_date"
+      }, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "to_date"
+      }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "job_type"
@@ -409,6 +418,10 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
       }, "Pu-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "contract"
       }, "contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "from_date"
+      }, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "to_date"
+      }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action")))))))));
     }

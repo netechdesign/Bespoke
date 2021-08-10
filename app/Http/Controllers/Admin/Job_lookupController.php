@@ -35,7 +35,7 @@ class Job_lookupController extends Controller
                 $page_length = $request->input('iDisplayLength');
                 
                 $request['page'] = ($start/$page_length)+1;
-                $jobsrow = Job_lookup::where(function($query) use ($request){
+                $jobsrow = Job_lookup::select("*",DB::raw('DATE_FORMAT(from_date,"%d/%m/%Y") as from_date'),DB::raw('DATE_FORMAT(to_date,"%d/%m/%Y") as to_date'))->where(function($query) use ($request){
                     $search = $request->input('sSearch');
                   if($request->input('sheets_id')!=''){
                   //  $query->where('sheets_id','=',$request->input('sheets_id'));
@@ -102,6 +102,8 @@ class Job_lookupController extends Controller
             $engineers->pu_aborted= $request->pu_aborted;
             $engineers->contract= $request->contract;
             $engineers->created_by = $user->id;
+            $engineers->from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));
+            $engineers->to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));
             if($engineers->save()){
                 return response()->json(array('success' => true,
                 'message' => 'Job lookup inserted successfully'
@@ -138,7 +140,7 @@ class Job_lookupController extends Controller
      */
     public function edit($id)
     {
-        $Job_lookup = Job_lookup::find($id);
+        $Job_lookup = Job_lookup::select('*',DB::raw('DATE_FORMAT(from_date,"%d/%m/%Y") as from_date'),DB::raw('DATE_FORMAT(to_date,"%d/%m/%Y") as to_date'))->find($id);
         if($Job_lookup){
             
          return response()->json(array('success' => true,
@@ -168,7 +170,8 @@ class Job_lookupController extends Controller
             $engineers->revenue_aborted = $request->revenue_aborted;
             $engineers->pu_aborted= $request->pu_aborted;
             $engineers->contract= $request->contract;
-            
+            $engineers->from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));
+            $engineers->to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));
             if($engineers->save()){
                 return response()->json(array('success' => true,
                 'message' => 'Engineer updated successfully'
@@ -194,7 +197,22 @@ class Job_lookupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+ 
+            
+            DB::table('job_lookups')->where('id', $id)->delete();
+
+            return response()->json(array('success' => true,'message'=> 'deleted'));
+           
+            
+            
+        }
+        catch (exception $e) {
+            return response()->json([
+                'response' => 'error',
+                'message' => $e,
+            ]);
+        }
     }
     public function dropdown_list(Request $request)
     {

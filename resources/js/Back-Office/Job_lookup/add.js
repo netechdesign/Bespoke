@@ -13,6 +13,7 @@ import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
 import "pnotify/dist/es/PNotifyConfirm";
 import "pnotify/dist/es/PNotifyCallbacks";
+import Datetime from 'react-datetime';
 import {CheckPermission} from '../../HttpFunctions';
 function successDesktopPNotify() {
     PNotify.success({
@@ -38,6 +39,8 @@ class Add extends React.Component{
         revenue_aborted:'',
         pu_aborted:'',
         contract:'',
+        from_date:'',
+            to_date:'',
         chkCustom:false,
         visible : true,
         formSubmitting: false,
@@ -49,7 +52,39 @@ class Add extends React.Component{
                 [e.target.name]: e.target.value
             })
         };
+        startDateChange = (e) => {
+            var today = new Date(e);
+            var dd = today.getDate(); 
+            var mm = today.getMonth() + 1; 
+      
+            var yyyy = today.getFullYear(); 
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            } 
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            } 
+            var today = dd + '/' + mm + '/' + yyyy; 
     
+           this.setState({from_date:today});
+        };
+        
+        endDateChange = (e) => {
+            var today = new Date(e);
+            var dd = today.getDate(); 
+            var mm = today.getMonth() + 1; 
+      
+            var yyyy = today.getFullYear(); 
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            } 
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            } 
+            var today = dd + '/' + mm + '/' + yyyy; 
+    
+           this.setState({to_date:today});
+        };
         
         componentDidMount(){
             const { match, location, history } = this.props;
@@ -205,6 +240,17 @@ class Add extends React.Component{
                                             onChange={this.handleChange}
                                             autoComplete="off"
                                             />
+                                        </Form.Group>
+                                </Form.Row>
+                                <Form.Row>
+                                        <Form.Group as={Col} md="2">
+                                            <Form.Label htmlFor="start_date">From</Form.Label>
+                                            <Datetime closeOnSelect={true} onChange={this.startDateChange}  dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()} errorMessage={{required:"start_date is required"}}  inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                        </Form.Group>
+                                        
+                                        <Form.Group as={Col} md="2">
+                                            <Form.Label htmlFor="end_date">To</Form.Label>
+                                            <Datetime  closeOnSelect={true} dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()}  errorMessage={{required:"end_date is required"}} onChange={this.endDateChange} inputProps={{required:'required',name:"end_date",placeholder: 'Select Date',autoComplete:'off'}} />
                                         </Form.Group>
                                 </Form.Row>
                                     <Form.Row>
