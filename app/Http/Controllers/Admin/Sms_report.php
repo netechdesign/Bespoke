@@ -243,7 +243,7 @@ class Sms_report extends Controller
       $national['in_hours']=0;
       $national['out_hours']=0;
       
-
+      
         foreach($job as $vl)
         {
             $work_type= ($vl->select_work_type!=''?$vl->select_work_type:$vl->work_type);
@@ -269,7 +269,7 @@ class Sms_report extends Controller
                     if($vl->status!='cancelled'){
                         $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['completed']+1:1);
                         //pu
-                        $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->first();
+                        $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                         if($pu_result){
                          $team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix])?$team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix]+1:1);
                         
@@ -299,7 +299,7 @@ class Sms_report extends Controller
                 if($vl->status!='cancelled'){
                             $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 1;
                         
-                            $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->first();
+                            $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                             if($pu_result){
                                 
                                 if($pu_result->mix=='Single'){
