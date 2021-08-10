@@ -264,7 +264,7 @@ class AreamanagerController extends Controller
                 $start = $request->input('iDisplayStart');
                 $page_length = $request->input('iDisplayLength');
                 
-                $jobsrow = Sms_job::select("*")->where(function($query) use ($request){
+                $jobsrow = Sms_job::select("*",DB::raw('DATE_FORMAT(appointment_date,"%d/%m/%Y") as appointment_date'))->where(function($query) use ($request){
                     $search = $request->input('sSearch');
                   if($request->input('sheets_id')!=''){
                   //  $query->where('sheets_id','=',$request->input('sheets_id'));

@@ -472,6 +472,8 @@ function atable() {
     "data": "engineer_id"
   }, {
     "data": "engineer"
+  }, {
+    "data": "appointment_date"
   }]), _defineProperty(_$$DataTable, "responsive", {
     responsive: {
       details: {
@@ -1425,12 +1427,16 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
         id: "allselect",
         onChange: this.checkAll
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "parent_engineer"
-      }, "Engineer Name"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "engineer"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "appointment_date"
+      }, "Appointment Date"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "parent_engineer"
-      }, "Engineer Name")))))))));
+        id: "engineer"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "appointment_date"
+      }, "Appointment Date")))))))));
     }
   }]);
 

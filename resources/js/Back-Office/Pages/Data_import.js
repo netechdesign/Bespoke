@@ -82,6 +82,7 @@ oTable = $(tableResponsive).DataTable({
     "columns": [  
         {"data": "engineer_id"},
         {"data":"engineer"},
+        {"data":"appointment_date"}
         
     ],
     responsive: {
@@ -795,14 +796,15 @@ class Data_import extends React.Component {
                        <th width="5%" id="action">
                        <Form.Check type="checkbox" label="" id="allselect"  onChange={this.checkAll} />
                            </th>
-                                        <th id="parent_engineer">Engineer Name</th>
-                                        
+                                        <th id="engineer">Engineer Name</th>
+                                        <th id="appointment_date">Appointment Date</th>
                                       </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                          <th id="action">Action</th>
-                                         <th id="parent_engineer">Engineer Name</th>
+                                         <th id="engineer">Engineer Name</th>
+                                         <th id="appointment_date">Appointment Date</th>
                                          
                                     </tr>
                                     </tfoot>
