@@ -576,11 +576,11 @@ class Sms_report extends Controller
                     if($vl->status=='completed'){
                         $team[$vl->regions_sort_name][$vl->engineer_id]['completed'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['completed'])?$team[$vl->regions_sort_name][$vl->engineer_id]['completed']+1:1);
                         //pu
-                        $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
+                        $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                         if($pu_result){
                             $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu:0);
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue:0);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu:1);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue:1);
                         }
 
                     }
@@ -592,14 +592,11 @@ class Sms_report extends Controller
                 if($vl->status=='aborted'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['aborted'])?$team[$vl->regions_sort_name][$vl->engineer_id]['aborted']+1:1);
                    
-                      $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->first();
+                      $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
 
                       if($pu_result){
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu_aborted:0);
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue_aborted:0);
-                      }else{
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu_aborted:1);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue_aborted:1);
                       }
 
                  } 
@@ -636,7 +633,7 @@ class Sms_report extends Controller
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = 1;
 
                     //pu
-                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->first();
+                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                     
                     if($pu_result){
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
@@ -661,7 +658,7 @@ class Sms_report extends Controller
                     if($vl->status=='completed'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['completed'] = 1;
                     //pu
-                    $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
+                    $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                     
                     if($pu_result){
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
