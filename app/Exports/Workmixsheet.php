@@ -86,20 +86,24 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                     $team[$vl->teams_engineer_name][$vl->engineer_id]['total_job'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']+1:1);
                 //Completed 
                     if($vl->status!='cancelled'){
-                        $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['completed']+1:1);
+                        
                         //pu
                         $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                         if($pu_result){
                          $team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix])?$team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix]+1:1);
                         
+                         $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['completed']+1:1);
+                    
+                         if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
+                            $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']+1:1);
+                        }else{
+                            $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']+1:1);
+                        }
+                    
                         }
 
                     
-                    if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
-                        $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']+1:1);
-                    }else{
-                        $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']+1:1);
-                    }
+                    
                 }
 
             }else{
@@ -116,7 +120,7 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                 //Completed  
                 
                 if($vl->status!='cancelled'){
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 1;
+                            
                         
                             $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                             if($pu_result){
@@ -137,16 +141,23 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                                    }else{
                                        $team[$vl->teams_engineer_name][$vl->engineer_id]['Other'] =0;
                                    }
-                                
+                                   $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 1; 
+
+                                if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =1;
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =0;
+                                }else{
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =1;
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =0;
                                 }
+
+                                }else{
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 0; 
+                                  }
                         
-                        if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =1;
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =0;
-                        }else{
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =1;
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =0;
-                        }        
+                                
+                    }else{
+                        $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 0;
                     }
                  
                     
@@ -164,9 +175,11 @@ class Workmixsheet implements FromView,WithTitle,WithEvents
                  
                  //Completed per
                      
-                        
+                 if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['completed']!=0){ 
                          $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] = round(($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
-
+                 }else{
+                    $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] = 0.00 ;
+                 }
                        //  $national['completed_per'] = $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] + $national['completed_per'];
                      
                          if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['Single']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['Single']!=0){

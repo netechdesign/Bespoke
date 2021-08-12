@@ -60,14 +60,15 @@ class Exportworkmix implements WithMultipleSheets
       }
       else{
         
-        $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+       // $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+       $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
         if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
         if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
-          $q->where('job_lookups.contract',$_REQUEST['file_id']);
+        //  $q->where('job_lookups.contract',$_REQUEST['file_id']);
         }
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
         if($start_date!=''){ $q->whereDate('appointment_date', '>=', $start_date); }

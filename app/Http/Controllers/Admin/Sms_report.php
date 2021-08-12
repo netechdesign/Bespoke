@@ -114,14 +114,16 @@ class Sms_report extends Controller
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }  
         }else{
-            $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+           // $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+
+            $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
         if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
         if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
-          $q->where('job_lookups.contract',$_REQUEST['file_id']);
+        //  $q->where('job_lookups.contract',$_REQUEST['file_id']);
         }
         
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
@@ -179,14 +181,14 @@ class Sms_report extends Controller
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }  
         }else{
-            $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+            $q= Sms_job::select('sms_jobs.*',DB::raw('DATE_FORMAT(sms_jobs.arrived_at,"%H:%i:%s") as engineer_arrived'),DB::raw('teams.engineer_name as teams_engineer_name'),'time_lookups.in_hours_start','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
         if(isset($request->file_id) && $request->file_id!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
         if(isset($request->file_id) && $request->file_id!=''){
-          $q->where('job_lookups.contract',$request->file_id);
+         // $q->where('job_lookups.contract',$request->file_id);
         }
         
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
@@ -206,9 +208,10 @@ class Sms_report extends Controller
           }
           }
          /** print query   toSql(); */
-        // dd($q->toSql());
+       //  dd($q->toSql());
        
-        $job=$q->get();
+        $job =$q->get();
+      //  dd($job);
        if($job){
         $team=[];
         
@@ -267,20 +270,22 @@ class Sms_report extends Controller
                     $team[$vl->teams_engineer_name][$vl->engineer_id]['total_job'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['total_job'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['total_job']+1:1);
                 //Completed 
                     if($vl->status!='cancelled'){
-                        $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['completed']+1:1);
+                        
                         //pu
                         $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                         if($pu_result){
+                          $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['completed']+1:1);
                          $team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix])?$team[$vl->teams_engineer_name][$vl->engineer_id][$pu_result->mix]+1:1);
                         
+                         if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
+                          $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']+1:1);
+                      }else{
+                          $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']+1:1);
+                      }
                         }
 
                     
-                    if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
-                        $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours']+1:1);
-                    }else{
-                        $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] = (isset($team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'])?$team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours']+1:1);
-                    }
+                    
                 }
 
             }else{
@@ -297,7 +302,7 @@ class Sms_report extends Controller
                 //Completed  
                 
                 if($vl->status!='cancelled'){
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 1;
+                            
                         
                             $pu_result =Job_lookup::select('mix','pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                             if($pu_result){
@@ -318,16 +323,22 @@ class Sms_report extends Controller
                                    }else{
                                        $team[$vl->teams_engineer_name][$vl->engineer_id]['Other'] =0;
                                    }
-                                
+                                   $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 1; 
+
+                                   if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =1;
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =0;
+                                }else{
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =1;
+                                    $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =0;
+                                }    
+                                }else{
+                                  $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 0; 
                                 }
                         
-                        if($vl->in_hours_start<= $vl->engineer_arrived && $vl->in_hours_end >= $vl->engineer_arrived){
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =1;
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =0;
-                        }else{
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['out_hours'] =1;
-                            $team[$vl->teams_engineer_name][$vl->engineer_id]['in_hours'] =0;
-                        }        
+                                
+                    }else{
+                      $team[$vl->teams_engineer_name][$vl->engineer_id]['completed'] = 0;
                     }
                  
                     
@@ -345,9 +356,11 @@ class Sms_report extends Controller
                  
                  //Completed per
                      
-                        
+                 if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['completed']!=0){    
                          $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] = number_format(($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']/($team[$vl->teams_engineer_name][$vl->engineer_id]['completed']))*100,2) ;
-
+                        }else{
+                          $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] = 0.00 ;
+                       }
                        //  $national['completed_per'] = $team[$vl->teams_engineer_name][$vl->engineer_id]['completed_per'] + $national['completed_per'];
                      
                          if(isset($team[$vl->teams_engineer_name][$vl->engineer_id]['Single']) && $team[$vl->teams_engineer_name][$vl->engineer_id]['Single']!=0){
@@ -707,7 +720,9 @@ class Sms_report extends Controller
 
                          $national['completed_per'] = $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] + $national['completed_per'];
                      }else{
-                     // $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] =0;
+                      if(!isset($team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'])){
+                       $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] =0;
+                      }
                      }
                  
                  //aborted per
@@ -719,6 +734,9 @@ class Sms_report extends Controller
                      
                     }else{
                    // $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] =0;
+                   if(!isset($team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'])){
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] =0;
+                   }
                   }
                     
                 //pu_day  

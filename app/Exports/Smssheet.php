@@ -185,7 +185,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
                     if($vl->status=='completed'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['completed'] = 1;
                     //pu
-                    $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
+                    $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                     if($pu_result){
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu;
@@ -230,7 +230,11 @@ class Smssheet implements FromView,WithTitle,WithEvents
                          $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['completed']/($team[$vl->regions_sort_name][$vl->engineer_id]['total_job']-(isset($team[$vl->regions_sort_name][$vl->engineer_id]['cancelled'])?$team[$vl->regions_sort_name][$vl->engineer_id]['cancelled']:0)))*100,2) ;
 
                          $national['completed_per'] = $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] + $national['completed_per'];
-                     }
+                     }else{
+                        if(!isset($team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'])){
+                         $team[$vl->regions_sort_name][$vl->engineer_id]['completed_per'] =0;
+                        }
+                       }
                  
                  //aborted per
                  if($vl->status=='aborted'){
@@ -240,6 +244,9 @@ class Smssheet implements FromView,WithTitle,WithEvents
                      $national['aborted_per'] = $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] + $national['aborted_per'];
                   }else{
                    // $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] =0;
+                   if(!isset($team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'])){
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['aborted_per'] =0;
+                   }
                   }
                     
                 //pu_day  

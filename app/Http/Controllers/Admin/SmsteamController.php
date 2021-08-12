@@ -132,6 +132,10 @@ class SmsteamController extends Controller
                                     $from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));	
                                     $to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));
                                      Sms_job::where('engineer_id', $vl->value)->whereDate('appointment_date', '>=', $from_date)->whereDate('appointment_date', '<=', $to_date)->update(['regions_sort_name'=>$request->regions_sort_name,'is_in_team'=>1]);
+                                }else{
+                                    $from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));	
+                                    $to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));
+                                     Sms_job::where('engineer_id', $vl['value'])->whereDate('appointment_date', '>=', $from_date)->whereDate('appointment_date', '<=', $to_date)->update(['regions_sort_name'=>$request->regions_sort_name,'is_in_team'=>1]);
                                 }
 
                 }

@@ -29,20 +29,58 @@
             <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['completed']}}</th>
 
             
-                 <th style="border: 1px solid #000000;text-align: center;" >{{$national['Dual']}}</th>
-                 <th style="border: 1px solid #000000;text-align: center;">{{number_format(($national['Dual']/$national['completed'])*100,2)}}%</th>
+                 <th style="border: 1px solid #000000;text-align: center;" >
+                 @if(isset($national['Dual']))
+                 {{$national['Dual']}}
+                @endif
+                </th>
+                 <th style="border: 1px solid #000000;text-align: center;">
+                @if(isset($national['Dual']) && $national['Dual']!=0)
+                 {{number_format(($national['Dual']/$national['completed'])*100,2)}}
+                @else
+                0
+                @endif 
+                %
+                </th>
                 
                 <th style="border: 1px solid #000000;text-align: center;" >{{$national['Single']}}</th>
-                <th style="border: 1px solid #000000;text-align: center;">{{number_format(($national['Single']/$national['completed'])*100,2)}}%</th>
+                <th style="border: 1px solid #000000;text-align: center;">
+                
+                @if(isset($national['Single']) && $national['Single']!=0)
+                {{number_format(($national['Single']/$national['completed'])*100,2)}}%
+                @else
+                0
+                @endif 
+                %
+            </th>
                 
                 <th style="border: 1px solid #000000;text-align: center;" >{{$national['Other']}}</th>
-                <th style="border: 1px solid #000000;text-align: center;">{{number_format(($national['Other']/$national['completed'])*100,2)}}%</th>
+                <th style="border: 1px solid #000000;text-align: center;">
+                @if(isset($national['Other']) && $national['Other']!=0)
+                {{number_format(($national['Other']/$national['completed'])*100,2)}}
+                @else
+                0
+                @endif 
+                %
+                </th>
                 
                 <th style="border: 1px solid #000000;text-align: center;" >{{$national['in_hours']}}</th>
-                <th style="border: 1px solid #000000;text-align: center;">{{number_format(($national['in_hours']/$national['completed'])*100,2)}}%</th>
+                <th style="border: 1px solid #000000;text-align: center;">
+                @if(isset($national['in_hours']) && $national['in_hours']!=0)
+                {{number_format(($national['in_hours']/$national['completed'])*100,2)}}
+                @else
+                0
+                @endif 
+                %</th>
                 
                 <th style="border: 1px solid #000000;text-align: center;" >{{$national['out_hours']}}</th>
-                <th style="border: 1px solid #000000;text-align: center;">{{number_format(($national['out_hours']/$national['completed'])*100,2)}}%</th>
+                <th style="border: 1px solid #000000;text-align: center;">
+                @if(isset($national['out_hours']) && $national['out_hours']!=0)
+                {{number_format(($national['out_hours']/$national['completed'])*100,2)}}
+                @else
+                0
+                @endif 
+                %</th>
 
         </tr>
         @endif
