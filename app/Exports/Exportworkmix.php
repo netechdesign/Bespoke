@@ -67,9 +67,10 @@ class Exportworkmix implements WithMultipleSheets
         if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
-        if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
-        //  $q->where('job_lookups.contract',$_REQUEST['file_id']);
+        if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!='all'){
+          $q->where('job_lookups.contract',$_REQUEST['file_id']);
         }
+
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
         if($start_date!=''){ $q->whereDate('appointment_date', '>=', $start_date); }
         if($today_date!=''){ $q->whereDate('appointment_date', '<=', $today_date); }

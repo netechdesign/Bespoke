@@ -330,7 +330,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
             }
          }
        //  echo '<pre/>'; print_r($team['SC1']); exit;
-         
+       ksort($team); 
        $this->output = $team;
         return view('reports.sms_report', ['data' => $team,'national'=>$national]);
     }    

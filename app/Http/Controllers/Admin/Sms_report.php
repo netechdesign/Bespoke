@@ -54,8 +54,11 @@ class Sms_report extends Controller
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
 
+        
         if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
-          $q->where('job_lookups.contract',$_REQUEST['work_type']);
+          if($_REQUEST['work_type']!='all'){          
+               $q->where('job_lookups.contract',$_REQUEST['work_type']);
+          }
         }
         $q->where('sms_jobs.regions_sort_name','!=','');
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
@@ -122,8 +125,9 @@ class Sms_report extends Controller
         if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
-        if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!=''){
-        //  $q->where('job_lookups.contract',$_REQUEST['file_id']);
+        
+        if(isset($_REQUEST['file_id']) && $_REQUEST['file_id']!='all'){
+          $q->where('job_lookups.contract',$_REQUEST['file_id']);
         }
         
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
@@ -187,8 +191,8 @@ class Sms_report extends Controller
         if(isset($request->file_id) && $request->file_id!=''){
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
-        if(isset($request->file_id) && $request->file_id!=''){
-         // $q->where('job_lookups.contract',$request->file_id);
+        if(isset($request->file_id) && $request->file_id!='all'){
+          $q->where('job_lookups.contract',$request->file_id);
         }
         
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
@@ -484,10 +488,16 @@ class Sms_report extends Controller
             $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         $q->where('sms_jobs.regions_sort_name','!=','');
         if(isset($request->file_idwork_type) && $request->file_idwork_type!=''){
-          $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
-        }
-        if(isset($request->work_type) && $request->work_type!=''){
+          $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');
           $q->where('job_lookups.contract',$request->work_type);
+        }
+        
+        if(isset($request->work_type) && $request->work_type['label']!=''){
+          
+          $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');
+          if($request->work_type['label']!='All'){
+               $q->where('job_lookups.contract',$request->work_type['label']);
+          }
         }
         
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
@@ -510,7 +520,7 @@ class Sms_report extends Controller
           }
          /** print query   toSql(); */
         // dd($q->toSql());
-        $job=$q->get();
+        $job=$q->orderBy('engineer','asc')->get();
         
         //echo '<pre/>'; print_r($job); exit;
 
@@ -707,6 +717,8 @@ class Sms_report extends Controller
          }
          //Percentage Calculator
 //echo '<pre/>'; print_r($team); exit;
+
+
          foreach($job as $vl)
          {
             
@@ -829,7 +841,7 @@ class Sms_report extends Controller
             }
          }
         // echo '<pre/>'; print_r($team); exit;
-         
+        ksort($team);
        
         return view('reports.sms_report', ['data' => $team,'national'=>$national,'view'=>1]);
         

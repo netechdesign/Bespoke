@@ -69,8 +69,11 @@ class Exportsms implements WithMultipleSheets
           $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
         }
         $q->where('sms_jobs.regions_sort_name','!=','');
+        
         if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
-          $q->where('job_lookups.contract',$_REQUEST['work_type']);
+          if($_REQUEST['work_type']!='all'){          
+               $q->where('job_lookups.contract',$_REQUEST['work_type']);
+          }
         }
         if($month!=''){ $q->whereMonth('appointment_date', '=', $month); }
         if($start_date!=''){ $q->whereDate('appointment_date', '>=', $start_date); }
@@ -91,7 +94,7 @@ class Exportsms implements WithMultipleSheets
       }
       }
        
-       $q=$q->get();
+       $q=$q->orderBy('engineer','asc')->get();
       //dd($q); 
         $sheets[] = new Smssheet($q);
     
