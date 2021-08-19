@@ -75,15 +75,28 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
             
                 $schedule_date_fm = $this->transformDate($row['appointment_date']);
                 $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $schedule_date_fm)));
-
-                
                 $w = date("w", strtotime($schedule_date));
                 $n= 7- $w;
                 $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$n.' day'));
-              //  $day_no = date("W", strtotime($schedule_date));
                 $week_no = $this->getWeeks($schedule_date, "sunday");
                 $weekday = date('l',strtotime($schedule_date));
                 $month = '01'.date('-M-y',strtotime($schedule_date));
+
+                 //check already exist record 
+                 $alreadyExist= Sms_job::where('week_no',$week_no)->where('job_reference',$row['job_reference'])->where('engineer',$row['engineer'])->count();
+                
+                 if($alreadyExist > 0) {
+                    $row['appointment_date'] = $schedule_date;
+                    $completed_at = $this->transformDate($row['completed_at']);
+                    $row['completed_at'] = date('Y-m-d', strtotime(str_replace('/', '-', $completed_at)));
+                    
+                    $aborted_at = $this->transformDate($row['aborted_at']);
+                    $row['aborted_at'] = date('Y-m-d', strtotime(str_replace('/', '-', $aborted_at)));
+                     return new SheetDupdatas(["sheets_id" =>request()->sheets_id,"data"=> json_encode($row),"file_id"=>5]); 
+                     // throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
+                  
+                   }
+                   else{
                 $engineers =Engineers::where('engineer_name', '=', $row['engineer']);
                 $is_in_team	=0;
                 
@@ -144,8 +157,11 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 "aborted_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['aborted_at'])))),
                 "client" =>$row['client'],
                 "reason_for_abort" =>$row['reason_for_abort'],
+                "row_data"=> json_encode($row),
                 'created_by' => request()->created_by
             ]);
+
+        }
                 
         }
         public function getWeeks($date, $rollover)

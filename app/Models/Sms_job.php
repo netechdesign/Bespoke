@@ -36,6 +36,7 @@ class Sms_job extends Model
 'aborted_at',
 'client',
 'reason_for_abort',
+'row_data',
 'created_by',
     ];
 }

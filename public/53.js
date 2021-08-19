@@ -753,7 +753,7 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
       var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a);
       MySwal.fire({
         title: 'Are you sure?',
-        text: 'Do You want to add Duplicate Data?',
+        text: _this.state.file_id == 5 ? 'Do You want to overwrite?' : 'Do You want to add Duplicate Data?',
         type: 'warning',
         showCloseButton: true,
         showCancelButton: true
@@ -874,14 +874,6 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           // console.log(res.data.data);
-          if (_this.state.file_id == 5) {
-            oTable.draw();
-
-            _this.setState({
-              showsmsengineer: true
-            });
-          }
-
           _this.setState({
             formSubmitting: false
           });
@@ -905,6 +897,14 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
                 data: res.data.duplicate_data
               }]
             });
+          } else {
+            if (_this.state.file_id == 5) {
+              oTable.draw();
+
+              _this.setState({
+                showsmsengineer: true
+              });
+            }
           }
 
           jquery__WEBPACK_IMPORTED_MODULE_15___default()('#avatar').val('');
@@ -1135,6 +1135,24 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
       }, 500);
     });
 
+    _defineProperty(_assertThisInitialized(_this), "getDate", function (e) {
+      var today = new Date(e);
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      var today = dd + '/' + mm + '/' + yyyy;
+      return today;
+    });
+
     return _this;
   }
 
@@ -1299,7 +1317,14 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
       }, this.state.file_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
         onSubmit: this.duplicateSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        disabled: this.state.duplicateformSubmitting,
+        type: "submit"
+      }, " ", this.state.duplicatebuttonName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
         striped: true,
         responsive: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["Checkbox"], {
@@ -1310,6 +1335,9 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
         inline: true
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Schedule Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Customer Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Job Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Job Type"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.duplicate_data[0].data ? this.state.duplicate_data[0].data.map(function (value, index) {
         var vl = value.data;
+        var schedule_date = vl.appointment_date ? _this3.getDate(vl.appointment_date) : vl.schedule_date;
+        var job_id = vl.job_reference ? vl.job_reference : vl.job_id;
+        var job_type = vl.work_type ? vl.work_type : vl.job_type;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -1322,17 +1350,10 @@ var Data_import = /*#__PURE__*/function (_React$Component) {
           id: "check-me",
           defaultValue: value.id,
           inline: true
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.engineer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.schedule_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.customer_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.job_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.job_type));
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.engineer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, schedule_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, vl.customer_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, job_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, job_type));
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, "record not found")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        sm: 12,
-        className: "mt-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        disabled: this.state.duplicateformSubmitting,
-        type: "submit"
-      }, " ", this.state.duplicatebuttonName))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+      }, "record not found"))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
         style: {
           display: this.state.showsmsengineer ? '' : 'none'
         }

@@ -371,11 +371,11 @@ class Data_import extends React.Component {
       if(Permission==1){
         return false;
       }
-        
+      
         const MySwal = withReactContent(Swal);
         MySwal.fire({
             title: 'Are you sure?',
-            text: 'Do You want to add Duplicate Data?',
+            text: (this.state.file_id==5?'Do You want to overwrite?':'Do You want to add Duplicate Data?'),
             type: 'warning',
             showCloseButton: true,
             showCancelButton: true
@@ -402,7 +402,7 @@ class Data_import extends React.Component {
                                     this.setState({duplicateformSubmitting:false});
                                     this.setState({duplicatebuttonName:'Add'});
                                     this.setState({duplicate_data:[{visible:'none'}]});
-
+                                    
                                     PNotify.success({
                                         title: 'Success',
                                         text: res.data.message,
@@ -463,10 +463,7 @@ class Data_import extends React.Component {
         ).then(res =>{
                           if(res.data.success){
                              // console.log(res.data.data);
-                             if(this.state.file_id==5){
-                                oTable.draw();
-                                this.setState({showsmsengineer:true});
-                             }
+                             
                              this.setState({formSubmitting:false});
                              this.setState({buttonName:'Import'});
                              this.setState({selectedFile:null});
@@ -474,6 +471,11 @@ class Data_import extends React.Component {
                              
                              if(res.data.duplicate_data){
                                     this.setState({duplicate_data:[{visible:'',data:res.data.duplicate_data}]});
+                                }else{
+                                    if(this.state.file_id==5){
+                                        oTable.draw();
+                                        this.setState({showsmsengineer:true});
+                                     }
                                 }
                             
                              $('#avatar').val('');
@@ -635,6 +637,22 @@ class Data_import extends React.Component {
         setTimeout(function(){  self.setState({SiteEngineer:e});}, 500);
        
     }
+    getDate = (e) => {
+        var today = new Date(e);
+        var dd = today.getDate(); 
+        var mm = today.getMonth() + 1; 
+  
+        var yyyy = today.getFullYear(); 
+        if (dd < 10) { 
+            dd = '0' + dd; 
+        } 
+        if (mm < 10) { 
+            mm = '0' + mm; 
+        } 
+        var today = dd + '/' + mm + '/' + yyyy; 
+
+       return today;
+    };
     render() {
         const { validated, validatedTooltip } = this.state;
        
@@ -707,6 +725,10 @@ class Data_import extends React.Component {
                             </Card.Header>
                             <Card.Body>
                             <ValidationForm onSubmit={this.duplicateSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                            <Form.Group as={Col} sm={12} className="mt-3">
+                                        <Button disabled={this.state.duplicateformSubmitting}  type="submit"> {this.state.duplicatebuttonName}</Button>
+
+                                        </Form.Group>
                                 <Table striped responsive>
                                     <thead>
                                     <tr>
@@ -724,16 +746,18 @@ class Data_import extends React.Component {
                                     {this.state.duplicate_data[0].data ?
                                     this.state.duplicate_data[0].data.map((value,index)=>{
                                        const vl= value.data;
-
+                                        let schedule_date = (vl.appointment_date?this.getDate(vl.appointment_date):vl.schedule_date);
+                                        let job_id = (vl.job_reference?vl.job_reference:vl.job_id);
+                                        let job_type = (vl.work_type?vl.work_type:vl.job_type);
                                         return (<tr key={index} >
                                             <th scope="row">
                                             <Checkbox name="checkMe[]" label='' onChange={this.onChangeselect} class="checkMe"  id="check-me" defaultValue={value.id} inline  />
                                             </th>
                                             <td>{vl.engineer}</td>
-                                            <td>{vl.schedule_date}</td>
+                                            <td>{schedule_date}</td>
                                             <td>{vl.customer_id}</td>
-                                            <td>{vl.job_id}</td>
-                                            <td>{vl.job_type}</td>
+                                            <td>{job_id}</td>
+                                            <td>{job_type}</td>
                                         </tr>);
                                     })
                                     
@@ -741,10 +765,7 @@ class Data_import extends React.Component {
                                     }     
                                     </tbody>
                                 </Table>
-                                <Form.Group as={Col} sm={12} className="mt-3">
-                                        <Button disabled={this.state.duplicateformSubmitting}  type="submit"> {this.state.duplicatebuttonName}</Button>
-
-                                        </Form.Group>
+                                
                                 </ValidationForm>
                             </Card.Body>
                         </Card>

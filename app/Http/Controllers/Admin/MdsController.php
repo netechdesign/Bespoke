@@ -14,6 +14,8 @@ use App\Models\Jobs;
 use App\Models\Utilita_job;
 use App\Models\Morrison_jobs;
 use App\Models\Engineers;
+use App\Models\Sms_job;
+use App\Models\Sms_teams;
 use Illuminate\Support\Facades\Redirect;
 
 class MdsController extends Controller
@@ -155,10 +157,10 @@ class MdsController extends Controller
         try {
             if(isset($Request->id)){
                $data = explode(',', $Request->id);
-               
+               $file_id='';
                foreach($data as $val){
                 $dup_data =  DB::table('sheet_dupdatas')->where('id',$val)->where('is_deleted',0)->first();
-                
+                $file_id = $dup_data->file_id;
                 if($dup_data->file_id==2){
                     $row = json_decode($dup_data->data);
                     
@@ -215,9 +217,93 @@ class MdsController extends Controller
                                             $savedt->save();
                                             DB::table('sheet_dupdatas')->where('id', $val)->update(['is_deleted' => 1]);
                     }
+                }elseif($dup_data->file_id==5){
+                    $row = json_decode($dup_data->data);
+                    
+                    if(isset($row->job_reference)){
+               
+                        
+                        $schedule_date = date('Y-m-d', strtotime(str_replace('/', '-', $row->appointment_date)));
+                        $w = date("w", strtotime($schedule_date));
+                        $n= 7- $w;
+                        $sunday_date = date("Y-m-d", strtotime($schedule_date.' +'.$n.' day'));
+                        $week_no = $this->getWeeks($schedule_date, "sunday");
+                        $weekday = date('l',strtotime($schedule_date));
+                        $month = '01'.date('-M-y',strtotime($schedule_date));
+        
+                        //engineer add
+                        $engineers =Engineers::where('engineer_name', '=', $row->engineer);
+                        $is_in_team	=0;
+                        
+                    if ($engineers->count() ==0) {
+                                    
+                        $engineers = new Engineers(["engineer_id"=> '0',"engineer_name" => $row->engineer,'file_id'=>5]);
+                        $engineers->save();
+                        $engineers->engineer_id= 'sms'.$engineers->id;
+                        $engineers->save();
+                        $engineer_id= 'sms'.$engineers->id;
+                        $is_in_team	=0;
+                        $regions_sort_name='';
+                        //["engineer_id" => $row['engineer_id'];
+                    }else{
+                        $engineers= $engineers->first();
+                        $engineer_id = $engineers->engineer_id;
+                        //$engineer_group =Engineer_group::where('child_engineer_id',$engineer_id)->first();
+                        $engineer_group = Sms_teams::select('regions_sort_name')->where('child_engineer_id',$engineer_id)->whereDate('from_date', '<=', $schedule_date)->whereDate('to_date', '>=', $schedule_date)->first();
+                        if($engineer_group){
+                            $regions_sort_name = $engineer_group->regions_sort_name;
+                            
+                            $is_in_team	=1;
+                        }else{
+                            $regions_sort_name ='';
+                            $is_in_team	=0;
+                        }
+                        
+                    }  
+                    
+                        
+                                
+                                $user = JWTAuth::toUser($Request->input('token'));
+                                $savedt = Sms_job::where("job_reference",$row->job_reference)->where("engineer",$row->engineer)->first();
+                                            
+                                $savedt["sheets_id"] = $dup_data->sheets_id;
+                                $savedt["month"]= $month;
+                                $savedt["week_no"]=$week_no;
+                                $savedt["week_day"]= $weekday;
+                                $savedt["week_date"]=  $sunday_date;
+                                $savedt["engineer_id"] =$engineer_id;
+                                $savedt["engineer"] =$row->engineer;
+                                $savedt["regions_sort_name"]= $regions_sort_name;
+                                
+                                $savedt["job_reference"] =$row->job_reference;
+                                $savedt["energy_supplier"] =$row->energy_supplier;
+                                $savedt["address"] =$row->address;
+                                $savedt["town"] =$row->town;
+                                $savedt["post_code"] =$row->post_code;
+                                $savedt["work_type"] =$row->work_type;
+                                $savedt["select_work_type"] =$row->please_select_work_type;
+                                $savedt["meter_type"] =$row->meter_type;
+                                $savedt["appointment_date"] =$schedule_date;
+                                $savedt["time_slot"] = $row->time_slot;
+                                $savedt["arrived_at"] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->arrived_at)));
+                                $savedt["status"] =$row->status;
+                                $savedt["abort_code"] =$row->abort_code;
+                                $savedt["abort_comments"] =$row->abort_comments;
+                                $savedt["job_comments"] =$row->job_comments;
+                                $savedt["time_slot_start"] = date('H:i:s', strtotime($row->time_slot_start));
+                                $savedt["time_slot_end"] =date('H:i:s', strtotime($row->time_slot_end));
+                                $savedt["completed_at"] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->completed_at)));
+                                $savedt["aborted_at"] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->aborted_at)));
+                                $savedt["client"] =$row->client;
+                                $savedt["reason_for_abort"] =$row->reason_for_abort;
+                                $savedt['created_by'] = $user->id;
+                                            
+                                            $savedt->save();
+                                            DB::table('sheet_dupdatas')->where('id', $val)->update(['is_deleted' => 1]);
+                    }
                 }
                }
-            return response()->json(array('success' => true,'message' => 'Data inserted successfully'), 200);
+            return response()->json(array('success' => true,'message' => 'Data inserted successfully','file_id'=>$file_id), 200);
             }else{
                 return response()->json(array('success' => false,'message'=> 'selected data not found')); 
             }
