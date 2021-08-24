@@ -116,6 +116,7 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 //$engineer_group =Engineer_group::where('child_engineer_id',$engineer_id)->first();
                 $engineer_group = Sms_teams::select('regions_sort_name')->where('child_engineer_id',$engineer_id)->whereDate('from_date', '<=', $schedule_date)->whereDate('to_date', '>=', $schedule_date)->first();
                 if($engineer_group){
+                    
                     $regions_sort_name = $engineer_group->regions_sort_name;
                     
                     $is_in_team	=1;
@@ -134,6 +135,7 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
             $row['arrived_at'] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['arrived_at']))));
             $row['time_slot_start'] =date('H:i:s', strtotime($this->transformTime($row['time_slot_start'])));
             $row['time_slot_end'] =date('H:i:s', strtotime($this->transformTime($row['time_slot_end'])));
+            
             return new Sms_job([
                 "sheets_id" =>request()->sheets_id,
                 "month"=> $month,

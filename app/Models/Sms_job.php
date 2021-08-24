@@ -16,6 +16,7 @@ class Sms_job extends Model
 'engineer',
 'is_in_team',
 'appointment_date',
+'regions_sort_name',
 'job_reference',
 'energy_supplier',
 'address',
