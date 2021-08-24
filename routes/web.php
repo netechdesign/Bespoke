@@ -142,6 +142,8 @@ Route::group(array('prefix' => '/'), function() {
    });
      Route::get('/export', 'Admin\MdsController@export');
      Route::get('/sms/export', 'Admin\Sms_report@export');
+     Route::get('/sms/list', 'Admin\Sms_report@sms_list');
+     
      Route::get('/bonus_periods/export', 'Admin\Bonus_periodsController@export');
      Route::get('/sms/workmixexport', 'Admin\Sms_report@workmixexport');
      

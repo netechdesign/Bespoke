@@ -9,6 +9,7 @@ use Input;
 use Excel;
 use DB;
 use App\Exports\Exportsms;
+use App\Exports\ExportsmsList;
 use App\Exports\Exportworkmix;
 use App\Models\Utilita_job;
 use App\Models\Morrison_jobs;
@@ -19,6 +20,12 @@ use App\Models\Job_lookup;
 use App\Models\Engineer_lookup;
 class Sms_report extends Controller
 {
+    public function sms_list(Request $request){
+      $filename='sms_'.strtotime(time()).'.xlsx';
+          
+          return Excel::download(new ExportsmsList, $filename);
+          
+    }
     public function export() 
     {
         //performance export
@@ -578,7 +585,8 @@ class Sms_report extends Controller
             if($vl->status=='cancelled'){
                 $national['cancelled'] = $national['cancelled'] +1;
             }
-            if($vl->status=='awaiting info'){
+            if($vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
+                 {
                 $national['open'] = $national['open'] +1;
                 }
             
@@ -641,6 +649,7 @@ class Sms_report extends Controller
                 $team[$vl->regions_sort_name]['regions_engineer_total'] =(isset($team[$vl->regions_sort_name]['regions_engineer_total'])?$team
                 [$vl->regions_sort_name]['regions_engineer_total']+1:1);
                     $team[$vl->regions_sort_name][$vl->engineer_id]['engineer_name'] =$vl->engineer;
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['engineer_id'] =$vl->engineer_id;
                     $team[$vl->regions_sort_name][$vl->engineer_id]['appointment_date'][] =$vl->appointment_date;
                     $team[$vl->regions_sort_name][$vl->engineer_id]['working_day'] =1;
                 //total
@@ -843,7 +852,7 @@ class Sms_report extends Controller
         // echo '<pre/>'; print_r($team); exit;
         ksort($team);
        
-        return view('reports.sms_report', ['data' => $team,'national'=>$national,'view'=>1]);
+        return view('sms_performance_view', ['data' => $team,'national'=>$national,'view'=>1,'query'=>$request]);
         
        }else{
         return Redirect::back()->withErrors(['msg', 'Records not found']);

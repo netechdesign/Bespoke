@@ -79,7 +79,8 @@ class Smssheet implements FromView,WithTitle,WithEvents
             if($vl->status=='cancelled'){
                 $national['cancelled'] = $national['cancelled'] +1;
             }
-            if($vl->status=='awaiting info'){
+            if($vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
+                 {
                 $national['open'] = $national['open'] +1;
                 }
             

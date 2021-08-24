@@ -262,7 +262,15 @@ class MdsController extends Controller
                     }  
                     
                         
-                                
+                    
+                    $row->completed_at = date('Y-m-d', strtotime(str_replace('/', '-', $row->completed_at)));
+                    
+                    
+                    $row->aborted_at = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->aborted_at))); 
+                    $row->arrived_at = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->arrived_at)));
+                    $row->time_slot_start =date('H:i:s', strtotime($row->time_slot_start));
+                    $row->time_slot_end =date('H:i:s', strtotime($row->time_slot_end));
+
                                 $user = JWTAuth::toUser($Request->input('token'));
                                 $savedt = Sms_job::where("job_reference",$row->job_reference)->where("engineer",$row->engineer)->first();
                                             
@@ -285,17 +293,18 @@ class MdsController extends Controller
                                 $savedt["meter_type"] =$row->meter_type;
                                 $savedt["appointment_date"] =$schedule_date;
                                 $savedt["time_slot"] = $row->time_slot;
-                                $savedt["arrived_at"] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->arrived_at)));
+                                $savedt["arrived_at"] = $row->arrived_at;
                                 $savedt["status"] =$row->status;
                                 $savedt["abort_code"] =$row->abort_code;
                                 $savedt["abort_comments"] =$row->abort_comments;
                                 $savedt["job_comments"] =$row->job_comments;
-                                $savedt["time_slot_start"] = date('H:i:s', strtotime($row->time_slot_start));
-                                $savedt["time_slot_end"] =date('H:i:s', strtotime($row->time_slot_end));
-                                $savedt["completed_at"] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->completed_at)));
-                                $savedt["aborted_at"] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $row->aborted_at)));
-                                $savedt["client"] =$row->client;
-                                $savedt["reason_for_abort"] =$row->reason_for_abort;
+                                $savedt["time_slot_start"] = $row->time_slot_start;
+                                $savedt["time_slot_end"] = $row->time_slot_end;
+                                $savedt["completed_at"] = $row->completed_at;
+                                $savedt["aborted_at"] = $row->aborted_at;
+                                $savedt["client"] = $row->client;
+                                $savedt["reason_for_abort"] = $row->reason_for_abort;
+                                $savedt["row_data"]= json_encode($row);
                                 $savedt['created_by'] = $user->id;
                                             
                                             $savedt->save();

@@ -88,10 +88,10 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                  if($alreadyExist > 0) {
                     $row['appointment_date'] = $schedule_date;
                     $completed_at = $this->transformDate($row['completed_at']);
-                    $row['completed_at'] = date('Y-m-d', strtotime(str_replace('/', '-', $completed_at)));
+                    $row['completed_at'] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $completed_at)));
                     
                     $aborted_at = $this->transformDate($row['aborted_at']);
-                    $row['aborted_at'] = date('Y-m-d', strtotime(str_replace('/', '-', $aborted_at)));
+                    $row['aborted_at'] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $aborted_at)));
                      return new SheetDupdatas(["sheets_id" =>request()->sheets_id,"data"=> json_encode($row),"file_id"=>5]); 
                      // throw new ModelNotFoundException("job no ".$row['job_id'].' customerid '.$row['customer_id'].' schedule_date '.$row['schedule_date'].' already exist');
                   
@@ -125,7 +125,15 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 }
                 
             }  
+            $row['appointment_date'] = $schedule_date;
+            $completed_at = $this->transformDate($row['completed_at']);
+            $row['completed_at'] = date('Y-m-d', strtotime(str_replace('/', '-', $completed_at)));
             
+            $aborted_at = $this->transformDate($row['aborted_at']);
+            $row['aborted_at'] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $aborted_at))); 
+            $row['arrived_at'] = date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['arrived_at']))));
+            $row['time_slot_start'] =date('H:i:s', strtotime($this->transformTime($row['time_slot_start'])));
+            $row['time_slot_end'] =date('H:i:s', strtotime($this->transformTime($row['time_slot_end'])));
             return new Sms_job([
                 "sheets_id" =>request()->sheets_id,
                 "month"=> $month,
@@ -146,15 +154,15 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 "meter_type" =>$row['meter_type'],
                 "appointment_date" =>$schedule_date,
                 "time_slot" => $row['time_slot'],
-                "arrived_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['arrived_at'])))),
+                "arrived_at" => $row['arrived_at'],
                 "status" =>$row['status'],
                 "abort_code" =>$row['abort_code'],
                 "abort_comments" =>$row['abort_comments'],
                 "job_comments" =>$row['job_comments'],
-                "time_slot_start" => date('H:i:s', strtotime($this->transformTime($row['time_slot_start']))),
-                "time_slot_end" =>date('H:i:s', strtotime($this->transformTime($row['time_slot_end']))),
-                "completed_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['completed_at'])))),
-                "aborted_at" => date('Y-m-d H:i', strtotime(str_replace('/', '-', $this->transformDate($row['aborted_at'])))),
+                "time_slot_start" => $row['time_slot_start'],
+                "time_slot_end" => $row['time_slot_end'],
+                "completed_at" => $row['completed_at'],
+                "aborted_at" =>$row['aborted_at'],
                 "client" =>$row['client'],
                 "reason_for_abort" =>$row['reason_for_abort'],
                 "row_data"=> json_encode($row),
