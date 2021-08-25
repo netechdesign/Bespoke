@@ -102,9 +102,16 @@ class Bonus_periodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+      
+      $Bonus_periods = Bonus_periods::select('id',DB::raw('DATE_FORMAT(wc,"%d/%m/%Y") as WC'),DB::raw('period as period'))->where('month',$request->month)->where('year',$request->year)->get();
+      if($Bonus_periods){
+          return response()->json(array('success' => true,'data' => $Bonus_periods), 200);
+   }
+   else{
+       return response()->json(array('success' => false,'message'=> 'not found')); 
+   }
     }
 
     /**
@@ -117,6 +124,34 @@ class Bonus_periodsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try{
+                
+          $user = JWTAuth::toUser($request->input('token'));
+          $request->request->add(['created_by'=> $user->id]);
+          $data= $request->except('token','next');
+          if($request->week_date){
+              
+              $week_date = $request->week_date;
+              foreach($week_date as $vl){
+                  
+                  $bonus_periods = Bonus_periods::find($vl['id']);
+                  $bonus_periods['created_by'] = $request->created_by;
+                  $bonus_periods['month'] = $request->month;
+                  $bonus_periods['year'] = $request->year;
+                  $bonus_periods['wc'] = date('Y-m-d', strtotime(str_replace('/', '-', $vl['WC'])));
+                  $bonus_periods['period'] = $vl['period'];
+                  $bonus_periods->save();
+                  
+              }
+          }
+         return response()->json(array('success' => true,'message' => 'Data inserted successfully'), 200);
+          
+      }catch (\Exception $e) 
+      {
+         $message = $e->getMessage();
+         
+          return response()->json(array('success' => false,'message'=> $message));
+      }
     }
 
     /**

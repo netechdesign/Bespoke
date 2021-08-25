@@ -445,15 +445,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function successDesktopPNotify() {
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
-    title: 'Success',
-    text: "Bonus period added successfully",
-    modules: {
-      Desktop: {
-        desktop: true
+  var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+  if (status == 0) {
+    pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+      title: 'Success',
+      text: "Bonus period added successfully",
+      modules: {
+        Desktop: {
+          desktop: true
+        }
       }
-    }
-  }).on('click', function (e) {});
+    });
+  } else {
+    pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+      title: 'Success',
+      text: "Bonus period updated successfully",
+      modules: {
+        Desktop: {
+          desktop: true
+        }
+      }
+    });
+  }
 }
 
 var baseurl = window.location.origin;
@@ -477,6 +491,8 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
+      _method: '',
+      id: '',
       chkCustom: false,
       visible: true,
       formSubmitting: false,
@@ -510,7 +526,13 @@ var Add = /*#__PURE__*/function (_React$Component) {
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/bonus_periods', _this.state, {
+      var url = baseurl + '/api/bonus_periods';
+
+      if (_this.state._method == 'PUT') {
+        url = baseurl + '/api/bonus_periods/1';
+      }
+
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(url, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -522,17 +544,23 @@ var Add = /*#__PURE__*/function (_React$Component) {
             formSubmitting: false
           });
 
-          _this.setState({
-            buttonName: 'Save'
-          });
+          if (_this.state._method != 'PUT') {
+            _this.setState({
+              buttonName: 'Save',
+              week_date: [],
+              month: '',
+              year: ''
+            });
 
-          _this.setState({
-            week_date: [],
-            month: '',
-            year: ''
-          });
+            successDesktopPNotify();
+          } else {
+            _this.setState({
+              buttonName: 'Save'
+            });
 
-          successDesktopPNotify(); // this.props.history.push('/job_lookup'); 
+            successDesktopPNotify(1);
+          } // this.props.history.push('/job_lookup'); 
+
         } else {
           if (res.data.errors) {
             res.data.message = res.data.errors.name;
@@ -593,39 +621,77 @@ var Add = /*#__PURE__*/function (_React$Component) {
         month: mm
       });
 
-      var month_name = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var currunt_month = month_name[today.getMonth()];
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
 
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
 
-      var monday = moment().startOf('month').month(currunt_month).year(yyyy).day("Monday");
-      if (monday.date() > 7) monday.add(7, 'd');
-      var month = monday.month();
-
-      while (month === monday.month()) {
-        var dd = monday.date();
-
-        if (dd < 10) {
-          dd = '0' + dd;
+      var data = new FormData();
+      data.append('year', yyyy);
+      data.append('month', mm);
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/bonus_periods/1/edit', {
+        params: {
+          year: yyyy,
+          month: mm
+        },
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
         }
+      }).then(function (res) {
+        document.getElementById("requestLoder").innerHTML = '';
 
-        var wdate = dd + '/' + mm + '/' + monday.year();
-        var weekdateList = new Object();
-        weekdateList.WC = wdate;
-        weekdateList.period = '';
-        week_date.push(weekdateList);
-        monday.add(7, 'd');
-      }
+        if (res.data.data.length != 0) {
+          _this.setState({
+            week_date: res.data.data
+          });
 
-      ;
+          _this.setState({
+            buttonName: 'Edit',
+            _method: 'PUT'
+          });
+        } else {
+          _this.setState({
+            buttonName: 'Save',
+            _method: ''
+          });
 
-      if (week_date) {
-        _this.setState({
-          week_date: week_date
-        });
-      }
+          var month_name = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          var currunt_month = month_name[today.getMonth()];
+
+          if (mm < 10) {
+            mm = '0' + mm;
+          }
+
+          var monday = moment().startOf('month').month(currunt_month).year(yyyy).day("Monday");
+          if (monday.date() > 7) monday.add(7, 'd');
+          var month = monday.month();
+
+          while (month === monday.month()) {
+            var dd = monday.date();
+
+            if (dd < 10) {
+              dd = '0' + dd;
+            }
+
+            var wdate = dd + '/' + mm + '/' + monday.year();
+            var weekdateList = new Object();
+            weekdateList.WC = wdate;
+            weekdateList.period = '';
+            week_date.push(weekdateList);
+            monday.add(7, 'd');
+          }
+
+          ;
+
+          if (week_date) {
+            _this.setState({
+              week_date: week_date
+            });
+          }
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
     });
 
     return _this;
@@ -688,6 +754,8 @@ var Add = /*#__PURE__*/function (_React$Component) {
           placeholder: 'Select Date',
           autoComplete: 'off'
         }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder"
       }))), this.state.week_date.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Weekdate, {
         handleChange: function handleChange(e) {
           return _this2.periodChange(e);

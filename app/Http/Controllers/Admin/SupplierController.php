@@ -35,6 +35,7 @@ class SupplierController extends Controller
                                 WHEN file_id = "1" THEN "Morrison Data services" 
                                 WHEN file_id = "2" THEN "Utilita" 
                                 WHEN file_id = "3" THEN "Vehicle Mileage"
+                                WHEN file_id = "5" THEN "SMS"
                                 ELSE "N.A" 
                                 END) AS file_type')
                     )
@@ -43,7 +44,7 @@ class SupplierController extends Controller
                     $query->where('file_id','=',$request->input('file_id'));
                     $query->where('file_id','=',$request->input('file_id'));
                    } 
-                })->offset($start)->limit($page_length)->get();
+                })->offset($start)->limit($page_length)->orderBy('id','desc')->get();
                 $totalRecords = Sheets::count();
                 
                 $response = array(
@@ -141,7 +142,12 @@ class SupplierController extends Controller
            elseif($row->file_id==3){
             DB::table('vehicle_mileas')->where('sheets_id', $id)->delete();
             $deleted=1;
-           }else{
+           }
+           elseif($row->file_id==5){
+            DB::table('sms_jobs')->where('sheets_id', $id)->delete();
+            $deleted=1;
+           }
+           else{
             return response()->json(array('success' => false,'message'=> 'id not found'));   
            } 
 

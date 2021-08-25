@@ -48,16 +48,17 @@
         }else{
           $national_profit_day = '£'.number_format($profit_day,2);
         }
+        $Nquerylist = "&start_date=".$query->start_date."&end_date=".$query->end_date."&job_type=".$query->job_type."&work_completed=".$query->job_type."&work_type=".json_encode($query->work_type);
         ?>
         <tr>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">National</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['total_job']}}</th>
-            <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['completed']}}</th>
-<td style="border: 1px solid #000000;text-align: right;">{{number_format(($national['completed']/($national['total_job']-$national['cancelled']))*100,2)}}%</td>
-            <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['aborted']}}</th>
-             <td style="border: 1px solid #000000;text-align: right;">{{number_format(($national['aborted']/($national['total_job']-$national['cancelled']))*100,2)}}%</td>
+            <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=completed".$Nquerylist)}}'>{{$national['completed']}}</a></th>
+<td style="border: 1px solid #000000;text-align: right;"><a  target='_blank' href='{{url("sms/list?status=completed".$Nquerylist)}}'>{{number_format(($national['completed']/($national['total_job']-$national['cancelled']))*100,2)}}%<a></td>
+            <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=aborted".$Nquerylist)}}'>{{$national['aborted']}}</a></th>
+             <td style="border: 1px solid #000000;text-align: right;"><a  target='_blank' href='{{url("sms/list?status=aborted".$Nquerylist)}}'>{{number_format(($national['aborted']/($national['total_job']-$national['cancelled']))*100,2)}}%</a></td>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['open']}}</th>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['cancelled']}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=cancelled".$Nquerylist)}}'>{{$national['cancelled']}}</a></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['pu']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus'],2)}}</th>
@@ -142,7 +143,7 @@
         }else{
           $profit_day_vl = '£'.number_format($users['profit_day'],2);
         }
-        $querylist = "&engineer_id=".$users['engineer_id']."&start_date=".$query->start_date."&end_date=".$query->end_date."&job_type=".$query->job_type."&work_completed=".$query->job_type."&work_type=".$query->work_type;
+        $querylist = "&engineer_id=".$users['engineer_id']."&start_date=".$query->start_date."&end_date=".$query->end_date."&job_type=".$query->job_type."&work_completed=".$query->job_type."&work_type=".json_encode($query->work_type);
         ?>
             <tr>
                 <td style="width:20;border: 1px solid #000000;">{{$users['engineer_name']}}</td>

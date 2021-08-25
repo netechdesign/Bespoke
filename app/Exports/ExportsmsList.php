@@ -40,14 +40,15 @@ class ExportsmsList implements WithMultipleSheets
         $q= Sms_job::select('sms_jobs.row_data','sms_jobs.engineer','time_lookups.in_hours_end');
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
      
-        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
-          $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');;
-        }
-  
      
-        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
-          if($_REQUEST['work_type']!='all'){          
-                $q->where('job_lookups.contract',$_REQUEST['work_type']);
+        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!='null'){
+          $work_type =json_decode($_REQUEST['work_type']);     
+          
+            if($work_type->label!=''){
+                  $q->join('job_lookups','sms_jobs.work_type','=','job_lookups.job_type');
+                  if($work_type->label!='All'){
+                      $q->where('job_lookups.contract',$work_type->label);
+                  }
           }
         }
         $q->where('sms_jobs.regions_sort_name','!=','');

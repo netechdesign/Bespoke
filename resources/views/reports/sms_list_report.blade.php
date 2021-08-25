@@ -4,9 +4,15 @@
         <?php if(!isset($view)) {
             
             ?>
-         <tr>
-            <td colspan="18" style="text-align: center;font-weight: bold;font-size:15px">{{$data[0]->engineer}}</td>
-        </tr>
+            
+            <tr>
+                <td colspan="18" style="text-align: center;font-weight: bold;font-size:15px">
+                @if(isset($_REQUEST['engineer_id']))
+                {{$data[0]->engineer}}
+                @endif
+            </td>
+            </tr>
+            
         <tr>
             <td colspan="2"><b>Date :</b>{{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['start_date'])))}} To {{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['end_date'])))}}</td>
             @if(isset($_REQUEST['work_completed']))
