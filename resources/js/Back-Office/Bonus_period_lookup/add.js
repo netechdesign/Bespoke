@@ -208,7 +208,7 @@ class Add extends React.Component{
                         <Col>
                             <Card>
                                 <Card.Header>
-                                    <Card.Title as="h5">Add Bonus Period</Card.Title>
+                                    <Card.Title as="h5">Bonus Period</Card.Title>
                                       <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
                                 </Card.Header>
                                 <Card.Body>
