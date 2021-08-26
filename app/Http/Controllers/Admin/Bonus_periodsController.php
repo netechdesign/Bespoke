@@ -204,7 +204,8 @@ class Bonus_periodsController extends Controller
                         $todate=$end_date;
                         }
                         
-                        $teamQ= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+                        //$teamQ= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
+                        $teamQ= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
                         $teamQ->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
                         if($request->team_id!=''){
                           $teamQ->where('teams.id', '=', $request->team_id);

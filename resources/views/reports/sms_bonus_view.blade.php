@@ -63,7 +63,7 @@
                                        @if(isset($week_date['Monday']))
                                          <td style="text-align: center;border: 1px solid #000000;width:3.1%">{{$week_date['Monday']['pu']}}</td>
                                          <td style="text-align: center;border: 1px solid #000000;width:6.8%">{{$week_date['Monday']['bonus_pus']}}</td>
-                                        <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:4.7%" data-format="£#,##0.00_-" >{{$week_date['Monday']['bonus']}}</td>
+                                        <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:4.7%" data-format="£#,##0.00_-" >£{{$week_date['Monday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Monday']['revenue'] + $revenue;
                                         $bonus= $week_date['Monday']['bonus'] + $bonus;
                                         ?>
@@ -76,7 +76,7 @@
                                      @if(isset($week_date['Tuesday']))
                                          <td style="text-align: center;border: 1px solid #000000;width:3.1%">{{$week_date['Tuesday']['pu']}}</td>
                                          <td style="text-align: center;border: 1px solid #000000;width:6.8%">{{$week_date['Tuesday']['bonus_pus']}}</td>
-                                        <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:4.7%" data-format="£#,##0.00_-">{{$week_date['Tuesday']['bonus']}}</td>
+                                        <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:4.7%" data-format="£#,##0.00_-">£{{$week_date['Tuesday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Tuesday']['revenue'] + $revenue;
                                         $bonus= $week_date['Tuesday']['bonus'] + $bonus;
                                         ?>
@@ -90,7 +90,7 @@
                                      @if(isset($week_date['Wednesday']))
                                          <td style="text-align: center;border: 1px solid #000000;width:3.2%">{{$week_date['Wednesday']['pu']}}</td>
                                          <td style="text-align: center;border: 1px solid #000000;width:7.5%">{{$week_date['Wednesday']['bonus_pus']}}</td>
-                                        <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:5%" data-format="£#,##0.00_-" >{{$week_date['Wednesday']['bonus']}}</td>
+                                        <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:5%" data-format="£#,##0.00_-" >£{{$week_date['Wednesday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Wednesday']['revenue'] + $revenue;
                                         $bonus= $week_date['Wednesday']['bonus'] + $bonus;
                                         ?>
@@ -116,7 +116,7 @@
                                      @if(isset($week_date['Friday']))
                                          <td style="text-align: center;border: 1px solid #000000;width:3.2%">{{$week_date['Friday']['pu']}}</td>
                                          <td style="text-align: center;border: 1px solid #000000;width:7.5%">{{$week_date['Friday']['bonus_pus']}}</td>
-                                        <td style="text-align: center;background:#04AF0A;width:5%;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$week_date['Friday']['bonus']}}</td>
+                                        <td style="text-align: center;background:#04AF0A;width:5%;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$week_date['Friday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Friday']['revenue'] + $revenue;
                                         $bonus= $week_date['Friday']['bonus'] + $bonus;
                                         
@@ -132,18 +132,18 @@
                                         $total_engineer_revenue = $total_engineer_revenue + $revenue; 
                                         $total_bonus= $total_bonus + $bonus;
                                         $total_revenue= $total_revenue + $revenue; ?>
-                                <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">{{$bonus}}</td>
-                                <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">{{$revenue}}</td>            
+                                <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">£{{$bonus}}</td>
+                                <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">£{{$revenue}}</td>            
                             </tr>
                     @endforeach  
                     <tr style="color:black;"><td></td><td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$total_engineer_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$total_engineer_revenue}}</td></tr> 
+    <td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$total_engineer_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$total_engineer_revenue}}</td></tr> 
     <tr><td>&nbsp;</td></tr>   
             
         
         @endforeach   
     <tr  style="color:black;"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >{{$total_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >{{$total_revenue}}</td></tr> 
+    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >£{{$total_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >£{{$total_revenue}}</td></tr> 
         
     </tbody>    
 <table>    
