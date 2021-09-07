@@ -60,7 +60,12 @@ class ExportsmsList implements WithMultipleSheets
           $q->where('work_type',$_REQUEST['job_type']);
         }
         if(isset($_REQUEST['status']) && $_REQUEST['status']!=''){
-        $q->where('sms_jobs.status',$_REQUEST['status']);
+          if($_REQUEST['status']=='open'){
+            $q->whereIn('sms_jobs.status',['awaiting info','arrived','received','started']);
+            }else{
+              $q->where('sms_jobs.status',$_REQUEST['status']);
+            }
+        
         }
         if(isset($_REQUEST['engineer_id']) && $_REQUEST['engineer_id']!=''){
           $q->where('sms_jobs.engineer_id',$_REQUEST['engineer_id']);

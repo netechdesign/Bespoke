@@ -57,7 +57,7 @@
 <td style="border: 1px solid #000000;text-align: right;"><a  target='_blank' href='{{url("sms/list?status=completed".$Nquerylist)}}'>{{number_format(($national['completed']/($national['total_job']-$national['cancelled']))*100,2)}}%<a></td>
             <th  style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=aborted".$Nquerylist)}}'>{{$national['aborted']}}</a></th>
              <td style="border: 1px solid #000000;text-align: right;"><a  target='_blank' href='{{url("sms/list?status=aborted".$Nquerylist)}}'>{{number_format(($national['aborted']/($national['total_job']-$national['cancelled']))*100,2)}}%</a></td>
-            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['open']}}</th>
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=open".$Nquerylist)}}'>{{$national['open']}}</a></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=cancelled".$Nquerylist)}}'>{{$national['cancelled']}}</a></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['pu']/$national['total_work_day'],2)}}</th>
@@ -152,7 +152,7 @@
                 <td style="border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>@if(isset($users['completed_per'])){{str_replace(',','',number_format($users['completed_per'],2))}}@else 0.00 @endif%</a></td>
                 <td style="border: 1px solid #000000;text-align: center;" ><a  target='_blank' href='{{url("sms/list?status=aborted".$querylist)}}'>{{$users['aborted']}}<a></td>
                 <td style="border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=aborted".$querylist)}}'>@if(isset($users['aborted_per'])){{str_replace(',','',number_format($users['aborted_per'],2))}}@else 0.00 @endif%</a></td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['open']}}</td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=open".$querylist)}}'>{{$users['open']}}</a></td>
                 <td style="width:10;border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=cancelled".$querylist)}}'>{{$users['cancelled']}}</a></td>
                 <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
                 {{str_replace(',','',number_format($users['pu'],2))}}
