@@ -367,8 +367,8 @@ var Add = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
-          history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
+          history = _this$props.history; // CheckPermission('user','add',history);
+
       this.ManagerList();
     }
   }, {

@@ -242,16 +242,16 @@ class Team extends React.Component {
                         <Table ref="tbl" striped hover responsive className="table table-condensed" id="data-table-responsive">
                                     <thead>
                                     <tr>
-                                        <th id="regions_sort_name">Team Id</th>
-                                        <th id="engineer_name">Engineer Name</th>
+                                        <th id="regions_sort_name">Team Name</th>
+                                        <th id="engineer_name">Manager Name</th>
                                         <th id="name">Region</th>
                                         <th id="action">Action</th>
                                       </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                         <th id="regions_sort_name">Team Id</th>
-                                         <th id="engineer_name">Engineer Name</th>
+                                         <th id="regions_sort_name">Team Name</th>
+                                         <th id="engineer_name">Manager Name</th>
                                          <th id="name">Region</th>
                                          <th id="action">Action</th>
                                     </tr>

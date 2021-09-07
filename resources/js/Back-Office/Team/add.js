@@ -70,7 +70,7 @@ class Add extends React.Component{
           }
         componentDidMount(){
             const { match, location, history } = this.props;
-            CheckPermission('user','add',history);
+           // CheckPermission('user','add',history);
            this.ManagerList();
         }
 

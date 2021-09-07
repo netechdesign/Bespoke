@@ -49,7 +49,7 @@ class TeamsController extends Controller
                                   } 
                    
                 });
-                $jobs =$jobsrow->orderBy('id', 'DESC')->paginate($page_length)->toArray();
+                $jobs =$jobsrow->orderBy('regions_sort_name', 'asc')->paginate($page_length)->toArray();
 
                 
                 $response = array(
