@@ -17,7 +17,7 @@ import {CheckPermission} from '../../HttpFunctions';
 function successDesktopPNotify() {
     PNotify.success({
         title: 'Success',
-        text: "Team added successfully",
+        text: "Team updated successfully",
         modules: {
             Desktop: {
                 desktop: true
@@ -31,6 +31,8 @@ const baseurl= window.location.origin;
 class Edit extends React.Component{
 
     state = {
+        _method: 'PUT',
+        id:'',
         engineer_id:'',
         engineer_name:'',
         manager_list:[],
@@ -72,6 +74,36 @@ class Edit extends React.Component{
             const { match, location, history } = this.props;
             // CheckPermission('user','add',history);
            this.ManagerList();
+           this.update();
+        }
+
+        update =() =>{
+            const { match, location, history } = this.props;
+            const id = match.params.id;
+            document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+       
+        const data = new FormData()
+        data.append('name', this.state.name);
+        data.append('permission', this.state.permission);
+        
+        axios.get(
+            baseurl+'/api/team/'+id+'/edit',
+            {headers:{'Authorization':'Bearer '+auth_token}} 
+        ).then(res =>{
+                        if(res.data.success){
+                                            this.setState({id:res.data.data.id,engineer_id:res.data.data.engineer_id,regions_id:res.data.data.regions_id,regions_sort_name:res.data.data.regions_sort_name});
+                                                    
+                          
+                        }else{
+                           
+                        }
+                   }
+        )
+        .catch(err =>{
+                        console.log(err);
+                    }
+        )
         }
 
         handleSubmit = (e, formData, inputs) => {
@@ -84,7 +116,7 @@ class Edit extends React.Component{
             //data.append('name', this.state.name);
            
             axios.post(
-                baseurl+'/api/team',this.state,
+                baseurl+'/api/team/'+this.state.id,this.state,
                 {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
             ).then(res =>{
                               if(res.data.success){
@@ -95,7 +127,7 @@ class Edit extends React.Component{
                                  
                                  $('input[type="checkbox"]').prop('checked',false);
                                  successDesktopPNotify();
-                                 
+                                 this.props.history.push('/team'); 
                               }else{
                                 if(res.data.errors){
                                     res.data.message= res.data.errors.name;
@@ -172,7 +204,7 @@ class Edit extends React.Component{
                         <Col>
                             <Card>
                                 <Card.Header>
-                                    <Card.Title as="h5">Add Team</Card.Title>
+                                    <Card.Title as="h5">Edit Team</Card.Title>
                                       <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
                                 </Card.Header>
                                 <Card.Body>
@@ -185,6 +217,10 @@ class Edit extends React.Component{
                                     className="basic-single"
                                     classNamePrefix="select"
                                     name="engineer_id"
+                                    value = {
+                                        this.state.manager_list.filter(option => 
+                                           option.value === this.state.engineer_id)
+                                     }
                                     options={this.state.manager_list}
                                     placeholder="Select Manager"
                                 />
@@ -196,6 +232,10 @@ class Edit extends React.Component{
                                     className="basic-single"
                                     classNamePrefix="select"
                                     name="regions_id"
+                                    value = {
+                                        this.state.region_list.filter(option => 
+                                           option.value === this.state.regions_id)
+                                     }
                                     options={this.state.region_list}
                                     placeholder="Select Region"
                                 />

@@ -148,7 +148,18 @@ class TeamsController extends Controller
      */
     public function edit($id)
     {
-        //
+        try{
+             $Teams =Teams::find($id);
+            if($Teams){
+                      return response()->json(array('success' => true,'data' => $Teams), 200);
+             }
+        }
+        catch(\Exception $e) 
+        {
+           $message = $e->getMessage();
+           
+            return response()->json(array('success' => false,'message'=> $message));
+        }
     }
 
     /**
@@ -160,7 +171,29 @@ class TeamsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $user = JWTAuth::toUser($request->input('token'));
+            $engineers =Teams::find($id);
+            $engineers->engineer_id = $request->engineer_id;
+            $engineers->regions_id = $request->regions_id;
+            $engineers->regions_sort_name = $request->regions_sort_name;
+            $engineers->created_by = $user->id;
+            
+            if($engineers->save()){
+                return response()->json(array('success' => true,
+                'message' => 'Engineer updated successfully'
+                ), 200);
+            }
+            else{
+                return response()->json(array('success' => false,'message'=> 'not added')); 
+            }
+            
+        }catch (\Exception $e) 
+        {
+           $message = $e->getMessage();
+           
+            return response()->json(array('success' => false,'message'=> $message));
+        }
     }
 
     /**

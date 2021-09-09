@@ -47,6 +47,7 @@ const DashboardProject = React.lazy(() => import('./Demo/Dashboard/Project'));
 //Team
 const TeamAdd = React.lazy(() => import("./Back-Office/Team/add"));
 const TeamList = React.lazy(() => import("./Back-Office/Team"));
+const TeamEdit = React.lazy(() => import("./Back-Office/Team/edit"));
 const Engineer_lookup = React.lazy(() => import("./Back-Office/Engineer_lookup"));
 const Engineer_lookup_add = React.lazy(() => import("./Back-Office/Engineer_lookup/add"));
 const Employee_lookup_edit = React.lazy(() => import("./Back-Office/Engineer_lookup/edit"));
@@ -105,6 +106,7 @@ const routes = [
     { path: '/dashboard/project', exact: true, name: 'Project', component: DashboardProject },
     { path:'/team/add', exact:true, name:'teamadd',component:TeamAdd},
     {path:'/team',exact:true,name:'teamlist',component:TeamList},
+    { path:'/team/edit/:id', exact:true, name:'teamadd',component:TeamEdit},
     {path:'/employee_lookup',exact:true,name:'teamlist',component:Engineer_lookup},
     {path:'/employee_lookup/add',exact:true,name:'teamlist',component:Engineer_lookup_add},
     { path:'/employee_lookup/edit/:id', exact:true, name:'employee_lookup',component:Employee_lookup_edit},

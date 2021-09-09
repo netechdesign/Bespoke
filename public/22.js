@@ -3411,6 +3411,9 @@ var TeamAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(fun
 var TeamList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Team */ "./resources/js/Back-Office/Team/index.js"));
 });
+var TeamEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(75)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Team/edit */ "./resources/js/Back-Office/Team/edit.js"));
+});
 var Engineer_lookup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(37)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Engineer_lookup */ "./resources/js/Back-Office/Engineer_lookup/index.js"));
 });
@@ -3637,6 +3640,11 @@ var routes = [{
   exact: true,
   name: 'teamlist',
   component: TeamList
+}, {
+  path: '/team/edit/:id',
+  exact: true,
+  name: 'teamadd',
+  component: TeamEdit
 }, {
   path: '/employee_lookup',
   exact: true,
