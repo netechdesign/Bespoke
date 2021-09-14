@@ -83,11 +83,12 @@ class ExportsmsList implements WithMultipleSheets
               /** print query   toSql(); */
             // dd($q->toSql());
             $q=$q->orderBy('appointment_date','asc')->get();
-            
+      if(count($q)>0){      
       
         $sheets[] = new SmsListsheet($q);
     
         return $sheets;
+      }
     }
 }
 

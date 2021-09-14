@@ -130,7 +130,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
 
                  } 
                 //awaiting info  
-                 if($vl->status=='Assigned' || $vl->status=='departed' || $vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
+                 if($vl->status=='assigned' || $vl->status=='departed' || $vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
                  {
                     $team[$vl->regions_sort_name][$vl->engineer_id]['open']=(isset($team[$vl->regions_sort_name][$vl->engineer_id]['open'])?$team[$vl->regions_sort_name][$vl->engineer_id]['open']+1:1);
                     }
@@ -202,7 +202,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
                             $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
                     }
                 //awaiting info    
-                if($vl->status=='Assigned' || $vl->status=='departed' || $vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
+                if($vl->status=='assigned' || $vl->status=='departed' || $vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
                  {
                     $team[$vl->regions_sort_name][$vl->engineer_id]['open'] = 1;
                     }

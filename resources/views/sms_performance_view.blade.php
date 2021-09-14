@@ -148,12 +148,51 @@
             <tr>
                 <td style="width:20;border: 1px solid #000000;">{{$users['engineer_name']}}</td>
                 <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['total_job']}}</td>
-                <td style="border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>{{$users['completed']}}</a></td>
-                <td style="border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>@if(isset($users['completed_per'])){{str_replace(',','',number_format($users['completed_per'],2))}}@else 0.00 @endif%</a></td>
-                <td style="border: 1px solid #000000;text-align: center;" ><a  target='_blank' href='{{url("sms/list?status=aborted".$querylist)}}'>{{$users['aborted']}}<a></td>
-                <td style="border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=aborted".$querylist)}}'>@if(isset($users['aborted_per'])){{str_replace(',','',number_format($users['aborted_per'],2))}}@else 0.00 @endif%</a></td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=open".$querylist)}}'>{{$users['open']}}</a></td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;"><a  target='_blank' href='{{url("sms/list?status=cancelled".$querylist)}}'>{{$users['cancelled']}}</a></td>
+                <td style="border: 1px solid #000000;text-align: center;">
+                @if($users['completed']>0)
+                   <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>{{$users['completed']}}</a>
+                   @else   
+                  {{$users['completed']}}
+                  @endif
+                </td>
+                <td style="border: 1px solid #000000;text-align: center;">
+                @if($users['completed']>0)
+                   <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>@if(isset($users['completed_per'])){{str_replace(',','',number_format($users['completed_per'],2))}}@else 0.00 @endif%</a>
+                @else   
+                @if(isset($users['completed_per'])){{str_replace(',','',number_format($users['completed_per'],2))}}@else 0.00 @endif%
+                  @endif
+            </td>
+                <td style="border: 1px solid #000000;text-align: center;" >
+                 
+                 @if($users['aborted']>0)
+                 <a  target='_blank' href='{{url("sms/list?status=aborted".$querylist)}}'>{{$users['aborted']}}<a>
+                   @else   
+                  {{$users['aborted']}}
+                  @endif
+                </td>
+                 </td>
+                <td style="border: 1px solid #000000;text-align: center;">
+                @if($users['aborted']>0)
+                <a  target='_blank' href='{{url("sms/list?status=aborted".$querylist)}}'>@if(isset($users['aborted_per'])){{str_replace(',','',number_format($users['aborted_per'],2))}}@else 0.00 @endif%</a>
+                @else   
+                @if(isset($users['aborted_per'])){{str_replace(',','',number_format($users['aborted_per'],2))}}@else 0.00 @endif%
+                  @endif
+            </td>
+                
+                <td style="width:10;border: 1px solid #000000;text-align: center;">
+                  @if($users['open']>0)
+                     <a target='_blank' href='{{url("sms/list?status=open".$querylist)}}'>{{$users['open']}}</a>
+                  @else   
+                  {{$users['open']}}
+                  @endif
+                </td>
+                <td style="width:10;border: 1px solid #000000;text-align: center;">
+                @if($users['cancelled']>0)
+                <a  target='_blank' href='{{url("sms/list?status=cancelled".$querylist)}}'>{{$users['cancelled']}}</a>
+                @else   
+                  {{$users['cancelled']}}
+                  @endif
+            </td>
                 <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
                 {{str_replace(',','',number_format($users['pu'],2))}}
                 </td>
