@@ -47,7 +47,16 @@ class Bonussheet implements FromView,WithTitle,WithEvents
     
     $current_column = 'A';
     $subject_data =2; //10 + $site_engineer;
-
+    $col='T';
+    if(isset($_REQUEST['role'])){
+      $role=$_REQUEST['role'];
+    }
+    if($role==8 || $role==7 || $role==6 || $role==5 || $role==1) {
+        $col='S';
+    } 
+    if($role==7 || $role==6 || $role==5 || $role==1){
+        $col='T';
+    }
     for($i=0; $i < $subject_data; $i++) {
     $current_column; // Will be C, D, E, etc...
     $current_column++; // Increment letter
@@ -71,7 +80,7 @@ class Bonussheet implements FromView,WithTitle,WithEvents
                    ]
                );
                $second_row = count($d) +$row+1;
-               $event->sheet->getStyle('A'.$row.':T'.$second_row)->applyFromArray([
+               $event->sheet->getStyle('A'.$row.':'.$col.$second_row)->applyFromArray([
                    'borders' => [
                        'allBorders' => [
                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,

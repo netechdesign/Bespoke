@@ -360,7 +360,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
-    auth_token = _ref.auth_token;
+    auth_token = _ref.auth_token,
+    roles = _ref.roles;
 
 var baseurl = window.location.origin;
 
@@ -459,7 +460,8 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
       period: '',
       region_list: [],
       regions_sort_name: "",
-      team_id: ''
+      team_id: '',
+      role: roles
     };
     return _this;
   }
@@ -497,7 +499,11 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
         action: this.state.baseurl,
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "role",
+        value: this.state.role
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {

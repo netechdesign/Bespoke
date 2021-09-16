@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[85],{
 
-/***/ "./resources/js/Demo/Charts/AmChart/MapChart.js":
+/***/ "./resources/js/App/components/AnimatedModal.js":
 /*!******************************************************!*\
-  !*** ./resources/js/Demo/Charts/AmChart/MapChart.js ***!
+  !*** ./resources/js/App/components/AnimatedModal.js ***!
   \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -11,11 +11,9 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
-/* harmony import */ var _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/maps */ "./node_modules/@amcharts/amcharts4/maps.js");
-/* harmony import */ var _amcharts_amcharts4_geodata_worldLow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @amcharts/amcharts4-geodata/worldLow */ "./node_modules/@amcharts/amcharts4-geodata/worldLow.js");
-/* harmony import */ var _amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @amcharts/amcharts4/themes/animated */ "./node_modules/@amcharts/amcharts4/themes/animated.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-animated-modal */ "./node_modules/react-animated-modal/build/index.js");
+/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_animated_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34,7 +32,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -42,908 +40,69 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var AnimatedModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnimatedModal, _React$Component);
 
+  var _super = _createSuper(AnimatedModal);
 
-_amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["useTheme"](_amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_4__["default"]);
-
-var MapChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(MapChart, _React$Component);
-
-  var _super = _createSuper(MapChart);
-
-  function MapChart() {
-    _classCallCheck(this, MapChart);
+  function AnimatedModal() {
+    _classCallCheck(this, AnimatedModal);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(MapChart, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var chart = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["create"]("am-map-4", _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_2__["MapChart"]);
-      chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-      chart.geodata = _amcharts_amcharts4_geodata_worldLow__WEBPACK_IMPORTED_MODULE_3__["default"];
-      chart.projection = new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_2__["projections"].Miller();
-      var polygonSeries = chart.series.push(new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_2__["MapPolygonSeries"]());
-      var polygonTemplate = polygonSeries.mapPolygons.template;
-      polygonTemplate.tooltipText = "{name}: {value.value.formatNumber('#.0')}";
-      polygonSeries.heatRules.push({
-        property: "fill",
-        target: polygonSeries.mapPolygons.template,
-        min: _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["color"]("#ffffff"),
-        max: _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["color"]("#A389D4")
-      });
-      polygonSeries.useGeodata = true;
-      var heatLegend = chart.chartContainer.createChild(_amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_2__["HeatLegend"]);
-      heatLegend.valign = "bottom";
-      heatLegend.align = "left";
-      heatLegend.width = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["percent"](100);
-      heatLegend.series = polygonSeries;
-      heatLegend.orientation = "horizontal";
-      heatLegend.padding(20, 20, 20, 20);
-      heatLegend.valueAxis.renderer.labels.template.fontSize = 10;
-      heatLegend.valueAxis.renderer.minGridDistance = 40;
-      polygonSeries.mapPolygons.template.events.on("over", function (event) {
-        handleHover(event.target);
-      });
-      polygonSeries.mapPolygons.template.events.on("hit", function (event) {
-        handleHover(event.target);
-      });
-
-      function handleHover(mapPolygon) {
-        if (!isNaN(mapPolygon.dataItem.value)) {
-          heatLegend.valueAxis.showTooltipAt(mapPolygon.dataItem.value);
-        } else {
-          heatLegend.valueAxis.hideTooltip();
-        }
-      }
-
-      polygonSeries.mapPolygons.template.strokeOpacity = 0.4;
-      polygonSeries.mapPolygons.template.events.on("out", function (event) {
-        heatLegend.valueAxis.hideTooltip();
-      });
-      chart.zoomControl = new _amcharts_amcharts4_maps__WEBPACK_IMPORTED_MODULE_2__["ZoomControl"]();
-      chart.zoomControl.valign = "top";
-      polygonSeries.data = [{
-        id: "AF",
-        value: 60.524
-      }, {
-        id: "AL",
-        value: 77.185
-      }, {
-        id: "DZ",
-        value: 70.874
-      }, {
-        id: "AO",
-        value: 51.498
-      }, {
-        id: "AR",
-        value: 76.128
-      }, {
-        id: "AM",
-        value: 74.469
-      }, {
-        id: "AU",
-        value: 82.364
-      }, {
-        id: "AT",
-        value: 80.965
-      }, {
-        id: "AZ",
-        value: 70.686
-      }, {
-        id: "BH",
-        value: 76.474
-      }, {
-        id: "BD",
-        value: 70.258
-      }, {
-        id: "BY",
-        value: 69.829
-      }, {
-        id: "BE",
-        value: 80.373
-      }, {
-        id: "BJ",
-        value: 59.165
-      }, {
-        id: "BT",
-        value: 67.888
-      }, {
-        id: "BO",
-        value: 66.969
-      }, {
-        id: "BA",
-        value: 76.211
-      }, {
-        id: "BW",
-        value: 47.152
-      }, {
-        id: "BR",
-        value: 73.667
-      }, {
-        id: "BN",
-        value: 78.35
-      }, {
-        id: "BG",
-        value: 73.448
-      }, {
-        id: "BF",
-        value: 55.932
-      }, {
-        id: "BI",
-        value: 53.637
-      }, {
-        id: "KH",
-        value: 71.577
-      }, {
-        id: "CM",
-        value: 54.61
-      }, {
-        id: "CA",
-        value: 81.323
-      }, {
-        id: "CV",
-        value: 74.771
-      }, {
-        id: "CF",
-        value: 49.517
-      }, {
-        id: "TD",
-        value: 50.724
-      }, {
-        id: "CL",
-        value: 79.691
-      }, {
-        id: "CN",
-        value: 75.178
-      }, {
-        id: "CO",
-        value: 73.835
-      }, {
-        id: "KM",
-        value: 60.661
-      }, {
-        id: "CD",
-        value: 49.643
-      }, {
-        id: "CG",
-        value: 58.32
-      }, {
-        id: "CR",
-        value: 79.712
-      }, {
-        id: "CI",
-        value: 50.367
-      }, {
-        id: "HR",
-        value: 76.881
-      }, {
-        id: "CU",
-        value: 79.088
-      }, {
-        id: "CY",
-        value: 79.674
-      }, {
-        id: "CZ",
-        value: 77.552
-      }, {
-        id: "DK",
-        value: 79.251
-      }, {
-        id: "GL",
-        value: 79.251
-      }, {
-        id: "DJ",
-        value: 61.319
-      }, {
-        id: "DO",
-        value: 73.181
-      }, {
-        id: "EC",
-        value: 76.195
-      }, {
-        id: "EG",
-        value: 70.933
-      }, {
-        id: "SV",
-        value: 72.361
-      }, {
-        id: "GQ",
-        value: 52.562
-      }, {
-        id: "ER",
-        value: 62.329
-      }, {
-        id: "EE",
-        value: 74.335
-      }, {
-        id: "ET",
-        value: 62.983
-      }, {
-        id: "FJ",
-        value: 69.626
-      }, {
-        id: "FI",
-        value: 80.362
-      }, {
-        id: "FR",
-        value: 81.663
-      }, {
-        id: "GA",
-        value: 63.115
-      }, {
-        id: "GF",
-        value: 79.9
-      }, {
-        id: "GM",
-        value: 58.59
-      }, {
-        id: "GE",
-        value: 74.162
-      }, {
-        id: "DE",
-        value: 80.578
-      }, {
-        id: "GH",
-        value: 60.979
-      }, {
-        id: "GR",
-        value: 80.593
-      }, {
-        id: "GT",
-        value: 71.77
-      }, {
-        id: "GN",
-        value: 55.865
-      }, {
-        id: "GW",
-        value: 54.054
-      }, {
-        id: "GY",
-        value: 66.134
-      }, {
-        id: "HT",
-        value: 62.746
-      }, {
-        id: "HN",
-        value: 73.503
-      }, {
-        id: "HK",
-        value: 83.199
-      }, {
-        id: "HU",
-        value: 74.491
-      }, {
-        id: "IS",
-        value: 81.96
-      }, {
-        id: "IN",
-        value: 66.168
-      }, {
-        id: "ID",
-        value: 70.624
-      }, {
-        id: "IR",
-        value: 73.736
-      }, {
-        id: "IQ",
-        value: 69.181
-      }, {
-        id: "IE",
-        value: 80.531
-      }, {
-        id: "IL",
-        value: 81.641
-      }, {
-        id: "IT",
-        value: 82.235
-      }, {
-        id: "JM",
-        value: 73.338
-      }, {
-        id: "JP",
-        value: 83.418
-      }, {
-        id: "JO",
-        value: 73.7
-      }, {
-        id: "KZ",
-        value: 66.394
-      }, {
-        id: "KE",
-        value: 61.115
-      }, {
-        id: "KP",
-        value: 69.701
-      }, {
-        id: "KR",
-        value: 81.294
-      }, {
-        id: "KW",
-        value: 74.186
-      }, {
-        id: "KG",
-        value: 67.37
-      }, {
-        id: "LA",
-        value: 67.865
-      }, {
-        id: "LV",
-        value: 72.045
-      }, {
-        id: "LB",
-        value: 79.716
-      }, {
-        id: "LS",
-        value: 48.947
-      }, {
-        id: "LR",
-        value: 60.23
-      }, {
-        id: "LY",
-        value: 75.13
-      }, {
-        id: "LT",
-        value: 71.942
-      }, {
-        id: "LU",
-        value: 80.371
-      }, {
-        id: "MK",
-        value: 75.041
-      }, {
-        id: "MG",
-        value: 64.28
-      }, {
-        id: "MW",
-        value: 54.798
-      }, {
-        id: "MY",
-        value: 74.836
-      }, {
-        id: "ML",
-        value: 54.622
-      }, {
-        id: "MR",
-        value: 61.39
-      }, {
-        id: "MU",
-        value: 73.453
-      }, {
-        id: "MX",
-        value: 77.281
-      }, {
-        id: "MD",
-        value: 68.779
-      }, {
-        id: "MN",
-        value: 67.286
-      }, {
-        id: "ME",
-        value: 74.715
-      }, {
-        id: "MA",
-        value: 70.714
-      }, {
-        id: "EH",
-        value: 70.714
-      }, {
-        id: "MZ",
-        value: 49.91
-      }, {
-        id: "MM",
-        value: 65.009
-      }, {
-        id: "NA",
-        value: 64.014
-      }, {
-        id: "NP",
-        value: 67.989
-      }, {
-        id: "NL",
-        value: 80.906
-      }, {
-        id: "NZ",
-        value: 80.982
-      }, {
-        id: "NI",
-        value: 74.515
-      }, {
-        id: "NE",
-        value: 57.934
-      }, {
-        id: "NG",
-        value: 52.116
-      }, {
-        id: "NO",
-        value: 81.367
-      }, {
-        id: "SJ",
-        value: 81.367
-      }, {
-        id: "OM",
-        value: 76.287
-      }, {
-        id: "PK",
-        value: 66.42
-      }, {
-        id: "PA",
-        value: 77.342
-      }, {
-        id: "PG",
-        value: 62.288
-      }, {
-        id: "PY",
-        value: 72.181
-      }, {
-        id: "PE",
-        value: 74.525
-      }, {
-        id: "PH",
-        value: 68.538
-      }, {
-        id: "PL",
-        value: 76.239
-      }, {
-        id: "PT",
-        value: 79.732
-      }, {
-        id: "QA",
-        value: 78.231
-      }, {
-        id: "RO",
-        value: 73.718
-      }, {
-        id: "RU",
-        value: 67.874
-      }, {
-        id: "RW",
-        value: 63.563
-      }, {
-        id: "SA",
-        value: 75.264
-      }, {
-        id: "SN",
-        value: 63.3
-      }, {
-        id: "RS",
-        value: 73.934
-      }, {
-        id: "SL",
-        value: 45.338
-      }, {
-        id: "SG",
-        value: 82.155
-      }, {
-        id: "SK",
-        value: 75.272
-      }, {
-        id: "SI",
-        value: 79.444
-      }, {
-        id: "SB",
-        value: 67.465
-      }, {
-        id: "SO",
-        value: 54
-      }, {
-        id: "ZA",
-        value: 56.271
-      }, {
-        id: "SS",
-        value: 54.666
-      }, {
-        id: "ES",
-        value: 81.958
-      }, {
-        id: "LK",
-        value: 74.116
-      }, {
-        id: "SD",
-        value: 61.875
-      }, {
-        id: "SR",
-        value: 70.794
-      }, {
-        id: "SZ",
-        value: 48.91
-      }, {
-        id: "SE",
-        value: 81.69
-      }, {
-        id: "CH",
-        value: 82.471
-      }, {
-        id: "SY",
-        value: 71
-      }, {
-        id: "TW",
-        value: 79.45
-      }, {
-        id: "TJ",
-        value: 67.118
-      }, {
-        id: "TZ",
-        value: 60.885
-      }, {
-        id: "TH",
-        value: 74.225
-      }, {
-        id: "TL",
-        value: 67.033
-      }, {
-        id: "TG",
-        value: 56.198
-      }, {
-        id: "TT",
-        value: 69.761
-      }, {
-        id: "TN",
-        value: 75.632
-      }, {
-        id: "TR",
-        value: 74.938
-      }, {
-        id: "TM",
-        value: 65.299
-      }, {
-        id: "UG",
-        value: 58.668
-      }, {
-        id: "UA",
-        value: 68.414
-      }, {
-        id: "AE",
-        value: 76.671
-      }, {
-        id: "GB",
-        value: 80.396
-      }, {
-        id: "US",
-        value: 78.797
-      }, {
-        id: "UY",
-        value: 77.084
-      }, {
-        id: "UZ",
-        value: 68.117
-      }, {
-        id: "VE",
-        value: 74.477
-      }, {
-        id: "PS",
-        value: 73.018
-      }, {
-        id: "VN",
-        value: 75.793
-      }, {
-        id: "YE",
-        value: 62.923
-      }, {
-        id: "ZM",
-        value: 57.037
-      }, {
-        id: "ZW",
-        value: 58.142
-      }];
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    }
-  }, {
+  _createClass(AnimatedModal, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "am-map-4",
-        style: {
-          width: "100%",
-          height: "500px"
-        }
-      }));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        visible: this.props.showModal,
+        closemodal: this.props.modalClosed,
+        type: this.props.animation
+      }, this.props.children));
     }
   }]);
 
-  return MapChart;
+  return AnimatedModal;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (MapChart);
+/* harmony default export */ __webpack_exports__["default"] = (AnimatedModal);
 
 /***/ }),
 
-/***/ "./resources/js/Demo/Charts/AmChart/PieChart.js":
-/*!******************************************************!*\
-  !*** ./resources/js/Demo/Charts/AmChart/PieChart.js ***!
-  \******************************************************/
+/***/ "./resources/js/Back-Office/Pages/Engineer.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/Engineer.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
-/* harmony import */ var _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/charts */ "./node_modules/@amcharts/amcharts4/charts.js");
-/* harmony import */ var _amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @amcharts/amcharts4/themes/animated */ "./node_modules/@amcharts/amcharts4/themes/animated.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-
-_amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["useTheme"](_amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_3__["default"]);
-
-var PieChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(PieChart, _React$Component);
-
-  var _super = _createSuper(PieChart);
-
-  function PieChart() {
-    _classCallCheck(this, PieChart);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(PieChart, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var chart = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["create"]("am-pie-2", _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["PieChart"]);
-      this.chart = chart;
-      chart.data = [{
-        "country": "Lithuania",
-        "litres": 201.9
-      }, {
-        "country": "Germany",
-        "litres": 165.8
-      }, {
-        "country": "Australia",
-        "litres": 139.9
-      }, {
-        "country": "Austria",
-        "litres": 128.3
-      }, {
-        "country": "UK",
-        "litres": 99
-      }, {
-        "country": "Belgium",
-        "litres": 60
-      }];
-      var pieSeries = chart.series.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["PieSeries"]());
-      pieSeries.dataFields.value = "litres";
-      pieSeries.dataFields.category = "country";
-      pieSeries.slices.template.stroke = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["color"]("#fff");
-      pieSeries.slices.template.strokeWidth = 2;
-      pieSeries.slices.template.strokeOpacity = 1;
-      chart.legend = new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["Legend"]();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "am-pie-2",
-        style: {
-          width: "100%",
-          height: "500px"
-        }
-      }));
-    }
-  }]);
-
-  return PieChart;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (PieChart);
-
-/***/ }),
-
-/***/ "./resources/js/Demo/Charts/AmChart/XyChart.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/Demo/Charts/AmChart/XyChart.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
-/* harmony import */ var _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/charts */ "./node_modules/@amcharts/amcharts4/charts.js");
-/* harmony import */ var _amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @amcharts/amcharts4/themes/animated */ "./node_modules/@amcharts/amcharts4/themes/animated.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-
-_amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["useTheme"](_amcharts_amcharts4_themes_animated__WEBPACK_IMPORTED_MODULE_3__["default"]);
-
-var XyChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(XyChart, _React$Component);
-
-  var _super = _createSuper(XyChart);
-
-  function XyChart() {
-    _classCallCheck(this, XyChart);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(XyChart, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var chart = _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_1__["create"]("am-xy-1", _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["XYChart"]);
-      chart.data = [{
-        "country": "Lithuania",
-        "research": 501.9,
-        "marketing": 250,
-        "sales": 199
-      }, {
-        "country": "Czech Republic",
-        "research": 301.9,
-        "marketing": 222,
-        "sales": 251
-      }, {
-        "country": "Ireland",
-        "research": 201.1,
-        "marketing": 170,
-        "sales": 199
-      }, {
-        "country": "Germany",
-        "research": 165.8,
-        "marketing": 122,
-        "sales": 90
-      }, {
-        "country": "Australia",
-        "research": 139.9,
-        "marketing": 99,
-        "sales": 252
-      }, {
-        "country": "Austria",
-        "research": 128.3,
-        "marketing": 85,
-        "sales": 84
-      }, {
-        "country": "UK",
-        "research": 99,
-        "marketing": 93,
-        "sales": 142
-      }, {
-        "country": "Belgium",
-        "research": 60,
-        "marketing": 50,
-        "sales": 55
-      }, {
-        "country": "The Netherlands",
-        "research": 50,
-        "marketing": 42,
-        "sales": 25
-      }];
-      var categoryAxis = chart.xAxes.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["CategoryAxis"]());
-      categoryAxis.dataFields.category = "country";
-      categoryAxis.title.text = "Local country offices";
-      categoryAxis.renderer.grid.template.location = 0;
-      categoryAxis.renderer.minGridDistance = 20;
-      var valueAxis = chart.yAxes.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["ValueAxis"]());
-      valueAxis.title.text = "Expenditure (M)";
-      var series = chart.series.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["ColumnSeries"]());
-      series.dataFields.valueY = "research";
-      series.dataFields.categoryX = "country";
-      series.name = "Research";
-      series.tooltipText = "{name}: [bold]{valueY}[/]";
-      series.stacked = true;
-      var series2 = chart.series.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["ColumnSeries"]());
-      series2.dataFields.valueY = "marketing";
-      series2.dataFields.categoryX = "country";
-      series2.name = "Marketing";
-      series2.tooltipText = "{name}: [bold]{valueY}[/]";
-      series2.stacked = true;
-      var series3 = chart.series.push(new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["ColumnSeries"]());
-      series3.dataFields.valueY = "sales";
-      series3.dataFields.categoryX = "country";
-      series3.name = "Sales";
-      series3.tooltipText = "{name}: [bold]{valueY}[/]";
-      chart.cursor = new _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__["XYCursor"]();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "am-xy-1",
-        style: {
-          width: "100%",
-          height: "500px"
-        }
-      }));
-    }
-  }]);
-
-  return XyChart;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (XyChart);
-
-/***/ }),
-
-/***/ "./resources/js/Demo/Charts/AmChart/index.js":
-/*!***************************************************!*\
-  !*** ./resources/js/Demo/Charts/AmChart/index.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _hoc_Aux_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux/index */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _PieChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PieChart */ "./resources/js/Demo/Charts/AmChart/PieChart.js");
-/* harmony import */ var _XyChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./XyChart */ "./resources/js/Demo/Charts/AmChart/XyChart.js");
-/* harmony import */ var _MapChart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MapChart */ "./resources/js/Demo/Charts/AmChart/MapChart.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -962,10 +121,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -973,42 +133,518 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var AmChart = /*#__PURE__*/function (_React$Component) {
-  _inherits(AmChart, _React$Component);
 
-  var _super = _createSuper(AmChart);
 
-  function AmChart() {
-    _classCallCheck(this, AmChart);
 
-    return _super.apply(this, arguments);
+
+
+
+
+
+
+
+
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_12___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_12___default.a;
+global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_12___default.a;
+jquery__WEBPACK_IMPORTED_MODULE_12___default.a.DataTable = __webpack_require__(/*! datatables.net-bs */ "./node_modules/datatables.net-bs/js/dataTables.bootstrap.js");
+
+__webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js"); //require('pdfmake/build/pdfmake.js');
+//require('pdfmake/build/vfs_fonts.js');
+
+
+__webpack_require__(/*! datatables.net-autofill */ "./node_modules/datatables.net-autofill/js/dataTables.autoFill.js");
+
+__webpack_require__(/*! datatables.net-buttons-bs */ "./node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.colVis.js */ "./node_modules/datatables.net-buttons/js/buttons.colVis.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.flash.js */ "./node_modules/datatables.net-buttons/js/buttons.flash.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.html5.js */ "./node_modules/datatables.net-buttons/js/buttons.html5.js");
+
+__webpack_require__(/*! datatables.net-buttons/js/buttons.print.js */ "./node_modules/datatables.net-buttons/js/buttons.print.js");
+
+__webpack_require__(/*! datatables.net-colreorder */ "./node_modules/datatables.net-colreorder/js/dataTables.colReorder.js");
+
+__webpack_require__(/*! datatables.net-keytable */ "./node_modules/datatables.net-keytable/js/dataTables.keyTable.js");
+
+__webpack_require__(/*! datatables.net-responsive-bs */ "./node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js");
+
+__webpack_require__(/*! datatables.net-rowgroup */ "./node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js");
+
+__webpack_require__(/*! datatables.net-rowreorder */ "./node_modules/datatables.net-rowreorder/js/dataTables.rowReorder.js");
+
+__webpack_require__(/*! datatables.net-scroller */ "./node_modules/datatables.net-scroller/js/dataTables.scroller.js");
+
+__webpack_require__(/*! datatables.net-select */ "./node_modules/datatables.net-select/js/dataTables.select.js");
+
+__webpack_require__(/*! datatables.net-fixedcolumns */ "./node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js");
+
+__webpack_require__(/*! datatables.net-fixedheader */ "./node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.js");
+
+var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+    id = _ref.id,
+    auth_token = _ref.auth_token;
+
+var baseurl = window.location.origin;
+var oTable = "";
+
+function atable() {
+  var _$$DataTable;
+
+  var tableResponsive = '#data-table-responsive';
+  oTable = jquery__WEBPACK_IMPORTED_MODULE_12___default()(tableResponsive).DataTable((_$$DataTable = {
+    "bStateSave": true,
+    "processing": true,
+    "bPaginate": true,
+    "serverSide": true,
+    "bProcessing": true,
+    "iDisplayLength": 10,
+    "bServerSide": true,
+    "sAjaxSource": window.location.origin + '/api/engineer'
+  }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
+    var acolumns = this.fnSettings().aoColumns,
+        columns = [];
+    jquery__WEBPACK_IMPORTED_MODULE_12___default.a.each(acolumns, function (i, item) {
+      columns.push(item.data);
+    });
+    aoData.push({
+      name: 'columns',
+      value: columns
+    });
+    /*  if($('#status').val()!='') {
+          aoData.push({name: 'is_active', value: $('#status').val()});
+      }
+    */
+  }), _defineProperty(_$$DataTable, "columns", [{
+    "data": "engineer_name"
+  }, {
+    "data": "engineer_id"
+  }, {
+    "data": "id"
+  }]), _defineProperty(_$$DataTable, "responsive", {
+    responsive: {
+      details: {
+        display: jquery__WEBPACK_IMPORTED_MODULE_12___default.a.fn.dataTable.Responsive.display.childRowImmediate,
+        type: ''
+      }
+    }
+  }), _defineProperty(_$$DataTable, "order", [[0, "desc"]]), _defineProperty(_$$DataTable, "lengthMenu", [[10, 25, 50, 100], [10, 25, 50, 100]]), _defineProperty(_$$DataTable, "oLanguage", {
+    "sLengthMenu": "_MENU_",
+    "oPaginate": {
+      "sNext": '<span aria-hidden="true">»</span>',
+      "sPrevious": '<span aria-hidden="true">«</span>'
+    } // sProcessing: "<img width='33px' src='"+BASE_URL+"assets/layouts/layout/img/ajax-loading.gif'>"
+
+  }), _defineProperty(_$$DataTable, "fnInitComplete", function fnInitComplete() {//oTable.fnAdjustColumnSizing();
+  }), _defineProperty(_$$DataTable, 'fnServerData', function fnServerData(sSource, aoData, fnCallback) {
+    jquery__WEBPACK_IMPORTED_MODULE_12___default.a.ajax({
+      'dataType': 'json',
+      'type': 'GET',
+      'url': sSource,
+      'data': aoData,
+      "iDisplayLength": 10,
+      "bPaginate": true,
+      'headers': {
+        Authorization: "Bearer " + auth_token
+      },
+      'success': fnCallback
+    });
+  }), _defineProperty(_$$DataTable, "fnDrawCallback", function fnDrawCallback() {
+    jquery__WEBPACK_IMPORTED_MODULE_12___default()('body').css('min-height', jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tr').length * 50 + 200);
+    jquery__WEBPACK_IMPORTED_MODULE_12___default()(window).trigger('resize');
+  }), _defineProperty(_$$DataTable, "columnDefs", [{
+    "render": function render(data, type, row) {
+      var str_buttons = '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
+      return [str_buttons].join('');
+    },
+    "targets": jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive th#action').index(),
+    "orderable": false,
+    "searchable": false
+  }, {
+    "targets": 0,
+    "orderable": false
+  }]), _$$DataTable));
+}
+
+function handleChange_search() {
+  setTimeout(function () {
+    oTable.draw();
+  }, 500);
+}
+
+var Engineer = /*#__PURE__*/function (_React$Component) {
+  _inherits(Engineer, _React$Component);
+
+  var _super = _createSuper(Engineer);
+
+  function Engineer(props) {
+    var _this;
+
+    _classCallCheck(this, Engineer);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+      var baseurl = window.location.origin;
+
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }))
+      });
+
+      var data = new FormData();
+      data.append('engineer_id', _this.state.engineer_id);
+      data.append('engineer_name', _this.state.engineer_name);
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/engineer', data, {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+
+          _this.setState({
+            showModal: false
+          });
+
+          _this.setState({
+            engineer_id: ''
+          });
+
+          _this.setState({
+            engineer_name: ''
+          }); //this.setState({progress:100});
+
+
+          oTable.draw();
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].success({
+            title: 'Success',
+            text: res.data.message,
+            modules: {
+              Desktop: {
+                desktop: true
+              }
+            }
+          }).on('click', function (e) {});
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_12___default()('#avatar').val('');
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].error({
+            title: "System Error",
+            text: res.data.message
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+
+        console.log(err);
+      }); // successDesktopPNotify();
+      //  this.props.history.push('/role');
+
+      _this.setState({
+        showModal: true
+      });
+    });
+
+    _this.state = {
+      showModal: false,
+      Engineers: [],
+      engineer_id: '',
+      engineer_name: '',
+      validated: false,
+      validatedTooltip: false,
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Add'
+    };
+    return _this;
   }
 
-  _createClass(AmChart, [{
+  _createClass(Engineer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var items = [];
+      atable(11);
+      jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tbody').on('click', '.deletefile', function () {
+        var id = jquery__WEBPACK_IMPORTED_MODULE_12___default()(this).attr('data-id');
+        var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_15___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_14___default.a);
+        MySwal.fire({
+          title: 'Are you sure?',
+          text: 'Once deleted, you will not be able to recover this data!',
+          type: 'warning',
+          showCloseButton: true,
+          showCancelButton: true
+        }).then(function (willDelete) {
+          if (willDelete.value) {
+            var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+                _auth_token = _ref3.auth_token;
+
+            var _baseurl = window.location.origin;
+            axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/engineer/' + id, {
+              _method: 'delete'
+            }, {
+              headers: {
+                'Authorization': 'Bearer ' + _auth_token
+              }
+            }).then(function (res) {
+              if (res.data.success) {
+                oTable.draw();
+                return MySwal.fire('', 'Engineer has been deleted!', 'success');
+              }
+            });
+          } else {// return MySwal.fire('', 'Your imaginary file is safe!', 'error');
+          }
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux_index__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      var _this2 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        animation: "slideInDown",
+        showModal: this.state.showModal,
+        modalClosed: function modalClosed() {
+          return _this2.setState({
+            showModal: false
+          });
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Amchart 4")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "mb-4"
-      }, "Pie Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        className: "mb-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pie [ With Legend ] Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PieChart__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "mb-4"
-      }, "XY Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        className: "mb-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "XY [ Stacked 1 ] Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_XyChart__WEBPACK_IMPORTED_MODULE_4__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "mb-4"
-      }, "Map Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        className: "mb-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Map [ Heat-Map ] Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MapChart__WEBPACK_IMPORTED_MODULE_5__["default"], null))))))));
+      }, "Add Engineer")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "engineer_name"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "engineer_name",
+        id: "engineer_name",
+        placeholder: "Engineer Name",
+        required: true,
+        value: this.state.engineer_name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "engineer_id"
+      }, "Engineer Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "engineer_id",
+        id: "engineer_id",
+        placeholder: "Engineer Id",
+        required: true,
+        value: this.state.engineer_id,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Engineer List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        className: "btn-sm",
+        style: {
+          'float': 'right'
+        },
+        onClick: function onClick() {
+          return _this2.setState({
+            showModal: true
+          });
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-plus"
+      }), "Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        ref: "tbl",
+        striped: true,
+        hover: true,
+        responsive: true,
+        className: "table table-condensed",
+        id: "data-table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "parent_engineer"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "child_engineer_name"
+      }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "action"
+      }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "parent_engineer"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "child_engineer_name"
+      }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "action"
+      }, "Action")))))))));
     }
   }]);
 
-  return AmChart;
+  return Engineer;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (AmChart);
+/* harmony default export */ __webpack_exports__["default"] = (Engineer);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+
+
+
+/**
+ *  baseurl  get baseurl
+ */
+
+var baseurl = window.location.origin;
+/**
+ * Login api request
+ * @param {*} user for send Credentials
+ */
+
+var CheckPermission = function CheckPermission(page, page_name, history) {
+  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref.id,
+      parmissions = _ref.parmissions;
+
+  var pages = parmissions.filter(function (vl, idx) {
+    if (Object.keys(vl)[0] == page) {
+      return vl;
+    }
+  });
+
+  if (pages.length > 0) {
+    var Ischeck = pages[0][page].filter(function (v, i) {
+      if (v['page_name'] == page_name) {
+        if (v['Ischeck']) {
+          return v;
+        }
+      }
+    });
+
+    if (Ischeck.length == 0) {
+      if (redirect) {
+        history.goBack();
+      }
+
+      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
+        title: "Permission Error",
+        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
+      });
+      return 1;
+    }
+  } else {
+    history.goBack();
+  }
+};
+var Login = function Login(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
+    email: user.email,
+    password: user.password,
+    remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var Pemissionlist = function Pemissionlist(parameter) {
+  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref2.id,
+      auth_token = _ref2.auth_token;
+
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
+    'id': id
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    }
+  });
+};
+var RoleAdd = function RoleAdd(role) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
+    email: role.email,
+    password: role.password,
+    remember_me: role.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
 
 /***/ })
 

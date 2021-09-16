@@ -371,10 +371,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Job_lookup/add.js":
-/*!****************************************************!*\
-  !*** ./resources/js/Back-Office/Job_lookup/add.js ***!
-  \****************************************************/
+/***/ "./resources/js/Back-Office/Job_lookup/edit.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/Back-Office/Job_lookup/edit.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -447,7 +447,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function successDesktopPNotify() {
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
     title: 'Success',
-    text: "Job type added successfully",
+    text: "Job Type updated successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -458,15 +458,15 @@ function successDesktopPNotify() {
 
 var baseurl = window.location.origin;
 
-var Add = /*#__PURE__*/function (_React$Component) {
-  _inherits(Add, _React$Component);
+var Edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(Edit, _React$Component);
 
-  var _super = _createSuper(Add);
+  var _super = _createSuper(Edit);
 
-  function Add() {
+  function Edit() {
     var _this;
 
-    _classCallCheck(this, Add);
+    _classCallCheck(this, Edit);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -475,6 +475,8 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
+      _method: 'PUT',
+      id: '',
       job_type: '',
       mix: '',
       revenue: '',
@@ -536,6 +538,46 @@ var Add = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "update", function () {
+      var _this$props = _this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      var id = match.params.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref.auth_token;
+
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/job_lookup/' + id + '/edit', {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            id: res.data.data.id,
+            job_type: res.data.data.job_type,
+            mix: res.data.data.mix,
+            revenue: res.data.data.revenue,
+            pu: res.data.data.pu,
+            revenue_aborted: res.data.data.revenue_aborted,
+            pu_aborted: res.data.data.pu_aborted,
+            contract: res.data.data.contract,
+            from_date: res.data.data.from_date,
+            to_date: res.data.data.to_date
+          });
+
+          document.getElementById("requestLoder").innerHTML = '';
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
       e.preventDefault();
 
@@ -550,13 +592,13 @@ var Add = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref.id,
-          auth_token = _ref.auth_token; //const data = new FormData()
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/job_lookup', _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/job_lookup/' + _this.state.id, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -623,25 +665,26 @@ var Add = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Add, [{
+  _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this$props = this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
-    }
-  }, {
-    key: "render",
-    value: function render() {
       var _this$props2 = this.props,
           match = _this$props2.match,
           location = _this$props2.location,
           history = _this$props2.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
+      this.update();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          match = _this$props3.match,
+          location = _this$props3.location,
+          history = _this$props3.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Add Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Edit Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -703,10 +746,10 @@ var Add = /*#__PURE__*/function (_React$Component) {
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         htmlFor: "bank_name"
-      }, "Revenue - Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+      }, "Revenue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
         name: "revenue",
         id: "revenue",
-        placeholder: "Revenue Completed",
+        placeholder: "Revenue",
         required: true,
         value: this.state.revenue,
         onChange: this.handleChange,
@@ -716,10 +759,10 @@ var Add = /*#__PURE__*/function (_React$Component) {
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         htmlFor: "bank_name"
-      }, "PU - Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+      }, "Pu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
         name: "pu",
         id: "pu",
-        placeholder: "Pu Completed",
+        placeholder: "Pu",
         required: true,
         value: this.state.pu,
         onChange: this.handleChange,
@@ -764,6 +807,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
         errorMessage: {
           required: "start_date is required"
         },
+        value: this.state.from_date,
         inputProps: {
           required: 'required',
           name: "start_date",
@@ -780,6 +824,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
         dateFormat: "D/M/Y",
         timeFormat: false,
         minDate: new Date(),
+        value: this.state.to_date,
         errorMessage: {
           required: "end_date is required"
         },
@@ -801,10 +846,10 @@ var Add = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Add;
+  return Edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Add);
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
 
 /***/ }),
 

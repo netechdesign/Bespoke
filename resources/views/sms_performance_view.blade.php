@@ -1,7 +1,9 @@
 
 <table id="view_report" width="100%">
     <tbody>
-        <?php if(!isset($view)) {?>
+        <?php
+        
+        if(!isset($view)) {?>
          <tr>
             <td colspan="18" style="text-align: center;font-weight: bold;font-size:15px">Performance</td>
         </tr>
@@ -17,22 +19,27 @@
         </tr>
        <?php } ?>        
         <tr>
+          
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Total Jobs</th>
             <th colspan="2" style="border: 1px solid #000000;text-align: center;font-weight: bold;">Completed</th>
             <th colspan="2" style="border: 1px solid #000000;text-align: center;font-weight: bold;">Aborted</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Open</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Cancelled</th>
+            @if($query->role==8 || $query->role==7 || $query->role==1)
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU/Day</th>
+            @endif
+            @if($query->role==7 || $query->role==1)
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Revenue</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Revenue/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Profit</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Profit/Day</th>
+            @endif
         </tr>
         @if(isset($national))
         <?php
@@ -59,17 +66,20 @@
              <td style="border: 1px solid #000000;text-align: right;"><a  target='_blank' href='{{url("sms/list?status=aborted".$Nquerylist)}}'>{{number_format(($national['aborted']/($national['total_job']-$national['cancelled']))*100,2)}}%</a></td>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=open".$Nquerylist)}}'>{{$national['open']}}</a></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=cancelled".$Nquerylist)}}'>{{$national['cancelled']}}</a></th>
+            @if($query->role==8 || $query->role==7 || $query->role==1)
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['pu']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus']/$national['total_work_day'],2)}}</th>
+            @endif
+            @if($query->role==7 || $query->role==1)
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($national['revenue'],2))}}</th> 
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{str_replace(',','',number_format($national['revenue']/$national['total_work_day'],2))}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-" >{{$national_profit_vl}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;" data-format="£#,##0.00_-">{{$national_profit_day}}</th>
-
+            @endif
         </tr>
         @endif
         <tr>
@@ -84,16 +94,20 @@
             <th colspan="2" style="border: 1px solid #000000;text-align: center;font-weight: bold;">Aborted</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Open</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Cancelled</th>
+            @if($query->role==8 || $query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU/Day</th>
+            @endif
+            @if($query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Revenue</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Revenue/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Profit</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Profit/Day</th>
+            @endif
         </tr>
         <?php
           $engineer_days=0;
@@ -193,20 +207,23 @@
                   {{$users['cancelled']}}
                   @endif
             </td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
-                {{str_replace(',','',number_format($users['pu'],2))}}
-                </td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['pu_day'],2))}}</td>
-                <td class="pound_sign" style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['bonus_pus'],2))}}</td>
-                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['bonus_pus_day'],2))}}</td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($users['bonus'],2))}}</td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{
-                    str_replace(',','',number_format($users['bonus_day'],2))}}</td>
-                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($users['revenue'],2))}}</td>
-                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($users['revenue_day'],2))}}</td>
-                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{$profit_vl}}</td>
-                <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{$profit_day_vl}}</td>
-                
+                 @if($query->role==8 || $query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
+                        <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
+                        {{str_replace(',','',number_format($users['pu'],2))}}
+                        </td>
+                        <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['pu_day'],2))}}</td>
+                        <td class="pound_sign" style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['bonus_pus'],2))}}</td>
+                        <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['bonus_pus_day'],2))}}</td>
+                @endif
+                @if($query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
+                        <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($users['bonus'],2))}}</td>
+                        <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{
+                            str_replace(',','',number_format($users['bonus_day'],2))}}</td>
+                        <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($users['revenue'],2))}}</td>
+                        <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($users['revenue_day'],2))}}</td>
+                        <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{$profit_vl}}</td>
+                        <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="£#,##0.00_-">{{$profit_day_vl}}</td>
+                @endif
             </tr>
             @endif
             @endforeach 
@@ -237,17 +254,21 @@
                 0 @endif%</th>
                 <th style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$open}}</th>
                 <th style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$cancelled}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-" >
-                {{str_replace(',','',number_format($pu,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($pu/$engineer_days,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($bonus_pus,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($bonus_pus/$engineer_days,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($bonus,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-" >£{{str_replace(',','',number_format($bonus/$engineer_days,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($revenue,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($revenue/$engineer_days,2))}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{$total_profit_vl}}</th>
-                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{$total_profit_day_vl}}</th>
+                @if($query->role==8 || $query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-" >
+                    {{str_replace(',','',number_format($pu,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($pu/$engineer_days,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($bonus_pus,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($bonus_pus/$engineer_days,2))}}</th>
+                @endif
+                @if($query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($bonus,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-" >£{{str_replace(',','',number_format($bonus/$engineer_days,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($revenue,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">£{{str_replace(',','',number_format($revenue/$engineer_days,2))}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{$total_profit_vl}}</th>
+                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="£#,##0.00_-">{{$total_profit_day_vl}}</th>
+                @endif
             </tr>
             <tr><td>&nbsp;</td></tr>
         

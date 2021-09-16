@@ -281,7 +281,7 @@ class UserController extends Controller
             if ($request->remember_me)  $expires_at = Carbon::now()->addWeeks(1);
             
             
-            $response = ['success'=>true, 'data'=>['id'=>$user->id,'name'=>$user->name, 'email'=>$user->email,'auth_token'=>$user->auth_token,'parmissions'=>json_decode($user->parmissions),'expires_at' => Carbon::parse($expires_at)->toDateTimeString()]];           
+            $response = ['success'=>true, 'data'=>['id'=>$user->id,'roles'=>$user->roles,'name'=>$user->name, 'email'=>$user->email,'auth_token'=>$user->auth_token,'parmissions'=>json_decode($user->parmissions),'expires_at' => Carbon::parse($expires_at)->toDateTimeString()]];           
         }
         else 
           $response = ['success'=>false, 'data'=>[
@@ -296,6 +296,7 @@ class UserController extends Controller
     
     public function logout( Request $request ) {
 
+        
         $token = $request->header( 'Authorization' );
 
         try {

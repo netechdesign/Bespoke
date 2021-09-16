@@ -8,7 +8,7 @@ import Datetime from 'react-datetime';
 import axios from 'axios'
 import {CheckPermission} from '../../HttpFunctions'; 
 
-const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 
 
 
@@ -21,7 +21,7 @@ class Bonus_periods extends React.Component {
    
     constructor(props) {
         super(props);
-    this.state={searching:false,baseurl:window.location.origin+'/bonus_periods/export',btnhide:'unset',period:'',region_list:[],regions_sort_name:"",team_id:''}
+    this.state={searching:false,baseurl:window.location.origin+'/bonus_periods/export',btnhide:'unset',period:'',region_list:[],regions_sort_name:"",team_id:'',role:roles}
     }
     onsearch = (e) => {
         var items  = [];
@@ -103,6 +103,7 @@ class Bonus_periods extends React.Component {
                             <Button className="btn-sm" style={{'float':'right'}}  as={Link} to="/list" ><i  class="feather icon-chevron-left"></i>Back</Button>
                            
                             <ValidationForm  method="get" action={this.state.baseurl} onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                            <input type="hidden" name="role" value={this.state.role} />
                             <Form.Row> 
 
                                 <Form.Group as={Col} md="2">

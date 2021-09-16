@@ -8,22 +8,46 @@ import DEMO from "../../../../../store/constant";
 import Avatar1 from '../../../../../assets/images/user/avatar-1.jpg';
 import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
 import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
-
+import axios from 'axios';
+const baseurl= window.location.origin;
 class NavRight extends Component {
     state = {
         listOpen: false
     };
 
-     logoutUser = () =>{
-        let state_of_state = localStorage["userData"];
-        if (state_of_state){
-          let appState = {
-            isLoggedIn: false,
-            user: {}
-          }; 
-          localStorage["userData"] = JSON.stringify(appState);
+    logoutUser = () =>{
+    
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+       
+        
+        axios.get(
+            baseurl+'/api/users/logout',
+            {headers:{'Authorization':'Bearer '+auth_token}} 
+        ).then(res =>{
+                        if(!res.data.error){
+                            let state_of_state = localStorage["userData"];
+                            if (state_of_state){
+                              let appState = {
+                                isLoggedIn: false,
+                                user: {}
+                              }; 
+                              localStorage["userData"] = JSON.stringify(appState);
+                              window.location.reload();
+                            }                        
+                          
+                        }else{
+                           alert(res.data.message);
+                        }
+                   }
+        )
+        .catch(err =>{
+                        console.log(err);
+                    }
+        )
+        
+        
+
         }
-    }
     render() {
         const {name} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 

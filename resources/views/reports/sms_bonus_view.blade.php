@@ -1,4 +1,6 @@
+<?php
 
+?>
 <table width="100%">
     <tbody>
      
@@ -9,6 +11,7 @@
     
     
     <tr style="background-color: #f1f1f1;color:white;">
+    @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
         <td  style="width:5%;border: 1px solid #000000;text-align: center;font-weight: bold;color:black;" rowspan="2" >Engineer</td>
         <td style="width:5%;border: 1px solid #000000;text-align: center;font-weight: bold;color:black" rowspan="2" >Period</td>
         <td style="width:10%;border: 1px solid #000000;text-align: center;font-weight: bold;color:black" rowspan="2">W/C</td>
@@ -18,10 +21,13 @@
         <td style="width: 14%;border: 1px solid #000000;text-align: center;font-weight: bold;background:#9C7001" colspan="3">Thursday</td>
         <td style="width: 14%;border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501" colspan="3">Friday</td>
         <td style="width:5%;border: 1px solid #000000;text-align: center;font-weight: bold;background:#FF7F23" rowspan="2">Total Bonus</td>
+        @endif
+            @if($role==7 || $role==6 || $role==5 || $role==1)
         <td style="width:5%;border: 1px solid #000000;text-align: center;font-weight: bold;background:#FF7F23" rowspan="2">Revenue</td>
-        
+        @endif
      </tr>
      <tr style="background-color: #f1f1f1;color:white;">
+     @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#FFB801">PUs</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#FFB801">Bonus PU</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#FFB801">Bonus</td>
@@ -41,6 +47,7 @@
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501">PUs</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501">Bonus PU</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501">Bonus</td>
+        @endif
     </tr>
 
         <tr>
@@ -56,7 +63,7 @@
                  <?php $total_engineer_bonus=0; $total_engineer_revenue=0; ?>
                     @foreach ($engineer as $wy => $week_date)
                             <tr style="color:black;">
-                                
+                            @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)   
                             <td style="text-align: center;width:10.2%;border: 1px solid #000000;color:black;">{{date('d/m/Y',strtotime($wy)) }}</td>
                             <?php $revenue=0; ?>
                             <?php $bonus=0; ?>
@@ -133,17 +140,32 @@
                                         $total_bonus= $total_bonus + $bonus;
                                         $total_revenue= $total_revenue + $revenue; ?>
                                 <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">£{{$bonus}}</td>
-                                <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">£{{$revenue}}</td>            
+                                @endif
+            @if($role==7 || $role==1)
+                                <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;width:1%" data-format="£#,##0.00_-">£{{$revenue}}</td>  
+                                @endif          
                             </tr>
                     @endforeach  
-                    <tr style="color:black;"><td></td><td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$total_engineer_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$total_engineer_revenue}}</td></tr> 
+                    <tr style="color:black;">
+                    @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
+                    <td></td><td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$total_engineer_bonus}}</td>
+                    @endif
+            @if($role==7 || $role==6 || $role==5 || $role==1)
+    <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$total_engineer_revenue}}</td>
+    @endif
+</tr> 
     <tr><td>&nbsp;</td></tr>   
             
         
         @endforeach   
-    <tr  style="color:black;"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >£{{$total_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >£{{$total_revenue}}</td></tr> 
-        
+    <tr  style="color:black;">
+    @if($role==7 || $role==6 || $role==5 || $role==1)
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >£{{$total_bonus}}</td>
+    @endif
+            @if($role==7 || $role==6 || $role==5 || $role==1)
+    <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-" >£{{$total_revenue}}</td></tr> 
+    @endif
     </tbody>    
 <table>    

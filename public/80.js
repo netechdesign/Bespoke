@@ -1,604 +1,589 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[80],{
 
-/***/ "./node_modules/react-compound-timer/build/components/Timer/Timer.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/components/Timer/Timer.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/App/layout/AdminLayout/Breadcrumb/index.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/App/layout/AdminLayout/Breadcrumb/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../config */ "./resources/js/config.js");
+/* harmony import */ var _menu_items__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../menu-items */ "./resources/js/menu-items.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var TimerModel_1 = __webpack_require__(/*! ../../lib/models/TimerModel */ "./node_modules/react-compound-timer/build/lib/models/TimerModel.js");
-var TimerContext = react_1.default.createContext({
-    ms: 0,
-    s: 0,
-    m: 0,
-    h: 0,
-    d: 0,
-    formatValue: function (value) { return String(value); },
-});
-var TimerValue = function (_a) {
-    var unit = _a.unit, formatValue = _a.formatValue;
-    return (react_1.default.createElement(Timer.Consumer, null, function (props) {
-        var format = formatValue || props.formatValue;
-        return format(props[unit]) || null;
-    }));
-};
-var Milliseconds = function (props) { return (react_1.default.createElement(TimerValue, __assign({ unit: "ms" }, props))); };
-var Seconds = function (props) { return (react_1.default.createElement(TimerValue, __assign({ unit: "s" }, props))); };
-var Minutes = function (props) { return (react_1.default.createElement(TimerValue, __assign({ unit: "m" }, props))); };
-var Hours = function (props) { return (react_1.default.createElement(TimerValue, __assign({ unit: "h" }, props))); };
-var Days = function (props) { return (react_1.default.createElement(TimerValue, __assign({ unit: "d" }, props))); };
-var Timer = /** @class */ (function (_super) {
-    __extends(Timer, _super);
-    function Timer(props) {
-        var _this = _super.call(this, props) || this;
-        var _a = _this.props, initialTime = _a.initialTime, direction = _a.direction, timeToUpdate = _a.timeToUpdate, lastUnit = _a.lastUnit, checkpoints = _a.checkpoints;
-        _this.timer = new TimerModel_1.TimerModel({
-            initialTime: initialTime,
-            direction: direction,
-            timeToUpdate: timeToUpdate,
-            lastUnit: lastUnit,
-            checkpoints: checkpoints,
-            onChange: _this.setState.bind(_this),
-        });
-        _this.state = __assign({}, _this.timer.timeParts, { timerState: 'INITED' });
-        _this.start = _this.start.bind(_this);
-        _this.pause = _this.pause.bind(_this);
-        _this.resume = _this.resume.bind(_this);
-        _this.stop = _this.stop.bind(_this);
-        _this.reset = _this.reset.bind(_this);
-        _this.setTime = _this.setTime.bind(_this);
-        _this.getTime = _this.getTime.bind(_this);
-        _this.getTimerState = _this.getTimerState.bind(_this);
-        _this.setDirection = _this.setDirection.bind(_this);
-        _this.setCheckpoints = _this.setCheckpoints.bind(_this);
-        return _this;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var Breadcrumb = /*#__PURE__*/function (_Component) {
+  _inherits(Breadcrumb, _Component);
+
+  var _super = _createSuper(Breadcrumb);
+
+  function Breadcrumb() {
+    var _this;
+
+    _classCallCheck(this, Breadcrumb);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
-    Timer.getUI = function (children, renderProps) {
-        if (children === null) {
-            return null;
-        }
-        if (Array.isArray(children) || react_1.default.isValidElement(children)) {
-            return children;
-        }
-        if (children.prototype && children.prototype.isReactComponent) {
-            return react_1.default.createElement(children, renderProps);
-        }
-        if (typeof children === 'function') {
-            return children(renderProps);
-        }
-        throw new Error('Please use one of the supported APIs for children');
-    };
-    Timer.prototype.componentDidMount = function () {
-        var startImmediately = this.props.startImmediately;
-        startImmediately && this.timer.start();
-    };
-    Timer.prototype.componentWillUnmount = function () {
-        this.timer.stop();
-    };
-    Timer.prototype.render = function () {
-        var _a = this, start = _a.start, pause = _a.pause, resume = _a.resume, stop = _a.stop, reset = _a.reset, getTime = _a.getTime, getTimerState = _a.getTimerState, setTime = _a.setTime, setDirection = _a.setDirection, setCheckpoints = _a.setCheckpoints;
-        var _b = this.state, ms = _b.ms, s = _b.s, m = _b.m, h = _b.h, d = _b.d, timerState = _b.timerState;
-        var _c = this.props, formatValue = _c.formatValue, children = _c.children;
-        return (react_1.default.createElement(TimerContext.Provider, { value: { ms: ms, s: s, m: m, h: h, d: d, formatValue: formatValue } }, Timer.getUI(children, {
-            start: start,
-            resume: resume,
-            pause: pause,
-            stop: stop,
-            reset: reset,
-            getTime: getTime,
-            getTimerState: getTimerState,
-            setTime: setTime,
-            setDirection: setDirection,
-            setCheckpoints: setCheckpoints,
-            timerState: timerState,
-        })));
-    };
-    Timer.prototype.setTime = function (time) {
-        this.timer.setTime(time);
-    };
-    Timer.prototype.getTime = function () {
-        return this.timer.getTime();
-    };
-    Timer.prototype.getTimerState = function () {
-        return this.timer.state;
-    };
-    Timer.prototype.setDirection = function (direction) {
-        this.timer.setDirection(direction);
-    };
-    Timer.prototype.setCheckpoints = function (checkpoints) {
-        this.timer.setCheckpoints(checkpoints);
-    };
-    Timer.prototype.start = function () {
-        this.timer.start();
-        this.props.onStart();
-    };
-    Timer.prototype.stop = function () {
-        this.timer.stop();
-        this.props.onStop();
-    };
-    Timer.prototype.pause = function () {
-        this.timer.pause();
-        this.props.onPause();
-    };
-    Timer.prototype.reset = function () {
-        this.timer.reset();
-        this.props.onReset();
-    };
-    Timer.prototype.resume = function () {
-        this.timer.resume();
-        this.props.onResume();
-    };
-    Timer.Consumer = TimerContext.Consumer;
-    Timer.Milliseconds = Milliseconds;
-    Timer.Seconds = Seconds;
-    Timer.Minutes = Minutes;
-    Timer.Hours = Hours;
-    Timer.Days = Days;
-    Timer.defaultProps = {
-        timeToUpdate: 1000,
-        direction: 'forward',
-        initialTime: 0,
-        startImmediately: true,
-        lastUnit: 'd',
-        checkpoints: [],
-        children: null,
-        formatValue: function (value) { return String(value); },
-        onStart: function () { },
-        onResume: function () { },
-        onPause: function () { },
-        onStop: function () { },
-        onReset: function () { },
-    };
-    return Timer;
-}(react_1.default.PureComponent));
-exports.default = Timer;
-//# sourceMappingURL=Timer.js.map
 
-/***/ }),
+    _this = _super.call.apply(_super, [this].concat(args));
 
-/***/ "./node_modules/react-compound-timer/build/hook/useTimer.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/hook/useTimer.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var TimerModel_1 = __webpack_require__(/*! ../lib/models/TimerModel */ "./node_modules/react-compound-timer/build/lib/models/TimerModel.js");
-var getTimeParts_1 = __importDefault(__webpack_require__(/*! ../lib/helpers/getTimeParts */ "./node_modules/react-compound-timer/build/lib/helpers/getTimeParts.js"));
-function useTimer(_a) {
-    var _b = _a === void 0 ? {} : _a, _c = _b.initialTime, initialTime = _c === void 0 ? 0 : _c, _d = _b.direction, direction = _d === void 0 ? "forward" : _d, _e = _b.timeToUpdate, timeToUpdate = _e === void 0 ? 1000 : _e, _f = _b.startImmediately, startImmediately = _f === void 0 ? true : _f, _g = _b.lastUnit, lastUnit = _g === void 0 ? "d" : _g, _h = _b.checkpoints, checkpoints = _h === void 0 ? [] : _h, onStart = _b.onStart, onResume = _b.onResume, onPause = _b.onPause, onStop = _b.onStop, onReset = _b.onReset;
-    var _j = react_1.useState(__assign({}, getTimeParts_1.default(initialTime < 0 ? 0 : initialTime, lastUnit), { state: 'INITED' })), timerValues = _j[0], setTimerValues = _j[1];
-    var timer = react_1.useMemo(function () {
-        return new TimerModel_1.TimerModel({
-            initialTime: initialTime,
-            direction: direction,
-            timeToUpdate: timeToUpdate,
-            lastUnit: lastUnit,
-            checkpoints: checkpoints,
-            onChange: function (timerValue) {
-                return setTimerValues(function (state) { return (__assign({}, state, timerValue)); });
-            },
-        });
-    }, []);
-    var setTime = react_1.useCallback(function (time) { return timer.setTime(time); }, [timer]);
-    var getTime = react_1.useCallback(function () { return timer.getTime(); }, [timer]);
-    var getTimerState = react_1.useCallback(function () { return timer.state; }, [timer]);
-    var setDirection = react_1.useCallback(function (direction) { return timer.setDirection(direction); }, [timer]);
-    var setLastUnit = react_1.useCallback(function (lastUnit) { return timer.setLastUnit(lastUnit); }, [timer]);
-    var setCheckpoints = react_1.useCallback(function (checkpoints) { return timer.setCheckpoints(checkpoints); }, [timer]);
-    var setTimeToUpdate = react_1.useCallback(function (interval) { return timer.setTimeToUpdate(interval); }, [timer]);
-    var start = react_1.useCallback(function () { timer.start(); onStart && onStart(); }, [timer, onStart]);
-    var stop = react_1.useCallback(function () { timer.stop(); onStop && onStop(); }, [timer, onStop]);
-    var pause = react_1.useCallback(function () { timer.pause(); onPause && onPause(); }, [timer, onPause]);
-    var reset = react_1.useCallback(function () { timer.reset(); onReset && onReset(); }, [timer, onReset]);
-    var resume = react_1.useCallback(function () { timer.resume(); onResume && onResume(); }, [timer, onResume]);
-    var controls = react_1.useMemo(function () { return ({
-        start: start,
-        stop: stop,
-        pause: pause,
-        reset: reset,
-        resume: resume,
-        setTime: setTime,
-        getTime: getTime,
-        getTimerState: getTimerState,
-        setDirection: setDirection,
-        setLastUnit: setLastUnit,
-        setTimeToUpdate: setTimeToUpdate,
-        setCheckpoints: setCheckpoints,
-    }); }, [
-        start, stop, pause, reset, resume,
-        setTime, getTime, getTimerState, setDirection, setLastUnit, setTimeToUpdate, setCheckpoints,
-    ]);
-    react_1.useEffect(function () {
-        if (startImmediately) {
-            start();
-        }
-        return function () {
-            stop();
-        };
-    }, []);
-    return {
-        controls: controls,
-        value: timerValues,
-    };
-}
-exports.useTimer = useTimer;
-//# sourceMappingURL=useTimer.js.map
-
-/***/ }),
-
-/***/ "./node_modules/react-compound-timer/build/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var Timer_1 = __importDefault(__webpack_require__(/*! ./components/Timer/Timer */ "./node_modules/react-compound-timer/build/components/Timer/Timer.js"));
-var getTimeParts_1 = __importDefault(__webpack_require__(/*! ./lib/helpers/getTimeParts */ "./node_modules/react-compound-timer/build/lib/helpers/getTimeParts.js"));
-exports.getTimeParts = getTimeParts_1.default;
-var useTimer_1 = __webpack_require__(/*! ./hook/useTimer */ "./node_modules/react-compound-timer/build/hook/useTimer.js");
-exports.useTimer = useTimer_1.useTimer;
-exports.default = Timer_1.default;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "./node_modules/react-compound-timer/build/lib/helpers/getTimeParts.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/lib/helpers/getTimeParts.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-function getTimeParts(time, lastUnit) {
-    var units = ['ms', 's', 'm', 'h', 'd'];
-    var lastUnitIndex = units.findIndex(function (unit) { return unit === lastUnit; });
-    var dividers = [1000, 60, 60, 24, 1];
-    var dividersAcc = [1, 1000, 60000, 3600000, 86400000];
-    var startValue = {
-        ms: 0,
-        s: 0,
-        m: 0,
-        h: 0,
-        d: 0,
-    };
-    var output = units.reduce(function (obj, unit, index) {
-        if (index > lastUnitIndex) {
-            obj[unit] = 0;
-        }
-        else if (index === lastUnitIndex) {
-            obj[unit] = Math.floor(time / dividersAcc[index]);
-        }
-        else {
-            obj[unit] = Math.floor(time / dividersAcc[index]) % dividers[index];
-        }
-        return obj;
-    }, startValue);
-    return output;
-}
-exports.default = getTimeParts;
-//# sourceMappingURL=getTimeParts.js.map
-
-/***/ }),
-
-/***/ "./node_modules/react-compound-timer/build/lib/helpers/now.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/lib/helpers/now.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-function now() {
-    if (typeof window === 'undefined' || !('performance' in window)) {
-        return Date.now();
-    }
-    return performance.now();
-}
-exports.default = now;
-//# sourceMappingURL=now.js.map
-
-/***/ }),
-
-/***/ "./node_modules/react-compound-timer/build/lib/models/TimerModel.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/lib/models/TimerModel.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var getTimeParts_1 = __importDefault(__webpack_require__(/*! ../helpers/getTimeParts */ "./node_modules/react-compound-timer/build/lib/helpers/getTimeParts.js"));
-var now_1 = __importDefault(__webpack_require__(/*! ../helpers/now */ "./node_modules/react-compound-timer/build/lib/helpers/now.js"));
-var TimerState_1 = __importDefault(__webpack_require__(/*! ./TimerState */ "./node_modules/react-compound-timer/build/lib/models/TimerState.js"));
-var TimerModel = /** @class */ (function () {
-    function TimerModel(_a) {
-        var initialTime = _a.initialTime, direction = _a.direction, timeToUpdate = _a.timeToUpdate, lastUnit = _a.lastUnit, checkpoints = _a.checkpoints, onChange = _a.onChange;
-        this.internalTime = now_1.default();
-        this.initialTime = initialTime;
-        this.time = initialTime;
-        this.direction = direction;
-        this.timeToUpdate = timeToUpdate;
-        this.lastUnit = lastUnit;
-        this.checkpoints = checkpoints;
-        this.innerState = new TimerState_1.default(onChange);
-        this.onChange = onChange;
-        this.timerId = null;
-    }
-    Object.defineProperty(TimerModel.prototype, "state", {
-        get: function () {
-            return this.innerState.getState();
-        },
-        enumerable: true,
-        configurable: true
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      main: [],
+      item: []
     });
-    Object.defineProperty(TimerModel.prototype, "timeParts", {
-        get: function () {
-            return this.getTimeParts(this.computeTime());
-        },
-        enumerable: true,
-        configurable: true
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillReceiveProps", function () {
+      _menu_items__WEBPACK_IMPORTED_MODULE_3__["default"].items.map(function (item, index) {
+        if (item.type && item.type === 'group') {
+          _this.getCollapse(item);
+        }
+
+        return false;
+      });
     });
-    TimerModel.prototype.getTimeParts = function (time) {
-        return getTimeParts_1.default(time, this.lastUnit);
-    };
-    TimerModel.prototype.setTime = function (time) {
-        this.internalTime = now_1.default();
-        this.initialTime = time;
-        this.time = this.initialTime;
-        this.onChange(this.getTimeParts(this.time));
-    };
-    TimerModel.prototype.getTime = function () {
-        return this.time;
-    };
-    TimerModel.prototype.setLastUnit = function (lastUnit) {
-        if (this.innerState.isPlaying()) {
-            this.pause();
-            this.lastUnit = lastUnit;
-            this.resume(true);
-        }
-        else {
-            this.lastUnit = lastUnit;
-        }
-    };
-    TimerModel.prototype.setTimeToUpdate = function (interval) {
-        if (this.innerState.isPlaying()) {
-            this.pause();
-            this.timeToUpdate = interval;
-            this.resume();
-        }
-        else {
-            this.timeToUpdate = interval;
-        }
-    };
-    TimerModel.prototype.setDirection = function (direction) {
-        this.direction = direction;
-    };
-    TimerModel.prototype.setCheckpoints = function (checkpoints) {
-        this.checkpoints = checkpoints;
-    };
-    TimerModel.prototype.start = function () {
-        if (this.innerState.setPlaying()) {
-            this.setTimerInterval(true);
-        }
-    };
-    TimerModel.prototype.resume = function (callImmediately) {
-        if (callImmediately === void 0) { callImmediately = false; }
-        if (!this.innerState.isStopped() && this.innerState.setPlaying()) {
-            this.setTimerInterval(callImmediately);
-        }
-    };
-    TimerModel.prototype.pause = function () {
-        if (this.innerState.setPaused()) {
-            clearInterval(this.timerId);
-        }
-    };
-    TimerModel.prototype.stop = function () {
-        if (this.innerState.setStopped()) {
-            clearInterval(this.timerId);
-        }
-    };
-    TimerModel.prototype.reset = function () {
-        this.time = this.initialTime;
-        this.onChange(this.getTimeParts(this.time));
-    };
-    TimerModel.prototype.setTimerInterval = function (callImmediately) {
-        var _this = this;
-        if (callImmediately === void 0) { callImmediately = false; }
-        if (this.timerId) {
-            clearInterval(this.timerId);
-        }
-        this.internalTime = now_1.default();
-        var repeatedFunc = function () {
-            var oldTime = _this.time;
-            var updatedTime = _this.computeTime();
-            _this.onChange(_this.getTimeParts(updatedTime));
-            _this.checkpoints.map(function (_a) {
-                var time = _a.time, callback = _a.callback;
-                var checkForForward = time > oldTime && time <= updatedTime;
-                var checkForBackward = time < oldTime && time >= updatedTime;
-                var checkIntersection = _this.direction === 'backward' ?
-                    checkForBackward :
-                    checkForForward;
-                if (checkIntersection) {
-                    callback();
-                }
-            });
-        };
-        callImmediately && this.onChange(this.getTimeParts(this.time));
-        this.timerId = window.setInterval(repeatedFunc, this.timeToUpdate);
-    };
-    TimerModel.prototype.computeTime = function () {
-        if (this.innerState.isPlaying()) {
-            var currentInternalTime = now_1.default();
-            var delta = Math.abs(currentInternalTime - this.internalTime);
-            switch (this.direction) {
-                case 'forward':
-                    this.time = this.time + delta;
-                    this.internalTime = currentInternalTime;
-                    return this.time;
-                case 'backward': {
-                    this.time = this.time - delta;
-                    this.internalTime = currentInternalTime;
-                    if (this.time < 0) {
-                        this.stop();
-                        return 0;
-                    }
-                    return this.time;
-                }
-                default:
-                    return this.time;
+
+    _defineProperty(_assertThisInitialized(_this), "getCollapse", function (item) {
+      if (item.children) {
+        item.children.filter(function (collapse) {
+          if (collapse.type && collapse.type === 'collapse') {
+            _this.getCollapse(collapse);
+          } else if (collapse.type && collapse.type === 'item') {
+            if (document.location.pathname === _config__WEBPACK_IMPORTED_MODULE_2__["default"].basename + collapse.url) {
+              _this.setState({
+                item: collapse,
+                main: item
+              });
             }
+          }
+
+          return false;
+        });
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(Breadcrumb, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _menu_items__WEBPACK_IMPORTED_MODULE_3__["default"].items.map(function (item, index) {
+        if (item.type && item.type === 'group') {
+          _this2.getCollapse(item, index);
         }
-        return this.time;
-    };
-    return TimerModel;
-}());
-exports.TimerModel = TimerModel;
-//# sourceMappingURL=TimerModel.js.map
+
+        return false;
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var main, item;
+      var breadcrumb = '';
+      var title = 'Welcome';
+
+      if (this.state.main && this.state.main.type === 'collapse') {
+        main = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "breadcrumb-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: _store_constant__WEBPACK_IMPORTED_MODULE_4__["default"].BLANK_LINK
+        }, this.state.main.title));
+      }
+
+      if (this.state.item && this.state.item.type === 'item') {
+        title = this.state.item.title;
+        item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "breadcrumb-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: _store_constant__WEBPACK_IMPORTED_MODULE_4__["default"].BLANK_LINK
+        }, title));
+
+        if (this.state.item.breadcrumbs !== false) {
+          breadcrumb = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "page-header"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "page-block"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row align-items-center"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-md-12"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "page-header-title"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+            className: "m-b-10"
+          }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+            className: "breadcrumb"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "breadcrumb-item"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "feather icon-home"
+          }))), main, item)))));
+        }
+      }
+
+      document.title = title + ' | Bespoke Metering';
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, breadcrumb);
+    }
+  }]);
+
+  return Breadcrumb;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Breadcrumb);
 
 /***/ }),
 
-/***/ "./node_modules/react-compound-timer/build/lib/models/TimerState.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/react-compound-timer/build/lib/models/TimerState.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/menu-items.js":
+/*!************************************!*\
+  !*** ./resources/js/menu-items.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  items: [{
+    id: 'app',
+    title: 'App',
+    type: 'group',
+    icon: 'icon-app',
+    children: [{
+      id: 'dashboard',
+      title: 'Dashboard',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/dashboard',
+      icon: 'feather icon-home'
+    }, {
+      id: 'RoleUser',
+      title: 'Role & User',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'Role',
+        title: 'Role',
+        type: 'item',
+        url: '/role'
+      }, {
+        id: 'v-fixed',
+        title: 'User',
+        type: 'item',
+        url: '/user'
+      }]
+    }, {
+      id: 'data_import',
+      title: 'Data Import',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/dataimport',
+      icon: 'feather icon-clipboard'
+    }, {
+      id: 'list',
+      title: 'Uploaded Data',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/list',
+      icon: 'feather icon-layers'
+    }, {
+      id: 'SiteEngineer',
+      title: 'Area Manager',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/siteengineer',
+      icon: 'feather icon-users'
+    }, {
+      id: 'Engineer',
+      title: 'Engineer',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/Engineer',
+      icon: 'feather icon-user'
+    }, {
+      id: 'Report',
+      title: 'Report',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/report',
+      icon: 'feather icon-file-text'
+    }, {
+      id: 'Installs',
+      title: 'Installs',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'utilitainstallsday',
+        title: 'Utilita Day',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/day/Completed'
+      }, {
+        id: 'utilitainstallsweektodate',
+        title: 'Utilita Week to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/weektodate/Completed'
+      }, {
+        id: 'utilitainstallsmonthtodate',
+        title: 'Utilita Month to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/monthtodate/Completed'
+      }, {
+        id: 'utilitainstallsmonthprior',
+        title: 'Utilita Month Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/monthprior/Completed'
+      }, {
+        id: 'utilitainstallsyeartodate',
+        title: 'Utilita Year to date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/yeartodate/Completed'
+      }, {
+        id: 'utilitainstallsyearprior',
+        title: 'Utilita Year Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/yearprior/Completed'
+      } //mds
+      , {
+        id: 'mdsinstallsday',
+        title: 'Mds Day',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/day/Completed'
+      }, {
+        id: 'mdsinstallsweektodate',
+        title: 'Mds Week to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/weektodate/Completed'
+      }, {
+        id: 'mdsinstallsmonthtodate',
+        title: 'Mds Month to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthtodate/Completed'
+      }, {
+        id: 'mdsinstallsmonthprior',
+        title: 'Mds Month Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthprior/Completed'
+      }, {
+        id: 'mdsinstallsyeartodate',
+        title: 'Mds Year to date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yeartodate/Completed'
+      }, {
+        id: 'mdsinstallsyearprior',
+        title: 'Mds Year Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yearprior/Completed'
+      }]
+    }, {
+      id: 'Aborts',
+      title: 'Aborts',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'utilitainstallsday',
+        title: 'Utilita Day',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/day/Aborts'
+      }, {
+        id: 'abortsutilitainstallsweektodate',
+        title: 'Utilita Week to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/weektodate/Aborts'
+      }, {
+        id: 'abortsutilitainstallsmonthtodate',
+        title: 'Utilita Month to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/monthtodate/Aborts'
+      }, {
+        id: 'abortsutilitainstallsmonthprior',
+        title: 'Utilita Month Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/monthprior/Aborts'
+      }, {
+        id: 'abortsutilitainstallsyeartodate',
+        title: 'Utilita Year to date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/yeartodate/Aborts'
+      }, {
+        id: 'abortsutilitainstallsyearprior',
+        title: 'Utilita Year Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitainstalls/yearprior/Aborts'
+      } //mds
+      , {
+        id: 'mdsinstallsday',
+        title: 'Mds Day',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/day/Aborts'
+      }, {
+        id: 'abortsmdsinstallsweektodate',
+        title: 'Mds Week to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/weektodate/Aborts'
+      }, {
+        id: 'abortsmdsinstallsmonthtodate',
+        title: 'Mds Month to Date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthtodate/Aborts'
+      }, {
+        id: 'abortsmdsinstallsmonthprior',
+        title: 'Mds Month Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/monthprior/Aborts'
+      }, {
+        id: 'abortsmdsinstallsyeartodate',
+        title: 'Mds Year to date',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yeartodate/Aborts'
+      }, {
+        id: 'abortsmdsinstallsyearprior',
+        title: 'Mds Year Prior',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsinstalls/yearprior/Aborts'
+      }]
+    }, {
+      id: 'FuelMix',
+      title: 'Fuel Mix',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'FuelMixweektodate',
+        title: 'Utilita Week',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitafuelmix/weektodate'
+      }, {
+        id: 'utilitafuelmixmonthtodate',
+        title: 'Utilita Month',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitafuelmix/monthtodate'
+      }, {
+        id: 'utilitafuelmixyeartodate',
+        title: 'Utilita Year',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitafuelmix/yeartodate'
+      }, //mds
+      {
+        id: 'mdsFuelMixweektodate',
+        title: 'Mds Utilita Week',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsfuelmix/weektodate'
+      }, {
+        id: 'mdsfuelmixmonthtodate',
+        title: 'Mds Month',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsfuelmix/monthtodate'
+      }, {
+        id: 'mdsfuelmixyeartodate',
+        title: 'Mds Year',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsfuelmix/yeartodate'
+      }]
+    }, {
+      id: 'ooh',
+      title: 'ooh',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'oohtodate',
+        title: 'Utilita Week',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitaooh/weektodate'
+      }, {
+        id: 'oohmonthtodate',
+        title: 'Utilita Month',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitaooh/monthtodate'
+      }, {
+        id: 'oohyeartodate',
+        title: 'Utilita Year',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/utilitaooh/yeartodate'
+      } //mds
+      , {
+        id: 'mdsoohtodate',
+        title: 'Mds Week',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsooh/weektodate'
+      }, {
+        id: 'mdsoohmonthtodate',
+        title: 'Mds Month',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsooh/monthtodate'
+      }, {
+        id: 'mdsoohyeartodate',
+        title: 'Mds Year',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/mdsooh/yeartodate'
+      }]
+    }, //sms
+    {
+      id: 'sms',
+      title: 'SMS',
+      type: 'collapse',
+      icon: 'feather icon-menu',
+      children: [{
+        id: 'team',
+        title: 'Team',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/team'
+      }, {
+        id: 'sms_groups',
+        title: 'Team Groups',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/sms-groups'
+      }, {
+        id: 'engineer_lookup',
+        title: 'Employee Lookup',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/employee_lookup'
+      }, {
+        id: 'job_lookup',
+        title: 'Job Lookup',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/job_lookup'
+      }, {
+        id: 'time_lookup',
+        title: 'Time Lookup',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/time_lookup'
+      }, {
+        id: 'bonus_period',
+        title: 'Bonus Period',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/bonus_period/add'
+      }, {
+        id: 'performance',
+        title: 'Performance',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/performance'
+      }, {
+        id: 'bonus_periods',
+        title: 'Bonus Periods',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/bonus-periods'
+      }, {
+        id: 'work-mix',
+        title: 'Work Mix',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/work-mix'
+      }]
+    }, {
+      id: 'settarget',
+      title: 'Set Target',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/settarget',
+      icon: 'feather icon-feather icon-target'
+    }, {
+      id: 'vehicle',
+      title: 'Vehicle',
+      type: 'item',
+      classes: 'nav-item',
+      url: '/vehicle',
+      icon: 'feather icon-feather icon-file-text'
+    }]
+  }]
+});
 
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.INITED = 'INITED';
-exports.PLAYING = 'PLAYING';
-exports.PAUSED = 'PAUSED';
-exports.STOPPED = 'STOPPED';
-var TimerState = /** @class */ (function () {
-    function TimerState(onChangeStatus) {
-        var _this = this;
-        if (onChangeStatus === void 0) { onChangeStatus = function (obj) { }; }
-        this.state = exports.INITED;
-        this.onChange = function () { return onChangeStatus({ state: _this.state }); };
-        this.state = exports.INITED;
-    }
-    TimerState.prototype.getState = function () {
-        return this.state;
-    };
-    TimerState.prototype.setInited = function () {
-        if (this.state === exports.INITED) {
-            return false;
-        }
-        this.state = exports.INITED;
-        this.onChange();
-        return true;
-    };
-    TimerState.prototype.isInited = function () {
-        return this.state === exports.INITED;
-    };
-    TimerState.prototype.setPlaying = function () {
-        if (this.state === exports.PLAYING) {
-            return false;
-        }
-        this.state = exports.PLAYING;
-        this.onChange();
-        return true;
-    };
-    TimerState.prototype.isPlaying = function () {
-        return this.state === exports.PLAYING;
-    };
-    TimerState.prototype.setPaused = function () {
-        if (this.state !== exports.PLAYING) {
-            return false;
-        }
-        this.state = exports.PAUSED;
-        this.onChange();
-        return true;
-    };
-    TimerState.prototype.isPaused = function () {
-        return this.state === exports.PAUSED;
-    };
-    TimerState.prototype.setStopped = function () {
-        if (this.state === exports.INITED) {
-            return false;
-        }
-        this.state = exports.STOPPED;
-        this.onChange();
-        return true;
-    };
-    TimerState.prototype.isStopped = function () {
-        return this.state === exports.STOPPED;
-    };
-    return TimerState;
-}());
-exports.default = TimerState;
-//# sourceMappingURL=TimerState.js.map
+/***/ }),
+
+/***/ "./resources/js/store/constant.js":
+/*!****************************************!*\
+  !*** ./resources/js/store/constant.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var DEMO = {
+  BLANK_LINK: "#!"
+};
+/* harmony default export */ __webpack_exports__["default"] = (DEMO);
 
 /***/ })
 

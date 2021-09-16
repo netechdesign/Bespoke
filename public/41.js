@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Role/add.js":
-/*!**********************************************!*\
-  !*** ./resources/js/Back-Office/Role/add.js ***!
-  \**********************************************/
+/***/ "./resources/js/Back-Office/Role/edit.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Back-Office/Role/edit.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -152,7 +152,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function successDesktopPNotify() {
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].success({
     title: 'Success',
-    text: "Role added successfully",
+    text: "Role updated successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -183,15 +183,15 @@ var Trrow = function Trrow(property) {
 
 var baseurl = window.location.origin;
 
-var add = /*#__PURE__*/function (_React$Component) {
-  _inherits(add, _React$Component);
+var edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(edit, _React$Component);
 
-  var _super = _createSuper(add);
+  var _super = _createSuper(edit);
 
-  function add() {
+  function edit() {
     var _this;
 
-    _classCallCheck(this, add);
+    _classCallCheck(this, edit);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -201,7 +201,7 @@ var add = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       name: "",
-      slug: "",
+      id: _this.props.match.params.id,
       chkCustom: false,
       permission: [],
       pageArray: [],
@@ -292,7 +292,8 @@ var add = /*#__PURE__*/function (_React$Component) {
       var data = new FormData();
       data.append('name', _this.state.name);
       data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role', {
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role/' + _this.state.id, {
+        _method: 'PUT',
         name: _this.state.name,
         permission: _this.state.permission
       }, {
@@ -303,22 +304,9 @@ var add = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           // console.log(res.data.data);
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-
-          _this.setState({
-            name: ''
-          });
-
-          _this.PemissionGet();
-
-          $('input[type="checkbox"]').prop('checked', false);
           successDesktopPNotify();
+          var history = _this.props.history;
+          history.push('/role');
         } else {
           if (res.data.errors) {
             res.data.message = res.data.errors.name;
@@ -334,7 +322,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Add'
+            buttonName: 'Edit'
           });
         }
       })["catch"](function (err) {
@@ -361,12 +349,26 @@ var add = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
+      var id = _this.state.id;
       document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["Pemissionlist"])().then(function (res) {
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
+
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.get(baseurl + '/api/role/' + id + '/edit', {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
         if (res.data.success) {
-          //console.log(res.data.data);
+          var parmissions = res.data.data.parmissions;
+
           _this.setState({
-            permission: res.data.data
+            name: res.data.data.name,
+            permission: parmissions
           });
 
           document.getElementById("requestLoder").innerHTML = '';
@@ -384,14 +386,14 @@ var add = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(add, [{
+  _createClass(edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'add', history);
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'edit', history);
       this.PemissionGet();
     }
   }, {
@@ -406,7 +408,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           history = _this$props2.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Add Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Edit Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -415,7 +417,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           history.goBack();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
+        className: "feather icon-chevron-left"
       }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
@@ -470,10 +472,10 @@ var add = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return add;
+  return edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (add);
+/* harmony default export */ __webpack_exports__["default"] = (edit);
 
 /***/ }),
 

@@ -334,6 +334,7 @@ class Smssheet implements FromView,WithTitle,WithEvents
        //  echo '<pre/>'; print_r($team['SC1']); exit;
        ksort($team); 
        $this->output = $team;
+       
         return view('reports.sms_report', ['data' => $team,'national'=>$national]);
     }    
      
@@ -349,8 +350,18 @@ class Smssheet implements FromView,WithTitle,WithEvents
 
     
     $current_column = 'A';
-    $subject_data = 17; //10 + $site_engineer;
+    $subject_data = 7; //10 + $site_engineer;
 
+    $role=0;
+      if(isset($_REQUEST['role'])){
+        $role=$_REQUEST['role'];
+      }
+      if($role==8 || $role==7 || $role==6 || $role==5 || $role==1) {
+        $subject_data = 11;
+      } 
+      if($role==7 || $role==6 || $role==5 || $role==1){
+        $subject_data = 17;
+      }
     for($i=0; $i < $subject_data; $i++) {
     $current_column; // Will be C, D, E, etc...
     $current_column++; // Increment letter

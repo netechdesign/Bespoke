@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Engineer_lookup/add.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/Back-Office/Engineer_lookup/add.js ***!
-  \*********************************************************/
+/***/ "./resources/js/Back-Office/Engineer_lookup/edit.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/Back-Office/Engineer_lookup/edit.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -142,7 +142,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function successDesktopPNotify() {
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
     title: 'Success',
-    text: "Engineer added successfully",
+    text: "Engineer updated successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -153,15 +153,15 @@ function successDesktopPNotify() {
 
 var baseurl = window.location.origin;
 
-var Add = /*#__PURE__*/function (_React$Component) {
-  _inherits(Add, _React$Component);
+var Edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(Edit, _React$Component);
 
-  var _super = _createSuper(Add);
+  var _super = _createSuper(Edit);
 
-  function Add() {
+  function Edit() {
     var _this;
 
-    _classCallCheck(this, Add);
+    _classCallCheck(this, Edit);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -170,6 +170,8 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
+      _method: 'PUT',
+      id: '',
       engineer_id: '',
       engineer_name: '',
       manager_list: [],
@@ -219,6 +221,46 @@ var Add = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "update", function () {
+      var _this$props = _this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      var id = match.params.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
+
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/engineer_lookup/' + id + '/edit', {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            id: res.data.data.id,
+            engineer_name: res.data.data.employee_name,
+            engineer_id: res.data.data.engineer_id,
+            team_id: res.data.data.team_id,
+            regions_sort_name: res.data.data.regions_sort_name,
+            perfomance_level: res.data.data.perfomance_level,
+            cost: res.data.data.cost,
+            Monday: res.data.data.Monday,
+            Tuesday: res.data.data.Tuesday,
+            Wednesday: res.data.data.Wednesday,
+            Thursday: res.data.data.Thursday,
+            Friday: res.data.data.Friday
+          });
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
       e.preventDefault();
 
@@ -233,13 +275,13 @@ var Add = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          auth_token = _ref2.auth_token; //const data = new FormData()
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref3.id,
+          auth_token = _ref3.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/engineer_lookup', _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/engineer_lookup/' + _this.state.id, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -321,7 +363,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "RegionChange", function (e) {
       _this.setState({
-        team_id: e.value
+        regions_id: e.value
       });
 
       var region = _this.state.region_list.filter(function (vl, index) {
@@ -338,26 +380,29 @@ var Add = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Add, [{
+  _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this$props = this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
-      this.dropdownList();
-    }
-  }, {
-    key: "render",
-    value: function render() {
       var _this$props2 = this.props,
           match = _this$props2.match,
           location = _this$props2.location,
           history = _this$props2.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
+      this.dropdownList();
+      this.update();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props3 = this.props,
+          match = _this$props3.match,
+          location = _this$props3.location,
+          history = _this$props3.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Add Employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Edit Employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -379,15 +424,11 @@ var Add = /*#__PURE__*/function (_React$Component) {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "firstName"
-      }, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.ManagerChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "engineer_id",
-        options: this.state.manager_list,
-        placeholder: "Select Engineer"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        htmlFor: "firstName",
+        style: {
+          marginTop: '40px'
+        }
+      }, this.state.engineer_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
@@ -397,6 +438,9 @@ var Add = /*#__PURE__*/function (_React$Component) {
         className: "basic-single",
         classNamePrefix: "select",
         name: "regions_sort_name",
+        value: this.state.region_list.filter(function (option) {
+          return option.value === _this2.state.team_id;
+        }),
         options: this.state.region_list,
         placeholder: "Select Team"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
@@ -596,10 +640,10 @@ var Add = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Add;
+  return Edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Add);
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
 
 /***/ }),
 

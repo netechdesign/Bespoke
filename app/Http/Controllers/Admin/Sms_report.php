@@ -28,6 +28,7 @@ class Sms_report extends Controller
     }
     public function export() 
     {
+      
         //performance export
         $start_date = date("Y-m-d",strtotime("-6 day"));
         $today_date = date('Y-m-d');
@@ -851,6 +852,12 @@ class Sms_report extends Controller
                 
             }
          }
+         $user = JWTAuth::toUser($request->input('token'));
+         if($user){
+          $request->role = $user['roles'];
+          
+         }
+         
         // echo '<pre/>'; print_r($team); exit;
         ksort($team);
        

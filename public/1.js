@@ -1,16 +1,981 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./node_modules/pnotify/dist/es/PNotify.js":
-/*!*************************************************!*\
-  !*** ./node_modules/pnotify/dist/es/PNotify.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/react-bootstrap4-form-validation/lib/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-bootstrap4-form-validation/lib/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-let PNotify,posTimer,onDocumentLoaded=()=>{PNotify.defaultStack.context=document.body,window.addEventListener("resize",()=>{posTimer&&clearTimeout(posTimer),posTimer=setTimeout(()=>{PNotify.positionAll()},10)})},createStackOverlay=t=>{const e=document.createElement("div");e.classList.add("ui-pnotify-modal-overlay"),t.context!==document.body&&(e.style.height=t.context.scrollHeight+"px",e.style.width=t.context.scrollWidth+"px"),e.addEventListener("click",()=>{t.overlayClose&&PNotify.closeStack(t)}),t.overlay=e},insertStackOverlay=t=>{t.overlay.parentNode!==t.context&&(t.overlay=t.context.insertBefore(t.overlay,t.context.firstChild))},removeStackOverlay=t=>{t.overlay.parentNode&&t.overlay.parentNode.removeChild(t.overlay)};const getDefaultArgs=(t,e)=>("object"!=typeof t&&(t={text:t}),e&&(t.type=e),{target:document.body,data:t});function _styles({styling:t}){return"object"==typeof t?t:PNotify.styling[t]}function _icons({icons:t}){return"object"==typeof t?t:PNotify.icons[t]}function _widthStyle({width:t}){return"string"==typeof t?"width: "+t+";":""}function _minHeightStyle({minHeight:t}){return"string"==typeof t?"min-height: "+t+";":""}function data(){const t=Object.assign({_state:"initializing",_timer:null,_animTimer:null,_animating:!1,_animatingClass:"",_moveClass:"",_timerHide:!1,_moduleClasses:[],_moduleIsNoticeOpen:!1,_modules:{},_modulesPrependContainer:PNotify.modulesPrependContainer,_modulesAppendContainer:PNotify.modulesAppendContainer},PNotify.defaults);return t.modules=Object.assign({},PNotify.defaults.modules),t}var methods={runModules(t){if("init"===t){for(let t in PNotify.modules)if(PNotify.modules.hasOwnProperty(t)&&"function"==typeof PNotify.modules[t].init){const e=PNotify.modules[t].init(this);this.initModule(e)}}else{const{_modules:e}=this.get();for(let i in e){if(!e.hasOwnProperty(i))continue;const n=Object.assign({_notice:this,_options:this.get()},this.get().modules[i]);e[i].set(n),"function"==typeof e[i][t]&&e[i][t]()}}},initModule(t){const{modules:e}=this.get();e.hasOwnProperty(t.constructor.key)||(e[t.constructor.key]={});const i=Object.assign({_notice:this,_options:this.get()},e[t.constructor.key]);t.initModule(i);const{_modules:n}=this.get();n[t.constructor.key]=t},update(t){const e=this.get().hide,i=this.get().icon;this.set(t),this.runModules("update"),this.get().hide?e||this.queueClose():this.cancelClose(),this.queuePosition();const{icon:n}=this.get();return n!==i&&(!0===n&&"fontawesome5"===this.get().icons||"string"==typeof n&&n.match(/(^| )fa[srlb]($| )/))&&(this.set({icon:!1}),this.set({icon:n})),this},open(){const{_state:t,hide:e}=this.get();if("opening"===t)return;if("open"===t)return void(e&&this.queueClose());this.set({_state:"opening",_animatingClass:"ui-pnotify-initial-hidden"}),this.runModules("beforeOpen");let{stack:i}=this.get();if(!this.refs.elem.parentNode||i&&i.context&&i.context!==this.refs.elem.parentNode)if(i&&i.context)i.context.appendChild(this.refs.elem);else{if(!document.body)throw new Error("No context to open this notice in.");document.body.appendChild(this.refs.elem)}return setTimeout(()=>{i&&(i.animation=!1,PNotify.positionAll(),i.animation=!0),this.animateIn(()=>{this.get().hide&&this.queueClose(),this.set({_state:"open"}),this.runModules("afterOpen")})},0),this},remove(t){return this.close(t)},close(t){const{_state:e}=this.get();if("closing"===e||"closed"===e)return;this.set({_state:"closing",_timerHide:!!t}),this.runModules("beforeClose");const{_timer:i}=this.get();return i&&clearTimeout&&(clearTimeout(i),this.set({_timer:null})),this.animateOut(()=>{if(this.set({_state:"closed"}),this.runModules("afterClose"),this.queuePosition(),this.get().remove&&this.refs.elem.parentNode.removeChild(this.refs.elem),this.runModules("beforeDestroy"),this.get().destroy&&null!==PNotify.notices){const t=PNotify.notices.indexOf(this);-1!==t&&PNotify.notices.splice(t,1)}this.runModules("afterDestroy")}),this},animateIn(t){this.set({_animating:"in"});const e=()=>{this.refs.elem.removeEventListener("transitionend",e);const{_animTimer:i,_animating:n,_moduleIsNoticeOpen:o}=this.get();if(i&&clearTimeout(i),"in"!==n)return;let s=o;if(!s){const t=this.refs.elem.getBoundingClientRect();for(let e in t)if(t[e]>0){s=!0;break}}s?(t&&t.call(),this.set({_animating:!1})):this.set({_animTimer:setTimeout(e,40)})};"fade"===this.get().animation?(this.refs.elem.addEventListener("transitionend",e),this.set({_animatingClass:"ui-pnotify-in"}),this.refs.elem.style.opacity,this.set({_animatingClass:"ui-pnotify-in ui-pnotify-fade-in"}),this.set({_animTimer:setTimeout(e,650)})):(this.set({_animatingClass:"ui-pnotify-in"}),e())},animateOut(t){this.set({_animating:"out"});const e=()=>{this.refs.elem.removeEventListener("transitionend",e);const{_animTimer:i,_animating:n,_moduleIsNoticeOpen:o}=this.get();if(i&&clearTimeout(i),"out"!==n)return;let s=o;if(!s){const t=this.refs.elem.getBoundingClientRect();for(let e in t)if(t[e]>0){s=!0;break}}if(this.refs.elem.style.opacity&&"0"!==this.refs.elem.style.opacity&&s)this.set({_animTimer:setTimeout(e,40)});else{this.set({_animatingClass:""});const{stack:e}=this.get();if(e&&e.overlay){let t=!1;for(let i=0;i<PNotify.notices.length;i++){const n=PNotify.notices[i];if(n!==this&&n.get().stack===e&&"closed"!==n.get()._state){t=!0;break}}t||removeStackOverlay(e)}t&&t.call(),this.set({_animating:!1})}};"fade"===this.get().animation?(this.refs.elem.addEventListener("transitionend",e),this.set({_animatingClass:"ui-pnotify-in"}),this.set({_animTimer:setTimeout(e,650)})):(this.set({_animatingClass:""}),e())},position(){let{stack:t}=this.get(),e=this.refs.elem;if(!t)return;if(t.context||(t.context=document.body),"number"!=typeof t.nextpos1&&(t.nextpos1=t.firstpos1),"number"!=typeof t.nextpos2&&(t.nextpos2=t.firstpos2),"number"!=typeof t.addpos2&&(t.addpos2=0),!e.classList.contains("ui-pnotify-in")&&!e.classList.contains("ui-pnotify-initial-hidden"))return this;t.modal&&(t.overlay||createStackOverlay(t),insertStackOverlay(t)),e.getBoundingClientRect(),t.animation&&this.set({_moveClass:"ui-pnotify-move"});let i,n=t.context===document.body?window.innerHeight:t.context.scrollHeight,o=t.context===document.body?window.innerWidth:t.context.scrollWidth;if(t.dir1){let s;switch(i={down:"top",up:"bottom",left:"right",right:"left"}[t.dir1],t.dir1){case"down":s=e.offsetTop;break;case"up":s=n-e.scrollHeight-e.offsetTop;break;case"left":s=o-e.scrollWidth-e.offsetLeft;break;case"right":s=e.offsetLeft}void 0===t.firstpos1&&(t.firstpos1=s,t.nextpos1=t.firstpos1)}if(t.dir1&&t.dir2){let i,s={down:"top",up:"bottom",left:"right",right:"left"}[t.dir2];switch(t.dir2){case"down":i=e.offsetTop;break;case"up":i=n-e.scrollHeight-e.offsetTop;break;case"left":i=o-e.scrollWidth-e.offsetLeft;break;case"right":i=e.offsetLeft}void 0===t.firstpos2&&(t.firstpos2=i,t.nextpos2=t.firstpos2);const r=t.nextpos1+e.offsetHeight+(void 0===t.spacing1?25:t.spacing1),a=t.nextpos1+e.offsetWidth+(void 0===t.spacing1?25:t.spacing1);switch((("down"===t.dir1||"up"===t.dir1)&&r>n||("left"===t.dir1||"right"===t.dir1)&&a>o)&&(t.nextpos1=t.firstpos1,t.nextpos2+=t.addpos2+(void 0===t.spacing2?25:t.spacing2),t.addpos2=0),"number"==typeof t.nextpos2&&(e.style[s]=t.nextpos2+"px",t.animation||e.style[s]),t.dir2){case"down":case"up":e.offsetHeight+(parseFloat(e.style.marginTop,10)||0)+(parseFloat(e.style.marginBottom,10)||0)>t.addpos2&&(t.addpos2=e.offsetHeight);break;case"left":case"right":e.offsetWidth+(parseFloat(e.style.marginLeft,10)||0)+(parseFloat(e.style.marginRight,10)||0)>t.addpos2&&(t.addpos2=e.offsetWidth)}}else if(t.dir1){let i,o;switch(t.dir1){case"down":case"up":o=["left","right"],i=t.context.scrollWidth/2-e.offsetWidth/2;break;case"left":case"right":o=["top","bottom"],i=n/2-e.offsetHeight/2}e.style[o[0]]=i+"px",e.style[o[1]]="auto",t.animation||e.style[o[0]]}if(t.dir1)switch("number"==typeof t.nextpos1&&(e.style[i]=t.nextpos1+"px",t.animation||e.style[i]),t.dir1){case"down":case"up":t.nextpos1+=e.offsetHeight+(void 0===t.spacing1?25:t.spacing1);break;case"left":case"right":t.nextpos1+=e.offsetWidth+(void 0===t.spacing1?25:t.spacing1)}else{let i=o/2-e.offsetWidth/2,s=n/2-e.offsetHeight/2;e.style.left=i+"px",e.style.top=s+"px",t.animation||e.style.left}return this},queuePosition(t){return posTimer&&clearTimeout(posTimer),t||(t=10),posTimer=setTimeout(()=>{PNotify.positionAll()},t),this},cancelRemove(){return this.cancelClose()},cancelClose(){const{_timer:t,_animTimer:e,_state:i,animation:n}=this.get();return t&&clearTimeout(t),e&&clearTimeout(e),"closing"===i&&this.set({_state:"open",_animating:!1,_animatingClass:"fade"===n?"ui-pnotify-in ui-pnotify-fade-in":"ui-pnotify-in"}),this},queueRemove(){return this.queueClose()},queueClose(){return this.cancelClose(),this.set({_timer:setTimeout(()=>this.close(!0),isNaN(this.get().delay)?0:this.get().delay)}),this},addModuleClass(...t){const{_moduleClasses:e}=this.get();for(let i=0;i<t.length;i++){let n=t[i];-1===e.indexOf(n)&&e.push(n)}this.set({_moduleClasses:e})},removeModuleClass(...t){const{_moduleClasses:e}=this.get();for(let i=0;i<t.length;i++){let n=t[i];const o=e.indexOf(n);-1!==o&&e.splice(o,1)}this.set({_moduleClasses:e})},hasModuleClass(...t){const{_moduleClasses:e}=this.get();for(let i=0;i<t.length;i++){let n=t[i];if(-1===e.indexOf(n))return!1}return!0}};function oncreate(){this.on("mouseenter",t=>{if(this.get().mouseReset&&"out"===this.get()._animating){if(!this.get()._timerHide)return;this.cancelClose()}this.get().hide&&this.get().mouseReset&&this.cancelClose()}),this.on("mouseleave",t=>{this.get().hide&&this.get().mouseReset&&"out"!==this.get()._animating&&this.queueClose(),PNotify.positionAll()});let{stack:t}=this.get();t&&"top"===t.push?PNotify.notices.splice(0,0,this):PNotify.notices.push(this),this.runModules("init"),this.set({_state:"closed"}),this.get().autoDisplay&&this.open()}function setup(t){(PNotify=t).VERSION="4.0.1",PNotify.defaultStack={dir1:"down",dir2:"left",firstpos1:25,firstpos2:25,spacing1:36,spacing2:36,push:"bottom",context:window&&document.body},PNotify.defaults={title:!1,titleTrusted:!1,text:!1,textTrusted:!1,styling:"brighttheme",icons:"brighttheme",addClass:"",cornerClass:"",autoDisplay:!0,width:"360px",minHeight:"16px",type:"notice",icon:!0,animation:"fade",animateSpeed:"normal",shadow:!0,hide:!0,delay:8e3,mouseReset:!0,remove:!0,destroy:!0,stack:PNotify.defaultStack,modules:{}},PNotify.notices=[],PNotify.modules={},PNotify.modulesPrependContainer=[],PNotify.modulesAppendContainer=[],PNotify.alert=(t=>new PNotify(getDefaultArgs(t))),PNotify.notice=(t=>new PNotify(getDefaultArgs(t,"notice"))),PNotify.info=(t=>new PNotify(getDefaultArgs(t,"info"))),PNotify.success=(t=>new PNotify(getDefaultArgs(t,"success"))),PNotify.error=(t=>new PNotify(getDefaultArgs(t,"error"))),PNotify.removeAll=(()=>{PNotify.closeAll()}),PNotify.closeAll=(()=>{for(let t=0;t<PNotify.notices.length;t++)PNotify.notices[t].close&&PNotify.notices[t].close(!1)}),PNotify.removeStack=(t=>{PNotify.closeStack(t)}),PNotify.closeStack=(t=>{if(!1!==t)for(let e=0;e<PNotify.notices.length;e++)PNotify.notices[e].close&&PNotify.notices[e].get().stack===t&&PNotify.notices[e].close(!1)}),PNotify.positionAll=(()=>{if(posTimer&&clearTimeout(posTimer),posTimer=null,PNotify.notices.length>0){for(let t=0;t<PNotify.notices.length;t++){let e=PNotify.notices[t],{stack:i}=e.get();i&&(i.overlay&&removeStackOverlay(i),i.nextpos1=i.firstpos1,i.nextpos2=i.firstpos2,i.addpos2=0)}for(let t=0;t<PNotify.notices.length;t++)PNotify.notices[t].position()}else delete PNotify.defaultStack.nextpos1,delete PNotify.defaultStack.nextpos2}),PNotify.styling={brighttheme:{container:"brighttheme",notice:"brighttheme-notice",info:"brighttheme-info",success:"brighttheme-success",error:"brighttheme-error"},bootstrap3:{container:"alert",notice:"alert-warning",info:"alert-info",success:"alert-success",error:"alert-danger",icon:"ui-pnotify-icon-bs3"},bootstrap4:{container:"alert",notice:"alert-warning",info:"alert-info",success:"alert-success",error:"alert-danger",icon:"ui-pnotify-icon-bs4",title:"ui-pnotify-title-bs4"}},PNotify.icons={brighttheme:{notice:"brighttheme-icon-notice",info:"brighttheme-icon-info",success:"brighttheme-icon-success",error:"brighttheme-icon-error"},bootstrap3:{notice:"glyphicon glyphicon-exclamation-sign",info:"glyphicon glyphicon-info-sign",success:"glyphicon glyphicon-ok-sign",error:"glyphicon glyphicon-warning-sign"},fontawesome4:{notice:"fa fa-exclamation-circle",info:"fa fa-info-circle",success:"fa fa-check-circle",error:"fa fa-exclamation-triangle"},fontawesome5:{notice:"fas fa-exclamation-circle",info:"fas fa-info-circle",success:"fas fa-check-circle",error:"fas fa-exclamation-triangle"}},window&&document.body?onDocumentLoaded():document.addEventListener("DOMContentLoaded",onDocumentLoaded)}function add_css(){var t=createElement("style");t.id="svelte-1eldsjg-style",t.textContent='body > .ui-pnotify{position:fixed;z-index:100040}body > .ui-pnotify.ui-pnotify-modal{z-index:100042}.ui-pnotify{position:absolute;height:auto;z-index:1;display:none}.ui-pnotify.ui-pnotify-modal{z-index:3}.ui-pnotify.ui-pnotify-in{display:block}.ui-pnotify.ui-pnotify-initial-hidden{display:block;visibility:hidden}.ui-pnotify.ui-pnotify-move{transition:left .5s ease, top .5s ease, right .5s ease, bottom .5s ease}.ui-pnotify.ui-pnotify-fade-slow{transition:opacity .4s linear;opacity:0}.ui-pnotify.ui-pnotify-fade-slow.ui-pnotify.ui-pnotify-move{transition:opacity .4s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease}.ui-pnotify.ui-pnotify-fade-normal{transition:opacity .25s linear;opacity:0}.ui-pnotify.ui-pnotify-fade-normal.ui-pnotify.ui-pnotify-move{transition:opacity .25s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease}.ui-pnotify.ui-pnotify-fade-fast{transition:opacity .1s linear;opacity:0}.ui-pnotify.ui-pnotify-fade-fast.ui-pnotify.ui-pnotify-move{transition:opacity .1s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease}.ui-pnotify.ui-pnotify-fade-in{opacity:1}.ui-pnotify .ui-pnotify-shadow{-webkit-box-shadow:0px 6px 28px 0px rgba(0,0,0,0.1);-moz-box-shadow:0px 6px 28px 0px rgba(0,0,0,0.1);box-shadow:0px 6px 28px 0px rgba(0,0,0,0.1)}.ui-pnotify-container{background-position:0 0;padding:.8em;height:100%;margin:0}.ui-pnotify-container:after{content:" ";visibility:hidden;display:block;height:0;clear:both}.ui-pnotify-container.ui-pnotify-sharp{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}.ui-pnotify-title{display:block;white-space:pre-line;margin-bottom:.4em;margin-top:0}.ui-pnotify.ui-pnotify-with-icon .ui-pnotify-title,.ui-pnotify.ui-pnotify-with-icon .ui-pnotify-text{margin-left:24px}[dir=rtl] .ui-pnotify.ui-pnotify-with-icon .ui-pnotify-title,[dir=rtl] .ui-pnotify.ui-pnotify-with-icon .ui-pnotify-text{margin-right:24px;margin-left:0}.ui-pnotify-title-bs4{font-size:1.2rem}.ui-pnotify-text{display:block;white-space:pre-line}.ui-pnotify-icon,.ui-pnotify-icon span{display:block;float:left}[dir=rtl] .ui-pnotify-icon,[dir=rtl] .ui-pnotify-icon span{float:right}.ui-pnotify-icon-bs3 > span{position:relative;top:2px}.ui-pnotify-icon-bs4 > span{position:relative;top:4px}.ui-pnotify-modal-overlay{background-color:rgba(0, 0, 0, .4);top:0;left:0;position:absolute;height:100%;width:100%;z-index:2}body > .ui-pnotify-modal-overlay{position:fixed;z-index:100041}',append(document.head,t)}function get_each1_context(t,e,i){const n=Object.create(t);return n.module=e[i],n}function get_each0_context(t,e,i){const n=Object.create(t);return n.module=e[i],n}function create_main_fragment(t,e){var i,n,o,s,r,a,c,l,f,d=[],u=blankObject(),h=[],m=blankObject(),p=e._modulesPrependContainer;const y=t=>t.module.key;for(var _=0;_<p.length;_+=1){let i=get_each0_context(e,p,_),n=y(i);d[_]=u[n]=create_each_block_1(t,n,i)}var g=!1!==e.icon&&create_if_block_4(t,e),b=!1!==e.title&&create_if_block_2(t,e),v=!1!==e.text&&create_if_block(t,e),x=e._modulesAppendContainer;const N=t=>t.module.key;for(_=0;_<x.length;_+=1){let i=get_each1_context(e,x,_),n=N(i);h[_]=m[n]=create_each_block(t,n,i)}function k(e){t.fire("mouseover",e)}function C(e){t.fire("mouseout",e)}function w(e){t.fire("mouseenter",e)}function P(e){t.fire("mouseleave",e)}function T(e){t.fire("mousemove",e)}function L(e){t.fire("mousedown",e)}function S(e){t.fire("mouseup",e)}function O(e){t.fire("click",e)}function A(e){t.fire("dblclick",e)}function H(e){t.fire("focus",e)}function E(e){t.fire("blur",e)}function j(e){t.fire("touchstart",e)}function M(e){t.fire("touchmove",e)}function D(e){t.fire("touchend",e)}function B(e){t.fire("touchcancel",e)}return{c(){for(i=createElement("div"),n=createElement("div"),_=0;_<d.length;_+=1)d[_].c();for(o=createText("\n    "),g&&g.c(),s=createText("\n    "),b&&b.c(),r=createText("\n    "),v&&v.c(),a=createText("\n    "),_=0;_<h.length;_+=1)h[_].c();n.className=c="\n        ui-pnotify-container\n        "+(e._styles.container?e._styles.container:"")+"\n        "+(e._styles[e.type]?e._styles[e.type]:"")+"\n        "+e.cornerClass+"\n        "+(e.shadow?"ui-pnotify-shadow":"")+"\n      ",n.style.cssText=l=e._widthStyle+" "+e._minHeightStyle,setAttribute(n,"role","alert"),addListener(i,"mouseover",k),addListener(i,"mouseout",C),addListener(i,"mouseenter",w),addListener(i,"mouseleave",P),addListener(i,"mousemove",T),addListener(i,"mousedown",L),addListener(i,"mouseup",S),addListener(i,"click",O),addListener(i,"dblclick",A),addListener(i,"focus",H),addListener(i,"blur",E),addListener(i,"touchstart",j),addListener(i,"touchmove",M),addListener(i,"touchend",D),addListener(i,"touchcancel",B),i.className=f="\n      ui-pnotify\n      "+(!1!==e.icon?"ui-pnotify-with-icon":"")+"\n      "+(e._styles.element?e._styles.element:"")+"\n      "+e.addClass+"\n      "+e._animatingClass+"\n      "+e._moveClass+"\n      "+("fade"===e.animation?"ui-pnotify-fade-"+e.animateSpeed:"")+"\n      "+(e.stack&&e.stack.modal?"ui-pnotify-modal":"")+"\n      "+e._moduleClasses.join(" ")+"\n    ",setAttribute(i,"aria-live","assertive"),setAttribute(i,"role","alertdialog"),setAttribute(i,"ui-pnotify",!0)},m(e,c){for(insert(e,i,c),append(i,n),_=0;_<d.length;_+=1)d[_].m(n,null);for(append(n,o),g&&g.m(n,null),append(n,s),b&&b.m(n,null),append(n,r),v&&v.m(n,null),append(n,a),_=0;_<h.length;_+=1)h[_].m(n,null);t.refs.container=n,t.refs.elem=i},p(e,p){const _=p._modulesPrependContainer;d=updateKeyedEach(d,t,e,y,1,p,_,u,n,destroyBlock,create_each_block_1,"m",o,get_each0_context),!1!==p.icon?g?g.p(e,p):((g=create_if_block_4(t,p)).c(),g.m(n,s)):g&&(g.d(1),g=null),!1!==p.title?b?b.p(e,p):((b=create_if_block_2(t,p)).c(),b.m(n,r)):b&&(b.d(1),b=null),!1!==p.text?v?v.p(e,p):((v=create_if_block(t,p)).c(),v.m(n,a)):v&&(v.d(1),v=null);const x=p._modulesAppendContainer;h=updateKeyedEach(h,t,e,N,1,p,x,m,n,destroyBlock,create_each_block,"m",null,get_each1_context),(e._styles||e.type||e.cornerClass||e.shadow)&&c!==(c="\n        ui-pnotify-container\n        "+(p._styles.container?p._styles.container:"")+"\n        "+(p._styles[p.type]?p._styles[p.type]:"")+"\n        "+p.cornerClass+"\n        "+(p.shadow?"ui-pnotify-shadow":"")+"\n      ")&&(n.className=c),(e._widthStyle||e._minHeightStyle)&&l!==(l=p._widthStyle+" "+p._minHeightStyle)&&(n.style.cssText=l),(e.icon||e._styles||e.addClass||e._animatingClass||e._moveClass||e.animation||e.animateSpeed||e.stack||e._moduleClasses)&&f!==(f="\n      ui-pnotify\n      "+(!1!==p.icon?"ui-pnotify-with-icon":"")+"\n      "+(p._styles.element?p._styles.element:"")+"\n      "+p.addClass+"\n      "+p._animatingClass+"\n      "+p._moveClass+"\n      "+("fade"===p.animation?"ui-pnotify-fade-"+p.animateSpeed:"")+"\n      "+(p.stack&&p.stack.modal?"ui-pnotify-modal":"")+"\n      "+p._moduleClasses.join(" ")+"\n    ")&&(i.className=f)},d(e){for(e&&detachNode(i),_=0;_<d.length;_+=1)d[_].d();for(g&&g.d(),b&&b.d(),v&&v.d(),_=0;_<h.length;_+=1)h[_].d();t.refs.container===n&&(t.refs.container=null),removeListener(i,"mouseover",k),removeListener(i,"mouseout",C),removeListener(i,"mouseenter",w),removeListener(i,"mouseleave",P),removeListener(i,"mousemove",T),removeListener(i,"mousedown",L),removeListener(i,"mouseup",S),removeListener(i,"click",O),removeListener(i,"dblclick",A),removeListener(i,"focus",H),removeListener(i,"blur",E),removeListener(i,"touchstart",j),removeListener(i,"touchmove",M),removeListener(i,"touchend",D),removeListener(i,"touchcancel",B),t.refs.elem===i&&(t.refs.elem=null)}}}function create_each_block_1(t,e,i){var n,o,s=i.module;function r(e){return{root:t.root,store:t.store}}if(s)var a=new s(r());function c(e){t.initModule(e.module)}return a&&a.on("init",c),{key:e,first:null,c(){n=createComment(),a&&a._fragment.c(),o=createComment(),this.first=n},m(t,e){insert(t,n,e),a&&a._mount(t,e),insert(t,o,e)},p(t,e){s!==(s=e.module)&&(a&&a.destroy(),s?((a=new s(r()))._fragment.c(),a._mount(o.parentNode,o),a.on("init",c)):a=null)},d(t){t&&(detachNode(n),detachNode(o)),a&&a.destroy(t)}}}function create_if_block_4(t,e){var i,n,o,s;return{c(){i=createElement("div"),(n=createElement("span")).className=o=!0===e.icon?e._icons[e.type]?e._icons[e.type]:"":e.icon,i.className=s="ui-pnotify-icon "+(e._styles.icon?e._styles.icon:"")},m(e,o){insert(e,i,o),append(i,n),t.refs.iconContainer=i},p(t,e){(t.icon||t._icons||t.type)&&o!==(o=!0===e.icon?e._icons[e.type]?e._icons[e.type]:"":e.icon)&&(n.className=o),t._styles&&s!==(s="ui-pnotify-icon "+(e._styles.icon?e._styles.icon:""))&&(i.className=s)},d(e){e&&detachNode(i),t.refs.iconContainer===i&&(t.refs.iconContainer=null)}}}function create_if_block_2(t,e){var i,n;function o(t){return t.titleTrusted?create_if_block_3:create_else_block_1}var s=o(e),r=s(t,e);return{c(){i=createElement("h4"),r.c(),i.className=n="ui-pnotify-title "+(e._styles.title?e._styles.title:"")},m(e,n){insert(e,i,n),r.m(i,null),t.refs.titleContainer=i},p(e,a){s===(s=o(a))&&r?r.p(e,a):(r.d(1),(r=s(t,a)).c(),r.m(i,null)),e._styles&&n!==(n="ui-pnotify-title "+(a._styles.title?a._styles.title:""))&&(i.className=n)},d(e){e&&detachNode(i),r.d(),t.refs.titleContainer===i&&(t.refs.titleContainer=null)}}}function create_else_block_1(t,e){var i;return{c(){i=createText(e.title)},m(t,e){insert(t,i,e)},p(t,e){t.title&&setData(i,e.title)},d(t){t&&detachNode(i)}}}function create_if_block_3(t,e){var i,n;return{c(){i=createElement("noscript"),n=createElement("noscript")},m(t,o){insert(t,i,o),i.insertAdjacentHTML("afterend",e.title),insert(t,n,o)},p(t,e){t.title&&(detachBetween(i,n),i.insertAdjacentHTML("afterend",e.title))},d(t){t&&(detachBetween(i,n),detachNode(i),detachNode(n))}}}function create_if_block(t,e){var i,n;function o(t){return t.textTrusted?create_if_block_1:create_else_block}var s=o(e),r=s(t,e);return{c(){i=createElement("div"),r.c(),i.className=n="ui-pnotify-text "+(e._styles.text?e._styles.text:""),setAttribute(i,"role","alert")},m(e,n){insert(e,i,n),r.m(i,null),t.refs.textContainer=i},p(e,a){s===(s=o(a))&&r?r.p(e,a):(r.d(1),(r=s(t,a)).c(),r.m(i,null)),e._styles&&n!==(n="ui-pnotify-text "+(a._styles.text?a._styles.text:""))&&(i.className=n)},d(e){e&&detachNode(i),r.d(),t.refs.textContainer===i&&(t.refs.textContainer=null)}}}function create_else_block(t,e){var i;return{c(){i=createText(e.text)},m(t,e){insert(t,i,e)},p(t,e){t.text&&setData(i,e.text)},d(t){t&&detachNode(i)}}}function create_if_block_1(t,e){var i,n;return{c(){i=createElement("noscript"),n=createElement("noscript")},m(t,o){insert(t,i,o),i.insertAdjacentHTML("afterend",e.text),insert(t,n,o)},p(t,e){t.text&&(detachBetween(i,n),i.insertAdjacentHTML("afterend",e.text))},d(t){t&&(detachBetween(i,n),detachNode(i),detachNode(n))}}}function create_each_block(t,e,i){var n,o,s=i.module;function r(e){return{root:t.root,store:t.store}}if(s)var a=new s(r());function c(e){t.initModule(e.module)}return a&&a.on("init",c),{key:e,first:null,c(){n=createComment(),a&&a._fragment.c(),o=createComment(),this.first=n},m(t,e){insert(t,n,e),a&&a._mount(t,e),insert(t,o,e)},p(t,e){s!==(s=e.module)&&(a&&a.destroy(),s?((a=new s(r()))._fragment.c(),a._mount(o.parentNode,o),a.on("init",c)):a=null)},d(t){t&&(detachNode(n),detachNode(o)),a&&a.destroy(t)}}}function PNotify_1(t){init(this,t),this.refs={},this._state=assign(data(),t.data),this._recompute({styling:1,icons:1,width:1,minHeight:1},this._state),this._intro=!0,document.getElementById("svelte-1eldsjg-style")||add_css(),this._fragment=create_main_fragment(this,this._state),this.root._oncreate.push(()=>{oncreate.call(this),this.fire("update",{changed:assignTrue({},this._state),current:this._state})}),t.target&&(this._fragment.c(),this._mount(t.target,t.anchor),flush(this))}function createElement(t){return document.createElement(t)}function append(t,e){t.appendChild(e)}function blankObject(){return Object.create(null)}function createText(t){return document.createTextNode(t)}function setAttribute(t,e,i){null==i?t.removeAttribute(e):t.setAttribute(e,i)}function addListener(t,e,i,n){t.addEventListener(e,i,n)}function insert(t,e,i){t.insertBefore(e,i)}function updateKeyedEach(t,e,i,n,o,s,r,a,c,l,f,d,u,h){for(var m=t.length,p=r.length,y=m,_={};y--;)_[t[y].key]=y;var g=[],b={},v={};for(y=p;y--;){var x=h(s,r,y),N=n(x),k=a[N];k?o&&k.p(i,x):(k=f(e,N,x)).c(),g[y]=b[N]=k,N in _&&(v[N]=Math.abs(y-_[N]))}var C={},w={};function P(t){t[d](c,u),a[t.key]=t,u=t.first,p--}for(;m&&p;){var T=g[p-1],L=t[m-1],S=T.key,O=L.key;T===L?(u=T.first,m--,p--):b[O]?!a[S]||C[S]?P(T):w[O]?m--:v[S]>v[O]?(w[S]=!0,P(T)):(C[O]=!0,m--):(l(L,a),m--)}for(;m--;){b[(L=t[m]).key]||l(L,a)}for(;p;)P(g[p-1]);return g}function destroyBlock(t,e){t.d(1),e[t.key]=null}function detachNode(t){t.parentNode.removeChild(t)}function removeListener(t,e,i,n){t.removeEventListener(e,i,n)}function createComment(){return document.createComment("")}function setData(t,e){t.data=""+e}function detachBetween(t,e){for(;t.nextSibling&&t.nextSibling!==e;)t.parentNode.removeChild(t.nextSibling)}function init(t,e){t._handlers=blankObject(),t._slots=blankObject(),t._bind=e._bind,t._staged={},t.options=e,t.root=e.root||t,t.store=e.store||t.root.store,e.root||(t._beforecreate=[],t._oncreate=[],t._aftercreate=[])}function assign(t,e){for(var i in e)t[i]=e[i];return t}function assignTrue(t,e){for(var i in e)t[i]=1;return t}function flush(t){t._lock=!0,callAll(t._beforecreate),callAll(t._oncreate),callAll(t._aftercreate),t._lock=!1}function destroy(t){this.destroy=noop,this.fire("destroy"),this.set=noop,this._fragment.d(!1!==t),this._fragment=null,this._state={}}function get(){return this._state}function fire(t,e){var i=t in this._handlers&&this._handlers[t].slice();if(i)for(var n=0;n<i.length;n+=1){var o=i[n];if(!o.__calling)try{o.__calling=!0,o.call(this,e)}finally{o.__calling=!1}}}function on(t,e){var i=this._handlers[t]||(this._handlers[t]=[]);return i.push(e),{cancel:function(){var t=i.indexOf(e);~t&&i.splice(t,1)}}}function set(t){this._set(assign({},t)),this.root._lock||flush(this.root)}function _set(t){var e=this._state,i={},n=!1;for(var o in t=assign(this._staged,t),this._staged={},t)this._differs(t[o],e[o])&&(i[o]=n=!0);n&&(this._state=assign(assign({},e),t),this._recompute(i,this._state),this._bind&&this._bind(i,this._state),this._fragment&&(this.fire("state",{changed:i,current:this._state,previous:e}),this._fragment.p(i,this._state),this.fire("update",{changed:i,current:this._state,previous:e})))}function _stage(t){assign(this._staged,t)}function _mount(t,e){this._fragment[this._fragment.i?"i":"m"](t,e||null)}function _differs(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function callAll(t){for(;t&&t.length;)t.shift()()}function noop(){}assign(PNotify_1.prototype,{destroy:destroy,get:get,fire:fire,on:on,set:set,_set:_set,_stage:_stage,_mount:_mount,_differs:_differs}),assign(PNotify_1.prototype,methods),PNotify_1.prototype._recompute=function(t,e){t.styling&&this._differs(e._styles,e._styles=_styles(e))&&(t._styles=!0),t.icons&&this._differs(e._icons,e._icons=_icons(e))&&(t._icons=!0),t.width&&this._differs(e._widthStyle,e._widthStyle=_widthStyle(e))&&(t._widthStyle=!0),t.minHeight&&this._differs(e._minHeightStyle,e._minHeightStyle=_minHeightStyle(e))&&(t._minHeightStyle=!0)},setup(PNotify_1);/* harmony default export */ __webpack_exports__["default"] = (PNotify_1);
-//# sourceMappingURL=PNotify.js.map
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ValidationForm = exports.Checkbox = exports.SelectGroup = exports.FileInput = exports.Radio = exports.TextInputGroup = exports.TextInput = exports.BaseFormControl = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+exports.parseFileSize = parseFileSize;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./polyfill */ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function parseFileSize(size) {
+    var num = parseFloat(size, 10);
+    var unit = size.match(/[a-zA-Z]+/)[0];
+    unit = unit.toLowerCase();
+    switch (unit) {
+        case "b":
+            return num;
+        case "kb":
+            return 1024 * num;
+        case "mb":
+            return 1024 * 1024 * num;
+        case "gb":
+            return 1024 * 1024 * 1024 * num;
+        default:
+            throw new Error("Unknown unit " + unit);
+    }
+}
+
+var BaseFormControl = exports.BaseFormControl = function (_React$Component) {
+    _inherits(BaseFormControl, _React$Component);
+
+    function BaseFormControl(props) {
+        _classCallCheck(this, BaseFormControl);
+
+        var _this = _possibleConstructorReturn(this, (BaseFormControl.__proto__ || Object.getPrototypeOf(BaseFormControl)).call(this, props));
+
+        _this.setError = function (errorMessage) {
+            _this.getInputRef().setCustomValidity(errorMessage);
+            _this.setState({ errorMessage: errorMessage });
+        };
+
+        _this.clearError = function () {
+            return _this.setError("");
+        };
+
+        _this.checkError = function (e) {
+            var isPristine = _this.state.isPristine;
+            if (isPristine) _this.setDirty();
+            _this.buildErrorMessage();
+            _this.changeInputErrorClass();
+        };
+
+        _this.handleBlur = function (e) {
+            if (_this.context.validationForm.immediate) return;
+            _this.checkError();
+        };
+
+        _this.handleChange = function (e) {
+            if (_this.props.onChange) _this.props.onChange(e);
+            if (!_this.context.validationForm.immediate) return;
+            _this.checkError();
+        };
+
+        _this.validateInput = function () {
+            _this.setDirty();
+            _this.buildErrorMessage();
+        };
+
+        _this.setDirty = function () {
+            _this.setState({ isPristine: false });
+        };
+
+        _this.filterProps = function () {
+            var _this$props = _this.props,
+                errorMessage = _this$props.errorMessage,
+                successMessage = _this$props.successMessage,
+                validator = _this$props.validator,
+                defaultErrorMessage = _this$props.defaultErrorMessage,
+                attachToForm = _this$props.attachToForm,
+                detachFromForm = _this$props.detachFromForm,
+                setFormDirty = _this$props.setFormDirty,
+                label = _this$props.label,
+                immediate = _this$props.immediate,
+                rest = _objectWithoutProperties(_this$props, ['errorMessage', 'successMessage', 'validator', 'defaultErrorMessage', 'attachToForm', 'detachFromForm', 'setFormDirty', 'label', 'immediate']);
+
+            return rest;
+        };
+
+        _this.state = {
+            isPristine: true,
+            errorMessage: ""
+        };
+        if (_react2.default.createRef) _this.inputRef = _react2.default.createRef();else _this.inputRef = function (element) {
+            //Before React 16.3
+            _this.inputRefLegacy = element;
+        };
+        return _this;
+    }
+
+    _createClass(BaseFormControl, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.context.validationForm.attachToForm(this);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            this.context.validationForm.detachFromForm(this);
+        }
+    }, {
+        key: 'getInputRef',
+        value: function getInputRef() {
+            return this.inputRefLegacy || this.inputRef.current;
+        }
+    }, {
+        key: 'buildErrorMessage',
+        value: function buildErrorMessage() {
+            var map = {
+                valueMissing: "required",
+                customError: "",
+                stepMismatch: "step",
+                patternMismatch: "pattern",
+                rangeUnderflow: "min",
+                rangeOverflow: "max",
+                typeMismatch: "type"
+            };
+
+            var errorMessage = this.props.errorMessage;
+
+            var defaultErrorMessage = this.context.validationForm.defaultErrorMessage || {};
+            //If string was passed to errorMessage, default to required error Message
+            if (typeof errorMessage === "string") errorMessage = { required: errorMessage };
+            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, defaultErrorMessage, errorMessage);
+            var input = this.getInputRef();
+            if (input) {
+                var validityState = input.validity;
+                var newErrorMessage = "";
+                for (var prop in validityState) {
+                    if (validityState[prop]) {
+                        if (prop === "customError") newErrorMessage = input.validationMessage;else newErrorMessage = errorMessage[map[prop]];
+                        break;
+                    }
+                }
+
+                //Add support for minLength attribute
+                if (this.props.minLength) {
+                    if (input.value.length < +this.props.minLength) {
+                        input.setCustomValidity(errorMessage["minLength"]);
+                        newErrorMessage = errorMessage["minLength"].replace("{minLength}", this.props.minLength);
+                    } else {
+                        if (newErrorMessage === errorMessage["minLength"]) {
+                            input.setCustomValidity("");
+                            newErrorMessage = "";
+                        }
+                    }
+                }
+
+                if (typeof this.props.validator === "function") {
+                    var validatorFn = this.props.validator;
+                    var value = input.value;
+                    if (!validatorFn(value)) {
+                        input.setCustomValidity(errorMessage.validator);
+                        newErrorMessage = errorMessage.validator;
+                    } else {
+                        input.setCustomValidity("");
+                        newErrorMessage = "";
+                    }
+                }
+
+                this.setState({ errorMessage: newErrorMessage });
+            }
+        }
+    }, {
+        key: 'displayErrorMessage',
+        value: function displayErrorMessage() {
+            return this.state.errorMessage ? _react2.default.createElement(
+                'div',
+                { className: 'invalid-feedback' },
+                this.state.errorMessage
+            ) : null;
+        }
+
+        //displayBlock for radio group structure
+
+    }, {
+        key: 'displaySuccessMessage',
+        value: function displaySuccessMessage(displayBlock) {
+            return !this.state.isPristine && !this.state.errorMessage && this.props.successMessage ? _react2.default.createElement(
+                'div',
+                { className: "valid-feedback" + (displayBlock ? " d-block" : "") },
+                this.props.successMessage
+            ) : null;
+        }
+    }, {
+        key: 'changeInputErrorClass',
+        value: function changeInputErrorClass() {
+            var inputRef = this.getInputRef();
+            if (inputRef.type !== "radio") {
+                if (!inputRef.validity.valid) {
+                    inputRef.classList.add("is-invalid");
+                    inputRef.classList.remove("is-valid");
+                } else {
+                    inputRef.classList.remove("is-invalid");
+                    inputRef.classList.add("is-valid");
+                }
+            }
+        }
+
+        //Filter out non-DOM attribute
+
+    }]);
+
+    return BaseFormControl;
+}(_react2.default.Component);
+
+BaseFormControl.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    errorMessage: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string])
+};
+BaseFormControl.contextTypes = {
+    validationForm: _propTypes2.default.object
+};
+
+var TextInput = exports.TextInput = function (_BaseFormControl) {
+    _inherits(TextInput, _BaseFormControl);
+
+    function TextInput() {
+        _classCallCheck(this, TextInput);
+
+        return _possibleConstructorReturn(this, (TextInput.__proto__ || Object.getPrototypeOf(TextInput)).apply(this, arguments));
+    }
+
+    _createClass(TextInput, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var multiline = props.multiline,
+                successMessage = props.successMessage,
+                validator = props.validator,
+                domProps = _objectWithoutProperties(props, ['multiline', 'successMessage', 'validator']);
+
+            return _react2.default.createElement(
+                _react2.default.Fragment,
+                null,
+                multiline ? _react2.default.createElement('textarea', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })) : _react2.default.createElement('input', _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return TextInput;
+}(BaseFormControl);
+
+TextInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control",
+    multiline: false
+});
+
+var TextInputGroup = exports.TextInputGroup = function (_BaseFormControl2) {
+    _inherits(TextInputGroup, _BaseFormControl2);
+
+    function TextInputGroup() {
+        _classCallCheck(this, TextInputGroup);
+
+        return _possibleConstructorReturn(this, (TextInputGroup.__proto__ || Object.getPrototypeOf(TextInputGroup)).apply(this, arguments));
+    }
+
+    _createClass(TextInputGroup, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var prepend = props.prepend,
+                append = props.append,
+                inputGroupClassName = props.inputGroupClassName,
+                inputGroupStyle = props.inputGroupStyle,
+                domProps = _objectWithoutProperties(props, ['prepend', 'append', 'inputGroupClassName', 'inputGroupStyle']);
+
+            return _react2.default.createElement(
+                'div',
+                { className: inputGroupClassName, style: inputGroupStyle },
+                prepend && _react2.default.createElement(
+                    'div',
+                    { className: 'input-group-prepend' },
+                    prepend
+                ),
+                _react2.default.createElement('input', _extends({}, domProps, { className: this.props.className, ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur })),
+                append && _react2.default.createElement(
+                    'div',
+                    { className: 'input-group-append' },
+                    append
+                ),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return TextInputGroup;
+}(BaseFormControl);
+
+TextInputGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control",
+    inputGroupClassName: "input-group"
+});
+TextInputGroup.propTypes = {
+    className: _propTypes2.default.string,
+    inputGroupClassName: _propTypes2.default.string,
+    inputGroupStyle: _propTypes2.default.object,
+    prepend: _propTypes2.default.element,
+    append: _propTypes2.default.element
+};
+
+var RadioGroup = function (_BaseFormControl3) {
+    _inherits(RadioGroup, _BaseFormControl3);
+
+    function RadioGroup() {
+        _classCallCheck(this, RadioGroup);
+
+        return _possibleConstructorReturn(this, (RadioGroup.__proto__ || Object.getPrototypeOf(RadioGroup)).apply(this, arguments));
+    }
+
+    _createClass(RadioGroup, [{
+        key: 'getInputRef',
+        value: function getInputRef() {
+            var inputRef = window.document.querySelectorAll('[name="' + this.props.name + '"]')[0];
+            return inputRef;
+        }
+    }, {
+        key: 'mapRadioItems',
+        value: function mapRadioItems() {
+            var _this5 = this;
+
+            return _react2.default.Children.map(this.props.children, function (child) {
+                if (typeof child.type !== "function" || child.type.name !== RadioItem.name) {
+                    console.warn("Only RadioItem is allowed inside RadioGroup");
+                    return;
+                }
+                return _react2.default.cloneElement(child, _extends({}, child.props, {
+                    inline: _this5.props.inline,
+                    name: _this5.props.name,
+                    required: _this5.props.required,
+                    defaultValue: _this5.props.defaultValue,
+                    onChange: _this5.props.onChange,
+                    valueSelected: _this5.props.valueSelected,
+                    checkError: _this5.checkError
+                }));
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+            var containerStyle = props.containerStyle,
+                containerClassName = props.containerClassName;
+
+            return _react2.default.createElement(
+                'div',
+                { style: containerStyle, className: containerClassName },
+                this.mapRadioItems(),
+                this.state.errorMessage && _react2.default.createElement(
+                    'div',
+                    { className: 'invalid-feedback d-block' },
+                    this.state.errorMessage
+                ),
+                this.displaySuccessMessage(true)
+            );
+        }
+    }]);
+
+    return RadioGroup;
+}(BaseFormControl);
+
+RadioGroup.defaultProps = {
+    inline: true,
+    containerStyle: {}
+};
+RadioGroup.propTypes = {
+    inline: _propTypes2.default.bool,
+    name: _propTypes2.default.string.isRequired,
+    containerStyle: _propTypes2.default.object,
+    containerClassName: _propTypes2.default.string,
+    defaultValue: _propTypes2.default.string,
+    valueSelected: _propTypes2.default.string,
+    onChange: _propTypes2.default.func
+};
+
+var RadioItem = function (_Component) {
+    _inherits(RadioItem, _Component);
+
+    function RadioItem() {
+        var _ref;
+
+        var _temp, _this6, _ret;
+
+        _classCallCheck(this, RadioItem);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this6 = _possibleConstructorReturn(this, (_ref = RadioItem.__proto__ || Object.getPrototypeOf(RadioItem)).call.apply(_ref, [this].concat(args))), _this6), _this6.onChange = function (e) {
+            if (_this6.props.onChange) _this6.props.onChange(e, e.target.value);
+            _this6.props.checkError();
+        }, _temp), _possibleConstructorReturn(_this6, _ret);
+    }
+
+    _createClass(RadioItem, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                checkError = _props.checkError,
+                containerStyle = _props.containerStyle,
+                containerClassName = _props.containerClassName,
+                label = _props.label,
+                inline = _props.inline,
+                defaultValue = _props.defaultValue,
+                valueSelected = _props.valueSelected,
+                onChange = _props.onChange,
+                domProps = _objectWithoutProperties(_props, ['checkError', 'containerStyle', 'containerClassName', 'label', 'inline', 'defaultValue', 'valueSelected', 'onChange']);
+
+            var checkProps = valueSelected !== undefined && onChange ? { checked: this.props.value === valueSelected } : { defaultChecked: this.props.value === defaultValue };
+
+            return _react2.default.createElement(
+                'div',
+                { className: containerClassName + " form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
+                _react2.default.createElement('input', _extends({ className: 'form-check-input', type: 'radio'
+                }, checkProps, {
+                    onChange: this.onChange
+                }, domProps)),
+                _react2.default.createElement(
+                    'label',
+                    { className: 'form-check-label', htmlFor: this.props.id },
+                    label
+                )
+            );
+        }
+    }]);
+
+    return RadioItem;
+}(_react.Component);
+
+RadioItem.defaultProps = {
+    containerStyle: {},
+    containerClassName: ""
+};
+RadioItem.propTypes = {
+    value: _propTypes2.default.string.isRequired,
+    id: _propTypes2.default.string.isRequired,
+    label: _propTypes2.default.string.isRequired,
+    containerStyle: _propTypes2.default.object,
+    containerClassName: _propTypes2.default.string
+};
+var Radio = exports.Radio = {
+    RadioGroup: RadioGroup,
+    RadioItem: RadioItem
+};
+
+var FileInput = exports.FileInput = function (_BaseFormControl4) {
+    _inherits(FileInput, _BaseFormControl4);
+
+    function FileInput() {
+        var _ref2;
+
+        var _temp2, _this7, _ret2;
+
+        _classCallCheck(this, FileInput);
+
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
+
+        return _ret2 = (_temp2 = (_this7 = _possibleConstructorReturn(this, (_ref2 = FileInput.__proto__ || Object.getPrototypeOf(FileInput)).call.apply(_ref2, [this].concat(args))), _this7), _this7.checkFileError = function (file) {
+            var _this7$props = _this7.props,
+                maxFileSize = _this7$props.maxFileSize,
+                fileType = _this7$props.fileType,
+                _this7$props$errorMes = _this7$props.errorMessage,
+                errorMessage = _this7$props$errorMes === undefined ? {} : _this7$props$errorMes;
+
+            errorMessage = Object.assign({}, ValidationForm.defaultErrorMessage, errorMessage);
+            var limit = maxFileSize ? parseFileSize(maxFileSize) : null;
+            var newErrorMessage = "";
+            var fileExtension = file.name.slice(file.name.lastIndexOf(".") + 1).toLowerCase().trim();
+            fileType = fileType.map(function (type) {
+                return type.toLowerCase().trim();
+            });
+            if (fileType.length > 0 && !fileType.includes(fileExtension)) {
+                newErrorMessage = errorMessage["fileType"];
+            } else if (limit && file.size > limit) {
+                newErrorMessage = errorMessage["maxFileSize"];
+            } else {
+                newErrorMessage = "";
+            }
+            var inputRef = _this7.getInputRef();
+            inputRef.setCustomValidity(newErrorMessage);
+        }, _this7.handleChange = function (e) {
+            var inputRef = _this7.getInputRef();
+            var file = inputRef.files[0];
+            if (_this7.props.onChange) _this7.props.onChange(e, file);
+            if (!file) return _this7.checkError();
+            _this7.checkFileError(file);
+            _this7.checkError();
+        }, _temp2), _possibleConstructorReturn(_this7, _ret2);
+    }
+
+    _createClass(FileInput, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var maxFileSize = props.maxFileSize,
+                fileType = props.fileType,
+                domProps = _objectWithoutProperties(props, ['maxFileSize', 'fileType']);
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('input', _extends({}, domProps, { ref: this.inputRef, type: 'file', onChange: this.handleChange })),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return FileInput;
+}(BaseFormControl);
+
+FileInput.propTypes = {
+    fileType: _propTypes2.default.array,
+    maxFileSize: _propTypes2.default.string
+};
+FileInput.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control"
+});
+
+var SelectGroup = exports.SelectGroup = function (_BaseFormControl5) {
+    _inherits(SelectGroup, _BaseFormControl5);
+
+    function SelectGroup() {
+        _classCallCheck(this, SelectGroup);
+
+        return _possibleConstructorReturn(this, (SelectGroup.__proto__ || Object.getPrototypeOf(SelectGroup)).apply(this, arguments));
+    }
+
+    _createClass(SelectGroup, [{
+        key: 'render',
+        value: function render() {
+            var domProps = this.filterProps();
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'select',
+                    _extends({ className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, onBlur: this.handleBlur,
+                        value: this.props.value }),
+                    this.props.children
+                ),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return SelectGroup;
+}(BaseFormControl);
+
+SelectGroup.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-control"
+});
+
+var Checkbox = exports.Checkbox = function (_BaseFormControl6) {
+    _inherits(Checkbox, _BaseFormControl6);
+
+    function Checkbox() {
+        var _ref3;
+
+        var _temp3, _this9, _ret3;
+
+        _classCallCheck(this, Checkbox);
+
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
+        }
+
+        return _ret3 = (_temp3 = (_this9 = _possibleConstructorReturn(this, (_ref3 = Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).call.apply(_ref3, [this].concat(args))), _this9), _this9.handleChange = function (e) {
+            var checked = e.target.checked;
+            if (_this9.props.onChange) _this9.props.onChange(e, checked);
+            _this9.checkError();
+        }, _temp3), _possibleConstructorReturn(_this9, _ret3);
+    }
+
+    _createClass(Checkbox, [{
+        key: 'render',
+        value: function render() {
+            var props = this.filterProps();
+
+            var label = props.label,
+                inline = props.inline,
+                containerStyle = props.containerStyle,
+                className = props.className,
+                checked = props.checked,
+                domProps = _objectWithoutProperties(props, ['label', 'inline', 'containerStyle', 'className', 'checked']);
+
+            return _react2.default.createElement(
+                'div',
+                { className: "form-check " + (inline ? "form-check-inline" : ""), style: containerStyle },
+                _react2.default.createElement('input', _extends({ type: 'checkbox', className: this.props.className }, domProps, { ref: this.inputRef, onChange: this.handleChange, checked: this.props.value, defaultChecked: this.props.defaultChecked })),
+                _react2.default.createElement(
+                    'label',
+                    { className: 'form-check-label', htmlFor: domProps.id },
+                    this.props.label
+                ),
+                this.displayErrorMessage(),
+                this.displaySuccessMessage()
+            );
+        }
+    }]);
+
+    return Checkbox;
+}(BaseFormControl);
+
+Checkbox.defaultProps = _extends({}, BaseFormControl.defaultProps, {
+    className: "form-check-input",
+    containerStyle: {},
+    label: "",
+    inline: false
+});
+Checkbox.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    label: _propTypes2.default.string.isRequired,
+    containerStyle: _propTypes2.default.object,
+    inline: _propTypes2.default.bool,
+    id: _propTypes2.default.string.isRequired,
+    value: _propTypes2.default.bool,
+    defaultChecked: _propTypes2.default.bool
+};
+
+var ValidationForm = exports.ValidationForm = function (_React$Component2) {
+    _inherits(ValidationForm, _React$Component2);
+
+    function ValidationForm() {
+        var _ref4;
+
+        var _temp4, _this10, _ret4;
+
+        _classCallCheck(this, ValidationForm);
+
+        for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+            args[_key4] = arguments[_key4];
+        }
+
+        return _ret4 = (_temp4 = (_this10 = _possibleConstructorReturn(this, (_ref4 = ValidationForm.__proto__ || Object.getPrototypeOf(ValidationForm)).call.apply(_ref4, [this].concat(args))), _this10), _this10.inputs = {}, _this10.attachToForm = function (component) {
+            _this10.inputs[component.props.name] = component;
+        }, _this10.detachFromForm = function (component) {
+            delete _this10.inputs[component.props.name];
+        }, _this10.getChildContext = function () {
+            return {
+                validationForm: {
+                    attachToForm: _this10.attachToForm,
+                    detachFromForm: _this10.detachFromForm,
+                    immediate: _this10.props.immediate,
+                    defaultErrorMessage: _this10.props.defaultErrorMessage
+                }
+            };
+        }, _this10.setFormDiry = function () {
+            var form = _this10.refs.form;
+            if (!form.classList.contains('was-validated')) form.classList.add('was-validated');
+        }, _this10.mapInputs = function (inputs) {
+            var arr = Object.keys(inputs).map(function (prop) {
+                return inputs[prop];
+            });
+            return arr;
+        }, _this10.findFirstErrorInput = function (inputs) {
+            return inputs.find(function (input) {
+                return !input.getInputRef().validity.valid;
+            });
+        }, _this10.getErrorInputs = function (inputs) {
+            var map = {};
+            inputs.forEach(function (input) {
+                var inputRef = input.getInputRef();
+                var validityState = inputRef.validity;
+                if (!validityState.valid) map[inputRef.name] = input;
+            });
+            return map;
+        }, _this10.handleSubmit = function (event) {
+            var form = _this10.refs.form;
+            var formData = _this10.getFormData();
+            var inputArr = _this10.mapInputs(_this10.inputs);
+            _this10.setFormDiry();
+            _this10.validateInputs();
+
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                if (_this10.props.onErrorSubmit) _this10.props.onErrorSubmit(event, formData, _this10.getErrorInputs(inputArr));
+                if (_this10.props.setFocusOnError) {
+                    var firstErrorInput = _this10.findFirstErrorInput(inputArr);
+                    firstErrorInput.getInputRef().focus();
+                }
+            } else {
+                if (_this10.props.onSubmit) _this10.props.onSubmit(event, formData, inputArr);
+            }
+        }, _this10.resetValidationState = function (isClearValue) {
+            for (var prop in _this10.inputs) {
+                _this10.inputs[prop].setState({ errorMessage: "", isPristine: true });
+                var inputRef = _this10.inputs[prop].getInputRef();
+                inputRef.classList.remove("is-valid");
+                inputRef.classList.remove("is-invalid");
+                inputRef.setCustomValidity("");
+                if (isClearValue) {
+                    if (inputRef.type == "checkbox") inputRef.checked = false;
+                    inputRef.value = "";
+                }
+            }
+            _this10.refs.form.classList.remove("was-validated");
+        }, _temp4), _possibleConstructorReturn(_this10, _ret4);
+    }
+
+    _createClass(ValidationForm, [{
+        key: 'isBaseFormControl',
+        value: function isBaseFormControl(element) {
+            if (typeof element !== "function") return false;
+            while (Object.getPrototypeOf(element) !== Object.prototype) {
+                if (Object.getPrototypeOf(element) === BaseFormControl) {
+                    return true;
+                }
+                element = Object.getPrototypeOf(element);
+            }
+            return false;
+        }
+
+        //Use context instead
+        // registerChildren(children) {
+        //     let newChildren = React.Children.map(children, (child) => {
+        //         //If child is our baseFormControl, then assign new props to it
+        //         if (!child) return child;
+        //         if (this.isBaseFormControl(child.type)) {
+        //             return React.cloneElement(child, {
+        //                 ...child.props,
+        //                 attachToForm: this.attachToForm,
+        //                 detachFromForm: this.detachFromForm,
+        //                 immediate: this.props.immediate,
+        //                 defaultErrorMessage: this.props.defaultErrorMessage
+        //             });
+        //         } else {
+        //             if (typeof child === 'string') return child;
+        //             return React.cloneElement(child, {
+        //                 children: (typeof child.props.children === "string") ? child.props.children : this.registerChildren(child.props.children)
+        //             });
+        //         }
+        //     });
+        //     return newChildren;
+        // }
+
+    }, {
+        key: 'validateInputs',
+        value: function validateInputs() {
+            for (var prop in this.inputs) {
+                this.inputs[prop].validateInput();
+            }
+        }
+    }, {
+        key: 'getFormData',
+        value: function getFormData() {
+            var model = {};
+            for (var name in this.inputs) {
+                var inputRef = this.inputs[name].getInputRef();
+                var value = null;
+                switch (inputRef.type) {
+                    case "checkbox":
+                        value = inputRef.checked;
+                        break;
+                    case "radio":
+                        var radios = document.querySelectorAll('[name="' + this.props.name + '"]');
+                        for (var i = 0; i < radios.length; i++) {
+                            if (radios[i].checked) {
+                                value = radios[i].value;
+                                break;
+                            }
+                        }
+                        break;
+                    case "file":
+                        value = inputRef.files[0];
+                        break;
+                    default:
+                        value = inputRef.value;
+                }
+                model[name] = value;
+            };
+            return model;
+        }
+
+        //By default only clear customError and class, if isClearValue is true, clear value also
+
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props2 = this.props,
+                onSubmit = _props2.onSubmit,
+                onErrorSubmit = _props2.onErrorSubmit,
+                immediate = _props2.immediate,
+                setFocusOnError = _props2.setFocusOnError,
+                defaultErrorMessage = _props2.defaultErrorMessage,
+                domProps = _objectWithoutProperties(_props2, ['onSubmit', 'onErrorSubmit', 'immediate', 'setFocusOnError', 'defaultErrorMessage']);
+
+            return _react2.default.createElement(
+                'form',
+                _extends({ noValidate: true, ref: 'form'
+                }, domProps, {
+                    onSubmit: this.handleSubmit }),
+                this.props.children
+            );
+        }
+    }]);
+
+    return ValidationForm;
+}(_react2.default.Component);
+
+ValidationForm.defaultProps = {
+    className: "needs-validation",
+    setFocusOnError: true,
+    immediate: true,
+    defaultErrorMessage: {}
+};
+ValidationForm.propTypes = {
+    className: _propTypes2.default.string,
+    defaultErrorMessage: _propTypes2.default.object,
+    setFocusOnError: _propTypes2.default.bool,
+    immediate: _propTypes2.default.bool,
+    onSubmit: _propTypes2.default.func.isRequired,
+    onErrorSubmit: _propTypes2.default.func
+};
+ValidationForm.childContextTypes = {
+    validationForm: _propTypes2.default.object
+};
+ValidationForm.defaultErrorMessage = {
+    required: "This field is required",
+    pattern: "Input value does not match the pattern",
+    type: "Input value does not match the type",
+    step: "Step mismatch",
+    minLength: "Please enter at least {minLength} characters",
+    min: "Number is too low",
+    max: "Number is too high",
+    fileType: "File type mismatch",
+    maxFileSize: "File size exceed limit",
+    validator: "Validator check failed"
+};
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap4-form-validation/lib/polyfill.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/react-bootstrap4-form-validation/lib/polyfill.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (!Array.prototype.find) {
+    Object.defineProperty(Array.prototype, 'find', {
+        value: function value(predicate) {
+            // 1. Let O be ? ToObject(this value).
+            if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+            }
+
+            var o = Object(this);
+
+            // 2. Let len be ? ToLength(? Get(O, "length")).
+            var len = o.length >>> 0;
+
+            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+
+            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+            var thisArg = arguments[1];
+
+            // 5. Let k be 0.
+            var k = 0;
+
+            // 6. Repeat, while k < len
+            while (k < len) {
+                // a. Let Pk be ! ToString(k).
+                // b. Let kValue be ? Get(O, Pk).
+                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                // d. If testResult is true, return kValue.
+                var kValue = o[k];
+                if (predicate.call(thisArg, kValue, k, o)) {
+                    return kValue;
+                }
+                // e. Increase k by 1.
+                k++;
+            }
+
+            // 7. Return undefined.
+            return undefined;
+        },
+        configurable: true,
+        writable: true
+    });
+}
+
+if (typeof Object.assign != 'function') {
+    // Must be writable: true, enumerable: false, configurable: true
+    Object.defineProperty(Object, "assign", {
+        value: function assign(target, varArgs) {
+            // .length of function is 2
+            'use strict';
+
+            if (target == null) {
+                // TypeError if undefined or null
+                throw new TypeError('Cannot convert undefined or null to object');
+            }
+
+            var to = Object(target);
+
+            for (var index = 1; index < arguments.length; index++) {
+                var nextSource = arguments[index];
+
+                if (nextSource != null) {
+                    // Skip over if undefined or null
+                    for (var nextKey in nextSource) {
+                        // Avoid bugs when hasOwnProperty is shadowed
+                        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                            to[nextKey] = nextSource[nextKey];
+                        }
+                    }
+                }
+            }
+            return to;
+        },
+        writable: true,
+        configurable: true
+    });
+}
 
 /***/ })
 

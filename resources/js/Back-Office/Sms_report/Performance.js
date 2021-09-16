@@ -8,7 +8,7 @@ import Datetime from 'react-datetime';
 import axios from 'axios'
 import {CheckPermission} from '../../HttpFunctions'; 
 
-const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
 
 
 
@@ -23,7 +23,7 @@ class Performance extends React.Component {
    
     constructor(props) {
         super(props);
-        this.state={id:'',job_type_list:[],job_type:'',work_type:'',work_completed:'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/export',btnhide:'unset'}
+        this.state={id:'',job_type_list:[],job_type:'',work_type:'',work_completed:'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/export',btnhide:'unset',role:roles}
     }
     onsearch = (e) => {
         var items  = [];
@@ -139,7 +139,7 @@ class Performance extends React.Component {
                            
                             <ValidationForm  method="get" action={this.state.baseurl} onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                             <Form.Row> 
-
+                                <input type="hidden" name="role" value={this.state.role} />
                                 <Form.Group as={Col} md="2">
                                     <Form.Label htmlFor="start_date">Start Date</Form.Label>
                                     <Datetime closeOnSelect={true} onChange={this.startDateChange}  dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()} errorMessage={{required:"start_date is required"}}  inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />

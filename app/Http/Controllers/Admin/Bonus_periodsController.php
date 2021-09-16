@@ -260,9 +260,14 @@ class Bonus_periodsController extends Controller
             
          }
          
-       
+         $user = JWTAuth::toUser($request->input('token'));
+         $role =0;
+         if($user){
+          $role = $user['roles'];
+          
+         }
        //echo '<pre/>'; print_r($team); exit;
-       return view('reports.sms_bonus_view', ['data' => $team,"period"=>$request->period]);
+       return view('reports.sms_bonus_view', ['data' => $team,"period"=>$request->period,'role'=>$role]);
     
         
     }

@@ -1,4 +1,10 @@
+<?php
+$role=0;
+if(isset($_REQUEST['role'])){
+  $role=$_REQUEST['role'];
+}
 
+?>
 <table>
     <tbody>
      
@@ -7,6 +13,7 @@
     <?php $total_bonus=0; $total_revenue=0; ?>
     @foreach ($data as $ky => $engineer)
     <tr style="background-color: #f1f1f1">
+    @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
         <td  style="width:20;border: 1px solid #000000;text-align: center;font-weight: bold;" rowspan="2" >Engineer</td>
         <td style="width:10;border: 1px solid #000000;text-align: center;font-weight: bold;" rowspan="2" >Period</td>
         <td style="width:15;border: 1px solid #000000;text-align: center;font-weight: bold;" rowspan="2">W/C</td>
@@ -16,10 +23,13 @@
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#9C7001" colspan="3">Thursday</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501" colspan="3">Friday</td>
         <td style="width:15;border: 1px solid #000000;text-align: center;font-weight: bold;background:#FF7F23" rowspan="2">Total Bonus</td>
+        @endif
+            @if($role==7 || $role==6 || $role==5 || $role==1)
         <td style="width:15;border: 1px solid #000000;text-align: center;font-weight: bold;background:#FF7F23" rowspan="2">Revenue</td>
-        
+        @endif
      </tr>
      <tr style="background-color: #f1f1f1">
+     @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#FFB801">PUs</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#FFB801">Bonus PU</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#FFB801">Bonus</td>
@@ -39,16 +49,18 @@
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501">PUs</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501">Bonus PU</td>
         <td style="border: 1px solid #000000;text-align: center;font-weight: bold;background:#755501">Bonus</td>
+        @endif
     </tr>
 
         <tr>
-            
+        @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
             <td valign="center" rowspan="{{count($engineer)}}">
             {{$ky}}
             </td>
             <td valign="center" style="text-align: center;" rowspan="{{count($engineer)}}">
                @if(isset($_REQUEST['period'])) {{$_REQUEST['period']}} @else {{$period}} @endif 
             </td>
+            @endif
         </tr>   
         <tr>
              <td>
@@ -56,6 +68,7 @@
                  <?php $total_engineer_bonus=0; $total_engineer_revenue=0; ?>
                     @foreach ($engineer as $wy => $week_date)
                             <tr>
+                            @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
                             <td style="text-align: center;">{{date('d/m/Y',strtotime($wy)) }}</td>
                             <?php $revenue=0; ?>
                             <?php $bonus=0; ?>
@@ -132,18 +145,35 @@
                                         $total_bonus= $total_bonus + $bonus;
                                         $total_revenue= $total_revenue + $revenue; ?>
                                 <td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-">{{$bonus}}</td>
-                                <td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-">{{$revenue}}</td>            
+                                @endif
+                               @if($role==7 || $role==1)
+                                <td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-">{{$revenue}}</td> 
+                                @endif           
                             </tr>
                     @endforeach  
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$total_engineer_bonus}}</td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$total_engineer_revenue}}</td></tr>   
+                    <tr>
+                    @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$total_engineer_bonus}}</td>
+    @endif
+                               @if($role==7 || $role==6 || $role==5 || $role==1)
+    <td style="text-align: center;background:#FF7F23;border: 1px solid #000000;" data-format="£#,##0.00_-">{{$total_engineer_revenue}}</td>
+    @endif
+</tr>   
                  </table>    
              <td>    
         <tr>
         
         @endforeach   
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-" >{{$total_bonus}}</td><td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-" >{{$total_revenue}}</td></tr> 
+    <tr>
+    @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)    
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td></td><td></td><td></td><td></td><td></td><td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-" >{{$total_bonus}}</td>
+    @endif
+                               @if($role==7 || $role==6 || $role==5 || $role==1)
+    <td style="text-align: center;background:#FF7F23" data-format="£#,##0.00_-" >{{$total_revenue}}</td>
+    @endif
+</tr> 
         
     </tbody>    
 <table>    

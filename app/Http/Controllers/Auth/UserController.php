@@ -144,12 +144,12 @@ class UserController extends Controller
     }
     */
     public function logout( Request $request ) {
-
+        
         $token = $request->header( 'Authorization' );
 
         try {
             JWTAuth::parseToken()->invalidate( $token );
-
+            
             return response()->json( [
                 'error'   => false,
                 'message' => trans( 'auth.logged_out' )

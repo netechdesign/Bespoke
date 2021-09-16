@@ -1,554 +1,586 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[87],{
 
-/***/ "./node_modules/react-tag-autocomplete/dist-es5/Input.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/react-tag-autocomplete/dist-es5/Input.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/App/components/AnimatedModal.js":
+/*!******************************************************!*\
+  !*** ./resources/js/App/components/AnimatedModal.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-animated-modal */ "./node_modules/react-animated-modal/build/index.js");
+/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_animated_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js")
 
-var SIZER_STYLES = {
-  position: 'absolute',
-  width: 0,
-  height: 0,
-  visibility: 'hidden',
-  overflow: 'scroll',
-  whiteSpace: 'pre'
-}
 
-var STYLE_PROPS = [
-  'fontSize',
-  'fontFamily',
-  'fontWeight',
-  'fontStyle',
-  'letterSpacing',
-  'textTransform'
-]
 
-var Input = /*@__PURE__*/(function (superclass) {
-  function Input (props) {
-    superclass.call(this, props)
-    this.state = { inputWidth: null }
+var AnimatedModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnimatedModal, _React$Component);
+
+  var _super = _createSuper(AnimatedModal);
+
+  function AnimatedModal() {
+    _classCallCheck(this, AnimatedModal);
+
+    return _super.apply(this, arguments);
   }
 
-  if ( superclass ) Input.__proto__ = superclass;
-  Input.prototype = Object.create( superclass && superclass.prototype );
-  Input.prototype.constructor = Input;
-
-  Input.prototype.componentDidMount = function componentDidMount () {
-    if (this.props.autoresize) {
-      this.copyInputStyles()
-      this.updateInputWidth()
+  _createClass(AnimatedModal, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        visible: this.props.showModal,
+        closemodal: this.props.modalClosed,
+        type: this.props.animation
+      }, this.props.children));
     }
+  }]);
 
-    if (this.props.autofocus) {
-      this.input.focus()
-    }
-  };
+  return AnimatedModal;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-  Input.prototype.componentDidUpdate = function componentDidUpdate (ref) {
-    var query = ref.query;
-    var placeholder = ref.placeholder;
-
-    if (query !== this.props.query || placeholder !== this.props.placeholder) {
-      this.updateInputWidth()
-    }
-  };
-
-  Input.prototype.copyInputStyles = function copyInputStyles () {
-    var this$1 = this;
-
-    var inputStyle = window.getComputedStyle(this.input)
-
-    STYLE_PROPS.forEach(function (prop) {
-      this$1.sizer.style[prop] = inputStyle[prop]
-    })
-  };
-
-  Input.prototype.updateInputWidth = function updateInputWidth () {
-    var inputWidth
-
-    if (this.props.autoresize) {
-      // scrollWidth is designed to be fast not accurate.
-      // +2 is completely arbitrary but does the job.
-      inputWidth = Math.ceil(this.sizer.scrollWidth) + 2
-    }
-
-    if (inputWidth !== this.state.inputWidth) {
-      this.setState({ inputWidth: inputWidth })
-    }
-  };
-
-  Input.prototype.render = function render () {
-    var this$1 = this;
-
-    var ref = this.props;
-    var inputAttributes = ref.inputAttributes;
-    var inputEventHandlers = ref.inputEventHandlers;
-    var query = ref.query;
-    var placeholder = ref.placeholder;
-    var expandable = ref.expandable;
-    var listboxId = ref.listboxId;
-    var selectedIndex = ref.selectedIndex;
-    var ariaLabel = ref.ariaLabel;
-
-    return (
-      React.createElement( 'div', { className: this.props.classNames.searchInput },
-        React.createElement( 'input', Object.assign({},
-          inputAttributes, inputEventHandlers, { ref: function (c) { this$1.input = c }, value: query, placeholder: placeholder, role: 'combobox', 'aria-autocomplete': 'list', 'aria-label': ariaLabel || placeholder, 'aria-owns': listboxId, 'aria-activedescendant': selectedIndex > -1 ? (listboxId + "-" + selectedIndex) : null, 'aria-expanded': expandable, style: { width: this.state.inputWidth } })),
-        React.createElement( 'div', { ref: function (c) { this$1.sizer = c }, style: SIZER_STYLES }, query || placeholder)
-      )
-    )
-  };
-
-  return Input;
-}(React.Component));
-
-module.exports = Input
-
+/* harmony default export */ __webpack_exports__["default"] = (AnimatedModal);
 
 /***/ }),
 
-/***/ "./node_modules/react-tag-autocomplete/dist-es5/ReactTags.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/react-tag-autocomplete/dist-es5/ReactTags.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/Back-Office/Role/add.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Back-Office/Role/add.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js")
-var PropTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js")
-var Tag = __webpack_require__(/*! ./Tag */ "./node_modules/react-tag-autocomplete/dist-es5/Tag.js")
-var Input = __webpack_require__(/*! ./Input */ "./node_modules/react-tag-autocomplete/dist-es5/Input.js")
-var Suggestions = __webpack_require__(/*! ./Suggestions */ "./node_modules/react-tag-autocomplete/dist-es5/Suggestions.js")
 
-var KEYS = {
-  ENTER: 13,
-  TAB: 9,
-  BACKSPACE: 8,
-  UP_ARROW: 38,
-  DOWN_ARROW: 40
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function successDesktopPNotify() {
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].success({
+    title: 'Success',
+    text: "Role added successfully",
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
 }
 
-var CLASS_NAMES = {
-  root: 'react-tags',
-  rootFocused: 'is-focused',
-  selected: 'react-tags__selected',
-  selectedTag: 'react-tags__selected-tag',
-  selectedTagName: 'react-tags__selected-tag-name',
-  search: 'react-tags__search',
-  searchInput: 'react-tags__search-input',
-  suggestions: 'react-tags__suggestions',
-  suggestionActive: 'is-active',
-  suggestionDisabled: 'is-disabled'
-}
+var Trrow = function Trrow(property) {
+  var pageName = property.rows.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      key: index
+    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+      name: value.name,
+      label: value.page_name,
+      id: property.index + '_' + value.name,
+      value: value.Ischeck,
+      onChange: property.onchildChange
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+    name: property.parent,
+    label: property.parent.toUpperCase(),
+    onChange: property.onparentChange,
+    id: property.index
+  })), pageName);
+};
 
-var ReactTags = /*@__PURE__*/(function (superclass) {
-  function ReactTags (props) {
-    superclass.call(this, props)
+var baseurl = window.location.origin;
 
-    this.state = {
-      query: '',
-      focused: false,
-      expandable: false,
-      selectedIndex: -1,
-      classNames: Object.assign({}, CLASS_NAMES, this.props.classNames)
+var add = /*#__PURE__*/function (_React$Component) {
+  _inherits(add, _React$Component);
+
+  var _super = _createSuper(add);
+
+  function add() {
+    var _this;
+
+    _classCallCheck(this, add);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    this.inputEventHandlers = {
-      // Provide a no-op function to the input component to avoid warnings
-      // <https://github.com/i-like-robots/react-tags/issues/135>
-      // <https://github.com/facebook/react/issues/13835>
-      onChange: function () { },
-      onBlur: this.handleBlur.bind(this),
-      onFocus: this.handleFocus.bind(this),
-      onInput: this.handleInput.bind(this),
-      onKeyDown: this.handleKeyDown.bind(this)
-    }
+    _this = _super.call.apply(_super, [this].concat(args));
 
-    this.container = React.createRef()
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      name: "",
+      slug: "",
+      chkCustom: false,
+      permission: [],
+      pageArray: [],
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Save'
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
+      // e.target.checked=true;
+      var checkValue = e.target.checked;
+      var parentname = e.target.name;
+      var parentIndex = e.target.id;
+
+      var permission = _toConsumableArray(_this.state.permission);
+
+      if (permission[parentIndex][parentname]) {
+        permission[parentIndex][parentname].map(function (vl, ind) {
+          vl.Ischeck = checkValue;
+        });
+      }
+
+      _this.setState({
+        permission: permission
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
+      var ckname = e.target.name;
+      var parentIndex = e.target.id.split("_")[0];
+      var checkValue = e.target.checked;
+
+      var permission = _toConsumableArray(_this.state.permission);
+
+      var parentname = Object.keys(permission[parentIndex]);
+
+      if (permission[parentIndex][parentname]) {
+        permission[parentIndex][parentname].filter(function (vl, i) {
+          if (vl.name == ckname) {
+            vl.Ischeck = checkValue;
+          }
+        });
+
+        _this.setState({
+          permission: permission
+        });
+      }
+      /*    
+      if(permission[parentIndex][parentname]){
+           permission[parentIndex][parentname].map((vl,ind)=>{
+               vl.Ischeck = checkValue;
+           })
+          }
+          this.setState({permission})
+          */
+
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+
+      var str = e.target.value;
+      str = str.replace(/\s/g, '-');
+
+      _this.setState({
+        slug: str
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "Loading")
+      });
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token;
+
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role', {
+        name: _this.state.name,
+        permission: _this.state.permission
+      }, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+
+          _this.setState({
+            name: ''
+          });
+
+          _this.PemissionGet();
+
+          $('input[type="checkbox"]').prop('checked', false);
+          successDesktopPNotify();
+        } else {
+          if (res.data.errors) {
+            res.data.message = res.data.errors.name;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+            title: "System Error",
+            text: res.data.errors.name
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      }); //  this.props.history.push('/role');
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["Pemissionlist"])().then(function (res) {
+        if (res.data.success) {
+          //console.log(res.data.data);
+          _this.setState({
+            permission: res.data.data
+          });
+
+          document.getElementById("requestLoder").innerHTML = '';
+          /*
+          this.state.permission.map((val,index)=>{
+                console.log(val[Object.keys(val)[0]]);
+          })
+          */
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
+    return _this;
   }
 
-  if ( superclass ) ReactTags.__proto__ = superclass;
-  ReactTags.prototype = Object.create( superclass && superclass.prototype );
-  ReactTags.prototype.constructor = ReactTags;
-
-  ReactTags.prototype.componentWillReceiveProps = function componentWillReceiveProps (newProps) {
-    this.setState({
-      classNames: Object.assign({}, CLASS_NAMES, newProps.classNames)
-    })
-  };
-
-  ReactTags.prototype.handleInput = function handleInput (e) {
-    var query = e.target.value
-
-    if (this.props.handleInputChange) {
-      this.props.handleInputChange(query)
+  _createClass(add, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'add', history);
+      this.PemissionGet();
     }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
 
-    this.setState({ query: query })
-  };
-
-  ReactTags.prototype.handleKeyDown = function handleKeyDown (e) {
-    var ref = this.state;
-    var query = ref.query;
-    var selectedIndex = ref.selectedIndex;
-    var ref$1 = this.props;
-    var delimiters = ref$1.delimiters;
-    var delimiterChars = ref$1.delimiterChars;
-
-    // when one of the terminating keys is pressed, add current query to the tags.
-    if (delimiters.indexOf(e.keyCode) > -1 || delimiterChars.indexOf(e.key) > -1) {
-      if (query || selectedIndex > -1) {
-        e.preventDefault()
-      }
-
-      this.handleDelimiter()
+      var addPage = [];
+      var _this$props2 = this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+        as: "h5"
+      }, "Add Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        className: "btn-sm",
+        style: {
+          'float': 'right'
+        },
+        onClick: function onClick() {
+          history.goBack();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-chevron-left"
+      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "name"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "name",
+        id: "name",
+        placeholder: "Name",
+        required: true,
+        value: this.state.name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Permission"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder",
+        style: {
+          'textAlign': 'center'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        ref: "tbl",
+        striped: true,
+        hover: true,
+        responsive: true,
+        className: "table table-condensed",
+        id: "data-table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+        id: "listdata"
+      }, this.state.permission.map(function (val, index) {
+        //  console.log(val[Object.keys(val)[0]]);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Trrow, {
+          key: index,
+          index: index,
+          parent: Object.keys(val)[0],
+          onparentChange: _this2.chageParent,
+          rows: val[Object.keys(val)[0]],
+          onchildChange: _this2.handleCheckboxChange
+        });
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))))));
     }
+  }]);
 
-    // when backspace key is pressed and query is blank, delete the last tag
-    if (e.keyCode === KEYS.BACKSPACE && query.length === 0 && this.props.allowBackspace) {
-      this.deleteTag(this.props.tags.length - 1)
-    }
+  return add;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-    if (e.keyCode === KEYS.UP_ARROW) {
-      e.preventDefault()
-
-      // if last item, cycle to the bottom
-      if (selectedIndex <= 0) {
-        this.setState({ selectedIndex: this.suggestions.state.options.length - 1 })
-      } else {
-        this.setState({ selectedIndex: selectedIndex - 1 })
-      }
-    }
-
-    if (e.keyCode === KEYS.DOWN_ARROW) {
-      e.preventDefault()
-
-      this.setState({ selectedIndex: (selectedIndex + 1) % this.suggestions.state.options.length })
-    }
-  };
-
-  ReactTags.prototype.handleDelimiter = function handleDelimiter () {
-    var ref = this.state;
-    var query = ref.query;
-    var selectedIndex = ref.selectedIndex;
-
-    if (query.length >= this.props.minQueryLength) {
-      // Check if the user typed in an existing suggestion.
-      var match = this.suggestions.state.options.findIndex(function (suggestion) {
-        return suggestion.name.search(new RegExp(("^" + query + "$"), 'i')) === 0
-      })
-
-      var index = selectedIndex === -1 ? match : selectedIndex
-
-      if (index > -1 && this.suggestions.state.options[index]) {
-        this.addTag(this.suggestions.state.options[index])
-      } else if (this.props.allowNew) {
-        this.addTag({ name: query })
-      }
-    }
-  };
-
-  ReactTags.prototype.handleClick = function handleClick (e) {
-    if (document.activeElement !== e.target) {
-      this.input.input.focus()
-    }
-  };
-
-  ReactTags.prototype.handleBlur = function handleBlur () {
-    this.setState({ focused: false, selectedIndex: -1 })
-
-    if (this.props.handleBlur) {
-      this.props.handleBlur()
-    }
-
-    if (this.props.addOnBlur) {
-      this.handleDelimiter()
-    }
-  };
-
-  ReactTags.prototype.handleFocus = function handleFocus () {
-    this.setState({ focused: true })
-
-    if (this.props.handleFocus) {
-      this.props.handleFocus()
-    }
-  };
-
-  ReactTags.prototype.handleDeleteTag = function handleDeleteTag (index, event) {
-    // Because we'll destroy the element with cursor focus we need to ensure
-    // it does not get lost and move it to the next interactive element
-    if (this.container.current) {
-      var interactiveEls = this.container.current.querySelectorAll('a,button,input')
-
-      var currentEl = Array.prototype.findIndex.call(interactiveEls, function (element) {
-        return element === event.currentTarget
-      })
-
-      var nextEl = interactiveEls[currentEl - 1] || interactiveEls[currentEl + 1]
-
-      if (nextEl) {
-        nextEl.focus()
-      }
-    }
-
-    this.deleteTag(index)
-  };
-
-  ReactTags.prototype.addTag = function addTag (tag) {
-    if (tag.disabled) {
-      return
-    }
-
-    if (typeof this.props.handleValidate === 'function' && !this.props.handleValidate(tag)) {
-      return
-    }
-
-    this.props.handleAddition(tag)
-
-    // reset the state
-    this.setState({
-      query: '',
-      selectedIndex: -1
-    })
-  };
-
-  ReactTags.prototype.deleteTag = function deleteTag (i) {
-    this.props.handleDelete(i)
-
-    if (this.props.clearInputOnDelete && this.state.query !== '') {
-      this.setState({ query: '' })
-    }
-  };
-
-  ReactTags.prototype.render = function render () {
-    var this$1 = this;
-
-    var listboxId = 'ReactTags-listbox'
-
-    var TagComponent = this.props.tagComponent || Tag
-
-    var tags = this.props.tags.map(function (tag, i) { return (
-      React.createElement( TagComponent, {
-        key: i, tag: tag, classNames: this$1.state.classNames, onDelete: this$1.handleDeleteTag.bind(this$1, i) })
-    ); })
-
-    var expandable = this.state.focused && this.state.query.length >= this.props.minQueryLength
-    var classNames = [this.state.classNames.root]
-
-    this.state.focused && classNames.push(this.state.classNames.rootFocused)
-
-    return (
-      React.createElement( 'div', { ref: this.container, className: classNames.join(' '), onClick: this.handleClick.bind(this) },
-        React.createElement( 'div', { className: this.state.classNames.selected, 'aria-live': 'polite', 'aria-relevant': 'additions removals' },
-          tags
-        ),
-        React.createElement( 'div', { className: this.state.classNames.search },
-          React.createElement( Input, Object.assign({},
-            this.state, { inputAttributes: this.props.inputAttributes, inputEventHandlers: this.inputEventHandlers, ref: function (c) { this$1.input = c }, listboxId: listboxId, autofocus: this.props.autofocus, autoresize: this.props.autoresize, expandable: expandable, placeholder: this.props.placeholder, ariaLabel: this.props.ariaLabel })),
-          React.createElement( Suggestions, Object.assign({},
-            this.state, { ref: function (c) { this$1.suggestions = c }, listboxId: listboxId, expandable: expandable, noSuggestionsText: this.props.noSuggestionsText, suggestions: this.props.suggestions, suggestionsFilter: this.props.suggestionsFilter, addTag: this.addTag.bind(this), maxSuggestionsLength: this.props.maxSuggestionsLength }))
-        )
-      )
-    )
-  };
-
-  return ReactTags;
-}(React.Component));
-
-ReactTags.defaultProps = {
-  tags: [],
-  placeholder: 'Add new tag',
-  noSuggestionsText: null,
-  suggestions: [],
-  suggestionsFilter: null,
-  autofocus: true,
-  autoresize: true,
-  delimiters: [KEYS.TAB, KEYS.ENTER],
-  delimiterChars: [],
-  minQueryLength: 2,
-  maxSuggestionsLength: 6,
-  allowNew: false,
-  allowBackspace: true,
-  tagComponent: null,
-  inputAttributes: {},
-  addOnBlur: false,
-  clearInputOnDelete: true
-}
-
-ReactTags.propTypes = {
-  tags: PropTypes.arrayOf(PropTypes.object),
-  placeholder: PropTypes.string,
-  ariaLabel: PropTypes.string,
-  noSuggestionsText: PropTypes.string,
-  suggestions: PropTypes.arrayOf(PropTypes.object),
-  suggestionsFilter: PropTypes.func,
-  autofocus: PropTypes.bool,
-  autoresize: PropTypes.bool,
-  delimiters: PropTypes.arrayOf(PropTypes.number),
-  delimiterChars: PropTypes.arrayOf(PropTypes.string),
-  handleDelete: PropTypes.func.isRequired,
-  handleAddition: PropTypes.func.isRequired,
-  handleInputChange: PropTypes.func,
-  handleFocus: PropTypes.func,
-  handleBlur: PropTypes.func,
-  handleValidate: PropTypes.func,
-  minQueryLength: PropTypes.number,
-  maxSuggestionsLength: PropTypes.number,
-  classNames: PropTypes.object,
-  allowNew: PropTypes.bool,
-  allowBackspace: PropTypes.bool,
-  tagComponent: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.element
-  ]),
-  inputAttributes: PropTypes.object,
-  addOnBlur: PropTypes.bool,
-  clearInputOnDelete: PropTypes.bool
-}
-
-module.exports = ReactTags
-
+/* harmony default export */ __webpack_exports__["default"] = (add);
 
 /***/ }),
 
-/***/ "./node_modules/react-tag-autocomplete/dist-es5/Suggestions.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/react-tag-autocomplete/dist-es5/Suggestions.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
 
 
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js")
 
-function escapeForRegExp (query) {
-  return query.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
-}
+/**
+ *  baseurl  get baseurl
+ */
 
-function markIt (input, query) {
-  if (query) {
-    var regex = RegExp(escapeForRegExp(query), 'gi')
-    input = input.replace(regex, '<mark>$&</mark>')
-  }
+var baseurl = window.location.origin;
+/**
+ * Login api request
+ * @param {*} user for send Credentials
+ */
 
-  return {
-    __html: input
-  }
-}
+var CheckPermission = function CheckPermission(page, page_name, history) {
+  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
-function filterSuggestions (query, suggestions, length, suggestionsFilter, noSuggestionsText) {
-  if (!suggestionsFilter) {
-    var regex = new RegExp(("(?:^|\\s)" + (escapeForRegExp(query))), 'i')
-    suggestionsFilter = function (item) { return regex.test(item.name); }
-  }
+  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref.id,
+      parmissions = _ref.parmissions;
 
-  var filtered = suggestions.filter(function (item) { return suggestionsFilter(item, query); }).slice(0, length)
-
-  if (filtered.length === 0 && noSuggestionsText) {
-    filtered.push({ id: 0, name: noSuggestionsText, disabled: true, disableMarkIt: true })
-  }
-
-  return filtered
-}
-
-var Suggestions = /*@__PURE__*/(function (superclass) {
-  function Suggestions (props) {
-    superclass.call(this, props)
-
-    this.state = {
-      options: filterSuggestions(this.props.query, this.props.suggestions, this.props.maxSuggestionsLength, this.props.suggestionsFilter, this.props.noSuggestionsText)
+  var pages = parmissions.filter(function (vl, idx) {
+    if (Object.keys(vl)[0] == page) {
+      return vl;
     }
-  }
+  });
 
-  if ( superclass ) Suggestions.__proto__ = superclass;
-  Suggestions.prototype = Object.create( superclass && superclass.prototype );
-  Suggestions.prototype.constructor = Suggestions;
+  if (pages.length > 0) {
+    var Ischeck = pages[0][page].filter(function (v, i) {
+      if (v['page_name'] == page_name) {
+        if (v['Ischeck']) {
+          return v;
+        }
+      }
+    });
 
-  Suggestions.prototype.componentWillReceiveProps = function componentWillReceiveProps (newProps) {
-    this.setState({
-      options: filterSuggestions(newProps.query, newProps.suggestions, newProps.maxSuggestionsLength, newProps.suggestionsFilter, newProps.noSuggestionsText)
-    })
-  };
-
-  Suggestions.prototype.handleMouseDown = function handleMouseDown (item, e) {
-    // focus is shifted on mouse down but calling preventDefault prevents this
-    e.preventDefault()
-    this.props.addTag(item)
-  };
-
-  Suggestions.prototype.render = function render () {
-    var this$1 = this;
-
-    if (!this.props.expandable || !this.state.options.length) {
-      return null
-    }
-
-    var options = this.state.options.map(function (item, i) {
-      var key = (this$1.props.listboxId) + "-" + i
-      var classNames = []
-
-      if (this$1.props.selectedIndex === i) {
-        classNames.push(this$1.props.classNames.suggestionActive)
+    if (Ischeck.length == 0) {
+      if (redirect) {
+        history.goBack();
       }
 
-      if (item.disabled) {
-        classNames.push(this$1.props.classNames.suggestionDisabled)
-      }
+      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
+        title: "Permission Error",
+        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
+      });
+      return 1;
+    }
+  } else {
+    history.goBack();
+  }
+};
+var Login = function Login(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
+    email: user.email,
+    password: user.password,
+    remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var Pemissionlist = function Pemissionlist(parameter) {
+  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref2.id,
+      auth_token = _ref2.auth_token;
 
-      return (
-        React.createElement( 'li', {
-          id: key, key: key, role: 'option', className: classNames.join(' '), 'aria-disabled': item.disabled === true, onMouseDown: this$1.handleMouseDown.bind(this$1, item) },
-          item.disableMarkIt ? item.name
-            : React.createElement( 'span', { dangerouslySetInnerHTML: markIt(item.name, this$1.props.query, item.markInput) })
-        )
-      )
-    })
-
-    return (
-      React.createElement( 'div', { className: this.props.classNames.suggestions },
-        React.createElement( 'ul', { role: 'listbox', id: this.props.listboxId }, options)
-      )
-    )
-  };
-
-  return Suggestions;
-}(React.Component));
-
-module.exports = Suggestions
-
-
-/***/ }),
-
-/***/ "./node_modules/react-tag-autocomplete/dist-es5/Tag.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/react-tag-autocomplete/dist-es5/Tag.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js")
-
-module.exports = function (props) { return (
-  React.createElement( 'button', { type: 'button', className: props.classNames.selectedTag, title: 'Click to remove tag', onClick: props.onDelete },
-    React.createElement( 'span', { className: props.classNames.selectedTagName }, props.tag.name)
-  )
-); }
-
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
+    'id': id
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    }
+  });
+};
+var RoleAdd = function RoleAdd(role) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
+    email: role.email,
+    password: role.password,
+    remember_me: role.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
 
 /***/ })
 
