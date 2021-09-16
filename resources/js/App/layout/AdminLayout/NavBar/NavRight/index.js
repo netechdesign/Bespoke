@@ -32,7 +32,7 @@ class NavRight extends Component {
                                 user: {}
                               }; 
                               localStorage["userData"] = JSON.stringify(appState);
-                              window.location.reload();
+                              window.location.reload(); 
                             }                        
                           
                         }else{
