@@ -76,7 +76,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_13___default.a;
 window.$ = jquery__WEBPACK_IMPORTED_MODULE_13___default.a;
 global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_13___default.a;

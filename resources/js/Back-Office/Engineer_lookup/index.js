@@ -5,9 +5,9 @@ import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Che
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
 import axios from 'axios'
-import {Importfile} from '../../HttpFunctions'; 
-import Aux from "../../hoc/_Aux";
 
+import Aux from "../../hoc/_Aux";
+import {CheckPermission} from '../../HttpFunctions';
 import PNotify from "pnotify/dist/es/PNotify";
 import "pnotify/dist/es/PNotifyButtons";
 import "pnotify/dist/es/PNotifyConfirm";

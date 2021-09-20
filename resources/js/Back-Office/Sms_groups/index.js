@@ -4,7 +4,7 @@ import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Che
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
 import axios from 'axios'
-import {Importfile} from '../../HttpFunctions'; 
+import {CheckPermission} from '../../HttpFunctions'; 
 import Aux from "../../hoc/_Aux";
 import {Link} from "react-router-dom";
 import PNotify from "pnotify/dist/es/PNotify";
@@ -15,7 +15,7 @@ import { extend } from 'jquery';
 import Select from 'react-select';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import {CheckPermission} from '../../HttpFunctions'; 
+
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
