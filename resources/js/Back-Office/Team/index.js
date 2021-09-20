@@ -5,7 +5,7 @@ import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Che
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
 import axios from 'axios'
-import {Importfile} from '../../HttpFunctions'; 
+import {CheckPermission} from '../../HttpFunctions'; 
 import Aux from "../../hoc/_Aux";
 
 import PNotify from "pnotify/dist/es/PNotify";
@@ -178,6 +178,8 @@ class Team extends React.Component {
     componentDidMount() {
         var items  = [];
         const { match, location, history } = this.props;
+        CheckPermission('File','Data Import',history);
+        
             atable();
             $('#data-table-responsive tbody').on('click', '.edit', function () {
                 var id =  $(this).attr('data-id');
