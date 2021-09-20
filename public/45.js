@@ -285,22 +285,30 @@ var add = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
       e.preventDefault();
 
-      _this.setState({
-        formSubmitting: true
-      });
-
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
-
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref.id,
           auth_token = _ref.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
+
+      if (_this.state.role_id == '') {
+        $('.rolelist').css({
+          'border': 'solid 1px #dc3545'
+        }); //  #dc3545   
+
+        return true;
+      } else {
+        _this.setState({
+          formSubmitting: true
+        });
+
+        _this.setState({
+          buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "spinner-grow spinner-grow-sm mr-1",
+            role: "status"
+          }), "Loading")
+        });
+      }
 
       axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/user', {
         name: _this.state.firstName,
@@ -595,9 +603,10 @@ var add = /*#__PURE__*/function (_React$Component) {
         htmlFor: "firstName"
       }, "Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
         onChange: this.RoleChange,
-        className: "basic-single",
+        className: "basic-single rolelist",
         classNamePrefix: "select",
         name: "role_id",
+        required: true,
         options: this.state.role_list,
         placeholder: "Select Role"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {

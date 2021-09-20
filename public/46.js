@@ -334,20 +334,28 @@ var edit = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
       e.preventDefault();
 
-      _this.setState({
-        formSubmitting: true
-      });
-
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
-
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref2.id,
           auth_token = _ref2.auth_token;
+
+      if (_this.state.role_id == '') {
+        $('.rolelist').css({
+          'border': 'solid 1px #dc3545'
+        }); //  #dc3545   
+
+        return true;
+      } else {
+        _this.setState({
+          formSubmitting: true
+        });
+
+        _this.setState({
+          buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "spinner-grow spinner-grow-sm mr-1",
+            role: "status"
+          }), "Loading")
+        });
+      }
 
       var data = new FormData();
       axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/user/' + _this.state.id, {
@@ -618,7 +626,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
         htmlFor: "firstName"
       }, "Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
         onChange: this.RoleChange,
-        className: "basic-single",
+        className: "basic-single rolelist",
         classNamePrefix: "select",
         name: "role_id",
         defaultValue: {

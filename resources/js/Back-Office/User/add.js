@@ -128,13 +128,18 @@ class add  extends React.Component{
 
     handleSubmit = (e, formData, inputs) => {
         e.preventDefault();
-        this.setState({formSubmitting:true});
-        this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
+        
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
        
         //const data = new FormData()
         //data.append('name', this.state.name);
-       
+       if(this.state.role_id==''){
+        $('.rolelist').css({'border':'solid 1px #dc3545'});
+        //  #dc3545   
+        return true;}else{
+            this.setState({formSubmitting:true});
+            this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
+        }
         axios.post(
             baseurl+'/api/user',
             {name:this.state.firstName,lastName:this.state.lastName,email:this.state.email,password:this.state.password,roles:this.state.role_id,permission:this.state.permission},
@@ -356,9 +361,10 @@ matchPassword = (value) => {
                             <Form.Group as={Col} md="4">
                             <Form.Label htmlFor="firstName">Role</Form.Label>
                             <Select onChange={this.RoleChange}
-                                    className="basic-single"
+                                    className="basic-single rolelist"
                                     classNamePrefix="select"
                                     name="role_id"
+                                    required
                                     options={this.state.role_list}
                                     placeholder="Select Role"
                                 />

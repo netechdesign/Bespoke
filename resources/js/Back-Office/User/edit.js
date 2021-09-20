@@ -169,10 +169,16 @@ class edit  extends React.Component{
 
     handleSubmit = (e, formData, inputs) => {
         e.preventDefault();
-        this.setState({formSubmitting:true});
-        this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
+        
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
        
+        if(this.state.role_id==''){
+            $('.rolelist').css({'border':'solid 1px #dc3545'});
+            //  #dc3545   
+            return true;}else{
+                this.setState({formSubmitting:true});
+                this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
+            }
         const data = new FormData()
            
         axios.post(
@@ -392,7 +398,7 @@ class edit  extends React.Component{
                             <Form.Group as={Col} md="4">
                             <Form.Label htmlFor="firstName">Role</Form.Label>
                             <Select onChange={this.RoleChange}
-                                    className="basic-single"
+                                    className="basic-single rolelist"
                                     classNamePrefix="select"
                                     name="role_id"
                                     defaultValue={{ label: this.state.role_name, value: this.state.role_id }}
