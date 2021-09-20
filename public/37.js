@@ -328,6 +328,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
+      CheckPermission('File', 'Data Import', history);
       atable();
       jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive tbody').on('click', '.edit', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_13___default()(this).attr('data-id');

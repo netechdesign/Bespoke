@@ -189,6 +189,7 @@ class SiteEngineer extends React.Component {
         var items  = [];
       
         const { match, location, history } = this.props;
+        CheckPermission('File','Data Import',history);
             atable(11);    
             const self= this;
             $('#data-table-responsive tbody').on('click', '.edit', function () {

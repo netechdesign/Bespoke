@@ -704,7 +704,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('File', 'Data Import', history);
     }
   }, {
     key: "render",

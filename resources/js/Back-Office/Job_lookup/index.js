@@ -183,8 +183,11 @@ class Job_lookup extends React.Component {
         }}
            
     componentDidMount() {
+        
+        
         var items  = [];
         const { match, location, history } = this.props;
+        CheckPermission('File','Data Import',history);
             atable();
             $('#data-table-responsive tbody').on('click', '.edit', function () {
                 var id =  $(this).attr('data-id');

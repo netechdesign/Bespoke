@@ -259,6 +259,7 @@ var SiteEngineer = /*#__PURE__*/function (_React$Component) {
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('File', 'Data Import', history);
       atable(11);
       var self = this;
       jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive tbody').on('click', '.edit', function () {

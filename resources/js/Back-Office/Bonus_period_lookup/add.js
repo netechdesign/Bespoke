@@ -66,7 +66,8 @@ class Add extends React.Component{
         
         componentDidMount(){
             const { match, location, history } = this.props;
-            CheckPermission('user','add',history);
+            
+            CheckPermission('File','Data Import',history);
         
         }
 
