@@ -412,6 +412,11 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var items = [];
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('user', 'show', history);
       atable(11);
       jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tbody').on('click', '.deletefile', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_12___default()(this).attr('data-id');

@@ -115,7 +115,7 @@ class Settarget extends React.Component{
 
          componentDidMount(){
             const { match, location, history } = this.props;
-           // CheckPermission('target','edit',history);
+            CheckPermission('user','show',history);
            const id = 1;
            document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
         const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';

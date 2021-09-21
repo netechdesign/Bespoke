@@ -208,8 +208,8 @@ var Settarget = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
-          history = _this$props.history; // CheckPermission('target','edit',history);
-
+          history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_7__["CheckPermission"])('user', 'show', history);
       var id = 1;
       document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
 

@@ -373,8 +373,8 @@ var Work_Type = [{
   value: 'domestic',
   label: 'Domestic'
 }, {
-  value: 'non_domestic',
-  label: 'Non Domestic'
+  value: 'I&C',
+  label: 'I&C'
 }];
 var Work_Completed = [{
   value: 'all',

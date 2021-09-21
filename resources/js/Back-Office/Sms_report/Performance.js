@@ -14,7 +14,7 @@ const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(local
 
 
 const baseurl= window.location.origin;
-export const Work_Type = [{ value: 'all', label: 'All'},{ value: 'domestic', label: 'Domestic'},{ value: 'non_domestic', label:'Non Domestic'}];
+export const Work_Type = [{ value: 'all', label: 'All'},{ value: 'domestic', label: 'Domestic'},{ value: 'I&C', label:'I&C'}];
 export const Work_Completed =[{value:'all',label:'All'},{value:'in_hours', label: 'In Hours'},{value:'out_of_hours', label: 'Out of Hours'}];
 
 
