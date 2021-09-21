@@ -178,7 +178,8 @@ class Engineer extends React.Component {
     componentDidMount() {
         var items  = [];
         const { match, location, history } = this.props;
-        CheckPermission('user','show',history);
+        //check permistion
+        CheckPermission('user','show',history);   
             atable(11);    
             $('#data-table-responsive tbody').on('click', '.deletefile', function () {
                 var id =  $(this).attr('data-id');
