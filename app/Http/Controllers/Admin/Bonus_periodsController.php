@@ -227,6 +227,12 @@ class Bonus_periodsController extends Controller
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']+$pu_result->pu:0);
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['revenue']+$pu_result->revenue:0);
+                        }else{
+                          
+                            $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
+                            $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']:0);
+                            $team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['revenue']:0);
+                          
                         }
                                 }
                                // $team[$vle->engineer][$vl->wc][$vle->week_day][]= $vle;

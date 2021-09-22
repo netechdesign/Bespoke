@@ -115,7 +115,11 @@
         <td style="border: 1px solid #000000;">{{$row_data->meter_type}}</td>
         <td style="border: 1px solid #000000;">{{date('d/m/Y',strtotime($row_data->appointment_date))}}</td>
         <td style="border: 1px solid #000000;">{{$row_data->time_slot}}</td>
-        <td style="border: 1px solid #000000;">{{date('d/m/Y H:i',strtotime($row_data->arrived_at))}}</td>
+        <td style="border: 1px solid #000000;">
+        @if(date('Y',strtotime($row_data->arrived_at))!='1970')
+          {{date('d/m/Y H:i',strtotime($row_data->arrived_at))}}
+        @endif
+        </td>
         <td style="border: 1px solid #000000;">{{$row_data->status}}</td>
         <td style="border: 1px solid #000000;">{{$row_data->engineer}}</td>
         <td style="border: 1px solid #000000;">{{$row_data->abort_code}}</td>
