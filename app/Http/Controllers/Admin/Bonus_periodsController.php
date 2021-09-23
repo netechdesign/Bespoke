@@ -222,11 +222,13 @@ class Bonus_periodsController extends Controller
                               if($vle->status=='completed'){
                                 $team[$vle->engineer][$vl->wc][$vle->week_day]['completed'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['completed'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['completed']+1:1);
 
-                                $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
+                               // $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
+                                $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
                         if($pu_result){
+                          $team[$vle->engineer][$vl->wc][$vle->week_day]['pu_no'][] =$pu_result->pu;
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
-                          $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']+$pu_result->pu:0);
-                          $team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['revenue']+$pu_result->revenue:0);
+                          $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']+$pu_result->pu:$pu_result->pu);
+                          $team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['revenue']+$pu_result->revenue:$pu_result->revenue);
                         }else{
                           
                             $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
@@ -272,7 +274,7 @@ class Bonus_periodsController extends Controller
           $role = $user['roles'];
           
          }
-       //echo '<pre/>'; print_r($team); exit;
+    //   echo '<pre/>'; print_r($team['Neil Minister']); exit;
        return view('reports.sms_bonus_view', ['data' => $team,"period"=>$request->period,'role'=>$role]);
     
         
