@@ -14,7 +14,15 @@
             </tr>
             
         <tr>
-            <td colspan="2"><b>Date :</b>{{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['start_date'])))}} To {{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['end_date'])))}}</td>
+            <td colspan="2"><b>Date :</b>
+            
+            @if(isset($_REQUEST['appointment_date']))
+                {{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['appointment_date'])))}}
+            @else
+              {{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['start_date'])))}} To {{date('d-m-Y',strtotime(str_replace('/', '-', $_REQUEST['end_date'])))}}
+            @endif
+           
+        </td>
             @if(isset($_REQUEST['work_completed']))
             <td colspan="3">
 

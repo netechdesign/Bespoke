@@ -62,13 +62,25 @@
         
                  <?php $total_engineer_bonus=0; $total_engineer_revenue=0; ?>
                     @foreach ($engineer as $wy => $week_date)
+                    
                             <tr style="color:black;">
                             @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)   
                             <td style="text-align: center;width:10.2%;border: 1px solid #000000;color:black;">{{date('d/m/Y',strtotime($wy)) }}</td>
                             <?php $revenue=0; ?>
                             <?php $bonus=0; ?>
                                        @if(isset($week_date['Monday']))
-                                         <td style="text-align: center;border: 1px solid #000000;width:3.1%">{{$week_date['Monday']['pu']}}</td>
+                                         <td style="text-align: center;border: 1px solid #000000;width:3.1%">
+                                         @if($week_date['Monday']>0)
+                                            <?php
+                                            $querylist = "&engineer_id=".$week_date['Monday']['engineer_id']."&appointment_date=".$week_date['Monday']['appointment_date'];
+                                            ?>
+                                            <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>
+                                            {{$week_date['Monday']['pu']}}
+                                            </a>
+                                         @else
+                                         0
+                                         @endif   
+                                        </td>
                                          <td style="text-align: center;border: 1px solid #000000;width:6.8%">{{$week_date['Monday']['bonus_pus']}}</td>
                                         <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:4.7%" data-format="£#,##0.00_-" >£{{$week_date['Monday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Monday']['revenue'] + $revenue;
@@ -81,7 +93,19 @@
                                      @endif
 
                                      @if(isset($week_date['Tuesday']))
-                                         <td style="text-align: center;border: 1px solid #000000;width:3.1%">{{$week_date['Tuesday']['pu']}}</td>
+                                         <td style="text-align: center;border: 1px solid #000000;width:3.1%">
+                                         
+                                         @if($week_date['Tuesday']>0)
+                                            <?php
+                                            $querylist = "&engineer_id=".$week_date['Tuesday']['engineer_id']."&appointment_date=".$week_date['Tuesday']['appointment_date'];
+                                            ?>
+                                            <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>
+                                            {{$week_date['Tuesday']['pu']}}
+                                            </a>
+                                         @else
+                                         0
+                                         @endif
+                                        </td>
                                          <td style="text-align: center;border: 1px solid #000000;width:6.8%">{{$week_date['Tuesday']['bonus_pus']}}</td>
                                         <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:4.7%" data-format="£#,##0.00_-">£{{$week_date['Tuesday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Tuesday']['revenue'] + $revenue;
@@ -95,7 +119,19 @@
 
                                      
                                      @if(isset($week_date['Wednesday']))
-                                         <td style="text-align: center;border: 1px solid #000000;width:3.2%">{{$week_date['Wednesday']['pu']}}</td>
+                                         <td style="text-align: center;border: 1px solid #000000;width:3.2%">
+                                         
+                                         @if($week_date['Wednesday']>0)
+                                            <?php
+                                            $querylist = "&engineer_id=".$week_date['Wednesday']['engineer_id']."&appointment_date=".$week_date['Wednesday']['appointment_date'];
+                                            ?>
+                                            <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>
+                                            {{$week_date['Wednesday']['pu']}}
+                                            </a>
+                                         @else
+                                         0
+                                         @endif
+                                        </td>
                                          <td style="text-align: center;border: 1px solid #000000;width:7.5%">{{$week_date['Wednesday']['bonus_pus']}}</td>
                                         <td style="text-align: center;background:#04AF0A;border: 1px solid #000000;width:5%" data-format="£#,##0.00_-" >£{{$week_date['Wednesday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Wednesday']['revenue'] + $revenue;
@@ -108,7 +144,19 @@
                                      @endif
                                      
                                      @if(isset($week_date['Thursday']))
-                                         <td style="text-align: center;border: 1px solid #000000;width:3.2%">{{$week_date['Thursday']['pu']}}</td>
+                                         <td style="text-align: center;border: 1px solid #000000;width:3.2%">
+                                         
+                                         @if($week_date['Thursday']>0)
+                                            <?php
+                                            $querylist = "&engineer_id=".$week_date['Thursday']['engineer_id']."&appointment_date=".$week_date['Thursday']['appointment_date'];
+                                            ?>
+                                            <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>
+                                            {{$week_date['Thursday']['pu']}}
+                                            </a>
+                                         @else
+                                         0
+                                         @endif
+                                        </td>
                                          <td style="text-align: center;border: 1px solid #000000;width:7.5%">{{$week_date['Thursday']['bonus_pus']}}</td>
                                         <td style="text-align: center;background:#04AF0A;width:5%;border: 1px solid #000000;">£{{$week_date['Thursday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Thursday']['revenue'] + $revenue;
@@ -121,7 +169,19 @@
                                      @endif
                                      
                                      @if(isset($week_date['Friday']))
-                                         <td style="text-align: center;border: 1px solid #000000;width:3.2%">{{$week_date['Friday']['pu']}}</td>
+                                         <td style="text-align: center;border: 1px solid #000000;width:3.2%">
+                                         
+                                         @if($week_date['Friday']>0)
+                                            <?php
+                                            $querylist = "&engineer_id=".$week_date['Friday']['engineer_id']."&appointment_date=".$week_date['Friday']['appointment_date'];
+                                            ?>
+                                            <a  target='_blank' href='{{url("sms/list?status=completed".$querylist)}}'>
+                                            {{$week_date['Friday']['pu']}}
+                                            </a>
+                                         @else
+                                         0
+                                         @endif
+                                        </td>
                                          <td style="text-align: center;border: 1px solid #000000;width:7.5%">{{$week_date['Friday']['bonus_pus']}}</td>
                                         <td style="text-align: center;background:#04AF0A;width:5%;border: 1px solid #000000;" data-format="£#,##0.00_-">£{{$week_date['Friday']['bonus']}}</td>
                                         <?php $revenue = $week_date['Friday']['revenue'] + $revenue;

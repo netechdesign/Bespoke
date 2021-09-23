@@ -225,6 +225,8 @@ class Bonus_periodsController extends Controller
                                // $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
                                 $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
                         if($pu_result){
+                            $team[$vle->engineer][$vl->wc][$vle->week_day]['engineer_id']=$vle->engineer_id;
+                          $team[$vle->engineer][$vl->wc][$vle->week_day]['appointment_date']=$vle->appointment_date;  
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['pu_no'][] =$pu_result->pu;
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']+$pu_result->pu:$pu_result->pu);

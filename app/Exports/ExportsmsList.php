@@ -53,9 +53,13 @@ class ExportsmsList implements WithMultipleSheets
         }
         $q->where('sms_jobs.regions_sort_name','!=','');
      
-        if($start_date!=''){ $q->whereDate('appointment_date', '>=', $start_date); }
-        if($end_date!=''){ $q->whereDate('appointment_date', '<=', $end_date); }
+        if(isset($start_date)){ $q->whereDate('appointment_date', '>=', $start_date); }
+        if(isset($end_date)){ $q->whereDate('appointment_date', '<=', $end_date); }
      
+        if(isset($_REQUEST['appointment_date']) && $_REQUEST['appointment_date']!=''){
+          $q->whereDate('appointment_date', '=', $_REQUEST['appointment_date']);
+        }
+        
         if(isset($_REQUEST['job_type']) && $_REQUEST['job_type']!=''){
           $q->where('work_type',$_REQUEST['job_type']);
         }
