@@ -302,17 +302,15 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Sms_report/Workmix.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Sms_report/Workmix.js ***!
-  \********************************************************/
-/*! exports provided: Work_Type, Work_Completed, default */
+/***/ "./resources/js/Back-Office/Sms_report/Bonus_periods.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Back-Office/Sms_report/Bonus_periods.js ***!
+  \**************************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Work_Type", function() { return Work_Type; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Work_Completed", function() { return Work_Completed; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
@@ -362,39 +360,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
-    auth_token = _ref.auth_token;
+    auth_token = _ref.auth_token,
+    roles = _ref.roles;
 
 var baseurl = window.location.origin;
-var Work_Type = [{
-  value: 'all',
-  label: 'All'
-}, {
-  value: 'domestic',
-  label: 'Domestic'
-}, {
-  value: 'I&C',
-  label: 'I&C'
-}];
-var Work_Completed = [{
-  value: 'all',
-  label: 'All'
-}, {
-  value: 'in_hours',
-  label: 'In Hours'
-}, {
-  value: 'out_of_hours',
-  label: 'Out of Hours'
-}];
 
-var Workmix = /*#__PURE__*/function (_React$Component) {
-  _inherits(Workmix, _React$Component);
+var Bonus_periods = /*#__PURE__*/function (_React$Component) {
+  _inherits(Bonus_periods, _React$Component);
 
-  var _super = _createSuper(Workmix);
+  var _super = _createSuper(Bonus_periods);
 
-  function Workmix(props) {
+  function Bonus_periods(props) {
     var _this;
 
-    _classCallCheck(this, Workmix);
+    _classCallCheck(this, Bonus_periods);
 
     _this = _super.call(this, props);
 
@@ -405,25 +384,20 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
           location = _this$props.location,
           history = _this$props.history;
       var _this$state = _this.state,
-          id = _this$state.id,
-          start_date = _this$state.start_date,
-          end_date = _this$state.end_date,
-          report_type = _this$state.report_type;
+          period = _this$state.period,
+          team_id = _this$state.team_id;
       var data = {
-        id: id,
-        start_date: start_date,
-        end_date: end_date,
-        file_id: report_type.value
+        period: period,
+        team_id: team_id
       };
       document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/workmix/report_view', data, {
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/bonus_periods/report_view', data, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         document.getElementById("monday_view").innerHTML = res.data;
-        $("#monday_view th").css("background", "lightgray");
 
         _this.setState({
           searching: false
@@ -432,68 +406,20 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
       }); //
     });
 
-    _defineProperty(_assertThisInitialized(_this), "startDateChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        start_date: today
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "endDateChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        end_date: today
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e) {});
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
-      _this.setState({
-        report_type: e
-      });
-
-      if (e.value == 3) {
-        _this.setState({
-          btnhide: 'none'
-        });
-      } else {
-        _this.setState({
-          btnhide: ''
-        });
-      }
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
     });
 
-    _defineProperty(_assertThisInitialized(_this), "job_type_list", function () {
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/joblookup/dropdown_list', {
+    _defineProperty(_assertThisInitialized(_this), "dropdownList", function (e) {
+      var id = _this.state.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/dropdown_list', {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -501,8 +427,10 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           _this.setState({
-            job_type_list: res.data.job_lookups
+            region_list: res.data.region
           });
+
+          document.getElementById("requestLoder").innerHTML = '';
         } else {}
       })["catch"](function (err) {
         console.log(err);
@@ -511,25 +439,34 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "RegionChange", function (e) {
       _this.setState({
-        job_type: e.value
+        team_id: e.value
       });
+
+      var region = _this.state.region_list.filter(function (vl, index) {
+        return vl.value == e.value;
+      });
+
+      if (region) {
+        _this.setState({
+          regions_sort_name: region[0].regions_sort_name
+        });
+      }
     });
 
     _this.state = {
-      id: '',
-      job_type_list: [],
-      job_type: '',
-      'report_type': '',
-      start_date: '',
-      end_date: '',
       searching: false,
-      baseurl: window.location.origin + '/sms/workmixexport',
-      btnhide: 'unset'
+      baseurl: window.location.origin + '/bonus_periods/export',
+      btnhide: 'unset',
+      period: '',
+      region_list: [],
+      regions_sort_name: "",
+      team_id: '',
+      role: roles
     };
     return _this;
   }
 
-  _createClass(Workmix, [{
+  _createClass(Bonus_periods, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props2 = this.props,
@@ -540,14 +477,15 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
       var id = this.props.match.params.id;
       this.setState({
         id: id
-      }); //  this.job_type_list();
+      });
+      this.dropdownList();
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
         as: "h5"
-      }, "Work Mix Report"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      }, "Bonus Periods"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -561,58 +499,41 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
         action: this.state.baseurl,
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "role",
+        value: this.state.role
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "start_date"
-      }, "Start Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        closeOnSelect: true,
-        onChange: this.startDateChange,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        minDate: new Date(),
-        errorMessage: {
-          required: "start_date is required"
-        },
-        inputProps: {
-          required: 'required',
-          name: "start_date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "end_date"
-      }, "End Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        closeOnSelect: true,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        minDate: new Date(),
-        errorMessage: {
-          required: "end_date is required"
-        },
-        onChange: this.endDateChange,
-        inputProps: {
-          required: 'required',
-          name: "end_date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "type"
-      }, "Work Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "file_id",
+        value: "3"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
+        htmlFor: "job_type"
+      }, "Period"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "period",
+        id: "period",
+        placeholder: "Period",
+        required: true,
+        value: this.state.period,
         onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
+        htmlFor: "firstName"
+      }, "Team"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.RegionChange,
         className: "basic-single",
         classNamePrefix: "select",
-        name: "file_id",
-        options: Work_Type,
-        placeholder: "Select type"
+        name: "team_id",
+        options: this.state.region_list,
+        placeholder: "Select Team"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "requestLoder"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "8"
@@ -637,17 +558,16 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
       }), "Download csv"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "monday_view",
         style: {
-          'textAlign': 'center',
-          'color': 'black'
+          'textAlign': 'center'
         }
       }))))));
     }
   }]);
 
-  return Workmix;
+  return Bonus_periods;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Workmix);
+/* harmony default export */ __webpack_exports__["default"] = (Bonus_periods);
 
 /***/ }),
 
@@ -655,7 +575,7 @@ var Workmix = /*#__PURE__*/function (_React$Component) {
 /*!***************************************!*\
   !*** ./resources/js/HttpFunctions.js ***!
   \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/*! exports provided: baseurl, CheckPermission, Login, resetPassword, Pemissionlist, RoleAdd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -663,6 +583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPassword", function() { return resetPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -724,6 +645,15 @@ var Login = function Login(user) {
     email: user.email,
     password: user.password,
     remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var resetPassword = function resetPassword(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/admin-password/email', {
+    email: user.email
   }, {
     headers: {
       'Content-Type': 'application/json'

@@ -239,6 +239,28 @@ class Bonus_periodsController extends Controller
                           
                         }
                                 }
+                                elseif($vle->status=='aborted'){
+                                    $team[$vle->engineer][$vl->wc][$vle->week_day]['aborted'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['aborted'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['aborted']+1:1);
+    
+                                   // $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
+                                    
+                                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
+                            if($pu_result){
+                                $team[$vle->engineer][$vl->wc][$vle->week_day]['engineer_id']=$vle->engineer_id;
+                              $team[$vle->engineer][$vl->wc][$vle->week_day]['appointment_date']=$vle->appointment_date;  
+
+                              $team[$vle->engineer][$vl->wc][$vle->week_day]['pu_no'][] =$pu_result->pu_aborted;
+                              $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
+                              $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']+$pu_result->pu_aborted:$pu_result->pu_aborted);
+                              $team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['revenue']+$pu_result->revenue_aborted:$pu_result->revenue_aborted);
+                            }else{
+                              
+                                $team[$vle->engineer][$vl->wc][$vle->week_day]['work_type'][] =$work_type;
+                                $team[$vle->engineer][$vl->wc][$vle->week_day]['pu'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['pu'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['pu']:0);
+                                $team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['revenue'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['revenue']:0);
+                              
+                            }
+                                    }    
                                // $team[$vle->engineer][$vl->wc][$vle->week_day][]= $vle;
                             }
                          }
@@ -276,6 +298,7 @@ class Bonus_periodsController extends Controller
           $role = $user['roles'];
           
          }
+         ksort($team);
     //   echo '<pre/>'; print_r($team['Neil Minister']); exit;
        return view('reports.sms_bonus_view', ['data' => $team,"period"=>$request->period,'role'=>$role]);
     

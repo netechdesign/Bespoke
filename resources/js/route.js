@@ -2,6 +2,7 @@ import React from 'react';
 
 // start job portal route
 const SignIn = React.lazy(() => import('./Authentication/SignIn/SignIn'));
+const ResetPassword = React.lazy(() => import('./Authentication/ResetPassword/ResetPassword'));
 
 // End job portal route
 
@@ -66,7 +67,7 @@ const route =
     { path: '/landing', exact: true, name: 'Landing Page', component: Landing },
    
     { path: '/auth/signin', exact: false, name: 'Signin 1', component: SignIn },
-   
+    { path: '/auth/reset-password-2', exact: true, name: 'Reset Password 1', component: ResetPassword },
 ];
 
 export default route;

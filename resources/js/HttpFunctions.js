@@ -60,7 +60,20 @@ export const baseurl= window.location.origin;
                     )     
 
     }
+    export const resetPassword = user => {
+        
+        return axios.post(
+                        baseurl+'/api/admin-password/email',
+                        {
+                            email:user.email,
+                            
+                        },
+                        {
+                            headers:{'Content-Type':'application/json'}
+                        } 
+                    )     
 
+    }
     export const Pemissionlist = parameter => {
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         return axios.post(

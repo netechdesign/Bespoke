@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Job_lookup/index.js":
-/*!******************************************************!*\
-  !*** ./resources/js/Back-Office/Job_lookup/index.js ***!
-  \******************************************************/
+/***/ "./resources/js/Back-Office/Engineer_lookup/index.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/Back-Office/Engineer_lookup/index.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -205,7 +205,7 @@ function atable() {
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin + '/api/job_lookup'
+    "sAjaxSource": window.location.origin + '/api/engineer_lookup'
   }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
     var acolumns = this.fnSettings().aoColumns,
         columns = [];
@@ -221,23 +221,23 @@ function atable() {
       }
     */
   }), _defineProperty(_$$DataTable, "columns", [{
-    "data": "job_type"
+    "data": "employee_name"
   }, {
-    "data": "mix"
+    "data": "regions_sort_name"
   }, {
-    "data": 'revenue'
+    "data": 'perfomance_level'
   }, {
-    "data": 'pu'
+    "data": 'cost'
   }, {
-    "data": 'revenue_aborted'
+    "data": 'Monday'
   }, {
-    "data": 'pu_aborted'
+    "data": 'Tuesday'
   }, {
-    "data": 'contract'
+    "data": 'Wednesday'
   }, {
-    "data": "from_date"
+    "data": 'Thursday'
   }, {
-    "data": "to_date"
+    "data": 'Friday'
   }, {
     "data": "id"
   }]), _defineProperty(_$$DataTable, "responsive", {
@@ -274,7 +274,6 @@ function atable() {
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
       var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
-      str_buttons += '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive th#action').index(),
@@ -292,15 +291,15 @@ function handleChange_search() {
   }, 500);
 }
 
-var Job_lookup = /*#__PURE__*/function (_React$Component) {
-  _inherits(Job_lookup, _React$Component);
+var Engineer_lookup = /*#__PURE__*/function (_React$Component) {
+  _inherits(Engineer_lookup, _React$Component);
 
-  var _super = _createSuper(Job_lookup);
+  var _super = _createSuper(Engineer_lookup);
 
-  function Job_lookup(props) {
+  function Engineer_lookup(props) {
     var _this;
 
-    _classCallCheck(this, Job_lookup);
+    _classCallCheck(this, Engineer_lookup);
 
     _this = _super.call(this, props);
 
@@ -320,7 +319,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Job_lookup, [{
+  _createClass(Engineer_lookup, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var items = [];
@@ -332,7 +331,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
       atable();
       jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive tbody').on('click', '.edit', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_13___default()(this).attr('data-id');
-        history.push('/job_lookup/edit/' + id);
+        history.push('/employee_lookup/edit/' + id);
       });
       jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive tbody').on('click', '.deletefile', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_13___default()(this).attr('data-id');
@@ -349,7 +348,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
                 _auth_token = _ref2.auth_token;
 
             var _baseurl = window.location.origin;
-            axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(_baseurl + '/api/job_lookup/' + id, {
+            axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(_baseurl + '/api/engineer/' + id, {
               _method: 'delete'
             }, {
               headers: {
@@ -358,7 +357,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
             }).then(function (res) {
               if (res.data.success) {
                 oTable.draw();
-                return MySwal.fire('', 'Job Type has been deleted!', 'success');
+                return MySwal.fire('', 'Engineer has been deleted!', 'success');
               }
             });
           } else {// return MySwal.fire('', 'Your imaginary file is safe!', 'error');
@@ -371,12 +370,12 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Job Lookup List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Employee Lookup List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         style: {
           'float': 'right'
         },
         as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
-        to: "/job_lookup/add"
+        to: "/employee_lookup/add"
       }, "+ Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         ref: "tbl",
         striped: true,
@@ -385,53 +384,53 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
         className: "table table-condensed",
         id: "data-table-responsive"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "job_type"
-      }, "Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "mix"
-      }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "revenue"
-      }, "Revenue-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "pu"
-      }, "Pu-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "revenue_aborted"
-      }, "Revenue-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "pu_aborted"
-      }, "Pu-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "contract"
-      }, "contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "from_date"
-      }, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "to_date"
-      }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "employee_name"
+      }, "Employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "regions_sort_name"
+      }, "Team"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "perfomance_level"
+      }, "Perfomance level"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "cost"
+      }, "cost"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Monday"
+      }, "Monday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Tuesday"
+      }, "Tuesday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Wednesday"
+      }, "Wednesday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Thursday"
+      }, "Thursday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Friday"
+      }, "Friday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "job_type"
-      }, "Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "mix"
-      }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "revenue"
-      }, "Revenue-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "pu"
-      }, "Pu-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "revenue_aborted"
-      }, "Revenue-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "pu_aborted"
-      }, "Pu-Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "contract"
-      }, "contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "from_date"
-      }, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "to_date"
-      }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "employee_name"
+      }, "Employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "regions_sort_name"
+      }, "Team"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "perfomance_level"
+      }, "perfomance_level"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "cost"
+      }, "cost"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Monday"
+      }, "Monday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Tuesday"
+      }, "Tuesday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Wednesday"
+      }, "Wednesday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Thursday"
+      }, "Thursday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "Friday"
+      }, "Friday"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action")))))))));
     }
   }]);
 
-  return Job_lookup;
+  return Engineer_lookup;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Job_lookup);
+/* harmony default export */ __webpack_exports__["default"] = (Engineer_lookup);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
@@ -440,7 +439,7 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
 /*!***************************************!*\
   !*** ./resources/js/HttpFunctions.js ***!
   \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/*! exports provided: baseurl, CheckPermission, Login, resetPassword, Pemissionlist, RoleAdd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -448,6 +447,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPassword", function() { return resetPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -509,6 +509,15 @@ var Login = function Login(user) {
     email: user.email,
     password: user.password,
     remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var resetPassword = function resetPassword(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/admin-password/email', {
+    email: user.email
   }, {
     headers: {
       'Content-Type': 'application/json'

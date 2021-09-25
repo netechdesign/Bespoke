@@ -161,7 +161,7 @@ class SignIn extends React.Component {
                                     </button>
                                    
                                     <p className="mb-2 text-muted">Forgot password? <NavLink to="/auth/reset-password-2">Reset</NavLink></p>
-                                    <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-2">Signup</NavLink></p>
+                                    
                                 </ValidationForm>
                             </div>
                         </div>

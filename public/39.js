@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Pages/Time_lookup.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/Time_lookup.js ***!
-  \*******************************************************/
+/***/ "./resources/js/Back-Office/Pages/Engineer.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/Engineer.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -203,7 +203,7 @@ function atable() {
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin + '/api/time_lookup'
+    "sAjaxSource": window.location.origin + '/api/engineer'
   }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
     var acolumns = this.fnSettings().aoColumns,
         columns = [];
@@ -219,15 +219,9 @@ function atable() {
       }
     */
   }), _defineProperty(_$$DataTable, "columns", [{
-    "data": "day"
+    "data": "engineer_name"
   }, {
-    "data": "in_hours_start"
-  }, {
-    "data": "in_hours_end"
-  }, {
-    "data": "out_of_hours_start"
-  }, {
-    "data": "out_of_hours_end"
+    "data": "engineer_id"
   }, {
     "data": "id"
   }]), _defineProperty(_$$DataTable, "responsive", {
@@ -263,7 +257,7 @@ function atable() {
     jquery__WEBPACK_IMPORTED_MODULE_12___default()(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      var str_buttons = '<button type="button" data-id="' + row.id + '" class="edit btn btn-info btn-sm" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      var str_buttons = '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive th#action').index(),
@@ -281,15 +275,15 @@ function handleChange_search() {
   }, 500);
 }
 
-var Time_lookup = /*#__PURE__*/function (_React$Component) {
-  _inherits(Time_lookup, _React$Component);
+var Engineer = /*#__PURE__*/function (_React$Component) {
+  _inherits(Engineer, _React$Component);
 
-  var _super = _createSuper(Time_lookup);
+  var _super = _createSuper(Engineer);
 
-  function Time_lookup(props) {
+  function Engineer(props) {
     var _this;
 
-    _classCallCheck(this, Time_lookup);
+    _classCallCheck(this, Engineer);
 
     _this = _super.call(this, props);
 
@@ -313,12 +307,14 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
       });
 
       var data = new FormData();
+      data.append('engineer_id', _this.state.engineer_id);
+      data.append('engineer_name', _this.state.engineer_name);
 
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref2.id,
           auth_token = _ref2.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/time_lookup/' + _this.state.id, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/engineer', data, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -330,7 +326,7 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Edit'
+            buttonName: 'Add'
           });
 
           _this.setState({
@@ -338,12 +334,11 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            id: "",
-            day: "",
-            in_hours_start: "",
-            in_hours_end: "",
-            out_of_hours_start: "",
-            out_of_hours_end: ""
+            engineer_id: ''
+          });
+
+          _this.setState({
+            engineer_name: ''
           }); //this.setState({progress:100});
 
 
@@ -400,68 +395,30 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
     });
 
     _this.state = {
-      _method: 'PUT',
       showModal: false,
-      id: "",
-      day: "",
-      in_hours_start: "",
-      in_hours_end: '',
-      out_of_hours_start: '',
-      out_of_hours_end: '',
+      Engineers: [],
+      engineer_id: '',
+      engineer_name: '',
       validated: false,
       validatedTooltip: false,
       visible: true,
       formSubmitting: false,
-      buttonName: 'Edit'
+      buttonName: 'Add'
     };
     return _this;
   }
 
-  _createClass(Time_lookup, [{
+  _createClass(Engineer, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var items = [];
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
-          history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('File', 'Data Import', history);
+          history = _this$props.history; //check permistion
+
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('user', 'show', history);
       atable(11);
-      var self = this;
-      jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tbody').on('click', '.edit', function () {
-        var id = jquery__WEBPACK_IMPORTED_MODULE_12___default()(this).attr('data-id');
-        var _self$props = self.props,
-            match = _self$props.match,
-            location = _self$props.location,
-            history = _self$props.history;
-        document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-        var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-            auth_token = _ref3.auth_token;
-
-        axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/time_lookup/' + id + '/edit', {
-          headers: {
-            'Authorization': 'Bearer ' + auth_token
-          }
-        }).then(function (res) {
-          if (res.data.success) {
-            self.setState({
-              id: res.data.data.id,
-              day: res.data.data.day,
-              in_hours_start: res.data.data.in_hours_start,
-              in_hours_end: res.data.data.in_hours_end,
-              out_of_hours_start: res.data.data.out_of_hours_start,
-              out_of_hours_end: res.data.data.out_of_hours_end
-            });
-            self.setState({
-              showModal: true
-            });
-            document.getElementById("requestLoder").innerHTML = '';
-          } else {}
-        })["catch"](function (err) {
-          console.log(err);
-        });
-      });
       jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tbody').on('click', '.deletefile', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_12___default()(this).attr('data-id');
         var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_15___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_14___default.a);
@@ -473,8 +430,8 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
           showCancelButton: true
         }).then(function (willDelete) {
           if (willDelete.value) {
-            var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-                _auth_token = _ref4.auth_token;
+            var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+                _auth_token = _ref3.auth_token;
 
             var _baseurl = window.location.origin;
             axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/engineer/' + id, {
@@ -507,7 +464,9 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
             showModal: false
           });
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Add Engineer")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -515,65 +474,25 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
         md: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "engineer_name"
-      }, "Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        readOnly: true,
-        name: "day",
-        id: "day",
-        placeholder: "Day",
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "engineer_name",
+        id: "engineer_name",
+        placeholder: "Engineer Name",
         required: true,
-        value: this.state.day,
+        value: this.state.engineer_name,
         onChange: this.handleChange,
         autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "in_hours_start"
-      }, "In Hours Start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "in_hours_start",
-        id: "in_hours_start",
-        placeholder: "In Hours Start",
+        htmlFor: "engineer_id"
+      }, "Engineer Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "engineer_id",
+        id: "engineer_id",
+        placeholder: "Engineer Id",
         required: true,
-        value: this.state.in_hours_start,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "in_hours_start"
-      }, "In Hours End"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "in_hours_end",
-        id: "in_hours_end",
-        placeholder: "In Hours Start",
-        required: true,
-        value: this.state.in_hours_end,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "in_hours_start"
-      }, "Out of Hours Start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "out_of_hours_start",
-        id: "out_of_hours_start",
-        placeholder: "Out of Hours Start",
-        required: true,
-        value: this.state.out_of_hours_start,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "out_of_hours_end"
-      }, "Out of Hours End"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "out_of_hours_end",
-        id: "out_of_hours_end",
-        placeholder: "Out of Hours Start",
-        required: true,
-        value: this.state.out_of_hours_end,
+        value: this.state.engineer_id,
         onChange: this.handleChange,
         autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -585,12 +504,19 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
         type: "submit"
       }, " ", this.state.buttonName))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Time lookup")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
+      }, "Engineer List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        className: "btn-sm",
         style: {
-          'textAlign': 'center'
+          'float': 'right'
+        },
+        onClick: function onClick() {
+          return _this2.setState({
+            showModal: true
+          });
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-plus"
+      }), "Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
         ref: "tbl",
         striped: true,
         hover: true,
@@ -598,37 +524,25 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
         className: "table table-condensed",
         id: "data-table-responsive"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "day"
-      }, "Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "in_hours_start"
-      }, "In Hours Start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "in_hours_end"
-      }, "In Hours End"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "out_of_hours_start"
-      }, "out of hours start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "out_of_hours_end"
-      }, "out of hours end"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "parent_engineer"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "child_engineer_name"
+      }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "day"
-      }, "Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "in_hours_start"
-      }, "In Hours Start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "in_hours_end"
-      }, "In Hours End"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "out_of_hours_start"
-      }, "out of hours start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "out_of_hours_end"
-      }, "out of hours end"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "parent_engineer"
+      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "child_engineer_name"
+      }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action")))))))));
     }
   }]);
 
-  return Time_lookup;
+  return Engineer;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Time_lookup);
+/* harmony default export */ __webpack_exports__["default"] = (Engineer);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
@@ -637,7 +551,7 @@ var Time_lookup = /*#__PURE__*/function (_React$Component) {
 /*!***************************************!*\
   !*** ./resources/js/HttpFunctions.js ***!
   \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/*! exports provided: baseurl, CheckPermission, Login, resetPassword, Pemissionlist, RoleAdd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -645,6 +559,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPassword", function() { return resetPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -706,6 +621,15 @@ var Login = function Login(user) {
     email: user.email,
     password: user.password,
     remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var resetPassword = function resetPassword(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/admin-password/email', {
+    email: user.email
   }, {
     headers: {
       'Content-Type': 'application/json'

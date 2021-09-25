@@ -104,8 +104,11 @@ class Smssheet implements FromView,WithTitle,WithEvents
                         $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                         if($pu_result){
                             $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu:0);
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue:0);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu:$pu_result->pu);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue:$pu_result->revenue);
+
+                        $dt = date('Ymd',strtotime($vl->appointment_date));
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu:$pu_result->pu);
                         }
 
                     }
@@ -120,8 +123,13 @@ class Smssheet implements FromView,WithTitle,WithEvents
                     $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
 
                     if($pu_result){
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu_aborted:0);
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue_aborted:0);
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu_aborted:$pu_result->pu_aborted);
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue_aborted:$pu_result->revenue_aborted);
+
+                      
+                      $dt = date('Ymd',strtotime($vl->appointment_date));
+                        
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu_aborted:$pu_result->pu_aborted);
                     }else{
                      // $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
                      // $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
@@ -167,6 +175,10 @@ class Smssheet implements FromView,WithTitle,WithEvents
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu_aborted;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = $pu_result->revenue_aborted;
+
+                        $dt = date('Ymd',strtotime($vl->appointment_date));
+                        
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu_aborted:$pu_result->pu_aborted);
                         }else{
                                
                             $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
@@ -174,8 +186,8 @@ class Smssheet implements FromView,WithTitle,WithEvents
                         }
                    }else{
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = 0;
-                    $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
-                            $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']:0);
+                    $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']:0);
                    }
                  if($vl->status=='awaiting info'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['open'] = 1;
@@ -191,6 +203,9 @@ class Smssheet implements FromView,WithTitle,WithEvents
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = $pu_result->revenue;
+
+                        $dt = date('Ymd',strtotime($vl->appointment_date));
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu:$pu_result->pu);
                         }else{
                             $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
                             $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
@@ -198,8 +213,8 @@ class Smssheet implements FromView,WithTitle,WithEvents
                         
                     }else{
                         $team[$vl->regions_sort_name][$vl->engineer_id]['completed'] = 0; 
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
-                            $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']:0);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']:0);
                     }
                 //awaiting info    
                 if($vl->status=='assigned' || $vl->status=='departed' || $vl->status=='awaiting info' || $vl->status=='arrived' || $vl->status=='received' || $vl->status=='started')
@@ -260,9 +275,15 @@ class Smssheet implements FromView,WithTitle,WithEvents
                       $team[$vl->regions_sort_name][$vl->engineer_id]['pu_day'] = number_format(($team[$vl->regions_sort_name][$vl->engineer_id]['pu']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'])/$total_engineer,4) ;
                      $team[$vl->regions_sort_name][$vl->engineer_id]['regions_engineer_total']=$team[$vl->regions_sort_name]['regions_engineer_total'];
                       
-                     //$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu_day']-6);
-                      $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu']-($team[$vl->regions_sort_name][$vl->engineer_id]['working_day']*6));
-                      
+                     
+                     // $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu']-($team[$vl->regions_sort_name][$vl->engineer_id]['working_day']*6));
+                     $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = 0;
+                     if(isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'])){
+                      foreach($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'] as $dvl){
+                        $team_bonus_pus = max(0,$dvl-6); 
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] =$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']  + $team_bonus_pus;
+                      } 
+                    }
                      // $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']/$seleceted_days;
                       $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus_day'] = $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']/$team[$vl->regions_sort_name][$vl->engineer_id]['working_day'];
                       

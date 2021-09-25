@@ -147,7 +147,8 @@ Route::group(array('prefix' => '/'), function() {
      Route::get('/bonus_periods/export', 'Admin\Bonus_periodsController@export');
      Route::get('/sms/workmixexport', 'Admin\Sms_report@workmixexport');
      
-
+     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
+     
     
     });
 

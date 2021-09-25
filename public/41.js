@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Role/edit.js":
-/*!***********************************************!*\
-  !*** ./resources/js/Back-Office/Role/edit.js ***!
-  \***********************************************/
+/***/ "./resources/js/Back-Office/Role/add.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Back-Office/Role/add.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -152,7 +152,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function successDesktopPNotify() {
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].success({
     title: 'Success',
-    text: "Role updated successfully",
+    text: "Role added successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -183,15 +183,15 @@ var Trrow = function Trrow(property) {
 
 var baseurl = window.location.origin;
 
-var edit = /*#__PURE__*/function (_React$Component) {
-  _inherits(edit, _React$Component);
+var add = /*#__PURE__*/function (_React$Component) {
+  _inherits(add, _React$Component);
 
-  var _super = _createSuper(edit);
+  var _super = _createSuper(add);
 
-  function edit() {
+  function add() {
     var _this;
 
-    _classCallCheck(this, edit);
+    _classCallCheck(this, add);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -201,7 +201,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       name: "",
-      id: _this.props.match.params.id,
+      slug: "",
       chkCustom: false,
       permission: [],
       pageArray: [],
@@ -292,8 +292,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
       var data = new FormData();
       data.append('name', _this.state.name);
       data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role/' + _this.state.id, {
-        _method: 'PUT',
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role', {
         name: _this.state.name,
         permission: _this.state.permission
       }, {
@@ -304,9 +303,22 @@ var edit = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+
+          _this.setState({
+            name: ''
+          });
+
+          _this.PemissionGet();
+
+          $('input[type="checkbox"]').prop('checked', false);
           successDesktopPNotify();
-          var history = _this.props.history;
-          history.push('/role');
         } else {
           if (res.data.errors) {
             res.data.message = res.data.errors.name;
@@ -322,7 +334,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Edit'
+            buttonName: 'Add'
           });
         }
       })["catch"](function (err) {
@@ -349,26 +361,12 @@ var edit = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
-      var id = _this.state.id;
       document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
-
-      var data = new FormData();
-      data.append('name', _this.state.name);
-      data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.get(baseurl + '/api/role/' + id + '/edit', {
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["Pemissionlist"])().then(function (res) {
         if (res.data.success) {
-          var parmissions = res.data.data.parmissions;
-
+          //console.log(res.data.data);
           _this.setState({
-            name: res.data.data.name,
-            permission: parmissions
+            permission: res.data.data
           });
 
           document.getElementById("requestLoder").innerHTML = '';
@@ -386,14 +384,14 @@ var edit = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(edit, [{
+  _createClass(add, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'edit', history);
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'add', history);
       this.PemissionGet();
     }
   }, {
@@ -408,7 +406,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
           history = _this$props2.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Edit Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Add Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -417,7 +415,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
           history.goBack();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "feather icon-chevron-left"
+        "class": "feather icon-chevron-left"
       }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
@@ -472,10 +470,10 @@ var edit = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return edit;
+  return add;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (edit);
+/* harmony default export */ __webpack_exports__["default"] = (add);
 
 /***/ }),
 
@@ -483,7 +481,7 @@ var edit = /*#__PURE__*/function (_React$Component) {
 /*!***************************************!*\
   !*** ./resources/js/HttpFunctions.js ***!
   \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/*! exports provided: baseurl, CheckPermission, Login, resetPassword, Pemissionlist, RoleAdd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -491,6 +489,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPassword", function() { return resetPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -552,6 +551,15 @@ var Login = function Login(user) {
     email: user.email,
     password: user.password,
     remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var resetPassword = function resetPassword(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/admin-password/email', {
+    email: user.email
   }, {
     headers: {
       'Content-Type': 'application/json'

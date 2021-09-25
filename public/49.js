@@ -302,41 +302,29 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Sms_groups/edit.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/Back-Office/Sms_groups/edit.js ***!
-  \*****************************************************/
-/*! exports provided: default */
+/***/ "./resources/js/Back-Office/Pages/UtilitaList.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/UtilitaList.js ***!
+  \*******************************************************/
+/*! exports provided: Suppliers, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Suppliers", function() { return Suppliers; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
 /* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -371,44 +359,66 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
-
-
-
-
-
-
-
-window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_13___default.a;
-window.$ = jquery__WEBPACK_IMPORTED_MODULE_13___default.a;
-global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_13___default.a;
-
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
     auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
+var Suppliers = [{
+  value: '1',
+  label: 'Morrison Data services'
+}, {
+  value: '2',
+  label: 'Utilita'
+}, {
+  value: '3',
+  label: 'Vehicle Mileage'
+}];
 
-function handleChange_search() {
-  setTimeout(function () {
-    oTable.draw();
-  }, 500);
-}
+var UtilitaList = /*#__PURE__*/function (_React$Component) {
+  _inherits(UtilitaList, _React$Component);
 
-var Edit = /*#__PURE__*/function (_React$Component) {
-  _inherits(Edit, _React$Component);
+  var _super = _createSuper(UtilitaList);
 
-  var _super = _createSuper(Edit);
-
-  function Edit(props) {
-    var _this$state;
-
+  function UtilitaList(props) {
     var _this;
 
-    _classCallCheck(this, Edit);
+    _classCallCheck(this, UtilitaList);
 
     _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "onsearch", function (e) {
+      var items = [];
+      var _this$props = _this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      var _this$state = _this.state,
+          id = _this$state.id,
+          start_date = _this$state.start_date,
+          end_date = _this$state.end_date,
+          report_type = _this$state.report_type;
+      var data = {
+        id: id,
+        start_date: start_date,
+        end_date: end_date,
+        file_id: report_type.value
+      };
+      document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/utilita/view', data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        document.getElementById("monday_view").innerHTML = res.data;
+
+        _this.setState({
+          searching: false
+        }); //   this.setState({monday_view:res});
+
+      }); //
+    });
 
     _defineProperty(_assertThisInitialized(_this), "startDateChange", function (e) {
       var today = new Date(e);
@@ -427,7 +437,7 @@ var Edit = /*#__PURE__*/function (_React$Component) {
       var today = dd + '/' + mm + '/' + yyyy;
 
       _this.setState({
-        from_date: today
+        start_date: today
       });
     });
 
@@ -448,341 +458,90 @@ var Edit = /*#__PURE__*/function (_React$Component) {
       var today = dd + '/' + mm + '/' + yyyy;
 
       _this.setState({
-        to_date: today
+        end_date: today
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "dropdownList", function (e) {
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e) {});
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
-
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/dropdown_list', {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            manager_list: res.data.manager,
-            region_list: res.data.region
-          });
-
-          document.getElementById("requestLoder").innerHTML = '';
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "RegionChange", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState({
-        team_id: e.value
+        report_type: e
       });
 
-      var region = _this.state.region_list.filter(function (vl, index) {
-        return vl.value == e.value;
-      });
-
-      if (region) {
+      if (e.value == 3) {
         _this.setState({
-          selected_team: {
-            label: region[0].engineer_name,
-            value: region[0].engineer_id
-          }
+          btnhide: 'none'
         });
-
+      } else {
         _this.setState({
-          parent_engineer_id: region[0].engineer_id
-        });
-
-        _this.setState({
-          parent_engineer: region[0].engineer_name
-        });
-
-        _this.setState({
-          team_id: region[0].id
-        });
-
-        _this.setState({
-          regions_sort_name: region[0].regions_sort_name
+          btnhide: ''
         });
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "update", function () {
-      var _this$props = _this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      var id = match.params.id;
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref3.auth_token;
-
-      var data = new FormData();
-      data.append('name', _this.state.name);
-      data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/smsteam/' + id + '/edit', {
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            id: res.data.data.id,
-            regions_sort_name: res.data.data.regions_sort_name,
-            parent_engineer_id: res.data.data.parent_engineer_id,
-            parent_engineer: res.data.data.parent_engineer,
-            selected_team: {
-              label: res.data.data.parent_engineer,
-              value: res.data.data.parent_engineer_id
-            },
-            selected_engineer: {
-              label: res.data.data.child_engineer_name,
-              value: res.data.data.child_engineer_id
-            },
-            team_id: res.data.data.team_id,
-            from_date: res.data.data.from_date,
-            to_date: res.data.data.to_date
-          });
-
-          console.log(_this.state.selected_team);
-          document.getElementById("requestLoder").innerHTML = '';
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "Engineerchange", function (e) {
-      _this.setState({
-        Engineer: e.value
-      });
-
-      var Engineers = _this.state.Engineers.filter(function (vl, index) {
-        return vl.value == e.value;
-      });
-
-      if (Engineers) {
-        _this.setState({
-          selected_engineer: {
-            label: Engineers[0].label,
-            value: Engineers[0].value
-          }
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
-      e.preventDefault();
-      var _this$props2 = _this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      var Permission = Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('areamanager', 'add', history, false);
-
-      if (Permission == 1) {
-        return false;
-      }
-
-      var baseurl = window.location.origin;
-
-      _this.setState({
-        formSubmitting: true
-      });
-
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "sending")
-      });
-
-      var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref4.id,
-          auth_token = _ref4.auth_token;
-
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/smsteam/' + _this.state.id, _this.state, {
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          // console.log(res.data.data);
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Add'
-          });
-
-          _this.setState({
-            selectedFile: null
-          });
-
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_9__["default"].success({
-            title: 'Success',
-            text: res.data.message,
-            modules: {
-              Desktop: {
-                desktop: true
-              }
-            }
-          }).on('click', function (e) {});
-          var _history = _this.props.history;
-
-          _history.push('/sms-groups');
-        } else {
-          jquery__WEBPACK_IMPORTED_MODULE_13___default()('#avatar').val('');
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_9__["default"].error({
-            title: "System Error",
-            text: res.data.message
-          });
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Add'
-          });
-
-          _this.setState({
-            selectedFile: null
-          });
-        }
-      })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_9__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
-
-        console.log(err);
-      }); // successDesktopPNotify();
-      //  this.props.history.push('/role');
-
-      _this.setState({
-        showModal: true
-      });
-    });
-
-    _this.state = (_this$state = {
-      _method: 'PUT',
+    _this.state = {
       id: '',
-      manager_list: [],
-      team_id: '',
-      regions_sort_name: '',
-      region_list: [],
-      parent_engineer_id: '',
-      parent_engineer: ''
-    }, _defineProperty(_this$state, "team_id", ''), _defineProperty(_this$state, "from_date", ''), _defineProperty(_this$state, "to_date", ''), _defineProperty(_this$state, "selected_team", {}), _defineProperty(_this$state, "selected_engineer", {}), _defineProperty(_this$state, "validated", false), _defineProperty(_this$state, "validatedTooltip", false), _defineProperty(_this$state, "visible", true), _defineProperty(_this$state, "formSubmitting", false), _defineProperty(_this$state, "buttonName", 'Edit'), _this$state);
+      'report_type': '',
+      start_date: '',
+      end_date: '',
+      searching: false,
+      baseurl: window.location.origin + '/export',
+      btnhide: 'unset'
+    };
     return _this;
   }
 
-  _createClass(Edit, [{
+  _createClass(UtilitaList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      var items = [];
-      this.dropdownList();
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/areamanager', {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        _this2.setState({
-          Engineers: res.data
-        });
-
-        _this2.update();
+      var _this$props2 = this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('Report', 'Report search', history);
+      var id = this.props.match.params.id;
+      this.setState({
+        id: id
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props3 = this.props,
-          match = _this$props3.match,
-          location = _this$props3.location,
-          history = _this$props3.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
         as: "h5"
-      }, "Edit Sms Team Groups"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Report"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
         },
-        onClick: function onClick() {
-          history.goBack();
-        }
+        as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
+        to: "/list"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+      }), "Back"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+        method: "get",
+        action: this.state.baseurl,
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "firstName"
-      }, "Team"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        onChange: this.RegionChange,
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
+        htmlFor: "type"
+      }, "Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.handleChange,
         className: "basic-single",
         classNamePrefix: "select",
-        name: "regions_sort_name",
-        value: this.state.selected_team,
-        options: this.state.region_list,
-        placeholder: "Select Team"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        style: {
-          color: 'green'
-        },
-        htmlFor: "firstName"
-      }, this.state.regions_sort_name ? 'Team id is ' + this.state.regions_sort_name : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
-        style: {
-          'textAlign': 'center'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        name: "file_id",
+        options: Suppliers,
+        placeholder: "Select type"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "engineers"
-      }, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        required: true // defaultValue={[Engineers[2], Engineers[3]]}
-        ,
-        onChange: this.Engineerchange,
-        name: "engineers",
-        value: this.state.selected_engineer,
-        options: this.state.Engineers,
-        className: "basic-multi-select",
-        classNamePrefix: "select",
-        placeholder: "Select Engineer",
-        isSearchable: true
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
         htmlFor: "start_date"
-      }, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      }, "Start Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_6___default.a, {
         closeOnSelect: true,
         onChange: this.startDateChange,
         dateFormat: "D/M/Y",
@@ -791,24 +550,22 @@ var Edit = /*#__PURE__*/function (_React$Component) {
         errorMessage: {
           required: "start_date is required"
         },
-        value: this.state.from_date,
         inputProps: {
           required: 'required',
           name: "start_date",
           placeholder: 'Select Date',
           autoComplete: 'off'
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
         htmlFor: "end_date"
-      }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      }, "End Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_6___default.a, {
         closeOnSelect: true,
         dateFormat: "D/M/Y",
         timeFormat: false,
         minDate: new Date(),
-        value: this.state.to_date,
         errorMessage: {
           required: "end_date is required"
         },
@@ -819,22 +576,54 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           placeholder: 'Select Date',
           autoComplete: 'off'
         }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        sm: 12,
-        className: "mt-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        disabled: this.state.formSubmitting,
-        type: "submit"
-      }, " ", this.state.buttonName)))))))));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
+        md: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        className: "primary",
+        style: {
+          'marginTop': '27px',
+          'display': this.state.btnhide
+        },
+        onClick: this.onsearch
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-search"
+      }), "Search "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        className: "primary",
+        style: {
+          'marginTop': '27px'
+        },
+        as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
+        to: {
+          pathname: '/utilitachart',
+          state: {
+            detail: this.state
+          }
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-eye"
+      }), "View Chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        type: "submit",
+        style: {
+          'marginTop': '27px',
+          'display': this.state.btnhide
+        },
+        className: "primary"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-download"
+      }), "Download csv"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "monday_view",
+        style: {
+          'textAlign': 'center'
+        }
+      }))))));
     }
   }]);
 
-  return Edit;
+  return UtilitaList;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Edit);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* harmony default export */ __webpack_exports__["default"] = (UtilitaList);
 
 /***/ }),
 
@@ -842,7 +631,7 @@ var Edit = /*#__PURE__*/function (_React$Component) {
 /*!***************************************!*\
   !*** ./resources/js/HttpFunctions.js ***!
   \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, Pemissionlist, RoleAdd */
+/*! exports provided: baseurl, CheckPermission, Login, resetPassword, Pemissionlist, RoleAdd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -850,6 +639,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPassword", function() { return resetPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -911,6 +701,15 @@ var Login = function Login(user) {
     email: user.email,
     password: user.password,
     remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+var resetPassword = function resetPassword(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/admin-password/email', {
+    email: user.email
   }, {
     headers: {
       'Content-Type': 'application/json'

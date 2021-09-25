@@ -156,5 +156,7 @@ Route::group(['middleware' => 'api-header'], function () {
     // Therefore the jwtMiddleware will be exclusive of them
 
     Route::post('user/login', 'Admin\UserController@login');
+    Route::post('admin-password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    Route::post('password/reset', 'Auth\ResetPasswordController@postReset')->name('password.reset');
     //Route::post('user/register', 'Auth\UserController@register');
 });
