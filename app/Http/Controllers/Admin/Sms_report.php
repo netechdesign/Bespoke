@@ -635,7 +635,7 @@ class Sms_report extends Controller
 
                         $dt = date('Ymd',strtotime($vl->appointment_date));
                         
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu_aborted:$pu_result->pu_aborted);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu_aborted:$pu_result->pu_aborted);
                       }
 
                  } 
@@ -682,7 +682,7 @@ class Sms_report extends Controller
 
                         $dt = date('Ymd',strtotime($vl->appointment_date));
                         
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu_aborted:$pu_result->pu_aborted);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu_aborted:$pu_result->pu_aborted);
                         }else{
                                
                             $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
@@ -710,10 +710,10 @@ class Sms_report extends Controller
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = $pu_result->revenue;
                         $dt = date('Ymd',strtotime($vl->appointment_date));
-                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu:$pu_result->pu);
+                        $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt]+$pu_result->pu:$pu_result->pu);
                         }else{
                           $dt = date('Ymd',strtotime($vl->appointment_date));
-                          $team[$vl->regions_sort_name][$vl->engineer_id][$dt]['pu'][] = $pu_result->pu; 
+                         // $team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'][$dt] = $pu_result->pu; 
                             $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = 0;
                             $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = 0;
                         }
