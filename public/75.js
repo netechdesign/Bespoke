@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[75],{
 
-/***/ "./resources/js/Back-office/Pages/Reports/MdsInstalls.js":
-/*!***************************************************************!*\
-  !*** ./resources/js/Back-office/Pages/Reports/MdsInstalls.js ***!
-  \***************************************************************/
+/***/ "./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Back-office/Pages/Reports/UtilitaInstalls.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -17,6 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apexcharts */ "./node_modules/apexcharts/dist/apexcharts.common.js");
 /* harmony import */ var apexcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apexcharts__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47,21 +48,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
     auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
 
-var MdsInstalls = /*#__PURE__*/function (_React$Component) {
-  _inherits(MdsInstalls, _React$Component);
+var UtilitaInstalls = /*#__PURE__*/function (_React$Component) {
+  _inherits(UtilitaInstalls, _React$Component);
 
-  var _super = _createSuper(MdsInstalls);
+  var _super = _createSuper(UtilitaInstalls);
 
-  function MdsInstalls(props) {
+  function UtilitaInstalls(props) {
     var _this;
 
-    _classCallCheck(this, MdsInstalls);
+    _classCallCheck(this, UtilitaInstalls);
 
     _this = _super.call(this, props);
 
@@ -80,7 +82,7 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
 
       var baseurl = window.location.origin;
       var data = new FormData();
-      data.append('file_id', '1');
+      data.append('file_id', '2');
 
       if (_this.props.match.params.id) {
         data.append('report_for', _this.props.match.params.id);
@@ -211,6 +213,8 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
               };
             }
 
+            console.log(options);
+
             var addAnnotations = function addAnnotations(config) {
               var seriesTotals = config.globals.stackedSeriesTotals;
               var isHorizontal = options.plotOptions.bar.horizontal; //  chart.clearAnnotations();
@@ -310,7 +314,7 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(MdsInstalls, [{
+  _createClass(UtilitaInstalls, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       console.log('tag', 'componentWillMount');
@@ -394,10 +398,10 @@ var MdsInstalls = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return MdsInstalls;
+  return UtilitaInstalls;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (MdsInstalls);
+/* harmony default export */ __webpack_exports__["default"] = (UtilitaInstalls);
 
 /***/ })
 

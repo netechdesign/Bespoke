@@ -39,6 +39,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('utilita', 'UtilitaController');
         Route::resource('areamanager', 'AreamanagerController');
         Route::resource('engineer', 'EngineerController');
+        Route::resource('m25_postcode', 'M25PostcodeController');
+        
         Route::resource('team', 'TeamsController');
         Route::resource('engineer_lookup', 'Engineer_lookupController');
         Route::resource('job_lookup', 'Job_lookupController');

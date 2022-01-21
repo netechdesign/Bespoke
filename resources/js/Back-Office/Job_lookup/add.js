@@ -38,6 +38,8 @@ class Add extends React.Component{
         pu:'',
         revenue_aborted:'',
         pu_aborted:'',
+        revenue_M25:'',
+        revenue_aborted_M25:'',
         contract:'',
         from_date:'',
             to_date:'',
@@ -196,6 +198,31 @@ class Add extends React.Component{
                                             />
                                         </Form.Group>
                                         </Form.Row>
+                                        <Form.Row>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">PU - Completed</Form.Label>
+                                            <TextInput
+                                            name="pu"
+                                            id="pu"
+                                            placeholder="Pu Completed"
+                                            required value={this.state.pu}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">PU - Aborted</Form.Label>
+                                            <TextInput
+                                            name="pu_aborted"
+                                            id="pu_aborted"
+                                            placeholder="Pu Aborted"
+                                            required value={this.state.pu_aborted}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                </Form.Row>
                                     <Form.Row>
                                         <Form.Group as={Col} md="3">
                                             <Form.Label htmlFor="bank_name">Revenue - Completed</Form.Label>
@@ -204,17 +231,6 @@ class Add extends React.Component{
                                             id="revenue"
                                             placeholder="Revenue Completed"
                                             required value={this.state.revenue}
-                                            onChange={this.handleChange}
-                                            autoComplete="off"
-                                            />
-                                        </Form.Group>
-                                        <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">PU - Completed</Form.Label>
-                                            <TextInput
-                                            name="pu"
-                                            id="pu"
-                                            placeholder="Pu Completed"
-                                            required value={this.state.pu}
                                             onChange={this.handleChange}
                                             autoComplete="off"
                                             />
@@ -230,18 +246,31 @@ class Add extends React.Component{
                                             autoComplete="off"
                                             />
                                         </Form.Group>
+
                                         <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">PU - Aborted</Form.Label>
+                                            <Form.Label htmlFor="bank_name">Revenue-Completed-M25</Form.Label>
                                             <TextInput
-                                            name="pu_aborted"
-                                            id="pu_aborted"
-                                            placeholder="Pu Aborted"
-                                            required value={this.state.pu_aborted}
+                                            name="revenue_M25"
+                                            id="revenue_M25"
+                                            placeholder="Revenue-Completed-M25"
+                                            required value={this.state.revenue_M25}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">Revenue-Aborted-M25</Form.Label>
+                                            <TextInput
+                                            name="revenue_aborted_M25"
+                                            id="revenue_aborted_M25"
+                                            placeholder="Revenue-Aborted-M25"
+                                            required value={this.state.revenue_aborted_M25}
                                             onChange={this.handleChange}
                                             autoComplete="off"
                                             />
                                         </Form.Group>
                                 </Form.Row>
+                                
                                 <Form.Row>
                                         <Form.Group as={Col} md="2">
                                             <Form.Label htmlFor="start_date">From</Form.Label>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Exports;
 use App\User;
+use DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -67,6 +68,13 @@ class Smssheet implements FromView,WithTitle,WithEvents
 
         foreach($job as $vl)
         {
+            //m25_postcodes
+            $post_code = explode(" ",$vl->post_code);
+            $post_code= $post_code[0];
+            $m25_postcodes = DB::table('m25_postcodes')->select('name')->where('name', 'LIKE', '%'.$post_code)->first();
+            //m25_postcodes
+
+            $vl->status= strtolower($vl->status);
             $work_type= ($vl->select_work_type!=''?$vl->select_work_type:$vl->work_type);
             
             
@@ -101,8 +109,13 @@ class Smssheet implements FromView,WithTitle,WithEvents
                     if($vl->status=='completed'){
                         $team[$vl->regions_sort_name][$vl->engineer_id]['completed'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['completed'])?$team[$vl->regions_sort_name][$vl->engineer_id]['completed']+1:1);
                         //pu
-                        $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
+                        $pu_result =Job_lookup::select('pu','revenue','revenue_M25')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                         if($pu_result){
+                                if($m25_postcodes){
+                                    
+                                  $pu_result->revenue = $pu_result->revenue_M25;
+                                  
+                                  }
                             $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu:$pu_result->pu);
                         $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue:$pu_result->revenue);
@@ -120,9 +133,12 @@ class Smssheet implements FromView,WithTitle,WithEvents
                 if($vl->status=='aborted'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['aborted'])?$team[$vl->regions_sort_name][$vl->engineer_id]['aborted']+1:1);
 
-                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
+                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted','revenue_aborted_M25')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
 
                     if($pu_result){
+                        if($m25_postcodes){
+                            $pu_result->revenue_aborted = $pu_result->revenue_aborted_M25;
+                            }
                       $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu']+$pu_result->pu_aborted:$pu_result->pu_aborted);
                       $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['revenue'])?$team[$vl->regions_sort_name][$vl->engineer_id]['revenue']+$pu_result->revenue_aborted:$pu_result->revenue_aborted);
 
@@ -169,9 +185,12 @@ class Smssheet implements FromView,WithTitle,WithEvents
                 if($vl->status=='aborted'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['aborted'] = 1;
                     //pu
-                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
+                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted','revenue_aborted_M25')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                     
                     if($pu_result){
+                        if($m25_postcodes){
+                            $pu_result->revenue_aborted = $pu_result->revenue_aborted_M25;
+                            }
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu_aborted;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = $pu_result->revenue_aborted;
@@ -198,8 +217,12 @@ class Smssheet implements FromView,WithTitle,WithEvents
                     if($vl->status=='completed'){
                     $team[$vl->regions_sort_name][$vl->engineer_id]['completed'] = 1;
                     //pu
-                    $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
+                    $pu_result =Job_lookup::select('pu','revenue','revenue_M25')->where('job_type',$work_type)->whereDate('from_date', '<=', $vl->appointment_date)->whereDate('to_date', '>=', $vl->appointment_date)->first();
                     if($pu_result){
+                        if($m25_postcodes){
+                            $pu_result->revenue = $pu_result->revenue_M25;
+                            }
+
                         $team[$vl->regions_sort_name][$vl->engineer_id]['work_type'][] =$work_type;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['pu'] = $pu_result->pu;
                         $team[$vl->regions_sort_name][$vl->engineer_id]['revenue'] = $pu_result->revenue;

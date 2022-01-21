@@ -39,6 +39,8 @@ class Edit extends React.Component{
         revenue:'',
         pu:'',
         revenue_aborted:'',
+        revenue_M25:'',
+        revenue_aborted_M25:'',
         pu_aborted:'',
         contract:'',
         from_date:'',
@@ -117,6 +119,8 @@ class Edit extends React.Component{
                                                 revenue:res.data.data.revenue,
                                                 pu:res.data.data.pu,
                                                 revenue_aborted:res.data.data.revenue_aborted,
+                                                revenue_M25:res.data.data.revenue_M25,
+                                                revenue_aborted_M25:res.data.data.revenue_aborted_M25,
                                                 pu_aborted:res.data.data.pu_aborted,
                                                 contract:res.data.data.contract,
                                                 from_date:res.data.data.from_date,
@@ -241,19 +245,8 @@ class Edit extends React.Component{
                                         </Form.Group>
                                         </Form.Row>
                                    <Form.Row>
-                                        <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">Revenue</Form.Label>
-                                            <TextInput
-                                            name="revenue"
-                                            id="revenue"
-                                            placeholder="Revenue"
-                                            required value={this.state.revenue}
-                                            onChange={this.handleChange}
-                                            autoComplete="off"
-                                            />
-                                        </Form.Group>
-                                        <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">Pu</Form.Label>
+                                   <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">Pu - Completed</Form.Label>
                                             <TextInput
                                             name="pu"
                                             id="pu"
@@ -263,6 +256,31 @@ class Edit extends React.Component{
                                             autoComplete="off"
                                             />
                                         </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">PU - Aborted</Form.Label>
+                                            <TextInput
+                                            name="pu_aborted"
+                                            id="pu_aborted"
+                                            placeholder="Pu Aborted"
+                                            required value={this.state.pu_aborted}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        </Form.Row>
+                                <Form.Row>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">Revenue - Completed</Form.Label>
+                                            <TextInput
+                                            name="revenue"
+                                            id="revenue"
+                                            placeholder="Revenue"
+                                            required value={this.state.revenue}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        
                                         <Form.Group as={Col} md="3">
                                             <Form.Label htmlFor="bank_name">Revenue - Aborted</Form.Label>
                                             <TextInput
@@ -275,12 +293,23 @@ class Edit extends React.Component{
                                             />
                                         </Form.Group>
                                         <Form.Group as={Col} md="3">
-                                            <Form.Label htmlFor="bank_name">PU - Aborted</Form.Label>
+                                            <Form.Label htmlFor="bank_name">Revenue-Completed-M25</Form.Label>
                                             <TextInput
-                                            name="pu_aborted"
-                                            id="pu_aborted"
-                                            placeholder="Pu Aborted"
-                                            required value={this.state.pu_aborted}
+                                            name="revenue_M25"
+                                            id="revenue_M25"
+                                            placeholder="Revenue-Completed-M25"
+                                            required value={this.state.revenue_M25}
+                                            onChange={this.handleChange}
+                                            autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="3">
+                                            <Form.Label htmlFor="bank_name">Revenue-Aborted-M25</Form.Label>
+                                            <TextInput
+                                            name="revenue_aborted_M25"
+                                            id="revenue_aborted_M25"
+                                            placeholder="Revenue-Aborted-M25"
+                                            required value={this.state.revenue_aborted_M25}
                                             onChange={this.handleChange}
                                             autoComplete="off"
                                             />

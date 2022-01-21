@@ -61,7 +61,8 @@ class Exportsms implements WithMultipleSheets
       else{
         
         // $q= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
-        $q= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end');
+        $q= Sms_job::select('sms_jobs.id','regions_sort_name','engineer_id','engineer','appointment_date','status','select_work_type','work_type','time_lookups.in_hours_start','time_lookups.in_hours_end','post_code',
+        DB::raw('"sms" as table_type'));
         
         $q->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
         
@@ -92,11 +93,86 @@ class Exportsms implements WithMultipleSheets
             $q->whereTime('sms_jobs.completed_at', '>', DB::raw( 'DATE_FORMAT(time_lookups.in_hours_end,"%H:%i:%s")')); 
          }
       }
-      }
+      
        
-       $q=$q->orderBy('engineer','asc')->get();
+
+      // $q=$q->orderBy('engineer','asc')->get();
+
+       //utilita
+          
+
+       $utilita= Utilita_job::select(
+        'utilita_jobs.id',
+        DB::raw('(select regions_sort_name from sms_teams where sms_teams.child_engineer_id=utilita_jobs.engineer_id and from_date <= utilita_jobs.schedule_date and to_date >= utilita_jobs.schedule_date) as regions_sort_name'),
+      'engineer_id',
+      'engineer',
+      DB::raw('utilita_jobs.schedule_date as appointment_date'),
+      DB::raw('utilita_jobs.job_status as status'),
+      DB::raw('"" as select_work_type'),
+      DB::raw('utilita_jobs.job_type as work_type'),
+      'time_lookups.in_hours_start',
+      'time_lookups.in_hours_end',
+      'post_code',
+      DB::raw('"utilita" as table_type'));
+      $utilita->join('sms_teams', function ($join) {
+        $join->on('sms_teams.child_engineer_id', '=', 'utilita_jobs.engineer_id');
+             
+                     });
+       $utilita->join('time_lookups','utilita_jobs.week_day','=','time_lookups.day');
+
+
+if(isset($request->file_id) && $request->file_id!=''){
+//$utilita->join('job_lookups','utilita_jobs.job_type','=','job_lookups.job_type');;
+}
+if(isset($request->file_id) && $request->file_id!='all'){
+// $utilita->where('job_lookups.contract',$request->file_id);
+}
+     
+        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
+          $utilita->join('job_lookups','utilita_jobs.job_type','=','job_lookups.job_type');;
+        }
+
+        if(isset($_REQUEST['work_type']) && $_REQUEST['work_type']!=''){
+          if($_REQUEST['work_type']!='all'){          
+              $utilita->where('job_lookups.contract',$_REQUEST['work_type']);
+          }
+        }
+
+
+
+      if($month!=''){ $utilita->whereMonth('schedule_date', '=', $month); }
+      if($start_date!=''){ $utilita->whereDate('schedule_date', '>=', $start_date); }
+      if($today_date!=''){ $utilita->whereDate('schedule_date', '<=', $today_date); }
+
+      if(isset($_REQUEST['job_type']) && $_REQUEST['job_type']!=''){
+      $utilita->where('job_type',$_REQUEST['job_type']);
+      }
+    if(isset($_REQUEST['work_completed']) && $_REQUEST['work_completed']!='' && $_REQUEST['work_completed']!='all'){
+              
+      if($_REQUEST['work_completed']=='in_hours'){
+        $utilita->whereDate('job_status','Completed');
+        $utilita->whereTime('utilita_jobs.schedule_end_time', '<=', DB::raw( 'DATE_FORMAT(time_lookups.in_hours_end,"%H:%i:%s")')); 
+      }
+      if($_REQUEST['work_completed']=='out_of_hours'){
+        $utilita->whereDate('job_status','Completed');
+        $utilita->whereTime('utilita_jobs.schedule_end_time', '>', DB::raw( 'DATE_FORMAT(time_lookups.in_hours_end,"%H:%i:%s")')); 
+    }
+    }
+        if(isset($_REQUEST['company']) && $_REQUEST['company']==0){
+                $utilita->union($q);
+                $job = $utilita->orderBy('engineer','asc')->get();
+              }
+        elseif(isset($_REQUEST['company']) && $_REQUEST['company']==1){ // 1 = utilita
+                $q  = $utilita;
+                $job = $utilita->orderBy('engineer','asc')->groupBy('utilita_jobs.id')->get();
+              }
+        elseif(isset($_REQUEST['company']) && $_REQUEST['company']==2){ // 2 = sms
+              $job = $q->orderBy('engineer','asc')->get();
+            }
+
+          }
       //dd($q); 
-        $sheets[] = new Smssheet($q);
+        $sheets[] = new Smssheet($job);
     
         return $sheets;
     }

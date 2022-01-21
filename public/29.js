@@ -371,10 +371,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Bonus_period_lookup/add.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/Back-Office/Bonus_period_lookup/add.js ***!
-  \*************************************************************/
+/***/ "./resources/js/Back-Office/Job_lookup/add.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Back-Office/Job_lookup/add.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -445,34 +445,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function successDesktopPNotify() {
-  var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-  if (status == 0) {
-    pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
-      title: 'Success',
-      text: "Bonus period added successfully",
-      modules: {
-        Desktop: {
-          desktop: true
-        }
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
+    title: 'Success',
+    text: "Job type added successfully",
+    modules: {
+      Desktop: {
+        desktop: true
       }
-    });
-  } else {
-    pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
-      title: 'Success',
-      text: "Bonus period updated successfully",
-      modules: {
-        Desktop: {
-          desktop: true
-        }
-      }
-    });
-  }
+    }
+  }).on('click', function (e) {});
 }
 
 var baseurl = window.location.origin;
-
-var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 var Add = /*#__PURE__*/function (_React$Component) {
   _inherits(Add, _React$Component);
@@ -491,19 +475,67 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      _method: '',
-      id: '',
+      job_type: '',
+      mix: '',
+      revenue: '',
+      pu: '',
+      revenue_aborted: '',
+      pu_aborted: '',
+      revenue_M25: '',
+      revenue_aborted_M25: '',
+      contract: '',
+      from_date: '',
+      to_date: '',
       chkCustom: false,
       visible: true,
       formSubmitting: false,
-      buttonName: 'Save',
-      week_date: [],
-      month: '',
-      year: ''
+      buttonName: 'Save'
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "startDateChange", function (e) {
+      var today = new Date(e);
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      var today = dd + '/' + mm + '/' + yyyy;
+
+      _this.setState({
+        from_date: today
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "endDateChange", function (e) {
+      var today = new Date(e);
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      var today = dd + '/' + mm + '/' + yyyy;
+
+      _this.setState({
+        to_date: today
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
@@ -526,13 +558,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
       //data.append('name', this.state.name);
 
 
-      var url = baseurl + '/api/bonus_periods';
-
-      if (_this.state._method == 'PUT') {
-        url = baseurl + '/api/bonus_periods/1';
-      }
-
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(url, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/job_lookup', _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -544,23 +570,17 @@ var Add = /*#__PURE__*/function (_React$Component) {
             formSubmitting: false
           });
 
-          if (_this.state._method != 'PUT') {
-            _this.setState({
-              buttonName: 'Save',
-              week_date: [],
-              month: '',
-              year: ''
-            });
+          _this.setState({
+            buttonName: 'Save'
+          });
 
-            successDesktopPNotify();
-          } else {
-            _this.setState({
-              buttonName: 'Save'
-            });
+          _this.setState({
+            engineer_name: ''
+          });
 
-            successDesktopPNotify(1);
-          } // this.props.history.push('/job_lookup'); 
+          successDesktopPNotify();
 
+          _this.props.history.push('/job_lookup');
         } else {
           if (res.data.errors) {
             res.data.message = res.data.errors.name;
@@ -602,98 +622,6 @@ var Add = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "periodChange", function (element) {
-      _this.state.week_date[element.target.id].period = element.target.value;
-
-      _this.setState({
-        week_date: _this.state.week_date
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "getMondayDate", function (e) {
-      var week_date = [];
-      var today = new Date(e);
-      var yyyy = today.getFullYear();
-      var mm = today.getMonth() + 1;
-
-      _this.setState({
-        year: yyyy,
-        month: mm
-      });
-
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
-
-      var data = new FormData();
-      data.append('year', yyyy);
-      data.append('month', mm);
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/bonus_periods/1/edit', {
-        params: {
-          year: yyyy,
-          month: mm
-        },
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        document.getElementById("requestLoder").innerHTML = '';
-
-        if (res.data.data.length != 0) {
-          _this.setState({
-            week_date: res.data.data
-          });
-
-          _this.setState({
-            buttonName: 'Edit',
-            _method: 'PUT'
-          });
-        } else {
-          _this.setState({
-            buttonName: 'Save',
-            _method: ''
-          });
-
-          var month_name = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-          var currunt_month = month_name[today.getMonth()];
-
-          if (mm < 10) {
-            mm = '0' + mm;
-          }
-
-          var monday = moment().startOf('month').month(currunt_month).year(yyyy).day("Monday");
-          if (monday.date() > 7) monday.add(7, 'd');
-          var month = monday.month();
-
-          while (month === monday.month()) {
-            var dd = monday.date();
-
-            if (dd < 10) {
-              dd = '0' + dd;
-            }
-
-            var wdate = dd + '/' + mm + '/' + monday.year();
-            var weekdateList = new Object();
-            weekdateList.WC = wdate;
-            weekdateList.period = '';
-            week_date.push(weekdateList);
-            monday.add(7, 'd');
-          }
-
-          ;
-
-          if (week_date) {
-            _this.setState({
-              week_date: week_date
-            });
-          }
-        }
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    });
-
     return _this;
   }
 
@@ -704,20 +632,18 @@ var Add = /*#__PURE__*/function (_React$Component) {
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('File', 'Data Import', history);
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _this$props2 = this.props,
           match = _this$props2.match,
           location = _this$props2.location,
           history = _this$props2.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Bonus Period"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Add Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -737,31 +663,162 @@ var Add = /*#__PURE__*/function (_React$Component) {
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "job_type"
+      }, "Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "job_type",
+        id: "job_type",
+        placeholder: "Job Type",
+        required: true,
+        value: this.state.job_type,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "mix",
+        id: "mix",
+        placeholder: "Mix",
+        required: true,
+        value: this.state.mix,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "contract"
+      }, "Contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "contract",
+        id: "contract",
+        placeholder: "Contract",
+        required: true,
+        value: this.state.contract,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "PU - Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "pu",
+        id: "pu",
+        placeholder: "Pu Completed",
+        required: true,
+        value: this.state.pu,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "PU - Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "pu_aborted",
+        id: "pu_aborted",
+        placeholder: "Pu Aborted",
+        required: true,
+        value: this.state.pu_aborted,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Revenue - Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "revenue",
+        id: "revenue",
+        placeholder: "Revenue Completed",
+        required: true,
+        value: this.state.revenue,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Revenue - Aborted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "revenue_aborted",
+        id: "revenue_aborted",
+        placeholder: "Revenue Aborted",
+        required: true,
+        value: this.state.revenue_aborted,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Revenue-Completed-M25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "revenue_M25",
+        id: "revenue_M25",
+        placeholder: "Revenue-Completed-M25",
+        required: true,
+        value: this.state.revenue_M25,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Revenue-Aborted-M25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "revenue_aborted_M25",
+        id: "revenue_aborted_M25",
+        placeholder: "Revenue-Aborted-M25",
+        required: true,
+        value: this.state.revenue_aborted_M25,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "start_date"
+      }, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        closeOnSelect: true,
+        onChange: this.startDateChange,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        minDate: new Date(),
+        errorMessage: {
+          required: "start_date is required"
+        },
+        inputProps: {
+          required: 'required',
+          name: "start_date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         htmlFor: "end_date"
-      }, "Month"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_15___default.a, {
+      }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_15___default.a, {
         closeOnSelect: true,
-        dateFormat: "M-Y",
+        dateFormat: "D/M/Y",
         timeFormat: false,
+        minDate: new Date(),
         errorMessage: {
           required: "end_date is required"
         },
-        onChange: this.getMondayDate,
+        onChange: this.endDateChange,
         inputProps: {
           required: 'required',
           name: "end_date",
           placeholder: 'Select Date',
           autoComplete: 'off'
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder"
-      }))), this.state.week_date.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Weekdate, {
-        handleChange: function handleChange(e) {
-          return _this2.periodChange(e);
-        },
-        data: this.state.week_date
-      }) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
@@ -773,52 +830,6 @@ var Add = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Add;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var Weekdate = /*#__PURE__*/function (_React$Component2) {
-  _inherits(Weekdate, _React$Component2);
-
-  var _super2 = _createSuper(Weekdate);
-
-  function Weekdate() {
-    _classCallCheck(this, Weekdate);
-
-    return _super2.apply(this, arguments);
-  }
-
-  _createClass(Weekdate, [{
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var rowsdata = this.props.data.length > 0 ? this.props.data.map(function (vl, inx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-          key: inx
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"],
-          controlId: "formHorizontalEmail"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-          column: true,
-          sm: 6
-        }, vl.WC), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-          sm: 6
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-          name: "period",
-          id: inx,
-          placeholder: "Period",
-          required: true,
-          value: vl.period,
-          onChange: function onChange(e) {
-            return _this3.props.handleChange(e);
-          },
-          autoComplete: "off"
-        }))));
-      }) : '';
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, rowsdata);
-    }
-  }]);
-
-  return Weekdate;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Add);

@@ -20,6 +20,10 @@ if(isset($_REQUEST['role'])){
         </tr> 
         <tr>
         <td colspan="2"><b>Reporting Date :</b>{{date('d-m-Y')}}</td>
+        @if(isset($_REQUEST['company']))<td colspan="3">
+
+                <b>Company :</b>@if($_REQUEST['company']=='0') All  @elseif($_REQUEST['company']=='1') Utilita @else Sms @endif</td>
+            @endif
         </tr>
        <?php } ?>        
         <tr>

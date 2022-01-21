@@ -12,7 +12,7 @@ const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(local
 
 
 
-
+export const Company =[{value:'0',label:'All'},{value:'1', label: 'Utilita'},{value:'2', label: 'Sms'}];
 const baseurl= window.location.origin;
 
 
@@ -21,14 +21,14 @@ class Bonus_periods extends React.Component {
    
     constructor(props) {
         super(props);
-    this.state={searching:false,baseurl:window.location.origin+'/bonus_periods/export',btnhide:'unset',period:'',region_list:[],regions_sort_name:"",team_id:'',role:roles}
+    this.state={searching:false,baseurl:window.location.origin+'/bonus_periods/export',btnhide:'unset',period:'',region_list:[],regions_sort_name:"",team_id:'',role:roles,company:0}
     }
     onsearch = (e) => {
         var items  = [];
         const { match, location, history } = this.props
-        const {period,team_id} = this.state;
+        const {period,team_id,company} = this.state;
         
-        let data={period:period,team_id:team_id};
+        let data={period:period,team_id:team_id,company:company};
         document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
       axios.post(baseurl+'/api/bonus_periods/report_view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
@@ -41,7 +41,10 @@ class Bonus_periods extends React.Component {
        //
          
     }
-
+    CompanyChange  = (e) =>{
+               
+        this.setState({company:e.value});
+       }
         handleSubmit = (e)=> {
 
         } 
@@ -119,17 +122,26 @@ class Bonus_periods extends React.Component {
                                     />
 
                                 </Form.Group>
-                                        <Form.Group as={Col} md="2">
-                                        <Form.Label htmlFor="firstName">Team</Form.Label>
-                                        <Select onChange={this.RegionChange}
+                                <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="firstName">Team</Form.Label>
+                                    <Select onChange={this.RegionChange}
                                     className="basic-single"
                                     classNamePrefix="select"
                                     name="team_id"
                                     options={this.state.region_list}
                                     placeholder="Select Team"
-                                /><div id="requestLoder"></div>
-                                        </Form.Group>
-                                        
+                                    /><div id="requestLoder"></div>
+                                </Form.Group>
+                                <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="type">Company</Form.Label>
+                                    <Select onChange={this.CompanyChange}
+                                    className="basic-single"
+                                    classNamePrefix="select"
+                                    name="company"
+                                    options={Company}
+                                    placeholder="Select Company"
+                                    />
+                                </Form.Group>       
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} md="8">

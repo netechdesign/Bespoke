@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Sms_groups/add.js":
-/*!****************************************************!*\
-  !*** ./resources/js/Back-Office/Sms_groups/add.js ***!
-  \****************************************************/
+/***/ "./resources/js/Back-Office/Sms_groups/edit.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/Back-Office/Sms_groups/edit.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -396,17 +396,17 @@ function handleChange_search() {
   }, 500);
 }
 
-var Add = /*#__PURE__*/function (_React$Component) {
-  _inherits(Add, _React$Component);
+var Edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(Edit, _React$Component);
 
-  var _super = _createSuper(Add);
+  var _super = _createSuper(Edit);
 
-  function Add(props) {
+  function Edit(props) {
     var _this$state;
 
     var _this;
 
-    _classCallCheck(this, Add);
+    _classCallCheck(this, Edit);
 
     _this = _super.call(this, props);
 
@@ -488,6 +488,13 @@ var Add = /*#__PURE__*/function (_React$Component) {
 
       if (region) {
         _this.setState({
+          selected_team: {
+            label: region[0].engineer_name,
+            value: region[0].engineer_id
+          }
+        });
+
+        _this.setState({
           parent_engineer_id: region[0].engineer_id
         });
 
@@ -505,32 +512,77 @@ var Add = /*#__PURE__*/function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "SiteEngineerchange", function (e) {
-      var self = _assertThisInitialized(_this);
-
-      setTimeout(function () {
-        self.setState({
-          SiteEngineer: e
-        });
-      }, 500);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "Engineerchange", function (e) {
-      var self = _assertThisInitialized(_this);
-
-      setTimeout(function () {
-        self.setState({
-          Engineer: e
-        });
-      }, 500);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
-      e.preventDefault();
+    _defineProperty(_assertThisInitialized(_this), "update", function () {
       var _this$props = _this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
+      var id = match.params.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref3.auth_token;
+
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/smsteam/' + id + '/edit', {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            id: res.data.data.id,
+            regions_sort_name: res.data.data.regions_sort_name,
+            parent_engineer_id: res.data.data.parent_engineer_id,
+            parent_engineer: res.data.data.parent_engineer,
+            selected_team: {
+              label: res.data.data.parent_engineer,
+              value: res.data.data.parent_engineer_id
+            },
+            selected_engineer: {
+              label: res.data.data.child_engineer_name,
+              value: res.data.data.child_engineer_id
+            },
+            team_id: res.data.data.team_id,
+            from_date: res.data.data.from_date,
+            to_date: res.data.data.to_date
+          });
+
+          console.log(_this.state.selected_team);
+          document.getElementById("requestLoder").innerHTML = '';
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "Engineerchange", function (e) {
+      _this.setState({
+        Engineer: e.value
+      });
+
+      var Engineers = _this.state.Engineers.filter(function (vl, index) {
+        return vl.value == e.value;
+      });
+
+      if (Engineers) {
+        _this.setState({
+          selected_engineer: {
+            label: Engineers[0].label,
+            value: Engineers[0].value
+          }
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+      var _this$props2 = _this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
       var Permission = Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('areamanager', 'add', history, false);
 
       if (Permission == 1) {
@@ -550,11 +602,11 @@ var Add = /*#__PURE__*/function (_React$Component) {
         }), "sending")
       });
 
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref3.id,
-          auth_token = _ref3.auth_token;
+      var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref4.id,
+          auth_token = _ref4.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/smsteam', _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/smsteam/' + _this.state.id, _this.state, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -632,19 +684,19 @@ var Add = /*#__PURE__*/function (_React$Component) {
     });
 
     _this.state = (_this$state = {
+      _method: 'PUT',
+      id: '',
       manager_list: [],
       team_id: '',
       regions_sort_name: '',
       region_list: [],
-      Engineer: [],
-      SiteEngineer: [],
       parent_engineer_id: '',
       parent_engineer: ''
-    }, _defineProperty(_this$state, "team_id", ''), _defineProperty(_this$state, "from_date", ''), _defineProperty(_this$state, "to_date", ''), _defineProperty(_this$state, "validated", false), _defineProperty(_this$state, "validatedTooltip", false), _defineProperty(_this$state, "visible", true), _defineProperty(_this$state, "formSubmitting", false), _defineProperty(_this$state, "buttonName", 'Add'), _this$state);
+    }, _defineProperty(_this$state, "team_id", ''), _defineProperty(_this$state, "from_date", ''), _defineProperty(_this$state, "to_date", ''), _defineProperty(_this$state, "selected_team", {}), _defineProperty(_this$state, "selected_engineer", {}), _defineProperty(_this$state, "validated", false), _defineProperty(_this$state, "validatedTooltip", false), _defineProperty(_this$state, "visible", true), _defineProperty(_this$state, "formSubmitting", false), _defineProperty(_this$state, "buttonName", 'Edit'), _this$state);
     return _this;
   }
 
-  _createClass(Add, [{
+  _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -660,18 +712,20 @@ var Add = /*#__PURE__*/function (_React$Component) {
         _this2.setState({
           Engineers: res.data
         });
+
+        _this2.update();
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
+      var _this$props3 = this.props,
+          match = _this$props3.match,
+          location = _this$props3.location,
+          history = _this$props3.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Add Sms Team Groups"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Edit Sms Team Groups"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -694,6 +748,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
         className: "basic-single",
         classNamePrefix: "select",
         name: "regions_sort_name",
+        value: this.state.selected_team,
         options: this.state.region_list,
         placeholder: "Select Team"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
@@ -715,8 +770,8 @@ var Add = /*#__PURE__*/function (_React$Component) {
         required: true // defaultValue={[Engineers[2], Engineers[3]]}
         ,
         onChange: this.Engineerchange,
-        isMulti: true,
         name: "engineers",
+        value: this.state.selected_engineer,
         options: this.state.Engineers,
         className: "basic-multi-select",
         classNamePrefix: "select",
@@ -736,6 +791,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
         errorMessage: {
           required: "start_date is required"
         },
+        value: this.state.from_date,
         inputProps: {
           required: 'required',
           name: "start_date",
@@ -752,6 +808,7 @@ var Add = /*#__PURE__*/function (_React$Component) {
         dateFormat: "D/M/Y",
         timeFormat: false,
         minDate: new Date(),
+        value: this.state.to_date,
         errorMessage: {
           required: "end_date is required"
         },
@@ -773,10 +830,10 @@ var Add = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Add;
+  return Edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Add);
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),

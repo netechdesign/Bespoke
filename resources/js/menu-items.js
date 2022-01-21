@@ -458,6 +458,14 @@ export default {
                     classes: 'nav-item',
                     url: '/vehicle',
                     icon: 'feather icon-feather icon-file-text'
+                },
+                {
+                    id: 'M25_postcodes',
+                    title: 'Inner M25 postcode',
+                    type: 'item',
+                    classes: 'nav-item',
+                    url: '/M25_postcodes',
+                    icon: 'feather icon-feather icon-file-text'
                 }
                 ]
         }

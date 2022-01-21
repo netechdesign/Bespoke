@@ -15,7 +15,7 @@ use App\Models\Job_lookup;
 use App\Models\Engineer_lookup;
 use Input;
 use Excel;
-
+use App\Models\Utilita_job;
 class Bonus_periodsController extends Controller
 {
     /**
@@ -204,27 +204,74 @@ class Bonus_periodsController extends Controller
                         $todate=$end_date;
                         }
                         
-                        //$teamQ= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
-                        $teamQ= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
+                        
+                        //$teamQ= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
+                        $teamQ= Sms_job::select('sms_jobs.id','select_work_type','work_type','status','sms_jobs.engineer_id','engineer','week_day','appointment_date','time_lookups.in_hours_end','post_code',
+                        DB::raw('"sms" as table_type'))->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
+                        
                         $teamQ->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
                         if($request->team_id!=''){
                           $teamQ->where('teams.id', '=', $request->team_id);
                         }
                         if($start_date!=''){ $teamQ->whereDate('appointment_date', '>=', $vl->wc); }
                         if($end_date!=''){ $teamQ->whereDate('appointment_date', '<', $todate); }
-                        $team_result =$teamQ->orderBy('appointment_date','asc')->get();
+                       //Utilita
+                       $utilita=  Utilita_job::select(
+                        'utilita_jobs.id',
+                        DB::raw('"" as select_work_type'),
+                        DB::raw('utilita_jobs.job_type as work_type'),
+                        DB::raw('utilita_jobs.job_status as status'),
+                        'utilita_jobs.engineer_id',
+                        'engineer',
+                        'week_day',
+                        DB::raw('utilita_jobs.schedule_date as appointment_date'),
+                        'time_lookups.in_hours_end','post_code',
+                        DB::raw('"sms" as table_type'))->join('time_lookups','utilita_jobs.week_day','=','time_lookups.day');
+                        $utilita->join('sms_teams','sms_teams.child_engineer_id','=','utilita_jobs.engineer_id'); 
+                        if($request->team_id!=''){
+                            $utilita->where('sms_teams.team_id', '=', $request->team_id);
+                          }
+                          if($start_date!=''){ $utilita->whereDate('schedule_date', '>=', $vl->wc); }
+                        if($end_date!=''){ $utilita->whereDate('schedule_date', '<', $todate); }
+
+                     
+                        if(isset($request->company) && $request->company==0){
+                            
+                            $utilita->union($teamQ);
+                            $team_result =$utilita->orderBy('appointment_date','asc')->get();
+                        }
+                        elseif(isset($request->company) && $request->company==1){ // 1 = utilita
+                            $team_result =$utilita->orderBy('appointment_date','asc')->get();
+                        }
+                        elseif(isset($request->company) && $request->company==2){ // 2 = sms
+                            $team_result =$teamQ->orderBy('appointment_date','asc')->get();
+                        }
+                        
+
                        // dd($team_result->toSql());
                          if($team_result)
                          {
                            
                             foreach($team_result as $vle){
+                                //m25_postcodes
+                                $post_code = explode(" ",$vle->post_code);
+                                $post_code= $post_code[0];
+                                $m25_postcodes = DB::table('m25_postcodes')->select('name')->where('name', 'LIKE', '%'.$post_code)->first();
+                                //m25_postcodes
+
+                                $vle['status'] = strtolower($vle->status);
+                                
                               $work_type= ($vle->select_work_type!=''?$vle->select_work_type:$vle->work_type);
                               if($vle->status=='completed'){
                                 $team[$vle->engineer][$vl->wc][$vle->week_day]['completed'] = (isset($team[$vle->engineer][$vl->wc][$vle->week_day]['completed'])?$team[$vle->engineer][$vl->wc][$vle->week_day]['completed']+1:1);
 
                                // $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
-                                $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
+                                $pu_result =Job_lookup::select('pu','revenue','revenue_M25')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
                         if($pu_result){
+
+                            if($m25_postcodes){
+                                $pu_result->revenue = $pu_result->revenue_M25;
+                                }
                             $team[$vle->engineer][$vl->wc][$vle->week_day]['engineer_id']=$vle->engineer_id;
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['appointment_date']=$vle->appointment_date;  
                           $team[$vle->engineer][$vl->wc][$vle->week_day]['pu_no'][] =$pu_result->pu;
@@ -244,8 +291,11 @@ class Bonus_periodsController extends Controller
     
                                    // $pu_result =Job_lookup::select('pu','revenue')->where('job_type',$work_type)->first();
                                     
-                                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
+                                    $pu_result =Job_lookup::select('pu_aborted','revenue_aborted','revenue_aborted_M25')->where('job_type',$work_type)->whereDate('from_date', '<=', $vle->appointment_date)->whereDate('to_date', '>=', $vle->appointment_date)->first();
                             if($pu_result){
+                                if($m25_postcodes){
+                                    $pu_result->revenue_aborted = $pu_result->revenue_aborted_M25;
+                                    }
                                 $team[$vle->engineer][$vl->wc][$vle->week_day]['engineer_id']=$vle->engineer_id;
                               $team[$vle->engineer][$vl->wc][$vle->week_day]['appointment_date']=$vle->appointment_date;  
 
@@ -299,6 +349,7 @@ class Bonus_periodsController extends Controller
           
          }
          ksort($team);
+         
     //   echo '<pre/>'; print_r($team['Neil Minister']); exit;
        return view('reports.sms_bonus_view', ['data' => $team,"period"=>$request->period,'role'=>$role]);
     

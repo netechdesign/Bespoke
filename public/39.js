@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Pages/Engineer.js":
-/*!****************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/Engineer.js ***!
-  \****************************************************/
+/***/ "./resources/js/Back-Office/Pages/Mpostcode.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/Mpostcode.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -203,7 +203,7 @@ function atable() {
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin + '/api/engineer'
+    "sAjaxSource": window.location.origin + '/api/m25_postcode'
   }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
     var acolumns = this.fnSettings().aoColumns,
         columns = [];
@@ -219,9 +219,7 @@ function atable() {
       }
     */
   }), _defineProperty(_$$DataTable, "columns", [{
-    "data": "engineer_name"
-  }, {
-    "data": "engineer_id"
+    "data": "name"
   }, {
     "data": "id"
   }]), _defineProperty(_$$DataTable, "responsive", {
@@ -275,15 +273,15 @@ function handleChange_search() {
   }, 500);
 }
 
-var Engineer = /*#__PURE__*/function (_React$Component) {
-  _inherits(Engineer, _React$Component);
+var Mpostcode = /*#__PURE__*/function (_React$Component) {
+  _inherits(Mpostcode, _React$Component);
 
-  var _super = _createSuper(Engineer);
+  var _super = _createSuper(Mpostcode);
 
-  function Engineer(props) {
+  function Mpostcode(props) {
     var _this;
 
-    _classCallCheck(this, Engineer);
+    _classCallCheck(this, Mpostcode);
 
     _this = _super.call(this, props);
 
@@ -307,14 +305,13 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
       });
 
       var data = new FormData();
-      data.append('engineer_id', _this.state.engineer_id);
-      data.append('engineer_name', _this.state.engineer_name);
+      data.append('name', _this.state.name);
 
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref2.id,
           auth_token = _ref2.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/engineer', data, {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/m25_postcode', data, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -334,11 +331,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            engineer_id: ''
-          });
-
-          _this.setState({
-            engineer_name: ''
+            name: ''
           }); //this.setState({progress:100});
 
 
@@ -353,10 +346,9 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
             }
           }).on('click', function (e) {});
         } else {
-          jquery__WEBPACK_IMPORTED_MODULE_12___default()('#avatar').val('');
           pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].error({
             title: "System Error",
-            text: res.data.message
+            text: res.data.name
           });
 
           _this.setState({
@@ -397,8 +389,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       showModal: false,
       Engineers: [],
-      engineer_id: '',
-      engineer_name: '',
+      name: '',
       validated: false,
       validatedTooltip: false,
       visible: true,
@@ -408,7 +399,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Engineer, [{
+  _createClass(Mpostcode, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var items = [];
@@ -434,7 +425,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
                 _auth_token = _ref3.auth_token;
 
             var _baseurl = window.location.origin;
-            axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/engineer/' + id, {
+            axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/m25_postcode/' + id, {
               _method: 'delete'
             }, {
               headers: {
@@ -443,7 +434,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
             }).then(function (res) {
               if (res.data.success) {
                 oTable.draw();
-                return MySwal.fire('', 'Engineer has been deleted!', 'success');
+                return MySwal.fire('', 'M25 postcode has been deleted!', 'success');
               }
             });
           } else {// return MySwal.fire('', 'Your imaginary file is safe!', 'error');
@@ -466,7 +457,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Add Engineer")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+      }, "Add Inner M25 Postcode")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -474,25 +465,12 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
         md: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "engineer_name"
-      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "engineer_name",
-        id: "engineer_name",
-        placeholder: "Engineer Name",
+      }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "name",
+        id: "name",
+        placeholder: "Postcode",
         required: true,
-        value: this.state.engineer_name,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "engineer_id"
-      }, "Engineer Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
-        name: "engineer_id",
-        id: "engineer_id",
-        placeholder: "Engineer Id",
-        required: true,
-        value: this.state.engineer_id,
+        value: this.state.name,
         onChange: this.handleChange,
         autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -504,7 +482,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
         type: "submit"
       }, " ", this.state.buttonName))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Engineer List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Inner M25 Postcode List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -524,25 +502,21 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
         className: "table table-condensed",
         id: "data-table-responsive"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "parent_engineer"
-      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "child_engineer_name"
-      }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "name"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "parent_engineer"
-      }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "child_engineer_name"
-      }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "name"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action")))))))));
     }
   }]);
 
-  return Engineer;
+  return Mpostcode;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Engineer);
+/* harmony default export */ __webpack_exports__["default"] = (Mpostcode);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),

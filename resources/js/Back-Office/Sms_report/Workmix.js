@@ -16,21 +16,21 @@ const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorag
 const baseurl= window.location.origin;
 export const Work_Type = [{ value: 'all', label: 'All'},{ value: 'domestic', label: 'Domestic'},{ value: 'I&C', label:'I&C'}];
 export const Work_Completed =[{value:'all',label:'All'},{value:'in_hours', label: 'In Hours'},{value:'out_of_hours', label: 'Out of Hours'}];
-
+export const Company =[{value:'0',label:'All'},{value:'1', label: 'Utilita'},{value:'2', label: 'Sms'}];
 
 class Workmix extends React.Component {
 
    
     constructor(props) {
         super(props);
-        this.state={id:'',job_type_list:[],job_type:'','report_type':'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/workmixexport',btnhide:'unset'}
+        this.state={id:'',job_type_list:[],job_type:'','report_type':'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/workmixexport',btnhide:'unset',company:0}
     }
     onsearch = (e) => {
         var items  = [];
         const { match, location, history } = this.props
-        const {id,start_date,end_date,report_type} = this.state;
+        const {id,start_date,end_date,report_type,company} = this.state;
         
-        let data={id:id,start_date:start_date,end_date:end_date,file_id:report_type.value};
+        let data={id:id,start_date:start_date,end_date:end_date,file_id:report_type.value,company:company};
         document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
       axios.post(baseurl+'/api/workmix/report_view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
@@ -43,7 +43,10 @@ $("#monday_view th").css("background","lightgray");
        //
          
     }
-
+    CompanyChange  = (e) =>{
+               
+        this.setState({company:e.value});
+       }
     startDateChange = (e) => {
             var today = new Date(e);
             var dd = today.getDate(); 
@@ -155,6 +158,17 @@ $("#monday_view th").css("background","lightgray");
                                             placeholder="Select type"
                                         />
                                         </Form.Group>
+
+                                        <Form.Group as={Col} md="2">
+                                    <Form.Label htmlFor="type">Company</Form.Label>
+                                    <Select onChange={this.CompanyChange}
+                                    className="basic-single"
+                                    classNamePrefix="select"
+                                    name="company"
+                                    options={Company}
+                                    placeholder="Select Company"
+                                    />
+                                </Form.Group> 
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} md="8">

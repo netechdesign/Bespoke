@@ -57,6 +57,10 @@ Route::group(array('prefix' => '/'), function() {
    Route::get('/Engineer', function(){
       return view('welcome');
    });
+   
+   Route::get('/M25_postcodes', function(){
+      return view('welcome');
+   });
    Route::get('/report', function(){
       return view('welcome');
    }); 

@@ -188,7 +188,7 @@
         <td style="border: 1px solid #000000;">{{$row_data->customer_data_choice}}</td>
         <td style="border: 1px solid #000000;">{{$row_data->additional_device_to_join_type}}</td>
         <td style="border: 1px solid #000000;">{{$row_data->additional_device_id}}</td>
-        <td style="border: 1px solid #000000;">{{$row_data->job_path}}</td>
+        <td style="border: 1px solid #000000;"> @if(isset($row_data->job_path)) {{$row_data->job_path}} @endif</td>
         <td style="border: 1px solid #000000;">{{$row_data->reused}}</td>
     }
         </tr>

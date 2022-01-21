@@ -100,6 +100,8 @@ class Job_lookupController extends Controller
             $engineers->pu= $request->pu;
             $engineers->revenue_aborted = $request->revenue_aborted;
             $engineers->pu_aborted= $request->pu_aborted;
+            $engineers->revenue_M25 = $request->revenue_M25;
+            $engineers->revenue_aborted_M25 = $request->revenue_aborted_M25;
             $engineers->contract= $request->contract;
             $engineers->created_by = $user->id;
             $engineers->from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));
@@ -169,6 +171,8 @@ class Job_lookupController extends Controller
             $engineers->pu= $request->pu;
             $engineers->revenue_aborted = $request->revenue_aborted;
             $engineers->pu_aborted= $request->pu_aborted;
+            $engineers->revenue_M25 = $request->revenue_M25;
+            $engineers->revenue_aborted_M25 = $request->revenue_aborted_M25;
             $engineers->contract= $request->contract;
             $engineers->from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));
             $engineers->to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));

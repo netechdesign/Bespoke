@@ -16,6 +16,7 @@ const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(local
 const baseurl= window.location.origin;
 export const Work_Type = [{ value: 'all', label: 'All'},{ value: 'domestic', label: 'Domestic'},{ value: 'I&C', label:'I&C'}];
 export const Work_Completed =[{value:'all',label:'All'},{value:'in_hours', label: 'In Hours'},{value:'out_of_hours', label: 'Out of Hours'}];
+export const Company =[{value:'0',label:'All'},{value:'1', label: 'Utilita'},{value:'2', label: 'Sms'}];
 
 
 class Performance extends React.Component {
@@ -23,14 +24,14 @@ class Performance extends React.Component {
    
     constructor(props) {
         super(props);
-        this.state={id:'',job_type_list:[],job_type:'',work_type:'',work_completed:'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/export',btnhide:'unset',role:roles}
+        this.state={id:'',job_type_list:[],job_type:'',work_type:'',work_completed:'',start_date:'',end_date:'',searching:false,baseurl:window.location.origin+'/sms/export',btnhide:'unset',role:roles,company:0}
     }
     onsearch = (e) => {
         var items  = [];
         const { match, location, history } = this.props
-        const {id,start_date,end_date,report_type,job_type,work_completed,work_type} = this.state;
+        const {id,start_date,end_date,report_type,job_type,work_completed,work_type,company} = this.state;
         
-        let data={id:id,start_date:start_date,end_date:end_date,report_type:report_type,job_type:job_type,work_completed:work_completed,work_type:work_type};
+        let data={id:id,start_date:start_date,end_date:end_date,report_type:report_type,job_type:job_type,work_completed:work_completed,work_type:work_type,company:company};
         document.getElementById("loaders").innerHTML = '<img style="width:3%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
 
       axios.post(baseurl+'/api/sms_report/performance_view',data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
@@ -94,7 +95,11 @@ class Performance extends React.Component {
             work_completedChange = (e) =>{
                 this.setState({work_completed:e});
                 
-                }    
+                }
+           CompanyChange  = (e) =>{
+               
+            this.setState({company:e.value});
+           }  
     job_type_list = () => {
         axios.get(
             baseurl+'/api/joblookup/dropdown_list',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
@@ -150,6 +155,16 @@ class Performance extends React.Component {
                                     <Datetime  closeOnSelect={true} dateFormat="D/M/Y" timeFormat={false}  minDate={new Date()}  errorMessage={{required:"end_date is required"}} onChange={this.endDateChange} inputProps={{required:'required',name:"end_date",placeholder: 'Select Date',autoComplete:'off'}} />
                                 </Form.Group>
                                 
+                                <Form.Group as={Col} md="2">
+                                            <Form.Label htmlFor="type">Company</Form.Label>
+                                    <Select onChange={this.CompanyChange}
+                                            className="basic-single"
+                                            classNamePrefix="select"
+                                            name="company"
+                                            options={Company}
+                                            placeholder="Select Company"
+                                        />
+                                        </Form.Group>
                                         <Form.Group as={Col} md="2">
                                             <Form.Label htmlFor="type">Work Completed</Form.Label>
                                     <Select onChange={this.work_completedChange}

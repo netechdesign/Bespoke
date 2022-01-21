@@ -302,17 +302,18 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Sms_report/Performance.js":
-/*!************************************************************!*\
-  !*** ./resources/js/Back-Office/Sms_report/Performance.js ***!
-  \************************************************************/
-/*! exports provided: Work_Type, Work_Completed, default */
+/***/ "./resources/js/Back-Office/Sms_report/Workmix.js":
+/*!********************************************************!*\
+  !*** ./resources/js/Back-Office/Sms_report/Workmix.js ***!
+  \********************************************************/
+/*! exports provided: Work_Type, Work_Completed, Company, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Work_Type", function() { return Work_Type; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Work_Completed", function() { return Work_Completed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Company", function() { return Company; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
@@ -362,8 +363,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
     id = _ref.id,
-    auth_token = _ref.auth_token,
-    roles = _ref.roles;
+    auth_token = _ref.auth_token;
 
 var baseurl = window.location.origin;
 var Work_Type = [{
@@ -386,16 +386,26 @@ var Work_Completed = [{
   value: 'out_of_hours',
   label: 'Out of Hours'
 }];
+var Company = [{
+  value: '0',
+  label: 'All'
+}, {
+  value: '1',
+  label: 'Utilita'
+}, {
+  value: '2',
+  label: 'Sms'
+}];
 
-var Performance = /*#__PURE__*/function (_React$Component) {
-  _inherits(Performance, _React$Component);
+var Workmix = /*#__PURE__*/function (_React$Component) {
+  _inherits(Workmix, _React$Component);
 
-  var _super = _createSuper(Performance);
+  var _super = _createSuper(Workmix);
 
-  function Performance(props) {
+  function Workmix(props) {
     var _this;
 
-    _classCallCheck(this, Performance);
+    _classCallCheck(this, Workmix);
 
     _this = _super.call(this, props);
 
@@ -410,38 +420,35 @@ var Performance = /*#__PURE__*/function (_React$Component) {
           start_date = _this$state.start_date,
           end_date = _this$state.end_date,
           report_type = _this$state.report_type,
-          job_type = _this$state.job_type,
-          work_completed = _this$state.work_completed,
-          work_type = _this$state.work_type;
+          company = _this$state.company;
       var data = {
         id: id,
         start_date: start_date,
         end_date: end_date,
-        report_type: report_type,
-        job_type: job_type,
-        work_completed: work_completed,
-        work_type: work_type
+        file_id: report_type.value,
+        company: company
       };
-      document.getElementById("loaders").innerHTML = '<img style="width:3%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/sms_report/performance_view', data, {
+      document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/workmix/report_view', data, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
-        $('#monday_view').css({
-          "height": "500px"
-        });
         document.getElementById("monday_view").innerHTML = res.data;
-        document.getElementById("loaders").innerHTML = '';
-        $("#view_report th").css("color", "black");
-        $("#view_report th").css("background", "lightgray");
+        $("#monday_view th").css("background", "lightgray");
 
         _this.setState({
           searching: false
         }); //   this.setState({monday_view:res});
 
       }); //
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "CompanyChange", function (e) {
+      _this.setState({
+        company: e.value
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "startDateChange", function (e) {
@@ -490,14 +497,18 @@ var Performance = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState({
-        work_type: e
+        report_type: e
       });
-    });
 
-    _defineProperty(_assertThisInitialized(_this), "work_completedChange", function (e) {
-      _this.setState({
-        work_completed: e
-      });
+      if (e.value == 3) {
+        _this.setState({
+          btnhide: 'none'
+        });
+      } else {
+        _this.setState({
+          btnhide: ''
+        });
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "job_type_list", function () {
@@ -527,19 +538,18 @@ var Performance = /*#__PURE__*/function (_React$Component) {
       id: '',
       job_type_list: [],
       job_type: '',
-      work_type: '',
-      work_completed: '',
+      'report_type': '',
       start_date: '',
       end_date: '',
       searching: false,
-      baseurl: window.location.origin + '/sms/export',
+      baseurl: window.location.origin + '/sms/workmixexport',
       btnhide: 'unset',
-      role: roles
+      company: 0
     };
     return _this;
   }
 
-  _createClass(Performance, [{
+  _createClass(Workmix, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props2 = this.props,
@@ -550,15 +560,14 @@ var Performance = /*#__PURE__*/function (_React$Component) {
       var id = this.props.match.params.id;
       this.setState({
         id: id
-      });
-      this.job_type_list();
+      }); //  this.job_type_list();
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
         as: "h5"
-      }, "Performance Report"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      }, "Work Mix Report"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -572,11 +581,7 @@ var Performance = /*#__PURE__*/function (_React$Component) {
         action: this.state.baseurl,
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "hidden",
-        name: "role",
-        value: this.state.role
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
@@ -621,37 +626,25 @@ var Performance = /*#__PURE__*/function (_React$Component) {
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
         htmlFor: "type"
-      }, "Work Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.work_completedChange,
+      }, "Work Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.handleChange,
         className: "basic-single",
         classNamePrefix: "select",
-        name: "work_completed",
-        options: Work_Completed,
+        name: "file_id",
+        options: Work_Type,
         placeholder: "Select type"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        htmlFor: "firstName"
-      }, "Job Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.RegionChange,
-        className: "basic-single",
-        classNamePrefix: "select",
-        name: "job_type",
-        options: this.state.job_type_list,
-        placeholder: "Select Job Type"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
         htmlFor: "type"
-      }, "Work Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onChange: this.handleChange,
+      }, "Company"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.CompanyChange,
         className: "basic-single",
         classNamePrefix: "select",
-        name: "work_type",
-        options: Work_Type,
-        placeholder: "Select type"
+        name: "company",
+        options: Company,
+        placeholder: "Select Company"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "8"
@@ -674,24 +667,19 @@ var Performance = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "feather icon-download"
       }), "Download csv"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "loaders",
-        style: {
-          'textAlign': 'center'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "monday_view",
         style: {
           'textAlign': 'center',
-          'overflowY': 'scroll'
+          'color': 'black'
         }
       }))))));
     }
   }]);
 
-  return Performance;
+  return Workmix;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Performance);
+/* harmony default export */ __webpack_exports__["default"] = (Workmix);
 
 /***/ }),
 

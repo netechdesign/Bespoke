@@ -30,6 +30,8 @@ const UtilitaChart = React.lazy(() => import('./Back-Office/Pages/UtilitaChart')
 const UtilitaView = React.lazy(() => import('./Back-Office/Pages/UtilitaView'));
 const SiteEngineer = React.lazy(() => import('./Back-Office/Pages/SiteEngineer'));
 const Engineer = React.lazy(() => import('./Back-Office/Pages/Engineer'));
+
+const Mpostcode = React.lazy(() => import('./Back-Office/Pages/Mpostcode'));
 const RoleList = React.lazy(() => import("./Back-Office/Role"));
 const RoleAdd = React.lazy(() => import("./Back-Office/Role/add"));
 const RoleEdit = React.lazy(() => import("./Back-Office/Role/edit"));
@@ -80,6 +82,8 @@ const routes = [
     { path: '/report', exact: true, name: 'UtilitaList', component: UtilitaList },
     { path: '/siteengineer', exact: true, name: 'SiteEngineer', component: SiteEngineer },
     { path: '/engineer', exact: true, name: 'Engineer', component: Engineer },
+    { path: '/M25_postcodes', exact: true, name: 'Engineer', component: Mpostcode },
+    
     { path:'/role', exact:true, name:'role',component:RoleList},
     { path:'/role/add', exact:true, name:'roleadd',component:RoleAdd},
     { path:'/role/edit/:id', exact:true, name:'roleedit',component:RoleEdit},
