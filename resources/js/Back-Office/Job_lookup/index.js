@@ -85,6 +85,7 @@ oTable = $(tableResponsive).DataTable({
         {"data":"job_type"},
         {"data":"mix"},
         {"data":'revenue'},
+        {"data":"revenue_M25"},
         {"data":'pu'},
         {"data":'revenue_aborted'},
         {"data":'pu_aborted'},
@@ -151,7 +152,20 @@ oTable = $(tableResponsive).DataTable({
             "targets": $('#data-table-responsive th#action').index(),
             "orderable": false,
             "searchable": false
-        }, 
+        },
+        {
+            "render": function (data, type, row) {
+              
+                var str_buttons = (row.revenue_M25?row.revenue_M25:'<span style="color:red">N/A</span>');
+                return [
+                    str_buttons,
+                ].join('');
+               
+            },
+            "targets": $('#data-table-responsive th#revenue_M25').index(),
+            "orderable": false,
+            "searchable": false
+        },
         {
             "targets": 0,
             "orderable": false
@@ -255,6 +269,7 @@ class Job_lookup extends React.Component {
                                         <th id="job_type">Job Type</th>
                                         <th id="mix">Mix</th>
                                         <th id="revenue">Revenue-Completed</th>
+                                        <th id="revenue_M25">Revenue-Completed-M25</th>
                                         <th id="pu">Pu-Completed</th>
                                         <th id="revenue_aborted">Revenue-Aborted</th>
                                         <th id="pu_aborted">Pu-Aborted</th>
@@ -269,6 +284,7 @@ class Job_lookup extends React.Component {
                                         <th id="job_type">Job Type</th>
                                         <th id="mix">Mix</th>
                                         <th id="revenue">Revenue-Completed</th>
+                                        <th id="revenue_M25">Revenue-Completed-M25</th>
                                         <th id="pu">Pu-Completed</th>
                                         <th id="revenue_aborted">Revenue-Aborted</th>
                                         <th id="pu_aborted">Pu-Aborted</th>

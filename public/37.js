@@ -227,6 +227,8 @@ function atable() {
   }, {
     "data": 'revenue'
   }, {
+    "data": "revenue_M25"
+  }, {
     "data": 'pu'
   }, {
     "data": 'revenue_aborted'
@@ -278,6 +280,14 @@ function atable() {
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive th#action').index(),
+    "orderable": false,
+    "searchable": false
+  }, {
+    "render": function render(data, type, row) {
+      var str_buttons = row.revenue_M25 ? row.revenue_M25 : '<span style="color:red">N/A</span>';
+      return [str_buttons].join('');
+    },
+    "targets": jquery__WEBPACK_IMPORTED_MODULE_13___default()('#data-table-responsive th#revenue_M25').index(),
     "orderable": false,
     "searchable": false
   }, {
@@ -391,6 +401,8 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
       }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "revenue"
       }, "Revenue-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "revenue_M25"
+      }, "Revenue-Completed-M25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "pu"
       }, "Pu-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "revenue_aborted"
@@ -411,6 +423,8 @@ var Job_lookup = /*#__PURE__*/function (_React$Component) {
       }, "Mix"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "revenue"
       }, "Revenue-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "revenue_M25"
+      }, "Revenue-Completed-M25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "pu"
       }, "Pu-Completed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "revenue_aborted"

@@ -8,7 +8,7 @@ use JWTAuth;
 use DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Teams;
-
+use App\Models\Engineers;
 
 class TeamsController extends Controller
 {
@@ -172,9 +172,18 @@ class TeamsController extends Controller
     public function update(Request $request, $id)
     {
         try{
+
             $user = JWTAuth::toUser($request->input('token'));
             $engineers =Teams::find($id);
             $engineers->engineer_id = $request->engineer_id;
+            //engineer_name
+            
+                $Engineers = Engineers::select('engineer_name')->where('engineer_id',$request->engineer_id)->first();
+                if($Engineers){
+                    $engineers->engineer_name = $Engineers->engineer_name;
+                }
+            
+            
             $engineers->regions_id = $request->regions_id;
             $engineers->regions_sort_name = $request->regions_sort_name;
             $engineers->created_by = $user->id;
