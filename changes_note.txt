@@ -1,0 +1,57 @@
+
+
+
+SELECT *,YEAR(CURDATE()) FROM `sms_teams` WHERE YEAR(from_date)>=YEAR(CURDATE()) and YEAR(to_date)<= YEAR(CURDATE()) GROUP BY regions_sort_name
+
+
+ALTER TABLE `utilita_jobs` ADD `mpl_pu` INT NOT NULL DEFAULT '6' AFTER `engineer`;
+ALTER TABLE `sms_jobs` ADD `mpl_pu` INT NOT NULL DEFAULT '6' AFTER `engineer`;
+ALTER TABLE `morrison_jobs` ADD `mpl_pu` INT NOT NULL DEFAULT '6' AFTER `engineer`;
+
+holiday_mpl
+engineer_id
+employee_ref_no
+teamhrs_engineer_id
+holiday_type  ['holiday','bank_holiday','sickness_absence','general_absence','unproductive_time_absence']
+holiday_date
+holiday_hours
+holiday_minutes
+pu_value_reduction 
+mpl_pu '6-pu_value_reduction'
+
+0 => "2022-02-21"
+  1 => "2022-02-22"
+  2 => "2022-02-23"
+  3 => "2022-02-24"
+  4 => "2022-02-25"
+  
+  6 => "2022-02-07"
+  
+  13 => "2022-02-14"
+  
+  19 => "2022-02-16"
+  20 => "2022-02-17"
+  21 => "2022-02-18"
+  
+  24 => "2022-02-26"
+  25 => "2022-02-15"
+  
+  27 => "2022-02-05"
+  28 => "2022-02-06"
+  
+  30 => "2022-02-11"
+  
+  33 => "2022-02-02"
+  34 => "2022-02-03"
+  35 => "2022-02-04"
+  37 => "2022-01-31"
+  38 => "2022-02-01"
+  39 => "2022-02-19"
+
+
+  2022-02-04
+
+UPDATE `sms_jobs` JOIN`sms_teams` ON (sms_teams.child_engineer_name=sms_jobs.engineer) SET sms_jobs.regions_sort_name = sms_teams.regions_sort_name WHERE sms_jobs.engineer_id=sms_teams.child_engineer_id and sms_jobs.created_at >='2022-07-20';
+
+
+  Bradley Nolan

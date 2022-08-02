@@ -34,6 +34,8 @@ if(isset($_REQUEST['role'])){
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Open</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Cancelled</th>
             @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
+            
+                <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">MPL</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU/Day</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU</th>
@@ -60,7 +62,9 @@ if(isset($_REQUEST['role'])){
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['open']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['cancelled']}}</th>
             @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
-                <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
+            
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['mpl_pu']}}</th>    
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['pu']/$national['total_work_day'],2)}}</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus'],2)}}</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus']/$national['total_work_day'],2)}}</th>
@@ -88,7 +92,9 @@ if(isset($_REQUEST['role'])){
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Open</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Cancelled</th>
             @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
-                <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
+            
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">MPL</th>    
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU/Day</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU</th>
                 <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU/Day</th>
@@ -109,6 +115,7 @@ if(isset($_REQUEST['role'])){
             $aborted=0;
             $open=0;
             $cancelled=0;
+            $mpl_pu=0;
             $pu=0;
             $pu_day=0;
             $bonus_pus=0;
@@ -129,6 +136,8 @@ if(isset($_REQUEST['role'])){
           $aborted=$aborted + $users['aborted'];;
           $open=$open + $users['open'];;
           $cancelled=$cancelled + $users['cancelled'];
+          
+          $mpl_pu=$mpl_pu + $users['mpl_pu'];
           $pu=$pu + $users['pu'];
           $pu_day=$pu_day + $users['pu_day'];
           $bonus_pus=$bonus_pus + $users['bonus_pus'];
@@ -150,7 +159,9 @@ if(isset($_REQUEST['role'])){
                 <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['open']}}</td>
                 <td style="width:10;border: 1px solid #000000;text-align: center;">{{$users['cancelled']}}</td>
                 @if($role==8 || $role==7 || $role==6 || $role==5 || $role==1)
-                    <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{$users['pu']}}</td>
+                
+                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{$users['mpl_pu']}}</td>    
+                <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{$users['pu']}}</td>
                     <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['pu_day'],2))}}</td>
                     <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['bonus_pus'],2))}}</td>
                     <td style="width:15;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['bonus_pus_day'],2))}}</td>

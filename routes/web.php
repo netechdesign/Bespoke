@@ -152,7 +152,10 @@ Route::group(array('prefix' => '/'), function() {
      Route::get('/sms/workmixexport', 'Admin\Sms_report@workmixexport');
      
      Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
-     
+
+     /** crone */
+     Route::get('previous_three_periods','Admin\Bonus_periodsController@previous_three_periods');
+     Route::get('holiday_pu','Admin\EngineerController@holiday_pu');
     
     });
 

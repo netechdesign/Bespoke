@@ -375,6 +375,7 @@ var Company = [{
   label: 'Sms'
 }];
 var baseurl = window.location.origin;
+var current_year = new Date().getFullYear();
 
 var Bonus_periods = /*#__PURE__*/function (_React$Component) {
   _inherits(Bonus_periods, _React$Component);
@@ -397,11 +398,13 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
       var _this$state = _this.state,
           period = _this$state.period,
           team_id = _this$state.team_id,
-          company = _this$state.company;
+          company = _this$state.company,
+          year_id = _this$state.year_id;
       var data = {
         period: period,
         team_id: team_id,
-        company: company
+        company: company,
+        year_id: year_id
       };
       document.getElementById("monday_view").innerHTML = '<img style="width:3%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + '/api/bonus_periods/report_view', data, {
@@ -439,6 +442,9 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
           auth_token = _ref2.auth_token;
 
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/dropdown_list', {
+        params: {
+          year_id: _this.state.year_id
+        },
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -447,6 +453,10 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
         if (res.data.success) {
           _this.setState({
             region_list: res.data.region
+          });
+
+          _this.setState({
+            bonus_periods: res.data.bonus_periods
           });
 
           document.getElementById("requestLoder").innerHTML = '';
@@ -458,7 +468,11 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "RegionChange", function (e) {
       _this.setState({
-        team_id: e.value
+        team_id: e.value,
+        region_val: {
+          'label': e.label,
+          'value': e.value
+        }
       });
 
       var region = _this.state.region_list.filter(function (vl, index) {
@@ -472,6 +486,16 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "periodChange", function (e) {
+      _this.setState({
+        period: e.value,
+        period_val: {
+          'label': e.value,
+          'value': e.value
+        }
+      });
+    });
+
     _this.state = {
       searching: false,
       baseurl: window.location.origin + '/bonus_periods/export',
@@ -481,7 +505,14 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
       regions_sort_name: "",
       team_id: '',
       role: roles,
-      company: 0
+      company: 0,
+      year: {
+        'label': current_year,
+        'value': current_year
+      },
+      year_id: current_year,
+      year_list: [],
+      bonus_periods: []
     };
     return _this;
   }
@@ -499,10 +530,36 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
         id: id
       });
       this.dropdownList();
+      var currentyear = new Date().getFullYear();
+      var rows = [];
+
+      for (var i = 0; i < 3; i++) {
+        rows.push({
+          'label': currentyear,
+          'value': currentyear
+        });
+        currentyear = currentyear - 1;
+      }
+
+      currentyear = [{
+        'label': 2020,
+        'value': 2020
+      }, {
+        'label': 2021,
+        'value': 2021
+      }, {
+        'label': 2022,
+        'value': 2022
+      }];
+      this.setState({
+        year_list: rows
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
         as: "h5"
       }, "Bonus Periods"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
@@ -526,20 +583,47 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
+        htmlFor: "firstName"
+      }, "Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: function onChange(e) {
+          _this2.setState({
+            year: {
+              'label': e.value,
+              'value': e.value
+            },
+            year_id: e.value,
+            period_val: '',
+            region_val: ''
+          }, function () {
+            _this2.dropdownList();
+          });
+        },
+        className: "basic-single",
+        classNamePrefix: "select",
+        name: "year_id",
+        required: true,
+        value: this.state.year,
+        options: this.state.year_list,
+        placeholder: "Select Year"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
+        md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "hidden",
         name: "file_id",
         value: "3"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
         htmlFor: "job_type"
-      }, "Period"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+      }, "Period"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.periodChange,
+        className: "basic-single",
+        classNamePrefix: "select",
         name: "period",
         id: "period",
-        placeholder: "Period",
-        required: true,
-        value: this.state.period,
-        onChange: this.handleChange,
-        autoComplete: "off"
+        value: this.state.period_val,
+        options: this.state.bonus_periods,
+        placeholder: "Select Period"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"],
         md: "2"
@@ -550,6 +634,7 @@ var Bonus_periods = /*#__PURE__*/function (_React$Component) {
         className: "basic-single",
         classNamePrefix: "select",
         name: "team_id",
+        value: this.state.region_val,
         options: this.state.region_list,
         placeholder: "Select Team"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

@@ -816,6 +816,7 @@ class Sms_report extends Controller
       $national['aborted']=0;
       $national['aborted_per']=0;
       $national['cancelled']=0;
+      $national['mpl_pu']=0;
       $national['pu']=0;
       $national['open']=0;
       $national['pu_day']=0;
@@ -1071,9 +1072,27 @@ class Sms_report extends Controller
                      
                       //$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = max(0,$team[$vl->regions_sort_name][$vl->engineer_id]['pu']-($team[$vl->regions_sort_name][$vl->engineer_id]['working_day']*6));
                       $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] = 0;
+
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['mpl_pu']=0;
+                      $team[$vl->regions_sort_name][$vl->engineer_id]['pu_value_reduction']=0;
                       if(isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'])){
-                      foreach($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'] as $dvl){
-                        $team_bonus_pus = max(0,$dvl-6); 
+                      foreach($team[$vl->regions_sort_name][$vl->engineer_id]['pu_date'] as $appointment_dates => $dvl){
+                                                
+                        /** mpl_pu */
+                        $mpl_pu=6.00;
+                              $pu_value_reduction=0;
+                              $holiday_mpl = \App\Models\Holiday_mpl::where('holiday_date',$appointment_dates)->where('engineer_id',$vl->engineer_id)->first();  
+                              if($holiday_mpl){
+                                $mpl_pu = $holiday_mpl->mpl_pu;
+                                if($holiday_mpl->holiday_type!='unproductive_time_absence'){
+                                    $pu_value_reduction = $holiday_mpl->pu_value_reduction;
+                                }  
+                            }
+                            $team[$vl->regions_sort_name][$vl->engineer_id]['mpl_pu'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['mpl_pu'])?$team[$vl->regions_sort_name][$vl->engineer_id]['mpl_pu']+ $mpl_pu:$mpl_pu);
+
+                            $team[$vl->regions_sort_name][$vl->engineer_id]['pu_value_reduction'] = (isset($team[$vl->regions_sort_name][$vl->engineer_id]['pu_value_reduction'])?$team[$vl->regions_sort_name][$vl->engineer_id]['pu_value_reduction'] + $pu_value_reduction:$pu_value_reduction);
+                        /* */
+                        $team_bonus_pus = floatval(max(0,$dvl-$mpl_pu)); 
                         $team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus'] =$team[$vl->regions_sort_name][$vl->engineer_id]['bonus_pus']  + $team_bonus_pus;
                       }
                     }
@@ -1115,6 +1134,10 @@ class Sms_report extends Controller
                   if(isset($t['working_day'])){
                     $national['total_work_day'] = $t['working_day'] + $national['total_work_day'];
                     }
+                    
+                              if(isset($t['mpl_pu'])){
+                                $national['mpl_pu'] = $t['mpl_pu'] + $national['mpl_pu'];
+                                }
                                 if(isset($t['pu'])){
                                 $national['pu'] = $t['pu'] + $national['pu'];
                                 }

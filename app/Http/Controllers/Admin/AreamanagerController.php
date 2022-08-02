@@ -32,7 +32,7 @@ class AreamanagerController extends Controller
     public function manager_list(Request $request)
     {
         try {
-            $manager = Engineer_group::select(DB::raw('parent_engineer_id as value'),DB::raw('parent_engineer as label'))->groupBy('engineer_groups.parent_engineer_id')->get();
+            $manager = Engineer_group::select(DB::raw('parent_engineer_id as value'),DB::raw('parent_engineer as label'))->groupBy('engineer_groups.parent_engineer_id')->orderBy('parent_engineer','asc')->get();
 
             $regions = DB::table('regions')->select(DB::raw('id as value'),DB::raw('name as label'),'sort_name')->get();
             return response()->json(array('success' => true,'manager' => json_decode($manager),'region'=>json_decode($regions)), 200);

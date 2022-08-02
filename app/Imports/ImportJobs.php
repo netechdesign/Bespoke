@@ -109,19 +109,26 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 $engineer_id= 'sms'.$engineers->id;
                 $is_in_team	=0;
                 $regions_sort_name='';
+                $parent_engineer_id = '';
+                $team_id = '';
                 //["engineer_id" => $row['engineer_id'];
             }else{
                 $engineers= $engineers->first();
                 $engineer_id = $engineers->engineer_id;
                 //$engineer_group =Engineer_group::where('child_engineer_id',$engineer_id)->first();
-                $engineer_group = Sms_teams::select('regions_sort_name')->where('child_engineer_id',$engineer_id)->whereDate('from_date', '<=', $schedule_date)->whereDate('to_date', '>=', $schedule_date)->first();
+                $engineer_group = Sms_teams::select('regions_sort_name','parent_engineer_id','team_id')->where('child_engineer_id',$engineer_id)->whereDate('from_date', '<=', $schedule_date)->whereDate('to_date', '>=', $schedule_date)->first();
                 if($engineer_group){
                     
                     $regions_sort_name = $engineer_group->regions_sort_name;
+                    $parent_engineer_id = $engineer_group->parent_engineer_id;
+                    $team_id = $engineer_group->team_id;
+                    
                     
                     $is_in_team	=1;
                 }else{
                     $regions_sort_name ='';
+                    $parent_engineer_id = '';
+                    $team_id = '';
                     $is_in_team	=0;
                 }
                 
@@ -145,6 +152,8 @@ class SmsSheetImport implements ToModel, WithHeadingRow ,SkipsUnknownSheets{
                 "engineer_id" =>$engineer_id,
                 "engineer" =>$row['engineer'],
                 "regions_sort_name"=> $regions_sort_name,
+                "team_id" =>$team_id,
+                "parent_engineer_id" =>$parent_engineer_id,
                 "is_in_team" => $is_in_team,
                 "job_reference" =>$row['job_reference'],
                 "energy_supplier" =>$row['energy_supplier'],

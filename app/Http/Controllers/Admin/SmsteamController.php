@@ -118,7 +118,7 @@ class SmsteamController extends Controller
                         $engineer_id= $vl['value'];
                     }
 
-                        
+                       
                         $engineer_lookup = DB::table('engineer_lookups')->where('engineer_id',$engineer_id)->first();
                         if(!$engineer_lookup)
                                 {
@@ -131,11 +131,11 @@ class SmsteamController extends Controller
                                 if(isset($request['is_sms'])){
                                     $from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));	
                                     $to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));
-                                     Sms_job::where('engineer_id', $vl->value)->whereDate('appointment_date', '>=', $from_date)->whereDate('appointment_date', '<=', $to_date)->update(['regions_sort_name'=>$request->regions_sort_name,'is_in_team'=>1]);
+                                     Sms_job::where('engineer_id', $vl->value)->whereDate('appointment_date', '>=', $from_date)->whereDate('appointment_date', '<=', $to_date)->update(['regions_sort_name'=>$request->regions_sort_name,'parent_engineer_id' => $request->parent_engineer_id,'team_id' =>$request->team_id,'is_in_team'=>1]);
                                 }else{
                                     $from_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->from_date)));	
                                     $to_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->to_date)));
-                                     Sms_job::where('engineer_id', $vl['value'])->whereDate('appointment_date', '>=', $from_date)->whereDate('appointment_date', '<=', $to_date)->update(['regions_sort_name'=>$request->regions_sort_name,'is_in_team'=>1]);
+                                     Sms_job::where('engineer_id', $vl['value'])->whereDate('appointment_date', '>=', $from_date)->whereDate('appointment_date', '<=', $to_date)->update(['regions_sort_name'=>$request->regions_sort_name,'parent_engineer_id' => $request->parent_engineer_id,'team_id' =>$request->team_id,'is_in_team'=>1]);
                                 }
 
                 }

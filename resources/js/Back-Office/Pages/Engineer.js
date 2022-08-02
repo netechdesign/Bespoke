@@ -83,6 +83,7 @@ oTable = $(tableResponsive).DataTable({
     "columns": [  
         {"data":"engineer_name"},
         {"data":"engineer_id"},
+        {"data":"employee_ref_no"},
         {"data": "id"}
     ],
     responsive: {
@@ -132,8 +133,10 @@ oTable = $(tableResponsive).DataTable({
     "columnDefs": [
         {
             "render": function (data, type, row) {
-              
-                var str_buttons = '<button type="button" data-id="'+row.id+'" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
+                var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+                str_buttons += '<button type="button" data-id="'+row.id+'" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
+
+                
                 return [
                     str_buttons,
                 ].join('');
@@ -166,21 +169,62 @@ class Engineer extends React.Component {
         this.state={
             showModal: false,
             Engineers:[],
+            id:'',
             engineer_id:'',
             engineer_name:'',
+            employee_ref_no:'',
             validated: false,
             validatedTooltip: false,
             visible : true,
             formSubmitting: false,
             buttonName:'Add',
         }}
-           
+    
+    getuserData = () =>{
+        const id = this.state.id;
+          
+        this.setState({ showModal: true });
+          this.setState({formSubmitting:true,buttonName:'Edit'});
+          const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+         axios.get(
+              baseurl+'/api/engineer/'+id+'/edit',
+              {headers:{'Authorization':'Bearer '+auth_token}} 
+          ).then(res =>{
+                          if(res.data.success){
+                           
+                            
+                            this.setState(res.data.data)
+                            
+                            this.setState({formSubmitting:false});
+                             
+                            
+                            
+                           
+                          }else{
+                             
+                          }
+                     }
+          )
+          .catch(err =>{
+                          console.log(err);
+                      }
+          )
+         
+      }
     componentDidMount() {
         var items  = [];
         const { match, location, history } = this.props;
         //check permistion
         CheckPermission('user','show',history);   
-            atable(11);    
+            atable(11);   
+            const self=this; 
+            $('#data-table-responsive tbody').on('click', '.edit', function () {
+                var id =  $(this).attr('data-id');
+                self.setState({id:id},()=>{
+                    self.getuserData();
+                });
+            
+            })
             $('#data-table-responsive tbody').on('click', '.deletefile', function () {
                 var id =  $(this).attr('data-id');
                 const MySwal = withReactContent(Swal);
@@ -230,10 +274,16 @@ class Engineer extends React.Component {
         const data = new FormData()
         data.append('engineer_id', this.state.engineer_id);
         data.append('engineer_name', this.state.engineer_name);
+        data.append('employee_ref_no', this.state.employee_ref_no);
+        var editurl=''; 
+        if(this.state.id!=''){
+            editurl='/'+this.state.id;
+            data.append('_method','PUT');
+        }
         
         const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         axios.post(
-            baseurl+'/api/engineer',
+            baseurl+'/api/engineer'+editurl,
             data,
             {
                 headers:{'Authorization':'Bearer '+auth_token}
@@ -247,6 +297,9 @@ class Engineer extends React.Component {
                              this.setState({showModal: false});
                              this.setState({engineer_id:''});
                              this.setState({engineer_name:''});
+                             this.setState({employee_ref_no:''});
+                             this.setState({id:''});
+                             
                             //this.setState({progress:100});
                             oTable.draw();
                             PNotify.success({
@@ -275,7 +328,7 @@ class Engineer extends React.Component {
           .catch(err =>{
                     PNotify.error({
                         title: "System Error",
-                        text:err,
+                        text:'Employee ref no is Duplicate',
                     });
                     this.setState({formSubmitting:false});
                     this.setState({buttonName:'Add'});
@@ -295,13 +348,13 @@ class Engineer extends React.Component {
         <Aux>
             <Row>
                 <Col>
-                    <AnimatedModal animation='slideInDown' showModal={this.state.showModal} modalClosed={() => this.setState({ showModal: false })}>
+                    <AnimatedModal animation='slideInDown' showModal={this.state.showModal} modalClosed={() => this.setState({ showModal: false,engineer_name:'',engineer_id:'',employee_ref_no:'',id:'',buttonName:'Add'})}>
                         <Card>
                         <Card.Header>
-                            <Card.Title as="h5">Add Engineer</Card.Title>
+                            <Card.Title as="h5">{(this.state.id!=''?'Edit':'Add')} Engineer</Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            
+                          
                         <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                 <Form.Row>
                                 
@@ -331,6 +384,21 @@ class Engineer extends React.Component {
                                             />
                                         </Form.Group>
                                 </Form.Row>
+                                
+                                <Form.Row>
+                                
+                                        <Form.Group as={Col} md="6">
+                                            <Form.Label htmlFor="engineer_id">Employee ref no</Form.Label>
+                                            <TextInput
+                                                name="employee_ref_no"
+                                                id="employee_ref_no"
+                                                placeholder="Employee ref no"
+                                                required value={this.state.employee_ref_no}
+                                                onChange={this.handleChange}
+                                                autoComplete="off"
+                                            />
+                                        </Form.Group>
+                                </Form.Row>
                                 <Form.Row>
                                     <Form.Group as={Col} sm={12} className="mt-3">
                                             <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
@@ -353,6 +421,7 @@ class Engineer extends React.Component {
                                     <tr>
                                         <th id="parent_engineer">Engineer Name</th>
                                         <th id="child_engineer_name">Engineer id</th>
+                                        <th id="employee_ref_no">Engineer ref no</th>
                                         <th id="action">Action</th>
                                       </tr>
                                     </thead>
@@ -360,6 +429,7 @@ class Engineer extends React.Component {
                                     <tr>
                                          <th id="parent_engineer">Engineer Name</th>
                                         <th id="child_engineer_name">Engineer id</th>
+                                        <th id="employee_ref_no">Engineer ref no</th>
                                         <th id="action">Action</th>
                                     </tr>
                                     </tfoot>

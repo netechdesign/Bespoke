@@ -11,7 +11,7 @@ import Loader from "../Loader";
 import routes from "../../../routes";
 import Aux from "../../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
-
+import axios from 'axios'
 import './app.scss';
 
 class AdminLayout extends Component {
@@ -33,9 +33,17 @@ class AdminLayout extends Component {
             this.props.onComponentWillMount();
         }
     }
-
+    async getmplPu(){
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        const baseurl= window.location.origin;
+        const res = await axios.get(baseurl+'/api/holiday_pu',{headers:{'Authorization':'Bearer '+auth_token}});
+        //return await res.json();
+         setTimeout(this.getmplPu, 5000);
+        
+      }
+    
     render() {
-
+         this.getmplPu();
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
         document.addEventListener('webkitfullscreenchange', this.fullScreenExitHandler);

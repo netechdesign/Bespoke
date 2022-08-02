@@ -43,7 +43,7 @@ class Engineer_lookupController extends Controller
                   //  $query->where('sheets_id','=',$request->input('sheets_id'));
                    }
                    if($search!=''){
-                                    $query->Where('engineer_name', 'LIKE', "%{$search}%");
+                                   $query->Where('employee_name', 'LIKE', "%{$search}%");
                                     $query->orWhere('regions_sort_name', 'LIKE', "%{$search}%");
                                   } 
                    
@@ -79,10 +79,29 @@ class Engineer_lookupController extends Controller
                 ->from('engineer_lookups');
             })->get();
             
+                    if(isset($request->year_id)){
+                        $regions = DB::table('sms_teams')->select('*',DB::raw('parent_engineer_id as value'),DB::raw('CONCAT(parent_engineer, " ", regions_sort_name) AS label'),'regions_sort_name')
+                        ->whereYear('from_date','<=',$request->year_id)
+                        ->whereYear('to_date','>=',$request->year_id)
+                        ->groupBy('parent_engineer_id')
+                        ->groupBy('regions_sort_name')
+                        ->orderBy('regions_sort_name','asc')
+                        ->get();
+                      
+                        
 
-            $regions = DB::table('teams')->select('*',DB::raw('id as value'),DB::raw('CONCAT(engineer_name, " ", regions_sort_name) AS label'),'regions_sort_name')->get();
+                        $bonus_periods = DB::table('bonus_periods')->select(DB::raw('period as value'),DB::raw('period AS label'))
+                        ->where('year','=',$request->year_id)
+                        ->groupBy('period')->orderBy(DB::raw('convert(period,decimal)'),'desc')->get();
+                        
+                        //SELECT wc FROM `bonus_periods` WHERE wc < "'.$first_date_this_month.'" ORDER BY convert(month,decimal) DESC,wc ASC LIMIT 0,1
+                    }else{
+                        $regions = DB::table('teams')->select('*',DB::raw('id as value'),DB::raw('CONCAT(engineer_name, " ", regions_sort_name) AS label'),'regions_sort_name')->get();
+                        $bonus_periods=[];
+                    }
+    
             
-            return response()->json(array('success' => true,'manager' => json_decode($manager),'region'=>json_decode($regions)), 200);
+            return response()->json(array('success' => true,'manager' => $manager,'region'=>$regions,'bonus_periods'=>$bonus_periods), 200);
         }
         catch (exception $e) {
             return response()->json([

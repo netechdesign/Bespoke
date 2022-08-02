@@ -223,6 +223,8 @@ function atable() {
   }, {
     "data": "engineer_id"
   }, {
+    "data": "employee_ref_no"
+  }, {
     "data": "id"
   }]), _defineProperty(_$$DataTable, "responsive", {
     responsive: {
@@ -257,7 +259,8 @@ function atable() {
     jquery__WEBPACK_IMPORTED_MODULE_12___default()(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      var str_buttons = '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
+      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      str_buttons += '<button type="button" data-id="' + row.id + '" class="deletefile btn btn-danger btn-sm" ><i style="margin:0px !important;" class="feather icon-x"></i></button>';
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive th#action').index(),
@@ -287,6 +290,38 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
+    _defineProperty(_assertThisInitialized(_this), "getuserData", function () {
+      var id = _this.state.id;
+
+      _this.setState({
+        showModal: true
+      });
+
+      _this.setState({
+        formSubmitting: true,
+        buttonName: 'Edit'
+      });
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(baseurl + '/api/engineer/' + id + '/edit', {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState(res.data.data);
+
+          _this.setState({
+            formSubmitting: false
+          });
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
     });
@@ -309,12 +344,19 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
       var data = new FormData();
       data.append('engineer_id', _this.state.engineer_id);
       data.append('engineer_name', _this.state.engineer_name);
+      data.append('employee_ref_no', _this.state.employee_ref_no);
+      var editurl = '';
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          auth_token = _ref2.auth_token;
+      if (_this.state.id != '') {
+        editurl = '/' + _this.state.id;
+        data.append('_method', 'PUT');
+      }
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/engineer', data, {
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref3.id,
+          auth_token = _ref3.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(baseurl + '/api/engineer' + editurl, data, {
         headers: {
           'Authorization': 'Bearer ' + auth_token
         }
@@ -339,6 +381,14 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
 
           _this.setState({
             engineer_name: ''
+          });
+
+          _this.setState({
+            employee_ref_no: ''
+          });
+
+          _this.setState({
+            id: ''
           }); //this.setState({progress:100});
 
 
@@ -370,7 +420,7 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (err) {
         pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_8__["default"].error({
           title: "System Error",
-          text: err
+          text: 'Employee ref no is Duplicate'
         });
 
         _this.setState({
@@ -397,8 +447,10 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       showModal: false,
       Engineers: [],
+      id: '',
       engineer_id: '',
       engineer_name: '',
+      employee_ref_no: '',
       validated: false,
       validatedTooltip: false,
       visible: true,
@@ -419,6 +471,15 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
 
       Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_6__["CheckPermission"])('user', 'show', history);
       atable(11);
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tbody').on('click', '.edit', function () {
+        var id = jquery__WEBPACK_IMPORTED_MODULE_12___default()(this).attr('data-id');
+        self.setState({
+          id: id
+        }, function () {
+          self.getuserData();
+        });
+      });
       jquery__WEBPACK_IMPORTED_MODULE_12___default()('#data-table-responsive tbody').on('click', '.deletefile', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_12___default()(this).attr('data-id');
         var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_15___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_14___default.a);
@@ -430,8 +491,8 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
           showCancelButton: true
         }).then(function (willDelete) {
           if (willDelete.value) {
-            var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-                _auth_token = _ref3.auth_token;
+            var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+                _auth_token = _ref4.auth_token;
 
             var _baseurl = window.location.origin;
             axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(_baseurl + '/api/engineer/' + id, {
@@ -461,12 +522,17 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
         showModal: this.state.showModal,
         modalClosed: function modalClosed() {
           return _this2.setState({
-            showModal: false
+            showModal: false,
+            engineer_name: '',
+            engineer_id: '',
+            employee_ref_no: '',
+            id: '',
+            buttonName: 'Add'
           });
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Add Engineer")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
+      }, this.state.id != '' ? 'Edit' : 'Add', " Engineer")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -493,6 +559,19 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
         placeholder: "Engineer Id",
         required: true,
         value: this.state.engineer_id,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "engineer_id"
+      }, "Employee ref no"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_2__["TextInput"], {
+        name: "employee_ref_no",
+        id: "employee_ref_no",
+        placeholder: "Employee ref no",
+        required: true,
+        value: this.state.employee_ref_no,
         onChange: this.handleChange,
         autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -528,12 +607,16 @@ var Engineer = /*#__PURE__*/function (_React$Component) {
       }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "child_engineer_name"
       }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "employee_ref_no"
+      }, "Engineer ref no"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "parent_engineer"
       }, "Engineer Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "child_engineer_name"
       }, "Engineer id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "employee_ref_no"
+      }, "Engineer ref no"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action")))))))));
     }

@@ -47,7 +47,10 @@ class Exportbonus implements WithMultipleSheets
            if($start_date!=''){ $q->whereDate('schedule_date', '>=', $start_date); }
            if($today_date!=''){ $q->whereDate('schedule_date', '<=', $today_date); }  
         }else{
-            $bonus_periods =Bonus_periods::where('period',$_REQUEST['period'])->orderBy('wc','asc')->get();
+            $bonus_periods =Bonus_periods::where('period',$_REQUEST['period'])->where('year',$_REQUEST['year_id'])->orderBy('wc','asc')->get();
+            if(count($bonus_periods)==0){
+              return 'sorry data not found';
+          }
             if($bonus_periods){
                 $rows =$bonus_periods->count();
                 $no = $rows-1;
@@ -65,14 +68,18 @@ class Exportbonus implements WithMultipleSheets
                     }else{
                         $todate=$end_date;
                         }
-                        //$teamQ= Sms_job::select('sms_jobs.*','teams.regions_id','teams.regions_sort_name','time_lookups.in_hours_end')->join('engineer_groups','engineer_groups.child_engineer_id','=','sms_jobs.engineer_id')->join('teams','teams.engineer_id','=','engineer_groups.parent_engineer_id');
-                      //  $teamQ= Sms_job::select('sms_jobs.*','time_lookups.in_hours_end')->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
-                      $teamQ= Sms_job::select('sms_jobs.id','select_work_type','work_type','status','sms_jobs.engineer_id','engineer','week_day','appointment_date','time_lookups.in_hours_end','post_code',
+                        
+                     /*
+                     15-6-22
+                     $teamQ= Sms_job::select('sms_jobs.id','select_work_type','work_type','status','sms_jobs.engineer_id','engineer','week_day','appointment_date','time_lookups.in_hours_end','post_code',
                       DB::raw('"sms" as table_type'))->join('teams','teams.regions_sort_name','=','sms_jobs.regions_sort_name');
+                     */
+                    $teamQ= Sms_job::select('sms_jobs.id','select_work_type','work_type','status','sms_jobs.engineer_id','engineer','week_day','appointment_date','time_lookups.in_hours_end','post_code',
+                        DB::raw('"sms" as table_type'));
 
                         $teamQ->join('time_lookups','sms_jobs.week_day','=','time_lookups.day');
                         if($_REQUEST['team_id']!=''){
-                          $teamQ->where('teams.id', '=', $_REQUEST['team_id']);
+                          $teamQ->where('sms_jobs.parent_engineer_id', '=', $_REQUEST['team_id']);
                         }
                         if($start_date!=''){ $teamQ->whereDate('appointment_date', '>=', $vl->wc); }
                         if($end_date!=''){ $teamQ->whereDate('appointment_date', '<', $todate); }
@@ -91,7 +98,11 @@ class Exportbonus implements WithMultipleSheets
                         $utilita->join('sms_teams','sms_teams.child_engineer_id','=','utilita_jobs.engineer_id'); 
 
                         if($_REQUEST['team_id']!=''){
-                            $utilita->where('sms_teams.team_id', '=', $_REQUEST['team_id']);
+                             /*
+                            15-06-2022 changed
+                             $utilita->where('sms_teams.team_id', '=', $request->team_id);
+                             */
+                            $utilita->where('sms_teams.parent_engineer_id', '=', $_REQUEST['team_id']);
                           }
                           if($start_date!=''){ $utilita->whereDate('schedule_date', '>=', $vl->wc); }
                         if($end_date!=''){ $utilita->whereDate('schedule_date', '<', $todate); }

@@ -53,6 +53,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::get('manager_list', 'AreamanagerController@manager_list');
         Route::get('dropdown_list', 'Engineer_lookupController@dropdown_list');
         Route::get('joblookup/dropdown_list', 'Job_lookupController@dropdown_list');
+        Route::get('holiday_pu','EngineerController@holiday_pu');
+        Route::get('previous_three_periods','Bonus_periodsController@previous_three_periods');
         
         Route::resource('vehicalmileas', 'VehicalmileasController');
         

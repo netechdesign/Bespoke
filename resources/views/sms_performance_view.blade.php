@@ -27,6 +27,7 @@
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Open</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Cancelled</th>
             @if($query->role==8 || $query->role==7 || $query->role==1)
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">MPL</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU</th>
@@ -67,6 +68,7 @@
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=open".$Nquerylist)}}'>{{$national['open']}}</a></th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;"><a  target='_blank' href='{{url("sms/list?status=cancelled".$Nquerylist)}}'>{{$national['cancelled']}}</a></th>
             @if($query->role==8 || $query->role==7 || $query->role==1)
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['mpl_pu']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{$national['pu']}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['pu']/$national['total_work_day'],2)}}</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">{{number_format($national['bonus_pus'],2)}}</th>
@@ -95,6 +97,7 @@
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Open</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Cancelled</th>
             @if($query->role==8 || $query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
+            <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">MPL</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">PU/Day</th>
             <th style="border: 1px solid #000000;text-align: center;font-weight: bold;">Bonus PU</th>
@@ -116,6 +119,7 @@
             $aborted=0;
             $open=0;
             $cancelled=0;
+            $mpl_pu=0;
             $pu=0;
             $pu_day=0;
             $bonus_pus=0;
@@ -136,6 +140,7 @@
           $aborted=$aborted + $users['aborted'];;
           $open=$open + $users['open'];;
           $cancelled=$cancelled + $users['cancelled'];
+          $mpl_pu=$mpl_pu + $users['mpl_pu'];
           $pu=$pu + $users['pu'];
           $pu_day=$pu_day + $users['pu_day'];
           $bonus_pus=$bonus_pus + $users['bonus_pus'];
@@ -208,7 +213,11 @@
                   @endif
             </td>
                  @if($query->role==8 || $query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
-                        <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
+                 
+                 <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
+                        {{str_replace(',','',number_format($users['mpl_pu'],2))}}
+                        </td>       
+                 <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">
                         {{str_replace(',','',number_format($users['pu'],2))}}
                         </td>
                         <td style="width:10;border: 1px solid #000000;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($users['pu_day'],2))}}</td>
@@ -255,7 +264,9 @@
                 <th style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$open}}</th>
                 <th style="border: 1px solid #000000;font-weight: bold;text-align: center;">{{$cancelled}}</th>
                 @if($query->role==8 || $query->role==7 || $query->role==6 || $query->role==5 || $query->role==1)
-                    <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-" >
+                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-" >
+                    {{str_replace(',','',number_format($mpl_pu,2))}}</th>    
+                <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-" >
                     {{str_replace(',','',number_format($pu,2))}}</th>
                     <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($pu/$engineer_days,2))}}</th>
                     <th style="border: 1px solid #000000;font-weight: bold;text-align: center;" data-format="#,##0.00_-">{{str_replace(',','',number_format($bonus_pus,2))}}</th>
